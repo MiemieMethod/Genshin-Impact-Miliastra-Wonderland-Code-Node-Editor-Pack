@@ -404,7 +404,7 @@ Arithmetic Node:
       172: GUID
       173: Float
       174: Vec
-      175: boolean
+      175: Bool
       568: ConfigId
       569: Prefab
       2640: Faction
@@ -450,13 +450,13 @@ Arithmetic Node:
       776: Gameplay Mode
       777: Input Device Type
     - Data Type Conversion: [Generic: 180]
-      180: Int -> bool
+      180: Int -> Bool
       181: Int -> Float
       182: Int -> Str
       183: Entity -> Str
       184: GUID -> Str
-      185: boolean -> Int
-      186: boolean -> Str
+      185: Bool -> Int
+      186: Bool -> Str
       187: Float -> Int
       188: Float -> Str
       189: Vec -> Str

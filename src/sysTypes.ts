@@ -1,6 +1,8 @@
 // src/runtime/sysTypes
 // version 1.0.2
 
+const todo = (): any => { throw new Error("TODO"); };
+
 export interface TypeMaps {
   int: int;
   float: float;
@@ -22,7 +24,9 @@ export interface TypeMaps {
 }
 export const AllTypes = ["int", "float", "bool", "str", "Int", "Float", "Bool", "Str", "Vec", "GUID", "Entity", "Prefab", "Faction", "ConfigId", "List", "Dict", "Struct"] as const satisfies (keyof TypeMaps)[];
 export const AllKeyTypes = ["Entity", "GUID", "Int", "Str", "Faction", "ConfigId", "Prefab"] as const satisfies (keyof TypeMaps)[];
+export const AllKeyTypes_ = ["Entity", "GUID", "Int", "Str", "int", "str", "Faction", "ConfigId", "Prefab"] as const satisfies (keyof TypeMaps)[];
 export const AllValTypes = ["Entity", "GUID", "Int", "Bool", "Float", "Str", "Faction", "Vec", "ConfigId", "Prefab"] as const satisfies (keyof TypeMaps)[];
+export const AllValTypes_ = ["Entity", "GUID", "Int", "Bool", "Float", "Str", "int", "bool", "float", "str", "Faction", "Vec", "ConfigId", "Prefab"] as const satisfies (keyof TypeMaps)[];
 
 export type SysTypeNames = typeof AllTypes[number];
 export type SysKeyTypeNames = typeof AllKeyTypes[number];
@@ -210,10 +214,32 @@ export class ConfigId extends SysTypeBase {
 export class List extends SysTypeBase {
   val: SysValTypes[];
   val_type: SysValTypeNames;
+  get length() {
+    return this.val.length;
+  }
   constructor(init: SysValTypes[], val_type: SysValTypeNames) {
     super("List");
     this.val = init;
     this.val_type = val_type;
+
+    return new Proxy(this, {
+      get: (target, prop: string | symbol) => {
+        // 处理数字索引访问
+        if (typeof prop === 'string') {
+          const n = Number(prop);
+          if (!isNaN(n)) {
+            return this.val[n];
+          }
+          const n2 = Number(prop.slice(1, -1));
+          if (!isNaN(n2)) {
+            return this.val[n2];
+          }
+          throw new Error("Cannot Index " + prop);
+        }
+        // 处理其他属性访问
+        return (target as any)[prop];
+      },
+    })
   }
   clone() {
     return new List(clone(this.val), this.val_type);
@@ -221,6 +247,21 @@ export class List extends SysTypeBase {
   toString(): string {
     return `<List:${this.val}>`;
   }
+  find(item: SysValTypes): SysValTypes | null {
+    return todo();
+  }
+  includes(item: SysValTypes): boolean {
+    return this.find(item) !== null;
+  }
+  get(index: int | number | Int): SysValTypes {
+    if (typeof index === "object") {
+      return this.val[Number(index.val)];
+    } else {
+      return this.val[Number(index)];
+    }
+  }
+  /** Decl */
+  [k: number]: SysValTypes;
 }
 
 export class Dict extends SysTypeBase {
@@ -241,20 +282,39 @@ export class Dict extends SysTypeBase {
   toString(): string {
     return `<Dict:${this.val}>`;
   }
+  keys(): List {
+    return new List(this.key, this.key_type);
+  }
+  vals(): List {
+    if (this.val_type === "List") {
+      throw new Error("Cannot get vals of List Map");
+    }
+    return new List(this.val as SysValTypes[], this.val_type);
+  }
+  has(key: SysKeyTypes): boolean {
+    return todo();
+  }
+  includes(val: SysValTypes | List) {
+    return todo();
+  }
 }
 
 export class Struct extends SysTypeBase {
+  id: string;
+  name: string;
   fields: string[];
   val_type: SysTypeNames[];
   val: SysTypes[];
-  constructor(fields: string[], val_type: SysTypeNames[], vals: SysTypes[]) {
+  constructor(id: string, name: string, fields: string[], val_type: SysTypeNames[], vals: SysTypes[]) {
     super("Struct");
+    this.id = id;
+    this.name = name; 
     this.fields = fields;
     this.val_type = val_type;
     this.val = vals;
   }
   clone() {
-    return new Struct([...this.fields], [...this.val_type], clone(this.val));
+    return new Struct(this.id, this.name, [...this.fields], [...this.val_type], clone(this.val));
   }
   toString(): string {
     return `<Struct:${this.val}>`;
@@ -469,3 +529,8 @@ export const SysEnumNames = [
   "EnumItemLootType", "EnumDecisionRefreshMode", "EnumElementalReactionType", "EnumInterruptStatus",
   "EnumGameplayMode", "EnumInputDeviceType"
 ] as const;
+
+// test
+// const p = new List([1n, 2n, 4n], "int");
+
+// console.log(p, p[0n], p[new Int(1)]);
