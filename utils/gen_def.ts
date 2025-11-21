@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from "fs";
 import { AllTypes, AllKeyTypes, AllKeyTypes_, AllValTypes, AllValTypes_, SysEnumNames } from "../src/sysTypes.ts";
 import type { int, str, float, bool, Int, Float, Bool, Str, Vec, GUID, Entity, Prefab, Faction, ConfigId, List, Dict, Struct } from "../src/sysTypes.ts";
 
+const version = "1.0.3";
 
 // const RawTypes = ["int", "float", "bool", "str"] as const;
 // const RawTypeMaps = ["bigint", "number", "boolean", "string"] as const;
@@ -21,7 +22,6 @@ type EnumDevice = never;
 type EnumEntityType = never;
 
 
-const version = "1.0.2";
 declare namespace MathNodes {
   // function equal(x: int, y: int): boolean;
   /* <Equals> */

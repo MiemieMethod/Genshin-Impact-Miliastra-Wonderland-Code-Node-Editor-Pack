@@ -1,7 +1,7 @@
 # 千星奇域节点图本地编辑器, 网页节点编辑器, 转换器
 # A Local Code Editor, Web Node Editor, Convertor for Genshin Impact Miliastra Wonderland
 
-本来是进度缓慢的, 因为我需要要多线并行: 
+本来是进展缓慢的, 因为我需要要多线并行: 
 - [x] **(完成主要部分)** GIA 文件逆向 
 - [ ] **(未动工)** 节点编辑器图形界面
 - [x] **(基本完成)** 节点图的等效代码表示(DSL)
@@ -11,23 +11,26 @@
 - [ ] **(未动工)** GIA$\rArr$DSL转换器
 - [x] **(完成一大半)** 写一个~~没营养~~的 DSL 示例, 并在千星奇域中手动实现.
 
-但今天搜索 Github, 无意中发现 [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) 已经做好了 **节点编辑器**, 可以简单体验的[网页版](https://miliastra.columbina.dev/). 这一下子就*给我动力*了, 我准备把简单的DSL$\rArr$JSON转换器先给它实现了. 稍微增强下开源生态......
+但今天搜索 Github, 无意中发现 [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) 已经做好了**节点编辑器**的[网页版](https://miliastra.columbina.dev/). 这一下子就*给我动力*了, 我准备把简单的DSL$\rArr$JSON转换器先给它实现了. 稍微增强下开源生态......
 
 ## 本项目提供的工具.
 这个项目是我整理的我上述项目中的已经成型的文件, 用于补全开源开发生态.
 - GIA 文件(节点图导出文件)解析:
-  - [utils/gia.proto](./utils/gia.proto): Protobuf 定义文件(我推测的, 包含大部分结构, 除了结构体的扩展)
-  - [utils/bindec.py](./utils/bindec.py): 解码 GIA 文件到原始的 protobuf message 结构
-  - [utils/gia.py](./utils/gia.py): 解码 GIA 文件到可读文本格式, 编码文本到 GIA 文件.
+  - [utils/protobuf/gia.proto](./utils/gia.proto): GIA 文件的 Protobuf 数据结构定义文件 (我推测的, 包含大部分结构, 除了结构体的扩展)
+  - [utils/protobuf/proto2ts.ts](./utils/protobuf/proto2ts.ts) 将 `gia.proto` 转换为 Typescript 类型声明 `.d.ts` , 使解析后数据结构有类型注释.
+  - [utils/protobuf/decode.ts](./utils/protobuf/decode.ts): 解码 GIA 文件到可读文本格式/JSON格式.
+  - **(弃用, 请使用decode.ts)** [utils/protobuf/decode.py](./utils/protobuf/decode.py): 解码 GIA 文件到可读文本格式, 编码文本到 GIA 文件. 
+  - [utils/protobuf/decode_raw.py](./utils/protobuf/decode_raw.py): 解码 GIA 文件到原始的 protobuf message 结构. 使用强类型检查而非 `protoc.exe` 的宽松行为.
 - 服务器节点图节点ID检索: [utils/server_node_id.yaml](./utils/server_node_id.yaml): 我手动导出并对应的, 算术节点基本保证覆盖全了, 但是操作节点没有考虑全部的泛类的情况.
-  - 客户端节点我发现 id 不一样, 没心情弄了.
-  - [utils/enum_id.yaml](./utils/enum_id.yaml)
-  未完成, 枚举对应的字段.
-- [docs/UserGuide.md](./docs/UserGuide.md) 代码使用手册
-- [utils/def.d.ts](./utils/def.d.ts) 代码结构定义文件
-- [src/index.ts](./src/index.ts) 编译器和转换器(完成一半)
-- [src/sysTypes.ts](./src/sysTypes.ts) **运行时**系统类型定义
-- [src/test/def.d.ts](./src/test/def.d.ts) 本地编写代码时的**类型定义和函数补全**
+  - 客户端节点我发现 Id 不同于服务器同样的节点, 没心情弄了.
+  - [utils/enum_id.yaml](./utils/enum_id.yaml) (未完成) 枚举对应的字段列表和ID.
+- DSL 代码编写运行相关:
+  - [docs/UserGuide.md](./docs/UserGuide.md) 代码使用手册
+  - [docs/SystemDesign.md](./docs/SystemDesign.md) 代码结构设计手册
+  - [utils/gen_def.ts](./utils/gen_def.ts) 自动创建最新版代码结构定义文件的程序
+  - [src/test/def.d.ts](./src/test/def.d.ts) 代码结构定义文件, **本地编写代码**时的`类型定义和函数补全`
+  - [src/sysTypes.ts](./src/sysTypes.ts) **运行时**系统类型定义
+  - [src/index.ts](./src/index.ts) 编译器和转换器(完成一半)
 
 
 ## Getting Started
@@ -49,7 +52,7 @@ node ./src/test/parser.ts
 编写出的代码会长成这个样子:
 ```ts
 // @ts-nocheck
-import "./docs/def.d.ts" // 导入配置
+import "./src/test/def.d.ts" // 导入配置
 
 declare global{
   // 声明实体自身变量
