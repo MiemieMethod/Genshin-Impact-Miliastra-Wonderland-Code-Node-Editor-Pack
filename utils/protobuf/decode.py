@@ -1,5 +1,6 @@
 # 编码/解码 GIA 文件到可读文本格式
 # Version 1.0.1
+# @Deprecated
 
 import struct
 import argparse

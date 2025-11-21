@@ -16,3 +16,6 @@ m.struct("1", { x: 1, y: 2, 3: 4 }).$(() => {
   return 1;
 });
 // Branch["12"].$(()=>1)[12].$
+
+
+const s: EnumEntityType = EnumEntityType.Player;

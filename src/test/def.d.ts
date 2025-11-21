@@ -185,6 +185,16 @@ declare global {
     | "Character"
     | "Creation"
     ;
+  const EnumEntityType: {
+    /** Id = 10 */
+    Stage: "Stage";
+    /** Id = 11 */
+    Object: "Object";
+    /** Id = 12 */
+    Player: "Player";
+    Character: "Character";
+    Creation: "Creation";
+  }
   /** Enum Equal Id = 491 */
   type EnumUnitStatusAdditionResult = "TODO";
   /** Enum Equal Id = 492 */
