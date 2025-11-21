@@ -5,13 +5,13 @@
 - [x] **(完成主要部分)** GIA 文件逆向 
 - [ ] **(未动工)** 节点编辑器图形界面
 - [x] **(基本完成)** 节点图的等效代码表示(DSL)
-- [x] **(完成一小半)** DSL$\rArr$IR编译器
+- [x] **(完成一小半)** DSL ⇒ IR编译器
 - [x] **(刚开始)** IR本地运行器
-- [ ] **(未动工)** DSL$\rArr$GIA转换器
-- [ ] **(未动工)** GIA$\rArr$DSL转换器
+- [ ] **(未动工)** DSL ⇒ GIA转换器
+- [ ] **(未动工)** GIA ⇒ DSL转换器
 - [x] **(完成一大半)** 写一个~~没营养~~的 DSL 示例, 并在千星奇域中手动实现.
 
-但今天搜索 Github, 无意中发现 [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) 已经做好了**节点编辑器**的[网页版](https://miliastra.columbina.dev/). 这一下子就*给我动力*了, 我准备把简单的DSL$\rArr$JSON转换器先给它实现了. 稍微增强下开源生态......
+但今天搜索 Github, 无意中发现 [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) 已经做好了**节点编辑器**的[网页版](https://miliastra.columbina.dev/). 这一下子就*给我动力*了, 我准备把简单的DSL ⇒ JSON转换器先给它实现了. 稍微增强下开源生态......
 
 ## 本项目提供的工具.
 这个项目是我整理的我上述项目中的已经成型的文件, 用于补全开源开发生态.
