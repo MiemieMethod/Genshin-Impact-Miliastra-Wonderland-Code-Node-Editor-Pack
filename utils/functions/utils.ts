@@ -1,3 +1,6 @@
+import assert from "assert";
+import { extractArg, type Arg, type ArgArr, type strict_arg } from "./function_defs";
+
 export const AllTypes = ["int", "float", "bool", "str", "Int", "Float", "Bool", "Str", "Vec", "GUID", "Entity", "Prefab", "Faction", "ConfigId", "List", "Dict", "Struct"] as const;
 
 export const SysEnumNames = [
@@ -71,3 +74,47 @@ export {
   any_bool,
   any_str,
 };
+
+// ==== Helper functions ==== //
+const T = () => "T";
+function X(t: string): Arg { return { x: () => t } };
+function Y(t: string): Arg { return { y: () => t } };
+function Z(t: string): Arg { return { z: () => t } };
+function XY(t: string): ArgArr { return [X(t), Y(t)] }
+function XYZ(t: string): ArgArr { return [X(t), Y(t), Z(t)] }
+
+export { T, X, Y, Z, XY, XYZ };
+
+/** Args of different types will be combined each other
+ * Returns ArgArr List (overloads)
+ */
+export function expandArgs(args: Arg[]): ArgArr[] {
+  function recursiveExpand(args: strict_arg[]): Arg[][] {
+    if (args.length == 1) {
+      const ret: Arg[][] = [];
+      for (const t of args[0].type) {
+        let x: { [key: string]: any } = {};
+        if (args[0].optional) {
+          x[0] = true;
+        }
+        x[args[0].name] = t;
+        ret.push([x]);
+      }
+      return ret;
+    }
+    const half = args.length >> 1;
+    const l = recursiveExpand(args.slice(0, half));
+    const r = recursiveExpand(args.slice(half));
+    let ret: Arg[][] = [];
+    for (const a1 of l) {
+      for (const a2 of r) {
+        ret.push([...a1, ...a2]);
+      }
+    }
+    return ret;
+  }
+  const arg = extractArg(args);
+  assert(arg.type === "args");
+  const arr = arg.val;
+  return recursiveExpand(arr);
+}

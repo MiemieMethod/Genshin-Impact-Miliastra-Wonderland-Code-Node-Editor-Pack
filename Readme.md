@@ -17,9 +17,9 @@
 这个项目是我整理的我上述项目中的已经成型的文件, 用于补全开源开发生态.
 - GIA 文件(节点图导出文件)解析:
   - [utils/protobuf/gia.proto](./utils/protobuf/gia.proto): GIA 文件的 Protobuf 数据结构定义文件 (我推测的, 包含大部分结构, 除了结构体的扩展)
-  - [utils/protobuf/proto2ts.ts](./utils/protobuf/proto2ts.ts) 将 `gia.proto` 转换为 Typescript 类型声明 `gia.proto.ts` , 使解析后数据结构有类型注释和枚举常量.
-  - [utils/protobuf/decode.ts](./utils/protobuf/decode.ts): 解码 GIA 文件到可读文本格式/JSON格式.
-  - **(弃用, 请使用decode.ts)** [utils/protobuf/decode.py](./utils/protobuf/decode.py): 解码 GIA 文件到可读文本格式, 编码文本到 GIA 文件. 
+  - [utils/protobuf/proto2ts.ts](./utils/protobuf/proto2ts.ts) 将 `gia.proto` 转换为 Typescript 类型声明 `gia.proto.ts` , 使解析后数据结构有类型注释和枚举常量, 方便用 ts 处理.
+  - [utils/protobuf/decode.ts](./utils/protobuf/decode.ts): **解码 GIA 文件**到 Typescript 结构体, **编码 TS 对象** 到 gia 文件.
+  - ~~**(弃用, 请使用decode.ts)** [utils/protobuf/decode.py](./utils/protobuf/decode.py): 解码 GIA 文件到可读文本格式, 编码文本到 GIA 文件.~~
   - [utils/protobuf/decode_raw.py](./utils/protobuf/decode_raw.py): 解码 GIA 文件到原始的 protobuf message 结构. 使用强类型检查而非 `protoc.exe` 的宽松行为.
 - 服务器节点图节点ID检索: [utils/server_node_id.yaml](./utils/server_node_id.yaml): 我手动导出并对应的, 算术节点基本保证覆盖全了, 但是操作节点没有考虑全部的泛类的情况.
   - 客户端节点我发现 Id 不同于服务器同样的节点, 没心情弄了.
