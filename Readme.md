@@ -23,7 +23,7 @@
   - [utils/protobuf/decode_raw.py](./utils/protobuf/decode_raw.py): 解码 GIA 文件到原始的 protobuf message 结构. 使用强类型检查而非 `protoc.exe` 的宽松行为.
 - 服务器节点图节点ID检索: [utils/server_node_id.yaml](./utils/server_node_id.yaml): 我手动导出并对应的, 算术节点基本保证覆盖全了, 但是操作节点没有考虑全部的泛类的情况.
   - 客户端节点我发现 Id 不同于服务器同样的节点, 没心情弄了.
-  - [utils/enum_id.yaml](./utils/enum_id.yaml) (未完成) 枚举对应的字段列表和ID.
+  - [utils/enum_id.yaml](./utils/enum_id.yaml) (正在进行) 枚举对应的字段列表和ID.
 - DSL 代码编写运行相关:
   - [docs/UserGuide.md](./docs/UserGuide.md) 代码使用手册
   - [docs/SystemDesign.md](./docs/SystemDesign.md) 代码结构设计手册
@@ -31,6 +31,8 @@
   - [src/test/def.d.ts](./src/test/def.d.ts) 代码结构定义文件, **本地编写代码**时的`类型定义和函数补全`
   - [src/sysTypes.ts](./src/sysTypes.ts) **运行时**系统类型定义
   - [src/index.ts](./src/index.ts) 编译器和转换器(完成一半)
+- 与 Columbina-Dev/WebMiliastraNodesEditor 的相互转换的相关资源
+  - [utils/functions/math.ts](./utils/functions/math.ts) 运算节点的相互转换关系.
 
 
 ## Getting Started

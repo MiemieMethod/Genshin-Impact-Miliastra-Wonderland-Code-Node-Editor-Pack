@@ -676,18 +676,19 @@ export const MathNodes: Lambda[] = [
 const MathNodes2: Lambda[] = [
 ]
 
-function test() {
+function test(print: boolean = true, out_file = "/math.temp.d.ts") {
   const d = new Parser();
   d.lambda(MathNodes);
   // d.lambda(MathNodes2);
 
-
-  // console.dir(d, { depth: null });
-  // console.log(d.gen().join("\n"))
-  // console.log(d.gen_by_name("dict_get").join("\n"))
-
-  // const res = "// @ts-nocheck\n\n" + d.gen().join("\n\n");
-  // writeFileSync(import.meta.dirname + "/math.temp.d.ts", res);
+  if (print) {
+    // console.dir(d, { depth: null });
+    console.log(d.gen().join("\n"))
+    // console.log(d.gen_by_name("dict_get").join("\n"))
+  } else {
+    const res = "// @ts-nocheck\n\n" + d.gen().join("\n\n");
+    writeFileSync(import.meta.dirname + out_file, res);
+  }
 }
 
 if (import.meta.main) {
