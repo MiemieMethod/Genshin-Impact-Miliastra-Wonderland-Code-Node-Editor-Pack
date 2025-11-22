@@ -1,8 +1,8 @@
 import { readFileSync, writeFileSync } from "fs";
 import { AllTypes, AllKeyTypes, AllKeyTypes_, AllValTypes, AllValTypes_, SysEnumNames } from "../src/sysTypes.ts";
-import type { int, str, float, bool, Int, Float, Bool, Str, Vec, GUID, Entity, Prefab, Faction, ConfigId, List, Dict, Struct } from "../src/sysTypes.ts";
+import type { int, str, float, bool, Int, Float, Bool, Str, Vec, GUID, Entity, Prefab, Faction, ConfigId, List, Dict, Struct, SysKeyTypes } from "../src/sysTypes.ts";
 
-const version = "1.0.3";
+const version = "1.0.4";
 
 // const RawTypes = ["int", "float", "bool", "str"] as const;
 // const RawTypeMaps = ["bigint", "number", "boolean", "string"] as const;
@@ -20,6 +20,8 @@ type EnumGameMode = never;
 type EnumDeathCause = never;
 type EnumDevice = never;
 type EnumEntityType = never;
+type TimerCore<Time, Type> = never;
+type Signal = never;
 
 
 declare namespace MathNodes {
@@ -39,9 +41,9 @@ declare namespace MathNodes {
   function str(x: Vec | GUID | Entity | Faction): str;
   function Str(x: Vec | GUID | Entity | Faction): Str;
 
-  function vec(x: int, y: int, z: int): Vec;
-  function vec([x, y, z]: [int, int, int]): Vec;
-  function split_vec(v: Vec): [x: int, y: int, z: int];
+  function vec(x: float | Float, y: float | Float, z: float | Float): Vec;
+  function vec([x, y, z]: [float | Float, float | Float, float | Float]): Vec;
+  function split_vec(v: Vec): [x: float | Float, y: float | Float, z: float | Float];
 
   // ====== List ====== //
   /** @deprecated Please use list.length directly. */
@@ -388,16 +390,19 @@ declare namespace QueryNodes {
 
 }
 declare namespace ExecNodes {
-  function $(lambda: (...args: any[]) => any): [][];
+  function $(lambda: (...args: any[]) => any): ExecFun<{}>;
+
+  // function SendSignal(signal: () => Signal): ExecFun<{}>;
+  function SendSignal<Args extends any[]>(signal: (...args: Args) => Signal, ...args: Args): ExecFun<{}>;
 
   // 选择分支
-  function If(cond: bool | Bool): [][];
+  function If(cond: bool | Bool): ExecFun<{}>;
   // 选择分支
-  function Switch(key: bool | float | int | str | Bool | Float | Int | Str): [][];
+  function Switch(key: bool | float | int | str | Bool | Float | Int | Str): ExecFun<{}>;
 
   // ------ 执行节点函数 ------ //
   // 打印字符串
-  function Log(str: str | Str): [][];
+  function Log(str: str | Str): ExecFun<{}>;
 
   // 设置局部变量: SetVal(_local_val, new_val)
   // 设置节点图变量: SetVal(self.val, new_val)
@@ -407,7 +412,7 @@ declare namespace ExecNodes {
   //   new_val: T,
   //   target?: Entity,
   //   trigger_event?: bool | Bool,
-  // ): [][];
+  // ): ExecFun<{}>;
   /* <SetVal> */
 
   // 有限循环 (from <= i <= to)
@@ -415,24 +420,24 @@ declare namespace ExecNodes {
     from: int,
     to: int,
     id: string,
-  ): [i: int][];
+  ): ExecFun<[i: int]>[];
   // 列表迭代循环
-  function ForEach(list: List): [item: SysAllTypes][];
+  function ForEach(list: List): ExecFun<[item: SysAllTypes]>[];
   // 对列表插入值
-  function Insert(list: List, index: int | Int, val: SysAllTypes): [][];
+  function Insert(list: List, index: int | Int, val: SysAllTypes): ExecFun<{}>;
   // 对列表修改值
-  function Modify(list: List, index: int | Int, val: SysAllTypes): [][];
+  function Modify(list: List, index: int | Int, val: SysAllTypes): ExecFun<{}>;
   // 对列表移除值
-  function Remove(list: List, index: int | Int): [][];
+  function Remove(list: List, index: int | Int): ExecFun<{}>;
   // 对列表移除值
-  function Sort(list: List, is_increase?: bool | Bool): [][];
+  function Sort(list: List, is_increase?: bool | Bool): ExecFun<{}>;
   // 拼接列表
-  function Concat(target: List, src: List): [][];
+  function Concat(target: List, src: List): ExecFun<{}>;
   // 清除列表
-  function Clear(list: List): [][];
+  function Clear(list: List): ExecFun<{}>;
 
   // 创建实体
-  function NewEntity(guid: GUID, tags?: List): [][];
+  function NewEntity(guid: GUID, tags?: List): ExecFun<{}>;
   // 创建元件
   function NewPrefab(
     id: Prefab,
@@ -455,18 +460,18 @@ declare namespace ExecNodes {
   ): [entities: List][];
   // 销毁实体: RemoveEntity(target, true)
   // 移除实体: RemoveEntity(target, false)
-  function RemoveEntity(target: Entity, is_destroy?: bool | Bool): [][];
+  function RemoveEntity(target: Entity, is_destroy?: bool | Bool): ExecFun<{}>;
   // 激活/关闭模型显示
-  function ModelDisplay(target: Entity, display: bool | Bool): [][];
+  function ModelDisplay(target: Entity, display: bool | Bool): ExecFun<{}>;
 
   // 结算关卡
-  function Complete(): [][];
+  function Complete(): ExecFun<{}>;
 
   // 传送玩家
-  function Teleport(player: Entity, pos?: Vec, rot?: Vec): [][];
+  function Teleport(player?: Entity, pos?: Vec, rot?: Vec): ExecFun<{}>;
   // 复苏角色
   // 复苏玩家所有角色
-  function Revive(player: Entity): [][];
+  function Revive(player: Entity): ExecFun<{}>;
   // 激活复苏点/注销复苏点: SetRevive(p, enable=true/false, point=id);
   // 允许/禁止玩家复苏: SetRevive(p, enable=true/false)
   // 设置玩家剩余复苏次数: SetRevive(p, left=count)
@@ -477,9 +482,9 @@ declare namespace ExecNodes {
     duration?: float | Float,
     left?: int | Int,
     point?: int | Int,
-  ): [][];
+  ): ExecFun<{}>;
   // 击倒玩家所有角色
-  function Kill(player: Entity): [][];
+  function Kill(player: Entity): ExecFun<{}>;
 
   // 激活/关闭额外碰撞 SetCollision(e, true/false)
   // 激活/关闭额外碰撞可攀爬性 SetCollision(e, true/false, id=i, is_climb=true)
@@ -490,21 +495,21 @@ declare namespace ExecNodes {
     enable: bool | Bool,
     id?: int | Int,
     is_climb?: bool | Bool,
-  ): [][];
+  ): ExecFun<{}>;
   // 激活/关闭碰撞触发器
   function SetCollisionTrigger(
     target: Entity,
     enable: bool | Bool,
     id?: int | Int,
-  ): [][];
+  ): ExecFun<{}>;
 
   // 转发事件
-  function ForwardTrigger(target: Entity): [][];
+  function ForwardTrigger(target: Entity): ExecFun<{}>;
 
   // 设置当前环境时间(立即切换环境时间到指定小时，参数需要是0~24之间的浮点数值)
-  function SetTime(hour: float | Float): [][];
+  function SetTime(hour: float | Float): ExecFun<{}>;
   // 设置环境时间流逝速度(min/second, 0~60)
-  function SetTimeSpeed(minutes: float | Float): [][];
+  function SetTimeSpeed(minutes: float | Float): ExecFun<{}>;
 }
 declare namespace TrigNodes {
   // ------ 系统事件函数 ------ //
@@ -585,7 +590,8 @@ declare namespace TrigNodes {
     src_guid: GUID,
   ][];
   // 全局计时器触发时
-  function Timer(): [name: string, src: Entity, src_guid: GUID][];
+  // function Timer(): [name: string, src: Entity, src_guid: GUID][];
+  function Timer<Time extends number, Type extends "Count Down" | "Count">(timer: TimerCore<Time, Type>): [src: Entity, src_guid: GUID][];
 
   // 界面控件组触发时(只有触发交互的玩家节点图可以获取)
   function OnUI(): [id: int, group_id: int, src: Entity, src_guid: GUID][];
@@ -593,9 +599,11 @@ declare namespace TrigNodes {
   function OnTab(): [id: int, selector: Entity, src: Entity, src_guid: GUID][];
 
   // 监听信号
-  function Signal(
-    name: string,
-  ): [...params: any[], sender: Entity, src: Entity, src_guid: GUID][];
+  // function Signal(  name: string, ):
+  //  [...params: any[], sender: Entity, src: Entity, src_guid: GUID][];
+  function Signal<Args extends any[]>(
+    name: (...args: Args) => Signal,
+  ): [...params: Args, sender: Entity, src: Entity, src_guid: GUID][];
 
 }
 
@@ -788,6 +796,17 @@ class Generator {
 }
 
 function addEnumType(gen: Generator) {
+  /** TODO
+   *   Turn to this;
+  type EnumEntityType = (typeof EnumEntityType)[keyof typeof EnumEntityType];
+  const EnumEntityType: {
+    Stage: 10;
+    Object: 11;
+    Player: 12;
+    Character: 13;
+    Creation: 14;
+  }
+   */
   gen.addEnumType("EnumGeneric", undefined, "Enum Equal Id = 475");
   gen.addEnumType("EnumComparisonOperators", undefined, "Enum Equal Id = 476");
   gen.addEnumType("EnumLogicalOperators", undefined, "Enum Equal Id = 477");
@@ -846,7 +865,7 @@ function includes(list: List, item: ANY): boolean;
     const a1 = AllKeyTypes_.map(t => `/** @deprecated Please use \`dict.has(key)\` directly. */
 function dict_has_key(dict: Dict, key: KEY): boolean;
 /** @deprecated Please use \`dict.get(key)\` directly. */
-function dict_get(): KEY;
+function dict_get(KEY): VAL;
 `.replaceAll("KEY", t)).join("\n");
     const a2 = AllValTypes_.map(t => `/** @deprecated Please use \`dict.includes(val)\` directly. */
 function dict_has_val(dict: Dict, value: VALUE): boolean;
@@ -906,14 +925,14 @@ val: TYPE,
 new_val: TYPE,
 target?: Entity,
 trigger_event?: bool | Bool,
-): [][];`
+): ExecFun<{}>;`
       .replaceAll("TYPE", type);
   }
   content = content.replace(
     "/* <SetVal> */",
     AllTypes.map(SetVal).join("\n")
   );
-  if (to_interface) {
+  if (to_interface === true) {
     content = content.replaceAll(/^\s*function\s+/gm, "");
   }
   gen.addLines(content, true);
@@ -942,6 +961,10 @@ function main() {
   const gen = new Generator(version);
 
   gen.addClass(`TypeBase`);
+  gen.addType(
+    'TimerCore<Time extends number, Type extends "Count" | "Count Down">',
+    '{ t0: Time; type: Type; }'
+  );
   gen.addType("SysAllTypes", AllTypes.join(" | "));
   gen.addType("SysItemTypes", AllValTypes_.join(" | "));
   gen.addType("SysKeyTypes", AllKeyTypes_.join(" | "));
@@ -951,11 +974,11 @@ function main() {
   gen.newNamespace("Self");
   gen.addConst("Self", "global.Self", true);
   gen.pop();
-  gen.newNamespace("Node");
-  gen.addConst("Self", "global.Node", true);
+  gen.newNamespace("node");
+  gen.addConst("Self", "global.node", true);
   gen.pop();
-  gen.newNamespace("Local");
-  gen.addConst("Self", "global.Local", true);
+  gen.newNamespace("local");
+  gen.addConst("Self", "global.local", true);
   gen.pop();
   gen.newNamespace("Signal");
   gen.addConst("Self", "global.Signal", true);
@@ -1034,12 +1057,14 @@ function main() {
 
   gen.addLine();
   gen.addComment("====== System Extended Types ======");
-  gen.addType("Count", "number");
-  gen.addType("CountDown", "number");
+  gen.addType("Signal", '"Send Signal"');
+  gen.addType("Count<Time extends number>", 'TimerCore<Time, "Count">');
+  gen.addType("CountDown<Time extends number>", 'TimerCore<Time, "Count Down">');
   gen.addClass("EntityVarSnapshot", undefined, {
     val: [["type", `"EntityVarSnapshot"`]]
   });
-
+  gen.addComments("Return types for all execution nodes");
+  gen.addType("ExecFun<T extends { [key: str]: any }>", "bigint & { readonly __mybrand?: T };");
 
   gen.addLine();
   gen.addComment("====== Math Namespace ======");
@@ -1057,25 +1082,60 @@ function main() {
   gen.addComment("====== Trigger Nodes ======");
   addTrig(gen, reader);
 
-  // interface Array<T> extends ExecFunctions {
-  //   [index: string | float | symbol]: [][]; // 修改索引签名返回类型
-  // }
-  gen.addClass("Array<T>", "ExecFunctions", {
+  gen.addComments("Declarations for Exec Chain");
+  gen.addClass("BigInt", "ExecFunctions", {
     val: [
-      ["[index: string | float | symbol]", "[][]", "修改索引签名返回类型"],
-      ["(...cases: (string | float | null | boolean)[])", "[][]", "分支选择"],
+      ["[index: string | float | symbol]", "ExecFun<{}>", "获取函数返回值"],
+      ["(...cases: (string | float | null | boolean)[])", "ExecFun<{}>", "分支选择"],
+      ["Branch", "Branch", "创建分支接入点"],
     ]
   }, true);
 
-  // interface Object extends ExecFunctions {
-  // }
-  gen.addClass("Object", "ExecFunctions", {}, true);
+  gen.addComments("Declarations for jumping to Branch");
+  gen.addClass("Number", null, {
+    val: [
+      ["()", "ExecFun<{}>", "先执行跳转分支, 再继续执行"],
+    ]
+  }, true);
+  gen.addComments("Declarations for jumping to Branch");
+  gen.addClass("String", null, {
+    val: [
+      ["()", "ExecFun<{}>", "先执行跳转分支, 再继续执行"],
+    ]
+  }, true);
+  gen.addComments("Declarations for jumping to Branch");
+  gen.addClass("Boolean", null, {
+    val: [
+      ["()", "ExecFun<{}>", "先执行跳转分支, 再继续执行"],
+    ]
+  }, true);
 
-  // const Branch: any[][];
-  gen.addConst("Branch", "any[][]");
+  gen.addComments("Declarations for object behaviors");
+  gen.addClass("Object", "ExecFunctions", {
+    val: [
+      ["Branch", "Branch", "创建分支接入点"],
+    ]
+  }, true);
+
+  gen.addComments("Declarations for Trigger behaviors");
+  gen.addClass("Array<T extends null>", "ExecFunctions", {
+    val: [
+      ["Branch", "Branch", "创建分支接入点"],
+    ]
+  }, true);
+
+  gen.addComments("创建分支接入点 (顶格写)");
+  gen.addConst("Branch", "Branch");
 
   gen.addComment("====== End of Global ======");
   gen.pop();
+
+  gen.addLine();
+  gen.addClass("Branch", "Array<ExecFun<{}>>", {
+    val: [
+      ["[index: string | number | boolean]", "ExecFun<{}>", "创建分支接入点"],
+    ]
+  }, true);
 
   gen.addLine();
   gen.addComment("====== Execution Nodes Helper ======");

@@ -308,7 +308,7 @@ export class Struct extends SysTypeBase {
   constructor(id: string, name: string, fields: string[], val_type: SysTypeNames[], vals: SysTypes[]) {
     super("Struct");
     this.id = id;
-    this.name = name; 
+    this.name = name;
     this.fields = fields;
     this.val_type = val_type;
     this.val = vals;
@@ -529,6 +529,7 @@ export const SysEnumNames = [
   "EnumItemLootType", "EnumDecisionRefreshMode", "EnumElementalReactionType", "EnumInterruptStatus",
   "EnumGameplayMode", "EnumInputDeviceType"
 ] as const;
+export type SysEnumNameTypes = typeof SysEnumNames[number];
 
 // test
 // const p = new List([1n, 2n, 4n], "int");
