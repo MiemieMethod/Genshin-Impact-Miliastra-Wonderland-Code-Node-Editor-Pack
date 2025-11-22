@@ -29,6 +29,7 @@ import {
   any_bool,
   any_str,
 } from "./utils.ts";
+import { writeFileSync } from "fs";
 
 // ==== Helper functions ==== //
 const T = () => "T";
@@ -72,7 +73,7 @@ function expandArgs(args: Arg[]): ArgArr[] {
   return recursiveExpand(arr);
 }
 
-const MathNodes: Lambda[] = [
+export const MathNodes: Lambda[] = [
   // { name: ["equal", "math.equals", "client.math.isEqual"], generic: "T", in: [{ x: () => "T" }, { x: () => "T" }], out: [{ eq: "bool" }] },
   // { name: ["equal", "math.equals", "client.math.isEqual"], generic: "T", in: XY("T"), out: [{ eq: "bool" }] },
   {
@@ -116,6 +117,116 @@ const MathNodes: Lambda[] = [
     out: any_float.map(t => [XYZ(t)]),
   },
   {
+    name: ["dict", "math.dict.create", null],
+    in: [
+      any_map_key_type.map((k) =>
+        any_map_val_type.map(v => [{ pairs: `[${k}, ${v}][]` as any }])
+      ).flat(),
+      any_map_key_type.map((k) =>
+        any_map_val_type.map(v => [{ "...pairs": `[${k}, ${v}][]` as any }])
+      ).flat(),
+      any_map_key_type.map((k) =>
+        any_map_val_type.map(v => [{ "...pairs": `(${k}|${v})[]` as any }])
+      ).flat(),
+    ],
+    out: [{ out: "Dict" }],
+  },
+  {
+    name: ["dict", "math.dict.assemble", null],
+    in: [{ keys: "List" }, { values: "List" }],
+    out: [{ out: "Dict" }],
+  },
+  {
+    name: ["dict_len", "query.dict.length", null],
+    in: [{ dict: "Dict" }],
+    out: [{ out: "int" }],
+    comments: "@deprecated Please use dict.length directly."
+  },
+  {
+    name: ["dict_has_key", "query.dict.containsKey", null],
+    in: expandArgs([{ dict: "Dict" }, { key: any_map_key_type }]),
+    out: [{ out: "bool" }],
+    comments: "@deprecated Please use `dict.has(key)` directly."
+  },
+  {
+    name: ["dict_keys", "query.dict.keys", null],
+    in: [{ dict: "Dict" }],
+    out: [{ out: "List" }],
+    comments: "@deprecated Please use `dict.keys()` directly."
+  },
+  {
+    name: ["dict_values", "query.dict.values", null],
+    in: [{ dict: "Dict" }],
+    out: [{ out: "List" }],
+    comments: "@deprecated Please use `dict.vals()` directly."
+  },
+  {
+    name: ["dict_get", "query.dict.getByKey", null],
+    in: expandArgs([{ dict: "Dict" }, { key: any_map_key_type }]),
+    out: expandArgs([{ out: any_map_val_type }]),
+    comments: "@deprecated Please use `dict.get(key)` directly."
+  },
+  {
+    name: ["dict_has_val", "query.dict.containsValue", null],
+    in: expandArgs([{ dict: "Dict" }, { value: any_map_val_type }]),
+    out: [{ out: "bool" }],
+    comments: "@deprecated Please use `dict.includes(val)` directly."
+  },
+  {
+    name: ["list_len", "query.list.length", "client.query.list.length"],
+    in: [{ list: "List" }],
+    out: [{ out: "int" }],
+    comments: "@deprecated Please use list.length directly."
+  },
+  {
+    name: ["maximum", "query.list.max", "client.query.list.max"],
+    in: [
+      { int_list: { list: "List" } },
+      { float_list: { list: "List" } }
+    ],
+    out: {
+      int_list: { out: "int" },
+      float_list: { out: "float" }
+    }
+  },
+  {
+    name: ["minimum", "query.list.min", "client.query.list.min"],
+    in: [
+      { int_list: { list: "List" } },
+      { float_list: { list: "List" } }
+    ],
+    out: {
+      int_list: { out: "int" },
+      float_list: { out: "float" }
+    }
+  },
+  {
+    name: ["list", "math.list.assemble", "client.math.assembleList"],
+    in: [
+      any_list_item_type.map(t => [{ "...items": `${t}[]` as any }]),
+      any_list_item_type.map(t => [{ "items": `${t}[]` as any }])
+    ].flat(),
+    out: [{ out: "List" }],
+  },
+  {
+    name: ["indices_of", "query.list.findIndicesByValue", null],
+    in: expandArgs([{ list: "List" }, { item: any_list_item_type }]),
+    out: [{ out: "int" }],
+    comments: "@deprecated Please use `list.find(item)` directly."
+  },
+  {
+    name: ["list_item", "query.list.getAt", "client.query.list.getValue"],
+    in: expandArgs([{ list: "List" }, { index: any_int }]),
+    out: expandArgs([{ out: any_list_item_type }]),
+    comments: "@deprecated Please use `list[index]` or `list.get(index)` directly."
+  },
+  {
+    name: ["includes", "query.list.contains", null],
+    in: expandArgs([{ list: "List" }, { item: any_list_item_type }]),
+    out: [{ out: "bool" }],
+    comments: "@deprecated Please use `list.includes(item)` directly."
+  },
+  {
     name: ["struct", "math.struct.assemble", null],
     in: [
       expandArgs([{ "name": any_str }, { "...val": () => "SysAllTypes[]" }]),
@@ -140,7 +251,7 @@ const MathNodes: Lambda[] = [
     },
   },
   {
-    name: ["add", "math.vector3.add", "client.math.vectorAdd"],
+    name: ["add", "math.vector3.add", "client.math.addVector3"],
     in: [{ x: "Vec" }, { y: "Vec" }],
     out: [{ out: "Vec" }],
     comments: "[Todo: vec3 add in client is duplicated: [client.math.vectorAdd] [client.math.addVector3]]"
@@ -157,7 +268,7 @@ const MathNodes: Lambda[] = [
     },
   },
   {
-    name: ["sub", "math.vector3.sub", "client.math.vectorSubtract"],
+    name: ["sub", "math.vector3.sub", "client.math.subtractVector3"],
     in: [{ x: "Vec" }, { y: "Vec" }],
     out: [{ out: "Vec" }],
     comments: "[Todo: vec3 sub in client is duplicated: [client.math.vectorSubtract] [client.math.subtractVector3]]"
@@ -428,6 +539,7 @@ const MathNodes: Lambda[] = [
     name: ["normalize", "math.vector3.normalize", "client.math.normalizeVector3"],
     in: [{ v: "Vec" }],
     out: [{ out: "Vec" }],
+    comments: "[Todo: vec3 normalize in client is duplicated: [client.math.normalizeVector3] [client.math.vectorNormalize]]"
   },
   {
     name: ["norm", "math.vector3.magnitude", "client.math.vector3Length"],
@@ -443,11 +555,13 @@ const MathNodes: Lambda[] = [
     name: ["dot", "math.vector3.dot", "client.math.dotVector3"],
     in: [{ v1: "Vec" }, { v2: "Vec" }],
     out: [{ out: "float" }],
+    comments: "[Todo: vec3 dot in client is duplicated: [client.math.vectorDot] [client.math.dotVector3]]"
   },
   {
     name: ["cross", "math.vector3.cross", "client.math.crossVector3"],
     in: [{ v1: "Vec" }, { v2: "Vec" }],
     out: [{ out: "Vec" }],
+    comments: "[Todo: vec3 cross in client is duplicated: [client.math.vectorCross] [client.math.crossVector3]]"
   },
   {
     name: ["angle", "math.vector3.angle", "client.math.angleBetweenVector3"],
@@ -458,6 +572,7 @@ const MathNodes: Lambda[] = [
     name: ["eula_rot", "math.direction.rotate", "client.math.directionVectorToRotation"],
     in: [{ front: "Vec" }, { up: "Vec" }],
     out: [{ out: "Vec" }],
+    comments: "[Todo: vec3 cross in client is duplicated: [client.math.vector3.directionToRotation] [client.math.directionVectorToRotation]]"
   },
   {
     name: ["rotate", "math.vector3.rotate", "client.math.rotateVector3"],
@@ -524,124 +639,57 @@ const MathNodes: Lambda[] = [
     in: [],
     out: [{ out: "float" }],
   },
+
+
   {
-    name: ["dict", "math.dict.create", null],
-    in: [
-      any_map_key_type.map((k) =>
-        any_map_val_type.map(v => [{ pairs: `[${k}, ${v}][]` as any }])
-      ).flat(),
-      any_map_key_type.map((k) =>
-        any_map_val_type.map(v => [{ "...pairs": `[${k}, ${v}][]` as any }])
-      ).flat(),
-      any_map_key_type.map((k) =>
-        any_map_val_type.map(v => [{ "...pairs": `(${k}|${v})[]` as any }])
-      ).flat(),
-    ],
-    out: [{ out: "Dict" }],
+    name: ["weekday", "math.time.weekdayFromTimestamp", null],
+    in: expandArgs([{ timestamp: any_int }]),
+    out: [{ day_of_week: "int" }],
   },
   {
-    name: ["dict", "math.dict.assemble", null],
-    in: [{ keys: "List" }, { values: "List" }],
-    out: [{ out: "Dict" }],
+    name: ["from_timestamp", "math.time.formatFromTimestamp", null],
+    in: expandArgs([{ timestamp: any_int }]),
+    out: [{ year: "int" }, { month: "int" }, { day: "int" }, { hour: "int" }, { minute: "int" }, { second: "int" }],
   },
   {
-    name: ["dict_has_key", "query.dict.containsKey", null],
-    in: expandArgs([{ dict: "Dict" }, { key: any_map_key_type }]),
-    out: [{ out: "bool" }],
-    comments: "@deprecated Please use `dict.has(key)` directly."
+    name: ["to_timestamp", "math.time.timestampFromFormat", null],
+    in: expandArgs([
+      { year: any_int },
+      { month: any_int },
+      { day: any_int },
+      { hour: any_int },
+      { minute: any_int },
+      { second: any_int }
+    ]),
+    out: [{ timestamp: "int" }],
   },
-  {
-    name: ["dict_keys", "query.dict.keys", null],
-    in: [{ dict: "Dict" }],
-    out: [{ out: "List" }],
-    comments: "@deprecated Please use `dict.keys()` directly."
-  },
-  {
-    name: ["dict_values", "query.dict.values", null],
-    in: [{ dict: "Dict" }],
-    out: [{ out: "List" }],
-    comments: "@deprecated Please use `dict.vals()` directly."
-  },
-  {
-    name: ["dict_get", "query.dict.getByKey", null],
-    in: expandArgs([{ dict: "Dict" }, { key: any_map_key_type }]),
-    out: expandArgs([{ out: any_map_val_type }]),
-    comments: "@deprecated Please use `dict.get(key)` directly."
-  },
-  {
-    name: ["dict_has_val", "query.dict.containsValue", null],
-    in: expandArgs([{ dict: "Dict" }, { value: any_map_val_type }]),
-    out: [{ out: "bool" }],
-    comments: "@deprecated Please use `dict.includes(val)` directly."
-  },
+
+  // == NOTICE, NOTHING, BUT TO ADD DUMB FUNC_NAMES ==
+  { name: ["", "", "client.math.vectorAdd"] },
+  { name: ["", "", "client.math.vectorSubtract"] },
+  { name: ["", "", "client.math.vectorDot"] },
+  { name: ["", "", "client.math.vectorCross"] },
+  { name: ["", "", "client.math.vectorNormalize"] },
+  { name: ["", "", "client.math.vector3.directionToRotation"] },
 ];
 
 const MathNodes2: Lambda[] = [
-  {
-    name: ["list_len", "query.list.length", "client.query.list.length"],
-    in: [{ list: "List" }],
-    out: [{ out: "int" }],
-    comments: "@deprecated Please use list.length directly."
-  },
-  {
-    name: ["maximum", "query.list.max", "client.query.list.max"],
-    in: [
-      { int_list: "List" },
-      { float_list: "List" }
-    ],
-    out: {
-      int_list: { out: "int" },
-      float_list: { out: "float" }
-    }
-  },
-  {
-    name: ["minimum", "query.list.min", "client.query.list.min"],
-    in: [
-      { int_list: "List" },
-      { float_list: "List" }
-    ],
-    out: {
-      int_list: { out: "int" },
-      float_list: { out: "float" }
-    }
-  },
-  {
-    name: ["list", "math.list.assemble", "client.math.assembleList"],
-    in: [
-      any_list_item_type.map(t => [{ "...items": `${t}[]` as any }]),
-      any_list_item_type.map(t => [{ "items": `${t}[]` as any }])
-    ].flat(),
-    out: [{ out: "List" }],
-  },
-  {
-    name: ["indices_of", "query.list.findIndicesByValue", null],
-    in: expandArgs([{ list: "List" }, { item: any_list_item_type }]),
-    out: [{ out: "int" }],
-    comments: "@deprecated Please use `list.find(item)` directly."
-  },
-  {
-    name: ["list_item", "query.list.getAt", "client.query.list.getValue"],
-    in: expandArgs([{ list: "List" }, { index: any_int }]),
-    out: expandArgs([{ out: any_list_item_type }]),
-    comments: "@deprecated Please use `list[index]` or `list.get(index)` directly."
-  },
-  {
-    name: ["includes", "query.list.contains", null],
-    in: expandArgs([{ list: "List" }, { item: any_list_item_type }]),
-    out: [{ out: "bool" }],
-    comments: "@deprecated Please use `list.includes(item)` directly."
-  },
-];
+]
 
 function test() {
   const d = new Parser();
-  // d.lambda(MathNodes);
-  d.lambda(MathNodes2[2]);
+  d.lambda(MathNodes);
+  // d.lambda(MathNodes2);
 
 
-  console.dir(d, { depth: null });
-  console.log(d.gen().join("\n"))
+  // console.dir(d, { depth: null });
+  // console.log(d.gen().join("\n"))
   // console.log(d.gen_by_name("dict_get").join("\n"))
+
+  // const res = "// @ts-nocheck\n\n" + d.gen().join("\n\n");
+  // writeFileSync(import.meta.dirname + "/math.temp.d.ts", res);
 }
 
-test();
+if (import.meta.main) {
+  test();
+}

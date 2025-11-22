@@ -1,5 +1,5 @@
 import assert from "assert";
-import type { SysEnumNameTypes, SysTypeNames } from "../../src/sysTypes.ts";
+import { type SysEnumNameTypes, type SysTypeNames } from "../../src/sysTypes.ts";
 
 
 /** `ArgTypes` could be string or string list (means either type in the list) */
@@ -275,49 +275,57 @@ class Parser {
     const f_in: StrictArgs[] = parseArg(f.in ?? null);
     const f_out: StrictArgs[] = parseArg(f.out ?? null, true);
     // match
-    const out_ids = f_out.filter(a => a.id).map((a, i) => [a.id, i]) as [string, number][];
-    const out_map = new Map<string, number>(out_ids);
-    let out_used = out_map.size === f_out.length;
-    for (const i of f_in) {
-      if (i.id !== null) {
-        const out_id = out_map.get(i.id);
-        if (out_id === undefined) {
-          console.warn(`Function ${f.name} has an in arg ${i.id} which can not be matched in out args.`);
+    // const out_ids = f_out.filter(a => a.id).map((a, i) => [a.id, i]) as [string, number][];
+    // const out_map = new Map<string, number>(out_ids);
+    let unused_in = new Array(f_in.length).fill(true);
+    let unused_out = new Array(f_out.length).fill(true);
+    for (let i = 0; i < f_in.length; i++) {
+      const in_args = f_in[i];
+      for (let j = 0; j < f_out.length; j++) {
+        const out_args = f_out[j];
+        // both id is null, or they share the same id
+        if (in_args.id === out_args.id) {
+          unused_in[i] = false;
+          unused_out[j] = false;
           fun.overloads.push({
-            id: i.id,
-            in_params: i.in_params,
-            out_params: [],
+            id: in_args.id,
+            in_params: in_args.in_params,
+            out_params: out_args.out_params,
           });
-        } else {
-          fun.overloads.push({
-            id: i.id,
-            in_params: i.in_params,
-            out_params: f_out[out_id].out_params
-          });
-        }
-      } else {
-        out_used = true;
-        for (const j of f_out) {
-          if (j.id === null) {
-            fun.overloads.push({
-              id: null,
-              in_params: i.in_params,
-              out_params: j.out_params,
-            })
-          }
         }
       }
     }
-    if (!out_used) {
-      for (const j of f_out) {
-        if (j.id === null) {
-          fun.overloads.push({
-            id: null,
-            in_params: [],
-            out_params: j.out_params,
-          })
-        }
+    for (let i = 0; i < f_in.length; i++) {
+      if (unused_in[i] === false) {
+        continue;
       }
+      const in_args = f_in[i];
+      if (in_args.id !== null) {
+        console.warn(`Function ${f.name[0]} has an in arg '${in_args.id}' which can not be matched in out args.`);
+      } else {
+        console.info(`[info] Function ${f.name[0]} does not have free out args, while existing free in args.`);
+      }
+      fun.overloads.push({
+        id: in_args.id,
+        in_params: in_args.in_params,
+        out_params: [],
+      });
+    }
+    for (let i = 0; i < f_out.length; i++) {
+      if (unused_out[i] === false) {
+        continue;
+      }
+      const out_args = f_out[i];
+      if (out_args.id !== null) {
+        console.warn(`Function ${f.name[0]} has an out arg '${out_args.id}' which can not be matched in in args.`);
+      } else {
+        console.info(`[info] Function ${f.name[0]} does not have free in args, while existing free out args.`);
+      }
+      fun.overloads.push({
+        id: out_args.id,
+        in_params: [],
+        out_params: out_args.out_params,
+      });
     }
     this.func.push(fun);
     return fun;
@@ -329,8 +337,9 @@ class Parser {
     return args.map((a) => `${a.name}${a.optional === true ? "?" : ""}: ${a.type.join(" | ")}`).join(", ");
   }
   gen_fun(fun: StrictFunc): string[] {
+    const comments = fun.comments.length > 0 ? `/** ${fun.comments.join("\n * ")} */\n` : "";
     const generic = fun.generic.length > 0 ? `<${fun.generic.join(",")}>` : "";
-    const fun_part = `function ${fun.name[0]}${generic}`
+    const fun_part = `${comments}function ${fun.name[0]}${generic}`
     return fun.overloads.map((o) => {
       if (o.out_params.length === 1) {
         return `${fun_part}(${this.gen_args(o.in_params)}): ${o.out_params[0].type.join(" | ")}`
