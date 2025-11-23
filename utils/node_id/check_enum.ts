@@ -227,7 +227,7 @@ ${node_enum_str}
 if (import.meta.main) {
   const v = 4;
   // generate `Generated Enum v${v}.gia`
-  // check_create_enums(v);
+  check_create_enums(v);
 
   // print all enum structures in protobuf form
   const proto = get_enums_as_proto();
