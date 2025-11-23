@@ -16,6 +16,7 @@
 完全掌握 `.gia` (Genshin Impact Assets) 文件的读写与转换。
 *   [**Protobuf 定义 (`utils/protobuf/gia.proto`)**](./utils/protobuf/gia.proto): 包含较完整的 `gia.proto` 定义文件。
 *   [**编解码工具 (`utils/protobuf/decode.ts`)**](./utils/protobuf/decode.ts): 提供 TypeScript 工具 (`decode.ts`) 将 GIA 文件解码为易于操作的 JSON/对象结构，或将对象重新编码为游戏可读取的 GIA 文件。
+*   [**图生成工具 (`utils/gia_gen`)**](./utils/gia_gen/readme.md): 提供便捷的 API (`gia_gen`) 快速构建和修改节点图结构，简化了复杂的 Protobuf 对象创建过程。
 
 ### 3. 完备的节点与枚举数据
 整理并校验了游戏中的各类 ID 映射，确保转换的准确性。
@@ -34,6 +35,7 @@
 *   **[DSL 函数定义与生成工具](./utils/functions/readme.md)**: 了解 DSL 类型系统是如何构建的，以及如何添加新的节点定义。
 *   **[GIA 文件格式与 Protobuf 工具](./utils/protobuf/readme.md)**: 深入了解文件结构，学习如何使用脚本读写 GIA 文件。
 *   **[节点 ID 与枚举定义](./utils/node_id/readme.md)**: 查看节点 ID 列表和枚举值的详细映射关系。
+*   **[GIA 图生成器](./utils/gia_gen/readme.md)**: 了解如何使用 Helper 函数快速生成和操作 GIA 节点图。
 
 ---
 
