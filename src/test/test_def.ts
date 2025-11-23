@@ -1,4 +1,3 @@
-import { Zlib } from "zlib";
 import "./def.d.ts";
 
 declare global {
@@ -34,8 +33,8 @@ function MyComp() {
   $(() => {
     _local_y;
     _local_x;
-  })
-  return []();
+  }).SetVal(x, 0);
+  return ExecFun<{ x: number }>();
 }
 
 const _data_a: DataA = {
@@ -65,8 +64,12 @@ function DoSomething(): ExecFun<{}> { return 0 as any; }
   .Log("Starting...") >> {
     // 这三个分支将按 0, 1, 2 的顺序依次执行完毕
     0: Log("Branch 0: Runs first")[1].$(() => 1),
-    2: Log("Branch 2: Runs last") >> "12"() >> "12"(),
+    2: Log("Branch 2: Runs last") >> "12"() >> "12"().Log("") < Log("") >> Log("").Log(""),
     1: DoSomething().Log("Branch 1"),
   }.Log("注意: 这里不会被执行") >> "12"() >> 2().Log(""); // (执行方式见后文)
 
 
+Log("").If(true)(
+  true = Log("").Log(""),
+  false = 0(),
+).Log("")

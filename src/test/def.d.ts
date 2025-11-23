@@ -265,7 +265,11 @@ declare global {
   }
 
   /** Return types for all execution nodes */
-  type ExecFun<T extends { [key: str]: any }> = bigint & { readonly __mybrand?: T };;
+  type ExecFun<T extends { [key: str]: any }> = bigint & { readonly __mybrand?: T };
+  /** Use Default Out Branch */
+  function ExecFun<T extends { [key: str]: any }>(): ExecFun<T>;
+  /** Use Specified Out Branch */
+  function ExecFun<T extends { [key: str]: any }>(default_branch: string, ...more_branches: string[]): ExecFun<T>;
 
   // ====== Math Namespace ======
   namespace m {
@@ -1771,54 +1775,46 @@ declare global {
 
   /** Declarations for Exec Chain */
   interface BigInt extends ExecFunctions {
-    /** 获取函数返回值 */
+    /** `[ret_1, ret_2]`: 获取函数返回值 */
     [index: string | float | symbol]: ExecFun<{}>;
-    /** 分支选择 */
-    (...cases: (string | float | null | boolean)[]): ExecFun<{}>;
-    /** 创建分支接入点 */
+    /** 分支选择, cases is of `int` | `str` | `bool` | `null` */
+    (...cases: ExecFun<{}>[]): ExecFun<{}>;
+    /** `.Branch["name" | number]`: 创建分支接入点 */
     Branch: Branch;
   }
 
   /** Declarations for jumping to Branch */
   interface Number {
-    /** 先执行跳转分支, 再继续执行 */
+    /** 
+     * - `>> n()` 先执行跳转分支 `n` , 再继续执行
+     * - `>> 0()` 执行主线分支 */
     (): ExecFun<{}>;
   }
 
   /** Declarations for jumping to Branch */
   interface String {
-    /** 先执行跳转分支, 再继续执行 */
-    (): ExecFun<{}>;
-  }
-
-  /** Declarations for jumping to Branch */
-  interface Boolean {
-    /** 先执行跳转分支, 再继续执行 */
+    /** `>> "branch name"()` 先执行跳转分支 `"branch name"` , 再继续执行 */
     (): ExecFun<{}>;
   }
 
   /** Declarations for object behaviors */
   interface Object extends ExecFunctions {
-    /** 创建分支接入点 */
+    /** `.Branch["name" | number]`: 创建分支接入点 */
     Branch: Branch;
   }
-  type IsExactlySingleNull<T> =
-    T extends null ?
-    ([T] extends [null] ? ([null] extends T[] ? true : false) : false)
-    : false;
 
   /** Declarations for Trigger behaviors */
   interface Array<T> {
     MyFun: T extends null ? () => ExecFun<{}> : never;
   }
 
-  /** 创建分支接入点 (顶格写) */
+  /** `Branch["name" | number]`: 创建分支接入点 (顶格写) */
   const Branch: Branch;
   // ====== End of Global ======
 }
 
 interface Branch extends Array<ExecFun<{}>> {
-  /** 创建分支接入点 */
+  /** `.Branch["name" | number]`: 创建分支接入点 */
   [index: string | number | boolean]: ExecFun<{}>;
 }
 

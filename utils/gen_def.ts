@@ -23,6 +23,7 @@ type EnumDevice = never;
 type EnumEntityType = never;
 type TimerCore<Time, Type> = never;
 type Signal = never;
+type ExecFun<T extends { [key: str]: any }> = bigint & { readonly __mybrand?: T };
 
 
 declare namespace MathNodes {
@@ -421,9 +422,9 @@ declare namespace ExecNodes {
     from: int,
     to: int,
     id: string,
-  ): ExecFun<[i: int]>[];
+  ): ExecFun<{ i: int }>;
   // 列表迭代循环
-  function ForEach(list: List): ExecFun<[item: SysAllTypes]>[];
+  function ForEach(list: List): ExecFun<{ item: SysAllTypes }>;
   // 对列表插入值
   function Insert(list: List, index: int | Int, val: SysAllTypes): ExecFun<{}>;
   // 对列表修改值
@@ -610,8 +611,8 @@ declare namespace TrigNodes {
 
 class Reader {
   content: string;
-  constructor(conetnt: string) {
-    this.content = this.content
+  constructor(content: string) {
+    this.content = content;
   }
   find_namespace(name: string): string {
     const reg = new RegExp(`namespace\\s+${name}\\s+{`, "gm");
@@ -1066,7 +1067,11 @@ function main() {
     val: [["type", `"EntityVarSnapshot"`]]
   });
   gen.addComments("Return types for all execution nodes");
-  gen.addType("ExecFun<T extends { [key: str]: any }>", "bigint & { readonly __mybrand?: T };");
+  gen.addType("ExecFun<T extends { [key: str]: any }>", "bigint & { readonly __mybrand?: T }");
+  gen.addComments("Use Default Out Branch");
+  gen.addFun("ExecFun<T extends { [key: str]: any }>", [], "ExecFun<T>");
+  gen.addComments("Use Specified Out Branch");
+  gen.addFun("ExecFun<T extends { [key: str]: any }>", [["default_branch", "string"], ["...more_branches", "string"]], "ExecFun<T>");
 
   gen.addLine();
   gen.addComment("====== Math Namespace ======");
@@ -1087,52 +1092,54 @@ function main() {
   gen.addComments("Declarations for Exec Chain");
   gen.addClass("BigInt", "ExecFunctions", {
     val: [
-      ["[index: string | float | symbol]", "ExecFun<{}>", "获取函数返回值"],
-      ["(...cases: (string | float | null | boolean)[])", "ExecFun<{}>", "分支选择"],
-      ["Branch", "Branch", "创建分支接入点"],
+      ["[index: string | float | symbol]", "ExecFun<{}>", "`[ret_1, ret_2]`: 获取函数返回值"],
+      ["(...cases: ExecFun<{}>[])", "ExecFun<{}>", "分支选择, cases is of `int` | `str` | `bool` | `null`"],
+      ["Branch", "Branch", '`.Branch["name" | number]`: 创建分支接入点'],
     ]
   }, true);
 
   gen.addComments("Declarations for jumping to Branch");
   gen.addClass("Number", null, {
     val: [
-      ["()", "ExecFun<{}>", "先执行跳转分支, 再继续执行"],
+      ["()", "ExecFun<{}>", "\n- `>> n()` 先执行跳转分支 `n` , 再继续执行\n- `>> 0()` 执行主线分支"],
     ]
   }, true);
   gen.addComments("Declarations for jumping to Branch");
   gen.addClass("String", null, {
     val: [
-      ["()", "ExecFun<{}>", "先执行跳转分支, 再继续执行"],
+      ["()", "ExecFun<{}>", '`>> "branch name"()` 先执行跳转分支 `"branch name"'],
     ]
   }, true);
-  gen.addComments("Declarations for jumping to Branch");
-  gen.addClass("Boolean", null, {
-    val: [
-      ["()", "ExecFun<{}>", "先执行跳转分支, 再继续执行"],
-    ]
-  }, true);
+  // gen.addComments("Declarations for jumping to Branch");
+  // gen.addClass("Boolean", null, {
+  //   val: [
+  //     ["()", "ExecFun<{}>", "先执行跳转分支, 再继续执行"],
+  //   ]
+  // }, true);
 
   gen.addComments("Declarations for object behaviors");
   gen.addClass("Object", "ExecFunctions", {
     val: [
-      ["Branch", "Branch", "创建分支接入点"],
+      ["Branch", "Branch", '`.Branch["name" | number]`: 创建分支接入点'],
     ]
   }, true);
 
+  // MyFun: T extends null ? () => ExecFun<{}> : never;
   gen.addComments("Declarations for Trigger behaviors");
-  gen.addClass("Array<T extends null>", "ExecFunctions", {
+  gen.addClass("Array<T>", "ExecFunctions", {
     val: [
-      ["Branch", "Branch", "创建分支接入点"],
+      // ["Branch", "Branch", "创建分支接入点"],
     ]
   }, true);
 
-  gen.addComments("创建分支接入点 (顶格写)");
+  gen.addComments('`Branch["name" | number]`: 创建分支接入点 (顶格写)');
   gen.addConst("Branch", "Branch");
 
   gen.addComment("====== End of Global ======");
   gen.pop();
 
   gen.addLine();
+  gen.addComment("====== Declare for type branch ======");
   gen.addClass("Branch", "Array<ExecFun<{}>>", {
     val: [
       ["[index: string | number | boolean]", "ExecFun<{}>", "创建分支接入点"],
