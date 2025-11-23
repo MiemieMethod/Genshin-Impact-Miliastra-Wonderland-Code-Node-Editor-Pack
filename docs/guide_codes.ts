@@ -60,7 +60,7 @@ declare global {
 
   // 3. 声明全局可发送和接收的信号
   namespace Signal {
-    function PlayerHit(damage: int): Signal; // 信号函数需以 `Signal` 为返回值
+    // function PlayerHit(damage: int): Signal; // 信号函数需以 `Signal` 为返回值
     function RenderFrame(): Signal;
   }
 
@@ -321,3 +321,37 @@ function CheckValue(val: int) {
 // declare function Test(val: int, x: float): ExecFun<{}>;
 // declare function Test(val: bigint, x: float, z: bool): ExecFun<{}>;
 // declare function Test(val: float, x: string): ExecFun<{}>;
+
+// @ts-nocheck
+import "./src/test/def.d.ts" // 导入配置
+
+declare global {
+  // 声明实体自身变量
+  namespace Self {
+    const hp: float = 100;
+  }
+  // 声明信号
+  namespace Signal {
+    function PlayerHit(damage: int): Signal; // 通过返回 Signal 标记为信号
+  }
+}
+// 声明节点图变量
+declare namespace node {
+  // export 表示暴露此变量
+  export const critical: float = 1.5;
+}
+
+// 游戏对象创建时触发
+[OnCreate()]
+  .Log("I'm alive!")
+  .SetVal(Self.hp, 10000);
+
+// 收到 "PlayerHit" 信号时触发，并将信号的参数赋值给一个名为 "dmg" 的变量
+[Signal(Signal.PlayerHit)[dmg]]
+  .$((dmg) => dmg * node.critical)[real_dmg]
+  .SetVal(Self.hp, Self.hp - real_dmg)
+  .If(Self.hp <= 0)(
+    true = Log("You died"),
+    false = Log("Ouch! Took " + m.str(real_dmg)),
+  );
+

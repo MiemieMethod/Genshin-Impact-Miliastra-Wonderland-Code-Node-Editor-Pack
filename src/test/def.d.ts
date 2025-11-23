@@ -12,6 +12,8 @@ export { };
 class TypeBase {
 }
 
+const SignalType = Symbol("Send Signal");
+
 type TimerCore<Time extends number, Type extends "Count" | "Count Down"> = { t0: Time; type: Type; };
 type SysAllTypes = int | float | bool | str | Int | Float | Bool | Str | Vec | GUID | Entity | Prefab | Faction | ConfigId | List | Dict | Struct;
 type SysItemTypes = Entity | GUID | Int | Bool | Float | Str | int | bool | float | str | Faction | Vec | ConfigId | Prefab;
@@ -258,7 +260,7 @@ declare global {
     ;
 
   // ====== System Extended Types ======
-  type Signal = "Send Signal";
+  type Signal = typeof SignalType;
   type Count<Time extends number> = TimerCore<Time, "Count">;
   type CountDown<Time extends number> = TimerCore<Time, "Count Down">;
   class EntityVarSnapshot {
