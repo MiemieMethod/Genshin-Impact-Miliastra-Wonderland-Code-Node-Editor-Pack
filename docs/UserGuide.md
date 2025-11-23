@@ -481,9 +481,9 @@ const _hit_damage: int = 100n;
 ```ts
 // 定义一个组件, 它只有默认出口
 function GetValue(val: int) {
-  In(0) // 默认入口
+  In() // 默认入口
     .$((val) => val + 10)[sum]
-    .Out(0) // 默认出口
+    .Out() // 默认出口
     .Log("Runs Before Out()!")
 
   // 声明该组件的返回值
@@ -492,7 +492,7 @@ function GetValue(val: int) {
 
 // 定义一个组件, 它有两个出口："large" 和 "small"
 function CheckValue(val: int) {
-  In(0) // 默认入口
+  In() // 默认入口
     .If(val > 10)(
       true = Log(m.str(val)).Out("large"), // 触发 "large" 出口
       false = Out("small"), // 触发 "small" 出口
@@ -504,7 +504,7 @@ function CheckValue(val: int) {
 
 ```
 
--   **多入口**：通过 `In("InBranchId")` 定义。调用时若需指定入口，请使用 `Selector(MyFun, "InBranchId", args)[outs]`，默认调用 `MyFun(args)[outs]` 则进入 `In(0)`。
+-   **多入口**：通过 `In("InBranchId")` 定义。调用时若需指定入口，请使用 `Selector(MyFun, "InBranchId", args)[outs]`，默认调用 `MyFun(args)[outs]` 则进入 `In()`。
     
 -   **`Out()` 出口的执行顺序 (深度优先)**： 这是一个关键概念。当 `Out(id)` 被触发时，控制流会**优先运行 `Out` 后面的代码**。`Out` 本身的优先级在当前链条中是**最低**的。只有当 `Out` 后续的所有逻辑执行完毕，系统才会真正触发组件外部连接在 `Out` 上的节点。 这等价于 `FunX() << Out() >> FunY()` 的逻辑。即使你在分支中试图用 `FunX().{0: Out(), 1: 0()}.FunY()` 改变顺序，运行时 `Out` 依然会在 `FunY` 执行后才触发。因此，务必将 `Out` 理解为“挂起当前出口，先跑完剩下的，再出去”。
     
@@ -524,7 +524,7 @@ function CheckValue(val: int) {
 // 示例中的执行结果为
 // 1. GetValue(5)
 // 2. Log("Runs Before Out()!") // 注意. 在 Out 前触发
-// 3. Out(0)[sum = 15]
+// 3. Out()[sum = 15]
 // 4. CheckValue(15)
 // 5. Log("15")
 // 6. Out("large")
