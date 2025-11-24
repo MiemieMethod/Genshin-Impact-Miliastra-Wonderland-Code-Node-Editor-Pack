@@ -125,24 +125,29 @@ function create_node_with_pin(id: number, pin_index: number[], type: number, x =
     type: undefined as any,
     connects: undefined as any,
   };
+  const pins: NodePin[] = [];
+  for (let i = -6; i < 6; i++) {
+    const p = structuredClone(pin);
+    if (!pin_index.includes(i)) {
+      p.value.bNodeValue!.indexOfConcrete = 0;
+    }
+    if (i < 0) {
+      p.i1.kind = NodePin_Index_Kind.OutParam;
+      p.i2.kind = NodePin_Index_Kind.OutParam;
+      p.i1.index = -1 - i;
+      p.i2.index = -1 - i;
+    } else {
+      p.i1.index = i;
+      p.i2.index = i;
+    }
+    pins.push(p);
+  }
   return gia.basic_node_body({
     generic_id: id as any,
     concrete_id: id as any,
     x: x,
     y: y,
-    pins: pin_index.map(x => {
-      const p = structuredClone(pin);
-      if (x < 0) {
-        p.i1.kind = NodePin_Index_Kind.OutParam;
-        p.i2.kind = NodePin_Index_Kind.OutParam;
-        p.i1.index = -1 - x;
-        p.i2.index = -1 - x;
-        return p;
-      }
-      p.i1.index = x;
-      p.i2.index = x;
-      return p;
-    }),
+    pins: pins,
   });
 }
 function create_node_lists(list: (number | (number | null)[])[]) {
@@ -254,7 +259,7 @@ function read_derive_graph() {
   console.log("Missing Concrete Id:", m);
 
 
-  const res = g.map(({ id, derived }) => `${id}:${derived.join(",")}`);
+  const res = g.map(({ id, derived }) => `${id}:${derived.length}:${derived.join(",")}`);
   writeFileSync("./utils/node_id/ref/derived.txt", res.join("\n"));
 
   const arr = Array(2000).fill("");
@@ -266,9 +271,56 @@ function read_derive_graph() {
   writeFileSync("./utils/node_id/ref/all_1.txt", arr.join("\n"));
 }
 
+/** number for pure type, [number, number] for key-value */
+type PinType = number | [number, number];
+/** Positive number starting from 1 for input, negative for output */
+type PinTypes = { [id: number]: PinType };
+type NodeTypes = { [node_id: number]: PinTypes };
+
+function extract_types() {
+  const graph = decode_gia_file({
+    gia_path: "./utils/ref/derived_server_nodes_ids.gia",
+  });
+  const nodes = graph.graph.graph!.inner.graph.nodes!;
+  const group = Object.groupBy(nodes, (n) => n.genericId.nodeId as number);
+  const keys = Object.keys(group);
+  const res: [number, NodeTypes][] = [];
+  for (let i = 0; i < LIST.length; i++) {
+    const g = group[parseInt(keys[i])]!;
+    const node_types: NodeTypes = {};
+    for (const j of g) {
+      if (j.concreteId?.nodeId === undefined) {
+        continue;
+      }
+      const pin = j.pins;
+      const type: PinTypes = {};
+      for (const p of pin) {
+        const index = p.i1.index ?? 0;
+        if (p.i1.kind === 4) {
+          type[-1 - index] = p.type;
+        } else {
+          type[1 + index] = p.type;
+        }
+      }
+      node_types[j.concreteId.nodeId] = type;
+    }
+    res.push([g[0].genericId.nodeId, node_types]);
+  }
+  console.dir(res.slice(0, 2), { depth: null });
+  for (const [id, r] of res) {
+    const KVMap = new Map<String, number>();
+    const arr: [number, [number, number | [number, number]][]][]
+      = Object.entries(r).map(([k, v]) => [parseInt(k), Object.entries(v).map(([pin, name]) => [parseInt(pin), name])]);
+    if (arr.every(ar => ar[1].every(a => a[1] === ar[1][0][1] && typeof a[1] === "number"))) {
+      const types = arr.map(ar => ar[1][0][1]).map(t => TypeIdToAllTypes[t as TypeIdToAllTypes]);
+      arr.forEach(a => KVMap.set(`${types}-`, a[0]));
+    }
+  }
+}
 
 if (import.meta.main) {
-  // ====== Step 1
+
+  // ====== Step 1 ======
   // create_graph(100, 30, 1);
   // read_trimmed_graph();
 
@@ -276,7 +328,13 @@ if (import.meta.main) {
   // ====== Step 2 
   // create_derived();
   // create_node_lists(LIST);
-  read_derive_graph();
+  // read_derive_graph();
+  extract_types();
 
-
+  // const graph = decode_gia_file({
+  //   // gia_path: "./utils/ref/derived_server_nodes_pins.gia",
+  //   gia_path: "./utils/ref/1.gia",
+  // });
+  // const nodes = graph.graph.graph!.inner.graph.nodes!;
+  // console.dir(nodes[0], { depth: null });
 }

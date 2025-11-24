@@ -292,7 +292,7 @@ message VarBase {
       message PairItems {
         VarType key = 1;
         VarType value = 2;
-        int64 structId = 3; // only when value is struct
+        optional int64 structId = 3; // only when value is struct
       }
 
       VarType type = 1;
@@ -358,7 +358,7 @@ message MapPairBaseValue {
 }
 message NodeValueBaseValue {
   // index of concrete node types
-  // EnumNode.EnumEqualList
+  // e.g. EnumNode.EnumEqualList
   int32 indexOfConcrete = 1;
   VarBase value = 2;
   // TODO: What is this
