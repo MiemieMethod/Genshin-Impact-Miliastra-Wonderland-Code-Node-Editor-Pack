@@ -1,5 +1,5 @@
 syntax = "proto3";
-// @version: 1.1.1
+// @version: 1.1.2
 // package gia;
 
 message Root {
@@ -357,7 +357,8 @@ message MapPairBaseValue {
   VarBase value = 2;
 }
 message NodeValueBaseValue {
-  EnumNode.ClassBase classBase = 1;
+  // EnumNode.EnumEqualList
+  int32 indexInSelector = 1;
   VarBase value = 2;
   // TODO: What is this
   message Wrapper {
@@ -478,8 +479,8 @@ enum NodeId {
 }
 
 message EnumNode {
-  // an enum info only message
-  enum ClassBase {
+  // 在 Enum Equal 节点选项卡中的位置......(不是, 你妈的)
+  enum EnumEqualList {
     Generic = 0;
     Comparison_Operators = 1;
     Logical_Operators = 2;

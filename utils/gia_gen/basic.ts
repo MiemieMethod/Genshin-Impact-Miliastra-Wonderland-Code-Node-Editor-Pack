@@ -72,9 +72,11 @@ interface NodeBody {
   concrete_id: NodeId;
   x: number;
   y: number;
+  /** ⚠️ Warning: This may cause ID collision. */
+  index?: number;
 }
 function node_body(body: NodeBody): GraphNode {
-  const nodeIndex = counter_index.value;
+  const nodeIndex = body.index ?? counter_index.value;
   const node: GraphNode = {
     nodeIndex: nodeIndex,
     genericId: {
