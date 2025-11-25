@@ -1,13 +1,16 @@
-[
+import { NodePinsRecords } from "../gia_gen/nodes";
+
+export const derived_records: (NodePinsRecords | { len: number })[] = [
   {
     id: 3,
-    inputs: [{ t: 'r', r: 'T' }],
+    inputs: ['R<T>'],
     outputs: [],
-    reflectMap: [[0, 'S<T:Int>', 3], [1, 'S<T:Str>', 4]]
+    reflectMap: [[0, 'S<T:Int>', 3], [1, 'S<T:Str>', 4]],
+    len: 2
   },
   {
     id: 14,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
+    inputs: ['R<T>', 'R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:Str>', 14],
@@ -19,11 +22,12 @@
       [6, 'S<T:Flt>', 371],
       [7, 'S<T:Cfg>', 581],
       [8, 'S<T:Pfb>', 582]
-    ]
+    ],
+    len: 9
   },
   {
     id: 18,
-    inputs: [{ t: 'r', r: 'T' }],
+    inputs: ['R<T>', 'R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:Bol>', 18],
@@ -46,11 +50,12 @@
       [17, 'S<T:L<Pfb>>', 2671],
       [18, 'S<T:Fct>', 2672],
       [19, 'S<T:L<Fct>>', 2673]
-    ]
+    ],
+    len: 20
   },
   {
     id: 19,
-    inputs: [undefined, { t: 'r', r: 'T' }],
+    inputs: [undefined, 'R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:Bol>', 19],
@@ -73,11 +78,12 @@
       [17, 'S<T:L<Pfb>>', 2689],
       [18, 'S<T:Fct>', 2690],
       [19, 'S<T:L<Fct>>', 2691]
-    ]
+    ],
+    len: 20
   },
   {
     id: 22,
-    inputs: [undefined, undefined, { t: 'r', r: 'T' }],
+    inputs: [undefined, undefined, 'R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:Int>', 22],
@@ -99,13 +105,17 @@
       [16, 'S<T:L<Cfg>>', 574],
       [17, 'S<T:L<Pfb>>', 575],
       [18, 'S<T:Fct>', 622],
-      [19, 'S<T:L<Fct>>', 692]
-    ]
+      [19, 'S<T:L<Fct>>', 692],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
   {
     id: 36,
     inputs: [],
-    outputs: [undefined, undefined, undefined, { t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
+    outputs: [undefined, undefined, undefined, 'R<T>', 'R<T>'],
     reflectMap: [
       [0, 'S<T:Int>', 36],
       [1, 'S<T:Str>', 37],
@@ -126,13 +136,17 @@
       [16, 'S<T:L<Cfg>>', 548],
       [17, 'S<T:L<Pfb>>', 549],
       [18, 'S<T:Fct>', 623],
-      [19, 'S<T:L<Fct>>', 2716]
-    ]
+      [19, 'S<T:L<Fct>>', 2716],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
   {
     id: 50,
     inputs: [],
-    outputs: [{ t: 'r', r: 'T' }],
+    outputs: ['R<T>'],
     reflectMap: [
       [0, 'S<T:Int>', 50],
       [1, 'S<T:Str>', 51],
@@ -153,12 +167,16 @@
       [16, 'S<T:L<Cfg>>', 578],
       [17, 'S<T:L<Pfb>>', 579],
       [18, 'S<T:Fct>', 624],
-      [19, 'S<T:L<Fct>>', 693]
-    ]
+      [19, 'S<T:L<Fct>>', 693],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
   {
     id: 100,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
+    inputs: ['R<T>', 'R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:L<Int>>', 100],
@@ -170,12 +188,14 @@
       [6, 'S<T:L<Bol>>', 106],
       [7, 'S<T:L<Cfg>>', 550],
       [8, 'S<T:L<Pfb>>', 551],
-      [9, 'S<T:L<Fct>>', 2654]
-    ]
+      [9, 'S<T:L<Fct>>', 2654],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 10
   },
   {
     id: 107,
-    inputs: [{ t: 'r', r: 'T' }],
+    inputs: ['R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:L<Int>>', 107],
@@ -187,260 +207,295 @@
       [6, 'S<T:L<Bol>>', 113],
       [7, 'S<T:L<Cfg>>', 552],
       [8, 'S<T:L<Pfb>>', 553],
-      [9, 'S<T:L<Fct>>', 2653]
-    ]
+      [9, 'S<T:L<Fct>>', 2653],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 10
   },
-  {
+  { // list include?
     id: 114,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
+    inputs: ['L<T>', 'R<T>'],
     outputs: [],
     reflectMap: [
-      [0, 'S<T:L<Int>>', 114],
-      [1, 'S<T:L<Str>>', 115],
-      [2, 'S<T:L<Ety>>', 116],
-      [3, 'S<T:L<Gid>>', 117],
-      [4, 'S<T:L<Flt>>', 118],
-      [5, 'S<T:L<Vec>>', 119],
-      [6, 'S<T:L<Bol>>', 120],
-      [7, 'S<T:L<Cfg>>', 554],
-      [8, 'S<T:L<Pfb>>', 555],
-      [9, 'S<T:L<Fct>>', 2655]
-    ]
+      [0, 'S<T:Int>', 114],
+      [1, 'S<T:Str>', 115],
+      [2, 'S<T:Ety>', 116],
+      [3, 'S<T:Gid>', 117],
+      [4, 'S<T:Flt>', 118],
+      [5, 'S<T:Vec>', 119],
+      [6, 'S<T:Bol>', 120],
+      [7, 'S<T:Cfg>', 554],
+      [8, 'S<T:Pfb>', 555],
+      [9, 'S<T:Fct>', 2655]
+    ],
+    len: 10
   },
-  {
+  { // search indices
     id: 121,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [],
+    inputs: ['L<T>', 'R<T>'],
+    outputs: ['L<Int>'],
     reflectMap: [
-      [0, 'S<T:L<Int>>', 121],
-      [1, 'S<T:L<Str>>', 122],
-      [2, 'S<T:L<Ety>>', 123],
-      [3, 'S<T:L<Gid>>', 124],
-      [4, 'S<T:L<Flt>>', 125],
-      [5, 'S<T:L<Vec>>', 126],
-      [6, 'S<T:L<Bol>>', 127],
-      [7, 'S<T:L<Cfg>>', 556],
-      [8, 'S<T:L<Pfb>>', 557],
-      [9, 'S<T:L<Fct>>', 2652]
-    ]
+      [0, 'S<T:Int>', 121],
+      [1, 'S<T:Str>', 122],
+      [2, 'S<T:Ety>', 123],
+      [3, 'S<T:Gid>', 124],
+      [4, 'S<T:Flt>', 125],
+      [5, 'S<T:Vec>', 126],
+      [6, 'S<T:Bol>', 127],
+      [7, 'S<T:Cfg>', 556],
+      [8, 'S<T:Pfb>', 557],
+      [9, 'S<T:Fct>', 2652]
+    ],
+    len: 10
   },
   {
     id: 128,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [],
+    inputs: ['L<T>'],
+    outputs: ['R<T>'],
     reflectMap: [
-      [0, 'S<T:L<Int>>', 128],
-      [1, 'S<T:L<Str>>', 129],
-      [2, 'S<T:L<Ety>>', 130],
-      [3, 'S<T:L<Gid>>', 131],
-      [4, 'S<T:L<Flt>>', 132],
-      [5, 'S<T:L<Vec>>', 133],
-      [6, 'S<T:L<Bol>>', 134],
-      [7, 'S<T:L<Cfg>>', 558],
-      [8, 'S<T:L<Pfb>>', 559],
-      [9, 'S<T:L<Fct>>', 2651]
-    ]
+      [0, 'S<T:Int>', 128],
+      [1, 'S<T:Str>', 129],
+      [2, 'S<T:Ety>', 130],
+      [3, 'S<T:Gid>', 131],
+      [4, 'S<T:Flt>', 132],
+      [5, 'S<T:Vec>', 133],
+      [6, 'S<T:Bol>', 134],
+      [7, 'S<T:Cfg>', 558],
+      [8, 'S<T:Pfb>', 559],
+      [9, 'S<T:Fct>', 2651],
+      [-1, 'S<T:S<>>', -1]
+    ],
+    len: 10
   },
   {
     id: 135,
-    inputs: [{ t: 'r', r: 'T' }],
+    inputs: ['L<T>', 'R<T>'],
     outputs: [],
     reflectMap: [
-      [0, 'S<T:L<Int>>', 135],
-      [1, 'S<T:L<Str>>', 136],
-      [2, 'S<T:L<Ety>>', 137],
-      [3, 'S<T:L<Gid>>', 138],
-      [4, 'S<T:L<Flt>>', 139],
-      [5, 'S<T:L<Vec>>', 140],
-      [6, 'S<T:L<Bol>>', 141],
-      [7, 'S<T:L<Cfg>>', 560],
-      [8, 'S<T:L<Pfb>>', 561],
-      [9, 'S<T:L<Fct>>', 2650]
-    ]
+      [0, 'S<T:Int>', 135],
+      [1, 'S<T:Str>', 136],
+      [2, 'S<T:Ety>', 137],
+      [3, 'S<T:Gid>', 138],
+      [4, 'S<T:Flt>', 139],
+      [5, 'S<T:Vec>', 140],
+      [6, 'S<T:Bol>', 141],
+      [7, 'S<T:Cfg>', 560],
+      [8, 'S<T:Pfb>', 561],
+      [9, 'S<T:Fct>', 2650],
+      [-1, 'S<T:S<>>', -1]
+    ],
+    len: 10
   },
   {
     id: 142,
-    inputs: [{ t: 'r', r: 'T' }],
+    inputs: ['L<T>'],
     outputs: [],
     reflectMap: [
-      [0, 'S<T:L<Int>>', 142],
-      [1, 'S<T:L<Str>>', 143],
-      [2, 'S<T:L<Ety>>', 144],
-      [3, 'S<T:L<Gid>>', 145],
-      [4, 'S<T:L<Flt>>', 146],
-      [5, 'S<T:L<Vec>>', 147],
-      [6, 'S<T:L<Bol>>', 148],
-      [7, 'S<T:L<Cfg>>', 562],
-      [8, 'S<T:L<Pfb>>', 563],
-      [9, 'S<T:L<Fct>>', 2645]
-    ]
+      [0, 'S<T:Int>', 142],
+      [1, 'S<T:Str>', 143],
+      [2, 'S<T:Ety>', 144],
+      [3, 'S<T:Gid>', 145],
+      [4, 'S<T:Flt>', 146],
+      [5, 'S<T:Vec>', 147],
+      [6, 'S<T:Bol>', 148],
+      [7, 'S<T:Cfg>', 562],
+      [8, 'S<T:Pfb>', 563],
+      [9, 'S<T:Fct>', 2645],
+      [-1, 'S<T:S<>>', -1]
+    ],
+    len: 10
   },
   {
     id: 149,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:L<Int>>', 2648], [1, 'S<T:L<Flt>>', 2649]]
+    inputs: ['L<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 2648], [1, 'S<T:Flt>', 2649]],
+    len: 2
   },
   {
     id: 151,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:L<Int>>', 2646], [1, 'S<T:L<Flt>>', 2647]]
+    inputs: ['L<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 2646], [1, 'S<T:Flt>', 2647]],
+    len: 2
   },
   {
     id: 153,
-    inputs: [{ t: 'r', r: 'T' }],
+    inputs: ['L<T>'],
     outputs: [],
     reflectMap: [
-      [0, 'S<T:L<Int>>', 153],
-      [1, 'S<T:L<Str>>', 154],
-      [2, 'S<T:L<Ety>>', 155],
-      [3, 'S<T:L<Gid>>', 156],
-      [4, 'S<T:L<Flt>>', 157],
-      [5, 'S<T:L<Vec>>', 158],
-      [6, 'S<T:L<Bol>>', 159],
-      [7, 'S<T:L<Cfg>>', 564],
-      [8, 'S<T:L<Pfb>>', 565],
-      [9, 'S<T:L<Fct>>', 2644]
-    ]
+      [0, 'S<T:Int>', 153],
+      [1, 'S<T:Str>', 154],
+      [2, 'S<T:Ety>', 155],
+      [3, 'S<T:Gid>', 156],
+      [4, 'S<T:Flt>', 157],
+      [5, 'S<T:Vec>', 158],
+      [6, 'S<T:Bol>', 159],
+      [7, 'S<T:Cfg>', 564],
+      [8, 'S<T:Pfb>', 565],
+      [9, 'S<T:Fct>', 2644],
+      [-1, 'S<T:S<>>', -1]
+    ],
+    len: 10
   },
   {
     id: 160,
-    inputs: [{ t: 'r', r: 'T' }],
+    inputs: ['L<T>', undefined, 'R<T>'],
     outputs: [],
     reflectMap: [
-      [0, 'S<T:L<Int>>', 160],
-      [1, 'S<T:L<Str>>', 161],
-      [2, 'S<T:L<Ety>>', 162],
-      [3, 'S<T:L<Gid>>', 163],
-      [4, 'S<T:L<Flt>>', 164],
-      [5, 'S<T:L<Vec>>', 165],
-      [6, 'S<T:L<Bol>>', 166],
-      [7, 'S<T:L<Cfg>>', 566],
-      [8, 'S<T:L<Pfb>>', 567],
-      [9, 'S<T:L<Fct>>', 2643]
-    ]
+      [0, 'S<T:Int>', 160],
+      [1, 'S<T:Str>', 161],
+      [2, 'S<T:Ety>', 162],
+      [3, 'S<T:Gid>', 163],
+      [4, 'S<T:Flt>', 164],
+      [5, 'S<T:Vec>', 165],
+      [6, 'S<T:Bol>', 166],
+      [7, 'S<T:Cfg>', 566],
+      [8, 'S<T:Pfb>', 567],
+      [9, 'S<T:Fct>', 2643],
+      [-1, 'S<T:S<>>', -1]
+    ],
+    len: 10
   },
   {
     id: 167,
-    inputs: [{ t: 'r', r: 'T' }],
+    inputs: ['L<T>'],
     outputs: [],
-    reflectMap: [[0, 'S<T:L<Int>>', 167], [1, 'S<T:L<Flt>>', 168]]
+    reflectMap: [[0, 'S<T:Int>', 167], [1, 'S<T:Flt>', 168]],
+    len: 2
   },
-  {
+  { // Assemble List 
     id: 169,
-    inputs: [],
-    outputs: [{ t: 'r', r: 'T' }],
+    inputs: Array(99).fill('R<T>'),
+    outputs: ['L<T>'],
     reflectMap: [
-      [0, 'S<T:L<Int>>', 169],
-      [1, 'S<T:L<Str>>', 170],
-      [2, 'S<T:L<Ety>>', 171],
-      [3, 'S<T:L<Gid>>', 172],
-      [4, 'S<T:L<Flt>>', 173],
-      [5, 'S<T:L<Vec>>', 174],
-      [6, 'S<T:L<Bol>>', 175],
-      [7, 'S<T:L<Cfg>>', 568],
-      [8, 'S<T:L<Pfb>>', 569],
-      [9, 'S<T:L<Fct>>', 2640]
-    ]
+      [0, 'S<T:Int>', 169],
+      [1, 'S<T:Str>', 170],
+      [2, 'S<T:Ety>', 171],
+      [3, 'S<T:Gid>', 172],
+      [4, 'S<T:Flt>', 173],
+      [5, 'S<T:Vec>', 174],
+      [6, 'S<T:Bol>', 175],
+      [7, 'S<T:Cfg>', 568],
+      [8, 'S<T:Pfb>', 569],
+      [9, 'S<T:Fct>', 2640],
+      [-1, 'S<T:S<>>', -1]
+    ],
+    len: 10
   },
-  {
+  {// Data Type Conversion
     id: 180,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
+    inputs: ['R<T>'],
+    outputs: ['R<V>'],
     reflectMap: [
       [0, 'S<T:Int>', 180],
       [2, 'S<T:Gid>', 184],
-      [3, 'S<T:Bol>', 185]
-    ]
+      [3, 'S<T:Bol>', 185],
+      [-1, "", -1],
+    ],
+    len: 3
   },
   {
     id: 200,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 200], [1, 'S<T:Flt>', 201]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 200], [1, 'S<T:Flt>', 201]],
+    len: 2
   },
   {
     id: 202,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 202], [1, 'S<T:Flt>', 203]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 202], [1, 'S<T:Flt>', 203]],
+    len: 2
   },
   {
     id: 204,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 204], [1, 'S<T:Flt>', 205]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 204], [1, 'S<T:Flt>', 205]],
+    len: 2
   },
   {
     id: 206,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 206], [1, 'S<T:Flt>', 207]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 206], [1, 'S<T:Flt>', 207]],
+    len: 2
   },
   {
     id: 209,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 209], [1, 'S<T:Flt>', 210]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 209], [1, 'S<T:Flt>', 210]],
+    len: 2
   },
   {
     id: 211,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 211], [1, 'S<T:Flt>', 212]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 211], [1, 'S<T:Flt>', 212]],
+    len: 2
   },
   {
     id: 213,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 213], [1, 'S<T:Flt>', 214]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 213], [1, 'S<T:Flt>', 214]],
+    len: 2
   },
   {
     id: 216,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 216], [1, 'S<T:Flt>', 217]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 216], [1, 'S<T:Flt>', 217]],
+    len: 2
   },
   {
     id: 218,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 218], [1, 'S<T:Flt>', 219]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 218], [1, 'S<T:Flt>', 219]],
+    len: 2
   },
   {
     id: 222,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:Int>', 222], [1, 'S<T:Flt>', 223]]
+    inputs: ['R<T>', 'R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 222], [1, 'S<T:Flt>', 223]],
+    len: 2
   },
   {
     id: 230,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [],
-    reflectMap: [[0, 'S<T:Int>', 230], [1, 'S<T:Flt>', 235]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 230], [1, 'S<T:Flt>', 235]],
+    len: 2
   },
   {
     id: 231,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [],
-    reflectMap: [[0, 'S<T:Int>', 231], [1, 'S<T:Flt>', 236]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 231], [1, 'S<T:Flt>', 236]],
+    len: 2
   },
   {
     id: 232,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [],
-    reflectMap: [[0, 'S<T:Int>', 232], [1, 'S<T:Flt>', 237]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 232], [1, 'S<T:Flt>', 237]],
+    len: 2
   },
   {
     id: 233,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [],
-    reflectMap: [[0, 'S<T:Int>', 233], [1, 'S<T:Flt>', 238]]
+    inputs: ['R<T>', 'R<T>'],
+    outputs: ['R<T>'],
+    reflectMap: [[0, 'S<T:Int>', 233], [1, 'S<T:Flt>', 238]],
+    len: 2
   },
   {
     id: 323,
-    inputs: [undefined, { t: 'r', r: 'T' }],
+    inputs: [undefined, 'R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:Int>', 323],
@@ -462,13 +517,17 @@
       [16, 'S<T:L<Cfg>>', 536],
       [17, 'S<T:L<Pfb>>', 537],
       [18, 'S<T:Fct>', 625],
-      [19, 'S<T:L<Fct>>', 2857]
-    ]
+      [19, 'S<T:L<Fct>>', 2857],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
   {
     id: 337,
     inputs: [],
-    outputs: [{ t: 'r', r: 'T' }],
+    outputs: ['R<T>'],
     reflectMap: [
       [0, 'S<T:Ety>', 337],
       [1, 'S<T:Gid>', 338],
@@ -489,13 +548,17 @@
       [16, 'S<T:L<Cfg>>', 540],
       [17, 'S<T:L<Pfb>>', 541],
       [18, 'S<T:Fct>', 626],
-      [19, 'S<T:L<Fct>>', 2998]
-    ]
+      [19, 'S<T:L<Fct>>', 2998],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
   {
     id: 351,
     inputs: [],
-    outputs: [undefined, undefined, undefined, { t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
+    outputs: [undefined, undefined, undefined, 'R<T>', 'R<T>'],
     reflectMap: [
       [0, 'S<T:Ety>', 351],
       [1, 'S<T:Gid>', 352],
@@ -516,13 +579,17 @@
       [16, 'S<T:L<Cfg>>', 544],
       [17, 'S<T:L<Pfb>>', 545],
       [18, 'S<T:Fct>', 627],
-      [19, 'S<T:L<Fct>>', 3139]
-    ]
+      [19, 'S<T:L<Fct>>', 3139],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
   {
     id: 428,
     inputs: [],
-    outputs: [undefined, undefined, undefined, { t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
+    outputs: [undefined, undefined, undefined, 'R<T>', 'R<T>'],
     reflectMap: [
       [0, 'S<T:Int>', 428],
       [1, 'S<T:Str>', 432],
@@ -543,12 +610,16 @@
       [16, 'S<T:L<Cfg>>', 524],
       [17, 'S<T:L<Pfb>>', 525],
       [18, 'S<T:Fct>', 628],
-      [19, 'S<T:L<Fct>>', 2490]
-    ]
+      [19, 'S<T:L<Fct>>', 2490],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
   {
     id: 445,
-    inputs: [undefined, undefined, { t: 'r', r: 'T' }],
+    inputs: [undefined, undefined, 'R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:Int>', 445],
@@ -570,13 +641,17 @@
       [16, 'S<T:L<Cfg>>', 528],
       [17, 'S<T:L<Pfb>>', 529],
       [18, 'S<T:Fct>', 629],
-      [19, 'S<T:L<Fct>>', 2208]
-    ]
+      [19, 'S<T:L<Fct>>', 2208],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
   {
     id: 459,
     inputs: [],
-    outputs: [{ t: 'r', r: 'T' }],
+    outputs: ['R<T>'],
     reflectMap: [
       [0, 'S<T:Int>', 459],
       [1, 'S<T:Str>', 460],
@@ -597,12 +672,16 @@
       [16, 'S<T:L<Cfg>>', 532],
       [17, 'S<T:L<Pfb>>', 533],
       [18, 'S<T:Fct>', 630],
-      [19, 'S<T:L<Fct>>', 2349]
-    ]
+      [19, 'S<T:L<Fct>>', 2349],
+      [-1, 'D<K,V>', -1],
+      [-1, 'S<>', -1],
+      [-1, 'L<S<>>', -1],
+    ],
+    len: 20
   },
-  {
+  { // ENUM EQUAL
     id: 475,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
+    inputs: ['R<T>', 'R<T>'],
     outputs: [],
     reflectMap: [
       [1, 'S<T:E<0>>', 476],
@@ -623,80 +702,130 @@
       [17, 'S<T:E<0>>', 492],
       [18, 'S<T:E<0>>', 493],
       [19, 'S<T:E<0>>', 494],
-      [20, 'S<T:E<0>>', 495]
-    ]
+      [20, 'S<T:E<0>>', 495],
+      [-1, '""', -1],
+    ],
+    len: 19
   },
   {
     id: 509,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
+    inputs: ['L<T>'],
+    outputs: ['R<T>'],
     reflectMap: [
-      [0, 'S<T:L<Bol>>', 509],
-      [1, 'S<T:L<Ety>>', 510],
-      [2, 'S<T:L<Flt>>', 511],
-      [3, 'S<T:L<Gid>>', 512],
-      [4, 'S<T:L<Int>>', 513],
-      [5, 'S<T:L<Str>>', 514],
-      [6, 'S<T:L<Vec>>', 515],
-      [7, 'S<T:L<Cfg>>', 570],
-      [8, 'S<T:L<Pfb>>', 571],
-      [9, 'S<T:L<Fct>>', 3280]
-    ]
+      [0, 'S<T:Bol>', 509],
+      [1, 'S<T:Ety>', 510],
+      [2, 'S<T:Flt>', 511],
+      [3, 'S<T:Gid>', 512],
+      [4, 'S<T:Int>', 513],
+      [5, 'S<T:Str>', 514],
+      [6, 'S<T:Vec>', 515],
+      [7, 'S<T:Cfg>', 570],
+      [8, 'S<T:Pfb>', 571],
+      [9, 'S<T:Fct>', 3280],
+      [-1, 'S<>', -1],
+    ],
+    len: 10
   },
   {
     id: 647,
-    inputs: [undefined, undefined, undefined, { t: 'r', r: 'T' }],
+    inputs: [undefined, undefined, undefined, 'R<T>'],
     outputs: [],
     reflectMap: [
       [0, 'S<T:Int>', 647],
       [1, 'S<T:Flt>', 648],
       [2, 'S<T:Str>', 649]
-    ]
+    ],
+    len: 3
   },
   {
     id: 948,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
+    inputs: ['D<K,V>', 'R<K>', 'R<V>'],
     outputs: [],
-    reflectMap: [[0, 'S<T:D<Str,Str>>', 948]]
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 1
   },
   {
     id: 1088,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [],
-    reflectMap: [
-      [0, 'S<T:L<Ety>>', 1088],
-      [1, 'S<T:L<Gid>>', 1099],
-      [2, 'S<T:L<Int>>', 1110],
-      [3, 'S<T:L<Str>>', 1121],
-      [4, 'S<T:L<Fct>>', 1132],
-      [5, 'S<T:L<Cfg>>', 1143],
-      [6, 'S<T:L<Pfb>>', 1154]
-    ]
+    inputs: ['R<K>', 'R<V>'],
+    outputs: ['D<K,V>'],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 7
   },
   {
     id: 1158,
-    inputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:D<Str,Str>>', 1158]]
+    inputs: ['D<K,V>', 'R<K>'],
+    outputs: ['R<V>'],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 1
   },
-  { id: 1298, inputs: [], outputs: [], reflectMap: [] },
-  { id: 1368, inputs: [], outputs: [], reflectMap: [] },
-  { id: 1438, inputs: [], outputs: [], reflectMap: [] },
-  { id: 1508, inputs: [], outputs: [], reflectMap: [] },
-  { id: 1578, inputs: [], outputs: [], reflectMap: [] },
-  { id: 1648, inputs: [], outputs: [], reflectMap: [] },
-  { id: 1718, inputs: [], outputs: [], reflectMap: [] },
-  { id: 1788, inputs: [], outputs: [], reflectMap: [] },
+  {
+    id: 1298,
+    inputs: ['D<K,V>', 'R<K>'],
+    outputs: [],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 0
+  },
+  {
+    id: 1368,
+    inputs: ['D<K,V>', 'R<K>'],
+    outputs: [],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 0
+  },
+  {
+    id: 1438,
+    inputs: ['D<K,V>', 'R<K>'],
+    outputs: [],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 0
+  },
+  {
+    id: 1508,
+    inputs: ['D<K,V>'],
+    outputs: ['R<K>'],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 0
+  },
+  {
+    id: 1578,
+    inputs: ['D<K,V>'],
+    outputs: ['R<V>'],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 0
+  },
+  {
+    id: 1648,
+    inputs: ['D<K,V>'],
+    outputs: [],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 0
+  },
+  {
+    id: 1718,
+    inputs: ['D<K,V>'],
+    outputs: [],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 0
+  },
+  {
+    id: 1788,
+    inputs: Array(99).fill(['R<K>', 'R<V>']).flat(),
+    outputs: ['D<K,V>'],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 0
+  },
   {
     id: 1928,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:D<Str,Str>>', 2692]]
+    inputs: ['D<K,V>'],
+    outputs: ['L<K>', 'L<V>'],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 1
   },
   {
     id: 1938,
-    inputs: [{ t: 'r', r: 'T' }],
-    outputs: [{ t: 'r', r: 'T' }, { t: 'r', r: 'T' }],
-    reflectMap: [[0, 'S<T:D<Str,Str>>', 2702]]
+    inputs: ['D<K,V>'],
+    outputs: ['L<K>', 'L<V>'],
+    reflectMap: [[-1, 'D<>', -1]],
+    len: 1
   }
-]
+];

@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import path from "path";
 
+
 export function get_rel_dir(layer: number = 1) {
   const e = new Error();
   const stack = e.stack!.split('\n')[layer + 1]; // 跳过前两行
@@ -92,4 +93,26 @@ export function write_file(path: string, content: string | ArrayBuffer, type: "r
     return;
   }
   throw new Error("Cannot write file to: " + path);
+}
+
+
+export function fixSparseArrays<T>(obj: T): T {
+  if (Array.isArray(obj)) {
+    // 将稀疏数组转换为密集数组，空位用 undefined 填充
+    const denseArray = [];
+    for (let i = 0; i < obj.length; i++) {
+      denseArray[i] = obj.hasOwnProperty(i) ? fixSparseArrays(obj[i]) : undefined;
+    }
+    return denseArray as T;
+  }
+
+  if (obj && typeof obj === 'object') {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        obj[key] = fixSparseArrays(obj[key]);
+      }
+    }
+  }
+
+  return obj;
 }

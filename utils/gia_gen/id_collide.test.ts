@@ -1,10 +1,13 @@
+import { readFileSync, writeFileSync } from "fs";
+import util from "node:util";
 
 import { gia } from "./index.ts";
 import type { NodePin, GraphNode } from "../protobuf/gia.proto.ts";
 import { NodePin_Index_Kind, VarBase_Class } from "../protobuf/gia.proto.ts";
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
-import { readFileSync, writeFileSync } from "fs";
-import { node_def, type NodePinsRecords } from "./nodes.ts";
+import { get_type, stringify, to_string, type NodePinsRecords } from "./nodes.ts";
+import { fixSparseArrays } from "../../src/util.ts";
+import assert from "node:assert";
 
 function generate_all_nodes(from: number, size: number = 300, line_width: number = 20, offsets: number = 1): GraphNode[] {
   const ret = [];
@@ -224,7 +227,7 @@ function extract_types() {
   const LIST: (number | (number | null)[])[] = [
     0,
     [0, 1],
-    0,
+    [0, 1],
     1,
     2, // Set Cus Var
     [null, 3, 4],
@@ -280,6 +283,8 @@ function extract_types() {
     [0, null, 0, 1],
     [0, null, 0, 1],
   ];
+  const list: [number[], number[]][] = LIST.map(x => [x].flat())
+    .map(x => { const p = x.indexOf(null); return p === -1 ? [x, []] : [x.slice(0, p), x.slice(p + 1)]; }) as any;
   const graph = decode_gia_file({
     gia_path: "./utils/ref/derived_server_nodes_ids.gia",
   });
@@ -288,7 +293,7 @@ function extract_types() {
   const keys = Object.keys(group);
 
   const ret: NodePinsRecords[] = [];
-  for (let i = 0; i < LIST.length; i++) {
+  for (let i = 0; i < keys.length; i++) {
     const g = group[parseInt(keys[i])]!;
     const rec: NodePinsRecords = {
       id: g[0].genericId.nodeId,
@@ -296,26 +301,41 @@ function extract_types() {
       outputs: [],
       reflectMap: [],
     };
-    for (const n of g.find(x => x.concreteId?.nodeId !== undefined)?.pins ?? []) {
-      if (n.i1.kind === NodePin_Index_Kind.InParam) {
-        rec.inputs[n.i1.index ?? 0] = { t: "r", r: "T" };
-      } else if (n.i1.kind === NodePin_Index_Kind.OutParam) {
-        rec.outputs[n.i1.index ?? 0] = { t: "r", r: "T" };
-      }
-    }
+    // for (const n of g.find(x => x.concreteId?.nodeId !== undefined)?.pins ?? []) {
+    //   if (n.i1.kind === NodePin_Index_Kind.InParam) {
+    //     rec.inputs[n.i1.index ?? 0] = "R<T>";
+    //   } else if (n.i1.kind === NodePin_Index_Kind.OutParam) {
+    //     rec.outputs[n.i1.index ?? 0] = "R<T>";
+    //   }
+    // }
+    const [inputs, outputs] = list[i];
+    inputs.forEach(x => rec.inputs[x] = "R<T>");
+    outputs.map(x => rec.outputs[x] = "R<T>");
     for (let j = 0; j < g.length; j++) {
       if (g[j].concreteId?.nodeId === undefined) {
         continue;
       }
-      const type = node_def.get_type(g[j].pins[0].type);
-      const exp = node_def.stringify({ t: "s", f: [["T", type]] });
+      for (const p of g[j].pins) {
+        // console.log(i, j, p.i1);
+        // assert.equal(p.i1.kind, NodePin_Index_Kind.InParam);
+        if (p.i1.kind === NodePin_Index_Kind.InParam) {
+          assert.equal(rec.inputs[p.i1.index ?? 0], "R<T>");
+        } else {
+          assert.equal(rec.outputs[p.i1.index ?? 0], "R<T>");
+        }
+      }
+      const type = get_type(g[j].pins[0].type);
+      const exp = stringify({ t: "s", f: [["T", type]] });
       rec.reflectMap!.push([j, exp, g[j].concreteId.nodeId]);
     }
     ret.push(rec);
-    console.log(node_def.stringify_node(rec));
+    // console.log(to_string(rec));
   }
-  // console.dir(ret.slice(0, 2), { depth: null });
-  console.dir(ret, { depth: null });
+  const res = util.inspect(
+    fixSparseArrays(ret).map(x => ((x as any).len = x.reflectMap?.length, x)),
+    { depth: null }
+  );
+  console.log(res);
 }
 
 if (import.meta.main) {
