@@ -6,7 +6,7 @@ import { graph_body, node_body, node_type_pin_body } from "./basic.ts";
 import type { NodePin, GraphNode } from "../protobuf/gia.proto.ts";
 import { NodePin_Index_Kind, VarBase_Class } from "../protobuf/gia.proto.ts";
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
-import { get_id, get_type, type NodeType, parse, stringify, to_string, type NodePinsRecords, BasicTypes, reflect, reflects } from "./nodes.ts";
+import { get_id, get_type, type NodeType, parse, stringify, to_string, type NodePinsRecords, BasicTypes, reflect, reflects, extract_reflect_names } from "./nodes.ts";
 import { fixSparseArrays } from "../../src/util.ts";
 import { randomInt } from "./utils.ts";
 import { derived_records } from "../node_id/node_defines.ts";
@@ -352,50 +352,48 @@ function generate_reflect() {
     const outs = node.outputs.map(parse);
     for (let j = 0; j < node.reflectMap!.length; j++) {
       const [index, type, id] = node.reflectMap![j];
-      const idx = index === -1 ? j : index;
+      let idx = index === -1 ? j : index;
       assert(idx === j);
       if (type !== "D<R<K>,R<V>>" && type !== "D<>") continue;
-      for (const k of BasicTypes) {
-        for (const v of VALUE_MAP) {
-          let is, os;
+
+      for (let k0 = 0; k0 < BasicTypes.length; k0++) {
+        const k = BasicTypes[k0];
+        // for (const k of BasicTypes) {
+        for (let v0 = 0; v0 < VALUE_MAP.length; v0++) {
+          const v = VALUE_MAP[v0];
+          // for (const v of VALUE_MAP) {
+          let ios: ([NodeType, number, number] | true)[] = [];
           if (type === "D<>") {
             const n = parse(`S<K:${k},V:${v}>`);
             assert(n.t === "s");
-            is = ins.map(x => x === undefined || reflects(x, n.f));
-            os = outs.map(x => x === undefined || reflects(x, n.f));
+            ios.push(...ins.map((x, i) => x === undefined || [reflects(x, n.f), i, 3] as [NodeType, number, number]));
+            ios.push(...outs.map((x, i) => x === undefined || [reflects(x, n.f), i, 4] as [NodeType, number, number]));
           } else {
             const n = parse(`D<${k},${v}>`);
-            is = ins.map(x => x === undefined || reflect(x, ["T", n]));
-            os = outs.map(x => x === undefined || reflect(x, ["T", n]));
+            ios.push(...ins.map((x, i) => x === undefined || [reflect(x, ["T", n]), i, 3] as [NodeType, number, number]));
+            ios.push(...outs.map((x, i) => x === undefined || [reflect(x, ["T", n]), i, 4] as [NodeType, number, number]));
           }
           const pins: NodePin[] = [];
           let valid = true;
-          is.forEach((x, i) => {
+          ios.forEach((x) => {
             if (x === true) return;
-            if (x.t === "l" && x.i.t === "l") {
+            if (x[0].t === "l" && x[0].i.t === "l") {
               console.warn("Cannot Create List of List:", x);
               valid = false;
               return;
             }
+            // if (nodes.length === 2202) {
+            //   debugger;
+            // }
+            const l = extract_reflect_names(x[2] === 3 ? ins[x[1]] : outs[x[1]]);
+            let index = idx;
+            if (l.includes("K") && !l.includes("V")) index = k0;
+            if (l.includes("V") && !l.includes("K")) index = v0;
             pins.push(node_type_pin_body({
-              indexOfConcrete: idx,
-              kind: NodePin_Index_Kind.InParam,
-              index: i,
-              type: x,
-            }))
-          });
-          os.forEach((x, i) => {
-            if (x === true) return;
-            if (x.t === "l" && x.i.t === "l") {
-              console.warn("Id", node.id, k, v, "Cannot Create List of List:", x);
-              valid = false;
-              return;
-            }
-            pins.push(node_type_pin_body({
-              indexOfConcrete: idx,
-              kind: NodePin_Index_Kind.OutParam,
-              index: i,
-              type: x,
+              indexOfConcrete: index,
+              kind: x[2] as any,
+              index: x[1],
+              type: x[0],
             }))
           });
           if (!valid) continue;
@@ -429,6 +427,7 @@ function generate_reflect() {
 function read_all_reflect() {
   const nodes = decode_gia_file({ gia_path: "./utils/ref/all_reflect_trim.gia" }).graph.graph?.inner.graph.nodes;
   console.log(nodes?.map(n => n.concreteId?.nodeId).filter(x => x));
+  console.log(nodes?.map(n => n.pins[1]?.value.bNodeValue?.indexOfConcrete).filter(x => x).join(" "));
   // console.log(nodes?.map(n => n.));
 
 }
@@ -450,16 +449,20 @@ if (import.meta.main) {
 
   const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/";
   const graph = decode_gia_file({
-    gia_path: "./utils/ref/all_reflect_trim.gia",
+    // gia_path: "./utils/ref/all_reflect_trim.gia",
+    // gia_path: "./utils/ref/test.gia",
+    gia_path: "./utils/ref/all_reflect.gia",
     // gia_path: PATH + "all_reflect.gia",
     // gia_path: "./utils/node_id/dicts.gia",
   });
   const nodes = graph.graph.graph!.inner.graph.nodes!;
-  console.dir(nodes[1], { depth: null });
+  console.dir(nodes[2098], { depth: null });
 
 
   // generate_reflect();
   // read_all_reflect();
+
+  // 下一步, 针对可变引脚, **分别**测试其 indexOfConcrete...... 太愚蠢了, 一个联合类型的节点引脚居然可以乱来......
 
 
   console.timeEnd("Time Consume")

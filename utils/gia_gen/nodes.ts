@@ -266,6 +266,25 @@ export function unwrap_records(rec: NodePinsRecords): NodePins[] {
     id: ids[i]
   }));
 }
+export function extract_reflect_names(type: NodeType): string[] {
+  const set = new Set<string>();
+  const core = (t: NodeType) => {
+    switch (t.t) {
+      case "d":
+        core(t.k);
+        core(t.v);
+        return;
+      case "s":
+        t.f.forEach(x => core(x[1]));
+        return;
+      case "r":
+        set.add(t.r);
+        return;
+    }
+  };
+  core(type);
+  return Array.from(set);
+}
 
 
 export function get_id(node: NodeType): number {

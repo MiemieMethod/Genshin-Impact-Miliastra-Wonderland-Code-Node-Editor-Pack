@@ -747,7 +747,7 @@ export const derived_records: (NodePinsRecords | { len: number })[] = [
   },
   {
     id: 1088,
-    inputs: ['R<K>', 'R<V>'],
+    inputs: ['L<R<K>>', 'L<R<V>>'],
     outputs: ['D<R<K>,R<V>>'],
     reflectMap: [[-1, 'D<>', -1]],
     len: 7
