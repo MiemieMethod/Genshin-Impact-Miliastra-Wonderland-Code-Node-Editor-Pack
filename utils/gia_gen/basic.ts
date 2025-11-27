@@ -19,9 +19,10 @@ import {
   VarBase_ItemType_Inner_Kind,
   VarType,
 } from "../protobuf/gia.proto.ts";
-import { get_id, type NodePins, type TypeConcreteMap, type NodeType, get_concrete_index } from "./nodes.ts";
+import { get_id, type NodePins, type NodeType } from "./nodes.ts";
 
 import { counter_dynamic_id, counter_index, randomInt, todo } from "./utils.ts";
+import { ConcreteMap, get_concrete_index } from "../node_id/concrete_map.ts";
 
 /**
  * GraphBody_ 接口定义了构建图的基本参数
@@ -145,7 +146,7 @@ export function node_body(body: NodeBody_): GraphNode {
     },
     pins: body.pins,
     x: body.x * 300 + Math.random() * 10, // shakings
-    y: body.y * 200 + Math.random() * 10,// shakings
+    y: body.y * 200 + Math.random() * 10, // shakings
     usingStruct: [],
   };
   return node;
@@ -231,7 +232,6 @@ export function pin_value(body: PinValue_): VarBase {
   };
   return value;
 }
-
 
 /**
  * 根据变量类型构建 ItemType 对象
@@ -336,8 +336,8 @@ export function map_pin_body(body: MapPinBody_): NodePin {
           key: body.key_type,
           value: body.value_type,
           structId: 0,
-        }
-      }
+        },
+      },
     },
   };
   return pin_body({
@@ -439,7 +439,10 @@ export function bool_pin_body(val: number | boolean): VarBase {
  * @param type ID 类型
  * @returns VarBase
  */
-export function id_pin_body(val: number, type: VarType = VarType.GUID): VarBase {
+export function id_pin_body(
+  val: number,
+  type: VarType = VarType.GUID,
+): VarBase {
   return {
     class: VarBase_Class.IdBase,
     alreadySetVal: true,
@@ -500,7 +503,7 @@ export function vector_pin_body(vec: number[]): VarBase {
         x: vec?.[0],
         y: vec?.[1],
         z: vec?.[2],
-      }
+      },
     },
   };
 }
@@ -546,7 +549,10 @@ export function any_pin_body(body: AnyPinBody_): NodePin {
   let value: VarBase;
   switch (body.type) {
     case VarType.Dictionary:
-      assert(body.key_val_type !== null, "Dict Type should pass parameter `key_val_type`!");
+      assert(
+        body.key_val_type !== null,
+        "Dict Type should pass parameter `key_val_type`!",
+      );
       return map_pin_body({
         kind: body.kind,
         index: body.index,
@@ -663,7 +669,7 @@ export interface NodeTypeNodeBody_ {
   /** 节点类型定义，包括输入/输出引脚类型列表 */
   node: NodePins;
   /** 类型到具体实例映射表，用于确定具体类型索引，可选，默认使用 node.id 检索 */
-  map?: TypeConcreteMap;
+  map?: ConcreteMap;
   /** 节点的泛类 ID，可选，默认使用 node.id */
   generic_id?: number;
   /** 节点的具体 ID，可选，默认使用 node.id */
@@ -680,6 +686,7 @@ export interface NodeTypeNodeBody_ {
  * - body: {
  *     node: NodePins;
  *     map?: TypeConcreteMap;
+ *     generic_id?: number;
  *     concrete_id?: number;
  *     x?: number;
  *     y?: number;
@@ -699,7 +706,7 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
       kind: NodePin_Index_Kind.InParam,
       index: i,
       type: p,
-      indexOfConcrete: map === null ? 0 : get_concrete_index(map, p),
+      indexOfConcrete: get_concrete_index(generic_id, 3, i, get_id(p)),
     }));
   });
   body.node.outputs.forEach((p, i) => {
@@ -708,7 +715,9 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
       kind: NodePin_Index_Kind.OutParam,
       index: i,
       type: p,
-      indexOfConcrete: map === null ? 0 : get_concrete_index(map, p),
+      indexOfConcrete: map === null
+        ? 0
+        : get_concrete_index(generic_id, 4, i, get_id(p)),
     }));
   });
   return node_body({
@@ -719,10 +728,6 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
     y: body.y ?? 0,
   });
 }
-
-
-
-
 
 /** ⚠️ Warning: Do not use in productive environment.
  * @deprecated Create an empty frame for genshin to auto derive pin contents. */
@@ -746,12 +751,12 @@ export function node_type_pin_body_frame(pin: NodeTypePinBodyEmpty_): NodePin {
         alreadySetVal: true,
         bNodeValue: {
           indexOfConcrete: pin.indexOfConcrete,
-          value: {} as any
-        }
+          value: {} as any,
+        },
       },
       type: 0,
-      connects: []
-    }
+      connects: [],
+    };
   }
   return {
     i1: { kind: pin.kind as any, index: pin.index },
@@ -767,24 +772,29 @@ export function node_type_pin_body_frame(pin: NodeTypePinBodyEmpty_): NodePin {
           inner: {
             wrapper: {
               class: VarBase_Class.MapBase,
-              mapPair: { key: pin.map_type[0], value: pin.map_type[1] } as any
-            }
-          }
-        }
-      }
+              mapPair: { key: pin.map_type[0], value: pin.map_type[1] } as any,
+            },
+          },
+        },
+      },
     },
     type: 0,
-    connects: []
-  }
+    connects: [],
+  };
 }
-/** ⚠️ Warning: Do not use in productive environment. 
+/** ⚠️ Warning: Do not use in productive environment.
  * @deprecated Create an empty frame for genshin to auto derive pin contents
  * therefore we can get a full id-reflect list
  * @param id 泛类 id
- * @param pins 引脚类型列表, number: 普通引脚, [number, number]: 字典引脚 
- * @returns 
- *  */
-export function node_type_node_body_empty(id: number, pins: NodeTypePinBodyEmpty_[], x: number = 0, y: number = 0) {
+ * @param pins 引脚类型列表, number: 普通引脚, [number, number]: 字典引脚
+ * @returns
+ */
+export function node_type_node_body_empty(
+  id: number,
+  pins: NodeTypePinBodyEmpty_[],
+  x: number = 0,
+  y: number = 0,
+) {
   return node_body({
     pins: pins.map(node_type_pin_body_frame),
     generic_id: id,

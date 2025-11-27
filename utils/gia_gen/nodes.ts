@@ -1,12 +1,20 @@
 import assert from "node:assert";
 import { VarType } from "../protobuf/gia.proto.ts";
 import { DEBUG, STRICT } from "./utils.ts";
-// import { concrete_map } from "../node_id/concrete_map.ts";
 
-// const BasicTypes = ["Int", "Float", "Bool", "Str", "Vec", "GUID", "Entity", "Prefab", "Faction", "ConfigId"] as const;
-export const BasicTypes = ["Int", "Flt", "Bol", "Str", "Vec", "Gid", "Ety", "Pfb", "Fct", "Cfg"] as const;
+export const BasicTypes = [
+  "Int",
+  "Flt",
+  "Bol",
+  "Str",
+  "Vec",
+  "Gid",
+  "Ety",
+  "Pfb",
+  "Fct",
+  "Cfg",
+] as const;
 export type BasicTypes = typeof BasicTypes[number];
-
 
 type EnumId = number;
 export type NodeType = {
@@ -45,6 +53,10 @@ export type NodeType = {
 
 type NodeId = number;
 
+/**
+ * 将 NodeType（或字符串形式的类型表达式）转为可读字符串。
+ * 用于序列化类型结构，例如：S<a:Int,b:L<Str>>
+ */
 export function stringify(node: NodeType | string): string {
   if (typeof node === "string") return node;
   switch (node.t) {
@@ -63,15 +75,22 @@ export function stringify(node: NodeType | string): string {
       return `R<${node.r}>`;
   }
 }
+/**
+ * 将字符串形式的类型表达式解析为 NodeType。
+ * 支持 L<>, D<,>, S< : >, R<>, E<> 等表达式。
+ * 会在语法非法时抛出异常。
+ */
 export function parse(src: string): NodeType {
   if (src === undefined) return undefined as any;
   let p = 0;
-  const tokens = src.split(/([ ]+|\<|\,|\:|\>)/g).filter(x => x.trim().length > 0);
+  const tokens = src.split(/([ ]+|\<|\,|\:|\>)/g).filter((x) =>
+    x.trim().length > 0
+  );
   // Throw Error for Invalid name
   const not_illegal_name = (str: string) => {
     assert(!BasicTypes.includes(str as BasicTypes), `System Type: "${str}"`);
     assert(/^[a-zA-Z][a-zA-Z0-9_]*$/s.test(str), `Invalid name: "${str}"`);
-  }
+  };
   const parseTokens = (tokens: string[]): NodeType => {
     switch (tokens[p++]) {
       case "L":
@@ -102,7 +121,7 @@ export function parse(src: string): NodeType {
         assert.equal(tokens[p++], "<");
         const fields: [string, NodeType][] = [];
         while (tokens[p] !== ">") {
-          assert(tokens[p - 1] === "<" || tokens[p++] === ",")
+          assert(tokens[p - 1] === "<" || tokens[p++] === ",");
           const field = tokens[p++];
           not_illegal_name(field);
           assert.equal(tokens[p++], ":");
@@ -112,93 +131,140 @@ export function parse(src: string): NodeType {
         assert.equal(tokens[p++], ">");
         return { t: "s", f: fields };
       default:
-        assert(BasicTypes.includes(tokens[p - 1] as BasicTypes), `Invalid Basic Type: "${tokens[p - 1]}"`);
+        assert(
+          BasicTypes.includes(tokens[p - 1] as BasicTypes),
+          `Invalid Basic Type: "${tokens[p - 1]}"`,
+        );
         return { t: "b", b: tokens[p - 1] as BasicTypes };
     }
-  }
+  };
   const ret = parseTokens(tokens);
-  assert.equal(p, tokens.length, `Extra Tokens after end of expression('${tokens[p]}'): "${tokens.slice(p + 1).join("")}" `);
+  assert.equal(
+    p,
+    tokens.length,
+    `Extra Tokens after end of expression('${tokens[p]}'): "${tokens.slice(p + 1).join("")
+    }" `,
+  );
   return ret;
 
-
   // Deprecated
-  function parseString(src: string, position = 0): { node: NodeType, len: number } {
+  function parseString(
+    src: string,
+    position = 0,
+  ): { node: NodeType; len: number } {
     const s = src.slice(position, position + 2);
     switch (s) {
       case "L<": {
         const { node, len } = parseString(src, position + 2);
-        assert(src[position + 2 + len] === ">", `Cannot find ">" After List: ${src.slice(position, position + 2 + len + 1)}!`);
+        assert(
+          src[position + 2 + len] === ">",
+          `Cannot find ">" After List: ${src.slice(position, position + 2 + len + 1)
+          }!`,
+        );
         return { node: { t: "l", i: node }, len: 2 + len + 1 };
       }
       case "D<": {
         const { node, len } = parseString(src, position + 2);
         // console.log(node, len);
-        assert(src[position + 2 + len] === ",", `Cannot find "," Inside Dict: ${src.slice(position, position + 2 + len + 1)}!`);
-        const { node: value, len: valueLen } = parseString(src, position + 2 + len + 1);
-        assert(src[position + 2 + len + valueLen + 1] === ">", `Cannot find ">" After Dict: ${src.slice(position, position + 2 + len + valueLen + 1)}!`);
-        return { node: { t: "d", k: node, v: value }, len: 2 + len + 1 + valueLen + 1 };
+        assert(
+          src[position + 2 + len] === ",",
+          `Cannot find "," Inside Dict: ${src.slice(position, position + 2 + len + 1)
+          }!`,
+        );
+        const { node: value, len: valueLen } = parseString(
+          src,
+          position + 2 + len + 1,
+        );
+        assert(
+          src[position + 2 + len + valueLen + 1] === ">",
+          `Cannot find ">" After Dict: ${src.slice(position, position + 2 + len + valueLen + 1)
+          }!`,
+        );
+        return {
+          node: { t: "d", k: node, v: value },
+          len: 2 + len + 1 + valueLen + 1,
+        };
       }
       case "R<": {
         const name = src.indexOf(">", position + 2);
-        assert(name !== -1, `Cannot find ">" After Reflect: ${src.slice(position, position + 10)}!`);
-        return { node: { t: "r", r: src.slice(position + 2, name) }, len: name + 1 - position };
+        assert(
+          name !== -1,
+          `Cannot find ">" After Reflect: ${src.slice(position, position + 10)
+          }!`,
+        );
+        return {
+          node: { t: "r", r: src.slice(position + 2, name) },
+          len: name + 1 - position,
+        };
       }
       case "S<": {
         const fields: [string, NodeType][] = [];
         let pos = position + 2;
         while (pos < src.length) {
           const p = src.indexOf(":", pos);
-          assert(p !== -1, `Cannot find ":" Inside Struct: ${src.slice(pos, pos + 10)}!`);
+          assert(
+            p !== -1,
+            `Cannot find ":" Inside Struct: ${src.slice(pos, pos + 10)}!`,
+          );
           const name = src.slice(pos, p);
           const { node, len } = parseString(src, p + 1);
           fields.push([name, node]);
           pos = p + 1 + len;
           if (src[pos] === ">") break;
-          assert(src[pos] === ",", `Cannot find "," Inside Struct: ${src.slice(p, pos)}!`);
+          assert(
+            src[pos] === ",",
+            `Cannot find "," Inside Struct: ${src.slice(p, pos)}!`,
+          );
           pos++;
         }
-        assert(src[pos] === ">", `"Cannot find ">" After Struct ${src.slice(position, pos)}!`);
+        assert(
+          src[pos] === ">",
+          `"Cannot find ">" After Struct ${src.slice(position, pos)}!`,
+        );
         return { node: { t: "s", f: fields }, len: pos + 1 - position };
       }
       default: {
         let pos = position;
-        while (pos < src.length && src[pos] !== ">" && src[pos] !== "," && src[pos] !== ":") pos++;
+        while (
+          pos < src.length && src[pos] !== ">" && src[pos] !== "," &&
+          src[pos] !== ":"
+        ) pos++;
         const name = src.slice(position, pos) as BasicTypes;
         assert(BasicTypes.includes(name), `"${name}" is not a Basic Type!`);
-        return { node: { t: "b", b: name }, len: pos - position }
+        return { node: { t: "b", b: name }, len: pos - position };
       }
     }
   }
 }
 
-export type NodeReflectRecords = [index: number, reflect: string, node_id: NodeId];
+export type NodeReflectRecords = [node_id: NodeId, reflect: string];
+``;
 export interface NodePinsRecords {
   inputs: string[];
   outputs: string[];
   id: NodeId;
-  /** Determines whether it is a basic node, 
+  /** Determines whether it is a basic node,
    * or a generic node with extensive ids.
-   *  
+   *
    * A map of NodeType[Struct]->NodeId */
   reflectMap?: NodeReflectRecords[];
-
 }
 /** ⚠️ Using of `NodePinsRecordsFull` is not suggested.
- * 
+ *
  * Please use `NodePinsRecords` instead
  */
-export type NodeReflectRecordsFull = [index: number, reflect: NodeType, node_id: NodeId];
+export type NodeReflectRecordsFull = [node_id: NodeId, reflect: NodeType];
 /** ⚠️ Using of `NodePinsRecordsFull` is not suggested.
- * 
+ *
  * Please use `NodePinsRecords` instead
  */
 export interface NodePinsRecordsFull {
   inputs: NodeType[];
   outputs: NodeType[];
   id: NodeId;
-  /** Determines whether it is a basic node, 
+  /** Determines whether it is a basic node,
    * or a generic node with extensive ids.
-   *  
+   *
    * A map of NodeType[Struct]->NodeId */
   reflectMap?: NodeReflectRecordsFull[];
 }
@@ -209,6 +275,11 @@ export interface NodePins {
   id: NodeId;
 }
 
+/**
+ * 在给定类型中执行一次单一反射替换。
+ * 若遇到 R<refName>，则替换为对应节点结构。
+ * 其他节点类型将递归替换。
+ */
 export function reflect(type: NodeType, ref: [string, NodeType]): NodeType {
   switch (type.t) {
     case "r":
@@ -222,25 +293,50 @@ export function reflect(type: NodeType, ref: [string, NodeType]): NodeType {
     case "d":
       return { t: "d", k: reflect(type.k, ref), v: reflect(type.v, ref) };
     case "s":
-      return { t: "s", f: type.f.map(([name, node]) => [name, reflect(node, ref)]) };
+      return {
+        t: "s",
+        f: type.f.map(([name, node]) => [name, reflect(node, ref)]),
+      };
   }
 }
-export function reflects(type: NodeType | string, refs: [string, NodeType][] | string, allow_undefined = false): NodeType {
+/**
+ * 对类型执行一次或多次 reflect() 替换。
+ * type 与 refs 允许为字符串（自动 parse）。
+ * allow_undefined=true 时允许输入 undefined。
+ */
+export function reflects(
+  type: NodeType | string,
+  refs: [string, NodeType][] | string,
+  allow_undefined = false,
+): NodeType {
   // console.log(type, refs);
   if (type === undefined && allow_undefined === true) return undefined as any;
   const t = typeof type === "string" ? parse(type) : type;
-  const r = typeof refs === "string" ? (x => (assert(x.t === "s"), x.f))(parse(refs)) : refs;
+  const r = typeof refs === "string"
+    ? ((x) => (assert(x.t === "s"), x.f))(parse(refs))
+    : refs;
   return r.reduce((type, ref) => reflect(type, ref), t);
 }
-export function reflects_records(rec: NodePinsRecords, refs?: [string, NodeType][] | string, allow_undefined = false): NodePins {
+/**
+ * 对 NodePinsRecords 执行 reflect 替换并返回展开后的 NodePins。
+ * 若记录无 reflectMap，则直接 parse 基础类型。
+ * 若有 reflectMap，则根据 refs 选择正确的特化 NodeId。
+ */
+export function reflects_records(
+  rec: NodePinsRecords,
+  refs?: [string, NodeType][] | string,
+  allow_undefined = false,
+): NodePins {
   // find id
   if (rec.reflectMap === undefined) {
     assert(refs === undefined);
     return rec_to_full(rec);
   }
   assert(refs !== undefined);
-  const refs_str = typeof refs === "string" ? refs : stringify({ t: "s", f: refs });
-  const id = rec.reflectMap!.find(r => r[1] === refs_str)?.[2];
+  const refs_str = typeof refs === "string"
+    ? refs
+    : stringify({ t: "s", f: refs });
+  const id = rec.reflectMap!.find((r) => r[1] === refs_str)?.[0];
   assert(id !== undefined || allow_undefined);
   // reflect expression
   let refs_exp;
@@ -252,11 +348,19 @@ export function reflects_records(rec: NodePinsRecords, refs?: [string, NodeType]
     refs_exp = refs;
   }
   return {
-    inputs: rec.inputs.map(node => reflects(parse(node), refs_exp, allow_undefined)),
-    outputs: rec.outputs.map(node => reflects(parse(node), refs_exp, allow_undefined)),
+    inputs: rec.inputs.map((node) =>
+      reflects(parse(node), refs_exp, allow_undefined)
+    ),
+    outputs: rec.outputs.map((node) =>
+      reflects(parse(node), refs_exp, allow_undefined)
+    ),
     id: id ?? rec.id,
-  }
+  };
 }
+/**
+ * 将包含 reflectMap 的 NodePinsRecords 全部展开，
+ * 返回所有实例化后的 NodePins（每个 reflect 对应一个条目）。
+ */
 export function unwrap_records(rec: NodePinsRecords): NodePins[] {
   if (rec.reflectMap === undefined) {
     return [{
@@ -265,16 +369,25 @@ export function unwrap_records(rec: NodePinsRecords): NodePins[] {
       id: rec.id,
     }];
   }
-  const map: [NodeType, NodeId][] = rec.reflectMap.sort(r => r[0]).map(r => [parse(r[1]), r[2]]);
-  const rs = map.map(x => { const n = x[0]; assert(n.t === "s"); return n.f });
-  const ids = map.map(x => x[1]);
+  const map: [NodeType, NodeId][] = rec.reflectMap.sort((r) => r[0]).map(
+    (r) => [parse(r[1]), r[0]],
+  );
+  const rs = map.map((x) => {
+    const n = x[0];
+    assert(n.t === "s");
+    return n.f;
+  });
+  const ids = map.map((x) => x[1]);
   return rs.map((r, i) => ({
-    inputs: rec.inputs.map(node => reflects(parse(node), r)),
-    outputs: rec.outputs.map(node => reflects(parse(node), r)),
+    inputs: rec.inputs.map((node) => reflects(parse(node), r)),
+    outputs: rec.outputs.map((node) => reflects(parse(node), r)),
     id: ids[i],
   }));
 }
 
+/**
+ * 判断某个 NodeType 是否包含反射节点（R<...>）。
+ */
 export function is_reflect(type: NodeType): boolean {
   switch (type.t) {
     case "b":
@@ -286,11 +399,15 @@ export function is_reflect(type: NodeType): boolean {
     case "d":
       return is_reflect(type.k) || is_reflect(type.v);
     case "s":
-      return type.f.some(x => is_reflect(x[1]));
+      return type.f.some((x) => is_reflect(x[1]));
     case "r":
       return true;
   }
 }
+/**
+ * 获取 NodeType 中出现过的所有 reflect 名字。
+ * 例如 R<A>, S<a:R<B>, b:L<R<C>>> => ["A","B","C"]
+ */
 export function extract_reflect_names(type: NodeType): string[] {
   const set = new Set<string>();
   const core = (t: NodeType) => {
@@ -300,7 +417,7 @@ export function extract_reflect_names(type: NodeType): string[] {
         core(t.v);
         return;
       case "s":
-        t.f.forEach(x => core(x[1]));
+        t.f.forEach((x) => core(x[1]));
         return;
       case "r":
         set.add(t.r);
@@ -313,7 +430,14 @@ export function extract_reflect_names(type: NodeType): string[] {
   core(type);
   return Array.from(set);
 }
-export function extract_reflect_fields(type: NodeType, ref: NodeType): [string, NodeType][] {
+/**
+ * 将类型中所有 R<name> 的位置映射为实际的字段类型。
+ * 相当于根据类型与模板 ref 反向推导反射字段的最终结构。
+ */
+export function extract_reflect_fields(
+  type: NodeType,
+  ref: NodeType,
+): [string, NodeType][] {
   const fields = new Map<string, NodeType>();
   const core = (r: NodeType, t: NodeType) => {
     if (r.t === "r") {
@@ -344,12 +468,15 @@ export function extract_reflect_fields(type: NodeType, ref: NodeType): [string, 
         core(r.v, (t as any).v);
         return;
     }
-
-  }
+  };
   core(ref, type);
   return [...fields.entries()];
 }
 
+/**
+ * 判断两个 NodeType 是否结构完全相同。
+ * 会严格比较字段顺序、列表嵌套、枚举值等。
+ */
 export function type_equal(a: NodeType, b: NodeType): boolean {
   if (a.t !== b.t) return false;
   switch (a.t) {
@@ -376,30 +503,16 @@ export function type_equal(a: NodeType, b: NodeType): boolean {
   throw new Error("Unreachable");
 }
 
-export function derive_reflect(node: NodeType, ref: [string, NodeType]): NodeType {
-  switch (node.t) {
-    case "b":
-      return node;
-    case "e":
-      return node;
-    case "l":
-      return { t: "l", i: derive_reflect(node.i, ref) };
-    case "d":
-      return { t: "d", k: derive_reflect(node.k, ref), v: derive_reflect(node.v, ref) };
-    case "s":
-      return { t: "s", f: node.f.map(([name, t]) => [name, derive_reflect(t, ref)]) };
-    case "r":
-      return node.r === ref[0] ? structuredClone(ref[1]) : node;
-  }
-  throw new Error("Unreachable");
-}
-export function derive_reflects(node: NodeType, refs: [string, NodeType][]): NodeType {
-  for (let i = refs.length - 1; i >= 0; i--) {
-    node = derive_reflect(node, refs[i]);
-  }
-  return node;
-}
-
+/**
+ * 将 NodeType 映射为底层 VarType（整型枚举值）。
+ *
+ * 主要作用：
+ * - 用于把逻辑类型系统（b/e/l/s/d/r）映射到 protobuf 层的 VarType。
+ * - 若类型结构无法直接映射（如 Struct、Dict、Reflect），抛错。
+ *
+ * @param node 逻辑类型描述 NodeType
+ * @returns 底层序列化使用的 VarType 整数 ID
+ */
 export function get_id(node: NodeType): number {
   switch (node.t) {
     case "b":
@@ -467,10 +580,31 @@ export function get_id(node: NodeType): number {
     case "s":
       return VarType.Struct;
   }
-  if (STRICT) throw new Error(stringify(node) + "is not a basic type! Fallback to id = 0 !");
+  if (STRICT) {
+    throw new Error(
+      stringify(node) + "is not a basic type! Fallback to id = 0 !",
+    );
+  }
   if (DEBUG) console.warn(node, "is not a basic type! Fallback to id = 0 !");
   return 0;
 }
+/**
+ * 获取运行时用于“类型系统判断”的类型标签。
+ *
+ * 不同于 get_id（其返回 protobuf 的 VarType），
+ * get_type 返回可用于 DSL / 运行时系统的内部标签字符串。
+ *
+ * 例：
+ *   b:Int   -> "Int"
+ *   e:Enum  -> "Enum"
+ *   l:Int   -> "List"
+ *   s:{...} -> "Struct"
+ *   r:R<T>  -> "Reflect"
+ *
+ * 用于运行时调试、序列化、人类可读展示。
+ *
+ * @param node NodeType
+ */
 export function get_type(id: number): NodeType {
   switch (id) {
     case VarType.Entity:
@@ -532,7 +666,7 @@ export function rec_to_str(rec: NodePinsRecords): string {
     rec.id,
     rec.inputs.join("&"),
     rec.outputs.join("&"),
-    ...rec.reflectMap?.join("&") ?? []
+    ...rec.reflectMap?.join("&") ?? [],
   ].join("|");
 }
 export function full_to_str(rec: NodePinsRecordsFull): string {
@@ -540,7 +674,7 @@ export function full_to_str(rec: NodePinsRecordsFull): string {
     rec.id,
     rec.inputs.map(stringify).join("&"),
     rec.outputs.map(stringify).join("&"),
-    ...rec.reflectMap?.map(x => [x[0], stringify(x[1]), x[2]].join("&")) ?? []
+    ...rec.reflectMap?.map((x) => [x[0], stringify(x[1])].join("&")) ?? [],
   ].join("|");
 }
 export function rec_to_full(rec: NodePinsRecords): NodePinsRecordsFull {
@@ -548,7 +682,7 @@ export function rec_to_full(rec: NodePinsRecords): NodePinsRecordsFull {
     inputs: rec.inputs.map(parse),
     outputs: rec.outputs.map(parse),
     id: rec.id,
-    reflectMap: rec.reflectMap?.map(x => [x[0], parse(x[1]), x[2]]),
+    reflectMap: rec.reflectMap?.map((x) => [x[0], parse(x[1])]),
   };
 }
 export function full_to_rec(rec: NodePinsRecordsFull): NodePinsRecords {
@@ -556,26 +690,30 @@ export function full_to_rec(rec: NodePinsRecordsFull): NodePinsRecords {
     inputs: rec.inputs.map(stringify),
     outputs: rec.outputs.map(stringify),
     id: rec.id,
-    reflectMap: rec.reflectMap?.map(x => [x[0], stringify(x[1]), x[2]]),
+    reflectMap: rec.reflectMap?.map((x) => [x[0], stringify(x[1])]),
   };
 }
 export function str_to_full(str: string): NodePinsRecordsFull {
   const [id, i, o, ...maps] = str.split("|");
-  const ref: any = maps.map(r => r.split("&")).map(x => [parseInt(x[0]), parse(x[1]), parseInt(x[2])]);
+  const ref: any = maps.map((r) => r.split("&")).map(
+    (x) => [parseInt(x[0]), parse(x[1])],
+  );
   return {
     inputs: i.split("&").map(parse),
     outputs: o.split("&").map(parse),
     id: parseInt(id),
-    reflectMap: ref.length === 0 ? undefined : ref
+    reflectMap: ref.length === 0 ? undefined : ref,
   };
 }
 /** ⚠️ This function will NOT validate node_pin_records.
- * 
+ *
  * Please use `node_def.to_records(str: string)` instead
  */
 export function str_to_rec(str: string): NodePinsRecords {
   const [id, i, o, ...maps] = str.split("|");
-  const ref: any = maps.map(r => r.split("&")).map(x => [parseInt(x[0]), x[1], parseInt(x[2])]);
+  const ref: any = maps.map((r) => r.split("&")).map(
+    (x) => [parseInt(x[0]), x[1]],
+  );
   return {
     inputs: i.split("&"),
     outputs: o.split("&"),
@@ -592,71 +730,24 @@ export function to_records(rec: string | NodePinsRecordsFull): NodePinsRecords {
   if (typeof rec === "string") {
     rec = str_to_full(rec);
   }
-  rec.reflectMap?.map((x, i) => assert(x[1].t === "s", `reflectMap[${i}] ("${x[1]}") is not Struct Type!`))
+  rec.reflectMap?.map((x, i) =>
+    assert(x[1].t === "s", `reflectMap[${i}] ("${x[1]}") is not Struct Type!`)
+  );
   return full_to_rec(rec as any);
 }
 /** ⚠️ Using of `NodePinsRecordsFull` is not suggested.
- * 
+ *
  * Please use `NodePinsRecords` instead
  */
-export function to_records_full(rec: string | NodePinsRecords): NodePinsRecordsFull {
+export function to_records_full(
+  rec: string | NodePinsRecords,
+): NodePinsRecordsFull {
   if (typeof rec === "string") {
     return str_to_full(rec);
   }
   return rec_to_full(rec);
 }
 
-
-
-export interface TypeConcreteMapRaw {
-  map: number[][];
-  id: number[];
-};
-export interface TypeConcreteMap {
-  /** Different groups of (type_id, indexOfConcrete) */
-  map: Map<number, number>;
-  /** Index list of both generic id and concrete id */
-  id: Set<number>;
-}
-export function from_tc_map(map: TypeConcreteMap | TypeConcreteMap[]): string {
-  if (map instanceof Array) {
-    return map.map(from_tc_map).join(";");
-  }
-  const m = [...map.map.entries()].map(([k, v]) => `${k}:${v}`).join(",");
-  const i = [...map.id].join(",");
-  return [m, i].join("|");
-}
-export function to_tc_map(str: string | TypeConcreteMapRaw[]): TypeConcreteMap[] {
-  if (typeof str !== "string") {
-    return str.map(src => ({
-      map: new Map(src.map as [number, number][] ?? []),
-      id: new Set([...src.id ?? []]),
-      // concrete_id: new Set(src.concrete_id ?? []),
-    }));
-  }
-  if (str.includes(";")) {
-    return str.split(";").map(to_tc_map).flat();
-  }
-  const [m, g] = str.split("|");
-  const map = new Map<number, number>(m.split(",").map(x => x.split(":").map(y => parseInt(y)) as [number, number]));
-  const id = new Set<number>(g.split(",").map(x => parseInt(x)));
-  return [{ map, id }];
-}
-export function to_tc_map_raw(src: Partial<TypeConcreteMap>[]): TypeConcreteMapRaw[] {
-  return src.map(x => ({
-    map: [...x.map?.entries() ?? []],
-    id: [...x.id ?? []],
-  }));
-}
-// export function get_concrete_map(id: number): TypeConcreteMap | null {
-//   return concrete_map.find(x => x.id.has(id)) ?? null;
-// }
-export function get_concrete_index(map_or_id: TypeConcreteMap | number, type: number | NodeType) {
-  const id = typeof type === "number" ? type : get_id(type);
-  const map = typeof map_or_id === "number" ? get_concrete_map(map_or_id) : map_or_id;
-  if (id === 0 || map === null) return 0;
-  return map.map.get(id) ?? 0;
-}
 
 if (import.meta.main) {
   function check_parse(str: string) {
@@ -678,11 +769,14 @@ if (import.meta.main) {
     check_parse("L<S<a:Gid,b:Vec,c:Flt>>");
     check_parse("D<S<a:Gid,b:Vec,c:Flt>,L<S<a:Gid,b:Vec,c:Flt>>>");
     check_parse("S<aaaa:S<a:Gid,b:Vec,c:Flt>,b:L<S<a:Gid,b:Vec,c:Flt>>>");
-    check_parse("S<aaaa:S<a:Gid,b:Vec,c:R<X>>,b:L<S<a:Gid,b:Vec,c:Flt>>,c:Flt>");
+    check_parse(
+      "S<aaaa:S<a:Gid,b:Vec,c:R<X>>,b:L<S<a:Gid,b:Vec,c:Flt>>,c:Flt>",
+    );
 
-    // More 
-    check_parse("D<S<a:Gid,b:Vec,c:Flt>,L<S<a:S<aaaa:S<a:Gid,b:Vec,c:R<X>>,b:L<S<a:R<d>,b:Vec,c:Flt>>,c:Flt>,b:Vec,c:Flt>>>");
-
+    // More
+    check_parse(
+      "D<S<a:Gid,b:Vec,c:Flt>,L<S<a:S<aaaa:S<a:Gid,b:Vec,c:R<X>>,b:L<S<a:R<d>,b:Vec,c:Flt>>,c:Flt>,b:Vec,c:Flt>>>",
+    );
   }
 
   function test_id() {
@@ -701,27 +795,32 @@ if (import.meta.main) {
     outputs: ["L<R<Key>>"],
     id: 1,
     reflectMap: [
-      [1, "S<R:Int,Value:Flt>", 103],
-    ]
+      [1, "S<R:Int,Value:Flt>"],
+    ],
   };
   const node_def: NodePinsRecords = {
     inputs: ["D<Bol,D<S<k:R<Key>,Value:R<Value>>,R<Value>>>"],
     outputs: ["L<R<Key>>"],
     id: 1,
     reflectMap: [
-      [3, "S<Key:Int,Value:Flt>", 10],
-      [2, "S<Key:Bol,Value:Str>", 5],
-      [5, "S<Value:Ety,Key:Str>", 50],
-      [4, "S<Key:D<Str,R<Value>>,Value:Ety>", 50],
-    ]
+      [10, "S<Key:Int,Value:Flt>"],
+      [2, "S<Key:Bol,Value:Str>"],
+      [5, "S<Value:Ety,Key:Str>"],
+      [4, "S<Key:D<Str,R<Value>>,Value:Ety>"],
+    ],
   };
   function test_ref() {
-
     // const node = reflects_records(node_def, node_def.reflectMap?.[0][1]);
     const node = unwrap_records(node_def);
     console.dir(node, { depth: null });
-    console.dir(node.map(x => [x.inputs.map(get_id), x.outputs.map(get_id)]), { depth: null });
-    console.dir(node.map(x => [x.inputs.map(stringify), x.outputs.map(stringify)]), { depth: null });
+    console.dir(
+      node.map((x) => [x.inputs.map(get_id), x.outputs.map(get_id)]),
+      { depth: null },
+    );
+    console.dir(
+      node.map((x) => [x.inputs.map(stringify), x.outputs.map(stringify)]),
+      { depth: null },
+    );
   }
   function test_str() {
     const s = to_string(node_def);
@@ -740,17 +839,16 @@ if (import.meta.main) {
       outputs: [parse("L<E<123>>"), { t: "e", e: 123 }],
       id: 1,
       reflectMap: [
-        [3, parse("S<Key:Int,Value:Flt>"), 10],
-        [2, parse("S<Key:Bol,Value:Str>"), 5],
-        [5, parse("S<Value:Ety,Key:Str>"), 50],
-        [4, parse("S<Value:Ety,Key:D<Str,R<Value>>>"), 55],
-      ]
+        [10, parse("S<Key:Int,Value:Flt>")],
+        [2, parse("S<Key:Bol,Value:Str>")],
+        [5, parse("S<Value:Ety,Key:Str>")],
+        [4, parse("S<Key:D<Str,R<Value>>,Value:Ety>")],
+      ],
     };
     const node = unwrap_records(to_records(enum_def)).map(to_records);
     console.dir(node, { depth: null });
   }
-  test_enum(); test_str();
+  test_enum();
+  test_str();
   console.log(to_string(node_def1));
 }
-
-

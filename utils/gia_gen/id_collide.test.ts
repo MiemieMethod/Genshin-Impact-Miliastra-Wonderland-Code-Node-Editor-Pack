@@ -386,7 +386,7 @@ function extract_types() {
       }
       const type = get_type(g[j].pins[0].type);
       const exp = stringify({ t: "s", f: [["T", type]] });
-      rec.reflectMap!.push([j, exp, g[j].concreteId.nodeId]);
+      rec.reflectMap!.push([g[j].concreteId.nodeId, exp]);
     }
     ret.push(rec);
     // console.log(to_string(rec));

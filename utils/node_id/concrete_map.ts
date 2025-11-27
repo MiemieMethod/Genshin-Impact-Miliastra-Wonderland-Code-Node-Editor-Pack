@@ -14,11 +14,41 @@ export function get_concrete_index(
   pin_type: number,
   pin_index: number,
   type: number,
+  maps: ConcreteMap = CONCRETE_MAP,
 ) {
-  const id = CONCRETE_MAP.pins.get(
+  const map = get_concrete_map(generic_id, pin_type, pin_index, maps);
+  const index = map.indexOf(type);
+  if (index === -1) {
+    if (DEBUG || STRICT) {
+      console.warn("Type", type, "Is not in map!");
+    }
+    if (STRICT) throw new Error();
+    return 0;
+  }
+  return index;
+}
+
+/** return true if the pin is reflective kind */
+export function is_concrete_pin(
+  generic_id: number,
+  pin_type: number,
+  pin_index: number,
+  maps: ConcreteMap = CONCRETE_MAP
+): boolean {
+  return maps.pins.has(
     generic_id + ":" + pin_type + ":" + pin_index,
   );
-  if (id === undefined) {
+}
+
+/** Get Concrete Map for a certain pin */
+export function get_concrete_map(
+  generic_id: number,
+  pin_type: number,
+  pin_index: number,
+  maps = CONCRETE_MAP,
+): number[] {
+  const index = maps.pins.get(generic_id + ":" + pin_type + ":" + pin_index);
+  if (index === undefined) {
     if (DEBUG || STRICT) {
       console.warn(
         "Cannot find concrete map with:",
@@ -29,44 +59,30 @@ export function get_concrete_index(
       console.log("It may be non-reflective pin.");
     }
     if (STRICT) throw new Error();
-    return 0;
+    return [];
   }
-  const map = CONCRETE_MAP.maps[id];
-  const index = map.indexOf(type);
-  if (index === -1) {
-    if (DEBUG) {
-      console.warn("Type", type, "Is not in map!");
-    }
-    if (STRICT) throw new Error();
-    return 0;
-  }
-  return index;
+  return maps.maps[index];
 }
-/** Find concrete index from type */
-function get_concrete_type(
+
+
+/** Find concrete type from index */
+export function get_concrete_type(
   generic_id: number,
   pin_type: number,
   pin_index: number,
   index: number,
-  turn_off_log = false,
+  maps: ConcreteMap = CONCRETE_MAP,
 ) {
-  const id = CONCRETE_MAP.pins.get(
-    generic_id + ":" + pin_type + ":" + pin_index,
-  );
-  if (id === undefined) {
-    if (turn_off_log === false) {
-      console.warn(
-        "Cannot find concrete map with:",
-        generic_id,
-        pin_type,
-        pin_index,
-      );
-      console.log("It may be non-reflective pin.");
+  const map = get_concrete_map(generic_id, pin_type, pin_index, maps);
+  const type = map[index];
+  if (type === -1) {
+    if (DEBUG || STRICT) {
+      console.warn("Index", index, "is not in included!");
     }
+    if (STRICT) throw new Error();
     return 0;
   }
-  const map = CONCRETE_MAP.maps[id];
-  return map[index];
+  return type;
 }
 
 export function stringify_concrete_map(map = CONCRETE_MAP) {
