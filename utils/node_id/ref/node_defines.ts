@@ -379,7 +379,7 @@ export const derived_records: (NodePinsRecords | { len: number })[] = [
   },
   { // Assemble List 
     id: 169,
-    inputs: [undefined, ...Array(99).fill('R<T>')],
+    inputs: [undefined, ...Array(50).fill('R<T>')],
     outputs: ['L<R<T>>'],
     reflectMap: [
       [0, 'S<T:Int>', 169],
@@ -788,7 +788,7 @@ export const derived_records: (NodePinsRecords | { len: number })[] = [
   },
   {
     id: 1438,
-    inputs: ['D<R<K>,R<V>>', 'R<K>'],
+    inputs: ['D<R<K>,R<V>>', 'R<V>'],
     outputs: [],
     reflectMap: [[-1, 'D<>', -1]],
     len: 0
@@ -796,14 +796,14 @@ export const derived_records: (NodePinsRecords | { len: number })[] = [
   {
     id: 1508,
     inputs: ['D<R<K>,R<V>>'],
-    outputs: ['R<K>'],
+    outputs: ['L<R<K>>'],
     reflectMap: [[-1, 'D<>', -1]],
     len: 0
   },
   {
     id: 1578,
     inputs: ['D<R<K>,R<V>>'],
-    outputs: ['R<V>'],
+    outputs: ['L<R<V>>'],
     reflectMap: [[-1, 'D<>', -1]],
     len: 0
   },

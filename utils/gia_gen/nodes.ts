@@ -1,5 +1,6 @@
 import assert from "node:assert";
 import { VarType } from "../protobuf/gia.proto.ts";
+import { DEBUG, STRICT } from "./utils.ts";
 // import { concrete_map } from "../node_id/concrete_map.ts";
 
 // const BasicTypes = ["Int", "Float", "Bool", "Str", "Vec", "GUID", "Entity", "Prefab", "Faction", "ConfigId"] as const;
@@ -100,14 +101,15 @@ export function parse(src: string): NodeType {
       case "S":
         assert.equal(tokens[p++], "<");
         const fields: [string, NodeType][] = [];
-        while (tokens[p - 1] === "<" || tokens[p++] === ",") {
+        while (tokens[p] !== ">") {
+          assert(tokens[p - 1] === "<" || tokens[p++] === ",")
           const field = tokens[p++];
           not_illegal_name(field);
           assert.equal(tokens[p++], ":");
           const type = parseTokens(tokens);
           fields.push([field, type]);
         }
-        assert.equal(tokens[p - 1], ">");
+        assert.equal(tokens[p++], ">");
         return { t: "s", f: fields };
       default:
         assert(BasicTypes.includes(tokens[p - 1] as BasicTypes), `Invalid Basic Type: "${tokens[p - 1]}"`);
@@ -223,9 +225,12 @@ export function reflect(type: NodeType, ref: [string, NodeType]): NodeType {
       return { t: "s", f: type.f.map(([name, node]) => [name, reflect(node, ref)]) };
   }
 }
-export function reflects(type: NodeType, refs: [string, NodeType][], allow_undefined = false): NodeType {
+export function reflects(type: NodeType | string, refs: [string, NodeType][] | string, allow_undefined = false): NodeType {
+  // console.log(type, refs);
   if (type === undefined && allow_undefined === true) return undefined as any;
-  return refs.reduce((type, ref) => reflect(type, ref), type);
+  const t = typeof type === "string" ? parse(type) : type;
+  const r = typeof refs === "string" ? (x => (assert(x.t === "s"), x.f))(parse(refs)) : refs;
+  return r.reduce((type, ref) => reflect(type, ref), t);
 }
 export function reflects_records(rec: NodePinsRecords, refs?: [string, NodeType][] | string, allow_undefined = false): NodePins {
   // find id
@@ -462,7 +467,8 @@ export function get_id(node: NodeType): number {
     case "s":
       return VarType.Struct;
   }
-  console.warn(node, "is not a basic type! Fallback to id = 0 !");
+  if (STRICT) throw new Error(stringify(node) + "is not a basic type! Fallback to id = 0 !");
+  if (DEBUG) console.warn(node, "is not a basic type! Fallback to id = 0 !");
   return 0;
 }
 export function get_type(id: number): NodeType {
@@ -516,7 +522,9 @@ export function get_type(id: number): NodeType {
     case VarType.Dictionary:
       return { t: "d", k: { t: "b", b: "Ety" }, v: { t: "b", b: "Ety" } };
   }
-  throw new Error("Invalid ID: " + id);
+  // throw new Error("Invalid ID: " + id);
+  // console.error("Invalid ID: " + id);
+  return undefined as any;
 }
 
 export function rec_to_str(rec: NodePinsRecords): string {

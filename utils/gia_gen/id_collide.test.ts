@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import util from "node:util";
 import assert from "node:assert";
-import { graph_body, node_body, node_type_node_body, node_type_node_body_empty, node_type_pin_body } from "./basic.ts";
+import { graph_body, node_body, node_type_node_body, node_type_node_body_empty, node_type_pin_body, type NodeTypePinBodyEmpty_ } from "./basic.ts";
 
 import type { NodePin, GraphNode } from "../protobuf/gia.proto.ts";
 import { NodePin_Index_Kind, VarBase_Class } from "../protobuf/gia.proto.ts";
@@ -11,6 +11,7 @@ import { fixSparseArrays } from "../../src/util.ts";
 import { randomInt } from "./utils.ts";
 import { derived_records } from "../node_id/ref/node_defines.ts";
 import { get_pin_info, get_node_info, get_nodes } from "./extract.ts";
+import { CONCRETE_MAP, get_concrete_index } from "../node_id/concrete_map.ts";
 
 function generate_all_nodes(from: number, size: number = 300, line_width: number = 20, offsets: number = 1): GraphNode[] {
   const ret = [];
@@ -397,6 +398,7 @@ function extract_types() {
   console.log(res);
 }
 
+// 枚举每一个接口可能的类型
 function generate_concrete_map() {
   const ds = derived_records as NodePinsRecords[];
   const nodes: GraphNode[] = [];
@@ -432,26 +434,46 @@ function generate_concrete_map() {
   });
 }
 function read_concrete_map() {
-  const nodes = get_nodes(decode_gia_file({ gia_path: "./utils/ref/all_reflect_trim.gia" }))!;
+  // const nodes = get_nodes(decode_gia_file({ gia_path: "./utils/ref/all_reflect_trim.gia" }))!;
+  // const nodes = get_nodes(decode_gia_file({ gia_path: "./utils/ref/all_reflect_concrete_trim.gia" }))!;
+  const nodes = get_nodes(decode_gia_file({ gia_path: PATH + "temp4.gia" }))!;
   const cm = new Set<string>();
+  const concrete_id_mapping =
+    Object.entries(Object.groupBy(nodes.map(n => [n.genericId.nodeId, n.concreteId?.nodeId]), x => x[0]))
+      .map(([k, v]) => [[parseInt(k)], [...new Set(v.map(x => x[1]))].filter(x => x !== undefined).sort()])
+  // .filter(x => x[0] === "1938")
+  // util.inspect , { maxArrayLength: null }
+
+  const data = concrete_id_mapping.map(x => [x[0][0], x[1].length, x[1].join(",")].join(":")).join("\n");
+  writeFileSync("./utils/node_id/ref/derived.txt", data);
+  // return;
   for (const n of nodes) {
     const info = get_node_info(n);
-    assert(info.concrete_id > 0)
+    if (!(info.concrete_id > 0)) {
+      // console.log(ii);
+      // console.dir(info, { depth: null })
+      // return;
+      // continue;
+    }
     assert(info.generic_id > 0)
     for (const i of info.pins) {
       assert(i.indexOfConcrete >= 0);
-      cm.add(info.generic_id + ":" + i.kind + ":" + i.index + "|" + i.indexOfConcrete + ":" + i.type);
+      if (i.type > 0)
+        cm.add(info.generic_id + ":" + + i.kind + ":" + i.index + "|" + i.indexOfConcrete + ":" + i.type);
     }
   }
+  // console.log(iii);
+  // return;
   const p = Array.from(cm).sort()
-    // .filter(x => !x.startsWith("149") && !x.startsWith("151") && !x.startsWith("114") && !x.startsWith("121"))
+    // .filter(x => x.startsWith("1788"))
     .map(x => x.split("|"));
   // console.log(p);
+  // return;
   const group = Object.groupBy(p, x => x[0]);
   const m = Object.entries(group)
     .map(([k, v]) => ({ k, v: v!.map(arr => arr[1].split(":").map(x => parseInt(x))) }))
     .sort((a, b) => -a.v.length + b.v.length)
-    .filter(x => x.v.length > 1)
+    // .filter(x => x.v.length > 1)
     .map(({ k, v }) => {
       const d: (number | null)[] = Array(30).fill(null);
       v.forEach((s) => {
@@ -486,8 +508,8 @@ function read_concrete_map() {
       groups.push(v);
     }
   }
-  // console.log(groups);
-  // console.log(index);
+  console.log(groups);
+  console.log(index);
 
   const a = index.map(x => x.map(s => s.split(":")[0]));
   const as = a.map(x => new Set(x));
@@ -504,6 +526,71 @@ function read_concrete_map() {
   // console.log(groups[0].filter(g => g !== null))
 
 }
+// 为dict分配KV, 测试id列表
+function generate_concrete_dict_map() {
+  const kvp = CONCRETE_MAP.maps[3].map(k => CONCRETE_MAP.maps[3].map(v => [stringify(get_type(k)), stringify(get_type(v))])).flat();
+  const ds = derived_records as NodePinsRecords[];
+  // console.log(kvp);
+  // return;
+  const nodes: GraphNode[] = [];
+  for (const d of ds) {
+    for (const [_, r] of d.reflectMap!) {
+      if (r === "S<>" || r === "L<S<>>") continue;
+      const ps = [
+        ...d.inputs.map((x, i) => x === undefined ? x : { x, i, k: 3 }).filter(x => x !== undefined),
+        ...d.outputs.map((x, i) => x === undefined ? x : { x, i, k: 4 }).filter(x => x !== undefined),
+      ];
+      // console.log(d, r);
+      let pins;
+      if (r === "D<R<K>,R<V>>") {
+        // T:KV
+        pins = kvp.map(([k, v]) => ps.map((x) => {
+          return {
+            kind: x.k,
+            index: x.i,
+            type: reflects(x.x, `S<T:D<${k},${v}>>`),
+          }
+        }));
+      } else if (r === "D<>") {
+        // KV
+        pins = kvp.map(([k, v]) => ps.map((x) => ({
+          kind: x.k,
+          index: x.i,
+          type: reflects(x.x, `S<K:${k},V:${v}>`),
+        })));
+      } else {
+        pins = [ps.map((x) => ({
+          kind: x.k,
+          index: x.i,
+          type: reflects(x.x, r)
+        }))];
+      }
+      // console.log(nodes.length, JSON.stringify(pins));
+      if (d.id === 1158) { debugger }
+      pins = pins.map(x => x.map(y => ({
+        ...y,
+        indexOfConcrete: get_concrete_index(d.id, y.kind, y.index, get_id(y.type)),
+        map_type: y.type.t === "d" ? [get_id(y.type.k), get_id(y.type.v)] as [number, number] : undefined,
+      })));
+      pins.forEach((p) => {
+        nodes.push(node_type_node_body_empty(d.id, p, nodes.length % 100, nodes.length / 100));
+      })
+      // console.log(pins.length);
+    }
+  }
+  console.log(nodes.length, "In total");
+
+
+  encode_gia_file({
+    out_path: PATH + "temp3.gia",
+    gia_struct: graph_body({
+      uid: randomInt(9, "201"),
+      graph_id: randomInt(10, "102"),
+      nodes: nodes
+    })
+  });
+}
+
 
 function generate_reflect() {
   const d = derived_records as NodePinsRecords[];
@@ -888,20 +975,21 @@ if (import.meta.main) {
 
   // generate_concrete_map();
   read_concrete_map();
+  // generate_concrete_dict_map();
 
   // const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/";
-  // // const graph = decode_gia_file({
-  // //   // gia_path: "./utils/ref/correct_reflect_trim.gia",
-  // //   gia_path: "./utils/ref/correct_reflect.gia",
-  // // });
-  // // const nodes = graph.graph.graph!.inner.graph.nodes!;
-  // // console.dir(nodes[2381], { depth: null });
+  // const graph = decode_gia_file({
+  //   // gia_path: "./utils/ref/correct_reflect_trim.gia",
+  //   gia_path: "./utils/ref/correct_reflect.gia",
+  // });
+  // const nodes = graph.graph.graph!.inner.graph.nodes!;
+  // console.dir(nodes[0], { depth: null });
   // const graph2 = decode_gia_file({
   //   // gia_path: PATH + "correct_reflect.gia",
-  //   gia_path: PATH + "temp1.gia",
+  //   gia_path: PATH + "temp4.gia",
   // });
   // const nodes2 = graph2.graph.graph!.inner.graph.nodes!;
-  // console.dir(nodes2[0], { depth: null });
+  // console.dir(nodes2[100], { depth: null });
 
   // nodes2[0].pins[0].value.bNodeValue!.value = {} as any;
   // nodes2[0].pins[0].type = 0;

@@ -691,7 +691,7 @@ export interface NodeTypeNodeBody_ {
 export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
   const generic_id = body.generic_id ?? body.node.id;
   const concrete_id = body.concrete_id ?? body.node.id;
-  const map = body.map || get_concrete_map(body.node.id);
+  const map = body.map || todo<any>();
   const pins: NodePin[] = [];
   body.node.inputs.forEach((p, i) => {
     if (p === undefined) return;
@@ -726,7 +726,7 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
 
 /** ⚠️ Warning: Do not use in productive environment.
  * @deprecated Create an empty frame for genshin to auto derive pin contents. */
-interface NodeTypePinBodyEmpty_ {
+export interface NodeTypePinBodyEmpty_ {
   /** 引脚类型 (输入/输出) */
   kind: number;
   /** 引脚索引 */
@@ -784,12 +784,12 @@ export function node_type_pin_body_frame(pin: NodeTypePinBodyEmpty_): NodePin {
  * @param pins 引脚类型列表, number: 普通引脚, [number, number]: 字典引脚 
  * @returns 
  *  */
-export function node_type_node_body_empty(id: number, pins: NodeTypePinBodyEmpty_[]) {
+export function node_type_node_body_empty(id: number, pins: NodeTypePinBodyEmpty_[], x: number = 0, y: number = 0) {
   return node_body({
     pins: pins.map(node_type_pin_body_frame),
     generic_id: id,
     concrete_id: id,
-    x: 0,
-    y: 0,
+    x: x,
+    y: y,
   } as any);
 }
