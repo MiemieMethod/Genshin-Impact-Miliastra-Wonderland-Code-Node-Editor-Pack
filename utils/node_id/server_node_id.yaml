@@ -17,7 +17,7 @@ Server Execution Node:
     135: 1. Insert Value Into List
     160: 2. Modify Value in List
     153: 3. Remove Value From List
-    509: [4. List Iteration Loop, 513]
+    509: 4. List Iteration Loop
     167: 5. List Sorting
     100: 6. Concatenate List
     107: 7. Clear List
@@ -536,68 +536,68 @@ Arithmetic Node:
   Assembly Dict: # 1788-1927, 140 ID in total
     base_id: 1788
     Generic: 1788
-    Except:
-      - Generic
-      - Structure
-      - Structure List
-    Method: base_id + Key_id + Value_id
-    Keys:
-      0: Entity
-      20: GUID
-      40: Integer
-      60: Str
-      80: Faction
-      100: ConfigId
-      120: Prefab
-    Values:
-      0: Entity
-      1: GUID
-      2: Integer
-      3: Bool
-      4: Floating Point Numbers
-      5: Str
-      6: Faction
-      7: Vec
-      8: ConfigId
-      9: Prefab
-      10: Entity List
-      11: GUID List
-      12: Integer List
-      13: Bool List
-      14: Floating Point List
-      15: Str List
-      16: Faction List
-      17: Vec List
-      18: ConfigId List
-      19: Prefab List
+    # Except:
+    #   - Generic
+    #   - Structure
+    #   - Structure List
+    # Method: base_id + Key_id + Value_id
+    # Keys:
+    #   0: Entity
+    #   20: GUID
+    #   40: Integer
+    #   60: Str
+    #   80: Faction
+    #   100: ConfigId
+    #   120: Prefab
+    # Values:
+    #   0: Entity
+    #   1: GUID
+    #   2: Integer
+    #   3: Bool
+    #   4: Floating Point Numbers
+    #   5: Str
+    #   6: Faction
+    #   7: Vec
+    #   8: ConfigId
+    #   9: Prefab
+    #   10: Entity List
+    #   11: GUID List
+    #   12: Integer List
+    #   13: Bool List
+    #   14: Floating Point List
+    #   15: Str List
+    #   16: Faction List
+    #   17: Vec List
+    #   18: ConfigId List
+    #   19: Prefab List
 
   Create Dict: # 1088-1157, 70 in total
     base_id: 1088
     Generic: 1088
-    Except:
-      - Generic
-      - Structure
-      - Any List
-    Method: base_id + Key_id + Value_id
-    Keys:
-      0: Entity
-      10: GUID
-      20: Integer
-      30: Str
-      40: Faction
-      50: ConfigId
-      60: Prefab
-    Values:
-      0: Entity
-      1: GUID
-      2: Integer
-      3: Bool
-      4: Floating Point Numbers
-      5: Str
-      6: Faction
-      7: Vec
-      8: ConfigId
-      9: Prefab
+    # Except:
+    #   - Generic
+    #   - Structure
+    #   - Any List
+    # Method: base_id + Key_id + Value_id
+    # Keys:
+    #   0: Entity
+    #   10: GUID
+    #   20: Integer
+    #   30: Str
+    #   40: Faction
+    #   50: ConfigId
+    #   60: Prefab
+    # Values:
+    #   0: Entity
+    #   1: GUID
+    #   2: Integer
+    #   3: Bool
+    #   4: Floating Point Numbers
+    #   5: Str
+    #   6: Faction
+    #   7: Vec
+    #   8: ConfigId
+    #   9: Prefab
 
 
   Structure:
@@ -616,14 +616,14 @@ Server Query Node:
     7: 3. Get Random Floating Point Number
     257: 4. Get Random Integer
     8: 5. Weighted Random
-    198: "6. Vec: Backward"
-    192: "7. Vec: Zero Vector"
-    197: "8. Vec: Forward"
-    193: "9. Vec: Up"
-    194: "10. Vec: Down"
-    196: "11. Vec: Right"
-    195: "12. Vec: Left"
-    191: "13. Pi (π)"
+    198: 6. Vec Backward
+    192: 7. Vec Zero Vector
+    197: 8. Vec Forward
+    193: 9. Vec Up
+    194: 10. Vec Down
+    196: 11. Vec Right
+    195: 12. Vec Left
+    191: 13. Pi (π)
 
   - III. List Related:
     121: 1. Search List and Return Value ID

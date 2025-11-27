@@ -6,7 +6,7 @@
 import yaml from 'yaml';
 import { encode_gia_file } from "../protobuf/decode.ts";
 import { EnumNode_ClassBase, EnumNode_Value, type GraphNode, NodeGraph_Id_Class, NodeGraph_Id_Kind, NodeGraph_Id_Type, NodeId, type NodePin, NodePin_Index_Kind, NodeProperty_Type, NodeUnit_Id_Type, NodeUnit_Type, type Root, VarBase_Class, VarType } from "../protobuf/gia.proto.ts";
-import "./enum_id.yaml.d.ts";
+import "./enum_id.yaml";
 import { read_file } from '../../src/util.ts';
 import assert from 'assert';
 
