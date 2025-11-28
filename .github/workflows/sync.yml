@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: dev
+          path: dev
 
       - name: Install dependency
         run: npm install fast-glob fs-extra
