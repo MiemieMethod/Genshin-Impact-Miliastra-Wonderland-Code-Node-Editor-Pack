@@ -2,12 +2,12 @@ import assert from "assert";
 import { MathNodes } from "./math.ts";
 import type { Lambda } from "./function_defs.ts";
 import yaml from "yaml";
-import { read_file } from "../../src/util.ts";
+import { readFileSync } from "fs";
 
 
 function checkEverythingMatch(nodes: Lambda[], raw_file: string, ref_file: string): boolean {
-  const raw = read_file(raw_file);
-  const ref: any[] = yaml.parse(read_file(ref_file));
+  const raw = readFileSync(raw_file, "utf8");
+  const ref: any[] = yaml.parse(readFileSync(ref_file, "utf8"));
 
   const names = nodes.map(p => p.name);
   const raw_names: string[] = [];
@@ -59,5 +59,5 @@ function checkEverythingMatch(nodes: Lambda[], raw_file: string, ref_file: strin
 }
 
 if (import.meta.main) {
-  assert(checkEverythingMatch(MathNodes, "/math_raw.d.ts", "/ref.math.yaml"));
+  assert(checkEverythingMatch(MathNodes, import.meta.dirname+"/math_raw.d.ts", import.meta.dirname+"/ref.math.yaml"));
 }

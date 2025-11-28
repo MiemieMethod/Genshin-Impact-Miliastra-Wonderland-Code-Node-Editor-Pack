@@ -7,13 +7,12 @@ import type { NodePin, GraphNode } from "../protobuf/gia.proto.ts";
 import { NodePin_Index_Kind, VarBase_Class } from "../protobuf/gia.proto.ts";
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
 import { get_id, get_type, type NodeType, parse, stringify, to_string, type NodePinsRecords, BasicTypes, reflect, reflects, extract_reflect_names, reflects_records, extract_reflect_fields, type_equal, is_reflect } from "./nodes.ts";
-import { fixSparseArrays } from "../../src/util.ts";
 import { randomInt } from "./utils.ts";
-import { derived_records } from "../node_id/ref/node_defines.ts";
+import { derived_records } from "../node_data/ref/node_defines.ts";
 import { get_pin_info, get_node_info, get_nodes } from "./extract.ts";
-import { CONCRETE_MAP, get_concrete_index } from "../node_id/concrete_map.ts";
+import { CONCRETE_MAP, get_concrete_index } from "../node_data/concrete_map.ts";
 import yaml from 'yaml';
-import { NODE_PIN_RECORDS } from "../node_id/node_pin_records.ts";
+import { NODE_PIN_RECORDS } from "../node_data/node_pin_records.ts";
 
 function generate_all_nodes(from: number, size: number = 300, line_width: number = 20, offsets: number = 1): GraphNode[] {
   const ret = [];
@@ -75,10 +74,10 @@ function read_trimmed_graph() {
   const nodes = graph.graph.graph!.inner.graph.nodes!;
   const tags = nodes.map(x => [x.genericId.nodeId, x.concreteId?.nodeId]);
   const res = tags.map(([b, d]) => d === undefined ? `${b}:Generic` : `${b}:Basic`);
-  writeFileSync("./utils/node_id/ref/generic.txt", res.join("\n"));
+  writeFileSync("./utils/node_data/ref/generic.txt", res.join("\n"));
 }
 function get_graph_ids(type?: "Generic" | "Basic"): number[] {
-  const data = readFileSync("./utils/node_id/ref/generic.txt").toString();
+  const data = readFileSync("./utils/node_data/ref/generic.txt").toString();
   const nodes = data.split("\n").map(x => x.split(":"));
   return nodes.filter((x) => type === undefined || x[1] === type).map(x => parseInt(x[0]));
 }
@@ -114,52 +113,53 @@ function create_derived() {
   console.log("Saved to", "./utils/ref/derived_server_nodes.gia");
 }
 
-// function create_node_with_pin(id: number, pin_index: number[], type: number, x = 0, y = 0) {
-//   const pin: NodePin = {
-//     i1: {
-//       kind: NodePin_Index_Kind.InParam,
-//       index: 0
-//     },
-//     i2: {
-//       kind: NodePin_Index_Kind.InParam,
-//       index: 0
-//     },
-//     value: {
-//       class: VarBase_Class.NodeValueBase,
-//       alreadySetVal: true,
-//       bNodeValue: {
-//         indexOfConcrete: type,
-//         value: {} as any,
-//       }
-//     },
-//     type: undefined as any,
-//     connects: undefined as any,
-//   };
-//   const pins: NodePin[] = [];
-//   for (let i = -6; i < 6; i++) {
-//     const p = structuredClone(pin);
-//     if (!pin_index.includes(i)) {
-//       p.value.bNodeValue!.indexOfConcrete = 0;
-//     }
-//     if (i < 0) {
-//       p.i1.kind = NodePin_Index_Kind.OutParam;
-//       p.i2.kind = NodePin_Index_Kind.OutParam;
-//       p.i1.index = -1 - i;
-//       p.i2.index = -1 - i;
-//     } else {
-//       p.i1.index = i;
-//       p.i2.index = i;
-//     }
-//     pins.push(p);
-//   }
-//   return node_body({
-//     generic_id: id as any,
-//     concrete_id: id as any,
-//     x: x,
-//     y: y,
-//     pins: pins,
-//   });
-// }
+function create_node_with_pin(id: number, pin_index: number[], type: number, x = 0, y = 0) {
+  const pin: NodePin = {
+    i1: {
+      kind: NodePin_Index_Kind.InParam,
+      index: 0
+    },
+    i2: {
+      kind: NodePin_Index_Kind.InParam,
+      index: 0
+    },
+    value: {
+      class: VarBase_Class.NodeValueBase,
+      alreadySetVal: true,
+      bNodeValue: {
+        indexOfConcrete: type,
+        value: {} as any,
+      }
+    },
+    type: undefined as any,
+    connects: undefined as any,
+  };
+  const pins: NodePin[] = [];
+  for (let i = -6; i < 6; i++) {
+    const p = structuredClone(pin);
+    if (!pin_index.includes(i)) {
+      p.value.bNodeValue!.indexOfConcrete = 0;
+    }
+    if (i < 0) {
+      p.i1.kind = NodePin_Index_Kind.OutParam;
+      p.i2.kind = NodePin_Index_Kind.OutParam;
+      p.i1.index = -1 - i;
+      p.i2.index = -1 - i;
+    } else {
+      p.i1.index = i;
+      p.i2.index = i;
+    }
+    pins.push(p);
+  }
+  return node_body({
+    generic_id: id as any,
+    concrete_id: id as any,
+    x: x,
+    y: y,
+    pins: pins,
+  });
+}
+
 function create_node_lists() {
 
   // 手动读取57个泛类的引脚位置
@@ -273,7 +273,7 @@ function read_derive_graph() {
 
 
   const res = g.map(({ id, derived }) => `${id}:${derived.length}:${derived.join(",")}`);
-  writeFileSync("./utils/node_id/ref/derived.txt", res.join("\n"));
+  writeFileSync("./utils/node_data/ref/derived.txt", res.join("\n"));
 
   const arr = Array(2000).fill("");
   get_graph_ids("Generic").forEach((i) => arr[i] = "ServerGeneric:" + i);
@@ -281,7 +281,29 @@ function read_derive_graph() {
   for (const a of g) {
     a.derived.forEach((i) => arr[i] = "ServerGeneric:" + a.id);
   }
-  writeFileSync("./utils/node_id/ref/all_1.txt", arr.join("\n"));
+  writeFileSync("./utils/node_data/ref/all_1.txt", arr.join("\n"));
+}
+
+
+function fixSparseArrays<T>(obj: T): T {
+  if (Array.isArray(obj)) {
+    // 将稀疏数组转换为密集数组，空位用 undefined 填充
+    const denseArray = [];
+    for (let i = 0; i < obj.length; i++) {
+      denseArray[i] = obj.hasOwnProperty(i) ? fixSparseArrays(obj[i]) : undefined;
+    }
+    return denseArray as T;
+  }
+
+  if (obj && typeof obj === 'object') {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        obj[key] = fixSparseArrays(obj[key]);
+      }
+    }
+  }
+
+  return obj;
 }
 
 function extract_types() {
@@ -447,7 +469,7 @@ function read_concrete_map() {
   // util.inspect , { maxArrayLength: null }
 
   const data = concrete_id_mapping.map(x => [x[0][0], x[1].length, x[1].join(",")].join(":")).join("\n");
-  writeFileSync("./utils/node_id/ref/derived.txt", data);
+  writeFileSync("./utils/node_data/ref/derived.txt", data);
   // return;
   for (const n of nodes) {
     const info = get_node_info(n);
@@ -539,7 +561,7 @@ function generate_concrete_dict_map(read = false) {
   let nodes_len = 0;
   if (read) {
     // nodes.push(...get_nodes(decode_gia_file({ gia_path: PATH + "temp4.gia" }))!);
-    nodes.push(...get_nodes(decode_gia_file({ gia_path: "./utils/node_id/ref/all_reflect_concrete_trim.gia" }))!);
+    nodes.push(...get_nodes(decode_gia_file({ gia_path: "./utils/node_data/ref/all_reflect_concrete_trim.gia" }))!);
   }
   for (const d of ds) {
     let ret: NodePinsRecords = {
@@ -621,7 +643,7 @@ function generate_concrete_dict_map(read = false) {
     const doc = `/** Node defines(reflective nodes only, auto generated). */
 import type { NodePinsRecords } from "../gia_gen/nodes.ts";
 export const NODE_PIN_RECORDS: NodePinsRecords[] = ${str};`;
-    writeFileSync("./utils/node_id/node_pin_records.ts", doc);
+    writeFileSync("./utils/node_data/node_pin_records.ts", doc);
     return;
   }
   console.log(nodes.length, "In total");
@@ -638,13 +660,13 @@ export const NODE_PIN_RECORDS: NodePinsRecords[] = ${str};`;
 }
 
 function read_enum() {
-  const y: EnumList = yaml.parse(readFileSync("./utils/node_id/enum_id.yaml").toString());
+  const y: EnumList = yaml.parse(readFileSync("./utils/node_data/enum_id.yaml").toString());
   console.log(y.EnumList.map(x => `[${x.id}, "S<T:E<${x.varClassBase}>>"],`).join("\n"));
 }
 
 function combine_id_list() {
   const names = new Map(
-    readFileSync("./utils/node_id/server_node_id.yaml")
+    readFileSync("./utils/node_data/server_node_id.yaml")
       .toString().split('\n').map(s => s.trim())
       .map(s => /^(\d+): (\d+\. )?(.+)$/s.exec(s)).filter(x => x !== null)
       .map(([_, d,_2,s]) => [d, s])
@@ -655,7 +677,7 @@ function combine_id_list() {
   const all = [...g, ...b].flat()
     .sort((a, b) => parseInt(a) - parseInt(b))
     .join("\n");
-  writeFileSync("./utils/node_id/server.yaml", all);
+  writeFileSync("./utils/node_data/server.yaml", all);
 }
 
 

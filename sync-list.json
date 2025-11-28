@@ -5,6 +5,7 @@
     "ref/**",
     "src/**",
     "utils/**",
+    "static/**",
 
     "!package-lock.json",
     "!sync-list.json",
@@ -14,9 +15,15 @@
 
     "!**/?(*.)(temp|test|log)?(.*)",
 
-    "!utils/ref/**"
+    "!utils/**/ref/**",
+    "!utils/protobuf/debug_decode.ts",
+    "!utils/node_data/enum_id_raw.yaml",
+    "!utils/functions/ref.*",
+    "!utils/functions/tools.ts",
+    "!utils/functions/math_raw.d.ts",
+    "!utils/functions/check.ts"
 
   ],
-  "commitMessage": "Sync from dev branch",
+  "commitMessage": "Refract and Filter files sync to main",
   "notSync": false
 }

@@ -5,10 +5,10 @@
 
 import yaml from 'yaml';
 import { encode_gia_file } from "../protobuf/decode.ts";
-import { EnumNode_ClassBase, EnumNode_Value, type GraphNode, NodeGraph_Id_Class, NodeGraph_Id_Kind, NodeGraph_Id_Type, NodeId, type NodePin, NodePin_Index_Kind, NodeProperty_Type, NodeUnit_Id_Type, NodeUnit_Type, type Root, VarBase_Class, VarType } from "../protobuf/gia.proto.ts";
+import { EnumNode_Value, type GraphNode, NodeGraph_Id_Class, NodeGraph_Id_Kind, NodeGraph_Id_Type, NodeId, type NodePin, NodePin_Index_Kind, NodeProperty_Type, NodeUnit_Id_Type, NodeUnit_Type, type Root, VarBase_Class, VarType } from "../protobuf/gia.proto.ts";
 import "./enum_id.yaml";
-import { read_file } from '../../src/util.ts';
 import assert from 'assert';
+import { readFileSync } from 'fs';
 
 function save_nodes(graph_name: string, file_name: string, nodes: GraphNode[]): Root {
   const uid = parseInt("201" + randomDigits(6));
@@ -66,7 +66,7 @@ interface EnumOptions {
   generic_id: NodeId;
   concrete_id: NodeId;
   pos: [number, number];
-  varClassBase: EnumNode_ClassBase;
+  indexOfConcrete: number;
   enum_item_id: [EnumNode_Value, EnumNode_Value];
 }
 let index = 0;
@@ -84,7 +84,7 @@ function create_enum_node(option: EnumOptions) {
       class: VarBase_Class.NodeValueBase,
       alreadySetVal: true,
       bNodeValue: {
-        classBase: option.varClassBase,
+        indexOfConcrete: option.indexOfConcrete,
         value: {
           class: VarBase_Class.EnumBase,
           alreadySetVal: true,
@@ -132,7 +132,7 @@ function create_enum_node(option: EnumOptions) {
 }
 
 function check_create_enums(v: number) {
-  const enum_list: EnumList = yaml.parse(read_file("enum_id.yaml", "rel"));
+  const enum_list: EnumList = yaml.parse(readFileSync(import.meta.dirname + "/enum_id.yaml").toString());
 
   const nodes: GraphNode[] = [];
   for (let i = 0; i < enum_list.EnumList.length; i++) {
@@ -146,7 +146,7 @@ function check_create_enums(v: number) {
         generic_id: 475,
         concrete_id: e.id as any,
         pos: [i, j / 2],
-        varClassBase: e.varClassBase as any,
+        indexOfConcrete: e.varClassBase as any,
         enum_item_id: [val as any, val2 as any],
       });
       nodes.push(node);
@@ -163,7 +163,7 @@ function check_create_enums(v: number) {
 }
 
 function get_enums_as_proto() {
-  const enum_list: EnumList = yaml.parse(read_file("enum_id.yaml", "rel").toString());
+  const enum_list: EnumList = yaml.parse(readFileSync("enum_id.yaml").toString());
   const data = enum_list.EnumList.map(x => {
     const name = x.name.replaceAll(/([^a-zA-Z0-9])+/g, "_");
     const items = Object.entries(x.items).map(([k, v]) => {
