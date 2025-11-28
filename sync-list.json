@@ -19,6 +19,6 @@
     "!utils/functions/math_raw.d.ts",
     "!utils/functions/check.ts"
   ],
-  "commitMessage": "添加任务记录与规划清单",
-  "notSync": true
+  "commitMessage": "对创建节点图完成高级包装: Graph 类",
+  "notSync": false
 }

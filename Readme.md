@@ -12,6 +12,9 @@
 *   [**自动类型生成 (`utils/gen_def.ts`)**](./utils/gen_def.ts): 这是 DSL 的核心引擎。它读取结构化的函数定义，自动生成包含完整类型声明的 `def.d.ts` 文件。这意味着你在编写节点图代码时，可以享受到 **IDE 的智能补全、类型检查和文档提示**。
 *   [**结构化函数定义 (`utils/functions`)**](./utils/functions/readme.md): 所有的算术节点和查询节点都通过统一的格式进行定义，支持重载、泛型和参数校验。
 
+### 2.0. GIA 文件快速读写 (进行中, 目前仅支持节点)
+在 `./utils/gia_gen/graph.ts` 中(或通过 `./utils/gia_gen/index.ts` 导入), 快速创建Graph类, 可导出为 gia 文件结构. 更多信息参见 [utils/gia_gen/readme.md](./utils/gia_gen/readme.md#graph)
+
 ### 2. GIA 文件深度解析与工程化
 完全掌握 `.gia` (Genshin Impact Assets) 文件的读写与转换。
 *   [**Protobuf 定义 (`utils/protobuf/gia.proto`)**](./utils/protobuf/gia.proto): 包含较完整的 `gia.proto` 定义文件。

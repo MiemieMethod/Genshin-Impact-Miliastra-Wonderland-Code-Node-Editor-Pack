@@ -175,7 +175,7 @@ export class Pin {
   /** null type means normal pin without any determined info */
   type: NodeType | null;
   constructor(node_id: number, kind: number, index: number) {
-    this.node_id = node_id;
+    this.node_id = get_generic_id(node_id) ?? node_id;
     this.kind = kind;
     this.index = index;
     this.type = null;
@@ -193,6 +193,7 @@ export class Pin {
     this.updateConcreteIndex();
   }
   updateConcreteIndex() {
+    if(x) debugger;
     if (this.type !== null && is_concrete_pin(this.node_id, this.kind, this.index)) {
       this.concrete_index = get_concrete_index(this.node_id, this.kind, this.index, get_id(this.type));
     } else {
@@ -218,20 +219,21 @@ export class Pin {
     });
   }
 }
-
+let x=false;
 if (import.meta.main) {
   // Test Graph Encoding
   console.time("graph_encode");
   const graph = new Graph("server");
   const node1 = graph.add_node(1001);
-  const node2 = graph.add_node(1002);
-  const node3 = graph.add_node(250);
+  const node2 = graph.add_node(250);
+  graph.add_node(1002);
   node1.setPos(1, 2);
   node2.setPos(3, 4);
-  node3.setPos(5, 6);
+  x=true;
+  node1.setConcrete(1002);
   const g = graph.encode();
   console.timeEnd("graph_encode");
-  // console.log(JSON.stringify(graph, null, 2));
+  console.log(JSON.stringify(graph, null, 2));
   // console.log(JSON.stringify(g, null, 2));
 
   console.time("graph_decode");
