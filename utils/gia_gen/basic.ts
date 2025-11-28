@@ -32,6 +32,8 @@ export interface GraphBody_ {
   uid: number;
   /** 图的 ID */
   graph_id: number;
+  /** 图文件的ID，可选, 通常是 graph_id + i */
+  file_id?: number;
   /** 图的名称，可选 */
   graph_name?: string;
   /** 图中包含的节点列表，可选 */
@@ -59,7 +61,7 @@ export function graph_body(body: GraphBody_): Root {
     (m) => m.toLowerCase(),
   );
   const timestamp = Math.floor(Date.now() / 1000);
-  const file_id = body.graph_id + counter_dynamic_id.value;
+  const file_id = body.file_id ?? body.graph_id + counter_dynamic_id.value;
   const filePath = `${body.uid}-${timestamp}-${file_id}-\\${file_name}`;
   const gia: Root = {
     graph: {
@@ -129,7 +131,7 @@ export interface NodeBody_ {
  * @returns GraphNode 节点对象
  */
 export function node_body(body: NodeBody_): GraphNode {
-  const nodeIndex = body.unique_index ?? counter_index.value;
+  const nodeIndex = body.unique_index ??  counter_index.value;
   const node: GraphNode = {
     nodeIndex: nodeIndex,
     genericId: {
@@ -678,6 +680,8 @@ export interface NodeTypeNodeBody_ {
   x?: number;
   /** 节点的 Y 坐标 */
   y?: number;
+  /** ⚠️ Warning: This may cause ID collision. 节点唯一索引，不建议填入 */
+  unique_index?: number;
 }
 /**
  * 根据 NodeType 构建完整 GraphNode（自动构建 pins&类型映射）
@@ -698,7 +702,6 @@ export interface NodeTypeNodeBody_ {
 export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
   const generic_id = body.generic_id ?? body.node.id;
   const concrete_id = body.concrete_id ?? body.node.id;
-  const map = body.map || todo<any>();
   const pins: NodePin[] = [];
   body.node.inputs.forEach((p, i) => {
     if (p === undefined) return;
@@ -706,7 +709,7 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
       kind: NodePin_Index_Kind.InParam,
       index: i,
       type: p,
-      indexOfConcrete: get_concrete_index(generic_id, 3, i, get_id(p)),
+      indexOfConcrete: get_concrete_index(generic_id, 3, i, get_id(p), body.map),
     }));
   });
   body.node.outputs.forEach((p, i) => {
@@ -715,9 +718,7 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
       kind: NodePin_Index_Kind.OutParam,
       index: i,
       type: p,
-      indexOfConcrete: map === null
-        ? 0
-        : get_concrete_index(generic_id, 4, i, get_id(p)),
+      indexOfConcrete: get_concrete_index(generic_id, 4, i, get_id(p), body.map),
     }));
   });
   return node_body({
@@ -726,6 +727,7 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
     concrete_id: concrete_id as any,
     x: body.x ?? 0,
     y: body.y ?? 0,
+    unique_index: body.unique_index,
   });
 }
 
