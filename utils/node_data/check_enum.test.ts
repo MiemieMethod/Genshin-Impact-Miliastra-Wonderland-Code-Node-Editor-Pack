@@ -5,10 +5,11 @@
 
 import yaml from 'yaml';
 import { encode_gia_file } from "../protobuf/decode.ts";
-import { EnumNode_Value, type GraphNode, NodeGraph_Id_Class, NodeGraph_Id_Kind, NodeGraph_Id_Type, NodeId, type NodePin, NodePin_Index_Kind, NodeProperty_Type, NodeUnit_Id_Type, NodeUnit_Type, type Root, VarBase_Class, VarType } from "../protobuf/gia.proto.ts";
+import { type GraphNode, NodeGraph_Id_Class, NodeGraph_Id_Kind, NodeGraph_Id_Type, type NodePin, NodePin_Index_Kind, NodeProperty_Type, NodeUnit_Id_Type, NodeUnit_Type, type Root, VarBase_Class, VarType } from "../protobuf/gia.proto.ts";
 import "./yaml/enum_id.yaml.d.ts";
 import assert from 'assert';
 import { readFileSync } from 'fs';
+import type { EnumNode_Value, NodeId } from './enums.ts';
 
 function save_nodes(graph_name: string, file_name: string, nodes: GraphNode[]): Root {
   const uid = parseInt("201" + randomDigits(6));

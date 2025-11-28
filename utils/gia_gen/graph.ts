@@ -1,10 +1,11 @@
 import assert from "assert";
-import type { GraphNode, NodeId, NodePin, NodePin_Index_Kind, Root } from "../protobuf/gia.proto.ts";
-import { graph_body, node_body, node_type_pin_body } from "./basic.ts";
-import { type NodeType, reflects_records, get_id, type_equal } from "./nodes.ts";
+import type { GraphNode, NodePin, NodePin_Index_Kind, Root } from "../protobuf/gia.proto.ts";
+import { graph_body, node_body, node_connect_from, node_type_pin_body } from "./basic.ts";
+import { type NodeType, reflects_records, get_id, type_equal, to_records_full } from "./nodes.ts";
 import { Counter, panic, randomInt, randomName } from "./utils.ts";
 import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record } from "../node_data/helpers.ts";
 import { get_node_info } from "./extract.ts";
+import { type NodeId } from "../node_data/enums.ts";
 
 
 const GraphType = ["server", "client", "composite"] as const;
@@ -18,7 +19,8 @@ export class Graph {
   uid: number;
   counter_idx: Counter;
   counter_dyn_id: Counter;
-  nodes: Node[];
+  nodes: Set<Node>;
+  connects: Set<Connect>;
 
   get type() {
     return this.type_;
@@ -35,25 +37,26 @@ export class Graph {
     this.counter_dyn_id = new Counter(Number(this.graph_id));
 
     this.file_id = this.counter_dyn_id.value;
-    this.nodes = [];
+    this.nodes = new Set();
+    this.connects = new Set();
   }
   /** 
    * @param node Node Id or Instance */
   add_node(node: number | Node): Node {
     if (typeof node === "number") {
       const n = new Node(node, this.counter_idx.value);
-      this.nodes.push(n);
+      this.nodes.add(n);
       return n;
     }
-    if (this.nodes.includes(node)) {
+    if (this.nodes.has(node)) {
       console.error("Node already set!");
       return node;
     }
-    this.nodes.push(node);
+    this.nodes.add(node);
     return node;
   }
   encode(): Root {
-    const nodes = this.nodes.map((n) => n.encode());
+    const nodes = [...this.nodes].map((n) => n.encode(this.get_connect_to(n)));
     return graph_body({/** 唯一标识符 */
       uid: this.uid,
       /** 图的 ID */
@@ -65,6 +68,79 @@ export class Graph {
       /** 图中包含的节点列表，可选 */
       nodes
     });
+  }
+  get_node(unique_id: number): Node | null {
+    for (const node of this.nodes) {
+      if (node.UniqueId === unique_id) {
+        return node;
+      }
+    }
+    return null;
+  }
+  get_connect_from(from: Node): Connect[] {
+    const ret: Connect[] = [];
+    for (const connect of this.connects) {
+      if (connect.from === from) {
+        ret.push(connect);
+      }
+    }
+    return ret;
+  }
+  get_connect_from_index(from: Node, index: number): Connect | null {
+    for (const connect of this.connects) {
+      if (connect.from === from && connect.from_index === index) {
+        return connect;
+      }
+    }
+    return null;
+  }
+  get_connect_to(to: Node): Connect[] {
+    const ret: Connect[] = [];
+    for (const connect of this.connects) {
+      if (connect.to === to) {
+        ret.push(connect);
+      }
+    }
+    return ret;
+  }
+  get_connect_to_index(to: Node, index: number): Connect | null {
+    for (const connect of this.connects) {
+      if (connect.to === to && connect.to_index === index) {
+        return connect;
+      }
+    }
+    return null;
+  }
+  get_connect(from: Node, to: Node, from_index: number, to_index: number): Connect | null {
+    for (const connect of this.connects) {
+      if (connect.from === from && connect.from_index === from_index && connect.to === to && connect.to_index === to_index) {
+        return connect;
+      }
+    }
+    return null;
+  }
+  disconnect(connect: Connect) {
+    this.connects.delete(connect);
+  }
+  connect(from: Node, to: Node, from_index: number, to_index: number) {
+    const c = this.get_connect(from, to, from_index, to_index);
+    if (c) {
+      console.info("Already connected!", c.toString());
+      return c;
+    }
+    const old_to = this.get_connect_to_index(to, to_index);
+    if (old_to) {
+      console.info("Already connected!", old_to.toString());
+      this.disconnect(old_to);
+    }
+    // const old_from = this.get_connect_from_index(from, from_index);
+    // if (old_from) {
+    //   console.info("Already connected!", old_from.toString());
+    //   this.disconnect(old_from);
+    // }
+    const connect = new Connect(from, to, from_index, to_index);
+    this.connects.add(connect);
+    return connect;
   }
   static decode(root: Root): Graph {
     const [uid, time, graph_id_str, file_name] = root.filePath.split("-");
@@ -104,7 +180,7 @@ export class Node {
     assert.equal(pins.id, this.generic_id); // Cannot set concrete id of different generic type
     this.node_id = id;
     this.pin_len = [pins.inputs.length, pins.outputs.length];
-    const rec = reflects_records(pins, id, true);
+    const rec = pins.reflectMap === undefined ? to_records_full(pins) : reflects_records(pins, id, true);
     for (let i = 0; i < rec.inputs.length; i++) {
       if (this.pins[i] === undefined) {
         this.pins[i] = new Pin(this.node_id, 3, i);
@@ -131,8 +207,8 @@ export class Node {
     this.x = x;
     this.y = y;
   }
-  encode(): GraphNode {
-    const pins = this.pins.map((p) => p.encode()).filter((p) => p !== null);
+  encode(connects?: Connect[]): GraphNode {
+    const pins = this.pins.map((p) => p.encode(connects)).filter((p) => p !== null);
     return node_body({
       /** 通用 ID */
       generic_id: this.generic_id as NodeId,
@@ -164,6 +240,10 @@ export class Node {
     });
     return n;
   }
+
+  get UniqueId() {
+    return this.unique_id;
+  }
 }
 
 export class Pin {
@@ -192,18 +272,19 @@ export class Pin {
     this.updateConcreteIndex();
   }
   updateConcreteIndex() {
-    if (x) debugger;
     if (this.type !== null && is_concrete_pin(this.node_id, this.kind, this.index)) {
       this.concrete_index = get_concrete_index(this.node_id, this.kind, this.index, get_id(this.type));
     } else {
       assert.equal(this.concrete_index, 0);
     }
   }
-  encode(): NodePin | null {
+  encode(connects?: Connect[]): NodePin | null {
     if (this.type === null) {
       // Normal pin without determined type
       return null;
     }
+    // if (connects?.length !== 0) debugger;
+    const connect = connects?.find((c) => this.kind === 3 && c.to_index === this.index)?.encode(); // input can be connected
     return node_type_pin_body({
       /** 引脚类型 (输入/输出) */
       kind: this.kind as NodePin_Index_Kind,
@@ -215,28 +296,53 @@ export class Pin {
       indexOfConcrete: this.concrete_index,
       /** 引脚的初始值，可选 */
       value: undefined,
+      connects: connect === undefined ? undefined : [connect],
     });
   }
 }
-let x = false;
+
+export class Connect {
+  from: Node;
+  from_index: number;
+  to: Node;
+  to_index: number;
+  constructor(from: Node, to: Node, from_index: number, to_index: number) {
+    this.from = from;
+    this.from_index = from_index;
+    this.to = to;
+    this.to_index = to_index;
+  }
+  encode() {
+    return node_connect_from(this.from.UniqueId, this.from_index);
+  }
+  toString() {
+    return `${this.from.UniqueId}-${this.from_index} -> ${this.to.UniqueId}-${this.to_index}`;
+  }
+}
+
+
+
 if (import.meta.main) {
   // Test Graph Encoding
   console.time("graph_encode");
   const graph = new Graph("server");
-  const node1 = graph.add_node(1001);
-  const node2 = graph.add_node(250);
-  graph.add_node(1002);
+  const node1 = graph.add_node(200); // add int
+  const node2 = graph.add_node(201); // add float
+  const node3 = graph.add_node(202); // sub int
   node1.setPos(1, 2);
   node2.setPos(3, 4);
-  x = true;
-  node1.setConcrete(1002);
+  graph.connect(node1, node2, 0, 0);
+  graph.connect(node3, node1, 0, 1);
+  graph.connect(node3, node1, 0, 0);
+  graph.connect(node3, node2, 0, 0);
   const g = graph.encode();
   console.timeEnd("graph_encode");
-  console.log(JSON.stringify(graph, null, 2));
+  console.log(g);
+  // console.log(JSON.stringify(graph, null, 2));
   // console.log(JSON.stringify(g, null, 2));
 
-  console.time("graph_decode");
-  const decoded_graph = Graph.decode(g);
-  console.timeEnd("graph_decode");
+  // console.time("graph_decode");
+  // const decoded_graph = Graph.decode(g);
+  // console.timeEnd("graph_decode");
   // console.log(JSON.stringify(decoded_graph, null, 2));
 }

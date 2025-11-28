@@ -1,11 +1,10 @@
 import assert from "node:assert";
 import {
-  EnumNode_Value,
   type GraphNode,
+  type NodeConnection,
   NodeGraph_Id_Class,
   NodeGraph_Id_Kind,
   NodeGraph_Id_Type,
-  type NodeId,
   type NodePin,
   NodePin_Index_Kind,
   NodeProperty_Type,
@@ -24,6 +23,7 @@ import { get_id, type NodePins, type NodeType } from "./nodes.ts";
 import { counter_dynamic_id, counter_index, randomInt, todo } from "./utils.ts";
 import { type ConcreteMap } from "../node_data/concrete_map.ts";
 import { get_concrete_index } from "../node_data/helpers.ts";
+import { EnumNode_Value, NodeId } from "../node_data/enums.ts";
 
 /**
  * GraphBody_ 接口定义了构建图的基本参数
@@ -167,6 +167,8 @@ export interface PinBody_ {
   value?: VarBase;
   /** 引脚的数据类型 */
   type: VarType;
+  /** 引脚的连接 */
+  connects?: NodeConnection[];
 }
 /**
  * 根据提供的参数构建一个引脚对象 (NodePin)
@@ -194,7 +196,7 @@ export function pin_body(body: PinBody_): NodePin {
     },
     value: body.value ?? {} as any, // may cause unpredictable behavior
     type: body.type,
-    connects: [],
+    connects: body.connects ?? [],
   };
   return pin;
 }
@@ -295,6 +297,8 @@ export interface MapPinBody_ {
   value_type: VarType;
   /** 具体类型的索引，可选 */
   indexOfConcrete?: number;
+  /** 引脚的连接 */
+  connects?: NodeConnection[];
 }
 /**
  * 构建 Map 类型引脚
@@ -348,6 +352,7 @@ export function map_pin_body(body: MapPinBody_): NodePin {
     index: body.index,
     type: VarType.Dictionary,
     value: pin_value({ value, wrapper, indexOfConcrete: body.indexOfConcrete }),
+    connects: body.connects,
   });
 }
 
@@ -363,6 +368,8 @@ export interface ListPinBody_ {
   index: number;
   /** 列表中元素的类型 */
   value_type: VarType;
+  /** 引脚的连接 */
+  connects?: NodeConnection[];
 }
 /**
  * 构建 List 类型引脚
@@ -394,6 +401,7 @@ export function list_pin_body(body: ListPinBody_): NodePin {
     index: body.index,
     type: body.value_type,
     value: val,
+    connects: body.connects,
   });
 }
 
@@ -531,6 +539,8 @@ export interface AnyPinBody_ {
   indexOfConcrete?: number;
   /** 引脚的初始值，可选，不同类型对应不同值结构 */
   value?: any;
+  /** 上游连接引脚 */
+  connects?: NodeConnection[];
 }
 /**
  * 构建任意类型引脚（自动根据 VarType 分发）
@@ -562,6 +572,7 @@ export function any_pin_body(body: AnyPinBody_): NodePin {
         key_type: body.key_val_type![0],
         value_type: body.key_val_type![1],
         indexOfConcrete: body.indexOfConcrete,
+        connects: body.connects,
       });
     case VarType.BooleanList:
     case VarType.ConfigurationList:
@@ -579,6 +590,7 @@ export function any_pin_body(body: AnyPinBody_): NodePin {
         kind: body.kind,
         index: body.index,
         value_type: body.type,
+        connects: body.connects,
       });
     case VarType.EnumItem:
       value = enum_value({ value: body.value });
@@ -617,6 +629,7 @@ export function any_pin_body(body: AnyPinBody_): NodePin {
       indexOfConcrete: body.indexOfConcrete,
       value: value,
     }),
+    connects: body.connects,
   });
 }
 
@@ -634,6 +647,8 @@ export interface NodeTypePinBody_ {
   indexOfConcrete?: number;
   /** 引脚的初始值，可选 */
   value?: any;
+  /** 上游连接引脚 */
+  connects?: NodeConnection[];
 }
 /**
  * 构建 NodeType 类型的引脚（NodeType → VarType）
@@ -662,6 +677,7 @@ export function node_type_pin_body(body: NodeTypePinBody_): NodePin {
     key_val_type,
     value: body.value,
     indexOfConcrete: body.indexOfConcrete,
+    connects: body.connects,
   });
 }
 
@@ -805,4 +821,22 @@ export function node_type_node_body_empty(
     x: x,
     y: y,
   } as any);
+}
+
+
+
+
+
+export function node_connect_from(from: number, from_index: number): NodeConnection {
+  return {
+    id: from,
+    connect: {
+      kind: NodePin_Index_Kind.OutParam,
+      index: from_index,
+    },
+    connect2: {
+      kind: NodePin_Index_Kind.OutParam,
+      index: from_index,
+    },
+  };
 }

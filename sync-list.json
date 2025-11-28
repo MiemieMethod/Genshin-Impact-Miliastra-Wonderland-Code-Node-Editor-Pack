@@ -1,5 +1,5 @@
 {
-  "commitMessage": "整理出完整服务器节点信息列表: utils/node_data/node_pin_records.ts",
+  "commitMessage": "为 Graph 类制作了不完整的添加节点连线的功能",
   "notSync": false,
   "include": [
     "*",

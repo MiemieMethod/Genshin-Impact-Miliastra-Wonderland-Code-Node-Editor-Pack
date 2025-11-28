@@ -48,23 +48,22 @@
 #### 📦 文件结构
 
 ```
-Graph
-├── Graph(type, uid, name, graph_id)
-│   ├── add_node()
-│   ├── encode(): Root
-│   └── static decode(root: Root): Graph
-│
-└── Node(node_id, unique_id)
-    ├── setConcrete()
-    ├── setPos(x, y)
-    ├── encode(): GraphNode
-    └── static decode(gNode: GraphNode): Node
+Graph(type, uid, name, graph_id)
+  ├── add_node(node_id)
+  ├── encode(): Root
+  └── static decode(root: Root): Graph
 
+Node(node_id, unique_id)
+  ├── setConcrete()
+  ├── setPos(x, y)
+  ├── encode(): GraphNode
+  └── static decode(gNode: GraphNode): Node
+    
 Pin(node_id, kind, index)
-    ├── clear()
-    ├── setType()
-    ├── updateConcreteIndex()
-    └── encode(): NodePin | null
+  ├── clear()
+  ├── setType(type)
+  ├── updateConcreteIndex()
+  └── encode(): NodePin | null
 ```
 
 #### 🔄 序列化行为
@@ -101,6 +100,7 @@ node.y = proto.y / 200
 ```ts
 const graph = new Graph("server");
 
+// 节点 ID 信息参见 utils\node_data\node_pin_records.ts
 const n1 = graph.add_node(1001);
 const n2 = graph.add_node(250);
 
