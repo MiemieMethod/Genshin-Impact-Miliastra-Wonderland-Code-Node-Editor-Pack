@@ -9,16 +9,15 @@ interface SyncConfig {
   exclude: string[];
   commitMessage?: string;
 }
-
-const ROOT = process.cwd();
-const MAIN_DIR = path.join(ROOT, "main");
+const out_dir = process.argv[2] ?? "main";
+const in_dir = process.argv[3] ?? "dev";
+const sync_path = process.argv[4] ?? path.join(in_dir, "sync-list.json");
 
 function loadConfig(): SyncConfig {
-  const configPath = path.join(ROOT, "sync-list.json");
-  if (!fs.existsSync(configPath)) {
+  if (!fs.existsSync(sync_path)) {
     throw new Error("sync-list.json not found");
   }
-  return JSON.parse(fs.readFileSync(configPath, "utf8"));
+  return JSON.parse(fs.readFileSync(sync_path, "utf8"));
 }
 
 function resolvePattern(pattern: string): string {
@@ -32,12 +31,12 @@ function resolvePattern(pattern: string): string {
 
 function collectFiles(patterns: string[]): string[] {
   const finalPatterns = patterns.map(resolvePattern);
-  return fg.sync(finalPatterns, { dot: true });
+  return fg.sync(finalPatterns, { cwd: in_dir, dot: true });
 }
 
 function syncFiles(config: SyncConfig) {
   console.log("🟦 Cleaning main/ ...");
-  fse.emptyDirSync(MAIN_DIR);
+  fse.emptyDirSync(out_dir);
 
   console.log("🟩 Collecting include files...");
   let included = collectFiles(config.include);
@@ -50,8 +49,8 @@ function syncFiles(config: SyncConfig) {
   console.log(`📦 Total files to sync: ${finalFiles.length}`);
 
   for (let file of finalFiles) {
-    const srcPath = path.join(ROOT, file);
-    const dstPath = path.join(MAIN_DIR, file);
+    const srcPath = path.join(in_dir, file);
+    const dstPath = path.join(out_dir, file);
 
     fse.ensureDirSync(path.dirname(dstPath));
     fse.copyFileSync(srcPath, dstPath);
