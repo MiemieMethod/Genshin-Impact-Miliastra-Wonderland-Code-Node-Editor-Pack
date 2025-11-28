@@ -16,6 +16,10 @@ jobs:
         with:
           ref: dev
           path: dev
+      - name: Setup Node.js 24 (no npm project)
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
 
       - name: Install dependency
         run: npm install fast-glob fs-extra
