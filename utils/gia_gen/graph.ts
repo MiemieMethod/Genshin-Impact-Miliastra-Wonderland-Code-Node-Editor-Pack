@@ -1,5 +1,7 @@
+import { get_generic_id } from "../node_data/node_pin_records.ts";
 import type { GraphNode } from "../protobuf/gia.proto.ts";
 import { node_type_node_body, NodeTypeNodeBody_ } from "./basic";
+import { type NodePins } from "./nodes.ts";
 import { Counter, randomInt, randomName } from "./utils.ts";
 
 
@@ -29,7 +31,7 @@ class Graph {
   }
   add_node(node: number | Node): Node {
     if (typeof node === "number") {
-      const n = new Node(node);
+      const n = new Node(node, this.counter_idx.value);
       this.nodes.push(n);
       return n;
     }
@@ -44,13 +46,21 @@ class Graph {
 }
 
 class Node {
-  private id: number;
-  private node_type: number;
+  private unique_id: number;
+  private node_type_id: number;
+  private generic_id: number;
+  pins: NodePins;
   x: number = 0;
   y: number = 0;
-  constructor(node_type: number, id: number) {
-    this.id = id;
-    this.node_type = node_type;
+  constructor(node_type_id: number, unique_id: number) {
+    this.unique_id = unique_id;
+    this.node_type_id = node_type_id;
+    this.generic_id = get_generic_id(node_type_id) ?? node_type_id;
+    this.pins = {
+      inputs: [],
+      outputs: [],
+      id: node_type_id,
+    };
   }
   setPos(x: number, y: number) {
     this.x = x;
@@ -60,7 +70,7 @@ class Node {
     const body: NodeTypeNodeBody_ = {
       x: this.x,
       y: this.y,
-      unique_index: this.id,
+      unique_index: this.unique_id,
     };
     return node_type_node_body(body);
   }

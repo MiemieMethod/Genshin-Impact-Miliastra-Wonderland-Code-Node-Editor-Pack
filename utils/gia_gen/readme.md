@@ -123,8 +123,7 @@ import {
 } from "./basic.ts";
 
 const node = node_type_node_body({
-  node: MyNodeTypeDef,
-  map: MyTypeMap,
+  node: MyNodeDef,
   x: 100,
   y: 200,
 });

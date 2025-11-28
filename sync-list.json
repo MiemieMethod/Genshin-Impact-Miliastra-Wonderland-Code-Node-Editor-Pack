@@ -6,15 +6,11 @@
     "src/**",
     "utils/**",
     "static/**",
-
     "!package-lock.json",
     "!sync-list.json",
-
     "!**/test/**",
     "!**/temp/**",
-
     "!**/?(*.)(temp|test|log)?(.*)",
-
     "!utils/**/ref/**",
     "!utils/protobuf/debug_decode.ts",
     "!utils/node_data/enum_id_raw.yaml",
@@ -22,8 +18,7 @@
     "!utils/functions/tools.ts",
     "!utils/functions/math_raw.d.ts",
     "!utils/functions/check.ts"
-
   ],
   "commitMessage": "添加任务记录与规划清单",
-  "notSync": false
+  "notSync": true
 }
