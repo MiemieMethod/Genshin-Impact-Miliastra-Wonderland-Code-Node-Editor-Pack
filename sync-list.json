@@ -1,15 +1,23 @@
 {
   "include": [
+    "/*",
+    "/docs",
+    "/ref",
     "/src",
-    "/dist",
-    "*.md",
-    "assets/**"
+    "/utils"
   ],
   "exclude": [
-    "**/*.test.*",
+    "/package-lock.json",
+    "/sync-list.json",
+    "test/**",
     "temp/**",
-    "ref/**",
+
+    "*.test.*",
+    "*.temp.*",
+    "test.*",
+    "temp.*",
     "*.log"
   ],
-  "commitMessage": "Test sync to auto-sync a clean main branch"
+  "commitMessage": "Sync from dev branch",
+  "notSync": false
 }

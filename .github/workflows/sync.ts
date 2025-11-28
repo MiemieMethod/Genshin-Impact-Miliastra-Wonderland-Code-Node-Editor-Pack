@@ -8,6 +8,7 @@ interface SyncConfig {
   include: string[];
   exclude: string[];
   commitMessage?: string;
+  notSync?: boolean;
 }
 
 if(
@@ -89,6 +90,10 @@ function getDevCommitMessage(): string {
 
 function main() {
   const config = loadConfig();
+  if(config.notSync) {
+    console.log("⚠️ Sync is disabled via 'notSync' flag in sync-list.json. Exiting.");
+    return;
+  }
 
   syncFiles(config);
 
