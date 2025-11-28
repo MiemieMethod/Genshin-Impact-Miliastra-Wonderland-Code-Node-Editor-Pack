@@ -660,13 +660,13 @@ export const NODE_PIN_RECORDS: NodePinsRecords[] = ${str};`;
 }
 
 function read_enum() {
-  const y: EnumList = yaml.parse(readFileSync("./utils/node_data/enum_id.yaml").toString());
+  const y: EnumList = yaml.parse(readFileSync("./utils/node_data/yaml/yaml/enum_id.yaml").toString());
   console.log(y.EnumList.map(x => `[${x.id}, "S<T:E<${x.varClassBase}>>"],`).join("\n"));
 }
 
 function combine_id_list() {
   const names = new Map(
-    readFileSync("./utils/node_data/server_node_id.yaml")
+    readFileSync("./utils/node_data/yaml/server_node_id.yaml")
       .toString().split('\n').map(s => s.trim())
       .map(s => /^(\d+): (\d+\. )?(.+)$/s.exec(s)).filter(x => x !== null)
       .map(([_, d,_2,s]) => [d, s])
@@ -677,7 +677,7 @@ function combine_id_list() {
   const all = [...g, ...b].flat()
     .sort((a, b) => parseInt(a) - parseInt(b))
     .join("\n");
-  writeFileSync("./utils/node_data/server.yaml", all);
+  writeFileSync("./utils/node_data/yaml/server.yaml", all);
 }
 
 

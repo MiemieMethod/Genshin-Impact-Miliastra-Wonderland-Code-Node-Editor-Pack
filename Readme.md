@@ -3,6 +3,8 @@
 
 本项目是我的多个千星奇域工具项目的汇总与整合，旨在补全开源开发生态，提供从底层文件解析到上层代码编写的全套解决方案。
 
+项目的**规划**, **进度**, **当前工作**请参见 [todo.md](./TODO.md)
+
 ## 核心功能 (Core Features)
 
 本项目功能复杂多样，主要包含以下核心模块：
@@ -23,8 +25,8 @@
 
 ### 3. 完备的节点与枚举数据
 整理并校验了游戏中的各类 ID 映射，确保转换的准确性。
-*   [**Node ID 映射 (`utils/node_data/server_node_id.yaml`)**](./utils/node_data/server_node_id.yaml): 可读的服务器节点基类 ID (Server Node ID) 的完整对照表。 在 [utils/node_data/server.yaml](./utils/node_data/server.yaml) 保存了完整的扩展类-基类-反射类型-名称的清单.
-*   [**枚举标准化 (`utils/node_data/enum_id.yaml`)**](./utils/node_data/enum_id.yaml): 自动生成标准化的枚举定义 (`enum_id.yaml`)，并提供工具生成测试用例以在游戏中验证枚举的有效性。
+*   [**Node ID 映射 (`utils/node_data/yaml/server_node_id.yaml`)**](./utils/node_data/yaml/server_node_id.yaml): 可读的服务器节点基类 ID (Server Node ID) 的完整对照表。 在 [utils/node_data/yaml/server.yaml](./utils/node_data/yaml/server.yaml) 保存了完整的扩展类-基类-反射类型-名称的清单.
+*   [**枚举标准化 (`utils/node_data/yaml/enum_id.yaml`)**](./utils/node_data/yaml/enum_id.yaml): 自动生成标准化的枚举定义 (`enum_id.yaml`)，并提供工具生成测试用例以在游戏中验证枚举的有效性。
 
 ### 4. 在线节点编辑器功能
 *   *(外部库)* [WebMiliastraNodesEditor](https://github.com/Columbina-Dev/WebMiliastraNodesEditor): 图形化操作界面, 模拟游戏内节点编辑器行为, 将来会补充完整的导入导出和转化功能.

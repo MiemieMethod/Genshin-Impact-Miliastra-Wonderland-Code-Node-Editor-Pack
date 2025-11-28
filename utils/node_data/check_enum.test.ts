@@ -6,7 +6,7 @@
 import yaml from 'yaml';
 import { encode_gia_file } from "../protobuf/decode.ts";
 import { EnumNode_Value, type GraphNode, NodeGraph_Id_Class, NodeGraph_Id_Kind, NodeGraph_Id_Type, NodeId, type NodePin, NodePin_Index_Kind, NodeProperty_Type, NodeUnit_Id_Type, NodeUnit_Type, type Root, VarBase_Class, VarType } from "../protobuf/gia.proto.ts";
-import "./enum_id.yaml";
+import "./yaml/enum_id.yaml.d.ts";
 import assert from 'assert';
 import { readFileSync } from 'fs';
 
@@ -132,7 +132,7 @@ function create_enum_node(option: EnumOptions) {
 }
 
 function check_create_enums(v: number) {
-  const enum_list: EnumList = yaml.parse(readFileSync(import.meta.dirname + "/enum_id.yaml").toString());
+  const enum_list: EnumList = yaml.parse(readFileSync(import.meta.dirname + "/yaml/enum_id.yaml").toString());
 
   const nodes: GraphNode[] = [];
   for (let i = 0; i < enum_list.EnumList.length; i++) {
