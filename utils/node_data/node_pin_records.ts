@@ -1,8 +1,8 @@
 /** Node defines(reflective nodes only).
  *
  * @author Aluria
- * @date 2025-11-27
- * @version 1.0.0
+ * @date 2025-11-28
+ * @version 1.1.0
  */
 
 import type { NodePinsRecords } from "../gia_gen/nodes.ts";

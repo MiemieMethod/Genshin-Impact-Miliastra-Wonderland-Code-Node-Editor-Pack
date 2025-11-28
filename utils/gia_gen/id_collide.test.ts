@@ -10,9 +10,10 @@ import { get_id, get_type, type NodeType, parse, stringify, to_string, type Node
 import { randomInt } from "./utils.ts";
 import { derived_records } from "../node_data/ref/node_defines.ts";
 import { get_pin_info, get_node_info, get_nodes } from "./extract.ts";
-import { CONCRETE_MAP, get_concrete_index } from "../node_data/concrete_map.ts";
+import { CONCRETE_MAP } from "../node_data/concrete_map.ts";
 import yaml from 'yaml';
 import { NODE_PIN_RECORDS } from "../node_data/node_pin_records.ts";
+import { Graph } from "./graph.ts"
 
 function generate_all_nodes(from: number, size: number = 300, line_width: number = 20, offsets: number = 1): GraphNode[] {
   const ret = [];
@@ -78,7 +79,7 @@ function read_trimmed_graph() {
 }
 function get_graph_ids(type?: "Generic" | "Basic"): number[] {
   const data = readFileSync("./utils/node_data/ref/generic.txt").toString();
-  const nodes = data.split("\n").map(x => x.split(":"));
+  const nodes = data.split("\n").map(x => x.split(":").map(s => s.trim()));
   return nodes.filter((x) => type === undefined || x[1] === type).map(x => parseInt(x[0]));
 }
 
@@ -669,17 +670,45 @@ function combine_id_list() {
     readFileSync("./utils/node_data/yaml/server_node_id.yaml")
       .toString().split('\n').map(s => s.trim())
       .map(s => /^(\d+): (\d+\. )?(.+)$/s.exec(s)).filter(x => x !== null)
-      .map(([_, d,_2,s]) => [d, s])
+      .map(([_, d, _2, s]) => [d, s])
   );
   console.log(names);
-  const b = get_graph_ids("Basic").map(x => `${x}: ${x} # ServerBasic # ${names.get(x.toString())}`);
-  const g = NODE_PIN_RECORDS.map(x => x.reflectMap!.map(y =>`${y[0]}: ${x.id} # ServerGeneric ${y[1]} # ${names.get(x.id.toString())}`));
+  const b = get_graph_ids("Basic").map(x => ({ gid: x, cid: x, type: "ServerBasic", name: names.get(x.toString()) }));
+  const g = NODE_PIN_RECORDS.map(x => x.reflectMap!.map(y => ({ cid: y[0], gid: x.id, type: "ServerGeneric " + y[1], name: names.get(x.id.toString()) })));
   const all = [...g, ...b].flat()
-    .sort((a, b) => parseInt(a) - parseInt(b))
-    .join("\n");
-  writeFileSync("./utils/node_data/yaml/server.yaml", all);
+    .sort((a, b) => a.cid - b.cid);
+
+  console.log(b);
+  writeFileSync("./utils/node_data/yaml/server.yaml", all.map(x => `${x.cid}:${x.gid} # ${x.type} ${x.name}`).join("\n"));
 }
 
+function get_missing() {
+  const lines = readFileSync("./utils/node_data/yaml/server.yaml").toString().split("\n")
+    .filter(x => x.length > 0 && x.trim().endsWith("undefined"))
+    .map(x => parseInt(x.split("#")[0].split(":")[1]));
+  const ids = [...new Set(lines)].sort();
+
+  console.log(ids);
+  const g = new Graph();
+  ids.forEach((x, i) => g.add_node(x).setPos(i, 0))
+  encode_gia_file({ gia_struct: g.encode(), out_path: "./utils/ref/missing_name.gia" });
+}
+
+
+function get_missing2() {
+  const lines = readFileSync("./utils/node_data/yaml/server.yaml").toString().split("\n")
+    .map(x => x.split("#")[0].split(":").map(y => parseInt(y))).flat();
+  const set = new Set(lines);
+  const g = new Graph();
+  const a = [];
+  for (let i = 0; i < lines[lines.length - 1]; i++) {
+    if (set.has(i)) continue;
+    g.add_node(i).setPos(i % 10, i / 10);
+    a.push([a.length, i]);
+  }
+  console.log(a);
+  encode_gia_file({ gia_struct: g.encode(), out_path: "./utils/ref/missing_name2.gia" });
+}
 
 if (import.meta.main) {
   console.time("Time Consume");
@@ -700,7 +729,8 @@ if (import.meta.main) {
   // generate_concrete_dict_map(true);
 
   combine_id_list();
-  // read_enum();
+  // get_missing();
+  // get_missing2();
 
   // const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/";
   // const graph = decode_gia_file({

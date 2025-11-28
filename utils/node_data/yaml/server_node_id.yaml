@@ -25,6 +25,7 @@ Server Execution Node:
   - III. Custom Variables:
     323: 1. Set Node Graph Variable
     22: 2. Set Custom Variable
+    445: 2. Native Setting Custom Value
 
   - IV. Preset Status:
     66: 1. Set Preset Status
@@ -275,6 +276,7 @@ Server Trigger Node:
   - I. Custom Variables:
     351: 1. When Node Graph Variable Changes
     36: 2. When Custom Variable Changes
+    428: 3. When Native Custom Value Changes
 
   - II. Preset Status:
     67: 1. When Preset Status Changes
@@ -536,6 +538,7 @@ Arithmetic Node:
   Assembly Dict: # 1788-1927, 140 ID in total
     base_id: 1788
     Generic: 1788
+    1788: Assembly Dict
     # Except:
     #   - Generic
     #   - Structure
@@ -574,6 +577,7 @@ Arithmetic Node:
   Create Dict: # 1088-1157, 70 in total
     base_id: 1088
     Generic: 1088
+    1088: Create Dict
     # Except:
     #   - Generic
     #   - Structure
@@ -637,6 +641,7 @@ Server Query Node:
     3360: 1. Query Custom Variable Snapshot
     337: 2. Get Node Graph Variable
     50: 3. Get Custom Variable
+    459: 4. Native Query Custom Value
 
   - V. Preset Status:
     68: 1. Get Preset Status
