@@ -1,6 +1,7 @@
 import { debugDecode } from "../protobuf/debug_decode.ts";
 import { decode_gia_file, encode_gia_file, unwrap_gia } from "../protobuf/decode.ts";
 import proto from "protobufjs";
+import { Graph } from "./graph.ts";
 
 const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/";
 
@@ -33,9 +34,27 @@ function read() {
   encode_gia_file({ gia_struct: g, out_path: PATH + "pin.gia" })
 
 }
-read()
+// read()
 
 // const g = decode_gia_file({ gia_path: PATH + "pin2.gia" });
 // const nodes = g.graph.graph?.inner.graph.nodes!;
 // console.dir(nodes, { depth: null });
 
+
+function graph_ts() {
+  // Test Graph Encoding
+  console.time("graph_encode");
+  const graph = new Graph("server");
+  const node1 = graph.add_node(1001);
+  const node2 = graph.add_node(1002);
+  const node3 = graph.add_node(250);
+  node1.setPos(1, 2);
+  node2.setPos(3, 4);
+  node3.setPos(5, 6);
+  const g = graph.encode();
+  console.timeEnd("graph_encode");
+  encode_gia_file({ gia_struct: g, out_path: "./utils/ref/graph_ts.gia" });
+
+}
+
+graph_ts();
