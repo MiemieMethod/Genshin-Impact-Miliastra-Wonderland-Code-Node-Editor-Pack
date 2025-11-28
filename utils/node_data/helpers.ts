@@ -103,8 +103,8 @@ const NODE_RECORDS_INDEX_MAP: Map<number, number> = new Map(
 );
 const NODE_ID_MAP: Map<number, number> = new Map(
   NODE_PIN_RECORDS.map(r =>
-    r.reflectMap!.map(ref => [ref[0], r.id] as [number, number])
-  ).flat()
+    r.reflectMap?.map(ref => [ref[0], r.id] as [number, number])
+  ).filter(x => x !== undefined).flat()
 );
 
 export function get_generic_id(concrete_id: number): number | null {
