@@ -20,7 +20,7 @@
 
 ### 3. 完备的节点与枚举数据
 整理并校验了游戏中的各类 ID 映射，确保转换的准确性。
-*   [**Node ID 映射 (`utils/node_data/server_node_id.yaml`)**](./utils/node_data/server_node_id.yaml): 服务器节点 ID (Server Node ID) 的完整对照表。
+*   [**Node ID 映射 (`utils/node_data/server_node_id.yaml`)**](./utils/node_data/server_node_id.yaml): 可读的服务器节点基类 ID (Server Node ID) 的完整对照表。 在 [utils/node_data/server.yaml](./utils/node_data/server.yaml) 保存了完整的扩展类-基类-反射类型-名称的清单.
 *   [**枚举标准化 (`utils/node_data/enum_id.yaml`)**](./utils/node_data/enum_id.yaml): 自动生成标准化的枚举定义 (`enum_id.yaml`)，并提供工具生成测试用例以在游戏中验证枚举的有效性。
 
 ### 4. 在线节点编辑器功能
