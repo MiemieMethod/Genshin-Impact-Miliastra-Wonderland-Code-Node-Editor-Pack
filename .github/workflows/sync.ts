@@ -69,6 +69,8 @@ function syncFiles(config: SyncConfig) {
 
   let finalFiles = included.filter(f => !excluded.has(f));
 
+  console.debug(config, included, excluded, finalFiles);
+
   console.log(`📦 Total files to sync: ${finalFiles.length}`);
 
   for (let file of finalFiles) {
@@ -113,7 +115,8 @@ function main() {
     git config user.email "github-actions[bot]@users.noreply.github.com" &&
     git add -A &&
     (git commit -m "${commitMessage.replace(/"/g, '\\"')}" || echo "No changes") &&
-    git push
+    git push &&
+    git merge -s ours dev
   `;
 
   execSync(gitCmd, { stdio: "inherit", shell: "/bin/bash" });
