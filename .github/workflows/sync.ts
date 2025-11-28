@@ -9,6 +9,15 @@ interface SyncConfig {
   exclude: string[];
   commitMessage?: string;
 }
+
+if(
+  process.argv.length < 2 || process.argv.length > 5 || 
+  process.argv.includes("--help") || process.argv.includes("-h")
+) {
+  console.error("Usage: ts-node sync.ts [out_dir] [in_dir] [sync_path]");
+  process.exit(1);
+}
+
 const out_dir = process.argv[2] ?? "main";
 const in_dir = process.argv[3] ?? "dev";
 const sync_path = process.argv[4] ?? path.join(in_dir, "sync-list.json");
@@ -81,8 +90,8 @@ function main() {
 
   // Commit inside main directory
   const gitCmd = `
-    git config user.name "github-actions[bot]"
-    git config user.email "github-actions[bot]@users.noreply.github.com"
+    git config --global user.name "github-actions[bot]" &&
+    git config --global user.email "github-actions[bot]@users.noreply.github.com" &&
     cd main &&
     git add -A &&
     (git commit -m "${commitMessage.replace(/"/g, '\\"')}" || echo "No changes") &&
