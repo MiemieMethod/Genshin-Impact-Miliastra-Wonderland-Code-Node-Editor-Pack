@@ -1,10 +1,9 @@
 import assert from "assert";
-import { get_generic_id, get_node_record } from "../node_data/node_pin_records.ts";
 import type { GraphNode, NodeId, NodePin, NodePin_Index_Kind, Root } from "../protobuf/gia.proto.ts";
 import { graph_body, node_body, node_type_pin_body } from "./basic.ts";
 import { type NodeType, reflects_records, get_id, type_equal } from "./nodes.ts";
 import { Counter, panic, randomInt, randomName } from "./utils.ts";
-import { get_concrete_index, is_concrete_pin } from "../node_data/concrete_map.ts";
+import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record } from "../node_data/helpers.ts";
 import { get_node_info } from "./extract.ts";
 
 
@@ -71,7 +70,7 @@ export class Graph {
     const [uid, time, graph_id_str, file_name] = root.filePath.split("-");
     const name = file_name.endsWith(".gia") ? file_name.slice(1, -4) : file_name.slice(1);
     const graph = new Graph("server", parseInt(uid), name, parseInt(graph_id_str));
-    root.graph.graph?.inner.graph.nodes.forEach(node=>graph.add_node(Node.decode(node)));
+    root.graph.graph?.inner.graph.nodes.forEach(node => graph.add_node(Node.decode(node)));
     return graph;
   }
 }
@@ -105,7 +104,7 @@ export class Node {
     assert.equal(pins.id, this.generic_id); // Cannot set concrete id of different generic type
     this.node_id = id;
     this.pin_len = [pins.inputs.length, pins.outputs.length];
-    const rec = reflects_records(pins, id);
+    const rec = reflects_records(pins, id, true);
     for (let i = 0; i < rec.inputs.length; i++) {
       if (this.pins[i] === undefined) {
         this.pins[i] = new Pin(this.node_id, 3, i);
@@ -153,12 +152,12 @@ export class Node {
     const info = get_node_info(node);
     const id = info.concrete_id ?? info.generic_id;
     const n = new Node(id, node.nodeIndex);
-    n.setPos(node.x/300, node.y/200);
+    n.setPos(node.x / 300, node.y / 200);
     info.pins.forEach((p) => {
-      if(p.kind===3){
+      if (p.kind === 3) {
         // Input
         n.pins[p.index].setType(p.node_type);
-      }else if(p.kind===4){
+      } else if (p.kind === 4) {
         // Output
         n.pins[n.pin_len[0] + p.index].setType(p.node_type);
       }
@@ -193,7 +192,7 @@ export class Pin {
     this.updateConcreteIndex();
   }
   updateConcreteIndex() {
-    if(x) debugger;
+    if (x) debugger;
     if (this.type !== null && is_concrete_pin(this.node_id, this.kind, this.index)) {
       this.concrete_index = get_concrete_index(this.node_id, this.kind, this.index, get_id(this.type));
     } else {
@@ -219,7 +218,7 @@ export class Pin {
     });
   }
 }
-let x=false;
+let x = false;
 if (import.meta.main) {
   // Test Graph Encoding
   console.time("graph_encode");
@@ -229,7 +228,7 @@ if (import.meta.main) {
   graph.add_node(1002);
   node1.setPos(1, 2);
   node2.setPos(3, 4);
-  x=true;
+  x = true;
   node1.setConcrete(1002);
   const g = graph.encode();
   console.timeEnd("graph_encode");

@@ -377,48 +377,48 @@
 397: 397 # ServerBasic # Initialize Character Skill
 398: 398 # ServerBasic # Query Character Skill
 399: 399 # ServerBasic # Delete Character Skill by Slot
-428: 428 # ServerGeneric S<T:Int> # undefined
-432: 428 # ServerGeneric S<T:Str> # undefined
-433: 428 # ServerGeneric S<T:Ety> # undefined
-434: 428 # ServerGeneric S<T:Gid> # undefined
-435: 428 # ServerGeneric S<T:Flt> # undefined
-436: 428 # ServerGeneric S<T:Vec> # undefined
-437: 428 # ServerGeneric S<T:Bol> # undefined
-438: 428 # ServerGeneric S<T:L<Int>> # undefined
-439: 428 # ServerGeneric S<T:L<Str>> # undefined
-440: 428 # ServerGeneric S<T:L<Ety>> # undefined
-441: 428 # ServerGeneric S<T:L<Gid>> # undefined
-442: 428 # ServerGeneric S<T:L<Flt>> # undefined
-443: 428 # ServerGeneric S<T:L<Vec>> # undefined
-444: 428 # ServerGeneric S<T:L<Bol>> # undefined
-445: 445 # ServerGeneric S<T:Int> # undefined
-446: 445 # ServerGeneric S<T:Str> # undefined
-447: 445 # ServerGeneric S<T:Ety> # undefined
-448: 445 # ServerGeneric S<T:Gid> # undefined
-449: 445 # ServerGeneric S<T:Flt> # undefined
-450: 445 # ServerGeneric S<T:Vec> # undefined
-451: 445 # ServerGeneric S<T:Bol> # undefined
-452: 445 # ServerGeneric S<T:L<Int>> # undefined
-453: 445 # ServerGeneric S<T:L<Str>> # undefined
-454: 445 # ServerGeneric S<T:L<Ety>> # undefined
-455: 445 # ServerGeneric S<T:L<Gid>> # undefined
-456: 445 # ServerGeneric S<T:L<Flt>> # undefined
-457: 445 # ServerGeneric S<T:L<Vec>> # undefined
-458: 445 # ServerGeneric S<T:L<Bol>> # undefined
-459: 459 # ServerGeneric S<T:Int> # undefined
-460: 459 # ServerGeneric S<T:Str> # undefined
-461: 459 # ServerGeneric S<T:Ety> # undefined
-462: 459 # ServerGeneric S<T:Gid> # undefined
-463: 459 # ServerGeneric S<T:Flt> # undefined
-464: 459 # ServerGeneric S<T:Vec> # undefined
-465: 459 # ServerGeneric S<T:Bol> # undefined
-466: 459 # ServerGeneric S<T:L<Int>> # undefined
-467: 459 # ServerGeneric S<T:L<Str>> # undefined
-468: 459 # ServerGeneric S<T:L<Ety>> # undefined
-469: 459 # ServerGeneric S<T:L<Gid>> # undefined
-470: 459 # ServerGeneric S<T:L<Flt>> # undefined
-471: 459 # ServerGeneric S<T:L<Vec>> # undefined
-472: 459 # ServerGeneric S<T:L<Bol>> # undefined
+428: 428 # ServerGeneric S<T:Int> # When Native Custom Value Changes
+432: 428 # ServerGeneric S<T:Str> # When Native Custom Value Changes
+433: 428 # ServerGeneric S<T:Ety> # When Native Custom Value Changes
+434: 428 # ServerGeneric S<T:Gid> # When Native Custom Value Changes
+435: 428 # ServerGeneric S<T:Flt> # When Native Custom Value Changes
+436: 428 # ServerGeneric S<T:Vec> # When Native Custom Value Changes
+437: 428 # ServerGeneric S<T:Bol> # When Native Custom Value Changes
+438: 428 # ServerGeneric S<T:L<Int>> # When Native Custom Value Changes
+439: 428 # ServerGeneric S<T:L<Str>> # When Native Custom Value Changes
+440: 428 # ServerGeneric S<T:L<Ety>> # When Native Custom Value Changes
+441: 428 # ServerGeneric S<T:L<Gid>> # When Native Custom Value Changes
+442: 428 # ServerGeneric S<T:L<Flt>> # When Native Custom Value Changes
+443: 428 # ServerGeneric S<T:L<Vec>> # When Native Custom Value Changes
+444: 428 # ServerGeneric S<T:L<Bol>> # When Native Custom Value Changes
+445: 445 # ServerGeneric S<T:Int> # Native Setting Custom Value
+446: 445 # ServerGeneric S<T:Str> # Native Setting Custom Value
+447: 445 # ServerGeneric S<T:Ety> # Native Setting Custom Value
+448: 445 # ServerGeneric S<T:Gid> # Native Setting Custom Value
+449: 445 # ServerGeneric S<T:Flt> # Native Setting Custom Value
+450: 445 # ServerGeneric S<T:Vec> # Native Setting Custom Value
+451: 445 # ServerGeneric S<T:Bol> # Native Setting Custom Value
+452: 445 # ServerGeneric S<T:L<Int>> # Native Setting Custom Value
+453: 445 # ServerGeneric S<T:L<Str>> # Native Setting Custom Value
+454: 445 # ServerGeneric S<T:L<Ety>> # Native Setting Custom Value
+455: 445 # ServerGeneric S<T:L<Gid>> # Native Setting Custom Value
+456: 445 # ServerGeneric S<T:L<Flt>> # Native Setting Custom Value
+457: 445 # ServerGeneric S<T:L<Vec>> # Native Setting Custom Value
+458: 445 # ServerGeneric S<T:L<Bol>> # Native Setting Custom Value
+459: 459 # ServerGeneric S<T:Int> # Native Query Custom Value
+460: 459 # ServerGeneric S<T:Str> # Native Query Custom Value
+461: 459 # ServerGeneric S<T:Ety> # Native Query Custom Value
+462: 459 # ServerGeneric S<T:Gid> # Native Query Custom Value
+463: 459 # ServerGeneric S<T:Flt> # Native Query Custom Value
+464: 459 # ServerGeneric S<T:Vec> # Native Query Custom Value
+465: 459 # ServerGeneric S<T:Bol> # Native Query Custom Value
+466: 459 # ServerGeneric S<T:L<Int>> # Native Query Custom Value
+467: 459 # ServerGeneric S<T:L<Str>> # Native Query Custom Value
+468: 459 # ServerGeneric S<T:L<Ety>> # Native Query Custom Value
+469: 459 # ServerGeneric S<T:L<Gid>> # Native Query Custom Value
+470: 459 # ServerGeneric S<T:L<Flt>> # Native Query Custom Value
+471: 459 # ServerGeneric S<T:L<Vec>> # Native Query Custom Value
+472: 459 # ServerGeneric S<T:L<Bol>> # Native Query Custom Value
 473: 473 # ServerBasic # Clear Special Effects Based on Special Effect Assets
 474: 474 # ServerBasic # Vec Rotation
 475: 475 # ServerGeneric S<T:E<0>> # Generic
@@ -467,18 +467,18 @@
 519: 519 # ServerBasic # Direction Vector to Rotation
 520: 520 # ServerBasic # Add Target-Oriented Rotation-Based Motion Device
 521: 521 # ServerBasic # Remove Interface Control Group From Control Group Library
-522: 428 # ServerGeneric S<T:Cfg> # undefined
-523: 428 # ServerGeneric S<T:Pfb> # undefined
-524: 428 # ServerGeneric S<T:L<Cfg>> # undefined
-525: 428 # ServerGeneric S<T:L<Pfb>> # undefined
-526: 445 # ServerGeneric S<T:Cfg> # undefined
-527: 445 # ServerGeneric S<T:Pfb> # undefined
-528: 445 # ServerGeneric S<T:L<Cfg>> # undefined
-529: 445 # ServerGeneric S<T:L<Pfb>> # undefined
-530: 459 # ServerGeneric S<T:Cfg> # undefined
-531: 459 # ServerGeneric S<T:Pfb> # undefined
-532: 459 # ServerGeneric S<T:L<Cfg>> # undefined
-533: 459 # ServerGeneric S<T:L<Pfb>> # undefined
+522: 428 # ServerGeneric S<T:Cfg> # When Native Custom Value Changes
+523: 428 # ServerGeneric S<T:Pfb> # When Native Custom Value Changes
+524: 428 # ServerGeneric S<T:L<Cfg>> # When Native Custom Value Changes
+525: 428 # ServerGeneric S<T:L<Pfb>> # When Native Custom Value Changes
+526: 445 # ServerGeneric S<T:Cfg> # Native Setting Custom Value
+527: 445 # ServerGeneric S<T:Pfb> # Native Setting Custom Value
+528: 445 # ServerGeneric S<T:L<Cfg>> # Native Setting Custom Value
+529: 445 # ServerGeneric S<T:L<Pfb>> # Native Setting Custom Value
+530: 459 # ServerGeneric S<T:Cfg> # Native Query Custom Value
+531: 459 # ServerGeneric S<T:Pfb> # Native Query Custom Value
+532: 459 # ServerGeneric S<T:L<Cfg>> # Native Query Custom Value
+533: 459 # ServerGeneric S<T:L<Pfb>> # Native Query Custom Value
 534: 323 # ServerGeneric S<T:Cfg> # Set Node Graph Variable
 535: 323 # ServerGeneric S<T:Pfb> # Set Node Graph Variable
 536: 323 # ServerGeneric S<T:L<Cfg>> # Set Node Graph Variable
@@ -573,9 +573,9 @@
 625: 323 # ServerGeneric S<T:Fct> # Set Node Graph Variable
 626: 337 # ServerGeneric S<T:Fct> # Get Node Graph Variable
 627: 351 # ServerGeneric S<T:Fct> # When Node Graph Variable Changes
-628: 428 # ServerGeneric S<T:Fct> # undefined
-629: 445 # ServerGeneric S<T:Fct> # undefined
-630: 459 # ServerGeneric S<T:Fct> # undefined
+628: 428 # ServerGeneric S<T:Fct> # When Native Custom Value Changes
+629: 445 # ServerGeneric S<T:Fct> # Native Setting Custom Value
+630: 459 # ServerGeneric S<T:Fct> # Native Query Custom Value
 631: 631 # ServerBasic # Switch Active Text Bubble
 632: 632 # ServerBasic # Invoke Deck Selector
 633: 633 # ServerBasic # When Deck Selector Is Complete
@@ -864,76 +864,76 @@
 1084: 948 # ServerGeneric S<K:Pfb,V:L<Fct>> # Set or Add Key Value Pairs to Dictionary
 1085: 948 # ServerGeneric S<K:Pfb,V:L<Vec>> # Set or Add Key Value Pairs to Dictionary
 1086: 948 # ServerGeneric S<K:Pfb,V:L<Cfg>> # Set or Add Key Value Pairs to Dictionary
-1088: 1088 # ServerGeneric S<K:Ety,V:Ety> # undefined
-1089: 1088 # ServerGeneric S<K:Ety,V:Gid> # undefined
-1090: 1088 # ServerGeneric S<K:Ety,V:Int> # undefined
-1091: 1088 # ServerGeneric S<K:Ety,V:Bol> # undefined
-1092: 1088 # ServerGeneric S<K:Ety,V:Flt> # undefined
-1093: 1088 # ServerGeneric S<K:Ety,V:Str> # undefined
-1094: 1088 # ServerGeneric S<K:Ety,V:Fct> # undefined
-1095: 1088 # ServerGeneric S<K:Ety,V:Vec> # undefined
-1096: 1088 # ServerGeneric S<K:Ety,V:Cfg> # undefined
-1097: 1088 # ServerGeneric S<K:Ety,V:Pfb> # undefined
-1098: 1088 # ServerGeneric S<K:Gid,V:Ety> # undefined
-1099: 1088 # ServerGeneric S<K:Gid,V:Gid> # undefined
-1100: 1088 # ServerGeneric S<K:Gid,V:Int> # undefined
-1101: 1088 # ServerGeneric S<K:Gid,V:Bol> # undefined
-1102: 1088 # ServerGeneric S<K:Gid,V:Flt> # undefined
-1103: 1088 # ServerGeneric S<K:Gid,V:Str> # undefined
-1104: 1088 # ServerGeneric S<K:Gid,V:Fct> # undefined
-1105: 1088 # ServerGeneric S<K:Gid,V:Vec> # undefined
-1106: 1088 # ServerGeneric S<K:Gid,V:Cfg> # undefined
-1107: 1088 # ServerGeneric S<K:Gid,V:Pfb> # undefined
-1108: 1088 # ServerGeneric S<K:Int,V:Ety> # undefined
-1109: 1088 # ServerGeneric S<K:Int,V:Gid> # undefined
-1110: 1088 # ServerGeneric S<K:Int,V:Int> # undefined
-1111: 1088 # ServerGeneric S<K:Int,V:Bol> # undefined
-1112: 1088 # ServerGeneric S<K:Int,V:Flt> # undefined
-1113: 1088 # ServerGeneric S<K:Int,V:Str> # undefined
-1114: 1088 # ServerGeneric S<K:Int,V:Fct> # undefined
-1115: 1088 # ServerGeneric S<K:Int,V:Vec> # undefined
-1116: 1088 # ServerGeneric S<K:Int,V:Cfg> # undefined
-1117: 1088 # ServerGeneric S<K:Int,V:Pfb> # undefined
-1118: 1088 # ServerGeneric S<K:Str,V:Ety> # undefined
-1119: 1088 # ServerGeneric S<K:Str,V:Gid> # undefined
-1120: 1088 # ServerGeneric S<K:Str,V:Int> # undefined
-1121: 1088 # ServerGeneric S<K:Str,V:Bol> # undefined
-1122: 1088 # ServerGeneric S<K:Str,V:Flt> # undefined
-1123: 1088 # ServerGeneric S<K:Str,V:Str> # undefined
-1124: 1088 # ServerGeneric S<K:Str,V:Fct> # undefined
-1125: 1088 # ServerGeneric S<K:Str,V:Vec> # undefined
-1126: 1088 # ServerGeneric S<K:Str,V:Cfg> # undefined
-1127: 1088 # ServerGeneric S<K:Str,V:Pfb> # undefined
-1128: 1088 # ServerGeneric S<K:Fct,V:Ety> # undefined
-1129: 1088 # ServerGeneric S<K:Fct,V:Gid> # undefined
-1130: 1088 # ServerGeneric S<K:Fct,V:Int> # undefined
-1131: 1088 # ServerGeneric S<K:Fct,V:Bol> # undefined
-1132: 1088 # ServerGeneric S<K:Fct,V:Flt> # undefined
-1133: 1088 # ServerGeneric S<K:Fct,V:Str> # undefined
-1134: 1088 # ServerGeneric S<K:Fct,V:Fct> # undefined
-1135: 1088 # ServerGeneric S<K:Fct,V:Vec> # undefined
-1136: 1088 # ServerGeneric S<K:Fct,V:Cfg> # undefined
-1137: 1088 # ServerGeneric S<K:Fct,V:Pfb> # undefined
-1138: 1088 # ServerGeneric S<K:Cfg,V:Ety> # undefined
-1139: 1088 # ServerGeneric S<K:Cfg,V:Gid> # undefined
-1140: 1088 # ServerGeneric S<K:Cfg,V:Int> # undefined
-1141: 1088 # ServerGeneric S<K:Cfg,V:Bol> # undefined
-1142: 1088 # ServerGeneric S<K:Cfg,V:Flt> # undefined
-1143: 1088 # ServerGeneric S<K:Cfg,V:Str> # undefined
-1144: 1088 # ServerGeneric S<K:Cfg,V:Fct> # undefined
-1145: 1088 # ServerGeneric S<K:Cfg,V:Vec> # undefined
-1146: 1088 # ServerGeneric S<K:Cfg,V:Cfg> # undefined
-1147: 1088 # ServerGeneric S<K:Cfg,V:Pfb> # undefined
-1148: 1088 # ServerGeneric S<K:Pfb,V:Ety> # undefined
-1149: 1088 # ServerGeneric S<K:Pfb,V:Gid> # undefined
-1150: 1088 # ServerGeneric S<K:Pfb,V:Int> # undefined
-1151: 1088 # ServerGeneric S<K:Pfb,V:Bol> # undefined
-1152: 1088 # ServerGeneric S<K:Pfb,V:Flt> # undefined
-1153: 1088 # ServerGeneric S<K:Pfb,V:Str> # undefined
-1154: 1088 # ServerGeneric S<K:Pfb,V:Fct> # undefined
-1155: 1088 # ServerGeneric S<K:Pfb,V:Vec> # undefined
-1156: 1088 # ServerGeneric S<K:Pfb,V:Cfg> # undefined
-1157: 1088 # ServerGeneric S<K:Pfb,V:Pfb> # undefined
+1088: 1088 # ServerGeneric S<K:Ety,V:Ety> # Create Dict
+1089: 1088 # ServerGeneric S<K:Ety,V:Gid> # Create Dict
+1090: 1088 # ServerGeneric S<K:Ety,V:Int> # Create Dict
+1091: 1088 # ServerGeneric S<K:Ety,V:Bol> # Create Dict
+1092: 1088 # ServerGeneric S<K:Ety,V:Flt> # Create Dict
+1093: 1088 # ServerGeneric S<K:Ety,V:Str> # Create Dict
+1094: 1088 # ServerGeneric S<K:Ety,V:Fct> # Create Dict
+1095: 1088 # ServerGeneric S<K:Ety,V:Vec> # Create Dict
+1096: 1088 # ServerGeneric S<K:Ety,V:Cfg> # Create Dict
+1097: 1088 # ServerGeneric S<K:Ety,V:Pfb> # Create Dict
+1098: 1088 # ServerGeneric S<K:Gid,V:Ety> # Create Dict
+1099: 1088 # ServerGeneric S<K:Gid,V:Gid> # Create Dict
+1100: 1088 # ServerGeneric S<K:Gid,V:Int> # Create Dict
+1101: 1088 # ServerGeneric S<K:Gid,V:Bol> # Create Dict
+1102: 1088 # ServerGeneric S<K:Gid,V:Flt> # Create Dict
+1103: 1088 # ServerGeneric S<K:Gid,V:Str> # Create Dict
+1104: 1088 # ServerGeneric S<K:Gid,V:Fct> # Create Dict
+1105: 1088 # ServerGeneric S<K:Gid,V:Vec> # Create Dict
+1106: 1088 # ServerGeneric S<K:Gid,V:Cfg> # Create Dict
+1107: 1088 # ServerGeneric S<K:Gid,V:Pfb> # Create Dict
+1108: 1088 # ServerGeneric S<K:Int,V:Ety> # Create Dict
+1109: 1088 # ServerGeneric S<K:Int,V:Gid> # Create Dict
+1110: 1088 # ServerGeneric S<K:Int,V:Int> # Create Dict
+1111: 1088 # ServerGeneric S<K:Int,V:Bol> # Create Dict
+1112: 1088 # ServerGeneric S<K:Int,V:Flt> # Create Dict
+1113: 1088 # ServerGeneric S<K:Int,V:Str> # Create Dict
+1114: 1088 # ServerGeneric S<K:Int,V:Fct> # Create Dict
+1115: 1088 # ServerGeneric S<K:Int,V:Vec> # Create Dict
+1116: 1088 # ServerGeneric S<K:Int,V:Cfg> # Create Dict
+1117: 1088 # ServerGeneric S<K:Int,V:Pfb> # Create Dict
+1118: 1088 # ServerGeneric S<K:Str,V:Ety> # Create Dict
+1119: 1088 # ServerGeneric S<K:Str,V:Gid> # Create Dict
+1120: 1088 # ServerGeneric S<K:Str,V:Int> # Create Dict
+1121: 1088 # ServerGeneric S<K:Str,V:Bol> # Create Dict
+1122: 1088 # ServerGeneric S<K:Str,V:Flt> # Create Dict
+1123: 1088 # ServerGeneric S<K:Str,V:Str> # Create Dict
+1124: 1088 # ServerGeneric S<K:Str,V:Fct> # Create Dict
+1125: 1088 # ServerGeneric S<K:Str,V:Vec> # Create Dict
+1126: 1088 # ServerGeneric S<K:Str,V:Cfg> # Create Dict
+1127: 1088 # ServerGeneric S<K:Str,V:Pfb> # Create Dict
+1128: 1088 # ServerGeneric S<K:Fct,V:Ety> # Create Dict
+1129: 1088 # ServerGeneric S<K:Fct,V:Gid> # Create Dict
+1130: 1088 # ServerGeneric S<K:Fct,V:Int> # Create Dict
+1131: 1088 # ServerGeneric S<K:Fct,V:Bol> # Create Dict
+1132: 1088 # ServerGeneric S<K:Fct,V:Flt> # Create Dict
+1133: 1088 # ServerGeneric S<K:Fct,V:Str> # Create Dict
+1134: 1088 # ServerGeneric S<K:Fct,V:Fct> # Create Dict
+1135: 1088 # ServerGeneric S<K:Fct,V:Vec> # Create Dict
+1136: 1088 # ServerGeneric S<K:Fct,V:Cfg> # Create Dict
+1137: 1088 # ServerGeneric S<K:Fct,V:Pfb> # Create Dict
+1138: 1088 # ServerGeneric S<K:Cfg,V:Ety> # Create Dict
+1139: 1088 # ServerGeneric S<K:Cfg,V:Gid> # Create Dict
+1140: 1088 # ServerGeneric S<K:Cfg,V:Int> # Create Dict
+1141: 1088 # ServerGeneric S<K:Cfg,V:Bol> # Create Dict
+1142: 1088 # ServerGeneric S<K:Cfg,V:Flt> # Create Dict
+1143: 1088 # ServerGeneric S<K:Cfg,V:Str> # Create Dict
+1144: 1088 # ServerGeneric S<K:Cfg,V:Fct> # Create Dict
+1145: 1088 # ServerGeneric S<K:Cfg,V:Vec> # Create Dict
+1146: 1088 # ServerGeneric S<K:Cfg,V:Cfg> # Create Dict
+1147: 1088 # ServerGeneric S<K:Cfg,V:Pfb> # Create Dict
+1148: 1088 # ServerGeneric S<K:Pfb,V:Ety> # Create Dict
+1149: 1088 # ServerGeneric S<K:Pfb,V:Gid> # Create Dict
+1150: 1088 # ServerGeneric S<K:Pfb,V:Int> # Create Dict
+1151: 1088 # ServerGeneric S<K:Pfb,V:Bol> # Create Dict
+1152: 1088 # ServerGeneric S<K:Pfb,V:Flt> # Create Dict
+1153: 1088 # ServerGeneric S<K:Pfb,V:Str> # Create Dict
+1154: 1088 # ServerGeneric S<K:Pfb,V:Fct> # Create Dict
+1155: 1088 # ServerGeneric S<K:Pfb,V:Vec> # Create Dict
+1156: 1088 # ServerGeneric S<K:Pfb,V:Cfg> # Create Dict
+1157: 1088 # ServerGeneric S<K:Pfb,V:Pfb> # Create Dict
 1158: 1158 # ServerGeneric S<K:Ety,V:Ety> # Query Dictionary Value by Key
 1159: 1158 # ServerGeneric S<K:Ety,V:Gid> # Query Dictionary Value by Key
 1160: 1158 # ServerGeneric S<K:Ety,V:Int> # Query Dictionary Value by Key
@@ -1557,139 +1557,139 @@
 1785: 1718 # ServerGeneric S<K:Pfb,V:Vec> # Clear Dictionary
 1786: 1718 # ServerGeneric S<K:Pfb,V:Cfg> # Clear Dictionary
 1787: 1718 # ServerGeneric S<K:Pfb,V:Pfb> # Clear Dictionary
-1788: 1788 # ServerGeneric S<K:Ety,V:Ety> # undefined
-1789: 1788 # ServerGeneric S<K:Ety,V:Gid> # undefined
-1790: 1788 # ServerGeneric S<K:Ety,V:Int> # undefined
-1791: 1788 # ServerGeneric S<K:Ety,V:Bol> # undefined
-1792: 1788 # ServerGeneric S<K:Ety,V:Flt> # undefined
-1793: 1788 # ServerGeneric S<K:Ety,V:Str> # undefined
-1794: 1788 # ServerGeneric S<K:Ety,V:Fct> # undefined
-1795: 1788 # ServerGeneric S<K:Ety,V:Vec> # undefined
-1796: 1788 # ServerGeneric S<K:Ety,V:Cfg> # undefined
-1797: 1788 # ServerGeneric S<K:Ety,V:Pfb> # undefined
-1798: 1788 # ServerGeneric S<K:Ety,V:L<Ety>> # undefined
-1799: 1788 # ServerGeneric S<K:Ety,V:L<Gid>> # undefined
-1800: 1788 # ServerGeneric S<K:Ety,V:L<Int>> # undefined
-1801: 1788 # ServerGeneric S<K:Ety,V:L<Bol>> # undefined
-1802: 1788 # ServerGeneric S<K:Ety,V:L<Flt>> # undefined
-1803: 1788 # ServerGeneric S<K:Ety,V:L<Str>> # undefined
-1804: 1788 # ServerGeneric S<K:Ety,V:L<Fct>> # undefined
-1805: 1788 # ServerGeneric S<K:Ety,V:L<Vec>> # undefined
-1806: 1788 # ServerGeneric S<K:Ety,V:L<Cfg>> # undefined
-1808: 1788 # ServerGeneric S<K:Gid,V:Ety> # undefined
-1809: 1788 # ServerGeneric S<K:Gid,V:Gid> # undefined
-1810: 1788 # ServerGeneric S<K:Gid,V:Int> # undefined
-1811: 1788 # ServerGeneric S<K:Gid,V:Bol> # undefined
-1812: 1788 # ServerGeneric S<K:Gid,V:Flt> # undefined
-1813: 1788 # ServerGeneric S<K:Gid,V:Str> # undefined
-1814: 1788 # ServerGeneric S<K:Gid,V:Fct> # undefined
-1815: 1788 # ServerGeneric S<K:Gid,V:Vec> # undefined
-1816: 1788 # ServerGeneric S<K:Gid,V:Cfg> # undefined
-1817: 1788 # ServerGeneric S<K:Gid,V:Pfb> # undefined
-1818: 1788 # ServerGeneric S<K:Gid,V:L<Ety>> # undefined
-1819: 1788 # ServerGeneric S<K:Gid,V:L<Gid>> # undefined
-1820: 1788 # ServerGeneric S<K:Gid,V:L<Int>> # undefined
-1821: 1788 # ServerGeneric S<K:Gid,V:L<Bol>> # undefined
-1822: 1788 # ServerGeneric S<K:Gid,V:L<Flt>> # undefined
-1823: 1788 # ServerGeneric S<K:Gid,V:L<Str>> # undefined
-1824: 1788 # ServerGeneric S<K:Gid,V:L<Fct>> # undefined
-1825: 1788 # ServerGeneric S<K:Gid,V:L<Vec>> # undefined
-1826: 1788 # ServerGeneric S<K:Gid,V:L<Cfg>> # undefined
-1828: 1788 # ServerGeneric S<K:Int,V:Ety> # undefined
-1829: 1788 # ServerGeneric S<K:Int,V:Gid> # undefined
-1830: 1788 # ServerGeneric S<K:Int,V:Int> # undefined
-1831: 1788 # ServerGeneric S<K:Int,V:Bol> # undefined
-1832: 1788 # ServerGeneric S<K:Int,V:Flt> # undefined
-1833: 1788 # ServerGeneric S<K:Int,V:Str> # undefined
-1834: 1788 # ServerGeneric S<K:Int,V:Fct> # undefined
-1835: 1788 # ServerGeneric S<K:Int,V:Vec> # undefined
-1836: 1788 # ServerGeneric S<K:Int,V:Cfg> # undefined
-1837: 1788 # ServerGeneric S<K:Int,V:Pfb> # undefined
-1838: 1788 # ServerGeneric S<K:Int,V:L<Ety>> # undefined
-1839: 1788 # ServerGeneric S<K:Int,V:L<Gid>> # undefined
-1840: 1788 # ServerGeneric S<K:Int,V:L<Int>> # undefined
-1841: 1788 # ServerGeneric S<K:Int,V:L<Bol>> # undefined
-1842: 1788 # ServerGeneric S<K:Int,V:L<Flt>> # undefined
-1843: 1788 # ServerGeneric S<K:Int,V:L<Str>> # undefined
-1844: 1788 # ServerGeneric S<K:Int,V:L<Fct>> # undefined
-1845: 1788 # ServerGeneric S<K:Int,V:L<Vec>> # undefined
-1846: 1788 # ServerGeneric S<K:Int,V:L<Cfg>> # undefined
-1848: 1788 # ServerGeneric S<K:Str,V:Ety> # undefined
-1849: 1788 # ServerGeneric S<K:Str,V:Gid> # undefined
-1850: 1788 # ServerGeneric S<K:Str,V:Int> # undefined
-1851: 1788 # ServerGeneric S<K:Str,V:Bol> # undefined
-1852: 1788 # ServerGeneric S<K:Str,V:Flt> # undefined
-1853: 1788 # ServerGeneric S<K:Str,V:Str> # undefined
-1854: 1788 # ServerGeneric S<K:Str,V:Fct> # undefined
-1855: 1788 # ServerGeneric S<K:Str,V:Vec> # undefined
-1856: 1788 # ServerGeneric S<K:Str,V:Cfg> # undefined
-1857: 1788 # ServerGeneric S<K:Str,V:Pfb> # undefined
-1858: 1788 # ServerGeneric S<K:Str,V:L<Ety>> # undefined
-1859: 1788 # ServerGeneric S<K:Str,V:L<Gid>> # undefined
-1860: 1788 # ServerGeneric S<K:Str,V:L<Int>> # undefined
-1861: 1788 # ServerGeneric S<K:Str,V:L<Bol>> # undefined
-1862: 1788 # ServerGeneric S<K:Str,V:L<Flt>> # undefined
-1863: 1788 # ServerGeneric S<K:Str,V:L<Str>> # undefined
-1864: 1788 # ServerGeneric S<K:Str,V:L<Fct>> # undefined
-1865: 1788 # ServerGeneric S<K:Str,V:L<Vec>> # undefined
-1866: 1788 # ServerGeneric S<K:Str,V:L<Cfg>> # undefined
-1868: 1788 # ServerGeneric S<K:Fct,V:Ety> # undefined
-1869: 1788 # ServerGeneric S<K:Fct,V:Gid> # undefined
-1870: 1788 # ServerGeneric S<K:Fct,V:Int> # undefined
-1871: 1788 # ServerGeneric S<K:Fct,V:Bol> # undefined
-1872: 1788 # ServerGeneric S<K:Fct,V:Flt> # undefined
-1873: 1788 # ServerGeneric S<K:Fct,V:Str> # undefined
-1874: 1788 # ServerGeneric S<K:Fct,V:Fct> # undefined
-1875: 1788 # ServerGeneric S<K:Fct,V:Vec> # undefined
-1876: 1788 # ServerGeneric S<K:Fct,V:Cfg> # undefined
-1877: 1788 # ServerGeneric S<K:Fct,V:Pfb> # undefined
-1878: 1788 # ServerGeneric S<K:Fct,V:L<Ety>> # undefined
-1879: 1788 # ServerGeneric S<K:Fct,V:L<Gid>> # undefined
-1880: 1788 # ServerGeneric S<K:Fct,V:L<Int>> # undefined
-1881: 1788 # ServerGeneric S<K:Fct,V:L<Bol>> # undefined
-1882: 1788 # ServerGeneric S<K:Fct,V:L<Flt>> # undefined
-1883: 1788 # ServerGeneric S<K:Fct,V:L<Str>> # undefined
-1884: 1788 # ServerGeneric S<K:Fct,V:L<Fct>> # undefined
-1885: 1788 # ServerGeneric S<K:Fct,V:L<Vec>> # undefined
-1886: 1788 # ServerGeneric S<K:Fct,V:L<Cfg>> # undefined
-1888: 1788 # ServerGeneric S<K:Cfg,V:Ety> # undefined
-1889: 1788 # ServerGeneric S<K:Cfg,V:Gid> # undefined
-1890: 1788 # ServerGeneric S<K:Cfg,V:Int> # undefined
-1891: 1788 # ServerGeneric S<K:Cfg,V:Bol> # undefined
-1892: 1788 # ServerGeneric S<K:Cfg,V:Flt> # undefined
-1893: 1788 # ServerGeneric S<K:Cfg,V:Str> # undefined
-1894: 1788 # ServerGeneric S<K:Cfg,V:Fct> # undefined
-1895: 1788 # ServerGeneric S<K:Cfg,V:Vec> # undefined
-1896: 1788 # ServerGeneric S<K:Cfg,V:Cfg> # undefined
-1897: 1788 # ServerGeneric S<K:Cfg,V:Pfb> # undefined
-1898: 1788 # ServerGeneric S<K:Cfg,V:L<Ety>> # undefined
-1899: 1788 # ServerGeneric S<K:Cfg,V:L<Gid>> # undefined
-1900: 1788 # ServerGeneric S<K:Cfg,V:L<Int>> # undefined
-1901: 1788 # ServerGeneric S<K:Cfg,V:L<Bol>> # undefined
-1902: 1788 # ServerGeneric S<K:Cfg,V:L<Flt>> # undefined
-1903: 1788 # ServerGeneric S<K:Cfg,V:L<Str>> # undefined
-1904: 1788 # ServerGeneric S<K:Cfg,V:L<Fct>> # undefined
-1905: 1788 # ServerGeneric S<K:Cfg,V:L<Vec>> # undefined
-1906: 1788 # ServerGeneric S<K:Cfg,V:L<Cfg>> # undefined
-1908: 1788 # ServerGeneric S<K:Pfb,V:Ety> # undefined
-1909: 1788 # ServerGeneric S<K:Pfb,V:Gid> # undefined
-1910: 1788 # ServerGeneric S<K:Pfb,V:Int> # undefined
-1911: 1788 # ServerGeneric S<K:Pfb,V:Bol> # undefined
-1912: 1788 # ServerGeneric S<K:Pfb,V:Flt> # undefined
-1913: 1788 # ServerGeneric S<K:Pfb,V:Str> # undefined
-1914: 1788 # ServerGeneric S<K:Pfb,V:Fct> # undefined
-1915: 1788 # ServerGeneric S<K:Pfb,V:Vec> # undefined
-1916: 1788 # ServerGeneric S<K:Pfb,V:Cfg> # undefined
-1917: 1788 # ServerGeneric S<K:Pfb,V:Pfb> # undefined
-1918: 1788 # ServerGeneric S<K:Pfb,V:L<Ety>> # undefined
-1919: 1788 # ServerGeneric S<K:Pfb,V:L<Gid>> # undefined
-1920: 1788 # ServerGeneric S<K:Pfb,V:L<Int>> # undefined
-1921: 1788 # ServerGeneric S<K:Pfb,V:L<Bol>> # undefined
-1922: 1788 # ServerGeneric S<K:Pfb,V:L<Flt>> # undefined
-1923: 1788 # ServerGeneric S<K:Pfb,V:L<Str>> # undefined
-1924: 1788 # ServerGeneric S<K:Pfb,V:L<Fct>> # undefined
-1925: 1788 # ServerGeneric S<K:Pfb,V:L<Vec>> # undefined
-1926: 1788 # ServerGeneric S<K:Pfb,V:L<Cfg>> # undefined
+1788: 1788 # ServerGeneric S<K:Ety,V:Ety> # Assembly Dict
+1789: 1788 # ServerGeneric S<K:Ety,V:Gid> # Assembly Dict
+1790: 1788 # ServerGeneric S<K:Ety,V:Int> # Assembly Dict
+1791: 1788 # ServerGeneric S<K:Ety,V:Bol> # Assembly Dict
+1792: 1788 # ServerGeneric S<K:Ety,V:Flt> # Assembly Dict
+1793: 1788 # ServerGeneric S<K:Ety,V:Str> # Assembly Dict
+1794: 1788 # ServerGeneric S<K:Ety,V:Fct> # Assembly Dict
+1795: 1788 # ServerGeneric S<K:Ety,V:Vec> # Assembly Dict
+1796: 1788 # ServerGeneric S<K:Ety,V:Cfg> # Assembly Dict
+1797: 1788 # ServerGeneric S<K:Ety,V:Pfb> # Assembly Dict
+1798: 1788 # ServerGeneric S<K:Ety,V:L<Ety>> # Assembly Dict
+1799: 1788 # ServerGeneric S<K:Ety,V:L<Gid>> # Assembly Dict
+1800: 1788 # ServerGeneric S<K:Ety,V:L<Int>> # Assembly Dict
+1801: 1788 # ServerGeneric S<K:Ety,V:L<Bol>> # Assembly Dict
+1802: 1788 # ServerGeneric S<K:Ety,V:L<Flt>> # Assembly Dict
+1803: 1788 # ServerGeneric S<K:Ety,V:L<Str>> # Assembly Dict
+1804: 1788 # ServerGeneric S<K:Ety,V:L<Fct>> # Assembly Dict
+1805: 1788 # ServerGeneric S<K:Ety,V:L<Vec>> # Assembly Dict
+1806: 1788 # ServerGeneric S<K:Ety,V:L<Cfg>> # Assembly Dict
+1808: 1788 # ServerGeneric S<K:Gid,V:Ety> # Assembly Dict
+1809: 1788 # ServerGeneric S<K:Gid,V:Gid> # Assembly Dict
+1810: 1788 # ServerGeneric S<K:Gid,V:Int> # Assembly Dict
+1811: 1788 # ServerGeneric S<K:Gid,V:Bol> # Assembly Dict
+1812: 1788 # ServerGeneric S<K:Gid,V:Flt> # Assembly Dict
+1813: 1788 # ServerGeneric S<K:Gid,V:Str> # Assembly Dict
+1814: 1788 # ServerGeneric S<K:Gid,V:Fct> # Assembly Dict
+1815: 1788 # ServerGeneric S<K:Gid,V:Vec> # Assembly Dict
+1816: 1788 # ServerGeneric S<K:Gid,V:Cfg> # Assembly Dict
+1817: 1788 # ServerGeneric S<K:Gid,V:Pfb> # Assembly Dict
+1818: 1788 # ServerGeneric S<K:Gid,V:L<Ety>> # Assembly Dict
+1819: 1788 # ServerGeneric S<K:Gid,V:L<Gid>> # Assembly Dict
+1820: 1788 # ServerGeneric S<K:Gid,V:L<Int>> # Assembly Dict
+1821: 1788 # ServerGeneric S<K:Gid,V:L<Bol>> # Assembly Dict
+1822: 1788 # ServerGeneric S<K:Gid,V:L<Flt>> # Assembly Dict
+1823: 1788 # ServerGeneric S<K:Gid,V:L<Str>> # Assembly Dict
+1824: 1788 # ServerGeneric S<K:Gid,V:L<Fct>> # Assembly Dict
+1825: 1788 # ServerGeneric S<K:Gid,V:L<Vec>> # Assembly Dict
+1826: 1788 # ServerGeneric S<K:Gid,V:L<Cfg>> # Assembly Dict
+1828: 1788 # ServerGeneric S<K:Int,V:Ety> # Assembly Dict
+1829: 1788 # ServerGeneric S<K:Int,V:Gid> # Assembly Dict
+1830: 1788 # ServerGeneric S<K:Int,V:Int> # Assembly Dict
+1831: 1788 # ServerGeneric S<K:Int,V:Bol> # Assembly Dict
+1832: 1788 # ServerGeneric S<K:Int,V:Flt> # Assembly Dict
+1833: 1788 # ServerGeneric S<K:Int,V:Str> # Assembly Dict
+1834: 1788 # ServerGeneric S<K:Int,V:Fct> # Assembly Dict
+1835: 1788 # ServerGeneric S<K:Int,V:Vec> # Assembly Dict
+1836: 1788 # ServerGeneric S<K:Int,V:Cfg> # Assembly Dict
+1837: 1788 # ServerGeneric S<K:Int,V:Pfb> # Assembly Dict
+1838: 1788 # ServerGeneric S<K:Int,V:L<Ety>> # Assembly Dict
+1839: 1788 # ServerGeneric S<K:Int,V:L<Gid>> # Assembly Dict
+1840: 1788 # ServerGeneric S<K:Int,V:L<Int>> # Assembly Dict
+1841: 1788 # ServerGeneric S<K:Int,V:L<Bol>> # Assembly Dict
+1842: 1788 # ServerGeneric S<K:Int,V:L<Flt>> # Assembly Dict
+1843: 1788 # ServerGeneric S<K:Int,V:L<Str>> # Assembly Dict
+1844: 1788 # ServerGeneric S<K:Int,V:L<Fct>> # Assembly Dict
+1845: 1788 # ServerGeneric S<K:Int,V:L<Vec>> # Assembly Dict
+1846: 1788 # ServerGeneric S<K:Int,V:L<Cfg>> # Assembly Dict
+1848: 1788 # ServerGeneric S<K:Str,V:Ety> # Assembly Dict
+1849: 1788 # ServerGeneric S<K:Str,V:Gid> # Assembly Dict
+1850: 1788 # ServerGeneric S<K:Str,V:Int> # Assembly Dict
+1851: 1788 # ServerGeneric S<K:Str,V:Bol> # Assembly Dict
+1852: 1788 # ServerGeneric S<K:Str,V:Flt> # Assembly Dict
+1853: 1788 # ServerGeneric S<K:Str,V:Str> # Assembly Dict
+1854: 1788 # ServerGeneric S<K:Str,V:Fct> # Assembly Dict
+1855: 1788 # ServerGeneric S<K:Str,V:Vec> # Assembly Dict
+1856: 1788 # ServerGeneric S<K:Str,V:Cfg> # Assembly Dict
+1857: 1788 # ServerGeneric S<K:Str,V:Pfb> # Assembly Dict
+1858: 1788 # ServerGeneric S<K:Str,V:L<Ety>> # Assembly Dict
+1859: 1788 # ServerGeneric S<K:Str,V:L<Gid>> # Assembly Dict
+1860: 1788 # ServerGeneric S<K:Str,V:L<Int>> # Assembly Dict
+1861: 1788 # ServerGeneric S<K:Str,V:L<Bol>> # Assembly Dict
+1862: 1788 # ServerGeneric S<K:Str,V:L<Flt>> # Assembly Dict
+1863: 1788 # ServerGeneric S<K:Str,V:L<Str>> # Assembly Dict
+1864: 1788 # ServerGeneric S<K:Str,V:L<Fct>> # Assembly Dict
+1865: 1788 # ServerGeneric S<K:Str,V:L<Vec>> # Assembly Dict
+1866: 1788 # ServerGeneric S<K:Str,V:L<Cfg>> # Assembly Dict
+1868: 1788 # ServerGeneric S<K:Fct,V:Ety> # Assembly Dict
+1869: 1788 # ServerGeneric S<K:Fct,V:Gid> # Assembly Dict
+1870: 1788 # ServerGeneric S<K:Fct,V:Int> # Assembly Dict
+1871: 1788 # ServerGeneric S<K:Fct,V:Bol> # Assembly Dict
+1872: 1788 # ServerGeneric S<K:Fct,V:Flt> # Assembly Dict
+1873: 1788 # ServerGeneric S<K:Fct,V:Str> # Assembly Dict
+1874: 1788 # ServerGeneric S<K:Fct,V:Fct> # Assembly Dict
+1875: 1788 # ServerGeneric S<K:Fct,V:Vec> # Assembly Dict
+1876: 1788 # ServerGeneric S<K:Fct,V:Cfg> # Assembly Dict
+1877: 1788 # ServerGeneric S<K:Fct,V:Pfb> # Assembly Dict
+1878: 1788 # ServerGeneric S<K:Fct,V:L<Ety>> # Assembly Dict
+1879: 1788 # ServerGeneric S<K:Fct,V:L<Gid>> # Assembly Dict
+1880: 1788 # ServerGeneric S<K:Fct,V:L<Int>> # Assembly Dict
+1881: 1788 # ServerGeneric S<K:Fct,V:L<Bol>> # Assembly Dict
+1882: 1788 # ServerGeneric S<K:Fct,V:L<Flt>> # Assembly Dict
+1883: 1788 # ServerGeneric S<K:Fct,V:L<Str>> # Assembly Dict
+1884: 1788 # ServerGeneric S<K:Fct,V:L<Fct>> # Assembly Dict
+1885: 1788 # ServerGeneric S<K:Fct,V:L<Vec>> # Assembly Dict
+1886: 1788 # ServerGeneric S<K:Fct,V:L<Cfg>> # Assembly Dict
+1888: 1788 # ServerGeneric S<K:Cfg,V:Ety> # Assembly Dict
+1889: 1788 # ServerGeneric S<K:Cfg,V:Gid> # Assembly Dict
+1890: 1788 # ServerGeneric S<K:Cfg,V:Int> # Assembly Dict
+1891: 1788 # ServerGeneric S<K:Cfg,V:Bol> # Assembly Dict
+1892: 1788 # ServerGeneric S<K:Cfg,V:Flt> # Assembly Dict
+1893: 1788 # ServerGeneric S<K:Cfg,V:Str> # Assembly Dict
+1894: 1788 # ServerGeneric S<K:Cfg,V:Fct> # Assembly Dict
+1895: 1788 # ServerGeneric S<K:Cfg,V:Vec> # Assembly Dict
+1896: 1788 # ServerGeneric S<K:Cfg,V:Cfg> # Assembly Dict
+1897: 1788 # ServerGeneric S<K:Cfg,V:Pfb> # Assembly Dict
+1898: 1788 # ServerGeneric S<K:Cfg,V:L<Ety>> # Assembly Dict
+1899: 1788 # ServerGeneric S<K:Cfg,V:L<Gid>> # Assembly Dict
+1900: 1788 # ServerGeneric S<K:Cfg,V:L<Int>> # Assembly Dict
+1901: 1788 # ServerGeneric S<K:Cfg,V:L<Bol>> # Assembly Dict
+1902: 1788 # ServerGeneric S<K:Cfg,V:L<Flt>> # Assembly Dict
+1903: 1788 # ServerGeneric S<K:Cfg,V:L<Str>> # Assembly Dict
+1904: 1788 # ServerGeneric S<K:Cfg,V:L<Fct>> # Assembly Dict
+1905: 1788 # ServerGeneric S<K:Cfg,V:L<Vec>> # Assembly Dict
+1906: 1788 # ServerGeneric S<K:Cfg,V:L<Cfg>> # Assembly Dict
+1908: 1788 # ServerGeneric S<K:Pfb,V:Ety> # Assembly Dict
+1909: 1788 # ServerGeneric S<K:Pfb,V:Gid> # Assembly Dict
+1910: 1788 # ServerGeneric S<K:Pfb,V:Int> # Assembly Dict
+1911: 1788 # ServerGeneric S<K:Pfb,V:Bol> # Assembly Dict
+1912: 1788 # ServerGeneric S<K:Pfb,V:Flt> # Assembly Dict
+1913: 1788 # ServerGeneric S<K:Pfb,V:Str> # Assembly Dict
+1914: 1788 # ServerGeneric S<K:Pfb,V:Fct> # Assembly Dict
+1915: 1788 # ServerGeneric S<K:Pfb,V:Vec> # Assembly Dict
+1916: 1788 # ServerGeneric S<K:Pfb,V:Cfg> # Assembly Dict
+1917: 1788 # ServerGeneric S<K:Pfb,V:Pfb> # Assembly Dict
+1918: 1788 # ServerGeneric S<K:Pfb,V:L<Ety>> # Assembly Dict
+1919: 1788 # ServerGeneric S<K:Pfb,V:L<Gid>> # Assembly Dict
+1920: 1788 # ServerGeneric S<K:Pfb,V:L<Int>> # Assembly Dict
+1921: 1788 # ServerGeneric S<K:Pfb,V:L<Bol>> # Assembly Dict
+1922: 1788 # ServerGeneric S<K:Pfb,V:L<Flt>> # Assembly Dict
+1923: 1788 # ServerGeneric S<K:Pfb,V:L<Str>> # Assembly Dict
+1924: 1788 # ServerGeneric S<K:Pfb,V:L<Fct>> # Assembly Dict
+1925: 1788 # ServerGeneric S<K:Pfb,V:L<Vec>> # Assembly Dict
+1926: 1788 # ServerGeneric S<K:Pfb,V:L<Cfg>> # Assembly Dict
 1928: 22 # ServerGeneric S<T:D<Ety,Ety>> # Set Custom Variable
 1929: 22 # ServerGeneric S<T:D<Ety,Gid>> # Set Custom Variable
 1930: 22 # ServerGeneric S<T:D<Ety,Int>> # Set Custom Variable
@@ -1956,408 +1956,408 @@
 2204: 50 # ServerGeneric S<T:D<Pfb,L<Fct>>> # Get Custom Variable
 2205: 50 # ServerGeneric S<T:D<Pfb,L<Vec>>> # Get Custom Variable
 2206: 50 # ServerGeneric S<T:D<Pfb,L<Cfg>>> # Get Custom Variable
-2208: 445 # ServerGeneric S<T:L<Fct>> # undefined
-2209: 445 # ServerGeneric S<T:D<Ety,Ety>> # undefined
-2210: 445 # ServerGeneric S<T:D<Ety,Gid>> # undefined
-2211: 445 # ServerGeneric S<T:D<Ety,Int>> # undefined
-2212: 445 # ServerGeneric S<T:D<Ety,Bol>> # undefined
-2213: 445 # ServerGeneric S<T:D<Ety,Flt>> # undefined
-2214: 445 # ServerGeneric S<T:D<Ety,Str>> # undefined
-2215: 445 # ServerGeneric S<T:D<Ety,Fct>> # undefined
-2216: 445 # ServerGeneric S<T:D<Ety,Vec>> # undefined
-2217: 445 # ServerGeneric S<T:D<Ety,Cfg>> # undefined
-2218: 445 # ServerGeneric S<T:D<Ety,Pfb>> # undefined
-2219: 445 # ServerGeneric S<T:D<Ety,L<Ety>>> # undefined
-2220: 445 # ServerGeneric S<T:D<Ety,L<Gid>>> # undefined
-2221: 445 # ServerGeneric S<T:D<Ety,L<Int>>> # undefined
-2222: 445 # ServerGeneric S<T:D<Ety,L<Bol>>> # undefined
-2223: 445 # ServerGeneric S<T:D<Ety,L<Flt>>> # undefined
-2224: 445 # ServerGeneric S<T:D<Ety,L<Str>>> # undefined
-2225: 445 # ServerGeneric S<T:D<Ety,L<Fct>>> # undefined
-2226: 445 # ServerGeneric S<T:D<Ety,L<Vec>>> # undefined
-2227: 445 # ServerGeneric S<T:D<Ety,L<Cfg>>> # undefined
-2229: 445 # ServerGeneric S<T:D<Gid,Ety>> # undefined
-2230: 445 # ServerGeneric S<T:D<Gid,Gid>> # undefined
-2231: 445 # ServerGeneric S<T:D<Gid,Int>> # undefined
-2232: 445 # ServerGeneric S<T:D<Gid,Bol>> # undefined
-2233: 445 # ServerGeneric S<T:D<Gid,Flt>> # undefined
-2234: 445 # ServerGeneric S<T:D<Gid,Str>> # undefined
-2235: 445 # ServerGeneric S<T:D<Gid,Fct>> # undefined
-2236: 445 # ServerGeneric S<T:D<Gid,Vec>> # undefined
-2237: 445 # ServerGeneric S<T:D<Gid,Cfg>> # undefined
-2238: 445 # ServerGeneric S<T:D<Gid,Pfb>> # undefined
-2239: 445 # ServerGeneric S<T:D<Gid,L<Ety>>> # undefined
-2240: 445 # ServerGeneric S<T:D<Gid,L<Gid>>> # undefined
-2241: 445 # ServerGeneric S<T:D<Gid,L<Int>>> # undefined
-2242: 445 # ServerGeneric S<T:D<Gid,L<Bol>>> # undefined
-2243: 445 # ServerGeneric S<T:D<Gid,L<Flt>>> # undefined
-2244: 445 # ServerGeneric S<T:D<Gid,L<Str>>> # undefined
-2245: 445 # ServerGeneric S<T:D<Gid,L<Fct>>> # undefined
-2246: 445 # ServerGeneric S<T:D<Gid,L<Vec>>> # undefined
-2247: 445 # ServerGeneric S<T:D<Gid,L<Cfg>>> # undefined
-2249: 445 # ServerGeneric S<T:D<Int,Ety>> # undefined
-2250: 445 # ServerGeneric S<T:D<Int,Gid>> # undefined
-2251: 445 # ServerGeneric S<T:D<Int,Int>> # undefined
-2252: 445 # ServerGeneric S<T:D<Int,Bol>> # undefined
-2253: 445 # ServerGeneric S<T:D<Int,Flt>> # undefined
-2254: 445 # ServerGeneric S<T:D<Int,Str>> # undefined
-2255: 445 # ServerGeneric S<T:D<Int,Fct>> # undefined
-2256: 445 # ServerGeneric S<T:D<Int,Vec>> # undefined
-2257: 445 # ServerGeneric S<T:D<Int,Cfg>> # undefined
-2258: 445 # ServerGeneric S<T:D<Int,Pfb>> # undefined
-2259: 445 # ServerGeneric S<T:D<Int,L<Ety>>> # undefined
-2260: 445 # ServerGeneric S<T:D<Int,L<Gid>>> # undefined
-2261: 445 # ServerGeneric S<T:D<Int,L<Int>>> # undefined
-2262: 445 # ServerGeneric S<T:D<Int,L<Bol>>> # undefined
-2263: 445 # ServerGeneric S<T:D<Int,L<Flt>>> # undefined
-2264: 445 # ServerGeneric S<T:D<Int,L<Str>>> # undefined
-2265: 445 # ServerGeneric S<T:D<Int,L<Fct>>> # undefined
-2266: 445 # ServerGeneric S<T:D<Int,L<Vec>>> # undefined
-2267: 445 # ServerGeneric S<T:D<Int,L<Cfg>>> # undefined
-2269: 445 # ServerGeneric S<T:D<Str,Ety>> # undefined
-2270: 445 # ServerGeneric S<T:D<Str,Gid>> # undefined
-2271: 445 # ServerGeneric S<T:D<Str,Int>> # undefined
-2272: 445 # ServerGeneric S<T:D<Str,Bol>> # undefined
-2273: 445 # ServerGeneric S<T:D<Str,Flt>> # undefined
-2274: 445 # ServerGeneric S<T:D<Str,Str>> # undefined
-2275: 445 # ServerGeneric S<T:D<Str,Fct>> # undefined
-2276: 445 # ServerGeneric S<T:D<Str,Vec>> # undefined
-2277: 445 # ServerGeneric S<T:D<Str,Cfg>> # undefined
-2278: 445 # ServerGeneric S<T:D<Str,Pfb>> # undefined
-2279: 445 # ServerGeneric S<T:D<Str,L<Ety>>> # undefined
-2280: 445 # ServerGeneric S<T:D<Str,L<Gid>>> # undefined
-2281: 445 # ServerGeneric S<T:D<Str,L<Int>>> # undefined
-2282: 445 # ServerGeneric S<T:D<Str,L<Bol>>> # undefined
-2283: 445 # ServerGeneric S<T:D<Str,L<Flt>>> # undefined
-2284: 445 # ServerGeneric S<T:D<Str,L<Str>>> # undefined
-2285: 445 # ServerGeneric S<T:D<Str,L<Fct>>> # undefined
-2286: 445 # ServerGeneric S<T:D<Str,L<Vec>>> # undefined
-2287: 445 # ServerGeneric S<T:D<Str,L<Cfg>>> # undefined
-2289: 445 # ServerGeneric S<T:D<Fct,Ety>> # undefined
-2290: 445 # ServerGeneric S<T:D<Fct,Gid>> # undefined
-2291: 445 # ServerGeneric S<T:D<Fct,Int>> # undefined
-2292: 445 # ServerGeneric S<T:D<Fct,Bol>> # undefined
-2293: 445 # ServerGeneric S<T:D<Fct,Flt>> # undefined
-2294: 445 # ServerGeneric S<T:D<Fct,Str>> # undefined
-2295: 445 # ServerGeneric S<T:D<Fct,Fct>> # undefined
-2296: 445 # ServerGeneric S<T:D<Fct,Vec>> # undefined
-2297: 445 # ServerGeneric S<T:D<Fct,Cfg>> # undefined
-2298: 445 # ServerGeneric S<T:D<Fct,Pfb>> # undefined
-2299: 445 # ServerGeneric S<T:D<Fct,L<Ety>>> # undefined
-2300: 445 # ServerGeneric S<T:D<Fct,L<Gid>>> # undefined
-2301: 445 # ServerGeneric S<T:D<Fct,L<Int>>> # undefined
-2302: 445 # ServerGeneric S<T:D<Fct,L<Bol>>> # undefined
-2303: 445 # ServerGeneric S<T:D<Fct,L<Flt>>> # undefined
-2304: 445 # ServerGeneric S<T:D<Fct,L<Str>>> # undefined
-2305: 445 # ServerGeneric S<T:D<Fct,L<Fct>>> # undefined
-2306: 445 # ServerGeneric S<T:D<Fct,L<Vec>>> # undefined
-2307: 445 # ServerGeneric S<T:D<Fct,L<Cfg>>> # undefined
-2309: 445 # ServerGeneric S<T:D<Cfg,Ety>> # undefined
-2310: 445 # ServerGeneric S<T:D<Cfg,Gid>> # undefined
-2311: 445 # ServerGeneric S<T:D<Cfg,Int>> # undefined
-2312: 445 # ServerGeneric S<T:D<Cfg,Bol>> # undefined
-2313: 445 # ServerGeneric S<T:D<Cfg,Flt>> # undefined
-2314: 445 # ServerGeneric S<T:D<Cfg,Str>> # undefined
-2315: 445 # ServerGeneric S<T:D<Cfg,Fct>> # undefined
-2316: 445 # ServerGeneric S<T:D<Cfg,Vec>> # undefined
-2317: 445 # ServerGeneric S<T:D<Cfg,Cfg>> # undefined
-2318: 445 # ServerGeneric S<T:D<Cfg,Pfb>> # undefined
-2319: 445 # ServerGeneric S<T:D<Cfg,L<Ety>>> # undefined
-2320: 445 # ServerGeneric S<T:D<Cfg,L<Gid>>> # undefined
-2321: 445 # ServerGeneric S<T:D<Cfg,L<Int>>> # undefined
-2322: 445 # ServerGeneric S<T:D<Cfg,L<Bol>>> # undefined
-2323: 445 # ServerGeneric S<T:D<Cfg,L<Flt>>> # undefined
-2324: 445 # ServerGeneric S<T:D<Cfg,L<Str>>> # undefined
-2325: 445 # ServerGeneric S<T:D<Cfg,L<Fct>>> # undefined
-2326: 445 # ServerGeneric S<T:D<Cfg,L<Vec>>> # undefined
-2327: 445 # ServerGeneric S<T:D<Cfg,L<Cfg>>> # undefined
-2329: 445 # ServerGeneric S<T:D<Pfb,Ety>> # undefined
-2330: 445 # ServerGeneric S<T:D<Pfb,Gid>> # undefined
-2331: 445 # ServerGeneric S<T:D<Pfb,Int>> # undefined
-2332: 445 # ServerGeneric S<T:D<Pfb,Bol>> # undefined
-2333: 445 # ServerGeneric S<T:D<Pfb,Flt>> # undefined
-2334: 445 # ServerGeneric S<T:D<Pfb,Str>> # undefined
-2335: 445 # ServerGeneric S<T:D<Pfb,Fct>> # undefined
-2336: 445 # ServerGeneric S<T:D<Pfb,Vec>> # undefined
-2337: 445 # ServerGeneric S<T:D<Pfb,Cfg>> # undefined
-2338: 445 # ServerGeneric S<T:D<Pfb,Pfb>> # undefined
-2339: 445 # ServerGeneric S<T:D<Pfb,L<Ety>>> # undefined
-2340: 445 # ServerGeneric S<T:D<Pfb,L<Gid>>> # undefined
-2341: 445 # ServerGeneric S<T:D<Pfb,L<Int>>> # undefined
-2342: 445 # ServerGeneric S<T:D<Pfb,L<Bol>>> # undefined
-2343: 445 # ServerGeneric S<T:D<Pfb,L<Flt>>> # undefined
-2344: 445 # ServerGeneric S<T:D<Pfb,L<Str>>> # undefined
-2345: 445 # ServerGeneric S<T:D<Pfb,L<Fct>>> # undefined
-2346: 445 # ServerGeneric S<T:D<Pfb,L<Vec>>> # undefined
-2347: 445 # ServerGeneric S<T:D<Pfb,L<Cfg>>> # undefined
-2349: 459 # ServerGeneric S<T:L<Fct>> # undefined
-2350: 459 # ServerGeneric S<T:D<Ety,Ety>> # undefined
-2351: 459 # ServerGeneric S<T:D<Ety,Gid>> # undefined
-2352: 459 # ServerGeneric S<T:D<Ety,Int>> # undefined
-2353: 459 # ServerGeneric S<T:D<Ety,Bol>> # undefined
-2354: 459 # ServerGeneric S<T:D<Ety,Flt>> # undefined
-2355: 459 # ServerGeneric S<T:D<Ety,Str>> # undefined
-2356: 459 # ServerGeneric S<T:D<Ety,Fct>> # undefined
-2357: 459 # ServerGeneric S<T:D<Ety,Vec>> # undefined
-2358: 459 # ServerGeneric S<T:D<Ety,Cfg>> # undefined
-2359: 459 # ServerGeneric S<T:D<Ety,Pfb>> # undefined
-2360: 459 # ServerGeneric S<T:D<Ety,L<Ety>>> # undefined
-2361: 459 # ServerGeneric S<T:D<Ety,L<Gid>>> # undefined
-2362: 459 # ServerGeneric S<T:D<Ety,L<Int>>> # undefined
-2363: 459 # ServerGeneric S<T:D<Ety,L<Bol>>> # undefined
-2364: 459 # ServerGeneric S<T:D<Ety,L<Flt>>> # undefined
-2365: 459 # ServerGeneric S<T:D<Ety,L<Str>>> # undefined
-2366: 459 # ServerGeneric S<T:D<Ety,L<Fct>>> # undefined
-2367: 459 # ServerGeneric S<T:D<Ety,L<Vec>>> # undefined
-2368: 459 # ServerGeneric S<T:D<Ety,L<Cfg>>> # undefined
-2370: 459 # ServerGeneric S<T:D<Gid,Ety>> # undefined
-2371: 459 # ServerGeneric S<T:D<Gid,Gid>> # undefined
-2372: 459 # ServerGeneric S<T:D<Gid,Int>> # undefined
-2373: 459 # ServerGeneric S<T:D<Gid,Bol>> # undefined
-2374: 459 # ServerGeneric S<T:D<Gid,Flt>> # undefined
-2375: 459 # ServerGeneric S<T:D<Gid,Str>> # undefined
-2376: 459 # ServerGeneric S<T:D<Gid,Fct>> # undefined
-2377: 459 # ServerGeneric S<T:D<Gid,Vec>> # undefined
-2378: 459 # ServerGeneric S<T:D<Gid,Cfg>> # undefined
-2379: 459 # ServerGeneric S<T:D<Gid,Pfb>> # undefined
-2380: 459 # ServerGeneric S<T:D<Gid,L<Ety>>> # undefined
-2381: 459 # ServerGeneric S<T:D<Gid,L<Gid>>> # undefined
-2382: 459 # ServerGeneric S<T:D<Gid,L<Int>>> # undefined
-2383: 459 # ServerGeneric S<T:D<Gid,L<Bol>>> # undefined
-2384: 459 # ServerGeneric S<T:D<Gid,L<Flt>>> # undefined
-2385: 459 # ServerGeneric S<T:D<Gid,L<Str>>> # undefined
-2386: 459 # ServerGeneric S<T:D<Gid,L<Fct>>> # undefined
-2387: 459 # ServerGeneric S<T:D<Gid,L<Vec>>> # undefined
-2388: 459 # ServerGeneric S<T:D<Gid,L<Cfg>>> # undefined
-2390: 459 # ServerGeneric S<T:D<Int,Ety>> # undefined
-2391: 459 # ServerGeneric S<T:D<Int,Gid>> # undefined
-2392: 459 # ServerGeneric S<T:D<Int,Int>> # undefined
-2393: 459 # ServerGeneric S<T:D<Int,Bol>> # undefined
-2394: 459 # ServerGeneric S<T:D<Int,Flt>> # undefined
-2395: 459 # ServerGeneric S<T:D<Int,Str>> # undefined
-2396: 459 # ServerGeneric S<T:D<Int,Fct>> # undefined
-2397: 459 # ServerGeneric S<T:D<Int,Vec>> # undefined
-2398: 459 # ServerGeneric S<T:D<Int,Cfg>> # undefined
-2399: 459 # ServerGeneric S<T:D<Int,Pfb>> # undefined
-2400: 459 # ServerGeneric S<T:D<Int,L<Ety>>> # undefined
-2401: 459 # ServerGeneric S<T:D<Int,L<Gid>>> # undefined
-2402: 459 # ServerGeneric S<T:D<Int,L<Int>>> # undefined
-2403: 459 # ServerGeneric S<T:D<Int,L<Bol>>> # undefined
-2404: 459 # ServerGeneric S<T:D<Int,L<Flt>>> # undefined
-2405: 459 # ServerGeneric S<T:D<Int,L<Str>>> # undefined
-2406: 459 # ServerGeneric S<T:D<Int,L<Fct>>> # undefined
-2407: 459 # ServerGeneric S<T:D<Int,L<Vec>>> # undefined
-2408: 459 # ServerGeneric S<T:D<Int,L<Cfg>>> # undefined
-2410: 459 # ServerGeneric S<T:D<Str,Ety>> # undefined
-2411: 459 # ServerGeneric S<T:D<Str,Gid>> # undefined
-2412: 459 # ServerGeneric S<T:D<Str,Int>> # undefined
-2413: 459 # ServerGeneric S<T:D<Str,Bol>> # undefined
-2414: 459 # ServerGeneric S<T:D<Str,Flt>> # undefined
-2415: 459 # ServerGeneric S<T:D<Str,Str>> # undefined
-2416: 459 # ServerGeneric S<T:D<Str,Fct>> # undefined
-2417: 459 # ServerGeneric S<T:D<Str,Vec>> # undefined
-2418: 459 # ServerGeneric S<T:D<Str,Cfg>> # undefined
-2419: 459 # ServerGeneric S<T:D<Str,Pfb>> # undefined
-2420: 459 # ServerGeneric S<T:D<Str,L<Ety>>> # undefined
-2421: 459 # ServerGeneric S<T:D<Str,L<Gid>>> # undefined
-2422: 459 # ServerGeneric S<T:D<Str,L<Int>>> # undefined
-2423: 459 # ServerGeneric S<T:D<Str,L<Bol>>> # undefined
-2424: 459 # ServerGeneric S<T:D<Str,L<Flt>>> # undefined
-2425: 459 # ServerGeneric S<T:D<Str,L<Str>>> # undefined
-2426: 459 # ServerGeneric S<T:D<Str,L<Fct>>> # undefined
-2427: 459 # ServerGeneric S<T:D<Str,L<Vec>>> # undefined
-2428: 459 # ServerGeneric S<T:D<Str,L<Cfg>>> # undefined
-2430: 459 # ServerGeneric S<T:D<Fct,Ety>> # undefined
-2431: 459 # ServerGeneric S<T:D<Fct,Gid>> # undefined
-2432: 459 # ServerGeneric S<T:D<Fct,Int>> # undefined
-2433: 459 # ServerGeneric S<T:D<Fct,Bol>> # undefined
-2434: 459 # ServerGeneric S<T:D<Fct,Flt>> # undefined
-2435: 459 # ServerGeneric S<T:D<Fct,Str>> # undefined
-2436: 459 # ServerGeneric S<T:D<Fct,Fct>> # undefined
-2437: 459 # ServerGeneric S<T:D<Fct,Vec>> # undefined
-2438: 459 # ServerGeneric S<T:D<Fct,Cfg>> # undefined
-2439: 459 # ServerGeneric S<T:D<Fct,Pfb>> # undefined
-2440: 459 # ServerGeneric S<T:D<Fct,L<Ety>>> # undefined
-2441: 459 # ServerGeneric S<T:D<Fct,L<Gid>>> # undefined
-2442: 459 # ServerGeneric S<T:D<Fct,L<Int>>> # undefined
-2443: 459 # ServerGeneric S<T:D<Fct,L<Bol>>> # undefined
-2444: 459 # ServerGeneric S<T:D<Fct,L<Flt>>> # undefined
-2445: 459 # ServerGeneric S<T:D<Fct,L<Str>>> # undefined
-2446: 459 # ServerGeneric S<T:D<Fct,L<Fct>>> # undefined
-2447: 459 # ServerGeneric S<T:D<Fct,L<Vec>>> # undefined
-2448: 459 # ServerGeneric S<T:D<Fct,L<Cfg>>> # undefined
-2450: 459 # ServerGeneric S<T:D<Cfg,Ety>> # undefined
-2451: 459 # ServerGeneric S<T:D<Cfg,Gid>> # undefined
-2452: 459 # ServerGeneric S<T:D<Cfg,Int>> # undefined
-2453: 459 # ServerGeneric S<T:D<Cfg,Bol>> # undefined
-2454: 459 # ServerGeneric S<T:D<Cfg,Flt>> # undefined
-2455: 459 # ServerGeneric S<T:D<Cfg,Str>> # undefined
-2456: 459 # ServerGeneric S<T:D<Cfg,Fct>> # undefined
-2457: 459 # ServerGeneric S<T:D<Cfg,Vec>> # undefined
-2458: 459 # ServerGeneric S<T:D<Cfg,Cfg>> # undefined
-2459: 459 # ServerGeneric S<T:D<Cfg,Pfb>> # undefined
-2460: 459 # ServerGeneric S<T:D<Cfg,L<Ety>>> # undefined
-2461: 459 # ServerGeneric S<T:D<Cfg,L<Gid>>> # undefined
-2462: 459 # ServerGeneric S<T:D<Cfg,L<Int>>> # undefined
-2463: 459 # ServerGeneric S<T:D<Cfg,L<Bol>>> # undefined
-2464: 459 # ServerGeneric S<T:D<Cfg,L<Flt>>> # undefined
-2465: 459 # ServerGeneric S<T:D<Cfg,L<Str>>> # undefined
-2466: 459 # ServerGeneric S<T:D<Cfg,L<Fct>>> # undefined
-2467: 459 # ServerGeneric S<T:D<Cfg,L<Vec>>> # undefined
-2468: 459 # ServerGeneric S<T:D<Cfg,L<Cfg>>> # undefined
-2470: 459 # ServerGeneric S<T:D<Pfb,Ety>> # undefined
-2471: 459 # ServerGeneric S<T:D<Pfb,Gid>> # undefined
-2472: 459 # ServerGeneric S<T:D<Pfb,Int>> # undefined
-2473: 459 # ServerGeneric S<T:D<Pfb,Bol>> # undefined
-2474: 459 # ServerGeneric S<T:D<Pfb,Flt>> # undefined
-2475: 459 # ServerGeneric S<T:D<Pfb,Str>> # undefined
-2476: 459 # ServerGeneric S<T:D<Pfb,Fct>> # undefined
-2477: 459 # ServerGeneric S<T:D<Pfb,Vec>> # undefined
-2478: 459 # ServerGeneric S<T:D<Pfb,Cfg>> # undefined
-2479: 459 # ServerGeneric S<T:D<Pfb,Pfb>> # undefined
-2480: 459 # ServerGeneric S<T:D<Pfb,L<Ety>>> # undefined
-2481: 459 # ServerGeneric S<T:D<Pfb,L<Gid>>> # undefined
-2482: 459 # ServerGeneric S<T:D<Pfb,L<Int>>> # undefined
-2483: 459 # ServerGeneric S<T:D<Pfb,L<Bol>>> # undefined
-2484: 459 # ServerGeneric S<T:D<Pfb,L<Flt>>> # undefined
-2485: 459 # ServerGeneric S<T:D<Pfb,L<Str>>> # undefined
-2486: 459 # ServerGeneric S<T:D<Pfb,L<Fct>>> # undefined
-2487: 459 # ServerGeneric S<T:D<Pfb,L<Vec>>> # undefined
-2488: 459 # ServerGeneric S<T:D<Pfb,L<Cfg>>> # undefined
-2490: 428 # ServerGeneric S<T:L<Fct>> # undefined
-2491: 428 # ServerGeneric S<T:D<Ety,Ety>> # undefined
-2492: 428 # ServerGeneric S<T:D<Ety,Gid>> # undefined
-2493: 428 # ServerGeneric S<T:D<Ety,Int>> # undefined
-2494: 428 # ServerGeneric S<T:D<Ety,Bol>> # undefined
-2495: 428 # ServerGeneric S<T:D<Ety,Flt>> # undefined
-2496: 428 # ServerGeneric S<T:D<Ety,Str>> # undefined
-2497: 428 # ServerGeneric S<T:D<Ety,Fct>> # undefined
-2498: 428 # ServerGeneric S<T:D<Ety,Vec>> # undefined
-2499: 428 # ServerGeneric S<T:D<Ety,Cfg>> # undefined
-2500: 428 # ServerGeneric S<T:D<Ety,Pfb>> # undefined
-2501: 428 # ServerGeneric S<T:D<Ety,L<Ety>>> # undefined
-2502: 428 # ServerGeneric S<T:D<Ety,L<Gid>>> # undefined
-2503: 428 # ServerGeneric S<T:D<Ety,L<Int>>> # undefined
-2504: 428 # ServerGeneric S<T:D<Ety,L<Bol>>> # undefined
-2505: 428 # ServerGeneric S<T:D<Ety,L<Flt>>> # undefined
-2506: 428 # ServerGeneric S<T:D<Ety,L<Str>>> # undefined
-2507: 428 # ServerGeneric S<T:D<Ety,L<Fct>>> # undefined
-2508: 428 # ServerGeneric S<T:D<Ety,L<Vec>>> # undefined
-2509: 428 # ServerGeneric S<T:D<Ety,L<Cfg>>> # undefined
-2511: 428 # ServerGeneric S<T:D<Gid,Ety>> # undefined
-2512: 428 # ServerGeneric S<T:D<Gid,Gid>> # undefined
-2513: 428 # ServerGeneric S<T:D<Gid,Int>> # undefined
-2514: 428 # ServerGeneric S<T:D<Gid,Bol>> # undefined
-2515: 428 # ServerGeneric S<T:D<Gid,Flt>> # undefined
-2516: 428 # ServerGeneric S<T:D<Gid,Str>> # undefined
-2517: 428 # ServerGeneric S<T:D<Gid,Fct>> # undefined
-2518: 428 # ServerGeneric S<T:D<Gid,Vec>> # undefined
-2519: 428 # ServerGeneric S<T:D<Gid,Cfg>> # undefined
-2520: 428 # ServerGeneric S<T:D<Gid,Pfb>> # undefined
-2521: 428 # ServerGeneric S<T:D<Gid,L<Ety>>> # undefined
-2522: 428 # ServerGeneric S<T:D<Gid,L<Gid>>> # undefined
-2523: 428 # ServerGeneric S<T:D<Gid,L<Int>>> # undefined
-2524: 428 # ServerGeneric S<T:D<Gid,L<Bol>>> # undefined
-2525: 428 # ServerGeneric S<T:D<Gid,L<Flt>>> # undefined
-2526: 428 # ServerGeneric S<T:D<Gid,L<Str>>> # undefined
-2527: 428 # ServerGeneric S<T:D<Gid,L<Fct>>> # undefined
-2528: 428 # ServerGeneric S<T:D<Gid,L<Vec>>> # undefined
-2529: 428 # ServerGeneric S<T:D<Gid,L<Cfg>>> # undefined
-2531: 428 # ServerGeneric S<T:D<Int,Ety>> # undefined
-2532: 428 # ServerGeneric S<T:D<Int,Gid>> # undefined
-2533: 428 # ServerGeneric S<T:D<Int,Int>> # undefined
-2534: 428 # ServerGeneric S<T:D<Int,Bol>> # undefined
-2535: 428 # ServerGeneric S<T:D<Int,Flt>> # undefined
-2536: 428 # ServerGeneric S<T:D<Int,Str>> # undefined
-2537: 428 # ServerGeneric S<T:D<Int,Fct>> # undefined
-2538: 428 # ServerGeneric S<T:D<Int,Vec>> # undefined
-2539: 428 # ServerGeneric S<T:D<Int,Cfg>> # undefined
-2540: 428 # ServerGeneric S<T:D<Int,Pfb>> # undefined
-2541: 428 # ServerGeneric S<T:D<Int,L<Ety>>> # undefined
-2542: 428 # ServerGeneric S<T:D<Int,L<Gid>>> # undefined
-2543: 428 # ServerGeneric S<T:D<Int,L<Int>>> # undefined
-2544: 428 # ServerGeneric S<T:D<Int,L<Bol>>> # undefined
-2545: 428 # ServerGeneric S<T:D<Int,L<Flt>>> # undefined
-2546: 428 # ServerGeneric S<T:D<Int,L<Str>>> # undefined
-2547: 428 # ServerGeneric S<T:D<Int,L<Fct>>> # undefined
-2548: 428 # ServerGeneric S<T:D<Int,L<Vec>>> # undefined
-2549: 428 # ServerGeneric S<T:D<Int,L<Cfg>>> # undefined
-2551: 428 # ServerGeneric S<T:D<Str,Ety>> # undefined
-2552: 428 # ServerGeneric S<T:D<Str,Gid>> # undefined
-2553: 428 # ServerGeneric S<T:D<Str,Int>> # undefined
-2554: 428 # ServerGeneric S<T:D<Str,Bol>> # undefined
-2555: 428 # ServerGeneric S<T:D<Str,Flt>> # undefined
-2556: 428 # ServerGeneric S<T:D<Str,Str>> # undefined
-2557: 428 # ServerGeneric S<T:D<Str,Fct>> # undefined
-2558: 428 # ServerGeneric S<T:D<Str,Vec>> # undefined
-2559: 428 # ServerGeneric S<T:D<Str,Cfg>> # undefined
-2560: 428 # ServerGeneric S<T:D<Str,Pfb>> # undefined
-2561: 428 # ServerGeneric S<T:D<Str,L<Ety>>> # undefined
-2562: 428 # ServerGeneric S<T:D<Str,L<Gid>>> # undefined
-2563: 428 # ServerGeneric S<T:D<Str,L<Int>>> # undefined
-2564: 428 # ServerGeneric S<T:D<Str,L<Bol>>> # undefined
-2565: 428 # ServerGeneric S<T:D<Str,L<Flt>>> # undefined
-2566: 428 # ServerGeneric S<T:D<Str,L<Str>>> # undefined
-2567: 428 # ServerGeneric S<T:D<Str,L<Fct>>> # undefined
-2568: 428 # ServerGeneric S<T:D<Str,L<Vec>>> # undefined
-2569: 428 # ServerGeneric S<T:D<Str,L<Cfg>>> # undefined
-2571: 428 # ServerGeneric S<T:D<Fct,Ety>> # undefined
-2572: 428 # ServerGeneric S<T:D<Fct,Gid>> # undefined
-2573: 428 # ServerGeneric S<T:D<Fct,Int>> # undefined
-2574: 428 # ServerGeneric S<T:D<Fct,Bol>> # undefined
-2575: 428 # ServerGeneric S<T:D<Fct,Flt>> # undefined
-2576: 428 # ServerGeneric S<T:D<Fct,Str>> # undefined
-2577: 428 # ServerGeneric S<T:D<Fct,Fct>> # undefined
-2578: 428 # ServerGeneric S<T:D<Fct,Vec>> # undefined
-2579: 428 # ServerGeneric S<T:D<Fct,Cfg>> # undefined
-2580: 428 # ServerGeneric S<T:D<Fct,Pfb>> # undefined
-2581: 428 # ServerGeneric S<T:D<Fct,L<Ety>>> # undefined
-2582: 428 # ServerGeneric S<T:D<Fct,L<Gid>>> # undefined
-2583: 428 # ServerGeneric S<T:D<Fct,L<Int>>> # undefined
-2584: 428 # ServerGeneric S<T:D<Fct,L<Bol>>> # undefined
-2585: 428 # ServerGeneric S<T:D<Fct,L<Flt>>> # undefined
-2586: 428 # ServerGeneric S<T:D<Fct,L<Str>>> # undefined
-2587: 428 # ServerGeneric S<T:D<Fct,L<Fct>>> # undefined
-2588: 428 # ServerGeneric S<T:D<Fct,L<Vec>>> # undefined
-2589: 428 # ServerGeneric S<T:D<Fct,L<Cfg>>> # undefined
-2591: 428 # ServerGeneric S<T:D<Cfg,Ety>> # undefined
-2592: 428 # ServerGeneric S<T:D<Cfg,Gid>> # undefined
-2593: 428 # ServerGeneric S<T:D<Cfg,Int>> # undefined
-2594: 428 # ServerGeneric S<T:D<Cfg,Bol>> # undefined
-2595: 428 # ServerGeneric S<T:D<Cfg,Flt>> # undefined
-2596: 428 # ServerGeneric S<T:D<Cfg,Str>> # undefined
-2597: 428 # ServerGeneric S<T:D<Cfg,Fct>> # undefined
-2598: 428 # ServerGeneric S<T:D<Cfg,Vec>> # undefined
-2599: 428 # ServerGeneric S<T:D<Cfg,Cfg>> # undefined
-2600: 428 # ServerGeneric S<T:D<Cfg,Pfb>> # undefined
-2601: 428 # ServerGeneric S<T:D<Cfg,L<Ety>>> # undefined
-2602: 428 # ServerGeneric S<T:D<Cfg,L<Gid>>> # undefined
-2603: 428 # ServerGeneric S<T:D<Cfg,L<Int>>> # undefined
-2604: 428 # ServerGeneric S<T:D<Cfg,L<Bol>>> # undefined
-2605: 428 # ServerGeneric S<T:D<Cfg,L<Flt>>> # undefined
-2606: 428 # ServerGeneric S<T:D<Cfg,L<Str>>> # undefined
-2607: 428 # ServerGeneric S<T:D<Cfg,L<Fct>>> # undefined
-2608: 428 # ServerGeneric S<T:D<Cfg,L<Vec>>> # undefined
-2609: 428 # ServerGeneric S<T:D<Cfg,L<Cfg>>> # undefined
-2611: 428 # ServerGeneric S<T:D<Pfb,Ety>> # undefined
-2612: 428 # ServerGeneric S<T:D<Pfb,Gid>> # undefined
-2613: 428 # ServerGeneric S<T:D<Pfb,Int>> # undefined
-2614: 428 # ServerGeneric S<T:D<Pfb,Bol>> # undefined
-2615: 428 # ServerGeneric S<T:D<Pfb,Flt>> # undefined
-2616: 428 # ServerGeneric S<T:D<Pfb,Str>> # undefined
-2617: 428 # ServerGeneric S<T:D<Pfb,Fct>> # undefined
-2618: 428 # ServerGeneric S<T:D<Pfb,Vec>> # undefined
-2619: 428 # ServerGeneric S<T:D<Pfb,Cfg>> # undefined
-2620: 428 # ServerGeneric S<T:D<Pfb,Pfb>> # undefined
-2621: 428 # ServerGeneric S<T:D<Pfb,L<Ety>>> # undefined
-2622: 428 # ServerGeneric S<T:D<Pfb,L<Gid>>> # undefined
-2623: 428 # ServerGeneric S<T:D<Pfb,L<Int>>> # undefined
-2624: 428 # ServerGeneric S<T:D<Pfb,L<Bol>>> # undefined
-2625: 428 # ServerGeneric S<T:D<Pfb,L<Flt>>> # undefined
-2626: 428 # ServerGeneric S<T:D<Pfb,L<Str>>> # undefined
-2627: 428 # ServerGeneric S<T:D<Pfb,L<Fct>>> # undefined
-2628: 428 # ServerGeneric S<T:D<Pfb,L<Vec>>> # undefined
-2629: 428 # ServerGeneric S<T:D<Pfb,L<Cfg>>> # undefined
+2208: 445 # ServerGeneric S<T:L<Fct>> # Native Setting Custom Value
+2209: 445 # ServerGeneric S<T:D<Ety,Ety>> # Native Setting Custom Value
+2210: 445 # ServerGeneric S<T:D<Ety,Gid>> # Native Setting Custom Value
+2211: 445 # ServerGeneric S<T:D<Ety,Int>> # Native Setting Custom Value
+2212: 445 # ServerGeneric S<T:D<Ety,Bol>> # Native Setting Custom Value
+2213: 445 # ServerGeneric S<T:D<Ety,Flt>> # Native Setting Custom Value
+2214: 445 # ServerGeneric S<T:D<Ety,Str>> # Native Setting Custom Value
+2215: 445 # ServerGeneric S<T:D<Ety,Fct>> # Native Setting Custom Value
+2216: 445 # ServerGeneric S<T:D<Ety,Vec>> # Native Setting Custom Value
+2217: 445 # ServerGeneric S<T:D<Ety,Cfg>> # Native Setting Custom Value
+2218: 445 # ServerGeneric S<T:D<Ety,Pfb>> # Native Setting Custom Value
+2219: 445 # ServerGeneric S<T:D<Ety,L<Ety>>> # Native Setting Custom Value
+2220: 445 # ServerGeneric S<T:D<Ety,L<Gid>>> # Native Setting Custom Value
+2221: 445 # ServerGeneric S<T:D<Ety,L<Int>>> # Native Setting Custom Value
+2222: 445 # ServerGeneric S<T:D<Ety,L<Bol>>> # Native Setting Custom Value
+2223: 445 # ServerGeneric S<T:D<Ety,L<Flt>>> # Native Setting Custom Value
+2224: 445 # ServerGeneric S<T:D<Ety,L<Str>>> # Native Setting Custom Value
+2225: 445 # ServerGeneric S<T:D<Ety,L<Fct>>> # Native Setting Custom Value
+2226: 445 # ServerGeneric S<T:D<Ety,L<Vec>>> # Native Setting Custom Value
+2227: 445 # ServerGeneric S<T:D<Ety,L<Cfg>>> # Native Setting Custom Value
+2229: 445 # ServerGeneric S<T:D<Gid,Ety>> # Native Setting Custom Value
+2230: 445 # ServerGeneric S<T:D<Gid,Gid>> # Native Setting Custom Value
+2231: 445 # ServerGeneric S<T:D<Gid,Int>> # Native Setting Custom Value
+2232: 445 # ServerGeneric S<T:D<Gid,Bol>> # Native Setting Custom Value
+2233: 445 # ServerGeneric S<T:D<Gid,Flt>> # Native Setting Custom Value
+2234: 445 # ServerGeneric S<T:D<Gid,Str>> # Native Setting Custom Value
+2235: 445 # ServerGeneric S<T:D<Gid,Fct>> # Native Setting Custom Value
+2236: 445 # ServerGeneric S<T:D<Gid,Vec>> # Native Setting Custom Value
+2237: 445 # ServerGeneric S<T:D<Gid,Cfg>> # Native Setting Custom Value
+2238: 445 # ServerGeneric S<T:D<Gid,Pfb>> # Native Setting Custom Value
+2239: 445 # ServerGeneric S<T:D<Gid,L<Ety>>> # Native Setting Custom Value
+2240: 445 # ServerGeneric S<T:D<Gid,L<Gid>>> # Native Setting Custom Value
+2241: 445 # ServerGeneric S<T:D<Gid,L<Int>>> # Native Setting Custom Value
+2242: 445 # ServerGeneric S<T:D<Gid,L<Bol>>> # Native Setting Custom Value
+2243: 445 # ServerGeneric S<T:D<Gid,L<Flt>>> # Native Setting Custom Value
+2244: 445 # ServerGeneric S<T:D<Gid,L<Str>>> # Native Setting Custom Value
+2245: 445 # ServerGeneric S<T:D<Gid,L<Fct>>> # Native Setting Custom Value
+2246: 445 # ServerGeneric S<T:D<Gid,L<Vec>>> # Native Setting Custom Value
+2247: 445 # ServerGeneric S<T:D<Gid,L<Cfg>>> # Native Setting Custom Value
+2249: 445 # ServerGeneric S<T:D<Int,Ety>> # Native Setting Custom Value
+2250: 445 # ServerGeneric S<T:D<Int,Gid>> # Native Setting Custom Value
+2251: 445 # ServerGeneric S<T:D<Int,Int>> # Native Setting Custom Value
+2252: 445 # ServerGeneric S<T:D<Int,Bol>> # Native Setting Custom Value
+2253: 445 # ServerGeneric S<T:D<Int,Flt>> # Native Setting Custom Value
+2254: 445 # ServerGeneric S<T:D<Int,Str>> # Native Setting Custom Value
+2255: 445 # ServerGeneric S<T:D<Int,Fct>> # Native Setting Custom Value
+2256: 445 # ServerGeneric S<T:D<Int,Vec>> # Native Setting Custom Value
+2257: 445 # ServerGeneric S<T:D<Int,Cfg>> # Native Setting Custom Value
+2258: 445 # ServerGeneric S<T:D<Int,Pfb>> # Native Setting Custom Value
+2259: 445 # ServerGeneric S<T:D<Int,L<Ety>>> # Native Setting Custom Value
+2260: 445 # ServerGeneric S<T:D<Int,L<Gid>>> # Native Setting Custom Value
+2261: 445 # ServerGeneric S<T:D<Int,L<Int>>> # Native Setting Custom Value
+2262: 445 # ServerGeneric S<T:D<Int,L<Bol>>> # Native Setting Custom Value
+2263: 445 # ServerGeneric S<T:D<Int,L<Flt>>> # Native Setting Custom Value
+2264: 445 # ServerGeneric S<T:D<Int,L<Str>>> # Native Setting Custom Value
+2265: 445 # ServerGeneric S<T:D<Int,L<Fct>>> # Native Setting Custom Value
+2266: 445 # ServerGeneric S<T:D<Int,L<Vec>>> # Native Setting Custom Value
+2267: 445 # ServerGeneric S<T:D<Int,L<Cfg>>> # Native Setting Custom Value
+2269: 445 # ServerGeneric S<T:D<Str,Ety>> # Native Setting Custom Value
+2270: 445 # ServerGeneric S<T:D<Str,Gid>> # Native Setting Custom Value
+2271: 445 # ServerGeneric S<T:D<Str,Int>> # Native Setting Custom Value
+2272: 445 # ServerGeneric S<T:D<Str,Bol>> # Native Setting Custom Value
+2273: 445 # ServerGeneric S<T:D<Str,Flt>> # Native Setting Custom Value
+2274: 445 # ServerGeneric S<T:D<Str,Str>> # Native Setting Custom Value
+2275: 445 # ServerGeneric S<T:D<Str,Fct>> # Native Setting Custom Value
+2276: 445 # ServerGeneric S<T:D<Str,Vec>> # Native Setting Custom Value
+2277: 445 # ServerGeneric S<T:D<Str,Cfg>> # Native Setting Custom Value
+2278: 445 # ServerGeneric S<T:D<Str,Pfb>> # Native Setting Custom Value
+2279: 445 # ServerGeneric S<T:D<Str,L<Ety>>> # Native Setting Custom Value
+2280: 445 # ServerGeneric S<T:D<Str,L<Gid>>> # Native Setting Custom Value
+2281: 445 # ServerGeneric S<T:D<Str,L<Int>>> # Native Setting Custom Value
+2282: 445 # ServerGeneric S<T:D<Str,L<Bol>>> # Native Setting Custom Value
+2283: 445 # ServerGeneric S<T:D<Str,L<Flt>>> # Native Setting Custom Value
+2284: 445 # ServerGeneric S<T:D<Str,L<Str>>> # Native Setting Custom Value
+2285: 445 # ServerGeneric S<T:D<Str,L<Fct>>> # Native Setting Custom Value
+2286: 445 # ServerGeneric S<T:D<Str,L<Vec>>> # Native Setting Custom Value
+2287: 445 # ServerGeneric S<T:D<Str,L<Cfg>>> # Native Setting Custom Value
+2289: 445 # ServerGeneric S<T:D<Fct,Ety>> # Native Setting Custom Value
+2290: 445 # ServerGeneric S<T:D<Fct,Gid>> # Native Setting Custom Value
+2291: 445 # ServerGeneric S<T:D<Fct,Int>> # Native Setting Custom Value
+2292: 445 # ServerGeneric S<T:D<Fct,Bol>> # Native Setting Custom Value
+2293: 445 # ServerGeneric S<T:D<Fct,Flt>> # Native Setting Custom Value
+2294: 445 # ServerGeneric S<T:D<Fct,Str>> # Native Setting Custom Value
+2295: 445 # ServerGeneric S<T:D<Fct,Fct>> # Native Setting Custom Value
+2296: 445 # ServerGeneric S<T:D<Fct,Vec>> # Native Setting Custom Value
+2297: 445 # ServerGeneric S<T:D<Fct,Cfg>> # Native Setting Custom Value
+2298: 445 # ServerGeneric S<T:D<Fct,Pfb>> # Native Setting Custom Value
+2299: 445 # ServerGeneric S<T:D<Fct,L<Ety>>> # Native Setting Custom Value
+2300: 445 # ServerGeneric S<T:D<Fct,L<Gid>>> # Native Setting Custom Value
+2301: 445 # ServerGeneric S<T:D<Fct,L<Int>>> # Native Setting Custom Value
+2302: 445 # ServerGeneric S<T:D<Fct,L<Bol>>> # Native Setting Custom Value
+2303: 445 # ServerGeneric S<T:D<Fct,L<Flt>>> # Native Setting Custom Value
+2304: 445 # ServerGeneric S<T:D<Fct,L<Str>>> # Native Setting Custom Value
+2305: 445 # ServerGeneric S<T:D<Fct,L<Fct>>> # Native Setting Custom Value
+2306: 445 # ServerGeneric S<T:D<Fct,L<Vec>>> # Native Setting Custom Value
+2307: 445 # ServerGeneric S<T:D<Fct,L<Cfg>>> # Native Setting Custom Value
+2309: 445 # ServerGeneric S<T:D<Cfg,Ety>> # Native Setting Custom Value
+2310: 445 # ServerGeneric S<T:D<Cfg,Gid>> # Native Setting Custom Value
+2311: 445 # ServerGeneric S<T:D<Cfg,Int>> # Native Setting Custom Value
+2312: 445 # ServerGeneric S<T:D<Cfg,Bol>> # Native Setting Custom Value
+2313: 445 # ServerGeneric S<T:D<Cfg,Flt>> # Native Setting Custom Value
+2314: 445 # ServerGeneric S<T:D<Cfg,Str>> # Native Setting Custom Value
+2315: 445 # ServerGeneric S<T:D<Cfg,Fct>> # Native Setting Custom Value
+2316: 445 # ServerGeneric S<T:D<Cfg,Vec>> # Native Setting Custom Value
+2317: 445 # ServerGeneric S<T:D<Cfg,Cfg>> # Native Setting Custom Value
+2318: 445 # ServerGeneric S<T:D<Cfg,Pfb>> # Native Setting Custom Value
+2319: 445 # ServerGeneric S<T:D<Cfg,L<Ety>>> # Native Setting Custom Value
+2320: 445 # ServerGeneric S<T:D<Cfg,L<Gid>>> # Native Setting Custom Value
+2321: 445 # ServerGeneric S<T:D<Cfg,L<Int>>> # Native Setting Custom Value
+2322: 445 # ServerGeneric S<T:D<Cfg,L<Bol>>> # Native Setting Custom Value
+2323: 445 # ServerGeneric S<T:D<Cfg,L<Flt>>> # Native Setting Custom Value
+2324: 445 # ServerGeneric S<T:D<Cfg,L<Str>>> # Native Setting Custom Value
+2325: 445 # ServerGeneric S<T:D<Cfg,L<Fct>>> # Native Setting Custom Value
+2326: 445 # ServerGeneric S<T:D<Cfg,L<Vec>>> # Native Setting Custom Value
+2327: 445 # ServerGeneric S<T:D<Cfg,L<Cfg>>> # Native Setting Custom Value
+2329: 445 # ServerGeneric S<T:D<Pfb,Ety>> # Native Setting Custom Value
+2330: 445 # ServerGeneric S<T:D<Pfb,Gid>> # Native Setting Custom Value
+2331: 445 # ServerGeneric S<T:D<Pfb,Int>> # Native Setting Custom Value
+2332: 445 # ServerGeneric S<T:D<Pfb,Bol>> # Native Setting Custom Value
+2333: 445 # ServerGeneric S<T:D<Pfb,Flt>> # Native Setting Custom Value
+2334: 445 # ServerGeneric S<T:D<Pfb,Str>> # Native Setting Custom Value
+2335: 445 # ServerGeneric S<T:D<Pfb,Fct>> # Native Setting Custom Value
+2336: 445 # ServerGeneric S<T:D<Pfb,Vec>> # Native Setting Custom Value
+2337: 445 # ServerGeneric S<T:D<Pfb,Cfg>> # Native Setting Custom Value
+2338: 445 # ServerGeneric S<T:D<Pfb,Pfb>> # Native Setting Custom Value
+2339: 445 # ServerGeneric S<T:D<Pfb,L<Ety>>> # Native Setting Custom Value
+2340: 445 # ServerGeneric S<T:D<Pfb,L<Gid>>> # Native Setting Custom Value
+2341: 445 # ServerGeneric S<T:D<Pfb,L<Int>>> # Native Setting Custom Value
+2342: 445 # ServerGeneric S<T:D<Pfb,L<Bol>>> # Native Setting Custom Value
+2343: 445 # ServerGeneric S<T:D<Pfb,L<Flt>>> # Native Setting Custom Value
+2344: 445 # ServerGeneric S<T:D<Pfb,L<Str>>> # Native Setting Custom Value
+2345: 445 # ServerGeneric S<T:D<Pfb,L<Fct>>> # Native Setting Custom Value
+2346: 445 # ServerGeneric S<T:D<Pfb,L<Vec>>> # Native Setting Custom Value
+2347: 445 # ServerGeneric S<T:D<Pfb,L<Cfg>>> # Native Setting Custom Value
+2349: 459 # ServerGeneric S<T:L<Fct>> # Native Query Custom Value
+2350: 459 # ServerGeneric S<T:D<Ety,Ety>> # Native Query Custom Value
+2351: 459 # ServerGeneric S<T:D<Ety,Gid>> # Native Query Custom Value
+2352: 459 # ServerGeneric S<T:D<Ety,Int>> # Native Query Custom Value
+2353: 459 # ServerGeneric S<T:D<Ety,Bol>> # Native Query Custom Value
+2354: 459 # ServerGeneric S<T:D<Ety,Flt>> # Native Query Custom Value
+2355: 459 # ServerGeneric S<T:D<Ety,Str>> # Native Query Custom Value
+2356: 459 # ServerGeneric S<T:D<Ety,Fct>> # Native Query Custom Value
+2357: 459 # ServerGeneric S<T:D<Ety,Vec>> # Native Query Custom Value
+2358: 459 # ServerGeneric S<T:D<Ety,Cfg>> # Native Query Custom Value
+2359: 459 # ServerGeneric S<T:D<Ety,Pfb>> # Native Query Custom Value
+2360: 459 # ServerGeneric S<T:D<Ety,L<Ety>>> # Native Query Custom Value
+2361: 459 # ServerGeneric S<T:D<Ety,L<Gid>>> # Native Query Custom Value
+2362: 459 # ServerGeneric S<T:D<Ety,L<Int>>> # Native Query Custom Value
+2363: 459 # ServerGeneric S<T:D<Ety,L<Bol>>> # Native Query Custom Value
+2364: 459 # ServerGeneric S<T:D<Ety,L<Flt>>> # Native Query Custom Value
+2365: 459 # ServerGeneric S<T:D<Ety,L<Str>>> # Native Query Custom Value
+2366: 459 # ServerGeneric S<T:D<Ety,L<Fct>>> # Native Query Custom Value
+2367: 459 # ServerGeneric S<T:D<Ety,L<Vec>>> # Native Query Custom Value
+2368: 459 # ServerGeneric S<T:D<Ety,L<Cfg>>> # Native Query Custom Value
+2370: 459 # ServerGeneric S<T:D<Gid,Ety>> # Native Query Custom Value
+2371: 459 # ServerGeneric S<T:D<Gid,Gid>> # Native Query Custom Value
+2372: 459 # ServerGeneric S<T:D<Gid,Int>> # Native Query Custom Value
+2373: 459 # ServerGeneric S<T:D<Gid,Bol>> # Native Query Custom Value
+2374: 459 # ServerGeneric S<T:D<Gid,Flt>> # Native Query Custom Value
+2375: 459 # ServerGeneric S<T:D<Gid,Str>> # Native Query Custom Value
+2376: 459 # ServerGeneric S<T:D<Gid,Fct>> # Native Query Custom Value
+2377: 459 # ServerGeneric S<T:D<Gid,Vec>> # Native Query Custom Value
+2378: 459 # ServerGeneric S<T:D<Gid,Cfg>> # Native Query Custom Value
+2379: 459 # ServerGeneric S<T:D<Gid,Pfb>> # Native Query Custom Value
+2380: 459 # ServerGeneric S<T:D<Gid,L<Ety>>> # Native Query Custom Value
+2381: 459 # ServerGeneric S<T:D<Gid,L<Gid>>> # Native Query Custom Value
+2382: 459 # ServerGeneric S<T:D<Gid,L<Int>>> # Native Query Custom Value
+2383: 459 # ServerGeneric S<T:D<Gid,L<Bol>>> # Native Query Custom Value
+2384: 459 # ServerGeneric S<T:D<Gid,L<Flt>>> # Native Query Custom Value
+2385: 459 # ServerGeneric S<T:D<Gid,L<Str>>> # Native Query Custom Value
+2386: 459 # ServerGeneric S<T:D<Gid,L<Fct>>> # Native Query Custom Value
+2387: 459 # ServerGeneric S<T:D<Gid,L<Vec>>> # Native Query Custom Value
+2388: 459 # ServerGeneric S<T:D<Gid,L<Cfg>>> # Native Query Custom Value
+2390: 459 # ServerGeneric S<T:D<Int,Ety>> # Native Query Custom Value
+2391: 459 # ServerGeneric S<T:D<Int,Gid>> # Native Query Custom Value
+2392: 459 # ServerGeneric S<T:D<Int,Int>> # Native Query Custom Value
+2393: 459 # ServerGeneric S<T:D<Int,Bol>> # Native Query Custom Value
+2394: 459 # ServerGeneric S<T:D<Int,Flt>> # Native Query Custom Value
+2395: 459 # ServerGeneric S<T:D<Int,Str>> # Native Query Custom Value
+2396: 459 # ServerGeneric S<T:D<Int,Fct>> # Native Query Custom Value
+2397: 459 # ServerGeneric S<T:D<Int,Vec>> # Native Query Custom Value
+2398: 459 # ServerGeneric S<T:D<Int,Cfg>> # Native Query Custom Value
+2399: 459 # ServerGeneric S<T:D<Int,Pfb>> # Native Query Custom Value
+2400: 459 # ServerGeneric S<T:D<Int,L<Ety>>> # Native Query Custom Value
+2401: 459 # ServerGeneric S<T:D<Int,L<Gid>>> # Native Query Custom Value
+2402: 459 # ServerGeneric S<T:D<Int,L<Int>>> # Native Query Custom Value
+2403: 459 # ServerGeneric S<T:D<Int,L<Bol>>> # Native Query Custom Value
+2404: 459 # ServerGeneric S<T:D<Int,L<Flt>>> # Native Query Custom Value
+2405: 459 # ServerGeneric S<T:D<Int,L<Str>>> # Native Query Custom Value
+2406: 459 # ServerGeneric S<T:D<Int,L<Fct>>> # Native Query Custom Value
+2407: 459 # ServerGeneric S<T:D<Int,L<Vec>>> # Native Query Custom Value
+2408: 459 # ServerGeneric S<T:D<Int,L<Cfg>>> # Native Query Custom Value
+2410: 459 # ServerGeneric S<T:D<Str,Ety>> # Native Query Custom Value
+2411: 459 # ServerGeneric S<T:D<Str,Gid>> # Native Query Custom Value
+2412: 459 # ServerGeneric S<T:D<Str,Int>> # Native Query Custom Value
+2413: 459 # ServerGeneric S<T:D<Str,Bol>> # Native Query Custom Value
+2414: 459 # ServerGeneric S<T:D<Str,Flt>> # Native Query Custom Value
+2415: 459 # ServerGeneric S<T:D<Str,Str>> # Native Query Custom Value
+2416: 459 # ServerGeneric S<T:D<Str,Fct>> # Native Query Custom Value
+2417: 459 # ServerGeneric S<T:D<Str,Vec>> # Native Query Custom Value
+2418: 459 # ServerGeneric S<T:D<Str,Cfg>> # Native Query Custom Value
+2419: 459 # ServerGeneric S<T:D<Str,Pfb>> # Native Query Custom Value
+2420: 459 # ServerGeneric S<T:D<Str,L<Ety>>> # Native Query Custom Value
+2421: 459 # ServerGeneric S<T:D<Str,L<Gid>>> # Native Query Custom Value
+2422: 459 # ServerGeneric S<T:D<Str,L<Int>>> # Native Query Custom Value
+2423: 459 # ServerGeneric S<T:D<Str,L<Bol>>> # Native Query Custom Value
+2424: 459 # ServerGeneric S<T:D<Str,L<Flt>>> # Native Query Custom Value
+2425: 459 # ServerGeneric S<T:D<Str,L<Str>>> # Native Query Custom Value
+2426: 459 # ServerGeneric S<T:D<Str,L<Fct>>> # Native Query Custom Value
+2427: 459 # ServerGeneric S<T:D<Str,L<Vec>>> # Native Query Custom Value
+2428: 459 # ServerGeneric S<T:D<Str,L<Cfg>>> # Native Query Custom Value
+2430: 459 # ServerGeneric S<T:D<Fct,Ety>> # Native Query Custom Value
+2431: 459 # ServerGeneric S<T:D<Fct,Gid>> # Native Query Custom Value
+2432: 459 # ServerGeneric S<T:D<Fct,Int>> # Native Query Custom Value
+2433: 459 # ServerGeneric S<T:D<Fct,Bol>> # Native Query Custom Value
+2434: 459 # ServerGeneric S<T:D<Fct,Flt>> # Native Query Custom Value
+2435: 459 # ServerGeneric S<T:D<Fct,Str>> # Native Query Custom Value
+2436: 459 # ServerGeneric S<T:D<Fct,Fct>> # Native Query Custom Value
+2437: 459 # ServerGeneric S<T:D<Fct,Vec>> # Native Query Custom Value
+2438: 459 # ServerGeneric S<T:D<Fct,Cfg>> # Native Query Custom Value
+2439: 459 # ServerGeneric S<T:D<Fct,Pfb>> # Native Query Custom Value
+2440: 459 # ServerGeneric S<T:D<Fct,L<Ety>>> # Native Query Custom Value
+2441: 459 # ServerGeneric S<T:D<Fct,L<Gid>>> # Native Query Custom Value
+2442: 459 # ServerGeneric S<T:D<Fct,L<Int>>> # Native Query Custom Value
+2443: 459 # ServerGeneric S<T:D<Fct,L<Bol>>> # Native Query Custom Value
+2444: 459 # ServerGeneric S<T:D<Fct,L<Flt>>> # Native Query Custom Value
+2445: 459 # ServerGeneric S<T:D<Fct,L<Str>>> # Native Query Custom Value
+2446: 459 # ServerGeneric S<T:D<Fct,L<Fct>>> # Native Query Custom Value
+2447: 459 # ServerGeneric S<T:D<Fct,L<Vec>>> # Native Query Custom Value
+2448: 459 # ServerGeneric S<T:D<Fct,L<Cfg>>> # Native Query Custom Value
+2450: 459 # ServerGeneric S<T:D<Cfg,Ety>> # Native Query Custom Value
+2451: 459 # ServerGeneric S<T:D<Cfg,Gid>> # Native Query Custom Value
+2452: 459 # ServerGeneric S<T:D<Cfg,Int>> # Native Query Custom Value
+2453: 459 # ServerGeneric S<T:D<Cfg,Bol>> # Native Query Custom Value
+2454: 459 # ServerGeneric S<T:D<Cfg,Flt>> # Native Query Custom Value
+2455: 459 # ServerGeneric S<T:D<Cfg,Str>> # Native Query Custom Value
+2456: 459 # ServerGeneric S<T:D<Cfg,Fct>> # Native Query Custom Value
+2457: 459 # ServerGeneric S<T:D<Cfg,Vec>> # Native Query Custom Value
+2458: 459 # ServerGeneric S<T:D<Cfg,Cfg>> # Native Query Custom Value
+2459: 459 # ServerGeneric S<T:D<Cfg,Pfb>> # Native Query Custom Value
+2460: 459 # ServerGeneric S<T:D<Cfg,L<Ety>>> # Native Query Custom Value
+2461: 459 # ServerGeneric S<T:D<Cfg,L<Gid>>> # Native Query Custom Value
+2462: 459 # ServerGeneric S<T:D<Cfg,L<Int>>> # Native Query Custom Value
+2463: 459 # ServerGeneric S<T:D<Cfg,L<Bol>>> # Native Query Custom Value
+2464: 459 # ServerGeneric S<T:D<Cfg,L<Flt>>> # Native Query Custom Value
+2465: 459 # ServerGeneric S<T:D<Cfg,L<Str>>> # Native Query Custom Value
+2466: 459 # ServerGeneric S<T:D<Cfg,L<Fct>>> # Native Query Custom Value
+2467: 459 # ServerGeneric S<T:D<Cfg,L<Vec>>> # Native Query Custom Value
+2468: 459 # ServerGeneric S<T:D<Cfg,L<Cfg>>> # Native Query Custom Value
+2470: 459 # ServerGeneric S<T:D<Pfb,Ety>> # Native Query Custom Value
+2471: 459 # ServerGeneric S<T:D<Pfb,Gid>> # Native Query Custom Value
+2472: 459 # ServerGeneric S<T:D<Pfb,Int>> # Native Query Custom Value
+2473: 459 # ServerGeneric S<T:D<Pfb,Bol>> # Native Query Custom Value
+2474: 459 # ServerGeneric S<T:D<Pfb,Flt>> # Native Query Custom Value
+2475: 459 # ServerGeneric S<T:D<Pfb,Str>> # Native Query Custom Value
+2476: 459 # ServerGeneric S<T:D<Pfb,Fct>> # Native Query Custom Value
+2477: 459 # ServerGeneric S<T:D<Pfb,Vec>> # Native Query Custom Value
+2478: 459 # ServerGeneric S<T:D<Pfb,Cfg>> # Native Query Custom Value
+2479: 459 # ServerGeneric S<T:D<Pfb,Pfb>> # Native Query Custom Value
+2480: 459 # ServerGeneric S<T:D<Pfb,L<Ety>>> # Native Query Custom Value
+2481: 459 # ServerGeneric S<T:D<Pfb,L<Gid>>> # Native Query Custom Value
+2482: 459 # ServerGeneric S<T:D<Pfb,L<Int>>> # Native Query Custom Value
+2483: 459 # ServerGeneric S<T:D<Pfb,L<Bol>>> # Native Query Custom Value
+2484: 459 # ServerGeneric S<T:D<Pfb,L<Flt>>> # Native Query Custom Value
+2485: 459 # ServerGeneric S<T:D<Pfb,L<Str>>> # Native Query Custom Value
+2486: 459 # ServerGeneric S<T:D<Pfb,L<Fct>>> # Native Query Custom Value
+2487: 459 # ServerGeneric S<T:D<Pfb,L<Vec>>> # Native Query Custom Value
+2488: 459 # ServerGeneric S<T:D<Pfb,L<Cfg>>> # Native Query Custom Value
+2490: 428 # ServerGeneric S<T:L<Fct>> # When Native Custom Value Changes
+2491: 428 # ServerGeneric S<T:D<Ety,Ety>> # When Native Custom Value Changes
+2492: 428 # ServerGeneric S<T:D<Ety,Gid>> # When Native Custom Value Changes
+2493: 428 # ServerGeneric S<T:D<Ety,Int>> # When Native Custom Value Changes
+2494: 428 # ServerGeneric S<T:D<Ety,Bol>> # When Native Custom Value Changes
+2495: 428 # ServerGeneric S<T:D<Ety,Flt>> # When Native Custom Value Changes
+2496: 428 # ServerGeneric S<T:D<Ety,Str>> # When Native Custom Value Changes
+2497: 428 # ServerGeneric S<T:D<Ety,Fct>> # When Native Custom Value Changes
+2498: 428 # ServerGeneric S<T:D<Ety,Vec>> # When Native Custom Value Changes
+2499: 428 # ServerGeneric S<T:D<Ety,Cfg>> # When Native Custom Value Changes
+2500: 428 # ServerGeneric S<T:D<Ety,Pfb>> # When Native Custom Value Changes
+2501: 428 # ServerGeneric S<T:D<Ety,L<Ety>>> # When Native Custom Value Changes
+2502: 428 # ServerGeneric S<T:D<Ety,L<Gid>>> # When Native Custom Value Changes
+2503: 428 # ServerGeneric S<T:D<Ety,L<Int>>> # When Native Custom Value Changes
+2504: 428 # ServerGeneric S<T:D<Ety,L<Bol>>> # When Native Custom Value Changes
+2505: 428 # ServerGeneric S<T:D<Ety,L<Flt>>> # When Native Custom Value Changes
+2506: 428 # ServerGeneric S<T:D<Ety,L<Str>>> # When Native Custom Value Changes
+2507: 428 # ServerGeneric S<T:D<Ety,L<Fct>>> # When Native Custom Value Changes
+2508: 428 # ServerGeneric S<T:D<Ety,L<Vec>>> # When Native Custom Value Changes
+2509: 428 # ServerGeneric S<T:D<Ety,L<Cfg>>> # When Native Custom Value Changes
+2511: 428 # ServerGeneric S<T:D<Gid,Ety>> # When Native Custom Value Changes
+2512: 428 # ServerGeneric S<T:D<Gid,Gid>> # When Native Custom Value Changes
+2513: 428 # ServerGeneric S<T:D<Gid,Int>> # When Native Custom Value Changes
+2514: 428 # ServerGeneric S<T:D<Gid,Bol>> # When Native Custom Value Changes
+2515: 428 # ServerGeneric S<T:D<Gid,Flt>> # When Native Custom Value Changes
+2516: 428 # ServerGeneric S<T:D<Gid,Str>> # When Native Custom Value Changes
+2517: 428 # ServerGeneric S<T:D<Gid,Fct>> # When Native Custom Value Changes
+2518: 428 # ServerGeneric S<T:D<Gid,Vec>> # When Native Custom Value Changes
+2519: 428 # ServerGeneric S<T:D<Gid,Cfg>> # When Native Custom Value Changes
+2520: 428 # ServerGeneric S<T:D<Gid,Pfb>> # When Native Custom Value Changes
+2521: 428 # ServerGeneric S<T:D<Gid,L<Ety>>> # When Native Custom Value Changes
+2522: 428 # ServerGeneric S<T:D<Gid,L<Gid>>> # When Native Custom Value Changes
+2523: 428 # ServerGeneric S<T:D<Gid,L<Int>>> # When Native Custom Value Changes
+2524: 428 # ServerGeneric S<T:D<Gid,L<Bol>>> # When Native Custom Value Changes
+2525: 428 # ServerGeneric S<T:D<Gid,L<Flt>>> # When Native Custom Value Changes
+2526: 428 # ServerGeneric S<T:D<Gid,L<Str>>> # When Native Custom Value Changes
+2527: 428 # ServerGeneric S<T:D<Gid,L<Fct>>> # When Native Custom Value Changes
+2528: 428 # ServerGeneric S<T:D<Gid,L<Vec>>> # When Native Custom Value Changes
+2529: 428 # ServerGeneric S<T:D<Gid,L<Cfg>>> # When Native Custom Value Changes
+2531: 428 # ServerGeneric S<T:D<Int,Ety>> # When Native Custom Value Changes
+2532: 428 # ServerGeneric S<T:D<Int,Gid>> # When Native Custom Value Changes
+2533: 428 # ServerGeneric S<T:D<Int,Int>> # When Native Custom Value Changes
+2534: 428 # ServerGeneric S<T:D<Int,Bol>> # When Native Custom Value Changes
+2535: 428 # ServerGeneric S<T:D<Int,Flt>> # When Native Custom Value Changes
+2536: 428 # ServerGeneric S<T:D<Int,Str>> # When Native Custom Value Changes
+2537: 428 # ServerGeneric S<T:D<Int,Fct>> # When Native Custom Value Changes
+2538: 428 # ServerGeneric S<T:D<Int,Vec>> # When Native Custom Value Changes
+2539: 428 # ServerGeneric S<T:D<Int,Cfg>> # When Native Custom Value Changes
+2540: 428 # ServerGeneric S<T:D<Int,Pfb>> # When Native Custom Value Changes
+2541: 428 # ServerGeneric S<T:D<Int,L<Ety>>> # When Native Custom Value Changes
+2542: 428 # ServerGeneric S<T:D<Int,L<Gid>>> # When Native Custom Value Changes
+2543: 428 # ServerGeneric S<T:D<Int,L<Int>>> # When Native Custom Value Changes
+2544: 428 # ServerGeneric S<T:D<Int,L<Bol>>> # When Native Custom Value Changes
+2545: 428 # ServerGeneric S<T:D<Int,L<Flt>>> # When Native Custom Value Changes
+2546: 428 # ServerGeneric S<T:D<Int,L<Str>>> # When Native Custom Value Changes
+2547: 428 # ServerGeneric S<T:D<Int,L<Fct>>> # When Native Custom Value Changes
+2548: 428 # ServerGeneric S<T:D<Int,L<Vec>>> # When Native Custom Value Changes
+2549: 428 # ServerGeneric S<T:D<Int,L<Cfg>>> # When Native Custom Value Changes
+2551: 428 # ServerGeneric S<T:D<Str,Ety>> # When Native Custom Value Changes
+2552: 428 # ServerGeneric S<T:D<Str,Gid>> # When Native Custom Value Changes
+2553: 428 # ServerGeneric S<T:D<Str,Int>> # When Native Custom Value Changes
+2554: 428 # ServerGeneric S<T:D<Str,Bol>> # When Native Custom Value Changes
+2555: 428 # ServerGeneric S<T:D<Str,Flt>> # When Native Custom Value Changes
+2556: 428 # ServerGeneric S<T:D<Str,Str>> # When Native Custom Value Changes
+2557: 428 # ServerGeneric S<T:D<Str,Fct>> # When Native Custom Value Changes
+2558: 428 # ServerGeneric S<T:D<Str,Vec>> # When Native Custom Value Changes
+2559: 428 # ServerGeneric S<T:D<Str,Cfg>> # When Native Custom Value Changes
+2560: 428 # ServerGeneric S<T:D<Str,Pfb>> # When Native Custom Value Changes
+2561: 428 # ServerGeneric S<T:D<Str,L<Ety>>> # When Native Custom Value Changes
+2562: 428 # ServerGeneric S<T:D<Str,L<Gid>>> # When Native Custom Value Changes
+2563: 428 # ServerGeneric S<T:D<Str,L<Int>>> # When Native Custom Value Changes
+2564: 428 # ServerGeneric S<T:D<Str,L<Bol>>> # When Native Custom Value Changes
+2565: 428 # ServerGeneric S<T:D<Str,L<Flt>>> # When Native Custom Value Changes
+2566: 428 # ServerGeneric S<T:D<Str,L<Str>>> # When Native Custom Value Changes
+2567: 428 # ServerGeneric S<T:D<Str,L<Fct>>> # When Native Custom Value Changes
+2568: 428 # ServerGeneric S<T:D<Str,L<Vec>>> # When Native Custom Value Changes
+2569: 428 # ServerGeneric S<T:D<Str,L<Cfg>>> # When Native Custom Value Changes
+2571: 428 # ServerGeneric S<T:D<Fct,Ety>> # When Native Custom Value Changes
+2572: 428 # ServerGeneric S<T:D<Fct,Gid>> # When Native Custom Value Changes
+2573: 428 # ServerGeneric S<T:D<Fct,Int>> # When Native Custom Value Changes
+2574: 428 # ServerGeneric S<T:D<Fct,Bol>> # When Native Custom Value Changes
+2575: 428 # ServerGeneric S<T:D<Fct,Flt>> # When Native Custom Value Changes
+2576: 428 # ServerGeneric S<T:D<Fct,Str>> # When Native Custom Value Changes
+2577: 428 # ServerGeneric S<T:D<Fct,Fct>> # When Native Custom Value Changes
+2578: 428 # ServerGeneric S<T:D<Fct,Vec>> # When Native Custom Value Changes
+2579: 428 # ServerGeneric S<T:D<Fct,Cfg>> # When Native Custom Value Changes
+2580: 428 # ServerGeneric S<T:D<Fct,Pfb>> # When Native Custom Value Changes
+2581: 428 # ServerGeneric S<T:D<Fct,L<Ety>>> # When Native Custom Value Changes
+2582: 428 # ServerGeneric S<T:D<Fct,L<Gid>>> # When Native Custom Value Changes
+2583: 428 # ServerGeneric S<T:D<Fct,L<Int>>> # When Native Custom Value Changes
+2584: 428 # ServerGeneric S<T:D<Fct,L<Bol>>> # When Native Custom Value Changes
+2585: 428 # ServerGeneric S<T:D<Fct,L<Flt>>> # When Native Custom Value Changes
+2586: 428 # ServerGeneric S<T:D<Fct,L<Str>>> # When Native Custom Value Changes
+2587: 428 # ServerGeneric S<T:D<Fct,L<Fct>>> # When Native Custom Value Changes
+2588: 428 # ServerGeneric S<T:D<Fct,L<Vec>>> # When Native Custom Value Changes
+2589: 428 # ServerGeneric S<T:D<Fct,L<Cfg>>> # When Native Custom Value Changes
+2591: 428 # ServerGeneric S<T:D<Cfg,Ety>> # When Native Custom Value Changes
+2592: 428 # ServerGeneric S<T:D<Cfg,Gid>> # When Native Custom Value Changes
+2593: 428 # ServerGeneric S<T:D<Cfg,Int>> # When Native Custom Value Changes
+2594: 428 # ServerGeneric S<T:D<Cfg,Bol>> # When Native Custom Value Changes
+2595: 428 # ServerGeneric S<T:D<Cfg,Flt>> # When Native Custom Value Changes
+2596: 428 # ServerGeneric S<T:D<Cfg,Str>> # When Native Custom Value Changes
+2597: 428 # ServerGeneric S<T:D<Cfg,Fct>> # When Native Custom Value Changes
+2598: 428 # ServerGeneric S<T:D<Cfg,Vec>> # When Native Custom Value Changes
+2599: 428 # ServerGeneric S<T:D<Cfg,Cfg>> # When Native Custom Value Changes
+2600: 428 # ServerGeneric S<T:D<Cfg,Pfb>> # When Native Custom Value Changes
+2601: 428 # ServerGeneric S<T:D<Cfg,L<Ety>>> # When Native Custom Value Changes
+2602: 428 # ServerGeneric S<T:D<Cfg,L<Gid>>> # When Native Custom Value Changes
+2603: 428 # ServerGeneric S<T:D<Cfg,L<Int>>> # When Native Custom Value Changes
+2604: 428 # ServerGeneric S<T:D<Cfg,L<Bol>>> # When Native Custom Value Changes
+2605: 428 # ServerGeneric S<T:D<Cfg,L<Flt>>> # When Native Custom Value Changes
+2606: 428 # ServerGeneric S<T:D<Cfg,L<Str>>> # When Native Custom Value Changes
+2607: 428 # ServerGeneric S<T:D<Cfg,L<Fct>>> # When Native Custom Value Changes
+2608: 428 # ServerGeneric S<T:D<Cfg,L<Vec>>> # When Native Custom Value Changes
+2609: 428 # ServerGeneric S<T:D<Cfg,L<Cfg>>> # When Native Custom Value Changes
+2611: 428 # ServerGeneric S<T:D<Pfb,Ety>> # When Native Custom Value Changes
+2612: 428 # ServerGeneric S<T:D<Pfb,Gid>> # When Native Custom Value Changes
+2613: 428 # ServerGeneric S<T:D<Pfb,Int>> # When Native Custom Value Changes
+2614: 428 # ServerGeneric S<T:D<Pfb,Bol>> # When Native Custom Value Changes
+2615: 428 # ServerGeneric S<T:D<Pfb,Flt>> # When Native Custom Value Changes
+2616: 428 # ServerGeneric S<T:D<Pfb,Str>> # When Native Custom Value Changes
+2617: 428 # ServerGeneric S<T:D<Pfb,Fct>> # When Native Custom Value Changes
+2618: 428 # ServerGeneric S<T:D<Pfb,Vec>> # When Native Custom Value Changes
+2619: 428 # ServerGeneric S<T:D<Pfb,Cfg>> # When Native Custom Value Changes
+2620: 428 # ServerGeneric S<T:D<Pfb,Pfb>> # When Native Custom Value Changes
+2621: 428 # ServerGeneric S<T:D<Pfb,L<Ety>>> # When Native Custom Value Changes
+2622: 428 # ServerGeneric S<T:D<Pfb,L<Gid>>> # When Native Custom Value Changes
+2623: 428 # ServerGeneric S<T:D<Pfb,L<Int>>> # When Native Custom Value Changes
+2624: 428 # ServerGeneric S<T:D<Pfb,L<Bol>>> # When Native Custom Value Changes
+2625: 428 # ServerGeneric S<T:D<Pfb,L<Flt>>> # When Native Custom Value Changes
+2626: 428 # ServerGeneric S<T:D<Pfb,L<Str>>> # When Native Custom Value Changes
+2627: 428 # ServerGeneric S<T:D<Pfb,L<Fct>>> # When Native Custom Value Changes
+2628: 428 # ServerGeneric S<T:D<Pfb,L<Vec>>> # When Native Custom Value Changes
+2629: 428 # ServerGeneric S<T:D<Pfb,L<Cfg>>> # When Native Custom Value Changes
 2640: 169 # ServerGeneric S<T:Fct> # Int
 2643: 160 # ServerGeneric S<T:Fct> # Modify Value in List
 2644: 153 # ServerGeneric S<T:Fct> # Remove Value From List
