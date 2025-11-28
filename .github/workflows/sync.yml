@@ -21,4 +21,3 @@ jobs:
 
       - name: Sync and commit files
         run: node .github/actions/sync.ts
-        working-directory: dev
