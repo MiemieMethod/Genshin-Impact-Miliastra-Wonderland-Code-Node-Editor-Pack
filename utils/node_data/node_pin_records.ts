@@ -3,6 +3,8 @@
  * @author Aluria
  * @date 2025-11-30
  * @version 1.4.0
+ * 
+ * @field server nodes
  */
 
 import type { NodePinsRecords } from "../gia_gen/nodes.ts";

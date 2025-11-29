@@ -1,8 +1,10 @@
-/** Node defines(reflective nodes only).
+/** Node pins `index of concrete` defines
  *
  * @author Aluria
  * @date 2025-11-30
  * @version 1.4.0
+ * 
+ * @field server nodes
  */
 
 export interface ConcreteMap {

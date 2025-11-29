@@ -1,5 +1,5 @@
 {
-  "commitMessage": "补全了类型/枚举",
+  "commitMessage": "完善了 node_pin_records 清单",
   "notSync": true,
   "include": [
     "*",
