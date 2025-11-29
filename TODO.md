@@ -3,12 +3,19 @@
 ## 已完成的功能
 *按完成时间由近到远排序*
 
+- **2025-11-30**: VarType = 16, local variable, 相关内容, VariableSnapshot=28
+- **2025-11-30**: MovementMode_InstantMovement, FixedMotionParameterType_FixedTime
+- **2025-11-30**: 算法bug导致我似乎遗漏了一些节点, 完整的重新检查.
+- **2025-11-30**: 完成非反射引脚的创建
 - **2025-11-29**: 手动补全 35 多个非常规类型引脚, 补全枚举和类型定义
 - **2025-11-29**: 利用不同类型连线会被断开的机制, 提取节点常规引脚类型.
 - **2025-11-29**: 整理了输入节点连线类型
 - **2025-11-29**: 调查两组 PinIndex 差异的来源: 似乎是固定的, 但无规律可循, 且 i2 导入时不被载入.
 - **2025-11-29**: 添加了若干隐藏节点的名字
 - **2025-11-29**: 添加 Graph 类的 connects 机制, 并完成 encode
+<details>
+<summary>更早的内容:</summary>
+
 - **2025-11-28**: 调整 gia.proto , 将 NodeId 枚举移除, 放入独立 ts 文件
 - **2025-11-28**: 节点图连线编解码分析: 非常简单, 连就完事了...
 - **2025-11-28**: 服务器节点图的名称和 id 列表整理: node_pin_records.ts
@@ -19,9 +26,6 @@
 - **2025-11-28**: 服务器节点图管理类 - 图和节点的快速定义和修改功能
 - **2025-11-28**: 服务器节点图管理类 - encode 导出为 gia 结构
 - **2025-11-28**: 添加任务列表 `todo.md`
-<details>
-<summary>更早的内容:</summary>
-
 - **2025-11-28**: 创建 dev 作为工作分支, 并自动同步 main 分支.
 - (更早的列表未记录)
 
@@ -31,11 +35,9 @@
 ## 进行中
 *按任务优先级和完成度排序, 打勾的说明已经开始, 仍未完成*
 
-- [x] 完成非反射引脚的创建
-- [x] 算法bug导致我似乎遗漏了一些节点, 重新检查......
-- [x] VarType = 16, local variable, 相关内容, VariableSnapshot=28
-- [ ] MovementMode_InstantMovement, FixedMotionParameterType_FixedTime
+
 - [ ] 完成 Graph 类的 connects 机制 decode
+- [ ] 完成 Graph 类的 value set 接口
 
 
 ## 计划

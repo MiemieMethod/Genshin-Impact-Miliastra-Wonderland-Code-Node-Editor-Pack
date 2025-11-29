@@ -1,6 +1,6 @@
 {
   "commitMessage": "补全了类型/枚举",
-  "notSync": false,
+  "notSync": true,
   "include": [
     "*",
     "docs/**",

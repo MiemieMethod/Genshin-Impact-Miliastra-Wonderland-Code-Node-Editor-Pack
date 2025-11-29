@@ -569,6 +569,12 @@ export function get_id(node: NodeType): number {
       }
       break;
     case "e":
+      switch (node.e) {
+        case 1016:  // Local Variable
+          return 16;
+        case 1028:  // Variable Snapshot
+          return 28;
+      }
       return VarType.EnumItem;
     case "l":
       switch (node.i.t) {
@@ -684,6 +690,10 @@ export function get_type(id: number): NodeType {
       return { t: "l", i: { t: "s", f: [] } };
     case VarType.Dictionary:
       return { t: "d", k: { t: "b", b: "Ety" }, v: { t: "b", b: "Ety" } };
+    case VarType.LocalVariable:
+      return { t: "e", e: 1016 };
+    case VarType.VariableSnapshot:
+      return { t: "e", e: 1028 };
   }
   // throw new Error("Invalid ID: " + id);
   // console.error("Invalid ID: " + id);

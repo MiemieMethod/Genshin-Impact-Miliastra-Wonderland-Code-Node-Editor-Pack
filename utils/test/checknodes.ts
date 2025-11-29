@@ -1,10 +1,10 @@
 import { NODE_PIN_RECORDS } from "../node_data/node_pin_records.ts";
 import { EncodeOptions, Graph, Pin } from "../gia_gen/graph.ts";
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
-import { type GraphNode } from "../protobuf/gia.proto.ts";
+import { VarBase_Class, type GraphNode, type VarBase } from "../protobuf/gia.proto.ts";
 // import assert from "assert";
 import { get_concrete_index, get_generic_id, get_node_record, get_node_record_generic, is_generic_id } from "../node_data/helpers.ts";
-import { get_id, parse, reflect, type_equal } from "../gia_gen/nodes.ts";
+import { get_id, is_reflect, type NodeType, parse, reflect, reflects, type_equal } from "../gia_gen/nodes.ts";
 import { get_node_info } from "../gia_gen/extract.ts";
 import { assert, assert_equal, assert_unequal } from "./utils.ts";
 import { execSync } from "child_process";
@@ -13,17 +13,51 @@ const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_L
 const FILE = PATH + "check_nodes.gia";
 
 
+function check_val(pin: NodeType, p: VarBase) {
+  // 对比值
+  if (pin.t === "b") {
+    switch (pin.b) {
+      case "Int":
+        assert_equal(p.bInt?.val, 1);
+        break;
+      case "Flt":
+        assert_equal(p.bFloat?.val, 1.0);
+        break;
+      case "Bol":
+        assert_equal(p.bEnum?.val, 1);
+        break;
+      case "Str":
+        assert_equal(p.bString?.val, '1');
+        break;
+      case "Vec":
+        assert_equal(p.bVector?.val.x, 1.0);
+        assert_equal(p.bVector?.val.y, 1.0);
+        assert_equal(p.bVector?.val.z, 1.0);
+        break;
+      case "Gid":
+      case "Pfb":
+      case "Fct":
+      case "Cfg":
+        assert_equal(p.bId?.val, 1);
+        break;
+      case "Ety":
+        break;
+    }
+  }
+}
 
 function test_all_nodes(read = false) {
+
   let nodes: GraphNode[] = null as any, j = 0;
   if (read) {
     nodes = decode_gia_file(FILE).graph.graph?.inner.graph.nodes!;
   }
   const graph = new Graph();
   for (let i = 1; i < 4000; i++) {
+    // for (let i = 136; i < 137; i++) {
     if (!read) {
       const node0 = graph.add_node(i);
-      node0.setPos(0, i);
+      node0.setPos(i % 50, i / 50);
       continue;
     }
     // 检查一致性
@@ -46,11 +80,19 @@ function test_all_nodes(read = false) {
         for (let j = 0; j < record.inputs.length; j++) {
           const pin = parse(record.inputs[j]);
           if (pin.t !== "b" && pin.t !== "e") continue;
+          if (pin.t === "e" && (pin.e === 1016 || pin.e === 1028)) continue;
           if (record.inputs[j] === "Unk") continue;
           const p = node.pins[k++];
+          assert_equal(p.i1.kind, 3);
           assert_equal(p.i1.index, j);
           assert_equal(p.type, get_id(pin));
+          assert_unequal(p.value.class, VarBase_Class.NodeValueBase);
+
+          check_val(pin, p.value);
+
         }
+        assert(node.pins[k] === undefined || node.pins[k].i1.kind === 4); // 再无更多入引脚
+
         continue;
       }
       // generic node but without concrete node.
@@ -62,9 +104,54 @@ function test_all_nodes(read = false) {
     const record = get_node_record(i);
     assert(record !== null);
     assert(record.reflectMap !== null);
+    assert_equal(node.nodeIndex, i); // exist(the same index as define)
+    assert_equal(node.genericId.nodeId, gid);
+    assert_equal(node.concreteId?.nodeId, i);
+    // 引脚类型
+    let k = 0;
+    for (let j = 0; j < record.inputs.length; j++) {
+      const pin = parse(record.inputs[j]);
+      if (is_reflect(pin)) {
+        const p = node.pins[k++];
+        assert_equal(p.i1.kind, 3);
+        assert_equal(p.i1.index, j);
+        const ref = reflects(pin, record.reflectMap!.find(x => x[0] === i)![1]);
+        assert_equal(p.type, get_id(ref));
+        assert_equal(p.value.class, VarBase_Class.NodeValueBase);
+        if (gid === 475) { assert_equal(ref.t, "e"); assert_equal(p.value.bNodeValue!.indexOfConcrete, ref.e); }
+        else { assert_equal(p.value.bNodeValue!.indexOfConcrete, get_concrete_index(gid, 3, j, get_id(ref))); }
+
+        if (ref.t === "l") {
+          assert_equal(p.value.bNodeValue!.value.class, VarBase_Class.ArrayBase);
+          assert_equal(p.value.bNodeValue!.value.itemType?.itemType.type, get_id(ref));
+        } else if (ref.t === "d") {
+          assert_equal(p.value.bNodeValue!.value.class, VarBase_Class.MapBase);
+          assert_equal(p.value.bNodeValue!.value.itemType?.itemType.type, get_id(ref));
+          assert_equal(p.value.bNodeValue!.value.itemType?.itemType.kind, 2); //pair
+          assert_equal(p.value.bNodeValue!.value.itemType?.itemType.items?.key, get_id(ref.k)); //pair
+          assert_equal(p.value.bNodeValue!.value.itemType?.itemType.items?.value, get_id(ref.v)); //pair
+        }
+        check_val(pin, p.value.bNodeValue!.value);
+        continue;
+      }
+      if (pin.t !== "b" && pin.t !== "e") continue;
+      if (pin.t === "e" && (pin.e === 1016 || pin.e === 1028)) continue; // special
+      if (record.inputs[j] === "Unk") continue;
+      const p = node.pins[k++];
+      assert_equal(p.i1.kind, 3);
+      assert_equal(p.i1.index, j);
+      assert_equal(p.type, get_id(pin));
+      assert_unequal(p.value.class, VarBase_Class.NodeValueBase);
+
+
+      check_val(pin, p.value);
+    }
+    assert(node.pins[k] === undefined || node.pins[k].i1.kind === 4); // 再无更多入引脚
   }
   if (!read) {
     encode_gia_file(FILE, graph.encode(new EncodeOptions(true)));
+  } else {
+    console.info("All check Passed!")
   }
 }
 
@@ -81,7 +168,7 @@ function get_missing_node(read = false) {
       const refl = parse(ref as string);
       assert_equal(refl.t, "s");
       p.setType(refl.f[0][1]);
-      p.concrete_index = get_concrete_index(50, 4, 0, get_id(refl.f[0][1]));
+      p.concrete_id = get_concrete_index(50, 4, 0, get_id(refl.f[0][1]));
       console.log(p);
     }
     encode_gia_file(FILE, g.encode());
@@ -114,7 +201,9 @@ console.time("Time consume");
 // 检查全部节点存在性
 test_all_nodes(true);
 
-// console.dir(decode_gia_file(FILE).graph.graph?.inner.graph.nodes[0], { depth: null, maxArrayLength: null });
+// console.dir(decode_gia_file(PATH + "temp.gia").graph.graph?.inner.graph.nodes.map(n => ({ id: n.concreteId.nodeId, p: n.pins.map(p => p.value.bNodeValue?.indexOfConcrete) })), { depth: null, maxArrayLength: null });
+// console.dir(decode_gia_file(PATH + "temp.gia").graph.graph?.inner.graph.nodes, { depth: null, maxArrayLength: null });
+// console.dir(decode_gia_file(FILE).graph.graph?.inner.graph.nodes, { depth: null, maxArrayLength: null });
 
 
 

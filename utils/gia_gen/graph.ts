@@ -261,11 +261,13 @@ export class Node {
 }
 
 export class Pin {
+  /** generic id */
   private node_id: number;
   private kind: number;
   private index: number;
   reflective: boolean;
-  concrete_index: number;
+  /** concrete id */
+  concrete_id: number;
   /** null type means normal pin without any determined info */
   type: NodeType | null;
   constructor(node_id: number, kind: number, index: number, reflective = false) {
@@ -273,12 +275,12 @@ export class Pin {
     this.kind = kind;
     this.index = index;
     this.type = null;
-    this.concrete_index = 0;
+    this.concrete_id = 0;
     this.reflective = reflective;
   }
   clear() {
     this.type = null;
-    this.concrete_index = 0;
+    this.concrete_id = 0;
   }
   setType(type: NodeType) {
     if (this.type !== null && type_equal(this.type, type)) {
@@ -289,9 +291,9 @@ export class Pin {
   }
   updateConcreteIndex() {
     if (this.type !== null && is_concrete_pin(this.node_id, this.kind, this.index)) {
-      this.concrete_index = get_concrete_index(this.node_id, this.kind, this.index, get_id(this.type));
+      this.concrete_id = get_concrete_index(this.node_id, this.kind, this.index, get_id(this.type));
     } else {
-      assert.equal(this.concrete_index, 0);
+      assert.equal(this.concrete_id, 0);
     }
   }
   encode(opt: EncodeOptions, connects?: Connect[]): NodePin | null {
@@ -301,7 +303,7 @@ export class Pin {
     }
     // if (connects?.length !== 0) debugger;
     const connect = connects?.find((c) => this.kind === 3 && c.to_index === this.index)?.encode(); // input can be connected
-    return node_type_pin_body({
+    const pin = node_type_pin_body({
       reflective: this.reflective,
       /** 引脚类型 (输入/输出) */
       kind: this.kind as NodePin_Index_Kind,
@@ -310,12 +312,17 @@ export class Pin {
       /** 节点类型系统中的类型描述对象 NodeType */
       type: this.type,
       /** 具体类型的索引，用于支持类型实例化 */
-      indexOfConcrete: this.concrete_index,
+      indexOfConcrete: this.concrete_id,
       /** 引脚的初始值，可选 */
       value: undefined,
       non_zero: opt.non_zero,
       connects: connect === undefined ? undefined : [connect],
     });
+    if (this.type.t === "e" && this.node_id === 475) {
+      // Enum Equal, 需要手动设置 index of concrete
+      pin.value.bNodeValue!.indexOfConcrete = this.type.e;
+    }
+    return pin;
   }
 }
 

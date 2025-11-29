@@ -1,3 +1,10 @@
+/** Node defines(reflective nodes only).
+ *
+ * @author Aluria
+ * @date 2025-11-30
+ * @version 1.4.0
+ */
+
 export interface ConcreteMap {
   /** Each map is a map of concrete_id --> type */
   maps: number[][];
@@ -7,7 +14,7 @@ export interface ConcreteMap {
 
 export const CONCRETE_MAP: ConcreteMap = {
   maps: [
-    [
+    [ // M0
       3,
       6,
       1,
@@ -30,7 +37,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       24,
       27,
     ],
-    [
+    [ // M1
       3,
       5,
       4,
@@ -53,7 +60,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       24,
       27,
     ],
-    [
+    [ // M2
       1,
       2,
       3,
@@ -76,7 +83,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       24,
       27,
     ],
-    [
+    [ // M3
       1,
       2,
       3,
@@ -98,7 +105,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       15,
       22,
     ],
-    [
+    [ // M4
       4,
       3,
       6,
@@ -120,7 +127,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       17,
       24,
     ],
-    [
+    [ // M5
       8,
       11,
       13,
@@ -132,7 +139,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       23,
       24,
     ],
-    [
+    [ // M6
       13,
       7,
       8,
@@ -144,7 +151,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       22,
       23,
     ],
-    [
+    [ // M7
       3,
       6,
       1,
@@ -156,7 +163,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       21,
       17,
     ],
-    [
+    [ // M8
       9,
       13,
       10,
@@ -168,7 +175,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       23,
       24,
     ],
-    [
+    [ // M9
       4,
       1,
       5,
@@ -180,7 +187,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       21,
       17,
     ],
-    [
+    [ // M10
       6,
       2,
       1,
@@ -191,7 +198,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       20,
       21,
     ],
-    [
+    [ // M11
       13,
       7,
       8,
@@ -200,7 +207,7 @@ export const CONCRETE_MAP: ConcreteMap = {
       22,
       23,
     ],
-    [
+    [ // M12
       1,
       2,
       3,
@@ -209,9 +216,11 @@ export const CONCRETE_MAP: ConcreteMap = {
       20,
       21,
     ],
-    [3, 5, 6],
-    [8, 10],
-    [27],
+    [3, 5, 6], // M13
+    [8, 10], // M14
+    [27], // M15
+    [3, 1, 2, 4, 5, 12, 17], // M16
+    [4, 5, 6, 3], // M17
   ],
   pins: new Map([
     ["22:3:2", 0],
@@ -223,6 +232,7 @@ export const CONCRETE_MAP: ConcreteMap = {
     ["459:4:0", 0],
     ["50:4:0", 0],
     ["3:3:0", 0],
+    ["3360:4:0", 0],
     ["323:3:1", 1],
     ["149:4:0", 1],
     ["151:4:0", 1],
@@ -320,7 +330,9 @@ export const CONCRETE_MAP: ConcreteMap = {
     ["948:3:2", 3],
     ["1438:3:1", 3],
     ["18:3:0", 4],
+    ["18:4:1", 4],
     ["19:3:1", 4],
+    ["3:3:1", 5],
     ["100:3:0", 5],
     ["100:3:1", 5],
     ["107:3:0", 5],
@@ -339,6 +351,7 @@ export const CONCRETE_MAP: ConcreteMap = {
     ["114:3:1", 7],
     ["121:3:1", 7],
     ["128:4:0", 7],
+    ["135:3:2", 7],
     ["160:3:2", 7],
     ["169:3:10", 7],
     ["169:3:11", 7],
@@ -469,5 +482,7 @@ export const CONCRETE_MAP: ConcreteMap = {
     ["1928:3:0", 15],
     ["1938:3:0", 15],
     ["948:3:0", 15],
+    ["180:3:0", 16],
+    ["180:4:0", 17],
   ]),
 };
