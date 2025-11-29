@@ -20,24 +20,10 @@ interface GiaFile {
   }
 }
 
-export interface DecodeGiaInterface {
-  /** path to gia file */
-  gia_path: string | null;
-  /** binary date without header and footer */
-  proto_bytes?: Uint8Array<ArrayBufferLike> | ArrayBuffer;
-  /** path to def file: *.proto */
-  proto_path?: string;
-  /** enable checking header and tail */
-  check_header?: boolean;
-}
-
-export function unwrap_gia(config: DecodeGiaInterface): Uint8Array {
-  if (config.proto_bytes === undefined) {
-    if (config.gia_path === null) {
-      throw new Error("Either path or bytes is required");
-    }
-    const bytes = new Uint8Array(readFileSync(config.gia_path));
-    if (config.check_header === true) {
+export function unwrap_gia(gia_path_or_data: string | Uint8Array<ArrayBufferLike> | ArrayBuffer, check_header: boolean = true): Uint8Array {
+  if (typeof gia_path_or_data === "string") {
+    const bytes = new Uint8Array(readFileSync(gia_path_or_data));
+    if (check_header === true) {
       const header = new DataView(bytes.buffer);
       const left_size = header.getUint32(0, false);
       const schema_version = header.getUint32(4, false);
@@ -52,13 +38,12 @@ export function unwrap_gia(config: DecodeGiaInterface): Uint8Array {
       assert(tail_tag === 0x0679);
       assert(file_type === 3);
       assert(proto_size === bytes.byteLength - 24);
-      console.info("Gia file header Check Pass!")
+      console.info("Gia file header Check Pass!");
     }
-    config.proto_bytes = bytes.slice(20, -4);
+    return bytes.slice(20, -4);
   } else {
-    config.proto_bytes = new Uint8Array(config.proto_bytes);
+    return new Uint8Array(gia_path_or_data);
   }
-  return config.proto_bytes;
 }
 export function wrap_gia(message: proto.Type, data: Root) {
   const newBytes = message.encode(data).finish();
@@ -75,29 +60,22 @@ export function wrap_gia(message: proto.Type, data: Root) {
   return buffer;
 }
 
-export function decode_gia_file(config: DecodeGiaInterface): Root {
-  config.proto_path ??= import.meta.dirname + "/gia.proto";
-  const root = new proto.Root().loadSync(config.proto_path, { keepCase: true });
+export function decode_gia_file(gia_path_or_data: string | Uint8Array<ArrayBufferLike> | ArrayBuffer, proto_path?: string, check_header: boolean = false): Root {
+  proto_path ??= import.meta.dirname + "/gia.proto";
+  const root = new proto.Root().loadSync(proto_path, { keepCase: true });
   const message = root.lookupType("Root");
 
-  const msg = message.decode(unwrap_gia(config)) as any as Root;
+  const msg = message.decode(unwrap_gia(gia_path_or_data, check_header)) as any as Root;
   return msg;
 }
 
-export interface EncodeGiaInterface {
-  /** path to save gia file */
-  out_path: string;
-  /** path to def file: *.proto */
-  proto_path?: string;
-  /** Graph */
-  gia_struct: Root
-}
-export function encode_gia_file(config: EncodeGiaInterface) {
-  config.proto_path ??= import.meta.dirname + "/gia.proto";
-  const root = new proto.Root().loadSync(config.proto_path, { keepCase: true });
+
+export function encode_gia_file(out_path: string, gia_struct: Root, proto_path?: string) {
+  proto_path ??= import.meta.dirname + "/gia.proto";
+  const root = new proto.Root().loadSync(proto_path, { keepCase: true });
   const message = root.lookupType("Root");
 
-  writeFileSync(config.out_path, Buffer.from(wrap_gia(message, config.gia_struct)));
+  writeFileSync(out_path, Buffer.from(wrap_gia(message, gia_struct)));
 }
 
 // 内部测试, 请自己写你自己的, 用 decode_gia_file encode_gia_file 函数
@@ -158,7 +136,7 @@ function test() {
   }
 
 
-  const msg = decode_gia_file({ gia_path: import.meta.dirname + "/../../utils/ref/enumAll.gia" });
+  const msg = decode_gia_file(import.meta.dirname + "/../../utils/ref/enumAll.gia");
   const nodes = msg.graph.graph!.inner.graph.nodes;
 
   const node = nodes[0];
@@ -166,7 +144,7 @@ function test() {
   const new_nodes = nodes.map(getInfo).filter(x => x !== null).map(increase).flat();
   msg.graph.graph!.inner.graph.nodes = new_nodes;
 
-  encode_gia_file({ out_path: import.meta.dirname + `/../../utils/ref/all_enums_v${VERSION}.gia`, gia_struct: msg })
+  encode_gia_file(import.meta.dirname + `/../../utils/ref/all_enums_v${VERSION}.gia`, msg);
 }
 
 if (import.meta.main) {
