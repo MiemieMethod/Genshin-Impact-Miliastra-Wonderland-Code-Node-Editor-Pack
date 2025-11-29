@@ -15,7 +15,7 @@ import { VarType } from "./gia.proto.ts";
 const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/";
 
 function log(name: string) {
-  const g = decode_gia_file({ gia_path: PATH + name });
+  const g = decode_gia_file(PATH + name);
   console.dir(g.graph.graph?.inner.graph.nodes, { depth: null });
 }
 
@@ -41,14 +41,14 @@ function generate_test_connect(type: BasicTypes = "Int", list = false) {
     }
   }
   const g = graph.encode();
-  encode_gia_file({ out_path: PATH + name + ".gia", gia_struct: g });
+  encode_gia_file(PATH + name + ".gia", g);
   // console.dir(graph, { depth: null });
   console.log("Add", name);
 }
 
 function get_all_test_connect() {
   function read_test_connect(type = "Int", list = false) {
-    const g = decode_gia_file({ gia_path: PATH + (list ? `l-${type}.gia` : `g-${type}.gia`) });
+    const g = decode_gia_file(PATH + (list ? `l-${type}.gia` : `g-${type}.gia`));
     const index = g.graph.graph?.inner.graph.nodes.slice(1).map(n => n.pins.filter(p => p.connects?.length ?? 0 > 0).map(p => p.i1.index))
     // console.dir(index, { depth: null });
     return index!;
@@ -98,13 +98,13 @@ function generate_test_connect_out(type: BasicTypes = "Int", list = false) {
     }
   }
   const g = graph.encode();
-  encode_gia_file({ out_path: PATH + name + ".gia", gia_struct: g });
+  encode_gia_file(PATH + name + ".gia", g);
   // console.dir(graph, { depth: null });
   console.log("Add", name);
 }
 
 function read_test_connect_out(type = "Bol", list = false) {
-  const g = decode_gia_file({ gia_path: PATH + (list ? `ol-${type}.gia` : `og-${type}.gia`) });
+  const g = decode_gia_file(PATH + (list ? `ol-${type}.gia` : `og-${type}.gia`));
   const index = [];
   const n = g.graph.graph!.inner.graph.nodes!;
   for (let i = 0; i < n.length; i += 21) {

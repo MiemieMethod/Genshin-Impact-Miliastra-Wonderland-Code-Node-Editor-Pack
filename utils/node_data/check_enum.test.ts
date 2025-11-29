@@ -157,10 +157,8 @@ function check_create_enums(v: number) {
   const graph_name = "Generated Enums v" + v;
   const file_name = graph_name.toLowerCase().replaceAll(" ", "_") + ".gia";
   const root = save_nodes(graph_name, file_name, nodes);
-  encode_gia_file({
-    out_path: import.meta.dirname + "/" + file_name,
-    gia_struct: root
-  });
+  encode_gia_file(import.meta.dirname + "/" + file_name,
+    root);
 }
 
 function get_enums_as_proto() {

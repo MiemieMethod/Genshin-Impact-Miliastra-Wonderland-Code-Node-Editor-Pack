@@ -347,7 +347,11 @@ export function reflects_records(
     assert(exp.t === "s");
     refs_exp = exp.f;
   } else if (typeof refs === "number") {
-    const ref_str = rec.reflectMap!.find(r => r[0] === refs)![1];
+    const ref_str = rec.reflectMap!.find(r => r[0] === refs)?.[1];
+    if (ref_str === undefined) {
+      assert(allow_undefined);
+      return rec_to_full(rec);
+    }
     const e = parse(ref_str);
     assert(e.t === "s");
     refs_exp = e.f;
@@ -404,10 +408,16 @@ export function unwrap_records(rec: NodePinsRecords): NodePins[] {
   }));
 }
 
+export function find_record_index(rec: NodePinsRecords, id: number): number {
+  return rec.reflectMap?.findIndex(x => x[0] === id) ?? -1;
+}
+
 /**
  * 判断某个 NodeType 是否包含反射节点（R<...>）。
  */
-export function is_reflect(type: NodeType): boolean {
+export function is_reflect(type: NodeType | string | undefined): boolean {
+  if (type === undefined) return false;
+  if (typeof type === "string") type = parse(type);
   switch (type.t) {
     case "b":
       return false;

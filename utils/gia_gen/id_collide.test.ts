@@ -62,17 +62,12 @@ function create_graph(w: number = 20, h: number = 15, len: number = 1) {
   console.log(graph);
 
   console.time(`Encode ${N} nodes in`);
-  encode_gia_file({
-    out_path: "./utils/ref/all_server_nodes.gia",
-    gia_struct: graph
-  })
+  encode_gia_file("./utils/ref/all_server_nodes.gia", graph)
   console.timeEnd(`Encode ${N} nodes in`);
   console.log("Saved to", "./utils/ref/all_server_nodes.gia");
 }
 function read_trimmed_graph() {
-  const graph = decode_gia_file({
-    gia_path: "./utils/ref/all_server_nodes_trim.gia",
-  });
+  const graph = decode_gia_file("./utils/ref/all_server_nodes_trim.gia");
   const nodes = graph.graph.graph!.inner.graph.nodes!;
   const tags = nodes.map(x => [x.genericId.nodeId, x.concreteId?.nodeId]);
   const res = tags.map(([b, d]) => d === undefined ? `${b}:Generic` : `${b}:Basic`);
@@ -108,10 +103,7 @@ function create_derived() {
     graph_id: graph_id,
     nodes: nodes,
   });
-  encode_gia_file({
-    out_path: "./utils/ref/derived_server_nodes.gia",
-    gia_struct: graph
-  })
+  encode_gia_file("./utils/ref/derived_server_nodes.gia", graph)
   console.log("Saved to", "./utils/ref/derived_server_nodes.gia");
 }
 
@@ -246,19 +238,15 @@ function create_node_lists() {
     graph_id: randomInt(10, "102"),
     nodes: nodes,
   });
-  encode_gia_file({
-    out_path: "./utils/ref/derived_server_nodes_pin.gia",
-    gia_struct: graph
-  })
+  encode_gia_file("./utils/ref/derived_server_nodes_pin.gia",
+    graph)
 }
 
 
 const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/";
 
 function read_derive_graph() {
-  const graph = decode_gia_file({
-    gia_path: "./utils/ref/derived_server_nodes_ids.gia",
-  });
+  const graph = decode_gia_file("./utils/ref/derived_server_nodes_ids.gia",);
   const nodes = graph.graph.graph!.inner.graph.nodes!;
   const missing = new Set(nodes.map(x => x.genericId.nodeId as number));
   const tags = nodes.filter(x => x.concreteId?.nodeId !== undefined)
@@ -371,9 +359,7 @@ function extract_types() {
   ];
   const list: [number[], number[]][] = LIST.map(x => [x].flat())
     .map(x => { const p = x.indexOf(null); return p === -1 ? [x, []] : [x.slice(0, p), x.slice(p + 1)]; }) as any;
-  const graph = decode_gia_file({
-    gia_path: "./utils/ref/derived_server_nodes_ids.gia",
-  });
+  const graph = decode_gia_file("./utils/ref/derived_server_nodes_ids.gia",);
   const nodes = graph.graph.graph!.inner.graph.nodes!;
   const group = Object.groupBy(nodes, (n) => n.genericId.nodeId as number);
   const keys = Object.keys(group);
@@ -450,19 +436,18 @@ function generate_concrete_map() {
     }
   }
 
-  encode_gia_file({
-    out_path: PATH + "temp.gia",
-    gia_struct: graph_body({
+  encode_gia_file(PATH + "temp.gia",
+    graph_body({
       uid: randomInt(9, "201"),
       graph_id: randomInt(10, "102"),
-      nodes: nodes,
+      nodes: nodes
     })
-  });
+  );
 }
 function read_concrete_map() {
-  // const nodes = get_nodes(decode_gia_file({ gia_path: "./utils/ref/all_reflect_trim.gia" }))!;
-  // const nodes = get_nodes(decode_gia_file({ gia_path: "./utils/ref/all_reflect_concrete_trim.gia" }))!;
-  const nodes = get_nodes(decode_gia_file({ gia_path: PATH + "temp4.gia" }))!;
+  // const nodes = get_nodes(decode_gia_file("./utils/ref/all_reflect_trim.gia"))!;
+  // const nodes = get_nodes(decode_gia_file("./utils/ref/all_reflect_concrete_trim.gia"))!;
+  const nodes = get_nodes(decode_gia_file(PATH + "temp4.gia"))!;
   const cm = new Set<string>();
   const concrete_id_mapping =
     Object.entries(Object.groupBy(nodes.map(n => [n.genericId.nodeId, n.concreteId?.nodeId]), x => x[0]))
@@ -562,8 +547,8 @@ function generate_concrete_dict_map(read = false) {
   const records: NodePinsRecords[] = [];
   let nodes_len = 0;
   if (read) {
-    // nodes.push(...get_nodes(decode_gia_file({ gia_path: PATH + "temp4.gia" }))!);
-    nodes.push(...get_nodes(decode_gia_file({ gia_path: "./utils/node_data/ref/all_reflect_concrete_trim.gia" }))!);
+    // nodes.push(...get_nodes(decode_gia_file(PATH + "temp4.gia"))!);
+    nodes.push(...get_nodes(decode_gia_file("./utils/node_data/ref/all_reflect_concrete_trim.gia"))!);
   }
   for (const d of ds) {
     let ret: NodePinsRecords = {
@@ -651,14 +636,12 @@ export const NODE_PIN_RECORDS: NodePinsRecords[] = ${str};`;
   console.log(nodes.length, "In total");
 
 
-  encode_gia_file({
-    out_path: PATH + "temp3.gia",
-    gia_struct: graph_body({
+  encode_gia_file(PATH + "temp3.gia",
+    graph_body({
       uid: randomInt(9, "201"),
       graph_id: randomInt(10, "102"),
       nodes: nodes
-    })
-  });
+    }));
 }
 
 function read_enum() {
@@ -722,7 +705,7 @@ function get_missing() {
   console.log(ids);
   const g = new Graph();
   ids.forEach((x, i) => g.add_node(x).setPos(i, 0))
-  encode_gia_file({ gia_struct: g.encode(), out_path: "./utils/ref/missing_name.gia" });
+  encode_gia_file("./utils/ref/missing_name.gia", g.encode());
 }
 
 
@@ -739,7 +722,7 @@ function get_missing2() {
     a.push([a.length, i]);
   }
   console.log(a);
-  encode_gia_file({ gia_struct: g.encode(), out_path: "./utils/ref/missing_name2.gia" });
+  encode_gia_file("./utils/ref/missing_name2.gia", g.encode());
 }
 
 if (import.meta.main) {
@@ -805,7 +788,7 @@ if (import.meta.main) {
   //     // map_type: [3, 6],
   //   },
   // ]))
-  // encode_gia_file({ gia_struct: graph2, out_path: PATH + "temp1.gia", });
+  // encode_gia_file( graph2,   PATH + "temp1.gia");
 
   // 下一步, 针对可变引脚, **分别**测试其 indexOfConcrete...... 太愚蠢了, 一个联合类型的节点引脚居然可以乱来......
 

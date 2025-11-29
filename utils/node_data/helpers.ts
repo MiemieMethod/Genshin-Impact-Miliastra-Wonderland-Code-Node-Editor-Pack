@@ -98,20 +98,37 @@ export function parse_concrete_map(str: string): ConcreteMap {
 
 // ======================== Node Records Helpers ========================
 
+/** generic id --> index */
 const NODE_RECORDS_INDEX_MAP: Map<number, number> = new Map(
   NODE_PIN_RECORDS.map((r, i) => [r.id, i])
 );
+/** concrete id --> generic id */
 const NODE_ID_MAP: Map<number, number> = new Map(
   NODE_PIN_RECORDS.map(r =>
     r.reflectMap?.map(ref => [ref[0], r.id] as [number, number])
   ).filter(x => x !== undefined).flat()
 );
+/** generic id -- NODE_REC[id].reflectMap --> concrete id */
 
+/** Notice that generic id and concrete id are in different spaces. */
 export function get_generic_id(concrete_id: number): number | null {
   return NODE_ID_MAP.get(concrete_id) ?? null;
 }
-export function get_node_record(gid_cid: number): SingleNodeData | null {
-  const id = get_generic_id(gid_cid) ?? gid_cid;
+/** Is it a valid generic id */
+export function is_generic_id(generic_id: number): boolean {
+  return NODE_RECORDS_INDEX_MAP.has(generic_id);
+}
+
+/** using a valid generic id to get node record */
+export function get_node_record_generic(generic_id: number): SingleNodeData | null {
+  const idx = NODE_RECORDS_INDEX_MAP.get(generic_id);
+  return idx === undefined ? null : NODE_PIN_RECORDS[idx] ?? null;
+}
+
+/** using a valid concrete id to get node record */
+export function get_node_record(concrete_id: number): SingleNodeData | null {
+  const id = get_generic_id(concrete_id);
+  if (!id) return null;
   const idx = NODE_RECORDS_INDEX_MAP.get(id);
   return idx === undefined ? null : NODE_PIN_RECORDS[idx] ?? null;
 }

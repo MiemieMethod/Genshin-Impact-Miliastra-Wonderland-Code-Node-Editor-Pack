@@ -25,7 +25,7 @@ function get_enum_id_list() {
     return temp as Info;
   }
 
-  const msg = decode_gia_file({ gia_path: import.meta.dirname + "/../ref/enumAll.gia" });
+  const msg = decode_gia_file(import.meta.dirname + "/../ref/enumAll.gia");
   const nodes = msg.graph.graph!.inner.graph.nodes;
   const list = nodes.map(getInfo).filter(x => x !== null).map(x => {
     x.from = 100 * Math.floor(x.from / 100)

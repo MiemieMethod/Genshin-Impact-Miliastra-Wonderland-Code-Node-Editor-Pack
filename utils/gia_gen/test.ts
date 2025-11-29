@@ -6,8 +6,8 @@ import { Graph } from "./graph.ts";
 const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/";
 
 function read() {
-  const g = decode_gia_file({ gia_path: PATH + "pin.gia" });
-  // const g = decode_gia_file({ gia_path: "./utils/ref/pins.gia" });
+  const g = decode_gia_file(PATH + "pin.gia");
+  // const g = decode_gia_file("./utils/ref/pins.gia");
   const nodes = g.graph.graph?.inner.graph.nodes!;
   // const pins = nodes.map((n) => n.pins.map(p => [p.type, p.value.bNodeValue?.indexInSelector]));
 
@@ -31,12 +31,12 @@ function read() {
 
   // console.dir(n.pins[0], { depth: null })
   console.dir(n, { depth: null })
-  encode_gia_file({ gia_struct: g, out_path: PATH + "pin.gia" })
+  encode_gia_file(g, PATH + "pin.gia")
 
 }
 // read()
 
-// const g = decode_gia_file({ gia_path: PATH + "pin2.gia" });
+// const g = decode_gia_file(PATH + "pin2.gia");
 // const nodes = g.graph.graph?.inner.graph.nodes!;
 // console.dir(nodes, { depth: null });
 
@@ -53,7 +53,7 @@ function graph_ts() {
   node3.setPos(5, 6);
   const g = graph.encode();
   console.timeEnd("graph_encode");
-  encode_gia_file({ gia_struct: g, out_path: "./utils/ref/graph_ts.gia" });
+  encode_gia_file(g, "./utils/ref/graph_ts.gia");
 
 }
 

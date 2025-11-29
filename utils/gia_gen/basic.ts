@@ -18,12 +18,12 @@ import {
   VarBase_ItemType_Inner_Kind,
   VarType,
 } from "../protobuf/gia.proto.ts";
-import { get_id, type NodePins, type NodeType } from "./nodes.ts";
+import { get_id, LocalVariableType, type NodePins, type NodeType } from "./nodes.ts";
 
 import { counter_dynamic_id, counter_index, randomInt, todo } from "./utils.ts";
 import { type ConcreteMap } from "../node_data/concrete_map.ts";
 import { get_concrete_index } from "../node_data/helpers.ts";
-import { EnumNode_Value, NodeId } from "../node_data/enums.ts";
+import { EnumIdList, EnumNode_Value, NodeId } from "../node_data/enums.ts";
 
 /**
  * GraphBody_ 接口定义了构建图的基本参数
@@ -225,7 +225,7 @@ export interface PinValue_ {
  * @param body 值参数
  * @returns VarBase 引脚值对象
  */
-export function pin_value(body: PinValue_): VarBase {
+export function wrapped_pin_value(body: PinValue_): VarBase {
   const value: VarBase = {
     class: VarBase_Class.NodeValueBase,
     alreadySetVal: true,
@@ -351,7 +351,7 @@ export function map_pin_body(body: MapPinBody_): NodePin {
     kind: body.kind,
     index: body.index,
     type: VarType.Dictionary,
-    value: pin_value({ value, wrapper, indexOfConcrete: body.indexOfConcrete }),
+    value: wrapped_pin_value({ value, wrapper, indexOfConcrete: body.indexOfConcrete }),
     connects: body.connects,
   });
 }
@@ -392,7 +392,7 @@ export function list_pin_body(body: ListPinBody_): NodePin {
     itemType: item_type(body.value_type),
     bArray: { entries: [] },
   };
-  const val = pin_value({
+  const val = wrapped_pin_value({
     indexOfConcrete: body.indexOfConcrete,
     value: value,
   });
@@ -522,23 +522,21 @@ export function vector_pin_body(vec: number[]): VarBase {
 /**
  * AnyPinBody_ 接口定义了构建任意类型引脚的参数
  */
-export interface AnyPinBody_ {
+export interface NodeTypePinBody_ {
+  /** 是否是多重类型反射引脚/固定引脚 */
+  reflective?: boolean;
   /** 引脚类型 (输入/输出) */
   kind: NodePin_Index_Kind;
   /** 引脚索引 */
   index: number;
   /** 引脚的数据类型 (VarType)，例如 Integer / Float / Dictionary 等 */
-  type: VarType;
-  /**
-   * 当引脚类型为字典(Dictionary)时需要提供的键值类型对
-   * [key_type, value_type]
-   * 仅在 type === VarType.Dictionary 时有效
-   */
-  key_val_type?: [VarType, VarType];
+  type: NodeType;
   /** 具体类型的索引，可选，用于多态类型的选择 */
   indexOfConcrete?: number;
   /** 引脚的初始值，可选，不同类型对应不同值结构 */
   value?: any;
+  /** 对基本类型填入非空的值 1 */
+  non_zero?: boolean;
   /** 上游连接引脚 */
   connects?: NodeConnection[];
 }
@@ -558,19 +556,41 @@ export interface AnyPinBody_ {
  * @param body 任意引脚参数
  * @returns NodePin
  */
-export function any_pin_body(body: AnyPinBody_): NodePin {
+export function node_type_pin_body(body: NodeTypePinBody_): NodePin {
+
+  /**
+   * 当引脚类型为字典(Dictionary)时需要提供的键值类型对
+   * [key_type, value_type]
+   * 仅在 type === VarType.Dictionary 时有效
+   */
+  let key_val_type: [VarType, VarType] | undefined;
+  if (body.type.t === "d") {
+    key_val_type = [get_id(body.type.k), get_id(body.type.v)] as any;
+  }
+  let var_type: VarType = get_id(body.type) as VarType;
+  if (body.type.t === "e") {
+    switch (body.type.e) {
+      case EnumIdList.VariableSnapshot:
+        var_type = VarType.VariableSnapshot;
+        break;
+      case EnumIdList.LocalVariable:
+        var_type = VarType.LocalVariable;
+        break;
+    }
+  }
+
   let value: VarBase;
-  switch (body.type) {
+  switch (var_type) {
     case VarType.Dictionary:
       assert(
-        body.key_val_type !== null,
+        key_val_type !== undefined,
         "Dict Type should pass parameter `key_val_type`!",
       );
       return map_pin_body({
         kind: body.kind,
         index: body.index,
-        key_type: body.key_val_type![0],
-        value_type: body.key_val_type![1],
+        key_type: key_val_type![0],
+        value_type: key_val_type![1],
         indexOfConcrete: body.indexOfConcrete,
         connects: body.connects,
       });
@@ -589,96 +609,64 @@ export function any_pin_body(body: AnyPinBody_): NodePin {
         indexOfConcrete: body.indexOfConcrete,
         kind: body.kind,
         index: body.index,
-        value_type: body.type,
+        value_type: var_type,
         connects: body.connects,
       });
     case VarType.EnumItem:
-      value = enum_value({ value: body.value });
+      value = enum_value({ value: body.value ?? (body.non_zero ? 1 : 0) });
       break;
     case VarType.Integer:
-      value = int_pin_body(body.value);
+      value = int_pin_body(body.value ?? (body.non_zero ? 1 : 0));
       break;
     case VarType.GUID:
     case VarType.Configuration:
     case VarType.Entity:
     case VarType.Faction:
     case VarType.Prefab:
-      value = id_pin_body(body.value, body.type);
+      value = id_pin_body(body.value ?? (body.non_zero ? 1 : 0));
       break;
     case VarType.Boolean:
-      value = bool_pin_body(body.value);
+      value = bool_pin_body(body.value ?? (body.non_zero ? true : false));
       break;
     case VarType.Float:
-      value = float_pin_body(body.value);
+      value = float_pin_body(body.value ?? (body.non_zero ? 1 : 0));
       break;
     case VarType.String:
-      value = string_pin_body(body.value);
+      value = string_pin_body(body.value ?? (body.non_zero ? "1" : ""));
       break;
     case VarType.Vector:
-      value = vector_pin_body(body.value);
+      value = vector_pin_body(body.value ?? (body.non_zero ? [1, 1, 1] : [0, 0, 0]));
+      break;
+    case VarType.LocalVariable:
+    case VarType.VariableSnapshot:
+      // do nothing
+      value = {} as VarBase;
       break;
     default:
       // console.log(body);
       return todo("Not implemented AnyPinBody for type " + body.type);
   }
-  return pin_body({
-    kind: body.kind,
-    index: body.index,
-    type: body.type,
-    value: pin_value({
-      indexOfConcrete: body.indexOfConcrete,
-      value: value,
-    }),
-    connects: body.connects,
-  });
-}
 
-/**
- * NodeTypePinBody_ 接口定义了基于 NodeType 构建引脚的参数
- */
-export interface NodeTypePinBody_ {
-  /** 引脚类型 (输入/输出) */
-  kind: NodePin_Index_Kind;
-  /** 引脚索引 */
-  index: number;
-  /** 节点类型系统中的类型描述对象 NodeType */
-  type: NodeType;
-  /** 具体类型的索引，用于支持类型实例化 */
-  indexOfConcrete?: number;
-  /** 引脚的初始值，可选 */
-  value?: any;
-  /** 上游连接引脚 */
-  connects?: NodeConnection[];
-}
-/**
- * 构建 NodeType 类型的引脚（NodeType → VarType）
- *
- * 参数列表：
- * - body: {
- *     kind: NodePin_Index_Kind;
- *     index: number;
- *     type: NodeType;
- *     indexOfConcrete?: number;
- *     value?: any;
- *   }
- *
- * @param body NodeType 引脚参数
- * @returns NodePin
- */
-export function node_type_pin_body(body: NodeTypePinBody_): NodePin {
-  let key_val_type: [VarType, VarType] | undefined;
-  if (body.type.t === "d") {
-    key_val_type = [get_id(body.type.k), get_id(body.type.v)] as any;
+  if (body.reflective === true) {
+    return pin_body({
+      kind: body.kind,
+      index: body.index,
+      type: var_type,
+      value: wrapped_pin_value({
+        indexOfConcrete: body.indexOfConcrete,
+        value: value,
+      }),
+      connects: body.connects,
+    });
+  } else {
+    return pin_body({
+      kind: body.kind,
+      index: body.index,
+      type: var_type,
+      value: value,
+      connects: body.connects,
+    });
   }
-  return any_pin_body({
-    kind: body.kind,
-    index: body.index,
-    type: get_id(body.type) as any,
-    key_val_type,
-    value: body.value,
-    indexOfConcrete: body.indexOfConcrete,
-    connects: body.connects,
-  });
 }
 
 /**
@@ -727,6 +715,7 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
       index: i,
       type: p,
       indexOfConcrete: get_concrete_index(generic_id, 3, i, get_id(p), body.map),
+      reflective: false
     }));
   });
   body.pins.outputs.forEach((p, i) => {
@@ -736,6 +725,7 @@ export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
       index: i,
       type: p,
       indexOfConcrete: get_concrete_index(generic_id, 4, i, get_id(p), body.map),
+      reflective: false
     }));
   });
   return node_body({

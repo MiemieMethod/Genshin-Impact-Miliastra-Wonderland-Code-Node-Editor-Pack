@@ -1,15 +1,23 @@
 import assert from "assert";
 import type { GraphNode, NodePin, NodePin_Index_Kind, Root } from "../protobuf/gia.proto.ts";
 import { graph_body, node_body, node_connect_from, node_type_pin_body } from "./basic.ts";
-import { type NodeType, reflects_records, get_id, type_equal, to_records_full } from "./nodes.ts";
+import { type NodeType, reflects_records, get_id, type_equal, to_records_full, is_reflect } from "./nodes.ts";
 import { Counter, panic, randomInt, randomName } from "./utils.ts";
-import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record } from "../node_data/helpers.ts";
+import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record, is_generic_id, get_node_record_generic } from "../node_data/helpers.ts";
 import { get_node_info } from "./extract.ts";
 import { type NodeId } from "../node_data/enums.ts";
+import { type SingleNodeData } from "../node_data/node_pin_records.ts";
 
 
 const GraphType = ["server", "client", "composite"] as const;
 type GraphType = typeof GraphType[number];
+
+export class EncodeOptions {
+  non_zero: boolean;
+  constructor(non_zero = false) {
+    this.non_zero = non_zero;
+  }
+}
 
 export class Graph {
   private type_: GraphType;
@@ -55,8 +63,9 @@ export class Graph {
     this.nodes.add(node);
     return node;
   }
-  encode(): Root {
-    const nodes = [...this.nodes].map((n) => n.encode(this.get_connect_to(n)));
+  encode(opt?: EncodeOptions): Root {
+    opt ??= new EncodeOptions();
+    const nodes = [...this.nodes].map((n) => n.encode(opt, this.get_connect_to(n)));
     return graph_body({/** 唯一标识符 */
       uid: this.uid,
       /** 图的 ID */
@@ -154,7 +163,7 @@ export class Graph {
 export class Node {
   private unique_id: number;
   private node_id: number;
-  private generic_id: number;
+  private record: SingleNodeData;
   private pin_len: [number, number];
   pins: Pin[];
   x: number = 0;
@@ -162,25 +171,22 @@ export class Node {
   constructor(node_id: number, unique_id: number) {
     this.unique_id = unique_id;
     this.node_id = node_id;
-    this.generic_id = get_generic_id(node_id) ?? node_id;
+    this.record = get_node_record(node_id) ?? get_node_record_generic(node_id) ?? {
+      id: node_id,
+      inputs: [],
+      outputs: [],
+      reflectMap: undefined,
+    };
     this.pins = [];
-    this.pin_len = [0, 0];
+    this.pin_len = [this.record.inputs.length, this.record.outputs.length];
     // Initialize pins based on node record
     this.setConcrete(node_id);
   }
   setConcrete(id: number) {
-    const pins = get_node_record(id);
-    if (!pins) {
-      assert.equal(this.generic_id, id);
-      // A basic node without reflects
-      this.pins.forEach((p) => p.clear());
-      this.node_id = id;
-      return;
-    }
-    assert.equal(pins.id, this.generic_id); // Cannot set concrete id of different generic type
+    assert(this.record.id === id || this.record.reflectMap?.find(x => x[0] === id) !== undefined);
     this.node_id = id;
-    this.pin_len = [pins.inputs.length, pins.outputs.length];
-    const rec = pins.reflectMap === undefined ? to_records_full(pins) : reflects_records(pins, id, true);
+
+    const rec = this.record.reflectMap === undefined ? to_records_full(this.record) : reflects_records(this.record, id, true);
     for (let i = 0; i < rec.inputs.length; i++) {
       if (this.pins[i] === undefined) {
         this.pins[i] = new Pin(this.node_id, 3, i);
@@ -190,6 +196,7 @@ export class Node {
       } else {
         this.pins[i].setType(rec.inputs[i]);
       }
+      this.pins[i].reflective = is_reflect(this.record.inputs[i]);
     }
     for (let j = 0; j < rec.outputs.length; j++) {
       const i = j + rec.inputs.length;
@@ -201,17 +208,18 @@ export class Node {
       } else {
         this.pins[i].setType(rec.outputs[j]);
       }
+      this.pins[i].reflective = is_reflect(this.record.outputs[j]);
     }
   }
   setPos(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
-  encode(connects?: Connect[]): GraphNode {
-    const pins = this.pins.map((p) => p.encode(connects)).filter((p) => p !== null);
+  encode(opt: EncodeOptions, connects?: Connect[]): GraphNode {
+    const pins = this.pins.map((p) => p.encode(opt, connects)).filter((p) => p !== null);
     return node_body({
       /** 通用 ID */
-      generic_id: this.generic_id as NodeId,
+      generic_id: this.record.id as NodeId,
       /** 具体 ID */
       concrete_id: this.node_id as NodeId,
       /** X 坐标 */
@@ -244,21 +252,29 @@ export class Node {
   get UniqueId() {
     return this.unique_id;
   }
+  get GenericId() {
+    return this.record.id;
+  }
+  get ConcreteId() {
+    return this.node_id;
+  }
 }
 
 export class Pin {
   private node_id: number;
   private kind: number;
   private index: number;
+  reflective: boolean;
   concrete_index: number;
   /** null type means normal pin without any determined info */
   type: NodeType | null;
-  constructor(node_id: number, kind: number, index: number) {
+  constructor(node_id: number, kind: number, index: number, reflective = false) {
     this.node_id = get_generic_id(node_id) ?? node_id;
     this.kind = kind;
     this.index = index;
     this.type = null;
     this.concrete_index = 0;
+    this.reflective = reflective;
   }
   clear() {
     this.type = null;
@@ -278,7 +294,7 @@ export class Pin {
       assert.equal(this.concrete_index, 0);
     }
   }
-  encode(connects?: Connect[]): NodePin | null {
+  encode(opt: EncodeOptions, connects?: Connect[]): NodePin | null {
     if (this.type === null) {
       // Normal pin without determined type
       return null;
@@ -286,6 +302,7 @@ export class Pin {
     // if (connects?.length !== 0) debugger;
     const connect = connects?.find((c) => this.kind === 3 && c.to_index === this.index)?.encode(); // input can be connected
     return node_type_pin_body({
+      reflective: this.reflective,
       /** 引脚类型 (输入/输出) */
       kind: this.kind as NodePin_Index_Kind,
       /** 引脚索引 */
@@ -296,6 +313,7 @@ export class Pin {
       indexOfConcrete: this.concrete_index,
       /** 引脚的初始值，可选 */
       value: undefined,
+      non_zero: opt.non_zero,
       connects: connect === undefined ? undefined : [connect],
     });
   }
