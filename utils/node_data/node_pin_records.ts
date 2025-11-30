@@ -14,7 +14,7 @@ export interface SingleNodeData extends NodePinsRecords {
   category?: string;
 }
 
-export const NODE_PIN_RECORDS: SingleNodeData[] = [
+export const NODE_PIN_RECORDS = [
   { name: "Print String", id: 1, inputs: ["Str"], outputs: [] },
   { name: "Double Branch", id: 2, inputs: ["Bol"], outputs: [] },
   {
@@ -6048,15 +6048,15 @@ export const NODE_PIN_RECORDS: SingleNodeData[] = [
       [3518, "S<T:D<Pfb,L<Cfg>>>"],
     ],
   },
-];
+] as const satisfies SingleNodeData[];
 
 if (import.meta.main) {
   const set = new Set();
   NODE_PIN_RECORDS.forEach((x) =>
-    x.reflectMap?.forEach((y) => {
+    "reflectMap" in x ? x.reflectMap?.forEach((y) => {
       console.assert(!set.has(y[0]), "Duplicate concrete id: " + y[0]);
       set.add(y[0]);
-    })
+    }) : undefined
   );
   console.log(
     NODE_PIN_RECORDS.filter((x) =>
