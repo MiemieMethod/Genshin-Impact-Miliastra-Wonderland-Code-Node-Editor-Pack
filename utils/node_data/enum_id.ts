@@ -1,51 +1,6 @@
 
-export const NodeId = {
-  Unknown: 0,
-  EnumEqual_Generic: 475,
-  EnumEqual_Comparison_Operators: 476,
-  EnumEqual_Logical_Operators: 477,
-  EnumEqual_Mathematical_Operators: 478,
-  EnumEqual_Attack_Shapes: 479,
-  EnumEqual_Survival_Status: 480,
-  EnumEqual_Sorting_Rules: 481,
-  EnumEqual_Rounding_Logic: 482,
-  EnumEqual_Type_Conversions: 483,
-  EnumEqual_Motion_Path_Point_Types: 484,
-  EnumEqual_Motion_Types: 485,
-  EnumEqual_Follow_Location_Type: 486,
-  EnumEqual_Coordinate_System_Type: 487,
-  EnumEqual_Elemental_Type: 488,
-  EnumEqual_Entity_Type: 489,
-  EnumEqual_Unit_Status_Addition_Result: 491,
-  EnumEqual_Unit_Status_Removal_Reason: 492,
-  EnumEqual_Unit_Status_Removal_Strategy: 493,
-  EnumEqual_Revive_Point_Selection_Strategy: 494,
-  EnumEqual_Cause_Of_Being_Down: 495,
-  EnumEqual_Trigonometric_Functions: 496,
-  EnumEqual_Disruptor_Device_Types: 497,
-  EnumEqual_Disruptor_Device_Orientation: 498,
-  EnumEqual_UI_Control_Group_Status: 499,
-  EnumEqual_Target_Type: 500,
-  EnumEqual_Trigger_Restriction: 501,
-  EnumEqual_Hit_Type: 502,
-  EnumEqual_Attack_Type: 503,
-  EnumEqual_Hit_Performance_Level: 504,
-  EnumEqual_Skill_Slot: 3351,
-  EnumEqual_Sound_Attenuation_Mode: 3352,
-  EnumEqual_Select_Completion_Reason: 3353,
-  EnumEqual_Settlement_Status: 3354,
-  EnumEqual_Reason_For_Item_Change: 3356,
-  EnumEqual_Item_Loot_Type: 3357,
-  EnumEqual_Decision_Refresh_Mode: 3358,
-  EnumEqual_Elemental_Reaction_Type: 3359,
-  EnumEqual_Interrupt_Status: 759,
-  EnumEqual_Gameplay_Mode: 776,
-  EnumEqual_Input_Device_Type: 777,
-} as const;
-export type NodeId = (typeof NodeId)[keyof typeof NodeId];
-
 /** Also used as EnumEqual IndexOfConcrete */
-export const EnumIdList = {
+export const ENUM_ID = {
   Generic: 0,
   Comparison_Operators: 1,
   Logical_Operators: 2,
@@ -94,10 +49,10 @@ export const EnumIdList = {
   Fixed_Motion_Parameter_Type: 1043,
   LocalVariable: 1016, // E<1016> --> Local Variable
   VariableSnapshot: 1028, // E<1028> --> VariableSnapshot
-} as const;
-export type EnumIdList = (typeof EnumIdList)[keyof typeof EnumIdList];
+} as const satisfies { [key: string]: number };
+export type EnumId = (typeof ENUM_ID)[keyof typeof ENUM_ID];
 
-export const EnumNode_Value = {
+export const ENUM_VALUE = {
   Default: 0,
   True: 1,
   ComparisonOperators_EqualTo: 100,
@@ -309,5 +264,5 @@ export const EnumNode_Value = {
   InputDeviceType_KeyboardAndMouse: 5800,
   InputDeviceType_Controller: 5801,
   InputDeviceType_Touchscreen: 5802,
-} as const;
-export type EnumNode_Value = (typeof EnumNode_Value)[keyof typeof EnumNode_Value];
+} as const satisfies { [key: string]: number };
+export type EnumValue = (typeof ENUM_VALUE)[keyof typeof ENUM_VALUE];

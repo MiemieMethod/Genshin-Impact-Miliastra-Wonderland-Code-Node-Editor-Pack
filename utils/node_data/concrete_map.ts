@@ -14,7 +14,7 @@ export interface ConcreteMap {
   pins: Map<string, number>;
 }
 
-export const CONCRETE_MAP: ConcreteMap = {
+export const CONCRETE_MAP = {
   maps: [
     [ // M0
       3,
@@ -487,4 +487,4 @@ export const CONCRETE_MAP: ConcreteMap = {
     ["180:3:0", 16],
     ["180:4:0", 17],
   ]),
-};
+} as const satisfies ConcreteMap;

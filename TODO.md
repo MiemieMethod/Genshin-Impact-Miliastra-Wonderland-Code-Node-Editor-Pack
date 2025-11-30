@@ -35,11 +35,13 @@
 ## 进行中
 *按任务优先级和完成度排序, 打勾的说明已经开始, 仍未完成*
 
-- [ ] 根据 node_data 的 ts 文件, 更新 yaml 文件.
-- [ ] 根据 node_data 的 ts 文件, 完善 NodeId 列表
-- [ ] 完成 Graph 类的 connects 机制 decode
-- [ ] 完成 Graph 类的 value set 接口
-- [ ] 修改一些名称, 并全局检查同步修改
+- [ ] add Enum, for SysTypes
+- [x] 根据 node_data 的 ts 文件, 更新 yaml 文件.
+- [x] 根据 node_data 的 ts 文件, 完善 NodeId 列表
+- [x] 完成 Graph 类的 connects 机制 decode
+- [x] 完成 Graph 类的 value set 接口
+- [x] 修改一些名称, 并全局检查同步修改
+- [ ] 更新文档
 
 
 ## 计划

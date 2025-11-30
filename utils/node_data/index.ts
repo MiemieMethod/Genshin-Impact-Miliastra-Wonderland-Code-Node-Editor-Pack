@@ -1,13 +1,12 @@
-import {
-  CONCRETE_MAP,
-  get_concrete_index,
-  is_concrete_pin,
-  get_concrete_map,
-  get_concrete_type,
-  parse_concrete_map,
-  stringify_concrete_map,
-} from "./concrete_map.ts";
 
+
+import { CONCRETE_MAP } from "./concrete_map.ts";
+import { ENUM_ID, ENUM_VALUE } from "./enum_id.ts";
+import { TYPES_LIST } from "./types_list.ts";
+import { NODE_ID } from "./node_id.ts";
+
+import * as helper from "./helpers.ts";
+export { helper };
 
 export {
   /** 不同节点 id 不同端口对应的 concreteId - type 查找表.
@@ -20,14 +19,9 @@ export {
    * - stringify_concrete_map: 将整个查找表序列化为字符串保存
    * - parse_concrete_map: 从字符串解析出查找表
    */
-  CONCRETE_MAP
-};
-
-export {
-  get_concrete_index,
-  is_concrete_pin,
-  get_concrete_map,
-  get_concrete_type,
-  parse_concrete_map,
-  stringify_concrete_map,
+  CONCRETE_MAP,
+  ENUM_ID,
+  ENUM_VALUE,
+  TYPES_LIST,
+  NODE_ID,
 };

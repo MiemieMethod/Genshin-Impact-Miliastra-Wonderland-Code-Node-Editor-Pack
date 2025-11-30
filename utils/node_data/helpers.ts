@@ -40,7 +40,7 @@ export function get_concrete_map(
   generic_id: number,
   pin_type: number,
   pin_index: number,
-  maps = CONCRETE_MAP,
+  maps: ConcreteMap = CONCRETE_MAP,
 ): number[] {
   const index = maps.pins.get(generic_id + ":" + pin_type + ":" + pin_index);
   if (index === undefined) {
@@ -105,7 +105,9 @@ const NODE_RECORDS_INDEX_MAP: Map<number, number> = new Map(
 /** concrete id --> generic id */
 const NODE_ID_MAP: Map<number, number> = new Map(
   NODE_PIN_RECORDS.map(r =>
-    r.reflectMap?.map(ref => [ref[0], r.id] as [number, number])
+    "reflectMap" in r ?
+      r.reflectMap?.map(ref => [ref[0], r.id] as [number, number])
+      : undefined
   ).filter(x => x !== undefined).flat()
 );
 /** generic id -- NODE_REC[id].reflectMap --> concrete id */
