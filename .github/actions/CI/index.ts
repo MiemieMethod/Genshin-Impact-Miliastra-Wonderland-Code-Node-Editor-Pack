@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import { readdirSync, cpSync, existsSync } from "fs";
+import { readdirSync, cpSync, existsSync, mkdirSync } from "fs";
 import path from "path";
 
 const SRC = import.meta.dirname;
@@ -12,6 +12,8 @@ const tests = readdirSync(SRC, { withFileTypes: true })
 console.log("🟩 Found tests:", tests);
 
 // const testDestDir = path.join(PATH, "test");
+
+mkdirSync(path.join(PATH, "dist"));
 
 let passCount = 0;
 let failCount = 0;
