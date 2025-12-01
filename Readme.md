@@ -27,16 +27,18 @@ const node1 = graph.add_node(NODE_ID.When_Entity_Is_Created);
 const node2 = graph.add_node(NODE_ID.Teleport_Player);
 const node3 = graph.add_node(NODE_ID.Create_3D_Vector);
 const node4 = graph.add_node(NODE_ID.Get_Self_Entity);
-graph.flow(node1, node2)
+graph.flow(node1, node2);
 graph.connect(node3, node2, 0, 1);
 graph.connect(node4, node2, 0, 0);
-encode_gia_file("out.gia", graph.encode());
+node2.setVal(2, [1, 2, 3])
+node3.setVal(0, 4);
+graph.autoLayout(1.0); // 自动生成布局
+encode_gia_file(PATH + "out.gia", graph.encode());
 // Same as DSL:
 // [OnCreate()]
-//   .$(() => new Vec())[pos]
-//   .Teleport(Self.self, pos);
+//   .$(() => Vec(4,0,0))[pos]
+//   .Teleport(Self.self, pos, Vec(1,2,3));
 ```
-
 
 ### 2. GIA 文件深度解析与工程化
 完全掌握 `.gia` (Genshin Impact Assets) 文件的读写与转换。

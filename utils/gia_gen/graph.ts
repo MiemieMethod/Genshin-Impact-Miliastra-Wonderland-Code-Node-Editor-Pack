@@ -3,9 +3,10 @@ import type { GraphNode, NodePin, NodePin_Index_Kind, Root } from "../protobuf/g
 import { graph_body, node_body, node_connect_from, node_connect_to, node_type_pin_body, pin_flow_body } from "./basic.ts";
 import { type NodeType, reflects_records, get_id, type_equal, to_records_full, is_reflect } from "./nodes.ts";
 import { Counter, panic, randomInt, randomName } from "./utils.ts";
-import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record, is_generic_id, get_node_record_generic } from "../node_data/helpers.ts";
+import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record, get_node_record_generic } from "../node_data/helpers.ts";
 import { get_node_info } from "./extract.ts";
 import { type SingleNodeData } from "../node_data/node_pin_records.ts";
+import { auto_layout } from "./auto_layout.ts";
 
 
 const GraphType = ["server", "client", "composite"] as const;
@@ -13,20 +14,11 @@ type GraphType = typeof GraphType[number];
 
 export class EncodeOptions {
   private non_zero: boolean;
-  private auto_layouts: boolean;
   is_non_zero(): boolean {
     return this.non_zero;
   }
-  is_auto_layout(): boolean {
-    return this.auto_layouts;
-  }
   constructor(non_zero = false) {
     this.non_zero = non_zero;
-    this.auto_layouts = false;
-  }
-  auto_layout(enable = true): EncodeOptions {
-    this.auto_layouts = enable;
-    return this;
   }
 }
 
@@ -211,8 +203,14 @@ export class Graph {
     const [uid, time, graph_id_str, file_name] = root.filePath.split("-");
     const name = file_name.endsWith(".gia") ? file_name.slice(1, -4) : file_name.slice(1);
     const graph = new Graph("server", parseInt(uid), name, parseInt(graph_id_str));
-    root.graph.graph?.inner.graph.nodes.forEach(node => graph.add_node(Node.decode(node)));
+    root.graph.graph?.inner.graph.nodes.forEach(node => {
+      graph.add_node(Node.decode(node));
+    });
     return graph;
+  }
+
+  autoLayout(distance = 1.0, separation = 1.0) {
+    auto_layout(this, distance, separation);
   }
 }
 
@@ -295,10 +293,21 @@ export class Node {
       unique_index: this.unique_id,
     });
   }
+
+  setVal(pin: number | Pin, val: any) {
+    if (typeof pin === "number") {
+      this.pins[pin].setVal(val);
+    } else {
+      pin.setVal(val);
+    }
+  }
+
   static decode(node: GraphNode): Node {
     const info = get_node_info(node);
-    const id = info.concrete_id ?? info.generic_id;
-    const n = new Node(id, node.nodeIndex);
+    const g_id = info.generic_id;
+    const c_id = info.concrete_id;
+    const n = new Node(g_id, node.nodeIndex);
+    n.setConcrete(c_id);
     n.setPos(node.x / 300, node.y / 200);
     info.pins.forEach((p) => {
       if (p.kind === 3) {
@@ -328,6 +337,7 @@ export class Pin {
   private node_id: number;
   private kind: number;
   private index: number;
+  value: any;
   reflective: boolean;
   /** concrete id */
   concrete_id: number;
@@ -341,9 +351,14 @@ export class Pin {
     this.concrete_id = 0;
     this.reflective = reflective;
   }
+  setVal(val: any) {
+    assert(this.kind === 3); // in params
+    this.value = val;
+  }
   clear() {
     this.type = null;
     this.concrete_id = 0;
+    this.value = undefined;
   }
   setType(type: NodeType) {
     if (this.type !== null && type_equal(this.type, type)) {
@@ -377,7 +392,7 @@ export class Pin {
       /** 具体类型的索引，用于支持类型实例化 */
       indexOfConcrete: this.concrete_id,
       /** 引脚的初始值，可选 */
-      value: undefined,
+      value: this.value,
       non_zero: opt.is_non_zero(),
       connects: connect === undefined ? undefined : [connect],
     });
@@ -422,6 +437,7 @@ export class Connect {
 if (import.meta.main) {
   // Test Graph Encoding
   console.time("graph_encode");
+
   const graph = new Graph("server");
   const node1 = graph.add_node(200); // add int
   const node2 = graph.add_node(201); // add float
@@ -432,14 +448,11 @@ if (import.meta.main) {
   graph.connect(node3, node1, 0, 1);
   graph.connect(node3, node1, 0, 0);
   graph.connect(node3, node2, 0, 0);
-  const g = graph.encode(new EncodeOptions().auto_layout());
-  console.timeEnd("graph_encode");
-  console.log(g);
-  // console.log(JSON.stringify(graph, null, 2));
-  // console.log(JSON.stringify(g, null, 2));
+  graph.autoLayout();
+  const g = graph.encode();
 
-  // console.time("graph_decode");
-  // const decoded_graph = Graph.decode(g);
-  // console.timeEnd("graph_decode");
-  // console.log(JSON.stringify(decoded_graph, null, 2));
+  console.timeEnd("graph_encode");
+
+  console.dir(g, { depth: Infinity });
+
 }

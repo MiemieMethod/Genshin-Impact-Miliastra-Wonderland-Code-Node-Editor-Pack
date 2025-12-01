@@ -1,6 +1,6 @@
 {
-  "commitMessage": "完成 Graph 类的 flow 机制, 更新 gia.proto",
-  "notSync": true,
+  "commitMessage": "基本可以完整的decode了, 且添加了自动生成布局的算法",
+  "notSync": false,
   "include": [
     "*",
     "docs/**",

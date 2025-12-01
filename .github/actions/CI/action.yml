@@ -1,0 +1,4 @@
+name: "Run Tests"
+runs:
+  using: "node24"
+  main: "index.ts"

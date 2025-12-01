@@ -13,11 +13,14 @@ function simple_create() {
   graph.flow(node1, node2)
   graph.connect(node3, node2, 0, 1);
   graph.connect(node4, node2, 0, 0);
+  node2.setVal(2, [1, 2, 3])
+  node3.setVal(0, 4);
+  graph.autoLayout(1.0); // 自动生成布局
   encode_gia_file(PATH + "out.gia", graph.encode());
   // Same as DSL:
   // [OnCreate()]
-  //   .$(() => new Vec())[pos]
-  //   .Teleport(Self.self, pos);
+  //   .$(() => Vec(4,0,0))[pos]
+  //   .Teleport(Self.self, pos, Vec(1,2,3));
 }
 
 simple_create();

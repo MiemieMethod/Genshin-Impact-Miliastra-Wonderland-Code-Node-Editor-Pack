@@ -36,3 +36,6 @@ jobs:
 
       - name: Sync and commit files
         run: node dev/.github/workflows/sync.ts main dev dev/sync-list.json
+      
+      - name: Run tests
+        uses: .github/actions/CI@dev
