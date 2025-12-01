@@ -2,6 +2,7 @@ import { Graph } from "../../utils/gia_gen/index.ts";
 import { NODE_ID } from "../../utils/node_data/index.ts";
 import { encode_gia_file } from "../../utils/protobuf/decode.ts";
 
+
 const graph = new Graph("server", undefined, "Github Actions CI Test Generated Graph");
 
 // column 1
@@ -12,7 +13,7 @@ const get_val = graph.add_node(NODE_ID.Get_Custom_Variable__Int);
 graph.flow(trig, branch1);
 graph.connect(trig, branch1, 2, 0);
 graph.connect(trig, get_val, 0, 0);
-branch1.setVal(1, ["1", "2", "3"]);
+branch1.setVal(1, [1, 2, 3]);
 get_val.setVal(1, "Plant Level");
 // column 3
 const branch2 = graph.add_node(NODE_ID.Double_Branch);

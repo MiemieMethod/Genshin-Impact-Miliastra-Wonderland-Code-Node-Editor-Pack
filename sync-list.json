@@ -1,5 +1,5 @@
 {
-  "commitMessage": "基本可以完整的decode了, 且添加了自动生成布局的算法",
+  "commitMessage": "基本完成 encode 到 gia 文件的接口, 添加了自动构建测试",
   "notSync": false,
   "include": [
     "*",
