@@ -1,6 +1,6 @@
 {
   "commitMessage": "完善了节点详细信息静态数据, 更新了 Readme",
-  "notSync": false,
+  "notSync": true,
   "include": [
     "*",
     "docs/**",

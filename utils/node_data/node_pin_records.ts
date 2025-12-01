@@ -7,7 +7,18 @@
  * @field server nodes
  */
 
-import type { NodePinsRecords } from "../gia_gen/nodes.ts";
+
+export type NodeReflectRecords = [node_id: number, reflect: string];
+export interface NodePinsRecords {
+  inputs: string[];
+  outputs: string[];
+  id: number;
+  /** Determines whether it is a basic node,
+   * or a generic node with extensive ids.
+   *
+   * A map of NodeType[Struct]->NodeId */
+  reflectMap?: NodeReflectRecords[];
+}
 
 export interface SingleNodeData extends NodePinsRecords {
   name?: string;

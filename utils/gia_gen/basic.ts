@@ -23,7 +23,7 @@ import { get_id, LocalVariableType, type NodePins, type NodeType } from "./nodes
 import { counter_dynamic_id, counter_index, randomInt, todo } from "./utils.ts";
 import { type ConcreteMap } from "../node_data/concrete_map.ts";
 import { get_concrete_index } from "../node_data/helpers.ts";
-import { EnumIdList, EnumNode_Value, NodeId } from "../node_data/enums.ts";
+import { ENUM_ID } from "../node_data/enum_id.ts";
 
 /**
  * GraphBody_ 接口定义了构建图的基本参数
@@ -102,9 +102,9 @@ export function graph_body(body: GraphBody_): Root {
  */
 export interface NodeBody_ {
   /** 通用 ID */
-  generic_id: NodeId;
+  generic_id: number;
   /** 具体 ID */
-  concrete_id: NodeId;
+  concrete_id: number;
   /** X 坐标 */
   x: number;
   /** Y 坐标 */
@@ -120,8 +120,8 @@ export interface NodeBody_ {
  *
  * 参数列表：
  * - body: {
- *     generic_id: NodeId;
- *     concrete_id: NodeId;
+ *     generic_id: number;
+ *     concrete_id: number;
  *     x: number;
  *     y: number;
  *     pins: NodePin[];
@@ -262,13 +262,13 @@ export function item_type(type: VarType): VarBase_ItemType {
  */
 export interface EnumValue_ {
   /** 枚举值 */
-  value: EnumNode_Value;
+  value: number;
 }
 /**
  * 构建枚举类型值 VarBase
  *
  * 参数列表：
- * - body: { value: EnumNode_Value }
+ * - body: { value: number }
  *
  * @param body 枚举值
  * @returns VarBase
@@ -436,7 +436,7 @@ export function bool_pin_body(val: number | boolean): VarBase {
     class: VarBase_Class.EnumBase,
     alreadySetVal: true,
     itemType: item_type(VarType.Boolean),
-    bEnum: { val: val ? EnumNode_Value.True : EnumNode_Value.Default },
+    bEnum: { val: val ? 1 : 0 },
   };
 }
 /**
@@ -570,10 +570,10 @@ export function node_type_pin_body(body: NodeTypePinBody_): NodePin {
   let var_type: VarType = get_id(body.type) as VarType;
   if (body.type.t === "e") {
     switch (body.type.e) {
-      case EnumIdList.VariableSnapshot:
+      case ENUM_ID.VariableSnapshot:
         var_type = VarType.VariableSnapshot;
         break;
-      case EnumIdList.LocalVariable:
+      case ENUM_ID.LocalVariable:
         var_type = VarType.LocalVariable;
         break;
     }

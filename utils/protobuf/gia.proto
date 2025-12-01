@@ -158,8 +158,15 @@ message NodeGraph {
   string name = 2; // Graph Name
   repeated GraphNode nodes = 3;
   repeated CompositePin compositePins = 4;
+  repeated Comments comments = 5;
   repeated GraphVariable graphValues = 6;
   repeated GraphAffiliation affiliations = 7;
+}
+
+message Comments {
+  string content = 1;
+  optional float x = 2;
+  optional float y = 3;
 }
 
 message GraphAffiliation {
@@ -388,6 +395,7 @@ message GraphNode {
   repeated NodePin pins = 4;   // connect to other nodes
   float x = 5;                 // xpos
   float y = 6;                 // ypos
+  optional Comments comments = 7; // comments
 
   repeated GraphAffiliation.Info usingStruct = 10;
 }

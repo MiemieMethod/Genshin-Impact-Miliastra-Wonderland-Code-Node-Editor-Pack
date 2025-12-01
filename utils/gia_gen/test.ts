@@ -33,7 +33,7 @@ function read() {
 
   // console.dir(n.pins[0], { depth: null })
   console.dir(n, { depth: null })
-  encode_gia_file(g, PATH + "pin.gia")
+  encode_gia_file(PATH + "pin.gia", g)
 
 }
 // read()
@@ -55,7 +55,7 @@ function graph_ts() {
   node3.setPos(5, 6);
   const g = graph.encode();
   console.timeEnd("graph_encode");
-  encode_gia_file(g, "./utils/ref/graph_ts.gia");
+  encode_gia_file("./utils/ref/graph_ts.gia", g);
 
 }
 

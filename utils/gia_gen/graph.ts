@@ -5,7 +5,6 @@ import { type NodeType, reflects_records, get_id, type_equal, to_records_full, i
 import { Counter, panic, randomInt, randomName } from "./utils.ts";
 import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record, is_generic_id, get_node_record_generic } from "../node_data/helpers.ts";
 import { get_node_info } from "./extract.ts";
-import { type NodeId } from "../node_data/enums.ts";
 import { type SingleNodeData } from "../node_data/node_pin_records.ts";
 
 
@@ -219,9 +218,9 @@ export class Node {
     const pins = this.pins.map((p) => p.encode(opt, connects)).filter((p) => p !== null);
     return node_body({
       /** 通用 ID */
-      generic_id: this.record.id as NodeId,
+      generic_id: this.record.id as number,
       /** 具体 ID */
-      concrete_id: this.node_id as NodeId,
+      concrete_id: this.node_id as number,
       /** X 坐标 */
       x: this.x,
       /** Y 坐标 */
