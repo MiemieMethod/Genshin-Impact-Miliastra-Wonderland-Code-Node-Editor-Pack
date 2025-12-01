@@ -450,7 +450,7 @@ export interface VarBase {
    *
    * One of the field: baseValues
    */
-  bNodeValue?: NodeValueBaseValue;
+  bConcreteValue?: ConcreteBaseValue;
   /** Index = 111
    *
    * One of the field: baseValues
@@ -470,7 +470,7 @@ export const VarBase_Class = {
   StringBase: 5,
   EnumBase: 6,
   VectorBase: 7,
-  NodeValueBase: 10000,
+  ConcreteBase: 10000,
   StructBase: 10001,
   ArrayBase: 10002,
   MapBase: 10003,
@@ -577,25 +577,25 @@ export interface MapPairBaseValue {
   /** Index = 2 */
   value: VarBase;
 }
-export interface NodeValueBaseValue {
+export interface ConcreteBaseValue {
   /** Index = 1 */
   indexOfConcrete: number;
   /** Index = 2 */
   value: VarBase;
   /** Index = 5 */
-  wrapper?: NodeValueBaseValue_Wrapper;
+  structs?: ComplexValueStruct;
 }
-export interface NodeValueBaseValue_Wrapper {
+export interface ComplexValueStruct {
   /** Index = 4 */
-  classBase: number;
+  class: number;
   /** Index = 100 */
-  inner: NodeValueBaseValue_Wrapper_Inner;
+  inner: ComplexValueStruct_Base;
 }
-export interface NodeValueBaseValue_Wrapper_Inner {
+export interface ComplexValueStruct_Base {
   /** Index = 1 */
-  wrapper: NodeValueBaseValue_Wrapper_Inner_Wrapper;
+  wrapper: ComplexValueStruct_Wrapper;
 }
-export interface NodeValueBaseValue_Wrapper_Inner_Wrapper {
+export interface ComplexValueStruct_Wrapper {
   /** Index = 1 */
   class: VarBase_Class;
   /** Index = 100

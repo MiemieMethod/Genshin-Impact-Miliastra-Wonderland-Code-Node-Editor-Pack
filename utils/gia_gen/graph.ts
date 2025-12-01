@@ -319,7 +319,7 @@ export class Pin {
     });
     if (this.type.t === "e" && this.node_id === 475) {
       // Enum Equal, 需要手动设置 index of concrete
-      pin.value.bNodeValue!.indexOfConcrete = this.type.e;
+      pin.value.bConcreteValue!.indexOfConcrete = this.type.e;
     }
     return pin;
   }

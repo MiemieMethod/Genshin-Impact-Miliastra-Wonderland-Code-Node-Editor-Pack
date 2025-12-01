@@ -10,7 +10,7 @@ import {
   NodeProperty_Type,
   NodeUnit_Id_Type,
   NodeUnit_Type,
-  type NodeValueBaseValue_Wrapper,
+  type ComplexValueStruct,
   type Root,
   type VarBase,
   VarBase_Class,
@@ -210,7 +210,7 @@ export interface PinValue_ {
   /** 基础值，可选 */
   value?: VarBase;
   /** 值包装器，可选 */
-  wrapper?: NodeValueBaseValue_Wrapper;
+  wrapper?: ComplexValueStruct;
 }
 /**
  * 构建一个值对象 VarBase（用于引脚 value）
@@ -227,12 +227,12 @@ export interface PinValue_ {
  */
 export function wrapped_pin_value(body: PinValue_): VarBase {
   const value: VarBase = {
-    class: VarBase_Class.NodeValueBase,
+    class: VarBase_Class.ConcreteBase,
     alreadySetVal: true,
-    bNodeValue: {
+    bConcreteValue: {
       indexOfConcrete: body.indexOfConcrete ?? 0,
       value: body.value ?? {} as any,
-      wrapper: body.wrapper,
+      structs: body.wrapper,
     },
   };
   return value;
@@ -334,8 +334,8 @@ export function map_pin_body(body: MapPinBody_): NodePin {
     },
     bMap: { mapPairs: [] },
   };
-  const wrapper: NodeValueBaseValue_Wrapper = {
-    classBase: 1,
+  const wrapper: ComplexValueStruct = {
+    class: 1,
     inner: {
       wrapper: {
         class: VarBase_Class.MapBase,
@@ -756,9 +756,9 @@ export function node_type_pin_body_frame(pin: NodeTypePinBodyEmpty_): NodePin {
       i1: { kind: pin.kind as any, index: pin.index },
       i2: { kind: pin.kind as any, index: pin.index },
       value: {
-        class: VarBase_Class.NodeValueBase,
+        class: VarBase_Class.ConcreteBase,
         alreadySetVal: true,
-        bNodeValue: {
+        bConcreteValue: {
           indexOfConcrete: pin.indexOfConcrete,
           value: {} as any,
         },
@@ -771,13 +771,13 @@ export function node_type_pin_body_frame(pin: NodeTypePinBodyEmpty_): NodePin {
     i1: { kind: pin.kind as any, index: pin.index },
     i2: { kind: pin.kind as any, index: pin.index },
     value: {
-      class: VarBase_Class.NodeValueBase,
+      class: VarBase_Class.ConcreteBase,
       alreadySetVal: true,
-      bNodeValue: {
+      bConcreteValue: {
         indexOfConcrete: pin.indexOfConcrete,
         value: {} as any,
-        wrapper: {
-          classBase: 1,
+        structs: {
+          class: 1,
           inner: {
             wrapper: {
               class: VarBase_Class.MapBase,

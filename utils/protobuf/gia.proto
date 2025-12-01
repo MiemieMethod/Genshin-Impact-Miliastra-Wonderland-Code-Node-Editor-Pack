@@ -282,7 +282,7 @@ message VarBase {
     EnumBase = 6;
     VectorBase = 7;
 
-    NodeValueBase = 10000; // link to node
+    ConcreteBase = 10000; // reflective pins
     StructBase = 10001;
     ArrayBase = 10002;
     MapBase = 10003;
@@ -336,7 +336,7 @@ message VarBase {
     VectorBaseValue bVector = 107;
     StructBaseValue bStruct = 108;
     ArrayBaseValue bArray = 109;
-    NodeValueBaseValue bNodeValue = 110;
+    ConcreteBaseValue bConcreteValue = 110;
     MapPairBaseValue bMapPair = 111;
     MapBaseValue bMap = 112;
   }
@@ -364,37 +364,35 @@ message MapPairBaseValue {
   VarBase key = 1;
   VarBase value = 2;
 }
-message NodeValueBaseValue {
+message ConcreteBaseValue {
   // index of concrete node types
   // e.g. EnumNode.EnumEqualList
   int32 indexOfConcrete = 1;
   VarBase value = 2;
   // TODO: What is this
-  message Wrapper {
-    message Inner {
-      message Wrapper {
-        VarBase.Class class = 1;
-        oneof type {
-          VarBase.ItemType.StructItem item = 100;
-          VarBase.ItemType.PairItems mapPair = 102;
-        }
+  message ComplexValueStruct {
+    message Base { Wrapper wrapper = 1; }
+    message Wrapper {
+      VarBase.Class class = 1;
+      oneof type {
+        VarBase.ItemType.StructItem item = 100;
+        VarBase.ItemType.PairItems mapPair = 102;
       }
-      Wrapper wrapper = 1;
     }
-    int32 classBase = 4;
-    Inner inner = 100;
+    int32 class = 4;
+    Base inner = 100;
   }
-  optional Wrapper wrapper = 5;
+  optional ComplexValueStruct structs = 5;
 }
 // ========== End of Variable Defs ========== //
 
 message GraphNode {
-  int32 nodeIndex = 1;         // 1
-  NodeProperty genericId = 2;  // Node's Template's Id
-  NodeProperty concreteId = 3; // Node's own Id(Null for generic nodes)
-  repeated NodePin pins = 4;   // connect to other nodes
-  float x = 5;                 // xpos
-  float y = 6;                 // ypos
+  int32 nodeIndex = 1;            // 1
+  NodeProperty genericId = 2;     // Node's Template's Id
+  NodeProperty concreteId = 3;    // Node's own Id(Null for generic nodes)
+  repeated NodePin pins = 4;      // connect to other nodes
+  float x = 5;                    // xpos
+  float y = 6;                    // ypos
   optional Comments comments = 7; // comments
 
   repeated GraphAffiliation.Info usingStruct = 10;
