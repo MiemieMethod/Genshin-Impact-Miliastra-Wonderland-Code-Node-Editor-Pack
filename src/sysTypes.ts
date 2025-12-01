@@ -535,3 +535,12 @@ export type SysEnumNameTypes = typeof SysEnumNames[number];
 // const p = new List([1n, 2n, 4n], "int");
 
 // console.log(p, p[0n], p[new Int(1)]);
+
+
+// TODO wrapper
+// 创建工厂函数
+// function createMyClass(value: number): MyClass {
+//   return new MyClass(value);
+// }
+// 让工厂函数也可以作为构造函数
+// const MyClassWrapper = createMyClass as typeof MyClass & typeof createMyClass;

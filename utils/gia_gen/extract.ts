@@ -21,13 +21,13 @@ export function get_pin_info(pin: NodePin): PinInfo_ {
     kind: pin.i1.kind,
     index: pin.i1.index,
     type: pin.type,
-    indexOfConcrete: pin.value?.bNodeValue?.indexOfConcrete ?? 0,
+    indexOfConcrete: pin.value?.bConcreteValue?.indexOfConcrete ?? 0,
     node_type: get_type(pin.type),
-    is_node: pin.value.class === VarBase_Class.NodeValueBase,
+    is_node: pin.value.class === VarBase_Class.ConcreteBase,
   };
   if (ret.node_type?.t === "d") {
-    assert.equal(pin.value!.bNodeValue!.value!.class, VarBase_Class.MapBase);
-    const t = pin.value!.bNodeValue!.value.itemType!.itemType!;
+    assert.equal(pin.value!.bConcreteValue!.value!.class, VarBase_Class.MapBase);
+    const t = pin.value!.bConcreteValue!.value.itemType!.itemType!;
     assert.equal(t.type, VarType.Dictionary);
     assert.equal(t.kind, VarBase_ItemType_Inner_Kind.Pair);
     ret.node_type.k = get_type(t.items!.key);

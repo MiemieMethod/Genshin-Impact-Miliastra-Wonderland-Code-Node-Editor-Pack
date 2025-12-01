@@ -55,8 +55,6 @@ export type NodeType = {
   r: string;
 };
 
-type NodeId = number;
-
 /**
  * 将 NodeType（或字符串形式的类型表达式）转为可读字符串。
  * 用于序列化类型结构，例如：S<a:Int,b:L<Str>>
@@ -243,23 +241,13 @@ export function parse(src: string): NodeType {
   }
 }
 
-export type NodeReflectRecords = [node_id: NodeId, reflect: string];
-``;
-export interface NodePinsRecords {
-  inputs: string[];
-  outputs: string[];
-  id: NodeId;
-  /** Determines whether it is a basic node,
-   * or a generic node with extensive ids.
-   *
-   * A map of NodeType[Struct]->NodeId */
-  reflectMap?: NodeReflectRecords[];
-}
+import type { NodePinsRecords, NodeReflectRecords } from "../node_data/node_pin_records.ts";
+
 /** ⚠️ Using of `NodePinsRecordsFull` is not suggested.
  *
  * Please use `NodePinsRecords` instead
  */
-export type NodeReflectRecordsFull = [node_id: NodeId, reflect: NodeType];
+export type NodeReflectRecordsFull = [node_id: number, reflect: NodeType];
 /** ⚠️ Using of `NodePinsRecordsFull` is not suggested.
  *
  * Please use `NodePinsRecords` instead
@@ -267,18 +255,18 @@ export type NodeReflectRecordsFull = [node_id: NodeId, reflect: NodeType];
 export interface NodePinsRecordsFull {
   inputs: NodeType[];
   outputs: NodeType[];
-  id: NodeId;
+  id: number;
   /** Determines whether it is a basic node,
    * or a generic node with extensive ids.
    *
-   * A map of NodeType[Struct]->NodeId */
+   * A map of NodeType[Struct]->number */
   reflectMap?: NodeReflectRecordsFull[];
 }
 
 export interface NodePins {
   inputs: NodeType[];
   outputs: NodeType[];
-  id: NodeId;
+  id: number;
 }
 
 /**
@@ -326,7 +314,7 @@ export function reflects(
 /**
  * 对 NodePinsRecords 执行 reflect 替换并返回展开后的 NodePins。
  * 若记录无 reflectMap，则直接 parse 基础类型。
- * 若有 reflectMap，则根据 refs 选择正确的特化 NodeId。
+ * 若有 reflectMap，则根据 refs 选择正确的特化 number。
  */
 export function reflects_records(
   rec: NodePinsRecords,
@@ -392,7 +380,7 @@ export function unwrap_records(rec: NodePinsRecords): NodePins[] {
       id: rec.id,
     }];
   }
-  const map: [NodeType, NodeId][] = rec.reflectMap.sort((r) => r[0]).map(
+  const map: [NodeType, number][] = rec.reflectMap.sort((r) => r[0]).map(
     (r) => [parse(r[1]), r[0]],
   );
   const rs = map.map((x) => {

@@ -10,7 +10,7 @@ import {
   NodeProperty_Type,
   NodeUnit_Id_Type,
   NodeUnit_Type,
-  type NodeValueBaseValue_Wrapper,
+  type ComplexValueStruct,
   type Root,
   type VarBase,
   VarBase_Class,
@@ -23,7 +23,7 @@ import { get_id, LocalVariableType, type NodePins, type NodeType } from "./nodes
 import { counter_dynamic_id, counter_index, randomInt, todo } from "./utils.ts";
 import { type ConcreteMap } from "../node_data/concrete_map.ts";
 import { get_concrete_index } from "../node_data/helpers.ts";
-import { EnumIdList, EnumNode_Value, NodeId } from "../node_data/enums.ts";
+import { ENUM_ID } from "../node_data/enum_id.ts";
 
 /**
  * GraphBody_ 接口定义了构建图的基本参数
@@ -87,6 +87,7 @@ export function graph_body(body: GraphBody_): Root {
             compositePins: [],
             graphValues: [],
             affiliations: [],
+            comments: [],
           },
         },
       },
@@ -102,9 +103,9 @@ export function graph_body(body: GraphBody_): Root {
  */
 export interface NodeBody_ {
   /** 通用 ID */
-  generic_id: NodeId;
+  generic_id: number;
   /** 具体 ID */
-  concrete_id: NodeId;
+  concrete_id: number;
   /** X 坐标 */
   x: number;
   /** Y 坐标 */
@@ -120,8 +121,8 @@ export interface NodeBody_ {
  *
  * 参数列表：
  * - body: {
- *     generic_id: NodeId;
- *     concrete_id: NodeId;
+ *     generic_id: number;
+ *     concrete_id: number;
  *     x: number;
  *     y: number;
  *     pins: NodePin[];
@@ -201,6 +202,29 @@ export function pin_body(body: PinBody_): NodePin {
   return pin;
 }
 
+export interface PinFlowBody_ {
+  /** 引脚索引 */
+  index: number;
+  /** 引脚的连接 */
+  connects: NodeConnection[];
+}
+export function pin_flow_body(body: PinFlowBody_): NodePin {
+  const pin: NodePin = {
+    i1: {
+      kind: NodePin_Index_Kind.OutFlow,
+      index: body.index,
+    },
+    i2: {
+      kind: NodePin_Index_Kind.OutFlow,
+      index: body.index,
+    },
+    value: undefined as any,
+    type: undefined as any,
+    connects: body.connects,
+  };
+  return pin;
+}
+
 /**
  * PinValue_ 接口定义了构建引脚值的参数
  */
@@ -210,7 +234,7 @@ export interface PinValue_ {
   /** 基础值，可选 */
   value?: VarBase;
   /** 值包装器，可选 */
-  wrapper?: NodeValueBaseValue_Wrapper;
+  wrapper?: ComplexValueStruct;
 }
 /**
  * 构建一个值对象 VarBase（用于引脚 value）
@@ -219,7 +243,7 @@ export interface PinValue_ {
  * - body: {
  *     indexOfConcrete?: number;
  *     value?: VarBase;
- *     wrapper?: NodeValueBaseValue_Wrapper;
+ *     wrapper?: ConcreteBaseValueValue_Wrapper;
  *   }
  *
  * @param body 值参数
@@ -227,12 +251,12 @@ export interface PinValue_ {
  */
 export function wrapped_pin_value(body: PinValue_): VarBase {
   const value: VarBase = {
-    class: VarBase_Class.NodeValueBase,
+    class: VarBase_Class.ConcreteBase,
     alreadySetVal: true,
-    bNodeValue: {
+    bConcreteValue: {
       indexOfConcrete: body.indexOfConcrete ?? 0,
       value: body.value ?? {} as any,
-      wrapper: body.wrapper,
+      structs: body.wrapper,
     },
   };
   return value;
@@ -262,13 +286,13 @@ export function item_type(type: VarType): VarBase_ItemType {
  */
 export interface EnumValue_ {
   /** 枚举值 */
-  value: EnumNode_Value;
+  value: number;
 }
 /**
  * 构建枚举类型值 VarBase
  *
  * 参数列表：
- * - body: { value: EnumNode_Value }
+ * - body: { value: number }
  *
  * @param body 枚举值
  * @returns VarBase
@@ -334,8 +358,8 @@ export function map_pin_body(body: MapPinBody_): NodePin {
     },
     bMap: { mapPairs: [] },
   };
-  const wrapper: NodeValueBaseValue_Wrapper = {
-    classBase: 1,
+  const wrapper: ComplexValueStruct = {
+    class: 1,
     inner: {
       wrapper: {
         class: VarBase_Class.MapBase,
@@ -436,7 +460,7 @@ export function bool_pin_body(val: number | boolean): VarBase {
     class: VarBase_Class.EnumBase,
     alreadySetVal: true,
     itemType: item_type(VarType.Boolean),
-    bEnum: { val: val ? EnumNode_Value.True : EnumNode_Value.Default },
+    bEnum: { val: val ? 1 : 0 },
   };
 }
 /**
@@ -539,6 +563,8 @@ export interface NodeTypePinBody_ {
   non_zero?: boolean;
   /** 上游连接引脚 */
   connects?: NodeConnection[];
+  /** 下游连接节点 */
+  flows?: NodeConnection[];
 }
 /**
  * 构建任意类型引脚（自动根据 VarType 分发）
@@ -570,10 +596,10 @@ export function node_type_pin_body(body: NodeTypePinBody_): NodePin {
   let var_type: VarType = get_id(body.type) as VarType;
   if (body.type.t === "e") {
     switch (body.type.e) {
-      case EnumIdList.VariableSnapshot:
+      case ENUM_ID.VariableSnapshot:
         var_type = VarType.VariableSnapshot;
         break;
-      case EnumIdList.LocalVariable:
+      case ENUM_ID.LocalVariable:
         var_type = VarType.LocalVariable;
         break;
     }
@@ -756,9 +782,9 @@ export function node_type_pin_body_frame(pin: NodeTypePinBodyEmpty_): NodePin {
       i1: { kind: pin.kind as any, index: pin.index },
       i2: { kind: pin.kind as any, index: pin.index },
       value: {
-        class: VarBase_Class.NodeValueBase,
+        class: VarBase_Class.ConcreteBase,
         alreadySetVal: true,
-        bNodeValue: {
+        bConcreteValue: {
           indexOfConcrete: pin.indexOfConcrete,
           value: {} as any,
         },
@@ -771,13 +797,13 @@ export function node_type_pin_body_frame(pin: NodeTypePinBodyEmpty_): NodePin {
     i1: { kind: pin.kind as any, index: pin.index },
     i2: { kind: pin.kind as any, index: pin.index },
     value: {
-      class: VarBase_Class.NodeValueBase,
+      class: VarBase_Class.ConcreteBase,
       alreadySetVal: true,
-      bNodeValue: {
+      bConcreteValue: {
         indexOfConcrete: pin.indexOfConcrete,
         value: {} as any,
-        wrapper: {
-          classBase: 1,
+        structs: {
+          class: 1,
           inner: {
             wrapper: {
               class: VarBase_Class.MapBase,
@@ -827,6 +853,21 @@ export function node_connect_from(from: number, from_index: number): NodeConnect
     connect2: {
       kind: NodePin_Index_Kind.OutParam,
       index: from_index,
+    },
+  };
+}
+
+/** flow connects to downstream nodes */
+export function node_connect_to(to: number, to_index: number): NodeConnection {
+  return {
+    id: to,
+    connect: {
+      kind: NodePin_Index_Kind.InFlow,
+      index: to_index,
+    },
+    connect2: {
+      kind: NodePin_Index_Kind.InFlow,
+      index: to_index,
     },
   };
 }
