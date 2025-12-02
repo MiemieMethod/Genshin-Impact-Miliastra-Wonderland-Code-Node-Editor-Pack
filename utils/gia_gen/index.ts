@@ -2,12 +2,11 @@
 
 import * as gia from "./basic.ts";
 import type * as Gia from "./basic.ts";
-import { randomInt } from "./utils.ts";
 
 export { gia, type Gia };
 
-// import * as giaExt from "./extended.ts";
-// export { giaExt };
+export { Graph, Node, Pin } from "./graph.ts";
 
-import { Graph, Node, Pin } from "./graph.ts";
-export { Graph, Node, Pin };
+export type { NodeType, NodePins } from "./nodes.ts";
+
+export { Counter, randomInt, randomBigInt, randomName, panic, todo } from "./utils.ts";

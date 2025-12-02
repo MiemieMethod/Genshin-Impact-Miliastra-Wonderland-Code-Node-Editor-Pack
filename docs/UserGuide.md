@@ -61,7 +61,7 @@ declare global {
 
 在正式编写逻辑前，通常需要在文件头部声明图所需的变量、数据结构及事件。
 
-```
+```ts
 // @ts-nocheck
 import "./def.d.ts"; // 导入系统类型和方法定义
 

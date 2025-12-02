@@ -7,7 +7,7 @@ import type {
   IR_FunctionOutputArgType,
   IRNode,
 } from "../IR/IR_node.ts";
-import type { ParserState } from "./tokenizer.ts";
+import type { ParserState } from "../tokenizer.ts";
 
 export interface FunctionCallType {
   name: string;

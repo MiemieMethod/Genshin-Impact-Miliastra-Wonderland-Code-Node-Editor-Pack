@@ -1,5 +1,5 @@
-import type { ParserState, Token } from "./tokenizer.ts";
-import { TOKEN_GROUPS, TOKENS } from "./tokenizer.ts"; //js
+import type { ParserState, Token } from "../types/parser.ts";
+import { TOKEN_GROUPS, TOKENS } from "./consts.ts";
 import {
   assert,
   expect,
@@ -9,7 +9,7 @@ import {
   peekIs,
   peekIsIdentifier,
   peekIsIdLiteral,
-} from "./utils.ts"; //js
+} from "./utils.ts";
 import type {
   BranchId,
   IR_AnchorNode,
@@ -35,7 +35,6 @@ import {
   parseOutList,
 } from "./parseParams.ts"; //js
 import {
-  extractBalanced,
   extractBalancedTokens,
   splitBalancedTokens,
 } from "./balancedExtract.ts"; //js
@@ -45,7 +44,7 @@ import {
   refractSystemFunction,
   refractUserFunction,
   systemFunctionIncludes,
-} from "./functions.ts"; //js
+} from "./old/functions.ts"; //js
 
 /** 这是解析触发器主体、component 主体、case 语句内的通用逻辑。
  * `[Trigger]|Branch[id]` % `.Fun().....Fun() >> Branch?` $ `;|,|)|}`
@@ -72,8 +71,7 @@ export function parseBlock(
       tail = nextNode;
     } else {
       throw new Error(
-        `Function Block Without prefix should start with Func or $, not '${
-          peek(state)?.value
+        `Function Block Without prefix should start with Func or $, not '${peek(state)?.value
         }'`,
       );
     }
@@ -101,10 +99,9 @@ export function parseBlock(
     if (peekIs(state, "symbol", "<")) {
       next(state);
       const sugarNode = parseAngleBranchSugar(state);
-      if (!peekIs(state, "symbol", ">") && !peekIs(state, "goto", ">>")) {
+      if (!peekIs(state, "symbol", ">") && !peekIs(state, "right", ">>")) {
         throw new Error(
-          `Invalid Usage in Branch Sugar! Expect > or >> but got '${
-            peek(state)?.value
+          `Invalid Usage in Branch Sugar! Expect > or >> but got '${peek(state)?.value
           }'!`,
         );
       }
@@ -114,7 +111,7 @@ export function parseBlock(
     }
 
     // should be ">>" otherwise the block is finished.
-    if (!peekIs(state, "goto", ">>")) {
+    if (!peekIs(state, "right", ">>")) {
       break;
     }
     next(state);
