@@ -9,7 +9,7 @@ import type {
   SysValTypeNames,
   SysValTypes,
   TypeMaps
-} from "./types/types.ts";
+} from "../types/types.ts";
 
 const todo = (): any => { throw new Error("TODO"); };
 

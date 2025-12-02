@@ -9,5 +9,6 @@ export {
   Counter,
   Graph,
   Node,
-  Pin
+  Pin,
+  NodeType
 } from "./gia_gen/index.ts";

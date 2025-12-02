@@ -1,4 +1,5 @@
-import { patterns } from "./consts.ts";
+
+import { TOKENIZER_PATTERNS } from "../types/consts.ts";
 import type { ParserState, Token } from "../types/parser.ts";
 
 export function tokenEqual(t1: Token, t2: Token) {
@@ -24,7 +25,7 @@ export function tokenize(input: string): Token[] {
   while (pos < input.length) {
     let matched = false;
 
-    for (const p of patterns) {
+    for (const p of TOKENIZER_PATTERNS) {
       const m = p.regex.exec(input.slice(pos));
       if (m) {
         matched = true;
@@ -42,8 +43,7 @@ export function tokenize(input: string): Token[] {
     }
     if (!matched) {
       throw new Error(
-        `Unexpected token near: ${
-          input.slice(Math.max(0, pos - 5), pos + 20)
+        `Unexpected token near: ${input.slice(Math.max(0, pos - 5), pos + 20)
         }...`,
       );
     }

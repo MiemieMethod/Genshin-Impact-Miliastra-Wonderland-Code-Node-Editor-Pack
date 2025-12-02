@@ -4,8 +4,8 @@ import {
   parseOutList,
   parseTypeParameter,
 } from "./parseParams.ts"; //js
-import type { ParserState } from "./tokenizer.ts";
-import { expect, peekIs } from "./utils.ts"; //js
+import type { ParserState } from "../tokenizer.ts";
+import { expect, peekIs } from "../utils.ts"; //js
 
 interface TriggerHeader {
   name: string;
