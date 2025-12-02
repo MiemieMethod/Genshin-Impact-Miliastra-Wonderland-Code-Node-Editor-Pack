@@ -1,6 +1,6 @@
 {
-  "commitMessage": "修复 Graph 接口的 bug, 重构原本的 IR 数据结构",
-  "notSync": false,
+  "commitMessage": "修改 Parser 逻辑",
+  "notSync": true,
   "include": [
     "*",
     "docs/**",

@@ -5,6 +5,10 @@ export function peek(state: ParserState): Token | null {
   return state.tokens[state.index] || null;
 }
 
+export function src_pos(state: ParserState, to_end = false): number {
+  return state.tokens[state.index].pos + (to_end ? state.tokens[state.index].value.length : 0);
+}
+
 /** Lookahead n tokens */
 export function lookahead(state: ParserState, n: number): Token | null {
   return state.tokens[state.index + n] || null;
@@ -45,8 +49,7 @@ export function expect(
   if (!t) {
     const p = peek(state);
     throw new Error(
-      `Expected ${type}${value ? `(${value})` : ""} but got ${
-        p ? `${p.type}(${p.value})` : "EOF"
+      `Expected ${type}${value ? `(${value})` : ""} but got ${p ? `${p.type}(${p.value})` : "EOF"
       }`,
     );
   }
@@ -69,7 +72,7 @@ export function peekIs(
   const t = peek(state);
   if (!t) return false;
   if (t.type !== type) return false;
-  if (value != null && t.value !== value) return false;
+  if (value !== undefined && t.value !== value) return false;
   return true;
 }
 
@@ -99,11 +102,8 @@ export function peekIsIdLiteral(state: ParserState): boolean {
   return false;
 }
 
-export function assert<L, R>(l: L, r: L | R, r2?: L | R) {
-  if (l === r) {
-    return;
-  }
-  if (l === r2) {
+export function assertEq<T>(l: unknown, r: T, r2?: T, r3?: T, r4?: T): asserts l is T {
+  if (l === r || l === r2 || l === r3 || l === r4) {
     return;
   }
   throw new Error(`The '${l}' is not strict Equal to '${r}'!`);
