@@ -1,10 +1,10 @@
 import type { GlobalDecl, GlobalVarDecl, NodeVarDecl, SignalDecl, StructDecl, TimerDecl } from "../types/IR_decl.ts";
 import type { ParserState } from "../types/parser.ts";
-import type { NodeType } from "../../utils/gia_gen/nodes.ts";
+import { type_equal, type NodeType } from "../../utils/gia_gen/nodes.ts";
 
 import { IR_Id_Counter } from "../types/consts.ts";
 import { extractBalancedTokens, try_capture_type } from "./balanced_extract.ts";
-import { name_style, parse_type } from "./parse_utils.ts";
+import { name_style, parse_type, parse_value } from "./parse_utils.ts";
 import { assert, assertEq, expect, next, peek, peekIs, src_pos } from "./utils.ts";
 import { NodeVar } from "../types/class.ts";
 
@@ -217,8 +217,8 @@ function parseGlobalVar(state: ParserState): GlobalVarDecl {
     _srcRange: { start: src_pos(state), end: -1 },
     kind: "globalVar",
     name: "",
-    type: null as any,
-    default: null as any,
+    type: undefined as any,
+    default: undefined as any,
   };
 
   expect(state, "identifier", "const");
@@ -235,13 +235,26 @@ function parseGlobalVar(state: ParserState): GlobalVarDecl {
     ret.type = parse_type(typed.tokens);
   }
 
+  let val = undefined;
   if (peekIs(state, "assign", "=")) {
     next(state);
-    const { success, type, val } = try_capture_value(state.tokens, state.index);
-    assert(success, "Failed to parse value");
-    state.index += val.length;
-    ret.default = new NodeVar(type, val);
+    const typed = try_capture_type(state.tokens, state.index);
+    if (typed.success) {
+      state.index += typed.tokens.length;
+      if (ret.type === undefined) {
+        ret.type = parse_type(typed.tokens);
+      } else {
+        assert(type_equal(ret.type, parse_type(typed.tokens)), "Type mismatch");
+      }
+      expect(state, "brackets", "(");
+      val = parse_value(state);
+      expect(state, "brackets", ")");
+    } else {
+      val = parse_value(state);
+    }
   }
+  ret.default = NodeVar.from(ret.type, val);
+  ret.type = ret.default.type;
 
   if (peekIs(state, "symbol", ";")) {
     next(state);

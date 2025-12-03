@@ -53,8 +53,11 @@ class Test {
       namespace Self {
         const x: int;
         const y: str = "123";
-        const z = 123;
-        const W = GUID(123);
+        const z = 123.45;
+        const w = GUID(123);
+        const a = Vec([1,2,3]);
+        const b:Dict<Int,Vec> = [[1,[4,5,6]]];
+        const b = Dict<ConfigId,List<Vec>>({1:[[4,5,6]]});
       }
         
       namespace Timer {

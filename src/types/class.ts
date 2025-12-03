@@ -1,5 +1,5 @@
 import { type_equal, type NodeType } from "../../utils/gia_gen/nodes.ts";
-import type { NodeVarValue } from "./types.ts";
+import type { IR_NodeVarValue, NodeVarValue } from "./types.ts";
 
 export function defaultValue(type: NodeType): NodeVarValue {
   switch (type.t) {
@@ -41,7 +41,7 @@ export function defaultValue(type: NodeType): NodeVarValue {
 }
 
 /** 检查类型并填入默认值 */
-export function defaultTypeValue(type: NodeType, value: NodeVarValue | { key: NodeVarValue, value: NodeVarValue }[] | undefined): NodeVarValue {
+export function defaultTypeValue(type: NodeType, value: IR_NodeVarValue | undefined): NodeVarValue {
   if (value === undefined) return defaultValue(type);
   switch (type.t) {
     case "b":
@@ -59,12 +59,12 @@ export function defaultTypeValue(type: NodeType, value: NodeVarValue | { key: No
         case "Vec":
           if (!Array.isArray(value)) throw new Error("Invalid value! " + JSON.stringify(value));
           const vec = [0, 0, 0];
-          if (value[0] !== undefined && typeof value[0] !== "number") throw new Error("Invalid value! " + JSON.stringify(value));
-          if (value[1] !== undefined && typeof value[1] !== "number") throw new Error("Invalid value! " + JSON.stringify(value));
-          if (value[2] !== undefined && typeof value[2] !== "number") throw new Error("Invalid value! " + JSON.stringify(value));
-          vec[0] = value[0];
-          vec[1] = value[1];
-          vec[2] = value[2];
+          if (value[0] !== undefined && typeof value[0] !== "number" && typeof value[0] !== "bigint") throw new Error("Invalid value! " + JSON.stringify(value));
+          if (value[1] !== undefined && typeof value[1] !== "number" && typeof value[1] !== "bigint") throw new Error("Invalid value! " + JSON.stringify(value));
+          if (value[2] !== undefined && typeof value[2] !== "number" && typeof value[2] !== "bigint") throw new Error("Invalid value! " + JSON.stringify(value));
+          vec[0] = Number(value[0]);
+          vec[1] = Number(value[1]);
+          vec[2] = Number(value[2]);
           return vec;
         case "Gid":
         case "Ety":
@@ -128,7 +128,7 @@ export function defaultTypeValue(type: NodeType, value: NodeVarValue | { key: No
   throw new Error("Invalid type! " + JSON.stringify(type));
 }
 
-export function possibleType(value: NodeVarValue | { key: NodeVarValue, value: NodeVarValue }[]): NodeType {
+export function possibleType(value: IR_NodeVarValue): NodeType {
   switch (typeof value) {
     case "string":
       return { t: "b", b: "Str" };
@@ -172,14 +172,26 @@ export class NodeVar {
     this.type = type;
     this.value = val;
   }
+  static from(type?: NodeType | null, val?: IR_NodeVarValue | null): NodeVar {
+    if (type === undefined || type === null) {
+      if (val === undefined || val === null) {
+        throw new Error("Invalid value! ");
+      }
+      return NodeVar.from_value(val);
+    }
+    if (val === undefined || val === null) {
+      return NodeVar.from_type(type);
+    }
+    return NodeVar.from_type_value(type, val);
+  }
   static from_type(type: NodeType): NodeVar {
     return new NodeVar(type, defaultValue(type));
   }
-  static from_value(val: NodeVarValue | { key: NodeVarValue, value: NodeVarValue }[]): NodeVar {
+  static from_value(val: IR_NodeVarValue): NodeVar {
     return NodeVar.from_type_value(possibleType(val), val);
   }
   /** 创建前检查一致性并填入默认值 */
-  static from_type_value(type: NodeType, val: NodeVarValue | { key: NodeVarValue, value: NodeVarValue }[]): NodeVar {
+  static from_type_value(type: NodeType, val: IR_NodeVarValue): NodeVar {
     const v = defaultTypeValue(type, val);
     return new NodeVar(type, v);
   }
