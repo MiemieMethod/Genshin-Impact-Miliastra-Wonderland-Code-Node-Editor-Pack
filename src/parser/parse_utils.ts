@@ -1,10 +1,11 @@
 import type { NodeType } from "../../utils/index.ts";
 import type { IR_FunctionArg } from "../types/IR_node.ts";
 import type { ParserState, Token } from "../types/parser.ts";
-import type { BranchId } from "../types/types.ts";
+import type { BranchId, NodeVarValue } from "../types/types.ts";
 import { TOKEN_GROUPS, TOKENS, UNK_TYPE } from "../types/consts.ts";
 import { extractBalancedTokens, splitBalancedTokens, try_capture_type } from "./balanced_extract.ts";
-import { assert, assertEq, expect, next, peek } from "./utils.ts";
+import { assert, assertEq, expect, next, peek, peekIs } from "./utils.ts";
+import { NodeVar } from "../types/class.ts";
 
 export function parse_type(tokens: Token[]): NodeType {
   return { t: "b", b: tokens.map(t => t.value).join("") as any };
@@ -132,4 +133,67 @@ export function parse_args(s: ParserState, type: "in" | "out"): IR_FunctionArg[]
     }
   })
   return ret;
+}
+
+
+// value := val | type "(" val ")"
+// val := string | int | float | boolean | "[" val ( "," val )* "]" | "{" ( val ":" val ","? )* "}"
+export function parse_value(s: ParserState): NodeVar {
+  const core = (): NodeVarValue => {
+    switch (peek(s)?.type) {
+      case "string":
+        return next(s).value.slice(1, -1);
+      case "int":
+        const i = parse_int(s);
+        assert(i !== null);
+        return BigInt(i);
+      case "float":
+        const f = parse_float(s);
+        assert(f !== null);
+        return f;
+      case "boolean":
+        return next(s).value === "true";
+      case "brackets": {
+        if (peekIs(s, "brackets", "[")) {
+          next(s);
+          const ret = [];
+          while (!peekIs(s, "brackets", "]")) {
+            ret.push(core());
+            if (peekIs(s, "symbol", ",")) {
+              next(s);
+            }
+          }
+          expect(s, "brackets", "]");
+          return ret;
+        } else if (peekIs(s, "brackets", "{")) {
+          next(s);
+          const ret: { key: NodeVarValue, value: NodeVarValue }[] = [];
+          while (!peekIs(s, "brackets", "}")) {
+            const key = expect(s, "string").value.slice(1, -1);
+            expect(s, "symbol", ":");
+            ret.push({ key: key, value: core() });
+            if (peekIs(s, "symbol", ",")) {
+              next(s);
+            }
+          }
+          expect(s, "brackets", "}");
+          return ret;
+        }
+      }
+    }
+    throw new Error("Invalid value forms!");
+  }
+
+  const typed = try_capture_type(s.tokens, s.index, false);
+  if (typed.success) {
+    s.index += typed.tokens.length;
+    expect(s, "brackets", "(");
+  }
+
+  const val = core();
+
+  if (typed.success) {
+    expect(s, "brackets", "(");
+  }
+  return new NodeVar(typed.success ? typed.type : null, val);
 }

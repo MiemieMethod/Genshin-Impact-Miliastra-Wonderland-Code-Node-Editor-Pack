@@ -1,4 +1,4 @@
-import { decompile } from "./decompiler.ts";
+import { decompile, ir_to_string } from "./decompiler.ts";
 import { parseExecutionBlock } from "./parse_block.ts";
 import { parseEval } from "./parse_node.ts";
 import { parse_args } from "./parse_utils.ts";
@@ -48,14 +48,26 @@ class Test {
 
   static module() {
     const doc = `
-    import {MyComp, my_add, MY_CONST} from "./outer.dsl.ts";
+    import {MyComp, my_add, MY_CONST} from "./file.dsl.ts";
     declare global {
+      namespace Self {
+        const x: int;
+        const y: str = "123";
+        const z = 123;
+        const W = GUID(123);
+      }
+        
+      namespace Timer {
+        const x: Count<10>;
+        const y: CountDown<12>;
+      }
     }
     `
     const s = createParserState(doc);
     const ir = parse(s);
-    // console.dir(ir, { depth: null });
+    console.dir(ir, { depth: null });
     console.log(decompile(ir));
+    // console.log(ir_to_string(ir, doc));
   }
 }
 
