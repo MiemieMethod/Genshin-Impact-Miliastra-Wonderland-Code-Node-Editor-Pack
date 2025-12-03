@@ -71,8 +71,9 @@ encode_gia_file(PATH + "out.gia", graph.encode());
 - ✅️ GIA 文件逆向 
 - ✅️ GIA 文件转换接口
 - ✅️ 节点图的等效代码表示(DSL)
-- [x] **(未动工)** 节点编辑器图形界面, 已有实现
-- [x] **(完成一小半)** DSL ⇒ IR编译器
+- ✅️ IR ⇒ DSL 反编译器
+- [x] **(基本完成)** DSL ⇒ IR编译器
+- ✅️ 节点编辑器图形界面, 有其它项目: [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor)
 - [x] **(刚开始)** IR本地运行器
 - [ ] **(未动工)** IR ⇒ GIA转换器
 - [ ] **(未动工)** GIA ⇒ IR转换器

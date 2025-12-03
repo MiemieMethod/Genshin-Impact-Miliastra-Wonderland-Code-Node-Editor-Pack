@@ -83,6 +83,7 @@ function tokensToString(tokens: Token[]): string {
 }
 
 function nodeTypeToString(type: NodeType): string {
+  // TODO: convert to DSL forms
   return stringify(type);
 }
 
@@ -140,12 +141,12 @@ function decompile_call(ir: IR_CallNode, tab: number = 0): string {
   }
 
   if (ir.branches.length > 0) {
-    res += "(";
+    res += "(\n";
     res += ir.branches.map(b => {
-      const branchCode = b.nodes.map(n => decompile_chain(n, tab + 1)).join("");
-      return `${JSON.stringify(b.branchId)} = ${branchCode}`;
-    }).join(", ");
-    res += ")";
+      const branchCode = b.nodes.map((n, i) => decompile_chain(n, tab + 3, i === 0)).join("");
+      return `${indent(tab + 2)}${JSON.stringify(b.branchId)} = ${branchCode}`;
+    }).join(",\n");
+    res += `\n${indent(tab + 1)})`;
   }
   return res;
 }
@@ -155,6 +156,7 @@ function decompile_eval(ir: IR_EvalNode, tab: number = 0): string {
   // Reconstruct args from captures if possible, or just empty if not stored explicitly
   // The captures are inputs' captured function-output names.
   // The lambda body is in ir.lambda
+  res += ir.captures.map(arg => functionArgToString(arg, false)).join(", ");
   res += ") => ";
   res += tokensToString(ir.lambda);
   res += ")";
@@ -170,7 +172,7 @@ function decompile_eval(ir: IR_EvalNode, tab: number = 0): string {
 function decompile_branch(ir: IR_BranchNode, tab: number = 0): string {
   let res = "{\n";
   res += ir.branches.map(b => {
-    const branchCode = b.nodes.map(n => decompile_chain(n, tab + 1)).join("");
+    const branchCode = b.nodes.map((n, i) => decompile_chain(n, tab + 2, i === 0)).join("");
     return `${indent(tab + 1)}${b.id}: ${branchCode}`;
   }).join(",\n");
   res += `\n${indent(tab)}}`;
@@ -183,13 +185,16 @@ function decompile_trigger(ir: IR_Trigger, tab: number = 0): string {
   return `[${decompile_call(ir.node, tab)}]`;
 }
 
-function decompile_chain(ir: IR_NodeChain, tab: number = 0): string {
+function decompile_chain(ir: IR_NodeChain, tab: number = 0, no_prefix: boolean = false): string {
   // \n \TAB "<<"/">>"/"." ...
   const prefix = ir.suspend ? "<<" : ">>";
   // The first node doesn't need a dot if it follows << or >>? 
   // Actually the comment says: << IR_Node.IR_Node
   // So we join nodes with "."
   const nodesCode = ir.chain.map(n => decompile_node(n, tab)).join(".");
+  if (no_prefix) {
+    return nodesCode;
+  }
   return `\n${indent(tab)}${prefix} ${nodesCode}`;
 }
 
@@ -205,7 +210,7 @@ function decompile_block(ir: IR_ExecutionBlock, tab: number = 0): string {
     res += decompile_node(ir.starter, tab);
   }
 
-  res += ir.chain.map(c => decompile_chain(c, tab + 1)).join("");
+  res += "." + ir.chain.map((c, i) => decompile_chain(c, tab + 1, i === 0)).join("");
   res += ";";
   return res;
 }
@@ -214,7 +219,7 @@ function decompile_block(ir: IR_ExecutionBlock, tab: number = 0): string {
 
 function decompile_import(ir: ImportDecl, tab: number = 0): string {
   // import { ComponentName, lambda_name } from "file_name";
-  const items = [...ir.components, ...ir.lambdas].join(", ");
+  const items = [...ir.components, ...ir.lambdas, ...ir.defines].join(", ");
   return `${indent(tab)}import { ${items} } from "${ir.file_name}";`;
 }
 

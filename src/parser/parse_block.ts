@@ -17,7 +17,7 @@ export function parseExecutionBlock(s: ParserState): IR_ExecutionBlock {
   // Starter
   if (peekIs(s, "brackets", "[")) {
     expect(s, "brackets", "[");
-    ret.starter = parse_trigger(s);
+    ret.starter = parseTrigger(s);
     expect(s, "brackets", "]");
   } else if (peekIs(s, "identifier", "Branch")) {
     ret.starter = parseAnchorNode(s);
@@ -33,7 +33,7 @@ export function parseExecutionBlock(s: ParserState): IR_ExecutionBlock {
   return ret;
 }
 
-function parse_trigger(s: ParserState): IR_Trigger {
+export function parseTrigger(s: ParserState): IR_Trigger {
   const ret: IR_Trigger = {
     _id: IR_Id_Counter.value,
     _srcRange: { start: src_pos(s), end: -1 },
@@ -51,7 +51,6 @@ function parse_trigger(s: ParserState): IR_Trigger {
   }
   return ret;
 }
-
 
 export function parseNodeChainList(s: ParserState): IR_NodeChain[] {
   const ret: IR_NodeChain[] = [];
