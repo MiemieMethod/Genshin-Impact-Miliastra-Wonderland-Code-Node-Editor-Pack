@@ -4,6 +4,7 @@ import { parseEval } from "./parse_node.ts";
 import { parse_args } from "./parse_utils.ts";
 import { parse } from "./parser.ts";
 import { createParserState } from "./tokenizer.ts";
+import { src_pos } from "./utils.ts";
 
 class Test {
   static tokenizer() {
@@ -48,29 +49,87 @@ class Test {
 
   static module() {
     const doc = `
-    import {MyComp, my_add, MY_CONST} from "./file.dsl.ts";
-    declare global {
-      namespace Self {
-        const x: int;
-        const y: str = "123";
-        const z = 123.45;
-        const w = GUID(123);
-        const a = Vec([1,2,3]);
-        const b:Dict<Int,Vec> = [[1,[4,5,6]]];
-        const b = Dict<ConfigId,List<Vec>>({1:[[4,5,6]]});
-      }
+    // import {MyComp, my_add, MY_CONST} from "./file.dsl.ts";
+    // declare global {
+    //   namespace Self {
+    //     const x: int;
+    //     const y: str = "123";
+    //     const z = 123.45;
+    //     const w = GUID(123);
+    //     const a = Vec([1,2,3]);
+    //     const b:Dict<Int,Vec> = [[1,[4,5,6]]];
+    //     const b = Dict<ConfigId,List<Vec>>({1:[[4,5,6]]});
+    //   }
         
-      namespace Timer {
-        const x: Count<10>;
-        const y: CountDown<12>;
-      }
+    //   namespace Timer {
+    //     const x: Count<10>;
+    //     const y: CountDown<12>;
+    //   }
+    // }
+    // declare global {
+    //   namespace Signal {
+    //     function MySig(name: int, pos: Vector): Signal;
+    //   }
+    //   // 2. 定义自定义数据结构
+    //   interface PlayerData {
+    //     id: int;
+    //     name: string;
+    //   }
+    // }
+
+    // declare namespace node {
+    //   export const nodeVar1 = 1;
+    //   const nodeVar2 = [1,2,3];
+    // }
+
+    const _local_var1 = true;
+    const _local_var2 = Entity(12);
+
+    // const DEFINE_A = 1;
+    // const DEFINE_B:GUID = 23456787654;
+
+    // const my_add = (a:int,b:int)=>{
+    //   const c = a+b;
+    //   return c;
+    // };
+
+    function MyComp(x:vec, y:str){
+      const _comp_local = 1;
+      In().Out("branch1");
+      In("2").Out(2);
+      return ExecFun<{a:guid,b:int}>("branch1",2,true);
     }
+
+    const P1 = Shared(MyComp);
+    const P2 = Shared(MyComp, "2");
+
+    Branch["aaa"].FunX().FunY() >> {
+      0: U(),
+      1: 1(),
+    } >> 2() << Fun().$((x)=>x)[y].If(y===0)(
+      true = 0(),
+      false = Log("Hello") >> 1()
+    ) >> Log("Bye").Branch["bbb"]
+      .SetVal(Self.x, 100);
+    
+    [Signal(Signal.Sig1, "1", 2)] >> "bbb"();
+    [Timer(Timer.time)] >> "bbb"();
+
     `
     const s = createParserState(doc);
-    const ir = parse(s);
-    console.dir(ir, { depth: null });
-    console.log(decompile(ir));
-    // console.log(ir_to_string(ir, doc));
+    try {
+      const ir = parse(s);
+
+      console.log(decompile(ir));
+      console.log(ir_to_string(ir, doc));
+    } catch (e) {
+      console.error(e);
+      const failure = src_pos(s);
+      console.log("Source: ");
+      console.log(s.source.slice(failure - 10, failure + 20).replaceAll("\n", " "));
+      console.log(" ".repeat(10) + "^");
+    }
+    // console.dir(ir, { depth: null });
   }
 }
 

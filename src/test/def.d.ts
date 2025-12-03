@@ -2137,7 +2137,7 @@ declare global {
 
 
   /** Declarations for Exec Chain */
-  interface BigInt extends ExecFunctions {
+  interface BigInt extends ExecFuntions {
     /** `[ret_1, ret_2]`: 获取函数返回值 */
     [index: symbol]: ExecFun<{}>;
     /** 分支选择, cases is of `int` | `str` | `bool` | `null` */
@@ -2161,7 +2161,7 @@ declare global {
   /** Create a shared function instance, can be called from multiple places */
   function Shared<Args extends SysAllTypes[], T extends { [key: string]: SysAllTypes }>(exec_func: (...args: Args) => ExecFun<T>): SharedFun<Args, T>;
   function Shared<Args extends SysAllTypes[], T extends { [key: string]: SysAllTypes }>(exec_func: (...args: Args) => ExecFun<T>, port_id: string | 0): SharedFunPort<Args, T>;
-  /** Select InBranch of a given ExecFunc */
+  /** Select InBranch of a given ExecFun */
   function Selector<Args extends SysAllTypes[], T extends { [key: string]: SysAllTypes }>(exec_func: (...args: Args) => ExecFun<T>, in_branch_id: string | 0, ...args: Args): ExecFun<T>;
 
   /** Declarations for jumping to Branch */
@@ -2181,7 +2181,7 @@ declare global {
   }
 
   /** Declarations for object behaviors */
-  interface Object extends ExecFunctions {
+  interface Object extends ExecFuntions {
     /** `.Branch["name" | number]`: 创建分支接入点 */
     Branch: Branch;
   }
@@ -2203,7 +2203,7 @@ interface Branch extends Array<ExecFun<{}>> {
 
 
 // ====== Execution Nodes Helper ======
-interface ExecFunctions {
+interface ExecFuntions {
   $<T extends SysAllTypes>(lambda: (...args: any[]) => T): ExecFun<{ out: T }>;
   $<T extends { [key: string]: SysAllTypes }>(lambda: (...args: any[]) => T): ExecFun<T>;
 

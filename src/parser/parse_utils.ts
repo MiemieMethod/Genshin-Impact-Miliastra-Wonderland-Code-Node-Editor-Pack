@@ -6,7 +6,7 @@ import { TOKEN_GROUPS, TOKENS, UNK_TYPE } from "../types/consts.ts";
 import { extractBalancedTokens, splitBalancedTokens, try_capture_type } from "./balanced_extract.ts";
 import { assert, assertEq, expect, next, peek, peekIs } from "./utils.ts";
 import { NodeVar } from "../types/class.ts";
-import { parse as parse_node_type } from "../../utils/gia_gen/nodes.ts";
+import { parse as parse_node_type, type_equal } from "../../utils/gia_gen/nodes.ts";
 
 export function parse_type(tokens: Token[]): NodeType {
   const t = tokens.map(t => {
@@ -216,4 +216,42 @@ export function parse_value(s: ParserState): IR_NodeVarValue {
     }
   }
   throw new Error("Invalid value forms!");
+}
+
+
+/** `Name (: Type)? (= (Value|Type\(Value\)))?` */
+export function parse_var_decl(state: ParserState) {
+  let type: NodeType | undefined;
+  const name = expect(state, "identifier").value;
+
+  if (peekIs(state, "symbol", ":")) {
+    next(state);
+    const typed = try_capture_type(state.tokens, state.index);
+    assert(typed.success, "Failed to parse type");
+    state.index += typed.tokens.length;
+    type = parse_type(typed.tokens);
+  }
+
+  let val: IR_NodeVarValue | undefined;
+  if (peekIs(state, "assign", "=")) {
+    next(state);
+    const typed = try_capture_type(state.tokens, state.index);
+    if (typed.success) {
+      state.index += typed.tokens.length;
+      if (type === undefined) {
+        type = parse_type(typed.tokens);
+      } else {
+        assert(type_equal(type, parse_type(typed.tokens)), "Type mismatch");
+      }
+      expect(state, "brackets", "(");
+      val = parse_value(state);
+      expect(state, "brackets", ")");
+    } else {
+      val = parse_value(state);
+    }
+  }
+  return {
+    name: name,
+    value: NodeVar.from(type, val)
+  };
 }

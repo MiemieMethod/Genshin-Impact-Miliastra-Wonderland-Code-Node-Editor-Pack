@@ -1,12 +1,10 @@
 import type { GlobalDecl, GlobalVarDecl, NodeVarDecl, SignalDecl, StructDecl, TimerDecl } from "../types/IR_decl.ts";
 import type { ParserState } from "../types/parser.ts";
-import { type_equal, type NodeType } from "../../utils/gia_gen/nodes.ts";
 
 import { IR_Id_Counter } from "../types/consts.ts";
-import { extractBalancedTokens, try_capture_type } from "./balanced_extract.ts";
-import { name_style, parse_type, parse_value } from "./parse_utils.ts";
+import { try_capture_type } from "./balanced_extract.ts";
+import { parse_type, parse_var_decl } from "./parse_utils.ts";
 import { assert, assertEq, expect, next, peek, peekIs, src_pos } from "./utils.ts";
-import { NodeVar } from "../types/class.ts";
 
 /** 全局声明和定义 (全部文件可用)
  * ```ts
@@ -65,52 +63,50 @@ export function parseGlobal(state: ParserState): GlobalDecl {
  *  }
  * ```
  */
-export function parseNodeVar(state: ParserState): NodeVarDecl {
-  const ret: NodeVarDecl = {
-    _id: IR_Id_Counter.value,
-    _srcRange: { start: src_pos(state), end: -1 },
-    kind: "nodeVar",
-    name: "",
-    type: { t: "b", b: "Int" },
-    default: null as any,
-    export: false,
-  };
+export function parseNodeVar(state: ParserState): NodeVarDecl[] {
+  const ret: NodeVarDecl[] = [];
 
   expect(state, "identifier", "declare");
   expect(state, "identifier", "namespace");
   expect(state, "identifier", "node");
   expect(state, "brackets", "{");
 
-  // Check for export keyword
-  if (peekIs(state, "identifier", "export")) {
-    next(state);
-    ret.export = true;
-  }
 
-  expect(state, "identifier", "const");
-  ret.name = expect(state, "identifier").value;
+  while (!peekIs(state, "brackets", "}")) {
+    const res: NodeVarDecl = {
+      _id: IR_Id_Counter.value,
+      _srcRange: { start: src_pos(state), end: -1 },
+      kind: "nodeVar",
+      name: "",
+      type: undefined as any,
+      default: undefined as any,
+      export: false,
+    };
+    // Check for export keyword
+    if (peekIs(state, "identifier", "export")) {
+      next(state);
+      res.export = true;
+    }
 
-  if (peekIs(state, "symbol", ":")) {
-    next(state);
-    const typeTokens = extractBalancedTokens(state, "(", ")", 0);
-    ret.type = parse_type(typeTokens.slice(0, -1));
-  }
+    expect(state, "identifier", "const");
+    const { name, value } = parse_var_decl(state);
+    res.name = name
+    res.default = value;
+    res.type = value.type;
 
-  if (peekIs(state, "assign", "=")) {
-    next(state);
-    // TODO: properly parse NodeVar value
-    while (!peekIs(state, "symbol", ";") && !peekIs(state, "brackets", "}") && peek(state)) {
+    if (res.name[0] === "_" || res.name[0].toUpperCase() === res.name[0]) {
+      console.warn("Bad global variable name:", res.name);
+    }
+
+    if (peekIs(state, "symbol", ";")) {
       next(state);
     }
-  }
-
-  if (peekIs(state, "symbol", ";")) {
-    next(state);
+    res._srcRange.end = src_pos(state);
+    ret.push(res);
   }
 
   expect(state, "brackets", "}");
 
-  ret._srcRange.end = src_pos(state);
   return ret;
 }
 
@@ -135,25 +131,11 @@ function parseStruct(state: ParserState): StructDecl {
   expect(state, "brackets", "{");
 
   while (!peekIs(state, "brackets", "}")) {
-    const fieldName = expect(state, "identifier").value;
-    expect(state, "symbol", ":");
-
-    const typeTokens = extractBalancedTokens(state, "(", ")", 0);
-    const fieldType = parse_type(typeTokens.slice(0, -1));
-
-    let defaultValue: any = null;
-    if (peekIs(state, "assign", "=")) {
-      next(state);
-      // TODO: properly parse NodeVar value
-      while (!peekIs(state, "symbol", ";") && !peekIs(state, "brackets", "}") && peek(state)) {
-        next(state);
-      }
-    }
-
+    const { name, value } = parse_var_decl(state);
     ret.fields.push({
-      name: fieldName,
-      type: fieldType,
-      default: defaultValue,
+      name: name,
+      type: value.type,
+      default: value,
     });
 
     if (peekIs(state, "symbol", ";")) {
@@ -196,6 +178,7 @@ function parseNamespace(state: ParserState): {
     } else if (result.name === "Signal" && t.value === "function") {
       result.signals.push(parseSignal(state));
     } else {
+      console.warn("Unknown namespace member:", t.value);
       next(state); // Skip unknown tokens
     }
   }
@@ -222,39 +205,14 @@ function parseGlobalVar(state: ParserState): GlobalVarDecl {
   };
 
   expect(state, "identifier", "const");
-  ret.name = expect(state, "identifier").value;
+  const { name, value } = parse_var_decl(state);
+  ret.name = name
+  ret.default = value;
+  ret.type = value.type;
+
   if (ret.name[0] === "_" || ret.name[0].toUpperCase() === ret.name[0]) {
     console.warn("Bad global variable name:", ret.name);
   }
-
-  if (peekIs(state, "symbol", ":")) {
-    next(state);
-    const typed = try_capture_type(state.tokens, state.index);
-    assert(typed.success, "Failed to parse type");
-    state.index += typed.tokens.length;
-    ret.type = parse_type(typed.tokens);
-  }
-
-  let val = undefined;
-  if (peekIs(state, "assign", "=")) {
-    next(state);
-    const typed = try_capture_type(state.tokens, state.index);
-    if (typed.success) {
-      state.index += typed.tokens.length;
-      if (ret.type === undefined) {
-        ret.type = parse_type(typed.tokens);
-      } else {
-        assert(type_equal(ret.type, parse_type(typed.tokens)), "Type mismatch");
-      }
-      expect(state, "brackets", "(");
-      val = parse_value(state);
-      expect(state, "brackets", ")");
-    } else {
-      val = parse_value(state);
-    }
-  }
-  ret.default = NodeVar.from(ret.type, val);
-  ret.type = ret.default.type;
 
   if (peekIs(state, "symbol", ";")) {
     next(state);
@@ -263,6 +221,7 @@ function parseGlobalVar(state: ParserState): GlobalVarDecl {
   ret._srcRange.end = src_pos(state);
   return ret;
 }
+
 
 /** 声明全局计时器
  * ```ts
@@ -326,8 +285,10 @@ function parseSignal(state: ParserState): SignalDecl {
   while (!peekIs(state, "brackets", ")")) {
     const paramName = expect(state, "identifier").value;
     expect(state, "symbol", ":");
-    const typeTokens = extractBalancedTokens(state, "(", ")", 0);
-    const paramType = parse_type(typeTokens.slice(0, -1));
+    const typed = try_capture_type(state.tokens, state.index);
+    assert(typed.success, "Failed to parse type");
+    state.index += typed.tokens.length;
+    const paramType = parse_type(typed.tokens);
 
     ret.params.push({ name: paramName, type: paramType });
 
