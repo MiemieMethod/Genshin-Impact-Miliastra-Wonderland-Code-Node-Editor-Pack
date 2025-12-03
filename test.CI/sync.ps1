@@ -1,1 +1,1 @@
-Copy-Item -Path "./test/*" -Destination "./.github/actions/CI" -Recurse -Force -Exclude "sync.ps1"
+Copy-Item -Path "./test.CI/*" -Destination "./.github/actions/CI" -Recurse -Force -Exclude "sync.ps1"

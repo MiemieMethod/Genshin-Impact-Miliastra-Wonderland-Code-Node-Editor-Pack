@@ -10,3 +10,5 @@
 目前包括的测试有:
 - [gia_gen](./gia_gen/): 使用 Graph 接口生成 GIA 文件.
 - [heat_map](./heat_map/): 读取导出的 node_data/index.json, 创建热力图.
+- [compare_data](./compare_data/): 对比静态定义数据
+- [parser](./parser/): 测试编译器和反编译器
