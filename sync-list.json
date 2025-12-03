@@ -1,6 +1,6 @@
 {
-  "commitMessage": "修改 Parser 逻辑",
-  "notSync": true,
+  "commitMessage": "完成了 Parser 和 Decompiler 的代码草稿(待验证), 实现了 DLS <==> IR 的相互转化.",
+  "notSync": false,
   "include": [
     "*",
     "docs/**",

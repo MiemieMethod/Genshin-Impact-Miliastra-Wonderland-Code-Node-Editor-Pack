@@ -1,4 +1,4 @@
-import { decompile } from "./decompile.ts";
+import { decompile } from "./decompiler.ts";
 import { parseExecutionBlock } from "./parse_block.ts";
 import { parseEval } from "./parse_node.ts";
 import { parse_args } from "./parse_utils.ts";
@@ -48,6 +48,9 @@ class Test {
 
   static module() {
     const doc = `
+    import {MyComp, my_add, MY_CONST} from "./outer.dsl.ts";
+    declare global {
+    }
     `
     const s = createParserState(doc);
     const ir = parse(s);

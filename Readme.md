@@ -72,11 +72,11 @@ encode_gia_file(PATH + "out.gia", graph.encode());
 - ✅️ GIA 文件转换接口
 - ✅️ 节点图的等效代码表示(DSL)
 - ✅️ IR ⇒ DSL 反编译器
-- [x] **(基本完成)** DSL ⇒ IR编译器
+- ✅️ DSL ⇒ IR编译器
 - ✅️ 节点编辑器图形界面, 有其它项目: [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor)
-- [x] **(刚开始)** IR本地运行器
 - [ ] **(未动工)** IR ⇒ GIA转换器
 - [ ] **(未动工)** GIA ⇒ IR转换器
+- [x] **(刚开始)** IR本地运行器
 - [x] **(完成一大半)** 写一个~~没营养~~的 DSL 示例, 并在千星奇域中手动实现.
 
 但11月20号搜索 Github, 无意中发现 [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) 已经做好了**节点编辑器**的[网页版](https://miliastra.columbina.dev/). 这一下子就*给我动力*了, 我准备把简单的DSL ⇒ JSON转换器先给它实现了. 稍微增强下开源生态......

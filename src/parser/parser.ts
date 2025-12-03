@@ -36,12 +36,12 @@ export function parse(s: ParserState): IR_GraphModule {
         ret.imports.push(parseImport(s));
         break;
       }
-      case "global": {
-        ret.globals.push(parseGlobal(s));
-        break;
-      }
       case "declare": {
-        ret.node_vars.push(parseNodeVar(s));
+        if (peek(s, 1)?.value === "global") {
+          ret.globals.push(parseGlobal(s));
+        } else if (peek(s, 1)?.value === "namespace") {
+          ret.node_vars.push(parseNodeVar(s));
+        }
         break;
       }
       case "const": {
@@ -107,15 +107,18 @@ export function parseImport(s: ParserState): ImportDecl {
         break;
       case "_snake_case": // local
         ret.defines.push(name.value);
-        console.warn("Cannot import local variables:", name.value);
+        console.warn("Should not import local variables:", name.value);
         break;
       // throw new Error("Cannot import local variables: " + name.value);
       case "lowerCamelCase":
       case "BAD":
         // throw new Error("Cannot import variables with bad names: " + name.value);
-        console.warn("Cannot import bad names:", name.value);
+        console.warn("Importing bad names:", name.value);
         ret.defines.push(name.value);
         break;
+    }
+    if (peekIs(s, "symbol", ",")) {
+      next(s);
     }
   }
   expect(s, "brackets", "}");
