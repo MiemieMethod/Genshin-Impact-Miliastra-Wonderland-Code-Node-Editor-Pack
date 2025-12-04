@@ -1,7 +1,5 @@
-import { createParserState } from "../../src/parser/tokenizer.ts";
-import { parse } from "../../src/parser/parser.ts";
-import { decompile, ir_to_string } from "../../src/parser/decompiler.ts";
-import { src_pos } from "../../src/parser/utils.ts";
+import { src_pos, createParserState, parse, decompile, ir_to_string, safe_parse } from "../../src/parser/index.ts";
+
 import { readFileSync, writeFileSync } from "fs";
 import { inspect } from "util";
 import assert from "assert";
@@ -16,21 +14,15 @@ function BigIntStringify(key: string, value: any) {
 function compile(dsl: string) {
   console.log("Testing parser and decompiling")
   console.log("The original DSL is:", JSON.stringify(dsl.slice(0, 40)), "... <", dsl.length, "in total >");
-  const state = createParserState(dsl);
   try {
-    const ir = parse(state);
+    const ir = safe_parse(dsl);
     console.log("Compile Ok!", "A brief view of IR:");
     console.log(inspect(ir, { depth: 2 }));
     writeFileSync("./dist/IR.json", JSON.stringify(ir, BigIntStringify, 2));
     console.log("IR saved to `dist/IR.json`");
     return ir;
-
   } catch (e) {
     console.error(e);
-    const failure = src_pos(state);
-    console.log("Source: ");
-    console.log(state.source.slice(failure - 10, failure + 20).replaceAll("\n", " "));
-    console.log(" ".repeat(10) + "^");
   }
 }
 
@@ -44,7 +36,7 @@ function main() {
   console.log(ir_to_string(ir, dsl));
 
   console.log("\nDecompiling");
-  const dsl_new = decompile(ir);
+  const dsl_new = "// @ts-nocheck\n\n" + decompile(ir);
   console.log("Decompile Ok!", "Generated DSL is:");
   console.log(dsl_new);
   writeFileSync("./dist/GeneratedDSL.dsl.ts", dsl_new);
@@ -70,21 +62,18 @@ function double_check() {
     }
     return p;
   }
-  try {
-    const dsl = readFileSync(import.meta.dirname + "/test.dsl.ts").toString().replaceAll("\r", "");
-    const ir1 = parse(createParserState(dsl));
-    const dsl1 = decompile(ir1);
-    const ir2 = parse(createParserState(dsl1));
-    const dsl2 = decompile(ir2);
-    assert(dsl1 === dsl2);
-    const IR1 = JSON.stringify(remove_id(ir1), BigIntStringify);
-    const IR2 = JSON.stringify(remove_id(ir2), BigIntStringify);
-    assert(IR1 === IR2);
-    console.info("Double check passed");
-  } catch (e) {
-    console.info("Double check failed");
-    console.error(e);
-  }
+
+  const dsl = readFileSync(import.meta.dirname + "/test.dsl.ts").toString().replaceAll("\r", "");
+  const ir1 = safe_parse(dsl)!;
+  const dsl1 = decompile(ir1);
+  const ir2 = safe_parse(dsl1)!;
+  const dsl2 = decompile(ir2);
+  console.log("Double parsing done. Checking...")
+  assert(dsl1 === dsl2, "DSL1 !== DSL2");
+  const IR1 = JSON.stringify(remove_id(ir1), BigIntStringify);
+  const IR2 = JSON.stringify(remove_id(ir2), BigIntStringify);
+  assert(IR1 === IR2, "IR1 !== IR2");
+  console.info("Double check passed");
 }
 
 

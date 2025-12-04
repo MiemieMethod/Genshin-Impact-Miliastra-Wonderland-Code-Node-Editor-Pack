@@ -1,6 +1,6 @@
 {
   "commitMessage": "Verify Parser, Add CI test, Check for consistency. Add export in index.ts",
-  "notSync": false,
+  "notSync": true,
   "include": [
     "*",
     "docs/**",
