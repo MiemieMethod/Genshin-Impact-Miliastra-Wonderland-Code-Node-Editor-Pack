@@ -1,4 +1,5 @@
 import { decompile, ir_to_string } from "./decompiler.ts";
+import { safe_parse } from "./index.ts";
 import { parseExecutionBlock } from "./parse_block.ts";
 import { parseComponent } from "./parse_component.ts";
 import { parseEval } from "./parse_node.ts";
@@ -81,6 +82,18 @@ class Test {
       console.log(s.source.slice(failure - 10, failure + 20).replaceAll("\n", " "));
       console.log(" ".repeat(10) + "^");
     }
+  }
+  static branch() {
+    const doc = `
+    Branch[0].Fx() >> {
+      0: 0()
+    }.Y() >> {
+      1: -1()
+    };
+    `
+    const s = safe_parse(doc)!;
+    console.log(ir_to_string(s, doc));
+    console.log(decompile(s));
   }
   static module() {
     const doc = `
@@ -176,7 +189,8 @@ if (import.meta.main) {
   // Test.arg();
   // Test.evalNode();
   // Test.executionBlock();
-  Test.comp();
+  // Test.comp();
+  Test.branch();
   // Test.module();
 
   console.log("All tests passed!");

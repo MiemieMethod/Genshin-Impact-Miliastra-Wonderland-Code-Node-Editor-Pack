@@ -31,6 +31,7 @@ import type {
 import type { NodeVarValue } from "../types/types.ts";
 
 const TAB_WIDTH = 2;
+const LINE_WIDTH = 60;
 
 /** Convert any IR back into code */
 export function decompile(ir: IRExtend, tab: number = 0): string {
@@ -216,15 +217,24 @@ function decompile_trigger(ir: IR_Trigger, tab: number = 0): string {
 
 function decompile_chain(ir: IR_NodeChain, tab: number = 0, no_prefix: boolean = false): string {
   // \n \TAB "<<"/">>"/"." ...
-  const prefix = ir.suspend ? "<<" : ">>";
+  let ret = no_prefix ? "" : ir.suspend ? `\n${indent(tab)}<<` : `\n${indent(tab)}>>`;
   // The first node doesn't need a dot if it follows << or >>? 
   // Actually the comment says: << IR_Node.IR_Node
   // So we join nodes with "."
-  const nodesCode = ir.chain.map(n => decompile_node(n, tab)).join(".");
-  if (no_prefix) {
-    return nodesCode;
+  let len = ret.length;
+  for (let i = 0; i < ir.chain.length; i++) {
+    if (len > LINE_WIDTH) {
+      ret += "\n" + indent(tab);
+      len = tab * TAB_WIDTH;
+    }
+    if (i !== 0) {
+      ret += ".";
+    }
+    const n = decompile_node(ir.chain[i], tab);
+    ret += n;
+    len += n.length;
   }
-  return `\n${indent(tab)}${prefix} ${nodesCode}`;
+  return ret;
 }
 
 function decompile_block(ir: IR_ExecutionBlock, tab: number = 0): string {
@@ -238,8 +248,12 @@ function decompile_block(ir: IR_ExecutionBlock, tab: number = 0): string {
   } else if (ir.starter.kind === "inout") {
     res += decompile_node(ir.starter, tab);
   }
-
-  res += "." + ir.chain.map((c, i) => decompile_chain(c, tab + 1, i === 0)).join("");
+  if (ir.chain[0]?.chain[0]?.kind === "branch") {
+    res += " >> ";
+  } else {
+    res += ".";
+  }
+  res += ir.chain.map((c, i) => decompile_chain(c, tab + 1, i === 0)).join("");
   res += ";";
   return res;
 }

@@ -36,7 +36,7 @@ function main() {
   console.log(ir_to_string(ir, dsl));
 
   console.log("\nDecompiling");
-  const dsl_new = decompile(ir);
+  const dsl_new = "// @ts-nocheck\n\n" + decompile(ir);
   console.log("Decompile Ok!", "Generated DSL is:");
   console.log(dsl_new);
   writeFileSync("./dist/GeneratedDSL.dsl.ts", dsl_new);
