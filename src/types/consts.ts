@@ -21,6 +21,7 @@ export const TOKENS = {
   plus: { type: "math", value: "+", pos: 0 },
   minus: { type: "math", value: "-", pos: 0 },
   semicolon: { type: "symbol", value: ";", pos: 0 },
+  equal: { type: "assign", value: "=", pos: 0 },
 } as const satisfies Record<string, Token>;
 
 /** Groups of brackets tokens for quick access */

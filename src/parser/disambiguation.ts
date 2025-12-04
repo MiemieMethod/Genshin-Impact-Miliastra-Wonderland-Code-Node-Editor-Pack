@@ -51,6 +51,16 @@ export function post_lexing_disambiguation(tokens: Token[]): Token[] {
         continue;
       }
 
+      if (tokenEqual(nextToken, TOKENS.equal) && token.pos + 1 === nextToken.pos) {
+        result.push({
+          type: "math",
+          value: token.value + nextToken.value,
+          pos: token.pos,
+        });
+        i++;
+        continue;
+      }
+
       // Otherwise, convert to math token
       result.push({
         type: "math",

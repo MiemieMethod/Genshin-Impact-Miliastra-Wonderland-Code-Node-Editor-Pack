@@ -18,7 +18,9 @@ class Test {
     console.log(createParserState("x<y>>>-1")); // x < y >> // > -1
     console.log(createParserState("x<y>> > -1")); // x < y >> // > -1
     console.log(createParserState("x<y> >> -1")); // x<y> // >> -1
-    console.log(createParserState("12 * -0x0A12_Fcde")); // x<y> // >> -1
+    console.log(createParserState("12 * -0x0A12_Fcde"));
+    console.log(createParserState("1 >= 2"));
+    console.log(createParserState("1 > = 2"));
   }
   static arg() {
     const doc = "(a as dict<int, a>, b=c,)[x=y as int, z=b+c as string]()[](x)(y.z, a+b)(as int)[l=1](l as list<str>)[x as dict<D<int, L<str>>,int>](x+1 >= 5)";
@@ -185,12 +187,12 @@ class Test {
 if (import.meta.main) {
   console.log("Running parser tests...");
   // Add test cases here in the future
-  // Test.tokenizer();
+  Test.tokenizer();
   // Test.arg();
   // Test.evalNode();
   // Test.executionBlock();
   // Test.comp();
-  Test.branch();
+  // Test.branch();
   // Test.module();
 
   console.log("All tests passed!");
