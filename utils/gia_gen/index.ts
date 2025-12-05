@@ -7,6 +7,7 @@ export { gia, type Gia };
 
 export { Graph, Node, Pin } from "./graph.ts";
 
-export type { NodeType, NodePins } from "./nodes.ts";
+export type * as GiaNode from "./nodes.ts";
+export * as gia_node from "./nodes.ts";
 
 export { Counter, randomInt, randomBigInt, randomName, panic, todo } from "./utils.ts";

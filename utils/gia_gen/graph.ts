@@ -423,6 +423,7 @@ export class Node {
   get GenericId() {
     return this.record.id;
   }
+  /** May return `undefined` when the node is constructed with **only** generic id for **generic node** */
   get ConcreteId() {
     return this.node_id;
   }
