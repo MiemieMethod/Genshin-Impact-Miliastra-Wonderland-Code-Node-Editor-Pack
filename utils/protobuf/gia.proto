@@ -269,7 +269,7 @@ message GraphVariable {
   VarBase values = 4;
   bool exposed = 5;      // Expose vars out of node graph?
   int64 structId = 6;    // Only in struct, otherwise 0
-  VarType keyType = 7;   // ? Simple type also have this filed (=6)
+  VarType keyType = 7;   // ? Simple type also have this field (=6)
   VarType valueType = 8; // ? (=6)
 }
 message VarBase {
