@@ -1,6 +1,6 @@
 {
-  "commitMessage": "Verify Parser, Add CI test, Check for consistency. Add export in index.ts",
-  "notSync": true,
+  "commitMessage": "添加节点图变量接口(未测试)",
+  "notSync": false,
   "include": [
     "*",
     "docs/**",

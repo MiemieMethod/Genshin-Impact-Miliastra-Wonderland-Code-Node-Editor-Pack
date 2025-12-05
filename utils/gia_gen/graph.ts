@@ -1,10 +1,10 @@
 import assert from "assert";
 import type { Comments, GraphNode, NodeConnection, NodePin, NodePin_Index_Kind, Root } from "../protobuf/gia.proto.ts";
-import { graph_body, node_body, node_connect_from, node_connect_to, node_type_pin_body, pin_flow_body } from "./basic.ts";
+import { encode_node_graph_var, graph_body, node_body, node_connect_from, node_connect_to, node_type_pin_body, pin_flow_body } from "./basic.ts";
 import { type NodeType, reflects_records, get_id, type_equal, to_records_full, is_reflect } from "./nodes.ts";
 import { Counter, panic, randomInt, randomName } from "./utils.ts";
 import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record, get_node_record_generic } from "../node_data/helpers.ts";
-import { extract_value, get_node_info } from "./extract.ts";
+import { extract_value, get_graph_vars, get_node_info } from "./extract.ts";
 import { type SingleNodeData } from "../node_data/node_pin_records.ts";
 import { auto_layout } from "./auto_layout.ts";
 
@@ -32,6 +32,13 @@ export class EncodeOptions {
   }
 }
 
+export type GraphVar = {
+  name: string;
+  exposed: boolean;
+  type: NodeType;
+  val: AnyType;
+};
+
 export class Graph {
   private type_: GraphType;
   graph_name: string;
@@ -44,6 +51,7 @@ export class Graph {
   private connects: Set<Connect>;
   private flows: Map<Node, Connect[][]>;
   private comments: Set<Comment>;
+  private graph_var: Map<string, GraphVar>;
 
   get type() {
     return this.type_;
@@ -64,6 +72,7 @@ export class Graph {
     this.connects = new Set();
     this.flows = new Map();
     this.comments = new Set();
+    this.graph_var = new Map();
   }
   /** 
    * @param node Node Id or Instance */
@@ -229,9 +238,39 @@ export class Graph {
     return [...this.comments].find(c => c.attached_node === node) ?? null;
   }
 
+  add_graph_var(name: string, type: NodeType, exposed?: boolean, val?: AnyType): GraphVar | null {
+    if (this.graph_var.has(name)) {
+      console.warn("Already has a graph var of the same name!");
+      return null;
+    }
+    exposed ??= false;
+    val ??= {} as AnyType;
+    const v: GraphVar = { name, type, exposed, val };
+    this.graph_var.set(name, v);
+    return v;
+  }
+  get_graph_var(name: string) {
+    return this.graph_var.get(name);
+  }
+  get_graph_vars() {
+    return [...this.graph_var.values()];
+  }
+  remove_graph_var(name: string) {
+    return this.graph_var.delete(name);
+  }
+  set_graph_var(name: string, new_val: AnyType) {
+    const v = this.graph_var.get(name);
+    if (v === undefined) {
+      console.warn("Graph Var " + name + " does not exist.");
+      return;
+    }
+    v.val = new_val;
+  }
+
   encode(opt?: EncodeOptions): Root {
     opt ??= new EncodeOptions();
     const nodes = [...this.nodes].map((n) => n.encode(opt, this.get_connect_to(n), this.flows.get(n), this.get_node_comment(n)));
+    const graphValues = [...this.graph_var.values()].map(v => encode_node_graph_var(v));
     return graph_body({/** 唯一标识符 */
       uid: this.uid,
       /** 图的 ID */
@@ -243,12 +282,15 @@ export class Graph {
       /** 图中包含的节点列表，可选 */
       nodes,
       comments: this.get_graph_comments().map(c => c.encode()),
+      graphValues: graphValues,
     });
   }
   static decode(root: Root): Graph {
     const [uid, time, graph_id_str, file_name] = root.filePath.split("-");
     const name = file_name.endsWith(".gia") ? file_name.slice(1, -4) : file_name.slice(1);
     const graph = new Graph("server", parseInt(uid), name, parseInt(graph_id_str));
+    const graph_vars = get_graph_vars(root.graph.graph?.inner.graph!);
+    graph_vars.forEach((v) => graph.graph_var.set(v.name, v));
     root.graph.graph?.inner.graph.nodes.forEach(node => {
       // node itself
       const n = graph.add_node(Node.decode(node));

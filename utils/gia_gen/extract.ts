@@ -1,6 +1,7 @@
 import assert from "assert";
 import type {
   GraphNode,
+  NodeGraph,
   NodePin,
   Root,
   VarBase,
@@ -12,7 +13,7 @@ import {
   VarType,
 } from "../protobuf/gia.proto.ts";
 import { get_type, type NodeType } from "./nodes.ts";
-import type { AnyType } from "./graph.ts";
+import type { AnyType, GraphVar } from "./graph.ts";
 
 export function get_nodes(graph: Root): GraphNode[] | null {
   return graph?.graph?.graph?.inner?.graph?.nodes ?? null;
@@ -123,4 +124,20 @@ export function extract_value(value: VarBase): AnyType | undefined {
     default:
       throw new Error("Cannot extract value of Unknown class: " + JSON.stringify(value));
   }
+}
+
+export function get_graph_vars(graph: NodeGraph): GraphVar[] {
+  return graph.graphValues.map(v => {
+    let type = get_type(v.type);
+    if (type.t === "d") {
+      type.k = get_type(v.keyType);
+      type.v = get_type(v.valueType);
+    }
+    return {
+      name: v.name,
+      val: extract_value(v.values)!,
+      exposed: v.exposed,
+      type: type,
+    };
+  });
 }

@@ -18,6 +18,7 @@ import {
   VarBase_ItemType_Inner_Kind,
   VarType,
   type Comments,
+  type GraphVariable,
 } from "../protobuf/gia.proto.ts";
 import { get_id, get_type, type NodePins, type NodeType } from "./nodes.ts";
 
@@ -25,7 +26,7 @@ import { counter_dynamic_id, counter_index, randomInt, todo } from "./utils.ts";
 import { type ConcreteMap } from "../node_data/concrete_map.ts";
 import { get_concrete_index } from "../node_data/helpers.ts";
 import { ENUM_ID } from "../node_data/enum_id.ts";
-import type { AnyType } from "./graph.ts";
+import type { AnyType, GraphVar } from "./graph.ts";
 
 /**
  * GraphBody_ 接口定义了构建图的基本参数
@@ -42,6 +43,7 @@ export interface GraphBody_ {
   /** 图中包含的节点列表，可选 */
   nodes?: GraphNode[];
   comments?: Comments[];
+  graphValues?: GraphVariable[];
 }
 /**
  * 根据提供的参数构建一个图对象 (Root)
@@ -88,9 +90,9 @@ export function graph_body(body: GraphBody_): Root {
             name: graph_name,
             nodes: body.nodes ?? [],
             compositePins: [],
-            graphValues: [],
             affiliations: [],
             comments: body.comments ?? [],
+            graphValues: body.graphValues ?? [],
           },
         },
       },
@@ -598,6 +600,68 @@ export function simple_value_var(var_type: VarType, value?: AnyType, non_zero: b
   return todo("Not implemented AnyPinBody for type " + var_type);
 }
 
+export function all_value_var(var_type: NodeType, value?: AnyType, non_zero: boolean = false): VarBase {
+  const id = get_id(var_type) as VarType;
+  switch (id) {
+    case VarType.EnumItem:
+    case VarType.Integer:
+    case VarType.GUID:
+    case VarType.Configuration:
+    case VarType.Entity:
+    case VarType.Faction:
+    case VarType.Prefab:
+    case VarType.Boolean:
+    case VarType.Float:
+    case VarType.String:
+    case VarType.Vector:
+      return simple_value_var(id, value, non_zero);
+  }
+  if (var_type.t === "l") {
+    const ret: VarBase = {
+      class: VarBase_Class.ArrayBase,
+      alreadySetVal: true,
+      itemType: item_type(id),
+      bArray: { entries: [] },
+    }
+    if (value !== undefined && typeof value === "object" && value instanceof Array) {
+      for (const v of value) {
+        ret.bArray!.entries.push(all_value_var(var_type.i, v));
+      }
+    }
+    return ret;
+  }
+  if (var_type.t === "d") {
+    const ret: VarBase = {
+      class: VarBase_Class.MapBase,
+      alreadySetVal: true,
+      itemType: item_type(id),
+      bMap: {
+        mapPairs: []
+      },
+    }
+    if (value !== undefined && typeof value === "object" && value instanceof Array) {
+      for (const v of value) {
+        if (typeof v === "object" && v instanceof Array) {
+          const key = v[0];
+          const val = v[1];
+          const map_pair: VarBase = {
+            class: VarBase_Class.MapPair,
+            alreadySetVal: true,
+            itemType: item_type(id),
+            bMapPair: {
+              key: all_value_var(var_type.k, key),
+              value: all_value_var(var_type.v, val),
+            }
+          };
+          ret.bMap!.mapPairs.push(map_pair);
+        }
+      }
+    }
+    return ret;
+  }
+  return todo("Not implemented AnyPinBody for type " + var_type);
+}
+
 /**
  * AnyPinBody_ 接口定义了构建任意类型引脚的参数
  */
@@ -703,7 +767,7 @@ export function node_type_pin_body(body: NodeTypePinBody_): NodePin {
         connects: body.connects,
       });
   }
-  const value = simple_value_var(var_type, body.value, body.non_zero);
+  const value = all_value_var(body.type, body.value, body.non_zero);
   if (body.reflective === true) {
     return pin_body({
       kind: body.kind,
@@ -900,5 +964,18 @@ export function node_connect_to(to: number, to_index: number): NodeConnection {
       kind: NodePin_Index_Kind.InFlow,
       index: to_index,
     },
+  };
+}
+
+
+export function encode_node_graph_var(v: GraphVar): GraphVariable {
+  return {
+    name: v.name,
+    type: get_id(v.type) as VarType,
+    values: all_value_var(v.type, v.val),
+    exposed: v.exposed,
+    structId: 0,
+    keyType: v.type.t === "d" ? get_id(v.type.k) as VarType : 6,
+    valueType: v.type.t === "d" ? get_id(v.type.v) as VarType : 6
   };
 }
