@@ -717,7 +717,7 @@ export function get_id_client(node: NodeType): number {
     case "e":
       switch (node.e) {
         case -1:  // Enum type
-          return ClientVarType.Enum_;
+          return ClientVarType.EnumItem_;
         case 1017:  // Local Variable
           return ClientVarType.LocalVariable_;
       }
@@ -797,7 +797,7 @@ export function get_type_client(id: number): NodeType {
       return { t: "b", b: "Vec" };
     case ClientVarType.VectorList_:
       return { t: "l", i: { t: "b", b: "Vec" } };
-    case ClientVarType.Enum_:
+    case ClientVarType.EnumItem_:
       return { t: "e", e: -1 };
     case ClientVarType.GUID_:
       return { t: "b", b: "Gid" };

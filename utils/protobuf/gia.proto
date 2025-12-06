@@ -281,7 +281,7 @@ enum ClientVarType {
   StringList_ = 10;        // type: L<Str>, typeid: 10
   Vector_ = 11;            // type: Vec, typeid: 11
   VectorList_ = 12;        // type: L<Vec>, typeid: 12
-  Enum_ = 13;              // type: E<-1>, typeid: 13
+  EnumItem_ = 13;          // type: E<-1>, typeid: 13
   GUID_ = 14;              // type: Gid, typeid: 14
   GUIDList_ = 15;          // type: L<Gid>, typeid: 15
   Faction_ = 16;           // type: Fct, typeid: 16

@@ -27,10 +27,11 @@ interface Entry {
   ID: number;                 // An in-game unique id of the entry
 }
 interface TypeEntry extends Entry {
-  Expression: string;     // Static representation expression for convertor
-  DSLName: string;        // Name of var class(type) in DSL
-  BaseType: string;       // Base type of the entry in game runtime
-  BaseTypeID: number;     // Id of the base type
+  ClientID: number | null;    // An in-game unique id of the any type in client 
+  Expression: string;         // Static representation expression for convertor
+  DSLName: string;            // Name of var class(type) in DSL
+  BaseType: string;           // Base type of the entry in game runtime
+  BaseTypeID: number;         // Id of the base type
 }
 interface NodeEntry extends Entry {
   Type: "Simple" | "Generic";         // Whether a node is fixed-defined or generic-defined 

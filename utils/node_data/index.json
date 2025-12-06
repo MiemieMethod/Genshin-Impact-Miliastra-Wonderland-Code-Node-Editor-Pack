@@ -1,9 +1,9 @@
 {
   "Version": "1.6.0",
   "Author": "Aluria",
-  "Date": "Sat Dec 06 2025 22:48:55 GMT+0800 (中国标准时间)",
+  "Date": "Sat Dec 06 2025 23:00:55 GMT+0800 (中国标准时间)",
   "Description": "This document contains all necessary information for this project, including types, nodes, and enums.",
-  "Schema": "// ====== Begin of Document Schema ====== //\ninterface Document {\n  Version: string;\n  Author: string;\n  Date: string;\n  Description: string;\n  Schema: string;\n  TypesList: TypeEntry[];\n  NodesList: NodeEntry[];\n  EnumList: EnumEntry[];\n  ClientEnumList: EnumEntry[];\n}\ninterface Entry {\n  Name: string;               // Safe name used as object keys or query keys\n  Translations: Translations; // Raw texts displayed in game\n  ID: number;                 // An in-game unique id of the entry\n}\ninterface TypeEntry extends Entry {\n  Expression: string;     // Static representation expression for convertor\n  DSLName: string;        // Name of var class(type) in DSL\n  BaseType: string;       // Base type of the entry in game runtime\n  BaseTypeID: number;     // Id of the base type\n}\ninterface NodeEntry extends Entry {\n  Type: \"Simple\" | \"Generic\";         // Whether a node is fixed-defined or generic-defined \n  Range: \"Server\" | \"Client\";         // The applicable range of the node\n  Class: typeof NodeClasses[number];  // The class of the node\n  Family: string;                     // Family(sub-class) of the node\n  Inputs: string[];                   // List of Input parameter types of the node\n  Outputs: string[];                  // List of Output parameter types of the node\n  TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic. \n}\ninterface EnumEntry extends Entry {\n  Items: EnumItem[];  // List of Enum items of current enum\n}\ninterface TypeMapping {\n  ConcreteId: number;                         // Id of this concrete type\n  Type: string;                               // Type mapping rules of this concrete type\n  InputsIndexOfConcrete: (number | null)[];   // List of Input parameters' index of concrete\n  OutputsIndexOfConcrete: (number | null)[];  // List of Output parameters' index of concrete\n}\ninterface EnumItem extends Entry {\n}\nconst NodeClasses = [\"Execution\", \"Trigger\", \"Control\", \"Query\", \"Arithmetic\", \"Hidden\"] as const;\nconst Language = [\"cs\", \"de\", \"es\", \"en\", \"fr\", \"it\", \"ja\", \"ko\", \"pl\", \"pt-BR\", \"ru\", \"tr\", \"zh-Hans\", \"zh-Hant\"] as const;\ntype Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages\n// ====== End of Document Schema ====== //\n",
+  "Schema": "// ====== Begin of Document Schema ====== //\ninterface Document {\n  Version: string;\n  Author: string;\n  Date: string;\n  Description: string;\n  Schema: string;\n  TypesList: TypeEntry[];\n  NodesList: NodeEntry[];\n  EnumList: EnumEntry[];\n  ClientEnumList: EnumEntry[];\n}\ninterface Entry {\n  Name: string;               // Safe name used as object keys or query keys\n  Translations: Translations; // Raw texts displayed in game\n  ID: number;                 // An in-game unique id of the entry\n}\ninterface TypeEntry extends Entry {\n  ClientID: number | null;    // An in-game unique id of the any type in client \n  Expression: string;         // Static representation expression for convertor\n  DSLName: string;            // Name of var class(type) in DSL\n  BaseType: string;           // Base type of the entry in game runtime\n  BaseTypeID: number;         // Id of the base type\n}\ninterface NodeEntry extends Entry {\n  Type: \"Simple\" | \"Generic\";         // Whether a node is fixed-defined or generic-defined \n  Range: \"Server\" | \"Client\";         // The applicable range of the node\n  Class: typeof NodeClasses[number];  // The class of the node\n  Family: string;                     // Family(sub-class) of the node\n  Inputs: string[];                   // List of Input parameter types of the node\n  Outputs: string[];                  // List of Output parameter types of the node\n  TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic. \n}\ninterface EnumEntry extends Entry {\n  Items: EnumItem[];  // List of Enum items of current enum\n}\ninterface TypeMapping {\n  ConcreteId: number;                         // Id of this concrete type\n  Type: string;                               // Type mapping rules of this concrete type\n  InputsIndexOfConcrete: (number | null)[];   // List of Input parameters' index of concrete\n  OutputsIndexOfConcrete: (number | null)[];  // List of Output parameters' index of concrete\n}\ninterface EnumItem extends Entry {\n}\nconst NodeClasses = [\"Execution\", \"Trigger\", \"Control\", \"Query\", \"Arithmetic\", \"Hidden\"] as const;\nconst Language = [\"cs\", \"de\", \"es\", \"en\", \"fr\", \"it\", \"ja\", \"ko\", \"pl\", \"pt-BR\", \"ru\", \"tr\", \"zh-Hans\", \"zh-Hant\"] as const;\ntype Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages\n// ====== End of Document Schema ====== //\n",
   "TypesList": [
     {
       "Name": "Entity",
@@ -11,6 +11,7 @@
         "en": "Entity"
       },
       "ID": 1,
+      "ClientID": 1,
       "Expression": "Ety",
       "DSLName": "Entity",
       "BaseType": "IdBase",
@@ -22,6 +23,7 @@
         "en": "GUID"
       },
       "ID": 2,
+      "ClientID": 14,
       "Expression": "Gid",
       "DSLName": "GUID",
       "BaseType": "IdBase",
@@ -33,6 +35,7 @@
         "en": "Integer"
       },
       "ID": 3,
+      "ClientID": 3,
       "Expression": "Int",
       "DSLName": "Int",
       "BaseType": "IntBase",
@@ -44,6 +47,7 @@
         "en": "Boolean"
       },
       "ID": 4,
+      "ClientID": 5,
       "Expression": "Bol",
       "DSLName": "Bool",
       "BaseType": "EnumBase",
@@ -55,6 +59,7 @@
         "en": "Floating Point Numbers"
       },
       "ID": 5,
+      "ClientID": 7,
       "Expression": "Flt",
       "DSLName": "Float",
       "BaseType": "FloatBase",
@@ -66,6 +71,7 @@
         "en": "String"
       },
       "ID": 6,
+      "ClientID": 9,
       "Expression": "Str",
       "DSLName": "String",
       "BaseType": "StringBase",
@@ -77,6 +83,7 @@
         "en": "GUID List"
       },
       "ID": 7,
+      "ClientID": 15,
       "Expression": "L<Gid>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -88,6 +95,7 @@
         "en": "Integer List"
       },
       "ID": 8,
+      "ClientID": 4,
       "Expression": "L<Int>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -99,6 +107,7 @@
         "en": "Boolean List"
       },
       "ID": 9,
+      "ClientID": 6,
       "Expression": "L<Bol>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -110,6 +119,7 @@
         "en": "Floating Point Numbers List"
       },
       "ID": 10,
+      "ClientID": 8,
       "Expression": "L<Flt>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -121,6 +131,7 @@
         "en": "String List"
       },
       "ID": 11,
+      "ClientID": 10,
       "Expression": "L<Str>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -132,6 +143,7 @@
         "en": "3D Vector"
       },
       "ID": 12,
+      "ClientID": 11,
       "Expression": "Vec",
       "DSLName": "Vector",
       "BaseType": "VectorBase",
@@ -143,6 +155,7 @@
         "en": "Entity List"
       },
       "ID": 13,
+      "ClientID": 2,
       "Expression": "L<Ety>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -154,6 +167,7 @@
         "en": "Enum Item"
       },
       "ID": 14,
+      "ClientID": 13,
       "Expression": "E<?>",
       "DSLName": "Enum",
       "BaseType": "EnumBase",
@@ -165,6 +179,7 @@
         "en": "3D Vector List"
       },
       "ID": 15,
+      "ClientID": 12,
       "Expression": "L<Vec>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -176,7 +191,8 @@
         "en": "Local Variable"
       },
       "ID": 16,
-      "Expression": "E<1014>",
+      "ClientID": 17,
+      "Expression": "E<1016>",
       "DSLName": "Entity",
       "BaseType": "Unknown",
       "BaseTypeID": 0
@@ -187,6 +203,7 @@
         "en": "Faction"
       },
       "ID": 17,
+      "ClientID": 16,
       "Expression": "Fct",
       "DSLName": "Faction",
       "BaseType": "IdBase",
@@ -198,6 +215,7 @@
         "en": "Configuration ID"
       },
       "ID": 20,
+      "ClientID": 18,
       "Expression": "Cfg",
       "DSLName": "ConfigId",
       "BaseType": "IdBase",
@@ -209,6 +227,7 @@
         "en": "Prefab ID"
       },
       "ID": 21,
+      "ClientID": 19,
       "Expression": "Pfb",
       "DSLName": "Prefab",
       "BaseType": "IdBase",
@@ -220,6 +239,7 @@
         "en": "Configuration List"
       },
       "ID": 22,
+      "ClientID": 20,
       "Expression": "L<Cfg>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -231,6 +251,7 @@
         "en": "Prefab List"
       },
       "ID": 23,
+      "ClientID": 21,
       "Expression": "L<Pfb>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -242,6 +263,7 @@
         "en": "Faction List"
       },
       "ID": 24,
+      "ClientID": null,
       "Expression": "L<Fct>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -253,6 +275,7 @@
         "en": "Structure"
       },
       "ID": 25,
+      "ClientID": null,
       "Expression": "S<?>",
       "DSLName": "Struct",
       "BaseType": "StructBase",
@@ -264,6 +287,7 @@
         "en": "Structure List"
       },
       "ID": 26,
+      "ClientID": null,
       "Expression": "L<S<?>>",
       "DSLName": "List",
       "BaseType": "ArrayBase",
@@ -275,6 +299,7 @@
         "en": "Dictionary"
       },
       "ID": 27,
+      "ClientID": null,
       "Expression": "D<?,?>",
       "DSLName": "Dict",
       "BaseType": "DictionaryBase",
@@ -286,6 +311,7 @@
         "en": "Custom Variable Component Snapshot"
       },
       "ID": 28,
+      "ClientID": null,
       "Expression": "E<1028>",
       "DSLName": "Entity",
       "BaseType": "Unknown",
