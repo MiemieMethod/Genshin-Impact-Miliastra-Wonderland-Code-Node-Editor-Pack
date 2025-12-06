@@ -1,5 +1,5 @@
 {
-  "commitMessage": "添加节点图变量接口(未测试)",
+  "commitMessage": "添加新节点反射: Equal for bool, 修复了几个错误的引脚类型",
   "notSync": false,
   "include": [
     "*",

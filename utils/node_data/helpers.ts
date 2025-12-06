@@ -138,20 +138,20 @@ export function get_node_record(concrete_id: number): SingleNodeData | null {
 
 // ======================== GIA IR Convertor ========================
 
-const NODE_ID_Set: Map<number, string> =Object.freeze(new Map(
+const NODE_ID_Set: Map<number, string> = Object.freeze(new Map(
   Object.entries(NODE_ID as Record<string, number>)
     .map(([k, v]) => [v, k] as [number, string])
-    .filter(([_,v]) => !v.endsWith("__Generic"))
+    .filter(([_, v]) => !v.endsWith("__Generic"))
 ));
-const NODE_ID_Generic_Set: Map<number, string> =Object.freeze(new Map(
+const NODE_ID_Generic_Set: Map<number, string> = Object.freeze(new Map(
   Object.entries(NODE_ID as Record<string, number>)
     .map(([k, v]) => [v, k] as [number, string])
-    .filter(([_,v]) => !v.endsWith("__Generic"))
+    .filter(([_, v]) => !v.endsWith("__Generic"))
 ));
-export function get_node_name_from_id(cid: number, is_generic?:boolean): string | null {
-  if(is_generic===true){
+export function get_node_name_from_id(cid: number, is_generic?: boolean): string | null {
+  if (is_generic === true) {
     return NODE_ID_Generic_Set.get(cid) ?? null;
-  }else{
+  } else {
     return NODE_ID_Set.get(cid) ?? null;
   }
 }

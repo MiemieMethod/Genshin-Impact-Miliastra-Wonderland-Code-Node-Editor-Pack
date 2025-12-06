@@ -1,6 +1,6 @@
 Version: 1.5.0
 Author: Aluria
-Date: Sun Nov 30 2025 17:55:08 GMT+0800 (中国标准时间)
+Date: Sat Dec 06 2025 11:02:14 GMT+0800 (中国标准时间)
 Description: This document contains all necessary information for this project, including types, nodes, and enums.
 Schema: |
   // ====== Begin of Document Schema ====== //
@@ -495,6 +495,13 @@ NodesList:
         InputsIndexOfConcrete:
           - 8
           - 8
+        OutputsIndexOfConcrete:
+          - null
+      - ConcreteId: 786
+        Type: S<T:Bol>
+        InputsIndexOfConcrete:
+          - 9
+          - 9
         OutputsIndexOfConcrete:
           - null
   - Name: Get_Local_Variable
@@ -7233,7 +7240,7 @@ NodesList:
       - R<T>
       - R<T>
     Outputs:
-      - R<T>
+      - Bol
     TypeMappings:
       - ConcreteId: 230
         Type: S<T:Int>
@@ -7241,14 +7248,14 @@ NodesList:
           - 0
           - 0
         OutputsIndexOfConcrete:
-          - 0
+          - null
       - ConcreteId: 235
         Type: S<T:Flt>
         InputsIndexOfConcrete:
           - 1
           - 1
         OutputsIndexOfConcrete:
-          - 0
+          - null
   - Name: Less_Than_or_Equal_To
     Translations:
       en: Less Than or Equal To
@@ -7261,7 +7268,7 @@ NodesList:
       - R<T>
       - R<T>
     Outputs:
-      - R<T>
+      - Bol
     TypeMappings:
       - ConcreteId: 231
         Type: S<T:Int>
@@ -7269,14 +7276,14 @@ NodesList:
           - 0
           - 0
         OutputsIndexOfConcrete:
-          - 0
+          - null
       - ConcreteId: 236
         Type: S<T:Flt>
         InputsIndexOfConcrete:
           - 1
           - 1
         OutputsIndexOfConcrete:
-          - 0
+          - null
   - Name: Greater_Than
     Translations:
       en: Greater Than
@@ -7289,7 +7296,7 @@ NodesList:
       - R<T>
       - R<T>
     Outputs:
-      - R<T>
+      - Bol
     TypeMappings:
       - ConcreteId: 232
         Type: S<T:Int>
@@ -7297,14 +7304,14 @@ NodesList:
           - 0
           - 0
         OutputsIndexOfConcrete:
-          - 0
+          - null
       - ConcreteId: 237
         Type: S<T:Flt>
         InputsIndexOfConcrete:
           - 1
           - 1
         OutputsIndexOfConcrete:
-          - 0
+          - null
   - Name: Greater_Than_or_Equal_To
     Translations:
       en: Greater Than or Equal To
@@ -7317,7 +7324,7 @@ NodesList:
       - R<T>
       - R<T>
     Outputs:
-      - R<T>
+      - Bol
     TypeMappings:
       - ConcreteId: 233
         Type: S<T:Int>
@@ -7325,14 +7332,14 @@ NodesList:
           - 0
           - 0
         OutputsIndexOfConcrete:
-          - 0
+          - null
       - ConcreteId: 238
         Type: S<T:Flt>
         InputsIndexOfConcrete:
           - 1
           - 1
         OutputsIndexOfConcrete:
-          - 0
+          - null
   - Name: Activate_Disable_Native_Collision
     Translations:
       en: Activate/Disable Native Collision
