@@ -1,5 +1,6 @@
 import assert from "assert";
 import type {
+  ClientVarType,
   GraphNode,
   NodeGraph,
   NodePin,
@@ -9,7 +10,7 @@ import type {
 import {
   NodePin_Index_Kind,
   VarBase_Class,
-  VarBase_ItemType_Inner_Kind,
+  VarBase_ItemType_ServerType_Kind,
   VarType,
 } from "../protobuf/gia.proto.ts";
 import { get_type, type NodeType } from "./nodes.ts";
@@ -22,7 +23,7 @@ export function get_nodes(graph: Root): GraphNode[] | null {
 interface PinInfo_ {
   kind: NodePin_Index_Kind;
   index: number;
-  type: VarType;
+  type: VarType | ClientVarType;
   indexOfConcrete: number;
   node_type: NodeType;
   is_node: boolean;
@@ -31,7 +32,7 @@ export function get_pin_info(pin: NodePin): PinInfo_ {
   const ret: PinInfo_ = {
     kind: pin.i1.kind,
     index: pin.i1.index ?? 0,
-    type: pin.type,
+    type: pin.type as VarType | ClientVarType,
     indexOfConcrete: pin.value?.bConcreteValue?.indexOfConcrete ?? 0,
     node_type: get_type(pin.type),
     is_node: pin.value?.class === VarBase_Class.ConcreteBase,
@@ -41,9 +42,9 @@ export function get_pin_info(pin: NodePin): PinInfo_ {
       pin.value!.bConcreteValue!.value!.class,
       VarBase_Class.MapBase,
     );
-    const t = pin.value!.bConcreteValue!.value.itemType!.itemType!;
+    const t = pin.value!.bConcreteValue!.value.itemType!.type_server!;
     assert.equal(t.type, VarType.Dictionary);
-    assert.equal(t.kind, VarBase_ItemType_Inner_Kind.Pair);
+    assert.equal(t.kind, VarBase_ItemType_ServerType_Kind.Pair);
     ret.node_type.k = get_type(t.items!.key);
     ret.node_type.v = get_type(t.items!.value);
   }

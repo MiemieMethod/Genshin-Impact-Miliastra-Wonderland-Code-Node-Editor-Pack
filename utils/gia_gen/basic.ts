@@ -19,9 +19,10 @@ import {
   GraphUnit_Id_Class,
   GraphUnit_Which,
   VarBase_Class,
-  VarBase_ItemType_Inner_Kind,
   VarType,
   GraphUnit_Id_Type,
+  VarBase_ItemType_ServerType_Kind,
+  VarBase_ItemType_ClassBase,
 } from "../protobuf/gia.proto.ts";
 import { get_id, get_type, type NodePins, type NodeType } from "./nodes.ts";
 
@@ -289,7 +290,7 @@ export function wrapped_pin_value(body: PinValue_): VarBase {
 export function item_type(type: VarType): VarBase_ItemType {
   return {
     classBase: 1,
-    itemType: {
+    type_server: {
       type: type,
       kind: 0,
     },
@@ -365,10 +366,10 @@ export function map_pin_body(body: MapPinBody_): NodePin {
     class: VarBase_Class.MapBase,
     alreadySetVal: false,
     itemType: {
-      classBase: 1,
-      itemType: {
+      classBase: VarBase_ItemType_ClassBase.Server,
+      type_server: {
         type: VarType.Dictionary,
-        kind: VarBase_ItemType_Inner_Kind.Pair,
+        kind: VarBase_ItemType_ServerType_Kind.Pair,
         items: structuredClone(map_pair),
       },
     },
