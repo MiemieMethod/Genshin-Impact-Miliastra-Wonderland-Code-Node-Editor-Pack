@@ -1,5 +1,5 @@
 {
-  "commitMessage": "添加客户端节点的 Enum Id 数据(与服务器端完全不同)",
+  "commitMessage": "更新了大量的 Readme 文档",
   "notSync": false,
   "include": [
     "*",

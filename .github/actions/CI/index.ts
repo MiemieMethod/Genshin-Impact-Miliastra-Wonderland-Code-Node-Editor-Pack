@@ -27,7 +27,7 @@ for (const testName of tests) {
     const testIndex = path.join(PATH, "test", testName, "test.ts");
     if (existsSync(testIndex)) {
       console.log(`🟦 Running test: ${testName}`);
-      // Execute index.ts using npx tsx to ensure TS support
+      // Execute index.ts using node to ensure TS support
       // Not specifying shell to use default (cmd on Windows, sh on Unix)
       execSync(`node "${testIndex}"`, { stdio: "inherit", cwd: PATH });
       passCount++;

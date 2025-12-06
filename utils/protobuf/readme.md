@@ -43,7 +43,7 @@ encode_gia_file("./output.gia", data);
 将 `gia.proto` 转换为 TypeScript 类型定义文件。
 
 ```bash
-npx tsx utils/protobuf/proto2ts.ts [output_path] [input_path]
+node utils/protobuf/proto2ts.ts [output_path] [input_path]
 ```
 
 ---
@@ -87,7 +87,7 @@ encode_gia_file("./output.gia", data);
 修改 `gia.proto` 后需运行：
 
 ```bash
-npx tsx utils/protobuf/proto2ts.ts
+node utils/protobuf/proto2ts.ts
 ```
 
 ### Python 工具

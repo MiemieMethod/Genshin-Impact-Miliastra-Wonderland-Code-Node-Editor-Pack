@@ -83,7 +83,7 @@ import { Graph, Node, helper, decode_gia_file } from "./utils";
 读取 `functions/math.ts` 中的函数定义，自动生成 `def.d.ts` 文件，为 DSL 编写提供 IDE 智能补全。
 
 ```bash
-npx tsx utils/gen_def.ts
+node utils/gen_def.ts
 ```
 
 **功能：**

@@ -159,7 +159,7 @@ if (import.meta.main) {
 
 ```bash
 # 在项目根目录运行单个测试
-npx tsx .github/actions/CI/gia_gen/test.ts
+node .github/actions/CI/gia_gen/test.ts
 
 # 确保 dist 目录存在
 mkdir dist
