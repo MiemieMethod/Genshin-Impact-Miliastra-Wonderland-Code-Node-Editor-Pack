@@ -164,7 +164,7 @@ message NodeGraph {
   repeated GraphVariable graphValues = 6;
   repeated GraphAffiliation affiliations = 7;
 
-  float xxxx = 101;
+  optional float xxxx = 101;
 }
 
 message Comments {

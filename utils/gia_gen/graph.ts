@@ -2,11 +2,12 @@ import assert from "assert";
 import type { Comments, GraphNode, NodeConnection, NodePin, NodePin_Index_Kind, Root } from "../protobuf/gia.proto.ts";
 import { encode_node_graph_var, graph_body, node_body, node_connect_from, node_connect_to, node_type_pin_body, pin_flow_body } from "./basic.ts";
 import { type NodeType, reflects_records, get_id, type_equal, to_records_full, is_reflect } from "./nodes.ts";
-import { Counter, panic, randomInt, randomName } from "./utils.ts";
+import { Counter, randomInt, randomName } from "./utils.ts";
 import { get_concrete_index, is_concrete_pin, get_generic_id, get_node_record, get_node_record_generic } from "../node_data/helpers.ts";
 import { extract_value, get_graph_vars, get_node_info } from "./extract.ts";
 import { type SingleNodeData } from "../node_data/node_pin_records.ts";
 import { auto_layout } from "./auto_layout.ts";
+import { panic } from "../utils.ts";
 
 
 const GraphType = ["server", "client", "composite"] as const;
