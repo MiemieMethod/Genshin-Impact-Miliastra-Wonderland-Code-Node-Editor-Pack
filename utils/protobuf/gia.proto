@@ -3,29 +3,30 @@ syntax = "proto3";
 // package gia;
 
 message Root {
-  NodeUnit graph = 1;                // graph info
-  repeated NodeUnit accessories = 2; // data_structure, input/output
-  string filePath = 3;               // {UID}-{TIME}-{LEVEL_ID}-\{FILE_NAME}.gia
+  GraphUnit graph = 1;                // graph info
+  repeated GraphUnit accessories = 2; // data_structure, input/output
+  string filePath = 3;    // {UID}-{TIME}-{LEVEL_ID}-\{FILE_NAME}.gia
+  string gameVersion = 5; // 6.2.0 by now
 }
 
-message NodeUnit {
+message GraphUnit {
   message Id {
-    enum Type {
+    enum Class {
       Unknown1 = 0;
       Node = 1;            // Such as boolean filter
       Basic = 5;           // Such as graph node
       AffiliatedNode = 23; // Assembly/Split for Structure
     }
-    enum NodeType {
+    enum Type {
       ServerGraph = 0;
       ClientGraph = 3;
       StructureDefinition = 15;
     }
-    Type type = 2;     // base type
-    NodeType kind = 3; //
-    int32 id = 4;      // Node Graph Id
+    Class class = 2; // base type
+    Type type = 3;   // decide one of graph type
+    int32 id = 4;    // Node Graph Id
   }
-  enum Type {
+  enum Which {
     Unknown = 0;
     EntityNode = 9;
     BooleanFilter = 10;
@@ -41,7 +42,7 @@ message NodeUnit {
   Id id = 1;                  // Self id
   repeated Id relatedIds = 2; // Some related accompanying units(If exist)
   string name = 3;            // Node Graph Name
-  Type type = 5;              // Enumeration of Node Graph Type
+  Which which = 5;            // Enumeration of Node Graph Type
 
   oneof graphType {
     NodeGraphWrapper graph = 13;           // Else
@@ -123,6 +124,7 @@ message CompositeDef {
 
   string name = 200;
   string description = 201;
+  int32 xxx = 203;
 }
 
 message NodeGraph {
@@ -400,7 +402,8 @@ message NodeProperty {
   enum Type {
     Unknown = 0;
     Server = 20000;
-    Client = 20002;
+    Filter = 20001;
+    Skill = 20002;
   }
 
   NodeGraph.Id.Class class = 1; // 10001
