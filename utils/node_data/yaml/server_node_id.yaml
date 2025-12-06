@@ -1,5 +1,5 @@
 Header:
-  Version: 1.1.0
+  Version: 1.6.0
   Method: Manually Match from Raw File
   BY: Aluria
   Note: Server Node IDs are different from those of Client!
@@ -169,7 +169,7 @@ Execution:
       599: 4. Set the Aggro Value of Specified Entity
 
   - XXIX. Signals:
-      30000: 1. Send Signal # Be careful. ID will become Dynamic ID
+      300000: 1. Send Signal # Be careful. ID will become Dynamic ID
 
   - XXX. Nameplate:
       617: 1. Set Entity Active Nameplate
@@ -838,5 +838,6 @@ Hidden:
       678: Update Player Leaderboard Score
   - Trigger:
       428: When Native Custom Value Changes
+      100000: When CaIIing GM (This Node is Hidden Externally)
   - Query:
       459: Native Query Custom Value

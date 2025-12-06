@@ -130,6 +130,8 @@ gid { i: 4222, gid: 200122, cid: 0 }
   console.log("因此, 我们仅需要从 skill 节点图中提取信息即可.")
 }
 
+
+
 // cls();
 
 // create_nodes("bool", 0, 2000, 100000, 10);
@@ -145,4 +147,21 @@ gid { i: 4222, gid: 200122, cid: 0 }
 // create_exist_nodes("skill");
 // create_exist_nodes("int");
 
-compare();
+// compare();
+
+
+
+
+/** 顺便, 对 server 也来一次大的碰撞. 从 0-100, 10000-10100, ... 到 3000000-3000100 */
+// create_nodes("server", 0, 100, 10000, 300);
+/** 从 0-100, 1000-1100, ... 到 3000000-3000010 */
+// create_nodes("server", 0, 10, 1000, 3000);
+
+// read_nodes("server");
+// console.log("发现新的节点:", { "i": 1100, "gid": 100000, "cid": 100000 },
+//   { "i": 3100, "gid": 300000 }, { "i": 3101, "gid": 300001 }, { "i": 3102, "gid": 300002 },
+//   { "i": 3103, "gid": 300003 }, { "i": 3104, "gid": 300004 });
+
+
+create_exist_nodes("server");
+
