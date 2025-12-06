@@ -74,8 +74,8 @@ encode_gia_file(PATH + "out.gia", graph.encode());
 - ✅️ IR ⇒ DSL 反编译器
 - ✅️ DSL ⇒ IR编译器
 - ✅️ 节点编辑器图形界面, 有其它项目: [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor)
-- [ ] **(未动工)** IR ⇒ GIA转换器
-- [ ] **(未动工)** GIA ⇒ IR转换器
+- [x] **(完成一半)** IR ⇒ GIA转换器
+- [x] **(完成一半)** GIA ⇒ IR转换器
 - [x] **(刚开始)** IR本地运行器
 - [x] **(完成一大半)** 写一个~~没营养~~的 DSL 示例, 并在千星奇域中手动实现.
 
