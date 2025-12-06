@@ -1,173 +1,388 @@
-# 千星奇域节点图本地编辑器, 网页节点编辑器, 转换器
-# A Local Code Editor, Web Node Editor, Convertor for Genshin Impact Miliastra Wonderland
+# 千星奇域节点图工具集
 
-本项目是我的多个千星奇域工具项目的汇总与整合，旨在补全开源开发生态，提供从底层文件解析到上层代码编写的全套解决方案。
+<div align="center">
 
-项目的**规划**, **进度**, **当前工作**请参见 [todo.md](./TODO.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-22+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
+**原神千星奇域节点图开发的综合工具集**
 
-> 如果您有任何建议或想法, 或发现什么有意思的线索, 或任何可能有帮助的库, 请随意提交 Issue 或发 [Email](mailto:wuyijun21@mails.ucas.ac.cn) 告诉我
+*从底层文件解析到上层代码编写的全套解决方案*
 
-## 核心功能 (Core Features)
+[快速开始](#快速开始) · [核心功能](#核心功能) · [文档](#模块文档) · [开发进度](#开发进度)
 
-本项目功能复杂多样，主要包含以下核心模块：
-
-### 1. 强大的 DSL 代码编写体验
-提供了一套基于 TypeScript 的领域特定语言 (DSL)，让你能以写代码的方式构建节点图。
-*   [**自动类型生成 (`utils/gen_def.ts`)**](./utils/gen_def.ts): 这是 DSL 的核心引擎。它读取结构化的函数定义，自动生成包含完整类型声明的 `def.d.ts` 文件。这意味着你在编写节点图代码时，可以享受到 **IDE 的智能补全、类型检查和文档提示**。
-*   [**结构化函数定义 (`utils/functions`)**](./utils/functions/readme.md): 所有的算术节点和查询节点都通过统一的格式进行定义，支持重载、泛型和参数校验。
-
-### 2.0. GIA 文件快速读写
-在 `./utils/gia_gen/graph.ts` 中(或通过 `./utils/gia_gen/index.ts` 导入), 快速创建Graph类, 可导出为 gia 文件结构. 更多信息参见 [utils/gia_gen/readme.md](./utils/gia_gen/readme.md#graph)
-
-接口用法示例: (更详细的参见自动构建测试 [gia_gen](https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/tree/dev/.github/actions/CI/gia_gen))
-```ts
-const graph = new Graph();
-const node1 = graph.add_node(NODE_ID.When_Entity_Is_Created);
-const node2 = graph.add_node(NODE_ID.Teleport_Player);
-const node3 = graph.add_node(NODE_ID.Create_3D_Vector);
-const node4 = graph.add_node(NODE_ID.Get_Self_Entity);
-graph.flow(node1, node2);
-graph.connect(node3, node2, 0, 1);
-graph.connect(node4, node2, 0, 0);
-node2.setVal(2, [1, 2, 3])
-node3.setVal(0, 4);
-graph.autoLayout(1.0); // 自动生成布局
-encode_gia_file(PATH + "out.gia", graph.encode());
-// Same as DSL:
-// [OnCreate()]
-//   .$(() => Vec(4,0,0))[pos]
-//   .Teleport(Self.self, pos, Vec(1,2,3));
-```
-
-### 2. GIA 文件深度解析与工程化
-完全掌握 `.gia` (Genshin Impact Assets) 文件的读写与转换。
-*   [**Protobuf 定义 (`utils/protobuf/gia.proto`)**](./utils/protobuf/gia.proto): 包含较完整的 `gia.proto` 定义文件。
-*   [**编解码工具 (`utils/protobuf/decode.ts`)**](./utils/protobuf/decode.ts): 提供 TypeScript 工具 (`decode.ts`) 将 GIA 文件解码为易于操作的 JSON/对象结构，或将对象重新编码为游戏可读取的 GIA 文件。
-*   [**图生成工具 (`utils/gia_gen`)**](./utils/gia_gen/readme.md): 提供便捷的 API (`gia_gen`) 快速构建和修改节点图结构，简化了复杂的 Protobuf 对象创建过程。
-
-### 3. 完备的节点与枚举数据
-程序化整理并校验了游戏中的各类 ID 映射，确保转换的准确性。
-*   [**静态数据定义 (`utils/node_data`)**](./utils/node_data/readme.md): 提供了完整的 TypeScript 静态定义文件，包括节点 ID (`node_id.ts`)、枚举值 (`enum_id.ts`)、变量类型 (`types_list.ts`) 以及复杂的泛型节点反射映射 (`node_pin_records.ts`, `concrete_map.ts`)。这些数据是解析器和编译器的基础。
-*   [index.yaml](./index.yaml) / [index.json](./index.json): 以 YAML/JSON 格式提供的单文件完整数据汇总。适合外部程序直接读取和处理。
-
-### 4. 在线节点编辑器功能
-*   *(外部库)* [WebMiliastraNodesEditor](https://github.com/Columbina-Dev/WebMiliastraNodesEditor): 图形化操作界面, 模拟游戏内节点编辑器行为, 将来会补充完整的导入导出和转化功能.
+</div>
 
 ---
 
-## 模块详情 (Module Documentation)
+## ✨ 特性亮点
 
-更多细节功能请查阅各子模块的 README 文档：
+- 🔧 **GIA 文件读写** — 使用 TypeScript 编程式读写 `.gia` 节点图文件
+- 📝 **DSL 代码语言** — 以代码形式描述节点图，享受 IDE 智能补全和语法高亮
+- 🔄 **双向转换器** — DSL ⇔ IR ⇔ GIA 完整编译/反编译工具链
+- 📊 **完备节点数据** — 程序化整理的节点 ID、枚举值、引脚定义
+- 🧩 **高层 API** — `Graph` 类封装，轻松构建和修改节点图
+- 🎯 **类型安全** — 全面的 TypeScript 类型定义和编译时检查
 
-*   **[DSL 函数定义与生成工具](./utils/functions/readme.md)**: 了解 DSL 类型系统是如何构建的，以及如何添加新的节点定义。
-*   **[GIA 文件格式与 Protobuf 工具](./utils/protobuf/readme.md)**: 深入了解文件结构，学习如何使用脚本读写 GIA 文件。
-*   **[节点 ID 与枚举定义](./utils/node_data/readme.md)**: 查看节点 ID 列表和枚举值的详细映射关系。
-*   **[GIA 图生成器](./utils/gia_gen/readme.md)**: 了解如何使用 Helper 函数快速生成和操作 GIA 节点图。
+---
 
-## 开发进度 (Project Status)
+## 核心功能
 
-半个月前是进展缓慢的, 因为我需要要多线并行: 
-- ✅️ GIA 文件逆向 
-- ✅️ GIA 文件转换接口
-- ✅️ 节点图的等效代码表示(DSL)
-- ✅️ IR ⇒ DSL 反编译器
-- ✅️ DSL ⇒ IR编译器
-- ✅️ 节点编辑器图形界面, 有其它项目: [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor)
-- [ ] **(未动工)** IR ⇒ GIA转换器
-- [ ] **(未动工)** GIA ⇒ IR转换器
-- [x] **(刚开始)** IR本地运行器
-- [x] **(完成一大半)** 写一个~~没营养~~的 DSL 示例, 并在千星奇域中手动实现.
+### 1. GIA 文件读写
 
-但11月20号搜索 Github, 无意中发现 [Columbina-Dev](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) 已经做好了**节点编辑器**的[网页版](https://miliastra.columbina.dev/). 这一下子就*给我动力*了, 我准备把简单的DSL ⇒ JSON转换器先给它实现了. 稍微增强下开源生态......
+使用 TypeScript 编程式读写 `.gia` 文件，支持完整的编解码和图操作。
 
-## Getting Started
+```typescript
+import { decode_gia_file, encode_gia_file, Graph, NODE_ID } from "./utils";
 
-**详细的代码说明见下:** [## DSL Usages](#dsl-usages)
+// 读取现有文件
+const data = decode_gia_file("./input.gia");
+const graph = Graph.decode(data);
 
-目前只有简单的 block parser, 使用如下:
-```shell
-node ./src/test/parser.ts
+// 或创建新图
+const newGraph = new Graph("server");
+const trigger = newGraph.add_node(NODE_ID.When_Entity_Is_Created);
+const log = newGraph.add_node(NODE_ID.Log_Message);
+
+// 连接节点
+newGraph.flow(trigger, log);
+log.setVal(0, "Hello World!");
+
+// 自动布局并保存
+newGraph.autoLayout();
+encode_gia_file("./output.gia", newGraph.encode());
 ```
 
-## 节点图等效代码表示.
+📖 详情：[GIA 生成器](./utils/gia_gen/readme.md) | [Protobuf 工具](./utils/protobuf/readme.md)
 
-随之这两周不断修修补补, 我对节点图的了解更加深入, 并在实际例子中尝试了多种方法让代码编写更加顺畅, 最终得到了如下的规范:
+### 2. DSL 代码编写
 
-- [使用手册](./docs/UserGuide.md): 丰富的示例教你你如何使用这个基于 Typescript 的语言扩展, 让你顺利写出可以被编译运行的代码.
-- [语言设计手册](./docs/SystemDesign.md): 更详细的语言和设计理念的介绍.
+使用基于 TypeScript 的领域特定语言 (DSL) 以代码方式描述节点图逻辑，享受 IDE 智能补全、语法高亮和版本控制优势。
 
-编写出的代码会长成这个样子:
-```ts
-// @ts-nocheck
-import "./src/test/def.d.ts" // 导入配置
-
-declare global {
-  // 声明实体自身变量
-  namespace Self {
-    const hp: float = 100;
-  }
-  // 声明信号
-  namespace Signal {
-    function PlayerHit(damage: int): Signal; // 通过返回 Signal 标记为信号
-  }
-}
-// 声明节点图变量
-declare namespace node {
-  // export 表示暴露此变量
-  export const critical: float = 1.5;
-}
-
+```typescript
 // 游戏对象创建时触发
 [OnCreate()]
   .Log("I'm alive!")
   .SetVal(Self.hp, 10000);
 
-// 收到 "PlayerHit" 信号时触发，并将信号的参数赋值给一个名为 "dmg" 的变量
+// 收到信号时触发
 [Signal(Signal.PlayerHit)[dmg]]
   .$((dmg) => dmg * node.critical)[real_dmg]
   .SetVal(Self.hp, Self.hp - real_dmg)
   .If(Self.hp <= 0)(
     true = Log("You died"),
-    false = Log("Ouch! Took " + m.str(real_dmg)),
+    false = Log("Ouch!")
   );
+
+// 循环与分支
+[Timer(Timer.countdown)]
+  .Loop(0n, 9n, "spawn")[i](
+    true = SpawnEnemy(i),
+    false = Log("All spawned") >> 0()
+  ).Log("Loop complete");
 ```
 
-## GIA 文件结构
-文件头部分 [script-1024/genshin-miliastra-file-format](https://github.com/script-1024/genshin-miliastra-file-format/blob/main/docs/zh/%E6%A6%82%E8%BF%B0.md) 写的比我之前的详细, 于是我就参考它的改写了:
+📖 详情：[DSL 使用手册](./docs/UserGuide.md) | [语言设计](./docs/SystemDesign.md) | [函数定义](./utils/functions/readme.md)
 
-无论是 `.gip`(Project), `.gil`(Level), `.gia`(Assets), 还是 `.gir`(Runtime) 文件，它们都拥有类似的结构：
-```cs
-// (开始)
-[文件大小: 4 字节]
-[版本编号: 4 字节]
-[头部标记: 4 字节]
-[文件类型: 4 字节]
-[内容长度: 4 字节]
+### 3. 解析器与转换器
 
-(内容负载：ProtoBuf)
+完整的编译/反编译工具链，支持 DSL 文本、中间表示 (IR) 和 GIA 节点图之间的相互转换。
 
-[尾部标记: 4 字节]
-// (结束)
+```typescript
+import { createParserState, parse, decompile } from "./src/parser";
+import { giaIrConvertor } from "./src/convertor";
+
+// DSL → IR
+const state = createParserState(sourceCode);
+const ir = parse(state);
+
+// IR → DSL
+const code = decompile(ir);
+
+// GIA → IR
+const irModule = giaIrConvertor(giaGraph, true);
 ```
 
-这些字段以大端序保存, 它们的含义和用途:
-
-| 字段名称 | 偏移地址 | 值 | 描述与说明 | ~~译者~~(我的)注 |
-|---------|----------|------|------|------------|
-| 文件大小 | `0x00` | $size - 4$ | 文件大小减 4 字节 (不包含尾部标记) |
-| 版本编号 | `0x04` | `00 00 00 01` | 可修改, 但建议保持官方值 | *我本以为是主版本号, 看来猜错了?* |
-| 头部标记 | `0x08` | `00 00 03 26` | **严格校验，不可修改** | *我本以为是次版本号, 但它不是向下兼容的?* |
-| 文件类型 | `0x0C` | •GIP:`00 00 00 01`<br>•GIL:`00 00 00 02`<br>•GIA:`00 00 00 03`<br>•GIR:`00 00 00 04` | 枚举值 |
-| 内容长度 | `0x10` | `Size_of_Protobuf` | 文件大小减 24 字节 (不含头部 20 字节和尾部 4 字节) |  |
-| 内容负载 | `0x14` | Protobuf二进制编码 | ProtoBuf 编码数据 | 具体编码规则见 [gia.proto](./utils/protobuf/gia.proto) |
-| 尾部标记 | 文件大小字段值 | `00 00 06 79` | **严格校验，不可修改** | 头部标记 + 尾部标记 = `0x099F` 可能有什么特殊含义? |
-
-**内部的 Protobuf 编码参见** 我写的 [utils/protobuf/gia.proto](./utils/protobuf/gia.proto), 这其中包含了主要的结构定义. 同时在 [utils/protobuf/](./utils/protobuf/) 和 [utils/gia_gen/](./utils/gia_gen/) 目录下也有一些编码解码组件.
-
-## DSL-Usages
-
-目前只有简单的 block parser, 样例如下:
-```shell
-node ./src/test/parser.ts
 ```
+┌─────────┐      parse       ┌──────┐     giaIrConvertor    ┌─────────┐
+│   DSL   │ ───────────────► │  IR  │ ◄──────────────────── │   GIA   │
+│  Code   │ ◄─────────────── │  AST │ ────────────────────► │  Graph  │
+└─────────┘     decompile    └──────┘     (工作中)          └─────────┘
+```
+
+📖 详情：[解析器](./src/parser/readme.md) | [转换器](./src/convertor/readme.md) | [IR 类型](./src/types/readme.md)
+
+### 4. 完备的节点数据
+
+程序化整理的服务器和客户端节点数据，包含完整的 ID 映射、枚举定义和引脚信息。
+
+```typescript
+import { NODE_ID, ENUM_ID, ENUM_VALUE, get_node_record } from "./utils/node_data";
+
+// 查询节点信息
+const id = NODE_ID.Add_Float;
+const record = get_node_record(id);
+console.log(record?.name, record?.inputs, record?.outputs);
+
+// 使用枚举
+const compOp = ENUM_VALUE.ComparisonOperators_EqualTo;
+```
+
+| 数据类型 | 说明 | 格式 |
+| :--- | :--- | :--- |
+| 节点 ID | 770+ 个节点的名称和 ID | TypeScript |
+| 枚举定义 | 60+ 个枚举类型和值 | TypeScript |
+| 引脚记录 | 所有节点的输入/输出引脚定义 | TypeScript |
+| 类型映射 | 泛型节点的类型索引表 | TypeScript |
+| 综合数据 | 上述数据的结构化汇总 | YAML / JSON |
+
+📖 详情：[节点数据](./utils/node_data/readme.md)
+
+---
+
+## 项目结构
+
+```
+.
+├── src/                      # 核心源代码
+│   ├── convertor/            # GIA ⇔ IR 转换器
+│   │   ├── gia_ir.ts         #   转换入口
+│   │   ├── gia_ir_raw.ts     #   原始 IR 构建器
+│   │   └── graph_chain_split.ts  #   图结构分析算法
+│   ├── parser/               # DSL 解析器
+│   │   ├── tokenizer.ts      #   词法分析
+│   │   ├── parser.ts         #   语法分析
+│   │   ├── decompiler.ts     #   IR → DSL 反编译
+│   │   └── parse_*.ts        #   子解析器
+│   └── types/                # IR 类型定义
+│       ├── IR*.ts            #   IR 节点类型
+│       ├── types.ts          #   基础类型
+│       └── consts.ts         #   常量定义
+│
+├── utils/                    # 工具库
+│   ├── gia_gen/              # GIA 图生成器
+│   │   ├── graph.ts          #     Graph 类 (推荐)
+│   │   ├── basic.ts          #     基础组件生成
+│   │   ├── nodes.ts          #     节点生成器
+│   │   ├── auto_layout.ts    #     自动布局算法
+│   │   └── ......            #     其他组件
+│   ├── node_data/            # 节点静态数据
+│   │   ├── node_id.ts        #     节点 ID 映射
+│   │   ├── enum_id.ts        #     枚举定义
+│   │   ├── helpers.ts        #     查询辅助函数
+│   │   └── ......            #     其他静态定义
+│   ├── protobuf/             # Protobuf 工具
+│   │   ├── gia.proto         #     Protobuf 结构定义
+│   │   ├── decode.ts         #     TypeScript 编解码 (规范结构)
+│   │   ├── decode.py         #     Python 编解码 (可显示未知字段)
+│   │   └── gia.proto.ts      #     自动生成的类型
+│   ├── functions/            # DSL 函数定义
+│   │   ├── math.ts           #     函数定义列表
+│   │   └── function_defs.ts  #     类型系统和解析器
+│   └── gen_def.ts            # DSL 类型定义生成器
+│
+├── docs/                     # 用户文档
+│   ├── UserGuide.md          # DSL 使用手册
+│   ├── SystemDesign.md       # 语言设计文档
+│   └── dsl.enbf              # DSL 语法规范
+│
+├── test.CI/                  # CI 测试用例
+└── static/                   # 静态资源
+```
+
+---
+
+## 快速开始
+
+### 环境要求
+
+- **Node.js** 22+
+- **npm** 或 **pnpm**
+
+### 安装依赖
+
+```bash
+npm install
+```
+
+### 运行示例
+
+```bash
+# 运行解析器测试
+node src/test/parser.ts
+
+# 生成 DSL 类型定义文件
+node utils/gen_def.ts
+
+# 运行 GIA 生成测试
+node utils/gia_gen/test.ts
+```
+
+### 快速使用
+
+**1. 读取并修改现有 GIA 文件**
+
+```typescript
+import { decode_gia_file, encode_gia_file, Graph } from "./utils";
+
+const data = decode_gia_file("./myGraph.gia");
+const graph = Graph.decode(data);
+
+// 修改节点位置
+graph.get_nodes()[0].setPos(100, 200);
+
+// 添加注释
+graph.add_comment("这是一个测试节点", 100, 150);
+
+// 保存
+encode_gia_file("./myGraph_modified.gia", graph.encode());
+```
+
+**2. 从零创建节点图**
+
+```typescript
+import { Graph, NODE_ID, encode_gia_file } from "./utils";
+
+const graph = new Graph("server");
+
+// 添加触发器和功能节点
+const onCreate = graph.add_node(NODE_ID.When_Entity_Is_Created);
+const getPlayer = graph.add_node(NODE_ID.Get_Player_Entity);
+const teleport = graph.add_node(NODE_ID.Teleport_Player);
+
+// 连接执行流
+graph.flow(onCreate, getPlayer);
+graph.flow(getPlayer, teleport);
+
+// 连接数据流
+graph.connect(getPlayer, teleport, 0, 0); // 实体输出 → 传送目标
+
+// 设置参数
+teleport.setVal(1, [100, 0, 50]); // 目标坐标
+
+// 布局并保存
+graph.autoLayout();
+encode_gia_file("./newGraph.gia", graph.encode());
+```
+
+---
+
+## 模块文档
+
+### 核心模块
+
+| 模块 | 说明 | 文档 |
+| :--- | :--- | :--- |
+| **源代码** | 解析器、转换器、类型定义 | [src/readme.md](./src/readme.md) |
+| **工具库** | GIA 生成、节点数据、Protobuf | [utils/readme.md](./utils/readme.md) |
+
+### 工具模块
+
+| 模块 | 说明 | 文档 |
+| :--- | :--- | :--- |
+| **DSL 函数** | Math/Query 节点定义与类型生成 | [functions/readme.md](./utils/functions/readme.md) |
+| **GIA 生成器** | 编程式构建和操作节点图 | [gia_gen/readme.md](./utils/gia_gen/readme.md) |
+| **节点数据** | ID、枚举、引脚反射数据 | [node_data/readme.md](./utils/node_data/readme.md) |
+| **Protobuf** | GIA 文件编解码 | [protobuf/readme.md](./utils/protobuf/readme.md) |
+
+### 用户文档
+
+| 文档 | 说明 |
+| :--- | :--- |
+| [DSL 使用手册](./docs/UserGuide.md) | DSL 语法完整指南 |
+| [语言设计](./docs/SystemDesign.md) | 语言设计理念和实现细节 |
+| [TODO.md](./TODO.md) | 开发计划和进度跟踪 |
+
+---
+
+## GIA 文件格式
+
+[.gia](cci:7://file:///d:/Program/GenshinImpact/projs/Convertor/static/link.gia:0:0-0:0) 文件是原神千星奇域节点图的二进制存储格式，使用 Protobuf 序列化。
+
+![GIA 文件结构](./static/image.png)
+
+| 字段 | 偏移 | 值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| 文件大小 | 0x00 | `size - 4` | 文件总大小减 4 字节 |
+| 版本号 | 0x04 | `0x01` | 固定值 |
+| 头部标记 | 0x08 | `0x0326` | **严格校验** |
+| 文件类型 | 0x0C | `0x03` | GIA = 3 |
+| 内容长度 | 0x10 | `size - 24` | Protobuf 数据长度 |
+| Protobuf | 0x14 | ... | 序列化的节点图数据 |
+| 尾部标记 | 末尾 | `0x0679` | **严格校验** |
+
+📖 Protobuf 详细结构：[gia.proto](./utils/protobuf/gia.proto)
+
+---
+
+## 开发进度
+
+### 已完成 ✅
+
+| 功能 | 状态 | 说明 |
+| :--- | :--- | :--- |
+| GIA 文件逆向 | ✅ 完成 | 完整的文件格式解析 |
+| GIA 文件读写接口 | ✅ 完成 | TypeScript + Python 工具 |
+| Graph 高层 API | ✅ 完成 | 节点、连接、注释、变量管理 |
+| DSL 语法设计 | ✅ 完成 | 完整语法规范 |
+| DSL → IR 解析器 | ✅ 完成 | 词法分析 + 语法分析 |
+| IR → DSL 反编译器 | ✅ 完成 | 完整反编译支持 |
+| 自动布局算法 | ✅ 完成 | 基于 Dagre 的自动布局 |
+| 节点数据整理 | ✅ 完成 | 770+ 节点、40+ 枚举 |
+| CI 自动化测试 | ✅ 完成 | 解析器一致性测试 |
+
+### 进行中 ⏳
+
+| 功能 | 状态 | 说明 |
+| :--- | :--- | :--- |
+| GIA → IR 转换器 | ⏳ 进行中 | 原始模式已支持，优化中 |
+| IR → GIA 转换器 | ⏳ 进行中 | 从 IR 构造 Graph |
+| 客户端节点支持 | ⏳ 进行中 | ID 和枚举差异处理 |
+
+### 计划中 📋
+
+| 功能 | 说明 |
+| :--- | :--- |
+| VSCode 语言扩展 | `.dsl.ts` 文件的语法高亮和智能补全 |
+| 编译器类型推断 | 自动推断 DSL 表达式类型 |
+| 运行模拟 | 本地模拟执行节点图逻辑 |
+
+更多规划详见 [TODO.md](./TODO.md)
+
+---
+
+## 文件可见性
+
+根据 [sync-list.json](cci:7://file:///d:/Program/GenshinImpact/projs/Convertor/sync-list.json:0:0-0:0)，以下内容仅在开发分支 (`dev`) 可见：
+
+| 路径 | 原因 |
+| :--- | :--- |
+| `utils/extracting_nodes/` | 内部节点提取工具 |
+| `utils/**/ref/**` | 参考文件 |
+| `utils/node_data/yaml/**` | 中间数据 |
+| `**/test/**`, `**/temp/**` | 测试和临时文件 |
+| `utils/functions/tools.ts` | 内部工具 |
+
+---
+
+## 相关项目
+
+| 项目 | 说明 |
+| :--- | :--- |
+| [WebMiliastraNodesEditor](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) | 网页版节点编辑器 |
+| [genshin-miliastra-file-format](https://github.com/script-1024/genshin-miliastra-file-format) | 文件格式文档 |
+
+---
+
+## 贡献
+
+欢迎贡献代码、报告问题或提出建议！
+
+- 🐛 **Bug 报告**：[提交 Issue](https://github.com/Wu-Yijun/Miliastra-Wonderland-Node-Editor-Convertor/issues)
+- 💡 **功能建议**：[提交 Issue](https://github.com/Wu-Yijun/Miliastra-Wonderland-Node-Editor-Convertor/issues)
+- 📧 **联系作者**：[wuyijun21@mails.ucas.ac.cn](mailto:wuyijun21@mails.ucas.ac.cn)
+
+## License
+
+[MIT License](./LICENSE) © 2025 Wu-Yijun
