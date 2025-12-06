@@ -23,7 +23,7 @@ export const ENUM_ID = {
   Revive_Point_Selection_Strategy: 19,
   Cause_Of_Being_Down: 20,
   Trigonometric_Functions: 21,
-  Disruptor_Device_Types: 22,
+  Disruptor_Device_Type: 22,
   Disruptor_Device_Orientation: 23,
   UI_Control_Group_Status: 24,
   Target_Type: 25,
@@ -51,6 +51,58 @@ export const ENUM_ID = {
   VariableSnapshot: 1028, // E<1028> --> VariableSnapshot
 } as const satisfies { [key: string]: number };
 export type EnumId = (typeof ENUM_ID)[keyof typeof ENUM_ID];
+
+
+/** Also used as EnumEqual IndexOfConcrete in client
+ * 🟨 Be careful, the enum IoC somehow has a 1 offset for most of the values
+ */
+export const ENUM_ID_CLIENT = {
+  Generic: -1,
+  Comparison_Operators: 0,
+  Logical_Operators: 1,
+  Mathematical_Operators: 2,
+  Attack_Shapes: 3,
+  Survival_Status: 4,
+  Sorting_Rules: 5,
+  Rounding_Logic: 6,
+  Type_Conversions: 7,
+  Motion_Path_Point_Types: 8,
+  Motion_Types: 9,
+  Follow_Location_Type: 10,
+  Coordinate_System_Type: 11,
+  Elemental_Type: 12,
+  Entity_Type: 13,
+  Unit_Status_Addition_Failure_Reason: 14,
+  Unit_Status_Addition_Success_Type: 15,
+  Unit_Status_Removal_Reason: 16,
+  Unit_Status_Removal_Strategy: 17,
+  Revive_Point_Selection_Strategy: 18,
+  Cause_Of_Being_Down: 19,
+  Trigonometric_Functions: 20,
+  Disruptor_Device_Type: 21,
+  Disruptor_Device_Orientation: 22,
+  UI_Control_Group_Status: 23,
+  Target_Type: 24,
+  Quick_Mathematical_Operators: 25,
+  Hit_Type: 26,
+  Attack_Type: 27,
+  Hit_Performance_Level: 28,
+  Target_Sorting_Rules: 29,
+  Attack_Layer_Config: 30,
+  Knockback_Direction_Type: 31,
+  Rotation_Type: 32,
+  Sector_Detection_Direction: 33,
+  Type_Conversions_Same: 34,// Wtf Same Enums inside 
+  Retracing_Type: 35,
+  Hit_Level: 36,
+  Elemental_Reaction_Type: 37,
+  Filter_Return_Type: 38,
+  Target_Type_For_Camera_Orientation_Node: 39,
+  Scan_Status: 40,
+  Input_Device_Type: 41,
+} as const satisfies { [key: string]: number };
+export type EnumIdClient = (typeof ENUM_ID_CLIENT)[keyof typeof ENUM_ID_CLIENT];
+
 
 export const ENUM_VALUE = {
   Default: 0,
@@ -146,9 +198,9 @@ export const ENUM_VALUE = {
   TrigonometricFunctions_arctan: 1705,
   TrigonometricFunctions_RadiansToDegrees: 1706,
   TrigonometricFunctions_DegreesToRadians: 1707,
-  DisruptorDeviceTypes_ForceFieldDevice: 1801,
-  DisruptorDeviceTypes_Ejector: 1802,
-  DisruptorDeviceTypes_TractorDevice: 1803,
+  DisruptorDeviceType_ForceFieldDevice: 1801,
+  DisruptorDeviceType_Ejector: 1802,
+  DisruptorDeviceType_TractorDevice: 1803,
   DisruptorDeviceOrientation_AssociateCharacterOrientation: 1810,
   DisruptorDeviceOrientation_FixedUnidirectional: 1811,
   UIControlGroupStatus_Off: 1900,
@@ -217,6 +269,7 @@ export const ENUM_VALUE = {
   SettlementStatus_TBC: 4100,
   SettlementStatus_Victory: 4101,
   SettlementStatus_Failed: 4102,
+  ReasonForItemChange_Default: 0, // Same as Default
   ReasonForItemChange_Destroy: 4900,
   ReasonForItemChange_Discard: 4901,
   ReasonForItemChange_Use: 4902,
@@ -264,5 +317,58 @@ export const ENUM_VALUE = {
   InputDeviceType_KeyboardAndMouse: 5800,
   InputDeviceType_Controller: 5801,
   InputDeviceType_Touchscreen: 5802,
+
+  // 🟨 Below is some values that is not shown in server
+  BasicMathematicalOperators_Addition: 300,  // Same to what 'MathematicalOperators' is in server
+  BasicMathematicalOperators_Subtraction: 301,// Same to what 'MathematicalOperators' is in server
+  BasicMathematicalOperators_Multiplication: 302,  // Same to what 'MathematicalOperators' is in server
+  BasicMathematicalOperators_Division: 303,  // Same to what 'MathematicalOperators' is in server
+  QuickMathematicalOperators_ModuloOperation: 304,    // Same to what 'MathematicalOperators' is in server
+  QuickMathematicalOperators_Exponentiation: 305,   // Same to what 'MathematicalOperators' is in server
+  QuickMathematicalOperators_GetMaximumValue: 306,    // Same to what 'MathematicalOperators' is in server
+  QuickMathematicalOperators_GetMinimumValue: 307,    // Same to what 'MathematicalOperators' is in server
+  QuickMathematicalOperators_Logarithm: 308,    // Same to what 'MathematicalOperators' is in server
+  TargetSortingRules_DefaultSorting: 1000001,
+  TargetSortingRules_RandomOrder: 1000002,
+  TargetSortingRules_SortFromNearToFar: 1000003,
+  AttackLayerConfig_OnlyOnHitHurtbox: 2601,
+  AttackLayerConfig_OnlyOnHitScene: 2602,
+  AttackLayerConfig_HitAll: 2604,
+  KnockbackDirectionType_LineConnectingAttackerAndHitPoint: 2501,
+  KnockbackDirectionType_HitboxOnHitDirection: 2502,
+  KnockbackDirectionType_LineConnectingAttackersOwnerAndHitPoint: 2503,
+  KnockbackDirectionType_TangentLineBetweenAttackerAndHitPoint: 2504,
+  KnockbackDirectionType_OppositeDirectionToHit: 2505,
+  KnockbackDirectionType_AttackersFacingOrientation: 2506,
+  KnockbackDirectionType_OppositeDirectionToLineConnectingAttackerAndHitPoint: 2507,
+  RotationType_TargetFirstThenInput: 2900,
+  RotationType_InputOrientation: 2901,
+  RotationType_TargetOrientation: 2902,
+  RotationType_TargetFirstThenCamera: 2903,
+  RotationType_CameraOrientation: 2904,
+  RotationType_InputFirstThenTarget: 2905,
+  SectorDetectionDirection_FromInsideOut: 450,
+  SectorDetectionDirection_Clockwise: 451,
+  SectorDetectionDirection_Counterclockwise: 452,
+  RetracingType_Self: 3200,
+  RetracingType_SelfOwner: 3201,
+  RetracingType_TopLayerSelfOwner: 3202,
+  HitLevel_NoEffect: 3900,
+  HitLevel_LightTremor: 3901,
+  HitLevel_LightHit: 3902,
+  HitLevel_KnockbackHit: 3903,
+  HitLevel_Launch: 3904,
+  FilterReturnType_ReturnBoolean: 1000010,
+  FilterReturnType_ReturnInteger: 10000011,
+  TargetTypeForCameraOrientationNode_DontFindTarget: 2000,    // Same to what 'TargetType' is in server
+  TargetTypeForCameraOrientationNode_AlliedFaction: 2001,   // Same to what 'TargetType' is in server
+  TargetTypeForCameraOrientationNode_HostileFaction: 2002,    // Same to what 'TargetType' is in server
+  TargetTypeForCameraOrientationNode_OwnFaction: 2004,    // Same to what 'TargetType' is in server
+  TargetTypeForCameraOrientationNode_AllExceptSelf: 2006,   // Same to what 'TargetType' is in server
+  ScanStatus_UnusableTarget: 5000,
+  ScanStatus_CurrentScanTarget: 5001,
+  ScanStatus_CandidateTarget: 5002,
+  ScanStatus_ConditionNotMet: 5003
+
 } as const satisfies { [key: string]: number };
 export type EnumValue = (typeof ENUM_VALUE)[keyof typeof ENUM_VALUE];

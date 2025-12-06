@@ -25,7 +25,7 @@ export const SysEnumNames = [
   "EnumRevivePointSelectionStrategy",
   "EnumCauseOfBeingDown",
   "EnumTrigonometricFunctions",
-  "EnumDisruptorDeviceTypes",
+  "EnumDisruptorDeviceType",
   "EnumDisruptorDeviceOrientation",
   "EnumUIControlGroupStatus",
   "EnumTargetType",
