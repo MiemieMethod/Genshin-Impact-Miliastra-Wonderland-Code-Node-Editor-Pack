@@ -153,7 +153,7 @@ npx tsx utils/gen_def.ts
 | Protobuf | 0x14 | 节点图数据 |
 | 尾部标记 | 末尾 | 固定 0x0679 |
 
-📖 详情：[gia.proto](./utils/protobuf/gia.proto)
+📖 Protobuf 详情：[gia.proto](./utils/protobuf/gia.proto)
 
 ---
 
