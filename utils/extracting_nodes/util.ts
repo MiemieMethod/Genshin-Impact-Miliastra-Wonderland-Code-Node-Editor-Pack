@@ -21,11 +21,14 @@ export function save(name: string, data: string | object | Root, to_genshin: boo
   writeFileSync(DIST + name, data);
 }
 
-export function gia(name: Names | string, from_genshin: boolean = false): Root {
-  if (from_genshin) {
+export function gia(name: Names | string, from_genshin: true | string = "01_collection", keep = false): Root {
+  if (from_genshin === true) {
     return decode_gia_file(PATH + name);
   }
-  const ret = decode_gia_file(WORKSPACE + "01_collection/" + name + ".gia");
+  const ret = decode_gia_file(WORKSPACE + from_genshin + "/" + name + ".gia");
+  if (keep) {
+    return ret;
+  }
   ret.graph.graph?.inner.graph.nodes.splice(0);
   return ret;
 }
@@ -48,7 +51,7 @@ export interface GraphInfo {
 }
 
 export function read_json(name: string): any {
-  return JSON.parse(readFileSync(DIST + name + ".json").toString())
+  return JSON.parse(readFileSync(DIST + name + (name.endsWith(".json") ? "" : ".json")).toString())
 }
 export function collection(): GraphInfo[] {
   return JSON.parse(readFileSync(DIST + "collection.json").toString())

@@ -1,5 +1,5 @@
 syntax = "proto3";
-// @version: 1.3.2
+// @version: 1.4.0
 // package gia;
 
 message Root {
@@ -267,6 +267,30 @@ enum VarType {
   Dictionary = 27;
   VariableSnapshot = 28;
 }
+enum ClientVarType {
+  UnknownVar_ = 0;
+  Entity_ = 1;      // type: Ety, typeid: 1
+  EntityList_ = 2;  // type: L<Ety>, typeid: 2
+  Integer_ = 3;     // type: Int, typeid: 3
+  IntegerList_ = 4; // type: L<Int>, typeid: 4
+  Boolean_ = 5;     // type: Bol, typeid: 5
+  BooleanList_ = 6; // type: L<Bol>, typeid: 6
+  Float_ = 7;       // type: Flt, typeid: 7
+  FloatList_ = 8;   // type: L<Flt>, typeid: 8
+  String_ = 9;      // type: Str, typeid: 9
+  StringList_ = 10; // type: L<Str>, typeid: 10
+  Vector_ = 11;     // type: Vec, typeid: 11
+  VectorList_ = 12; // type: L<Vec>, typeid: 12
+  // Missing 13
+  GUID_ = 14;     // type: Gid, typeid: 14
+  GUIDList_ = 15; // type: L<Gid>, typeid: 15
+  Faction_ = 16;  // type: Fct, typeid: 16
+  // Missing 17
+  Configuration_ = 18;     // type: Cfg, typeid: 18
+  Prefab_ = 19;            // type: Pfb, typeid: 19
+  ConfigurationList_ = 20; // type: L<Cfg>, typeid: 20
+  PrefabList_ = 21;        // type
+}
 message GraphVariable {
   string name = 2;
   VarType type = 3;
@@ -300,16 +324,15 @@ message VarBase {
       VarType value = 2;
       optional int64 structId = 3; // only when value is struct
     }
-    message ClientEnum {
-      VarType enumId = 2; // TODO: 13/5/1/2 我不确定有什么关联? 很独特的一个值
+    message ClientType {
+      ClientVarType type = 2; // 不是, 怎么类型枚举都不一样. 想死了
     }
-    message Inner {
+    message ServerType {
       enum Kind {
         Normal = 0;
         Struct = 1;
         Pair = 2;
       }
-
       VarType type = 1;
       Kind kind = 2;
       oneof id {
@@ -317,10 +340,15 @@ message VarBase {
         PairItems items = 101;
       }
     }
-    int32 classBase = 1; // Always 1
+    enum ClassBase {
+      Unknown = 0;
+      Server = 1;
+      Client = 2;
+    }
+    ClassBase classBase = 1;
     oneof class {
-      Inner itemType = 100;
-      ClientEnum enumType = 101;
+      ServerType type_server = 100;
+      ClientType type_client = 101;
     }
   }
   message StructInfo {
@@ -435,7 +463,7 @@ message NodePin {
   Index i1 = 1;
   Index i2 = 2;
   VarBase value = 3;
-  VarType type = 4;
+  int32 type = 4; // Be careful! VarType in Server and ClientVarType in Client
   repeated NodeConnection connects = 5; // OutFlow or InParam
 }
 

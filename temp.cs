@@ -1,105 +1,188 @@
 graph {
   id {
-    class: Basic
-    id: 1073741828
+    class: Node
+    type: ClientGraph
+    id: 1082130439
   }
-  name: "server_3"
-  which: EntityNode
+  name: "skill_1"
+  which: Skills
   graph {
     inner {
       graph {
         id {
           class: UserDefined
-          type: BasicNode
+          type: Skills
           kind: NodeGraph
-          id: 1073741828
+          id: 1082130439
         }
-        name: "server_3"
+        name: "skill_1"
         nodes {
           nodeIndex: 1
           genericId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 100000
+            nodeId: 200005
           }
           concreteId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 100000
+            nodeId: 10
           }
-          x: -461.6
-          y: -75.6
+          pins {
+            i1 {
+              kind: InParam
+            }
+            i2 {
+              kind: InParam
+            }
+            value {
+              class: ConcreteBase
+              alreadySetVal: true
+              bConcreteValue {
+                indexOfConcrete: 7
+                value {
+                  class: EnumBase
+                  alreadySetVal: true
+                  itemType {
+                    classBase: Client
+                    type_client {
+                      type: 13
+                    }
+                  }
+                  bEnum {
+                    val: 802
+                  }
+                }
+              }
+            }
+            type: 13
+          }
+          pins {
+            i1 {
+              kind: InParam
+              index: 1
+            }
+            i2 {
+              kind: InParam
+              index: 1
+            }
+            value {
+              class: ConcreteBase
+              alreadySetVal: true
+              bConcreteValue {
+                indexOfConcrete: 7
+                value {
+                  class: EnumBase
+                  alreadySetVal: true
+                  itemType {
+                    classBase: Client
+                    type_client {
+                      type: 13
+                    }
+                  }
+                  bEnum {
+                    val: 804
+                  }
+                }
+              }
+            }
+            type: 13
+          }
+          x: 1089.93762
+          y: -882.547852
         }
         nodes {
           nodeIndex: 2
           genericId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 300000
+            nodeId: 200005
           }
-          x: 608
-          y: 64
+          concreteId {
+            class: SystemDefined
+            type: Skill
+            kind: SysCall
+            nodeId: 10
+          }
+          pins {
+            i1 {
+              kind: InParam
+            }
+            i2 {
+              kind: InParam
+            }
+            value {
+              class: ConcreteBase
+              alreadySetVal: true
+              bConcreteValue {
+                indexOfConcrete: 34
+                value {
+                  class: EnumBase
+                  alreadySetVal: true
+                  itemType {
+                    classBase: Client
+                    type_client {
+                      type: 13
+                    }
+                  }
+                  bEnum {
+                    val: 802
+                  }
+                }
+              }
+            }
+            type: 13
+          }
+          pins {
+            i1 {
+              kind: InParam
+              index: 1
+            }
+            i2 {
+              kind: InParam
+              index: 1
+            }
+            value {
+              class: ConcreteBase
+              alreadySetVal: true
+              bConcreteValue {
+                indexOfConcrete: 34
+                value {
+                  class: EnumBase
+                  alreadySetVal: true
+                  itemType {
+                    classBase: Client
+                    type_client {
+                      type: 13
+                    }
+                  }
+                  bEnum {
+                    val: 803
+                  }
+                }
+              }
+            }
+            type: 13
+          }
+          x: 1614.24536
+          y: -862.240173
         }
         nodes {
           nodeIndex: 3
           genericId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 300001
-          }
-          x: 908
-          y: 64
-        }
-        nodes {
-          nodeIndex: 4
-          genericId {
-            class: SystemDefined
-            type: Server
-            kind: SysCall
-            nodeId: 300002
-          }
-          x: 1208
-          y: 64
-        }
-        nodes {
-          nodeIndex: 5
-          genericId {
-            class: SystemDefined
-            type: Server
-            kind: SysCall
-            nodeId: 300003
-          }
-          x: 1508
-          y: 64
-        }
-        nodes {
-          nodeIndex: 6
-          genericId {
-            class: SystemDefined
-            type: Server
-            kind: SysCall
-            nodeId: 300004
-          }
-          x: 1808
-          y: 64
-        }
-        nodes {
-          nodeIndex: 7
-          genericId {
-            class: SystemDefined
-            type: Server
-            kind: SysCall
-            nodeId: 14
+            nodeId: 200005
           }
           concreteId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 14
+            nodeId: 10
           }
           pins {
             i1 {
@@ -112,31 +195,23 @@ graph {
               class: ConcreteBase
               alreadySetVal: true
               bConcreteValue {
+                indexOfConcrete: 34
                 value {
-                  class: StringBase
+                  class: EnumBase
+                  alreadySetVal: true
                   itemType {
-                    classBase: 1
-                    itemType {
-                      type: String
+                    classBase: Client
+                    type_client {
+                      type: 13
                     }
                   }
-                  bString {
+                  bEnum {
+                    val: 808
                   }
                 }
               }
             }
-            type: String
-            connects {
-              id: 1
-              connect {
-                kind: OutParam
-                index: 4
-              }
-              connect2 {
-                kind: OutParam
-                index: 4
-              }
-            }
+            type: 13
           }
           pins {
             i1 {
@@ -151,48 +226,40 @@ graph {
               class: ConcreteBase
               alreadySetVal: true
               bConcreteValue {
+                indexOfConcrete: 34
                 value {
-                  class: StringBase
+                  class: EnumBase
+                  alreadySetVal: true
                   itemType {
-                    classBase: 1
-                    itemType {
-                      type: String
+                    classBase: Client
+                    type_client {
+                      type: 13
                     }
                   }
-                  bString {
+                  bEnum {
+                    val: 809
                   }
                 }
               }
             }
-            type: String
-            connects {
-              id: 1
-              connect {
-                kind: OutParam
-                index: 5
-              }
-              connect2 {
-                kind: OutParam
-                index: 5
-              }
-            }
+            type: 13
           }
-          x: 402.666656
-          y: 268.5
+          x: 1637.01465
+          y: -620.394043
         }
         nodes {
-          nodeIndex: 8
+          nodeIndex: 107
           genericId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 14
+            nodeId: 200005
           }
           concreteId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 370
+            nodeId: 10
           }
           pins {
             i1 {
@@ -205,32 +272,23 @@ graph {
               class: ConcreteBase
               alreadySetVal: true
               bConcreteValue {
-                indexOfConcrete: 5
+                indexOfConcrete: 7
                 value {
-                  class: IntBase
+                  class: EnumBase
+                  alreadySetVal: true
                   itemType {
-                    classBase: 1
-                    itemType {
-                      type: Integer
+                    classBase: Client
+                    type_client {
+                      type: 13
                     }
                   }
-                  bInt {
+                  bEnum {
+                    val: 800
                   }
                 }
               }
             }
-            type: Integer
-            connects {
-              id: 1
-              connect {
-                kind: OutParam
-                index: 2
-              }
-              connect2 {
-                kind: OutParam
-                index: 2
-              }
-            }
+            type: 13
           }
           pins {
             i1 {
@@ -245,49 +303,40 @@ graph {
               class: ConcreteBase
               alreadySetVal: true
               bConcreteValue {
-                indexOfConcrete: 5
+                indexOfConcrete: 7
                 value {
-                  class: IntBase
+                  class: EnumBase
+                  alreadySetVal: true
                   itemType {
-                    classBase: 1
-                    itemType {
-                      type: Integer
+                    classBase: Client
+                    type_client {
+                      type: 13
                     }
                   }
-                  bInt {
+                  bEnum {
+                    val: 801
                   }
                 }
               }
             }
-            type: Integer
-            connects {
-              id: 1
-              connect {
-                kind: OutParam
-                index: 3
-              }
-              connect2 {
-                kind: OutParam
-                index: 3
-              }
-            }
+            type: 13
           }
-          x: 406.666656
-          y: 83.1666641
+          x: 1089.18433
+          y: -1099.56226
         }
         nodes {
-          nodeIndex: 9
+          nodeIndex: 134
           genericId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 14
+            nodeId: 200005
           }
           concreteId {
             class: SystemDefined
-            type: Server
+            type: Skill
             kind: SysCall
-            nodeId: 15
+            nodeId: 10
           }
           pins {
             i1 {
@@ -300,32 +349,23 @@ graph {
               class: ConcreteBase
               alreadySetVal: true
               bConcreteValue {
-                indexOfConcrete: 1
+                indexOfConcrete: 34
                 value {
-                  class: IdBase
+                  class: EnumBase
+                  alreadySetVal: true
                   itemType {
-                    classBase: 1
-                    itemType {
-                      type: GUID
+                    classBase: Client
+                    type_client {
+                      type: 13
                     }
                   }
-                  bId {
+                  bEnum {
+                    val: 800
                   }
                 }
               }
             }
-            type: GUID
-            connects {
-              id: 1
-              connect {
-                kind: OutParam
-                index: 1
-              }
-              connect2 {
-                kind: OutParam
-                index: 1
-              }
-            }
+            type: 13
           }
           pins {
             i1 {
@@ -340,104 +380,30 @@ graph {
               class: ConcreteBase
               alreadySetVal: true
               bConcreteValue {
-                indexOfConcrete: 1
+                indexOfConcrete: 34
                 value {
-                  class: IdBase
+                  class: EnumBase
+                  alreadySetVal: true
                   itemType {
-                    classBase: 1
-                    itemType {
-                      type: GUID
+                    classBase: Client
+                    type_client {
+                      type: 13
                     }
                   }
-                  bId {
+                  bEnum {
+                    val: 801
                   }
                 }
               }
             }
-            type: GUID
+            type: 13
           }
-          x: 246.4
-          y: 5.4333334
-        }
-        nodes {
-          nodeIndex: 10
-          genericId {
-            class: SystemDefined
-            type: Server
-            kind: SysCall
-            nodeId: 14
-          }
-          concreteId {
-            class: SystemDefined
-            type: Server
-            kind: SysCall
-            nodeId: 16
-          }
-          pins {
-            i1 {
-              kind: InParam
-            }
-            i2 {
-              kind: InParam
-            }
-            value {
-              class: ConcreteBase
-              alreadySetVal: true
-              bConcreteValue {
-                indexOfConcrete: 2
-                value {
-                  itemType {
-                    classBase: 1
-                    itemType {
-                      type: Entity
-                    }
-                  }
-                }
-              }
-            }
-            type: Entity
-            connects {
-              id: 1
-              connect {
-                kind: OutParam
-              }
-              connect2 {
-                kind: OutParam
-              }
-            }
-          }
-          pins {
-            i1 {
-              kind: InParam
-              index: 1
-            }
-            i2 {
-              kind: InParam
-              index: 1
-            }
-            value {
-              class: ConcreteBase
-              alreadySetVal: true
-              bConcreteValue {
-                indexOfConcrete: 2
-                value {
-                  itemType {
-                    classBase: 1
-                    itemType {
-                      type: Entity
-                    }
-                  }
-                }
-              }
-            }
-            type: Entity
-          }
-          x: 414
-          y: -198.166672
+          x: 1588.82104
+          y: -1093.89148
         }
       }
     }
   }
 }
-filePath: "201176311-1765008862-1073741840-\\server.gia"
+filePath: "201176311-1765024577-1073741840-\\temp.gia"
 gameVersion: "6.2.0"

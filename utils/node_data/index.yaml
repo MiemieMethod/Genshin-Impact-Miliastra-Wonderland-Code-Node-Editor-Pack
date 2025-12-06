@@ -42341,7 +42341,7 @@ EnumList:
         Translations:
           en: Degrees to Radians
         ID: 1707
-  - Name: Disruptor_Device_Types
+  - Name: Disruptor_Device_Type
     Translations:
       en: Disruptor Device Types
     ID: 22

@@ -14,7 +14,7 @@ import { cls, collection, dir, gia, Names, read_json, save } from "../util.ts";
 
 
 function create_nodes(which: Names, start = 200000, count = 20, span = 0, repeat = 1) {
-  const graph = gia(which);
+  const graph = gia(which, "01_collection");
   const info = collection().find(x => x.name === which)!;
   // console.log({ graph: graph.graph.graph?.inner.graph.nodes, info });
   const nodes = graph.graph.graph?.inner.graph.nodes!;
@@ -49,7 +49,7 @@ function read_nodes(which: Names) {
 }
 
 function create_exist_nodes(which: Names) {
-  const graph = gia(which);
+  const graph = gia(which, "01_collection");
   const info = collection().find(x => x.name === which)!;
   const nodes = graph.graph.graph?.inner.graph.nodes!;
   const ids = read_json(`node_id_${which}`) as any[];

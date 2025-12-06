@@ -523,7 +523,7 @@ export const SysEnumNames = [
   "EnumMotionTypes", "EnumFollowLocationType", "EnumCoordinateSystemType", "EnumElementalType", "EnumEntityType",
   "EnumUnitStatusAdditionResult", "EnumUnitStatusRemovalReason", "EnumUnitStatusRemovalStrategy",
   "EnumRevivePointSelectionStrategy", "EnumCauseOfBeingDown", "EnumTrigonometricFunctions",
-  "EnumDisruptorDeviceTypes", "EnumDisruptorDeviceOrientation", "EnumUIControlGroupStatus", "EnumTargetType",
+  "EnumDisruptorDeviceType", "EnumDisruptorDeviceOrientation", "EnumUIControlGroupStatus", "EnumTargetType",
   "EnumTriggerRestriction", "EnumHitType", "EnumAttackType", "EnumHitPerformanceLevel", "EnumSkillSlot",
   "EnumSoundAttenuationMode", "EnumSelectCompletionReason", "EnumSettlementStatus", "EnumReasonForItemChange",
   "EnumItemLootType", "EnumDecisionRefreshMode", "EnumElementalReactionType", "EnumInterruptStatus",

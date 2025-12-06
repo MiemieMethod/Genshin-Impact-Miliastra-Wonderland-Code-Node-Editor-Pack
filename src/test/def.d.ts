@@ -206,7 +206,7 @@ declare global {
   /** Enum Equal Id = 496 */
   type EnumTrigonometricFunctions = "TODO";
   /** Enum Equal Id = 497 */
-  type EnumDisruptorDeviceTypes = "TODO";
+  type EnumDisruptorDeviceType = "TODO";
   /** Enum Equal Id = 498 */
   type EnumDisruptorDeviceOrientation = "TODO";
   /** Enum Equal Id = 499 */
@@ -309,7 +309,7 @@ declare global {
     function equal(e1: EnumRevivePointSelectionStrategy, e2: EnumRevivePointSelectionStrategy): boolean;
     function equal(e1: EnumCauseOfBeingDown, e2: EnumCauseOfBeingDown): boolean;
     function equal(e1: EnumTrigonometricFunctions, e2: EnumTrigonometricFunctions): boolean;
-    function equal(e1: EnumDisruptorDeviceTypes, e2: EnumDisruptorDeviceTypes): boolean;
+    function equal(e1: EnumDisruptorDeviceType, e2: EnumDisruptorDeviceType): boolean;
     function equal(e1: EnumDisruptorDeviceOrientation, e2: EnumDisruptorDeviceOrientation): boolean;
     function equal(e1: EnumUIControlGroupStatus, e2: EnumUIControlGroupStatus): boolean;
     function equal(e1: EnumTargetType, e2: EnumTargetType): boolean;

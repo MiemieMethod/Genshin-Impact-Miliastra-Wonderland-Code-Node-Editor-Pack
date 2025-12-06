@@ -1981,7 +1981,7 @@ export const NODE_ID = {
   Enumerations_Equal__Revive_Point_Selection_Strategy: 494,
   Enumerations_Equal__Cause_Of_Being_Down: 495,
   Enumerations_Equal__Trigonometric_Functions: 496,
-  Enumerations_Equal__Disruptor_Device_Types: 497,
+  Enumerations_Equal__Disruptor_Device_Type: 497,
   Enumerations_Equal__Disruptor_Device_Orientation: 498,
   Enumerations_Equal__UI_Control_Group_Status: 499,
   Enumerations_Equal__Target_Type: 500,

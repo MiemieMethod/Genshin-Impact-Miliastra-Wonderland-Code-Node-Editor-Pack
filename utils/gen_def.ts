@@ -829,7 +829,7 @@ function addEnumType(gen: Generator) {
   gen.addEnumType("EnumRevivePointSelectionStrategy", undefined, "Enum Equal Id = 494");
   gen.addEnumType("EnumCauseOfBeingDown", ["NodeGraph", "Defeat", "Accident"], "Enum Equal Id = 495");
   gen.addEnumType("EnumTrigonometricFunctions", undefined, "Enum Equal Id = 496");
-  gen.addEnumType("EnumDisruptorDeviceTypes", undefined, "Enum Equal Id = 497");
+  gen.addEnumType("EnumDisruptorDeviceType", undefined, "Enum Equal Id = 497");
   gen.addEnumType("EnumDisruptorDeviceOrientation", undefined, "Enum Equal Id = 498");
   gen.addEnumType("EnumUIControlGroupStatus", undefined, "Enum Equal Id = 499");
   gen.addEnumType("EnumTargetType", undefined, "Enum Equal Id = 500");
