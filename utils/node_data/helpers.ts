@@ -1,4 +1,4 @@
-import { get_type, get_id, NodeType } from "../gia_gen/nodes.ts";
+import { get_type, get_id, type NodeType } from "../gia_gen/nodes.ts";
 import { assert, DEBUG, STRICT } from "../utils.ts";
 import { CONCRETE_MAP, type ConcreteMap } from "./concrete_map.ts";
 import { NODE_ID } from "./node_id.ts";

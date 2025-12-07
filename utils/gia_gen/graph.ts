@@ -1,7 +1,7 @@
 import { assert, assertEq, empty, todo } from "../utils.ts";
 import type { Comments, GraphNode, NodeConnection, NodePin, NodePin_Index_Kind, Root } from "../protobuf/gia.proto.ts";
 import { encode_node_graph_var, graph_body, node_body, node_connect_from, node_connect_to, node_type_pin_body, pin_flow_body } from "./basic.ts";
-import { type NodeType, reflects_records, get_id, type_equal, to_records_full, is_reflect } from "./nodes.ts";
+import { type NodeType, reflects_records, get_id, type_equal, is_reflect, to_node_pin } from "./nodes.ts";
 import { Counter, randomInt, randomName } from "./utils.ts";
 import { get_index_of_concrete, is_concrete_pin, get_generic_id, get_node_record, get_node_record_generic } from "../node_data/helpers.ts";
 import { extract_value, get_graph_vars, get_node_info } from "./extract.ts";
@@ -342,7 +342,7 @@ export class Node<M extends AllModes = "server"> {
     assert(this.record.id === id || this.record.reflectMap?.find(x => x[0] === id) !== undefined);
     this.node_id = id;
 
-    const rec = empty(this.record.reflectMap) ? to_records_full(this.record) : reflects_records(this.record, id, true);
+    const rec = empty(this.record.reflectMap) ? to_node_pin(this.record) : reflects_records(this.record, id, true);
     for (let i = 0; i < rec.inputs.length; i++) {
       if (empty(this.pins[i])) {
         this.pins[i] = new Pin(this.GenericId, 3, i);
@@ -470,14 +470,14 @@ export class Node<M extends AllModes = "server"> {
 
 export class Pin {
   public readonly generic_id: number;
-  public readonly kind: number;
+  public readonly kind: number; // 1,2,3,4
   public readonly index: number;
   /** concrete id, null for none ref node */
   indexOfConcrete: number | null;
   /** null type means normal pin without any determined info */
   type: NodeType | null;
   value: AnyType | null;
-  constructor(kind: number, index: number, generic_id: number) {
+  constructor(generic_id: number, kind: number, index: number) {
     this.generic_id = generic_id;
     this.kind = kind;
     this.index = index;

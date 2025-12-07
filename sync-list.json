@@ -1,5 +1,5 @@
 {
-  "commitMessage": "fix wrong https url path in readme",
+  "commitMessage": "重构了 ConcreteId 的数据结构, 为引入客户端节点图数据和分析做准备",
   "notSync": false,
   "include": [
     "*",
