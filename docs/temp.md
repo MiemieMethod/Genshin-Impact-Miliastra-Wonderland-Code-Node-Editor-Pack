@@ -586,4 +586,4 @@ const get_stats = (a: int): { x: int, y: int } => {
 
 
 
-## 更多详细内容与设计理念参见[系统设计文档](https://www.google.com/search?q=./SystemDesign.md)
+## 更多详细内容与设计理念参见[系统设计文档]./SystemDesign.md)

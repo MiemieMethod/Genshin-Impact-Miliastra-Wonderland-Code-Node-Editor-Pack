@@ -372,8 +372,8 @@ encode_gia_file("./newGraph.gia", graph.encode());
 
 欢迎贡献代码、报告问题或提出建议！
 
-- 🐛 **Bug 报告**：[提交 Issue](https://github.com/Wu-Yijun/Miliastra-Wonderland-Node-Editor-Convertor/issues)
-- 💡 **功能建议**：[提交 Issue](https://github.com/Wu-Yijun/Miliastra-Wonderland-Node-Editor-Convertor/issues)
+- 🐛 **Bug 报告**：[提交 Issue](https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/issues)
+- 💡 **功能建议**：[提交 Issue](https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/issues)
 - 📧 **联系作者**：[wuyijun21@mails.ucas.ac.cn](mailto:wuyijun21@mails.ucas.ac.cn)
 
 ## License

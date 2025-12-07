@@ -1,5 +1,5 @@
 {
-  "commitMessage": "更新了大量的 Readme 文档",
+  "commitMessage": "fix wrong https url path in readme",
   "notSync": false,
   "include": [
     "*",
