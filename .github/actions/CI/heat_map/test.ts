@@ -40,7 +40,7 @@ function arrangeColors(colors: [number, number, number][], width: number, grid_s
 
 async function main() {
   const data = JSON.parse((await readFile("./utils/node_data/index.json")).toString());
-  const nodes = data.NodesList;
+  const nodes = data.NodesList.filter((node: any) => node.ID < 10000);
   const class_array: string[] = [];
   for (const node of nodes) {
     class_array[node.ID] = node.Class;
