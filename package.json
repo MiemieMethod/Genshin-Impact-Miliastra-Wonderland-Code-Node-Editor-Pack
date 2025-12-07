@@ -2,13 +2,13 @@
   "name": "convertor",
   "version": "1.0.0",
   "description": "千星奇域节点图本地编辑器, 网页节点编辑器, 转换器",
-  "homepage": "https://github.com/Wu-Yijun/Miliastra-Wonderland-Node-Editor-Convertor#readme",
+  "homepage": "https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack#readme",
   "bugs": {
-    "url": "https://github.com/Wu-Yijun/Miliastra-Wonderland-Node-Editor-Convertor/issues"
+    "url": "https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wu-Yijun/Miliastra-Wonderland-Node-Editor-Convertor.git"
+    "url": "git+https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack.git"
   },
   "license": "MIT",
   "author": "Aluria",
