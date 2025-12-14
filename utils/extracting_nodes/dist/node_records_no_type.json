@@ -223,43 +223,43 @@
     "outputs": [],
     "reflectMap": [
       [
-        "11 R<T:Bol>",
+        "200006 11 R<T:Bol>",
         "R<T:Bol>"
       ],
       [
-        "12 R<T:Int>",
+        "200006 12 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "13 R<T:Flt>",
+        "200006 13 R<T:Flt>",
         "R<T:Flt>"
       ],
       [
-        "14 R<T:Str>",
+        "200006 14 R<T:Str>",
         "R<T:Str>"
       ],
       [
-        "15 R<T:Gid>",
+        "200006 15 R<T:Gid>",
         "R<T:Gid>"
       ],
       [
-        "16 R<T:Ety>",
+        "200006 16 R<T:Ety>",
         "R<T:Ety>"
       ],
       [
-        "17 R<T:Vec>",
+        "200006 17 R<T:Vec>",
         "R<T:Vec>"
       ],
       [
-        "18 R<T:Fct>",
+        "200006 18 R<T:Fct>",
         "R<T:Fct>"
       ],
       [
-        "19 R<T:Cfg>",
+        "200006 19 R<T:Cfg>",
         "R<T:Cfg>"
       ],
       [
-        "20 R<T:Pfb>",
+        "200006 20 R<T:Pfb>",
         "R<T:Pfb>"
       ]
     ]
@@ -275,11 +275,11 @@
     "outputs": [],
     "reflectMap": [
       [
-        "12 R<T:Int>",
+        "200007 12 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "13 R<T:Flt>",
+        "200007 13 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -295,11 +295,11 @@
     "outputs": [],
     "reflectMap": [
       [
-        "12 R<T:Int>",
+        "200008 12 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "13 R<T:Flt>",
+        "200008 13 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -315,11 +315,11 @@
     "outputs": [],
     "reflectMap": [
       [
-        "12 R<T:Int>",
+        "200009 12 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "13 R<T:Flt>",
+        "200009 13 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -335,11 +335,11 @@
     "outputs": [],
     "reflectMap": [
       [
-        "12 R<T:Int>",
+        "200010 12 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "13 R<T:Flt>",
+        "200010 13 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -357,11 +357,11 @@
     ],
     "reflectMap": [
       [
-        "30 R<T:Int>",
+        "200011 30 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "31 R<T:Flt>",
+        "200011 31 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -379,11 +379,11 @@
     ],
     "reflectMap": [
       [
-        "30 R<T:Int>",
+        "200012 30 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "31 R<T:Flt>",
+        "200012 31 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -401,11 +401,11 @@
     ],
     "reflectMap": [
       [
-        "30 R<T:Int>",
+        "200013 30 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "31 R<T:Flt>",
+        "200013 31 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -423,11 +423,11 @@
     ],
     "reflectMap": [
       [
-        "30 R<T:Int>",
+        "200014 30 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "31 R<T:Flt>",
+        "200014 31 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -443,11 +443,11 @@
     ],
     "reflectMap": [
       [
-        "32 R<T:Int>",
+        "200015 32 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "33 R<T:Flt>",
+        "200015 33 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -461,79 +461,79 @@
     ],
     "reflectMap": [
       [
-        "40 R<T:Bol>",
+        "200016 40 R<T:Bol>",
         "R<T:Bol>"
       ],
       [
-        "41 R<T:Int>",
+        "200016 41 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "42 R<T:Flt>",
+        "200016 42 R<T:Flt>",
         "R<T:Flt>"
       ],
       [
-        "43 R<T:Str>",
+        "200016 43 R<T:Str>",
         "R<T:Str>"
       ],
       [
-        "44 R<T:Gid>",
+        "200016 44 R<T:Gid>",
         "R<T:Gid>"
       ],
       [
-        "45 R<T:Ety>",
+        "200016 45 R<T:Ety>",
         "R<T:Ety>"
       ],
       [
-        "46 R<T:Vec>",
+        "200016 46 R<T:Vec>",
         "R<T:Vec>"
       ],
       [
-        "47 R<T:L<Int>>",
+        "200016 47 R<T:L<Int>>",
         "R<T:L<Int>>"
       ],
       [
-        "48 R<T:L<Str>>",
+        "200016 48 R<T:L<Str>>",
         "R<T:L<Str>>"
       ],
       [
-        "49 R<T:L<Ety>>",
+        "200016 49 R<T:L<Ety>>",
         "R<T:L<Ety>>"
       ],
       [
-        "50 R<T:L<Gid>>",
+        "200016 50 R<T:L<Gid>>",
         "R<T:L<Gid>>"
       ],
       [
-        "51 R<T:L<Flt>>",
+        "200016 51 R<T:L<Flt>>",
         "R<T:L<Flt>>"
       ],
       [
-        "52 R<T:L<Vec>>",
+        "200016 52 R<T:L<Vec>>",
         "R<T:L<Vec>>"
       ],
       [
-        "53 R<T:L<Bol>>",
+        "200016 53 R<T:L<Bol>>",
         "R<T:L<Bol>>"
       ],
       [
-        "54 R<T:Cfg>",
+        "200016 54 R<T:Cfg>",
         "R<T:Cfg>"
       ],
       [
-        "55 R<T:Pfb>",
+        "200016 55 R<T:Pfb>",
         "R<T:Pfb>"
       ],
       [
-        "56 R<T:L<Cfg>>",
+        "200016 56 R<T:L<Cfg>>",
         "R<T:L<Cfg>>"
       ],
       [
-        "57 R<T:L<Pfb>>",
+        "200016 57 R<T:L<Pfb>>",
         "R<T:L<Pfb>>"
       ],
       [
-        "58 R<T:Fct>",
+        "200016 58 R<T:Fct>",
         "R<T:Fct>"
       ]
     ]
@@ -550,39 +550,39 @@
     ],
     "reflectMap": [
       [
-        "60 R<T:Bol>",
+        "200017 60 R<T:Bol>",
         "R<T:Bol>"
       ],
       [
-        "61 R<T:Int>",
+        "200017 61 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "62 R<T:Flt>",
+        "200017 62 R<T:Flt>",
         "R<T:Flt>"
       ],
       [
-        "63 R<T:Str>",
+        "200017 63 R<T:Str>",
         "R<T:Str>"
       ],
       [
-        "64 R<T:Gid>",
+        "200017 64 R<T:Gid>",
         "R<T:Gid>"
       ],
       [
-        "65 R<T:Ety>",
+        "200017 65 R<T:Ety>",
         "R<T:Ety>"
       ],
       [
-        "66 R<T:Vec>",
+        "200017 66 R<T:Vec>",
         "R<T:Vec>"
       ],
       [
-        "67 R<T:Cfg>",
+        "200017 67 R<T:Cfg>",
         "R<T:Cfg>"
       ],
       [
-        "68 R<T:Pfb>",
+        "200017 68 R<T:Pfb>",
         "R<T:Pfb>"
       ]
     ]
@@ -596,31 +596,31 @@
     "outputs": [],
     "reflectMap": [
       [
-        "80 R<T:L<Bol>>",
+        "200018 80 R<T:L<Bol>>",
         "R<T:L<Bol>>"
       ],
       [
-        "81 R<T:L<Int>>",
+        "200018 81 R<T:L<Int>>",
         "R<T:L<Int>>"
       ],
       [
-        "82 R<T:L<Flt>>",
+        "200018 82 R<T:L<Flt>>",
         "R<T:L<Flt>>"
       ],
       [
-        "83 R<T:L<Str>>",
+        "200018 83 R<T:L<Str>>",
         "R<T:L<Str>>"
       ],
       [
-        "84 R<T:L<Gid>>",
+        "200018 84 R<T:L<Gid>>",
         "R<T:L<Gid>>"
       ],
       [
-        "85 R<T:L<Ety>>",
+        "200018 85 R<T:L<Ety>>",
         "R<T:L<Ety>>"
       ],
       [
-        "86 R<T:L<Vec>>",
+        "200018 86 R<T:L<Vec>>",
         "R<T:L<Vec>>"
       ]
     ]
@@ -635,39 +635,39 @@
     "outputs": [],
     "reflectMap": [
       [
-        "100 R<T:Bol>",
+        "200019 100 R<T:Bol>",
         "R<T:Bol>"
       ],
       [
-        "101 R<T:Int>",
+        "200019 101 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "102 R<T:Flt>",
+        "200019 102 R<T:Flt>",
         "R<T:Flt>"
       ],
       [
-        "103 R<T:Str>",
+        "200019 103 R<T:Str>",
         "R<T:Str>"
       ],
       [
-        "104 R<T:Gid>",
+        "200019 104 R<T:Gid>",
         "R<T:Gid>"
       ],
       [
-        "105 R<T:Ety>",
+        "200019 105 R<T:Ety>",
         "R<T:Ety>"
       ],
       [
-        "106 R<T:Vec>",
+        "200019 106 R<T:Vec>",
         "R<T:Vec>"
       ],
       [
-        "107 R<T:Cfg>",
+        "200019 107 R<T:Cfg>",
         "R<T:Cfg>"
       ],
       [
-        "108 R<T:Pfb>",
+        "200019 108 R<T:Pfb>",
         "R<T:Pfb>"
       ]
     ]
@@ -683,11 +683,11 @@
     ],
     "reflectMap": [
       [
-        "120 R<T:Int>",
+        "200020 120 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "121 R<T:Flt>",
+        "200020 121 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -703,11 +703,11 @@
     ],
     "reflectMap": [
       [
-        "122 R<T:Int>",
+        "200021 122 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "123 R<T:Flt>",
+        "200021 123 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -716,7 +716,7 @@
     "name": "Data Type Conversion",
     "id": 200022,
     "inputs": [
-      null,
+      "E<7>",
       "R<K>"
     ],
     "outputs": [
@@ -835,11 +835,11 @@
     ],
     "reflectMap": [
       [
-        "1011 R<T:Int>",
+        "200032 1011 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "1012 R<T:Flt>",
+        "200032 1012 R<T:Flt>",
         "R<T:Flt>"
       ]
     ]
@@ -1188,71 +1188,71 @@
     "outputs": [],
     "reflectMap": [
       [
-        "2000 R<T:Int>",
+        "200081 2000 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "2000 R<T:Str>",
+        "200081 2000 R<T:Str>",
         "R<T:Str>"
       ],
       [
-        "2000 R<T:Ety>",
+        "200081 2000 R<T:Ety>",
         "R<T:Ety>"
       ],
       [
-        "2000 R<T:Gid>",
+        "200081 2000 R<T:Gid>",
         "R<T:Gid>"
       ],
       [
-        "2000 R<T:Flt>",
+        "200081 2000 R<T:Flt>",
         "R<T:Flt>"
       ],
       [
-        "2000 R<T:Vec>",
+        "200081 2000 R<T:Vec>",
         "R<T:Vec>"
       ],
       [
-        "2000 R<T:Bol>",
+        "200081 2000 R<T:Bol>",
         "R<T:Bol>"
       ],
       [
-        "2000 R<T:L<Int>>",
+        "200081 2000 R<T:L<Int>>",
         "R<T:L<Int>>"
       ],
       [
-        "2000 R<T:L<Str>>",
+        "200081 2000 R<T:L<Str>>",
         "R<T:L<Str>>"
       ],
       [
-        "2000 R<T:L<Ety>>",
+        "200081 2000 R<T:L<Ety>>",
         "R<T:L<Ety>>"
       ],
       [
-        "2000 R<T:L<Gid>>",
+        "200081 2000 R<T:L<Gid>>",
         "R<T:L<Gid>>"
       ],
       [
-        "2000 R<T:L<Flt>>",
+        "200081 2000 R<T:L<Flt>>",
         "R<T:L<Flt>>"
       ],
       [
-        "2000 R<T:L<Vec>>",
+        "200081 2000 R<T:L<Vec>>",
         "R<T:L<Vec>>"
       ],
       [
-        "2000 R<T:L<Bol>>",
+        "200081 2000 R<T:L<Bol>>",
         "R<T:L<Bol>>"
       ],
       [
-        "2000 R<T:Cfg>",
+        "200081 2000 R<T:Cfg>",
         "R<T:Cfg>"
       ],
       [
-        "2000 R<T:Pfb>",
+        "200081 2000 R<T:Pfb>",
         "R<T:Pfb>"
       ],
       [
-        "2000 R<T:Fct>",
+        "200081 2000 R<T:Fct>",
         "R<T:Fct>"
       ]
     ]
@@ -1266,71 +1266,71 @@
     ],
     "reflectMap": [
       [
-        "1036 R<T:Int>",
+        "200082 1036 R<T:Int>",
         "R<T:Int>"
       ],
       [
-        "1036 R<T:Str>",
+        "200082 1036 R<T:Str>",
         "R<T:Str>"
       ],
       [
-        "1036 R<T:Ety>",
+        "200082 1036 R<T:Ety>",
         "R<T:Ety>"
       ],
       [
-        "1036 R<T:Gid>",
+        "200082 1036 R<T:Gid>",
         "R<T:Gid>"
       ],
       [
-        "1036 R<T:Flt>",
+        "200082 1036 R<T:Flt>",
         "R<T:Flt>"
       ],
       [
-        "1036 R<T:Vec>",
+        "200082 1036 R<T:Vec>",
         "R<T:Vec>"
       ],
       [
-        "1036 R<T:Bol>",
+        "200082 1036 R<T:Bol>",
         "R<T:Bol>"
       ],
       [
-        "1036 R<T:L<Int>>",
+        "200082 1036 R<T:L<Int>>",
         "R<T:L<Int>>"
       ],
       [
-        "1036 R<T:L<Str>>",
+        "200082 1036 R<T:L<Str>>",
         "R<T:L<Str>>"
       ],
       [
-        "1036 R<T:L<Ety>>",
+        "200082 1036 R<T:L<Ety>>",
         "R<T:L<Ety>>"
       ],
       [
-        "1036 R<T:L<Gid>>",
+        "200082 1036 R<T:L<Gid>>",
         "R<T:L<Gid>>"
       ],
       [
-        "1036 R<T:L<Flt>>",
+        "200082 1036 R<T:L<Flt>>",
         "R<T:L<Flt>>"
       ],
       [
-        "1036 R<T:L<Vec>>",
+        "200082 1036 R<T:L<Vec>>",
         "R<T:L<Vec>>"
       ],
       [
-        "1036 R<T:L<Bol>>",
+        "200082 1036 R<T:L<Bol>>",
         "R<T:L<Bol>>"
       ],
       [
-        "1036 R<T:Cfg>",
+        "200082 1036 R<T:Cfg>",
         "R<T:Cfg>"
       ],
       [
-        "1036 R<T:Pfb>",
+        "200082 1036 R<T:Pfb>",
         "R<T:Pfb>"
       ],
       [
-        "1036 R<T:Fct>",
+        "200082 1036 R<T:Fct>",
         "R<T:Fct>"
       ]
     ]

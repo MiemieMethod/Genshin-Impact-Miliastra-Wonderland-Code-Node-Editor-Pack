@@ -896,7 +896,7 @@ const enum_equal = { // TODO: Enum equal
 const type_conv =
 {
   id: 200022,
-  inputs: [null, "R<K>"],
+  inputs: ["E<7>", "R<K>"],
   outputs: ["R<V>"],
   reflectMap: [
     [130, "S<K:Int,V:Bol>"],

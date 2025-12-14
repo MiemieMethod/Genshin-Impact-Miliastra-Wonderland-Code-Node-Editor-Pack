@@ -26,14 +26,14 @@ export function assertEq<T>(target: unknown, expect: T): asserts target is T {
 }
 export function assertEqs<const T extends readonly any[]>(target: unknown, ...expects: T): asserts target is T[number] {
   if (expects.some((v) => v === target)) return;
-  console.error(target, "!=", expects);
+  console.error(target, "is not in", expects);
   throw new Error("Assertion failed");
 }
 export function assertNotEq<T, Excluded>(target: T | Excluded, exclude: Excluded): asserts target is Exclude<T | Excluded, Excluded> {
   if (target === exclude) { debugger; throw new Error(`Assert Unequal Fail: ${target} === ${exclude}`); }
 }
 export function assertNotEqs<T, const Excluded extends readonly any[]>(target: T | Excluded[number], ...excludes: Excluded): asserts target is Exclude<T | Excluded[number], Excluded[number]> {
-  if (excludes.some((v) => v === target)) { debugger; throw new Error(`Assert Unequal Fail: ${target} === ${excludes}`); }
+  if (excludes.some((v) => v === target)) { debugger; throw new Error(`Assert Unequal Fail: ${target} is in ${excludes}`); }
 }
 export function empty(v: any): v is null | undefined {
   return v === undefined || v === null;

@@ -60,7 +60,7 @@ export const ENUM_ID_CLIENT = {
   Generic: -1,
   Comparison_Operators: 0,
   Logical_Operators: 1,
-  Mathematical_Operators: 2,
+  Basic_Mathematical_Operators: 2,
   Attack_Shapes: 3,
   Survival_Status: 4,
   Sorting_Rules: 5,

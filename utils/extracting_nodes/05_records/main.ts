@@ -15,7 +15,7 @@ function combine_name_id_to_record() {
   const records: SingleNodeData[] = records_old.map(r => {
     const reflectMap = r.reflectMap.map(ref => {
       const tp = type_name.find(x => x.typeid === ref[1])!.type;
-      return [`${ref[0]} R<T:${tp}>`, `R<T:${tp}>`] as [string, string];
+      return [`${r.id} ${ref[0]} R<T:${tp}>`, `R<T:${tp}>`] as [string, string];
     });
     return {
       name: name(r.id),
