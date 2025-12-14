@@ -582,72 +582,6 @@ export const records = [
     ]
   },
   {
-    id: 200049,
-    inputs: [
-      null,
-      "R<T>",
-      "R<T>",
-      "R<T>",
-      "R<T>",
-      "R<T>",
-      "R<T>",
-      "R<T>",
-      "R<T>",
-      "R<T>",
-      "R<T>"
-    ],
-    outputs: [
-      "L<R<T>>"
-    ],
-    reflectMap: [
-      [
-        1025,
-        0,
-        0
-      ],
-      [
-        1026,
-        0,
-        1
-      ],
-      [
-        1027,
-        0,
-        2
-      ],
-      [
-        1028,
-        0,
-        3
-      ],
-      [
-        1029,
-        0,
-        4
-      ],
-      [
-        1030,
-        0,
-        5
-      ],
-      [
-        1043,
-        0,
-        6
-      ],
-      [
-        1044,
-        0,
-        7
-      ],
-      [
-        1045,
-        0,
-        8
-      ]
-    ]
-  },
-  {
     id: 200081,
     inputs: [
       null,
@@ -979,8 +913,42 @@ const type_conv =
   ]
 };
 
+const assembly_list = {
+  id: 200049,
+  inputs: [
+    null,
+    "R<T>",
+    "R<T>",
+    "R<T>",
+    "R<T>",
+    "R<T>",
+    "R<T>",
+    "R<T>",
+    "R<T>",
+    "R<T>",
+    "R<T>"
+  ],
+  outputs: [
+    "L<R<T>>"
+  ],
+  reflectMap: [
+    [1025, "S<T:Ety>"],
+    [1026, "S<T:Int>"],
+    [1027, "S<T:Bol>"],
+    [1028, "S<T:Flt>"],
+    [1029, "S<T:Str>"],
+    [1030, "S<T:Vec>"],
+    [1043, "S<T:Gid>"],
+    [1044, "S<T:Cfg>"],
+    [1045, "S<T:Pfb>"]
+  ]
+};
 
-
+export const records_special = {
+  enum_equal,
+  type_conv,
+  assembly_list
+};
 
 
 export const enums = `
