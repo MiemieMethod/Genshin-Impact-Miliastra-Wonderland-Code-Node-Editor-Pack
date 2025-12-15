@@ -2,7 +2,7 @@ import type { ClientVarType, NodeConnection, GraphNode, NodePin } from "../../pr
 import { VarBase_Class, VarBase_ItemType_ClassBase } from "../../protobuf/gia.proto.ts";
 import { collection, dir, gia, save } from "../util.ts";
 import { assert, assertDeepEq, assertEq, exclude_keys } from "../../utils.ts";
-import { is_reflect } from "../../gia_gen/nodes.ts";
+import { is_reflect, reflects } from "../../gia_gen/nodes.ts";
 
 import RECORDS from "../dist/node_records.json" with {type: "json"};
 import type_name from "../dist/type_ids.json" with { type: 'json' };
@@ -129,8 +129,8 @@ function set_var_node(type: string, index: number, connect_node: [number, number
 
 function test1(read = false) {
   const graph = gia("skill");
-  const records = RECORDS.filter(x => !x.name.startsWith("Node Graph End"));
   const nodes = graph.graph.graph?.inner.graph.nodes!;
+  const records = RECORDS.filter(x => !x.name.startsWith("Node Graph End"));
   // let nodes_read = read ? gia("all_nodes", true, true).graph.graph?.inner.graph.nodes! : [];
   let nodes_read = read ? gia("../dist/all_nodes", undefined, true).graph.graph?.inner.graph.nodes! : [];
   let y_pos = 0;
@@ -200,5 +200,35 @@ function test1(read = false) {
   }
 }
 
-test1(false);
-test1(true);
+function test2(read = false) {
+  const graph = gia("skill");
+  const nodes = graph.graph.graph?.inner.graph.nodes!;
+  const records = RECORDS.filter(x => x.reflectMap !== undefined);
+  // let nodes_read = read ? gia("all_nodes", true, true).graph.graph?.inner.graph.nodes! : [];
+  // let nodes_read = read ? gia("../dist/all_nodes", undefined, true).graph.graph?.inner.graph.nodes! : [];
+  let y_pos = 0;
+  let index = 1;
+  // let read_index = 0;
+  // let read_node = nodes[0];
+  records.slice(0, 5).forEach((rec, i) => {
+    rec.reflectMap.forEach(reflect_type => {
+      const [gid, cid, type_str] = reflect_type[0].split(" ");
+      assertEq(gid, rec.id.toString());
+      assertEq(type_str, reflect_type[1]);
+      const index0 = index++;
+      const pins: NodePin[] = [];
+      nodes.push(create_node(index0, parseInt(gid), parseInt(cid), pins, [0, y_pos]));
+      for (let i = 0; i < rec.inputs.length; i++) {
+        if (!is_reflect(rec.inputs[i])) continue;
+        const type = reflects(rec.inputs[i], type_str);
+        
+      }
+    });
+  });
+}
+
+// test1(false);
+// test1(true);
+
+test2(false);
+// test2(true);
