@@ -838,6 +838,6 @@ Hidden:
       678: Update Player Leaderboard Score
   - Trigger:
       428: When Native Custom Value Changes
-      100000: When CaIIing GM (This Node is Hidden Externally)
+      100000: When Calling GM (This Node is Hidden Externally)
   - Query:
       459: Native Query Custom Value

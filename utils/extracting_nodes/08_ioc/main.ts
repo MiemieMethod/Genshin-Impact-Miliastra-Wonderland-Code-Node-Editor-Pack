@@ -135,8 +135,9 @@ function verify_ioc_matches() {
 
 
 import IOC from "../dist/ioc.json" with {type: "json"};
-import { CONCRETE_MAP } from "../../node_data/index.ts";
-function generate_CONCRETE_MAP() {
+import { CONCRETE_MAP, ENUM_ID_CLIENT } from "../../node_data/index.ts";
+import { inspect } from "util";
+function print_CONCRETE_MAP() {
   function transpose<T>(arr: T[][]): T[][] {
     return arr[0].map((_, i) => arr.map(row => row[i]));
   }
@@ -206,7 +207,70 @@ function generate_CONCRETE_MAP() {
 
 }
 
+//  There are three types of client node id: 
+//    1. NODE_NAME: `"{GenericId}"`
+//    2. NODE_NAME__GENERIC: 
+//         - **Non-Reflective nodes**: `"{GenericId} {ConcreteId}"`
+//         - **Reflective nodes**: `"{GenericId}"`
+//    3. NODE_NAME__GENERIC__TYPE_NAME: `"{GenericId} {ConcreteId} {TypeName}"`
+function print_CLIENT_NODE_ID() {
+
+  const rep = {
+    L_: "List_",
+    D_: "Dict_",
+    S_: "Struct_",
+    Int: "Int",
+    Flt: "Float",
+    Bol: "Bool",
+    Str: "Str",
+    Vec: "Vec",
+    Gid: "GUID",
+    Ety: "Entity",
+    Pfb: "Prefab",
+    Fct: "Faction",
+    Cfg: "Config",
+  };
+
+  const cid_nr = read_json(`node_id_skill`) as any[];
+  const cid_nr2 = read_json(`node_id_int`) as any[];
+  const ret: [string, string][] = [];
+  RECORDS.forEach(rec => {
+    const NAME = rec.name.replaceAll(/[^0-9a-zA-Z]+/g, "_").replace(/^_/, "").replace(/^(?=\d)/, "_").replace(/_+$/, "");
+    const cid = cid_nr.find(x => x.gid === rec.id)?.cid ?? cid_nr2.find(x => x.gid === rec.id)?.cid;
+    if (rec.reflectMap === undefined) {
+      assert(cid !== undefined);
+      ret.push([NAME, rec.id.toString()]);
+      ret.push([NAME + "__Generic", `${rec.id} ${cid}`]);
+    } else {
+      assert(cid === undefined);
+      ret.push([NAME + "__Generic", `${rec.id}`]);
+      rec.reflectMap.forEach(ref => {
+        const [gid, , tp] = ref[0].split(" ");
+        assertEq(gid, rec.id.toString());
+        assertEq(tp, ref[1]);
+        const t = parse(ref[1]);
+        assert(t.t === "s");
+        let str = t.f.map(x => stringify(x[1])).join(",").replaceAll(/[^0-9A-Za-z]+/gs, "_").replace(/^_/, "").replace(/_$/, "");
+        Object.entries(rep).forEach(([k, v]) => {
+          str = str.replaceAll(k, v);
+        })
+        if (rec.name === "Enumeration Match") {
+          const tp = parse(ref[1]);
+          assertEq(tp.t, "s");
+          const e = tp.f[0][1];
+          assertEq(e.t, "e")
+          str = Object.entries(ENUM_ID_CLIENT).find(x => x[1] === e.e)![0];
+        }
+        ret.push([NAME + "__" + str, ref[0]]);
+      });
+    }
+  });
+  // console.log(ret);
+  save("CLIENT_NODE_ID.js", "const CLIENT_NODE_ID = " + inspect(Object.fromEntries(ret)));
+}
+
 // generateAllRefs();
 // verify_ioc_matches();
 
-generate_CONCRETE_MAP();
+// print_CONCRETE_MAP();
+print_CLIENT_NODE_ID();

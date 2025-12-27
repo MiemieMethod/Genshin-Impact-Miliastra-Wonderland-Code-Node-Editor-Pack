@@ -40,6 +40,7 @@ interface NodeEntry extends Entry {
   Family: string;                     // Family(sub-class) of the node
   Inputs: string[];                   // List of Input parameter types of the node
   Outputs: string[];                  // List of Output parameter types of the node
+  ConcreteID?: number;                // Concrete id for non-reflective nodes (different from ID for client)
   TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic.
 }
 interface EnumEntry extends Entry {

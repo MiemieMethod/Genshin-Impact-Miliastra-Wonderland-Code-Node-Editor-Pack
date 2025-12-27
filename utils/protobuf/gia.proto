@@ -164,8 +164,8 @@ message NodeGraph {
   repeated GraphVariable graphValues = 6;
   repeated GraphAffiliation affiliations = 7;
 
-  optional int32 ioNodeIndex = 100; // index of Node Graph Start/End(Int/Bool)
-  optional float xxxx = 101;        // 0.3 for Bool/Int Filter
+  optional int32 xxx = 100;  // always 1, not sure what it is
+  optional float xxxx = 101; // 0.3 for Bool/Int Filter
 }
 
 message Comments {

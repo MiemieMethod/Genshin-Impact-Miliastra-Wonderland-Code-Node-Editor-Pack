@@ -25,7 +25,6 @@ export interface NodePinsRecords {
 
 export interface SingleNodeData extends NodePinsRecords {
   name?: string;
-  category?: string;
 }
 
 export const NODE_PIN_RECORDS = [
@@ -6064,7 +6063,7 @@ export const NODE_PIN_RECORDS = [
     ],
   },
   {
-    name: "When CaIIing GM (This Node is Hidden Externally)",
+    name: "When Calling GM (This Node is Hidden Externally)",
     id: 100000,
     inputs: [],
     outputs: ["Ety", "Gid", "Int", "Int", "Str", "Str"],
@@ -6099,7 +6098,19 @@ export const NODE_PIN_RECORDS = [
     inputs: [],
     outputs: [],
   },
-] as const satisfies SingleNodeData[];
+] as const satisfies (SingleNodeData & { reflectMap?: NodeReflectRecords[] })[];
+
+export const NODE_PIN_RECORDS_CLIENT = [
+  { name: "Print String", id: 1, inputs: ["Str"], outputs: [] },
+  { name: "Double Branch", id: 2, inputs: ["Bol"], outputs: [] },
+  {
+    name: "Multiple Branches",
+    id: 3,
+    inputs: ["R<T>", "L<R<T>>"],
+    outputs: [],
+    reflectMap: [["3", "S<T:Int>"], ["", "S<T:Str>"]],
+  },
+] as const satisfies (SingleNodeData & { reflectMap?: NodeReflectRecordsClient[] })[];
 
 if (import.meta.main) {
   const set = new Set();
