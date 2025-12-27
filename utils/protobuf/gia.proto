@@ -1,5 +1,5 @@
 syntax = "proto3";
-// @version: 1.5.0
+// @version: 1.5.1
 // package gia;
 
 message Root {
@@ -164,8 +164,8 @@ message NodeGraph {
   repeated GraphVariable graphValues = 6;
   repeated GraphAffiliation affiliations = 7;
 
-  optional int32 xxx = 100;
-  optional float xxxx = 101;
+  optional int32 ioNodeIndex = 100; // index of Node Graph Start/End(Int/Bool)
+  optional float xxxx = 101;        // 0.3 for Bool/Int Filter
 }
 
 message Comments {
@@ -433,7 +433,12 @@ message GraphNode {
   float x = 5;                          // xpos
   float y = 6;                          // ypos
   optional Comments comments = 7;       // comments
+  optional Input input = 8;             // Only in client filter Nodes
   repeated GraphAffiliation.Info usingStruct = 10;
+
+  message Input {
+    int32 xxx = 1; // 6
+  }
 }
 
 message NodeProperty {
