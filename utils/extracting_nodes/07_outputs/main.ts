@@ -81,6 +81,13 @@ function read_output_links() {
         assertEq(c.id % 100, 0);
         const index = c.id / 100 - 1;
         const type = type_name.find(t => t.typeid === p.type)!.type;
+        if (RECORDS[index].outputs[c.connect.index]?.startsWith("R<")) {
+          return;
+        }
+        if (RECORDS[index].outputs[c.connect.index]?.startsWith("L<R<")) {
+          return;
+        }
+        assertEq(RECORDS[index].outputs[c.connect.index], undefined);
         RECORDS[index].outputs[c.connect.index] = type;
       })
     })

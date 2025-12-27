@@ -387,7 +387,7 @@
       "R<T>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -409,7 +409,7 @@
       "R<T>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -431,7 +431,7 @@
       "R<T>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -453,7 +453,7 @@
       "R<T>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -473,7 +473,7 @@
       "R<T>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -494,7 +494,7 @@
       "Str"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -583,7 +583,7 @@
       "L<R<T>>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -720,7 +720,7 @@
       "L<R<T>>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -740,7 +740,7 @@
       "L<R<T>>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -761,7 +761,7 @@
       "R<K>"
     ],
     "outputs": [
-      "Int"
+      "R<V>"
     ],
     "reflectMap": [
       [
@@ -907,7 +907,7 @@
       "R<T>"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [
@@ -1093,7 +1093,7 @@
       "R<T>"
     ],
     "outputs": [
-      "L<Int>"
+      "L<R<T>>"
     ],
     "reflectMap": [
       [
@@ -1640,7 +1640,7 @@
       "Str"
     ],
     "outputs": [
-      "Int"
+      "R<T>"
     ],
     "reflectMap": [
       [

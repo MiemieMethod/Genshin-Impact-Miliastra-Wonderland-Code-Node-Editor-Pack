@@ -131,8 +131,8 @@ function test1(read = false) {
   const graph = gia("skill");
   const nodes = graph.graph.graph?.inner.graph.nodes!;
   const records = RECORDS.filter(x => !x.name.startsWith("Node Graph End"));
-  // let nodes_read = read ? gia("all_nodes", true, true).graph.graph?.inner.graph.nodes! : [];
-  let nodes_read = read ? gia("../dist/all_nodes", undefined, true).graph.graph?.inner.graph.nodes! : [];
+  let nodes_read = read ? gia("all_nodes", true, true).graph.graph?.inner.graph.nodes! : [];
+  // let nodes_read = read ? gia("../dist/all_nodes", undefined, true).graph.graph?.inner.graph.nodes! : [];
   let y_pos = 0;
   let index = 1;
   let read_index = 0;
@@ -193,7 +193,7 @@ function test1(read = false) {
     y_pos += 100 + 30 * rec.inputs.length;
   });
   if (!read) {
-    save("all_nodes.gia", graph, false);
+    save("all_nodes.gia", graph, true);
     console.log("all_nodes.gia saved with", nodes.length, "nodes");
   } else {
     console.log("all_nodes.gia verified with", nodes.length, "nodes");
@@ -221,14 +221,14 @@ function test2(read = false) {
       for (let i = 0; i < rec.inputs.length; i++) {
         if (!is_reflect(rec.inputs[i])) continue;
         const type = reflects(rec.inputs[i], type_str);
-        
+
       }
     });
   });
 }
 
-// test1(false);
+test1(false);
 // test1(true);
 
-test2(false);
+// test2(false);
 // test2(true);

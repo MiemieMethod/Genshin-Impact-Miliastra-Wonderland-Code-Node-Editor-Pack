@@ -1,3 +1,6 @@
+import { ENUM_ID_CLIENT } from "../../node_data/index.ts";
+
+// ref map: cid, type, ioc 
 export const records = [
   {
     id: 200006,
@@ -950,6 +953,32 @@ export const records_special = {
   assembly_list
 };
 
+
+
+export function get_index_of_concrete(gid_cid_type: string): number;
+export function get_index_of_concrete(gid: number, cid: number, type?: string): number;
+export function get_index_of_concrete(gid: number | string, cid?: number, type?: string): number {
+  if (typeof gid === "string") {
+    const x = gid.split(" ");
+    gid = parseInt(x[0]);
+    cid = parseInt(x[1]);
+    type = x[2];
+  }
+  const rec = records.find(r => r.id === gid);
+  if (rec === undefined) {
+    switch (gid) {
+      case enum_equal.id:
+        return parseInt(type!.slice(2, -1));
+      case type_conv.id:
+        return type_conv.reflectMap.findIndex(z => z[1] === type!.toString());
+      case assembly_list.id:
+        return assembly_list.reflectMap.findIndex(z => z[0] === cid);
+    }
+    throw new Error("Invalid record");
+  }
+  const ref = rec.reflectMap.find(x => x[0] === cid)!;
+  return ref[2];
+}
 
 export const enums = `
 Generic
