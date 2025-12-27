@@ -52,7 +52,6 @@ export const ENUM_ID = {
 } as const satisfies { [key: string]: number };
 export type EnumId = (typeof ENUM_ID)[keyof typeof ENUM_ID];
 
-
 /** Also used as EnumEqual IndexOfConcrete in client
  * 🟨 Be careful, the enum IoC somehow has a 1 offset for most of the values
  */
@@ -60,7 +59,7 @@ export const ENUM_ID_CLIENT = {
   Generic: -1,
   Comparison_Operators: 0,
   Logical_Operators: 1,
-  Mathematical_Operators: 2,
+  Basic_Mathematical_Operators: 2,
   Attack_Shapes: 3,
   Survival_Status: 4,
   Sorting_Rules: 5,
@@ -100,6 +99,10 @@ export const ENUM_ID_CLIENT = {
   Target_Type_For_Camera_Orientation_Node: 39,
   Scan_Status: 40,
   Input_Device_Type: 41,
+
+  /** Be careful. the following ids are not verified */
+  Trigger_Restriction: 1042,
+
 } as const satisfies { [key: string]: number };
 export type EnumIdClient = (typeof ENUM_ID_CLIENT)[keyof typeof ENUM_ID_CLIENT];
 
@@ -334,6 +337,7 @@ export const ENUM_VALUE = {
   AttackLayerConfig_OnlyOnHitHurtbox: 2601,
   AttackLayerConfig_OnlyOnHitScene: 2602,
   AttackLayerConfig_HitAll: 2604,
+  AttackLayerConfig_ObjectSelfCollision: 2605,
   KnockbackDirectionType_LineConnectingAttackerAndHitPoint: 2501,
   KnockbackDirectionType_HitboxOnHitDirection: 2502,
   KnockbackDirectionType_LineConnectingAttackersOwnerAndHitPoint: 2503,
@@ -359,6 +363,7 @@ export const ENUM_VALUE = {
   HitLevel_KnockbackHit: 3903,
   HitLevel_Launch: 3904,
   FilterReturnType_ReturnBoolean: 1000010,
+  FilterReturnType_ReturnDefault: 1000011,
   FilterReturnType_ReturnInteger: 10000011,
   TargetTypeForCameraOrientationNode_DontFindTarget: 2000,    // Same to what 'TargetType' is in server
   TargetTypeForCameraOrientationNode_AlliedFaction: 2001,   // Same to what 'TargetType' is in server

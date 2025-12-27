@@ -1,7 +1,7 @@
 
 
 import { CONCRETE_MAP } from "./concrete_map.ts";
-import { ENUM_ID, ENUM_VALUE } from "./enum_id.ts";
+import { ENUM_ID, ENUM_VALUE, ENUM_ID_CLIENT } from "./enum_id.ts";
 import { TYPES_LIST } from "./types_list.ts";
 import { NODE_ID } from "./node_id.ts";
 
@@ -22,6 +22,9 @@ export {
   CONCRETE_MAP,
   ENUM_ID,
   ENUM_VALUE,
+  ENUM_ID_CLIENT,
   TYPES_LIST,
   NODE_ID,
 };
+
+export { DATA } from "./data.ts";
