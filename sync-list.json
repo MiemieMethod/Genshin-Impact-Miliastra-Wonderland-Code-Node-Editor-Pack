@@ -1,6 +1,6 @@
 {
   "commitMessage": "fix tests",
-  "notSync": false,
+  "notSync": true,
   "include": [
     "*",
     "docs/**",

@@ -123,6 +123,8 @@ export interface NodeBody_ {
   x: number;
   /** Y 坐标 */
   y: number;
+  /** 是否抖动位置 */
+  pos_jitter?: boolean;
   /** 节点的引脚列表 */
   pins: NodePin[];
   /** ⚠️ Warning: This may cause ID collision. 节点唯一索引，不建议填入 */
@@ -164,8 +166,8 @@ export function node_body(body: NodeBody_): GraphNode {
     },
     pins: body.pins,
     comments: body.comment,
-    x: body.x * 300 + Math.random() * 10, // shakings
-    y: body.y * 200 + Math.random() * 10, // shakings
+    x: body.x * 300 + (body.pos_jitter ?? true ? Math.random() * 20 : 0), // shakings
+    y: body.y * 200 + (body.pos_jitter ?? true ? Math.random() * 20 : 0), // shakings
     usingStruct: [],
   };
   return node;
@@ -469,12 +471,12 @@ export function list_pin_body(body: ListPinBody_): NodePin {
  * @param val 整数值
  * @returns VarBase
  */
-export function int_pin_body(val: number): VarBase {
+export function int_pin_body(val?: number): VarBase {
   return {
     class: VarBase_Class.IntBase,
     alreadySetVal: true,
     itemType: item_type(VarType.Integer),
-    bInt: { val },
+    bInt: val === undefined ? undefined : { val },
   };
 }
 /**
@@ -486,12 +488,12 @@ export function int_pin_body(val: number): VarBase {
  * @param val 布尔或 0/1
  * @returns VarBase
  */
-export function bool_pin_body(val: number | boolean): VarBase {
+export function bool_pin_body(val?: boolean | number): VarBase {
   return {
     class: VarBase_Class.EnumBase,
     alreadySetVal: true,
     itemType: item_type(VarType.Boolean),
-    bEnum: { val: val ? 1 : 0 },
+    bEnum: val === undefined ? undefined : { val: val ? 1 : 0 },
   };
 }
 /**
@@ -506,14 +508,14 @@ export function bool_pin_body(val: number | boolean): VarBase {
  * @returns VarBase
  */
 export function id_pin_body(
-  val: number,
+  val?: number,
   type: VarType = VarType.GUID,
 ): VarBase {
   return {
     class: VarBase_Class.IdBase,
     alreadySetVal: true,
     itemType: item_type(type),
-    bId: { val },
+    bId: val === undefined ? undefined : { val },
   };
 }
 /**
@@ -525,12 +527,12 @@ export function id_pin_body(
  * @param val 浮点数
  * @returns VarBase
  */
-export function float_pin_body(val: number): VarBase {
+export function float_pin_body(val?: number): VarBase {
   return {
     class: VarBase_Class.FloatBase,
     alreadySetVal: true,
     itemType: item_type(VarType.Float),
-    bFloat: { val },
+    bFloat: val === undefined ? undefined : { val },
   };
 }
 /**
@@ -542,12 +544,12 @@ export function float_pin_body(val: number): VarBase {
  * @param val 字符串
  * @returns VarBase
  */
-export function string_pin_body(val: string): VarBase {
+export function string_pin_body(val?: string): VarBase {
   return {
     class: VarBase_Class.StringBase,
     alreadySetVal: true,
     itemType: item_type(VarType.String),
-    bString: { val },
+    bString: val === undefined ? undefined : { val },
   };
 }
 /**
@@ -559,56 +561,56 @@ export function string_pin_body(val: string): VarBase {
  * @param vec 向量 [x,y,z]
  * @returns VarBase
  */
-export function vector_pin_body(vec: number[]): VarBase {
+export function vector_pin_body(vec?: number[]): VarBase {
   return {
     class: VarBase_Class.VectorBase,
     alreadySetVal: true,
     itemType: item_type(VarType.Vector),
-    bVector: {
+    bVector: vec === undefined ? {} as any : {
       val: {
-        x: vec?.[0],
-        y: vec?.[1],
-        z: vec?.[2],
+        x: vec[0],
+        y: vec[1],
+        z: vec[2],
       },
     },
   };
 }
 
-export function simple_value_var(var_type: VarType, value?: AnyType, non_zero: boolean = false): VarBase {
+export function simple_value_var(var_type: VarType, value?: AnyType, fill_undefined?: number): VarBase {
   switch (var_type) {
     case VarType.EnumItem:
       assert(value === undefined || typeof value === "number");
-      return enum_value({ value: value ?? (non_zero ? 1 : 0) });
+      return enum_value({ value: value ?? (fill_undefined as any) });
     case VarType.Integer:
       assert(value === undefined || typeof value === "number");
-      return int_pin_body(value ?? (non_zero ? 1 : 0));
+      return int_pin_body(value ?? fill_undefined);
     case VarType.GUID:
     case VarType.Configuration:
     case VarType.Entity:
     case VarType.Faction:
     case VarType.Prefab:
       assert(value === undefined || typeof value === "number");
-      return id_pin_body(value ?? (non_zero ? 1 : 0));
+      return id_pin_body(value ?? fill_undefined);
     case VarType.Boolean:
       assert(value === undefined || typeof value === "boolean" || typeof value === "number");
-      return bool_pin_body(value ?? false);
+      return bool_pin_body(value ?? fill_undefined);
     case VarType.Float:
       assert(value === undefined || typeof value === "number");
-      return float_pin_body(value ?? (non_zero ? 1 : 0));
+      return float_pin_body(value ?? fill_undefined);
     case VarType.String:
       assert(value === undefined || typeof value === "string");
-      return string_pin_body(value ?? (non_zero ? "1" : ""));
+      return string_pin_body(value ?? fill_undefined?.toString());
     case VarType.Vector:
       assert(
         value === undefined ||
         (Array.isArray(value) && value.length == 3 && value.every((v) => typeof v === "number"))
       );
-      return vector_pin_body(value ?? (non_zero ? [1, 1, 1] : [0, 0, 0]));
+      return vector_pin_body(value ?? (fill_undefined === undefined ? undefined : [fill_undefined, fill_undefined, fill_undefined]));
   }
   return todo("Not implemented AnyPinBody for type " + var_type);
 }
 
-export function all_value_var(var_type: NodeType, value?: AnyType, non_zero: boolean = false): VarBase {
+export function all_value_var(var_type: NodeType, value?: AnyType, fill_undefined?: number): VarBase {
   const id = get_id(var_type) as VarType;
   switch (id) {
     case VarType.EnumItem:
@@ -622,7 +624,7 @@ export function all_value_var(var_type: NodeType, value?: AnyType, non_zero: boo
     case VarType.Float:
     case VarType.String:
     case VarType.Vector:
-      return simple_value_var(id, value, non_zero);
+      return simple_value_var(id, value, fill_undefined);
   }
   if (var_type.t === "l") {
     const ret: VarBase = {
@@ -686,8 +688,8 @@ export interface NodeTypePinBody_ {
   indexOfConcrete?: number;
   /** 引脚的初始值，可选，不同类型对应不同值结构 */
   value?: AnyType;
-  /** 对基本类型填入非空的值 1 */
-  non_zero?: boolean;
+  /** 对空的基本类型填入非空的填入 number */
+  fill_undefined?: number;
   /** 上游连接引脚 */
   connects?: NodeConnection[];
   /** 下游连接节点 */
@@ -775,7 +777,7 @@ export function node_type_pin_body(body: NodeTypePinBody_): NodePin {
         connects: body.connects,
       });
   }
-  const value = all_value_var(body.type, body.value, body.non_zero);
+  const value = body.kind === 3 ? all_value_var(body.type, body.value, body.fill_undefined) : undefined;
   if (body.reflective === true) {
     return pin_body({
       kind: body.kind,

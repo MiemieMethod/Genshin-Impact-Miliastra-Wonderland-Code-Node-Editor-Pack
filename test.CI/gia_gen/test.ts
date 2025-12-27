@@ -1,4 +1,7 @@
+import { writeFileSync } from "fs";
 import { Graph, NODE_ID, encode_gia_file } from "../../utils/index.ts";
+import { assertDeepEq, assertEq, exclude_keys } from "../../utils/utils.ts";
+import { inspect } from "util";
 
 const DSL = `
 [OnTab()[source=src, tab_id=id]].Switch(tab_id)(
@@ -92,8 +95,40 @@ function createGraph() {
 
   // auto analysis layout
   graph.autoLayout(1, 2);
+
+  const encoded = graph.encode({ pos_jitter: false, fill_undefined: 2 });
+  const decode = Graph.decode(encoded);
+  const encoded2 = decode.encode({ pos_jitter: false });
+  const decode2 = Graph.decode(encoded2);
+
+  const graph_trim = exclude_keys(graph, ["nodes", "set", "record"]);
+  // const graph_trim = exclude_keys(graph, ["connects", "set", "to", "pins", "array", "value"], ["nodes", "set", "record"]);
+  graph_trim.connects = new Set([...graph_trim.connects].sort((a, b) => a.from.node_index - b.from.node_index || a.to.node_index - b.to.node_index));
+
+  const decode_trim = exclude_keys(decode, ["nodes", "set", "record"]);
+  // const decode_trim = exclude_keys(decode, ["connects", "set", "to", "pins", "array", "value"], ["nodes", "set", "record"]);
+  decode_trim.connects = new Set([...decode_trim.connects].sort((a, b) => a.from.node_index - b.from.node_index || a.to.node_index - b.to.node_index));
+
+  writeFileSync("./dist/graph.cs", inspect(graph_trim, { depth: Infinity }));
+  writeFileSync("./dist/decode.cs", inspect(decode_trim, { depth: Infinity }));
+  writeFileSync("./dist/encode.cs", inspect(encoded, { depth: Infinity }));
+  // writeFileSync("./dist/encode2.cs", inspect(encode2, { depth: Infinity }));
+
+  assertDeepEq(encoded, encoded2);
+  assertDeepEq(decode, decode2);
+  // assertDeepEq(graph_trim, decode_trim);
+
+  /** graph --> encoded --> decode --> encoded2 --> decode2
+   * 
+   * Encode and Decode is Stable:
+   * - encoded === encoded2
+   * - decode === decode2
+   * Encode and Decode is lossless:
+   * - graph.sort() === decode.sort()
+  */
   encode_gia_file("./dist/GeneratedGraph.gia", graph.encode());
-  console.log("Saved to `./dist/GeneratedGraph.gia`")
+  console.log("Saved to `./dist/GeneratedGraph.gia`");
+
 }
 
 if (import.meta.main) {
