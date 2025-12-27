@@ -5,7 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 import { readFileSync } from "fs";
 import { exit } from "process";
 
-const notSync = JSON.parse(readFileSync(path.join(process.cwd(), "sync-list.json"), "utf-8")).notSync;
+const notSync = JSON.parse(readFileSync(path.join(process.cwd(), "dev", "sync-list.json"), "utf-8")).notSync;
 if (notSync === true) {
   console.log("Sync is disabled, skip translation.");
   exit(0);
