@@ -1,9 +1,9 @@
 {
-  "Version": "1.6.0",
+  "Version": "2.0.0",
   "Author": "Aluria",
-  "Date": "Sat Dec 06 2025 23:00:55 GMT+0800 (中国标准时间)",
+  "Date": "Sat Dec 27 2025 14:55:30 GMT+0800 (中国标准时间)",
   "Description": "This document contains all necessary information for this project, including types, nodes, and enums.",
-  "Schema": "// ====== Begin of Document Schema ====== //\ninterface Document {\n  Version: string;\n  Author: string;\n  Date: string;\n  Description: string;\n  Schema: string;\n  TypesList: TypeEntry[];\n  NodesList: NodeEntry[];\n  EnumList: EnumEntry[];\n  ClientEnumList: EnumEntry[];\n}\ninterface Entry {\n  Name: string;               // Safe name used as object keys or query keys\n  Translations: Translations; // Raw texts displayed in game\n  ID: number;                 // An in-game unique id of the entry\n}\ninterface TypeEntry extends Entry {\n  ClientID: number | null;    // An in-game unique id of the any type in client \n  Expression: string;         // Static representation expression for convertor\n  DSLName: string;            // Name of var class(type) in DSL\n  BaseType: string;           // Base type of the entry in game runtime\n  BaseTypeID: number;         // Id of the base type\n}\ninterface NodeEntry extends Entry {\n  Type: \"Simple\" | \"Generic\";         // Whether a node is fixed-defined or generic-defined \n  Range: \"Server\" | \"Client\";         // The applicable range of the node\n  Class: typeof NodeClasses[number];  // The class of the node\n  Family: string;                     // Family(sub-class) of the node\n  Inputs: string[];                   // List of Input parameter types of the node\n  Outputs: string[];                  // List of Output parameter types of the node\n  TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic. \n}\ninterface EnumEntry extends Entry {\n  Items: EnumItem[];  // List of Enum items of current enum\n}\ninterface TypeMapping {\n  ConcreteId: number;                         // Id of this concrete type\n  Type: string;                               // Type mapping rules of this concrete type\n  InputsIndexOfConcrete: (number | null)[];   // List of Input parameters' index of concrete\n  OutputsIndexOfConcrete: (number | null)[];  // List of Output parameters' index of concrete\n}\ninterface EnumItem extends Entry {\n}\nconst NodeClasses = [\"Execution\", \"Trigger\", \"Control\", \"Query\", \"Arithmetic\", \"Hidden\"] as const;\nconst Language = [\"cs\", \"de\", \"es\", \"en\", \"fr\", \"it\", \"ja\", \"ko\", \"pl\", \"pt-BR\", \"ru\", \"tr\", \"zh-Hans\", \"zh-Hant\"] as const;\ntype Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages\n// ====== End of Document Schema ====== //\n",
+  "Schema": "// ====== Begin of Document Schema ====== //\ninterface Document {\n  Version: string;\n  Author: string;\n  Date: string;\n  Description: string;\n  Schema: string;\n  TypesList: TypeEntry[];\n  NodesList: NodeEntry[];\n  EnumList: EnumEntry[];\n  ClientEnumList: EnumEntry[];\n}\ninterface Entry {\n  Name: string;               // Safe name used as object keys or query keys\n  Translations: Translations; // Raw texts displayed in game\n  ID: number;                 // An in-game unique id of the entry\n}\ninterface TypeEntry extends Entry {\n  ClientID: number | null;    // An in-game unique id of the any type in client \n  Expression: string;         // Static representation expression for convertor\n  DSLName: string;            // Name of var class(type) in DSL\n  BaseType: string;           // Base type of the entry in game runtime\n  BaseTypeID: number;         // Id of the base type\n}\ninterface NodeEntry extends Entry {\n  Type: \"Simple\" | \"Generic\";         // Whether a node is fixed-defined or generic-defined \n  Range: \"Server\" | \"Client\";         // The applicable range of the node\n  Class: typeof NodeClasses[number];  // The class of the node\n  Family: string;                     // Family(sub-class) of the node\n  Inputs: string[];                   // List of Input parameter types of the node\n  Outputs: string[];                  // List of Output parameter types of the node\n  ConcreteID?: number;                // Concrete id for non-reflective nodes (different from ID in Client Graph)\n  TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic.\n}\ninterface EnumEntry extends Entry {\n  Items: EnumItem[];  // List of Enum items of current enum\n}\ninterface TypeMapping {\n  ConcreteId: number;                         // Id of this concrete type\n  Type: string;                               // Type mapping rules of this concrete type\n  InputsIndexOfConcrete: (number | null)[];   // List of Input parameters' index of concrete\n  OutputsIndexOfConcrete: (number | null)[];  // List of Output parameters' index of concrete\n}\ninterface EnumItem extends Entry {\n}\nconst NodeClasses = [\"Execution\", \"Trigger\", \"Control\", \"Query\", \"Arithmetic\", \"Hidden\"] as const;\nconst Language = [\"cs\", \"de\", \"es\", \"en\", \"fr\", \"it\", \"ja\", \"ko\", \"pl\", \"pt-BR\", \"ru\", \"tr\", \"zh-Hans\", \"zh-Hant\"] as const;\ntype Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages\n// ====== End of Document Schema ====== //\n",
   "TypesList": [
     {
       "Name": "Entity",
@@ -191,7 +191,7 @@
         "en": "Local Variable"
       },
       "ID": 16,
-      "ClientID": 17,
+      "ClientID": 22,
       "Expression": "E<1016>",
       "DSLName": "Entity",
       "BaseType": "Unknown",
@@ -343,7 +343,7 @@
       "Type": "Simple",
       "Range": "Server",
       "Class": "Control",
-      "Family": "Branches",
+      "Family": "General",
       "Inputs": [
         "Bol"
       ],
@@ -358,7 +358,7 @@
       "Type": "Generic",
       "Range": "Server",
       "Class": "Control",
-      "Family": "Branches",
+      "Family": "General",
       "Inputs": [
         "R<T>",
         "L<R<T>>"
@@ -54448,6 +54448,4665 @@
       ]
     },
     {
+      "Name": "Node_Graph_End_Boolean",
+      "Translations": {
+        "en": "Node Graph End (Boolean)"
+      },
+      "ID": 200000,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Others",
+      "Family": "I. General",
+      "Inputs": [
+        "Bol",
+        "E<38>"
+      ],
+      "Outputs": [],
+      "ConcreteID": 0
+    },
+    {
+      "Name": "Logical_AND_Operation",
+      "Translations": {
+        "en": "Logical AND Operation"
+      },
+      "ID": 200001,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Bol",
+        "Bol"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "ConcreteID": 1
+    },
+    {
+      "Name": "Logical_OR_Operation",
+      "Translations": {
+        "en": "Logical OR Operation"
+      },
+      "ID": 200002,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Bol",
+        "Bol"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "ConcreteID": 2
+    },
+    {
+      "Name": "Logical_NOT_Operation",
+      "Translations": {
+        "en": "Logical NOT Operation"
+      },
+      "ID": 200003,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Bol"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "ConcreteID": 3
+    },
+    {
+      "Name": "Logical_XOR_Operation",
+      "Translations": {
+        "en": "Logical XOR Operation"
+      },
+      "ID": 200004,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Bol",
+        "Bol"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "ConcreteID": 4
+    },
+    {
+      "Name": "Enumeration_Match",
+      "Translations": {
+        "en": "Enumeration Match"
+      },
+      "ID": 200005,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "I. General",
+      "Inputs": [
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<-1>>",
+          "InputsIndexOfConcrete": [
+            -1,
+            -1
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<0>>",
+          "InputsIndexOfConcrete": [
+            0,
+            0
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<1>>",
+          "InputsIndexOfConcrete": [
+            1,
+            1
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<2>>",
+          "InputsIndexOfConcrete": [
+            2,
+            2
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<3>>",
+          "InputsIndexOfConcrete": [
+            3,
+            3
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<4>>",
+          "InputsIndexOfConcrete": [
+            4,
+            4
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<5>>",
+          "InputsIndexOfConcrete": [
+            5,
+            5
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<6>>",
+          "InputsIndexOfConcrete": [
+            6,
+            6
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<7>>",
+          "InputsIndexOfConcrete": [
+            7,
+            7
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<8>>",
+          "InputsIndexOfConcrete": [
+            8,
+            8
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<9>>",
+          "InputsIndexOfConcrete": [
+            9,
+            9
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<10>>",
+          "InputsIndexOfConcrete": [
+            10,
+            10
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<11>>",
+          "InputsIndexOfConcrete": [
+            11,
+            11
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<12>>",
+          "InputsIndexOfConcrete": [
+            12,
+            12
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<13>>",
+          "InputsIndexOfConcrete": [
+            13,
+            13
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<14>>",
+          "InputsIndexOfConcrete": [
+            14,
+            14
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<15>>",
+          "InputsIndexOfConcrete": [
+            15,
+            15
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<16>>",
+          "InputsIndexOfConcrete": [
+            16,
+            16
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<17>>",
+          "InputsIndexOfConcrete": [
+            17,
+            17
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<18>>",
+          "InputsIndexOfConcrete": [
+            18,
+            18
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<19>>",
+          "InputsIndexOfConcrete": [
+            19,
+            19
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<20>>",
+          "InputsIndexOfConcrete": [
+            20,
+            20
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<21>>",
+          "InputsIndexOfConcrete": [
+            21,
+            21
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<22>>",
+          "InputsIndexOfConcrete": [
+            22,
+            22
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<23>>",
+          "InputsIndexOfConcrete": [
+            23,
+            23
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<24>>",
+          "InputsIndexOfConcrete": [
+            24,
+            24
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<25>>",
+          "InputsIndexOfConcrete": [
+            25,
+            25
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<26>>",
+          "InputsIndexOfConcrete": [
+            26,
+            26
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<27>>",
+          "InputsIndexOfConcrete": [
+            27,
+            27
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<28>>",
+          "InputsIndexOfConcrete": [
+            28,
+            28
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<29>>",
+          "InputsIndexOfConcrete": [
+            29,
+            29
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<30>>",
+          "InputsIndexOfConcrete": [
+            30,
+            30
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<31>>",
+          "InputsIndexOfConcrete": [
+            31,
+            31
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<32>>",
+          "InputsIndexOfConcrete": [
+            32,
+            32
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<33>>",
+          "InputsIndexOfConcrete": [
+            33,
+            33
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<7>>",
+          "InputsIndexOfConcrete": [
+            7,
+            7
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<35>>",
+          "InputsIndexOfConcrete": [
+            35,
+            35
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<36>>",
+          "InputsIndexOfConcrete": [
+            36,
+            36
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<37>>",
+          "InputsIndexOfConcrete": [
+            37,
+            37
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<38>>",
+          "InputsIndexOfConcrete": [
+            38,
+            38
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<39>>",
+          "InputsIndexOfConcrete": [
+            39,
+            39
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<40>>",
+          "InputsIndexOfConcrete": [
+            40,
+            40
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 10,
+          "Type": "S<T:E<41>>",
+          "InputsIndexOfConcrete": [
+            41,
+            41
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Equal",
+      "Translations": {
+        "en": "Equal"
+      },
+      "ID": 200006,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "I. General",
+      "Inputs": [
+        "E<0>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 11,
+          "Type": "S<T:Bol>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 12,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 13,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            2,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 14,
+          "Type": "S<T:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            3,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 15,
+          "Type": "S<T:Gid>",
+          "InputsIndexOfConcrete": [
+            null,
+            4,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 16,
+          "Type": "S<T:Ety>",
+          "InputsIndexOfConcrete": [
+            null,
+            5,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 17,
+          "Type": "S<T:Vec>",
+          "InputsIndexOfConcrete": [
+            null,
+            6,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 18,
+          "Type": "S<T:Fct>",
+          "InputsIndexOfConcrete": [
+            null,
+            7,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 19,
+          "Type": "S<T:Cfg>",
+          "InputsIndexOfConcrete": [
+            null,
+            8,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 20,
+          "Type": "S<T:Pfb>",
+          "InputsIndexOfConcrete": [
+            null,
+            9,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Greater_Than",
+      "Translations": {
+        "en": "Greater Than"
+      },
+      "ID": 200007,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<0>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 12,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 13,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Less_Than",
+      "Translations": {
+        "en": "Less Than"
+      },
+      "ID": 200008,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<0>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 12,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 13,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Less_Than_or_Equal_To",
+      "Translations": {
+        "en": "Less Than or Equal To"
+      },
+      "ID": 200009,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<0>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 12,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 13,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Greater_Than_or_Equal_To",
+      "Translations": {
+        "en": "Greater Than or Equal To"
+      },
+      "ID": 200010,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<0>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 12,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 13,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Addition",
+      "Translations": {
+        "en": "Addition"
+      },
+      "ID": 200011,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<2>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 30,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 31,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Subtraction",
+      "Translations": {
+        "en": "Subtraction"
+      },
+      "ID": 200012,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<2>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 30,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 31,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Multiplication",
+      "Translations": {
+        "en": "Multiplication"
+      },
+      "ID": 200013,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<2>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 30,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 31,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Division",
+      "Translations": {
+        "en": "Division"
+      },
+      "ID": 200014,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<2>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 30,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 31,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Absolute_Value_Operation",
+      "Translations": {
+        "en": "Absolute Value Operation"
+      },
+      "ID": 200015,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "R<T>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 32,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            0
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 33,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            1
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Get_Custom_Variable",
+      "Translations": {
+        "en": "Get Custom Variable"
+      },
+      "ID": 200016,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "II. Custom Variables",
+      "Inputs": [
+        "Ety",
+        "Str"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 40,
+          "Type": "S<T:Bol>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 41,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        },
+        {
+          "ConcreteId": 42,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            2
+          ]
+        },
+        {
+          "ConcreteId": 43,
+          "Type": "S<T:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 44,
+          "Type": "S<T:Gid>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            4
+          ]
+        },
+        {
+          "ConcreteId": 45,
+          "Type": "S<T:Ety>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            5
+          ]
+        },
+        {
+          "ConcreteId": 46,
+          "Type": "S<T:Vec>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            6
+          ]
+        },
+        {
+          "ConcreteId": 47,
+          "Type": "S<T:L<Int>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            7
+          ]
+        },
+        {
+          "ConcreteId": 48,
+          "Type": "S<T:L<Str>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            8
+          ]
+        },
+        {
+          "ConcreteId": 49,
+          "Type": "S<T:L<Ety>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            9
+          ]
+        },
+        {
+          "ConcreteId": 50,
+          "Type": "S<T:L<Gid>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            10
+          ]
+        },
+        {
+          "ConcreteId": 51,
+          "Type": "S<T:L<Flt>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            11
+          ]
+        },
+        {
+          "ConcreteId": 52,
+          "Type": "S<T:L<Vec>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            12
+          ]
+        },
+        {
+          "ConcreteId": 53,
+          "Type": "S<T:L<Bol>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            13
+          ]
+        },
+        {
+          "ConcreteId": 54,
+          "Type": "S<T:Cfg>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            14
+          ]
+        },
+        {
+          "ConcreteId": 55,
+          "Type": "S<T:Pfb>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            15
+          ]
+        },
+        {
+          "ConcreteId": 56,
+          "Type": "S<T:L<Cfg>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            16
+          ]
+        },
+        {
+          "ConcreteId": 57,
+          "Type": "S<T:L<Pfb>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            17
+          ]
+        },
+        {
+          "ConcreteId": 58,
+          "Type": "S<T:Fct>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Get_Corresponding_Value_From_List",
+      "Translations": {
+        "en": "Get Corresponding Value From List"
+      },
+      "ID": 200017,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "I. List Related",
+      "Inputs": [
+        "Int",
+        "L<R<T>>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 60,
+          "Type": "S<T:Bol>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 61,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        },
+        {
+          "ConcreteId": 62,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            2
+          ]
+        },
+        {
+          "ConcreteId": 63,
+          "Type": "S<T:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 64,
+          "Type": "S<T:Gid>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            4
+          ]
+        },
+        {
+          "ConcreteId": 65,
+          "Type": "S<T:Ety>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            5
+          ]
+        },
+        {
+          "ConcreteId": 66,
+          "Type": "S<T:Vec>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            6
+          ]
+        },
+        {
+          "ConcreteId": 67,
+          "Type": "S<T:Cfg>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            7
+          ]
+        },
+        {
+          "ConcreteId": 68,
+          "Type": "S<T:Pfb>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Get_List_Length",
+      "Translations": {
+        "en": "Get List Length"
+      },
+      "ID": 200018,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "I. List Related",
+      "Inputs": [
+        "R<T>"
+      ],
+      "Outputs": [
+        "Int"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 80,
+          "Type": "S<T:L<Bol>>",
+          "InputsIndexOfConcrete": [
+            0
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 81,
+          "Type": "S<T:L<Int>>",
+          "InputsIndexOfConcrete": [
+            1
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 82,
+          "Type": "S<T:L<Flt>>",
+          "InputsIndexOfConcrete": [
+            2
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 83,
+          "Type": "S<T:L<Str>>",
+          "InputsIndexOfConcrete": [
+            3
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 84,
+          "Type": "S<T:L<Gid>>",
+          "InputsIndexOfConcrete": [
+            4
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 85,
+          "Type": "S<T:L<Ety>>",
+          "InputsIndexOfConcrete": [
+            5
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 86,
+          "Type": "S<T:L<Vec>>",
+          "InputsIndexOfConcrete": [
+            6
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "List_Includes_This_Value",
+      "Translations": {
+        "en": "List Includes This Value"
+      },
+      "ID": 200019,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "I. List Related",
+      "Inputs": [
+        "R<T>",
+        "L<R<T>>"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 100,
+          "Type": "S<T:Bol>",
+          "InputsIndexOfConcrete": [
+            0,
+            0
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 101,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            1,
+            1
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 102,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            2,
+            2
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 103,
+          "Type": "S<T:Str>",
+          "InputsIndexOfConcrete": [
+            3,
+            3
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 104,
+          "Type": "S<T:Gid>",
+          "InputsIndexOfConcrete": [
+            4,
+            4
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 105,
+          "Type": "S<T:Ety>",
+          "InputsIndexOfConcrete": [
+            5,
+            5
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 106,
+          "Type": "S<T:Vec>",
+          "InputsIndexOfConcrete": [
+            6,
+            6
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 107,
+          "Type": "S<T:Cfg>",
+          "InputsIndexOfConcrete": [
+            7,
+            7
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        },
+        {
+          "ConcreteId": 108,
+          "Type": "S<T:Pfb>",
+          "InputsIndexOfConcrete": [
+            8,
+            8
+          ],
+          "OutputsIndexOfConcrete": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Get_Maximum_Value_From_List",
+      "Translations": {
+        "en": "Get Maximum Value From List"
+      },
+      "ID": 200020,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "I. List Related",
+      "Inputs": [
+        "L<R<T>>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 120,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            0
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 121,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            1
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Get_Minimum_Value_From_List",
+      "Translations": {
+        "en": "Get Minimum Value From List"
+      },
+      "ID": 200021,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "I. List Related",
+      "Inputs": [
+        "L<R<T>>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 122,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            0
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 123,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            1
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Data_Type_Conversion",
+      "Translations": {
+        "en": "Data Type Conversion"
+      },
+      "ID": 200022,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "I. General",
+      "Inputs": [
+        "E<7>",
+        "R<K>"
+      ],
+      "Outputs": [
+        "R<V>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Int,V:Bol>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Bol,V:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Flt,V:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Int,V:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            2
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Bol,V:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Int,V:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Flt,V:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Gid,V:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Ety,V:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Vec,V:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 130,
+          "Type": "S<K:Fct,V:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Query_Entity_by_GUID",
+      "Translations": {
+        "en": "Query Entity by GUID"
+      },
+      "ID": 200023,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Gid"
+      ],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 1001
+    },
+    {
+      "Name": "Get_Character_Entity_of_Specified_Player",
+      "Translations": {
+        "en": "Get Character Entity of Specified Player"
+      },
+      "ID": 200024,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VI. Player and Character Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 1002
+    },
+    {
+      "Name": "Get_Player_Entity_to_Which_the_Character_Belongs",
+      "Translations": {
+        "en": "Get Player Entity to Which the Character Belongs"
+      },
+      "ID": 200025,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VI. Player and Character Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 1003
+    },
+    {
+      "Name": "Get_List_of_Player_Entities_on_the_Field",
+      "Translations": {
+        "en": "Get List of Player Entities on the Field"
+      },
+      "ID": 200026,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VI. Player and Character Related",
+      "Inputs": [],
+      "Outputs": [
+        "L<Ety>"
+      ],
+      "ConcreteID": 1004
+    },
+    {
+      "Name": "Query_GUID_by_Entity",
+      "Translations": {
+        "en": "Query GUID by Entity"
+      },
+      "ID": 200027,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VI. Player and Character Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Gid"
+      ],
+      "ConcreteID": 1005
+    },
+    {
+      "Name": "Get_Preset_Status",
+      "Translations": {
+        "en": "Get Preset Status"
+      },
+      "ID": 200028,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "III. Preset Status",
+      "Inputs": [
+        "Ety",
+        "Int"
+      ],
+      "Outputs": [
+        "Int"
+      ],
+      "ConcreteID": 1006
+    },
+    {
+      "Name": "Query_Entity_Faction",
+      "Translations": {
+        "en": "Query Entity Faction"
+      },
+      "ID": 200029,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "V. Faction Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Fct"
+      ],
+      "ConcreteID": 1007
+    },
+    {
+      "Name": "Get_Entity_Location",
+      "Translations": {
+        "en": "Get Entity Location"
+      },
+      "ID": 200030,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 1008
+    },
+    {
+      "Name": "Get_Entity_Rotation",
+      "Translations": {
+        "en": "Get Entity Rotation"
+      },
+      "ID": 200031,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 1009
+    },
+    {
+      "Name": "Get_Random_Number",
+      "Translations": {
+        "en": "Get Random Number"
+      },
+      "ID": 200032,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 1011,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            0,
+            0
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 1012,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            1,
+            1
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Get_Self_Entity",
+      "Translations": {
+        "en": "Get Self Entity"
+      },
+      "ID": 200033,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 1013
+    },
+    {
+      "Name": "Get_Target_Entity",
+      "Translations": {
+        "en": "Get Target Entity"
+      },
+      "ID": 200034,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 1014
+    },
+    {
+      "Name": "Get_Unit_Attack_Target",
+      "Translations": {
+        "en": "Get Unit Attack Target"
+      },
+      "ID": 200035,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 1015
+    },
+    {
+      "Name": "Get_Current_Camera_Template",
+      "Translations": {
+        "en": "Get Current Camera Template"
+      },
+      "ID": 200036,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Hidden",
+      "Family": "Query",
+      "Inputs": [],
+      "Outputs": [
+        "Int"
+      ],
+      "ConcreteID": 1016
+    },
+    {
+      "Name": "Query_If_Self_Is_in_Combat",
+      "Translations": {
+        "en": "Query If Self Is in Combat"
+      },
+      "ID": 200037,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VI. Player and Character Related",
+      "Inputs": [],
+      "Outputs": [
+        "Bol"
+      ],
+      "ConcreteID": 1017
+    },
+    {
+      "Name": "Play_Timed_Effects",
+      "Translations": {
+        "en": "Play Timed Effects"
+      },
+      "ID": 200038,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Cfg",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Int",
+        "Bol"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Notify_Server_Node_Graph",
+      "Translations": {
+        "en": "Notify Server Node Graph"
+      },
+      "ID": 200039,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Str",
+        "Str",
+        "Str"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Player_Turning",
+      "Translations": {
+        "en": "Player Turning"
+      },
+      "ID": 200040,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<32>"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Set_Own_Attack_Target",
+      "Translations": {
+        "en": "Set Own Attack Target"
+      },
+      "ID": 200041,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Ety",
+        "Bol"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Node_Graph_Begins",
+      "Translations": {
+        "en": "Node Graph Begins"
+      },
+      "ID": 200042,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Others",
+      "Family": "I. General",
+      "Inputs": [],
+      "Outputs": [],
+      "ConcreteID": 2001
+    },
+    {
+      "Name": "Filter_Entity_List_Within_Spherical_Range",
+      "Translations": {
+        "en": "Filter Entity List Within Spherical Range"
+      },
+      "ID": 200043,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Flt",
+        "Vec",
+        "Int",
+        "E<29>"
+      ],
+      "Outputs": [
+        "L<Ety>"
+      ],
+      "ConcreteID": 1019
+    },
+    {
+      "Name": "Filter_Entity_List_Within_Square_Range",
+      "Translations": {
+        "en": "Filter Entity List Within Square Range"
+      },
+      "ID": 200044,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Flt",
+        "Flt",
+        "Flt",
+        "Vec",
+        "Int",
+        "E<29>"
+      ],
+      "Outputs": [
+        "L<Ety>"
+      ],
+      "ConcreteID": 1018
+    },
+    {
+      "Name": "Get_Entity_s_Type",
+      "Translations": {
+        "en": "Get Entity's Type"
+      },
+      "ID": 200045,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "E<13>"
+      ],
+      "ConcreteID": 1020
+    },
+    {
+      "Name": "Get_Camera_Orientation",
+      "Translations": {
+        "en": "Get Camera Orientation"
+      },
+      "ID": 200046,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Hidden",
+      "Family": "Query",
+      "Inputs": [],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 1021
+    },
+    {
+      "Name": "Get_Target_Attachment_Point_Location",
+      "Translations": {
+        "en": "Get Target Attachment Point Location"
+      },
+      "ID": 200047,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Ety",
+        "Str"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 1022
+    },
+    {
+      "Name": "Get_Target_Attachment_Point_Rotation",
+      "Translations": {
+        "en": "Get Target Attachment Point Rotation"
+      },
+      "ID": 200048,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Ety",
+        "Str"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 1023
+    },
+    {
+      "Name": "Assembly_List",
+      "Translations": {
+        "en": "Assembly List"
+      },
+      "ID": 200049,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "III. Lists",
+      "Inputs": [
+        "Int",
+        "R<T>",
+        "R<T>",
+        "R<T>",
+        "R<T>",
+        "R<T>",
+        "R<T>",
+        "R<T>",
+        "R<T>",
+        "R<T>",
+        "R<T>"
+      ],
+      "Outputs": [
+        "L<R<T>>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 1025,
+          "Type": "S<T:Ety>",
+          "InputsIndexOfConcrete": [
+            null,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 1026,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        },
+        {
+          "ConcreteId": 1027,
+          "Type": "S<T:Bol>",
+          "InputsIndexOfConcrete": [
+            null,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            2
+          ]
+        },
+        {
+          "ConcreteId": 1028,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 1029,
+          "Type": "S<T:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            4
+          ]
+        },
+        {
+          "ConcreteId": 1030,
+          "Type": "S<T:Vec>",
+          "InputsIndexOfConcrete": [
+            null,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            5
+          ]
+        },
+        {
+          "ConcreteId": 1043,
+          "Type": "S<T:Gid>",
+          "InputsIndexOfConcrete": [
+            null,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            6
+          ]
+        },
+        {
+          "ConcreteId": 1044,
+          "Type": "S<T:Cfg>",
+          "InputsIndexOfConcrete": [
+            null,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            7
+          ]
+        },
+        {
+          "ConcreteId": 1045,
+          "Type": "S<T:Pfb>",
+          "InputsIndexOfConcrete": [
+            null,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Get_Entity_Type_List",
+      "Translations": {
+        "en": "Get Entity Type List"
+      },
+      "ID": 200050,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "I. List Related",
+      "Inputs": [
+        "Int",
+        "E<13>",
+        "E<13>",
+        "E<13>",
+        "E<13>",
+        "E<13>",
+        "E<13>",
+        "E<13>",
+        "E<13>",
+        "E<13>",
+        "E<13>"
+      ],
+      "Outputs": [
+        "L<E<30>>"
+      ],
+      "ConcreteID": 1031
+    },
+    {
+      "Name": "Trigger_Hitbox_at_Specific_Location",
+      "Translations": {
+        "en": "Trigger Hitbox at Specific Location"
+      },
+      "ID": 200051,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<24>",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "L<E<13>>",
+        "E<1042>",
+        "Int",
+        "E<3>",
+        "L<Vec>",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "E<33>",
+        "E<30>",
+        "L<Str>",
+        "E<12>",
+        "Flt",
+        "E<26>",
+        "E<27>",
+        "Flt",
+        "Bol",
+        "Bol",
+        "Int",
+        "Int",
+        "E<31>",
+        "Bol",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "Int",
+        "E<35>",
+        "E<36>",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Fixed_Point_Projectile_Launch",
+      "Translations": {
+        "en": "Fixed-Point Projectile Launch"
+      },
+      "ID": 200052,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Pfb",
+        "Vec",
+        "Vec",
+        "Ety",
+        "Fct"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Fixed_Point_Displacement",
+      "Translations": {
+        "en": "Fixed-Point Displacement"
+      },
+      "ID": 200053,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Flt",
+        "Flt",
+        "Flt",
+        "Vec",
+        "Bol"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Traverse_Entity_List",
+      "Translations": {
+        "en": "Traverse Entity List"
+      },
+      "ID": 200055,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "L<Ety>"
+      ],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Double_Branch",
+      "Translations": {
+        "en": "Double Branch"
+      },
+      "ID": 200056,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Control",
+      "Family": "I. General",
+      "Inputs": [
+        "Bol"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Add_Unit_Status",
+      "Translations": {
+        "en": "Add Unit Status"
+      },
+      "ID": 200057,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Ety",
+        "Int",
+        "Cfg"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Remove_Unit_Status",
+      "Translations": {
+        "en": "Remove Unit Status"
+      },
+      "ID": 200058,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Ety",
+        "Cfg"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Trigger_Hitbox_at_Specified_Attachment_Point",
+      "Translations": {
+        "en": "Trigger Hitbox at Specified Attachment Point"
+      },
+      "ID": 200059,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<39>",
+        "Str",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "L<E<13>>",
+        "E<1042>",
+        "Int",
+        "E<3>",
+        "L<Vec>",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "E<33>",
+        "E<30>",
+        "L<Str>",
+        "E<12>",
+        "Flt",
+        "E<26>",
+        "E<27>",
+        "Flt",
+        "Bol",
+        "Bol",
+        "Int",
+        "Int",
+        "E<31>",
+        "Bol",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "Int",
+        "E<35>",
+        "E<36>",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Remove_Specified_Character_Disruptor_Device",
+      "Translations": {
+        "en": "Remove Specified Character Disruptor Device"
+      },
+      "ID": 200060,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<21>"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Modify_Attack_Weight",
+      "Translations": {
+        "en": "Modify Attack Weight"
+      },
+      "ID": 200061,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Flt",
+        "Bol"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Camera_Orientation_Detection_Data",
+      "Translations": {
+        "en": "Camera Orientation Detection Data"
+      },
+      "ID": 200062,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<39>",
+        "Vec",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [
+        "Vec",
+        "Vec"
+      ],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "_3D_Vector_Dot_Product",
+      "Translations": {
+        "en": "3D Vector Dot Product"
+      },
+      "ID": 200063,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec",
+        "Vec"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 131
+    },
+    {
+      "Name": "_3D_Vector_Cross_Product",
+      "Translations": {
+        "en": "3D Vector Cross Product"
+      },
+      "ID": 200064,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec",
+        "Vec"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 132
+    },
+    {
+      "Name": "Split_3D_Vector",
+      "Translations": {
+        "en": "Split 3D Vector"
+      },
+      "ID": 200065,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec"
+      ],
+      "Outputs": [
+        "Flt",
+        "Flt",
+        "Flt"
+      ],
+      "ConcreteID": 133
+    },
+    {
+      "Name": "_3D_Vector_Zoom",
+      "Translations": {
+        "en": "3D Vector Zoom"
+      },
+      "ID": 200066,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Flt",
+        "Vec"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 134
+    },
+    {
+      "Name": "_3D_Vector_Angle",
+      "Translations": {
+        "en": "3D Vector Angle"
+      },
+      "ID": 200067,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec",
+        "Vec"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 135
+    },
+    {
+      "Name": "_3D_Vector_Rotation",
+      "Translations": {
+        "en": "3D Vector Rotation"
+      },
+      "ID": 200068,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec",
+        "Vec"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 136
+    },
+    {
+      "Name": "_3D_Vector_Modulo_Operation",
+      "Translations": {
+        "en": "3D Vector Modulo Operation"
+      },
+      "ID": 200069,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 137
+    },
+    {
+      "Name": "Create_3D_Vector",
+      "Translations": {
+        "en": "Create 3D Vector"
+      },
+      "ID": 200070,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Flt",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 1024
+    },
+    {
+      "Name": "_3D_Vector_Addition",
+      "Translations": {
+        "en": "3D Vector Addition"
+      },
+      "ID": 200071,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<2>",
+        "Vec",
+        "Vec"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 34
+    },
+    {
+      "Name": "_3D_Vector_Subtraction",
+      "Translations": {
+        "en": "3D Vector Subtraction"
+      },
+      "ID": 200072,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<2>",
+        "Vec",
+        "Vec"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 34
+    },
+    {
+      "Name": "Direction_Vector_to_Rotation",
+      "Translations": {
+        "en": "Direction Vector to Rotation"
+      },
+      "ID": 200073,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec",
+        "Vec"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 139
+    },
+    {
+      "Name": "Orientation_to_Rotation",
+      "Translations": {
+        "en": "Orientation to Rotation"
+      },
+      "ID": 200074,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec",
+        "Vec"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 139
+    },
+    {
+      "Name": "Recover_HP",
+      "Translations": {
+        "en": "Recover HP"
+      },
+      "ID": 200075,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Ety",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Bol",
+        "Bol",
+        "L<Str>",
+        "Flt",
+        "Int",
+        "E<35>"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Get_Current_Character",
+      "Translations": {
+        "en": "Get Current Character"
+      },
+      "ID": 200076,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VI. Player and Character Related",
+      "Inputs": [],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 1032
+    },
+    {
+      "Name": "Get_Entity_s_Unit_Tag_List",
+      "Translations": {
+        "en": "Get Entity's Unit Tag List"
+      },
+      "ID": 200077,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VII. Unit Tags",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "L<Int>"
+      ],
+      "ConcreteID": 1035
+    },
+    {
+      "Name": "Get_Entity_List_by_Unit_Tag",
+      "Translations": {
+        "en": "Get Entity List by Unit Tag"
+      },
+      "ID": 200078,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VII. Unit Tags",
+      "Inputs": [
+        "Int"
+      ],
+      "Outputs": [
+        "L<Ety>"
+      ],
+      "ConcreteID": 1034
+    },
+    {
+      "Name": "Finite_Loop",
+      "Translations": {
+        "en": "Finite Loop"
+      },
+      "ID": 200079,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "II. General",
+      "Inputs": [
+        "Int",
+        "Int"
+      ],
+      "Outputs": [
+        "Int"
+      ],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Break_Loop",
+      "Translations": {
+        "en": "Break Loop"
+      },
+      "ID": 200080,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "II. General",
+      "Inputs": [],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Set_Local_Variable",
+      "Translations": {
+        "en": "Set Local Variable"
+      },
+      "ID": 200081,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "II. General",
+      "Inputs": [
+        "Str",
+        "R<T>"
+      ],
+      "Outputs": [],
+      "TypeMappings": [
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Str>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Ety>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Gid>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Vec>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Bol>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:L<Int>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:L<Str>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:L<Ety>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:L<Gid>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:L<Flt>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:L<Vec>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:L<Bol>>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Cfg>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Pfb>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        },
+        {
+          "ConcreteId": 2000,
+          "Type": "S<T:Fct>",
+          "InputsIndexOfConcrete": [
+            null,
+            null
+          ],
+          "OutputsIndexOfConcrete": []
+        }
+      ]
+    },
+    {
+      "Name": "Get_Local_Variable",
+      "Translations": {
+        "en": "Get Local Variable"
+      },
+      "ID": 200082,
+      "Type": "Generic",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VIII. General",
+      "Inputs": [
+        "Str"
+      ],
+      "Outputs": [
+        "R<T>"
+      ],
+      "TypeMappings": [
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Int>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            0
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Str>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            1
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Ety>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            2
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Gid>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            3
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Flt>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            4
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Vec>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            5
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Bol>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            6
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:L<Int>>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            7
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:L<Str>>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            8
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:L<Ety>>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            9
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:L<Gid>>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            10
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:L<Flt>>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            11
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:L<Vec>>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            12
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:L<Bol>>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            13
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Cfg>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            14
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Pfb>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            15
+          ]
+        },
+        {
+          "ConcreteId": 1036,
+          "Type": "S<T:Fct>",
+          "InputsIndexOfConcrete": [
+            null
+          ],
+          "OutputsIndexOfConcrete": [
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Set_the_Aggro_Value_of_the_Specified_Entity",
+      "Translations": {
+        "en": "Set the Aggro Value of the Specified Entity"
+      },
+      "ID": 200083,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "III. Custom Aggro",
+      "Inputs": [
+        "Ety",
+        "Ety",
+        "Int"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Modify_the_Aggro_Value_of_the_Specified_Entity",
+      "Translations": {
+        "en": "Modify the Aggro Value of the Specified Entity"
+      },
+      "ID": 200084,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "III. Custom Aggro",
+      "Inputs": [
+        "Ety",
+        "Ety",
+        "Int"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Modify_the_Aggro_Value_of_the_Specified_Entity_Proportionally",
+      "Translations": {
+        "en": "Modify the Aggro Value of the Specified Entity Proportionally"
+      },
+      "ID": 200085,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "III. Custom Aggro",
+      "Inputs": [
+        "Ety",
+        "Ety",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Transfer_the_Aggro_Value_of_the_Specified_Entity_Proportionally",
+      "Translations": {
+        "en": "Transfer the Aggro Value of the Specified Entity Proportionally"
+      },
+      "ID": 200086,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "III. Custom Aggro",
+      "Inputs": [
+        "Ety",
+        "Ety",
+        "Ety",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Clear_the_Aggro_List_of_the_Specified_Entity",
+      "Translations": {
+        "en": "Clear the Aggro List of the Specified Entity"
+      },
+      "ID": 200087,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "III. Custom Aggro",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Remove_Target_Entity_From_Aggro_List",
+      "Translations": {
+        "en": "Remove Target Entity From Aggro List"
+      },
+      "ID": 200088,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "III. Custom Aggro",
+      "Inputs": [
+        "Ety",
+        "Ety"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Taunt_Target",
+      "Translations": {
+        "en": "Taunt Target"
+      },
+      "ID": 200089,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "III. Custom Aggro",
+      "Inputs": [
+        "Ety",
+        "Ety"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Get_the_Aggro_Target_of_the_Specified_Entity",
+      "Translations": {
+        "en": "Get the Aggro Target of the Specified Entity"
+      },
+      "ID": 200090,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IX. Custom Aggro",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Ety"
+      ],
+      "ConcreteID": 3000
+    },
+    {
+      "Name": "Get_the_Aggro_List_of_the_Specified_Entity",
+      "Translations": {
+        "en": "Get the Aggro List of the Specified Entity"
+      },
+      "ID": 200091,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IX. Custom Aggro",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "L<Ety>"
+      ],
+      "ConcreteID": 3001
+    },
+    {
+      "Name": "Query_if_Specified_Entity_is_in_Combat",
+      "Translations": {
+        "en": "Query if Specified Entity is in Combat"
+      },
+      "ID": 200092,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IX. Custom Aggro",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "ConcreteID": 3003
+    },
+    {
+      "Name": "Query_If_Faction_Is_Hostile",
+      "Translations": {
+        "en": "Query If Faction Is Hostile"
+      },
+      "ID": 200093,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "V. Faction Related",
+      "Inputs": [
+        "Fct",
+        "Fct"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "ConcreteID": 1037
+    },
+    {
+      "Name": "Sine_Function",
+      "Translations": {
+        "en": "Sine Function"
+      },
+      "ID": 200094,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<20>",
+        "Flt"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 35
+    },
+    {
+      "Name": "Cosine_Function",
+      "Translations": {
+        "en": "Cosine Function"
+      },
+      "ID": 200095,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<20>",
+        "Flt"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 35
+    },
+    {
+      "Name": "Tangent_Function",
+      "Translations": {
+        "en": "Tangent Function"
+      },
+      "ID": 200096,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<20>",
+        "Flt"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 35
+    },
+    {
+      "Name": "Arcsine_Function",
+      "Translations": {
+        "en": "Arcsine Function"
+      },
+      "ID": 200097,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<20>",
+        "Flt"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 35
+    },
+    {
+      "Name": "Arccosine_Function",
+      "Translations": {
+        "en": "Arccosine Function"
+      },
+      "ID": 200098,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<20>",
+        "Flt"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 35
+    },
+    {
+      "Name": "Arctangent_Function",
+      "Translations": {
+        "en": "Arctangent Function"
+      },
+      "ID": 200099,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<20>",
+        "Flt"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 35
+    },
+    {
+      "Name": "_3D_Vector_Normalization",
+      "Translations": {
+        "en": "3D Vector Normalization"
+      },
+      "ID": 200100,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "Vec"
+      ],
+      "Outputs": [
+        "Vec"
+      ],
+      "ConcreteID": 138
+    },
+    {
+      "Name": "Radians_to_Degrees",
+      "Translations": {
+        "en": "Radians to Degrees"
+      },
+      "ID": 200101,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<20>",
+        "Flt"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 35
+    },
+    {
+      "Name": "Degrees_to_Radians",
+      "Translations": {
+        "en": "Degrees to Radians"
+      },
+      "ID": 200102,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Operation",
+      "Family": "II. Math",
+      "Inputs": [
+        "E<20>",
+        "Flt"
+      ],
+      "Outputs": [
+        "Flt"
+      ],
+      "ConcreteID": 35
+    },
+    {
+      "Name": "Query_If_Entity_Is_on_the_Field",
+      "Translations": {
+        "en": "Query If Entity Is on the Field"
+      },
+      "ID": 200103,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "IV. Entity Related",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Bol"
+      ],
+      "ConcreteID": 1038
+    },
+    {
+      "Name": "Node_Graph_Ends",
+      "Translations": {
+        "en": "Node Graph Ends"
+      },
+      "ID": 200104,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Hidden",
+      "Family": "Others",
+      "Inputs": [
+        "Int",
+        "E<38>"
+      ],
+      "Outputs": [],
+      "ConcreteID": 0
+    },
+    {
+      "Name": "Player_Turns_to_Face_Set_Direction",
+      "Translations": {
+        "en": "Player Turns to Face Set Direction"
+      },
+      "ID": 200105,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "Vec"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Reset_Skill_Target",
+      "Translations": {
+        "en": "Reset Skill Target"
+      },
+      "ID": 200106,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Get_All_Entities_Within_the_Collision_Trigger",
+      "Translations": {
+        "en": "Get All Entities Within the Collision Trigger"
+      },
+      "ID": 200107,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "X. Triggers",
+      "Inputs": [
+        "Ety",
+        "Int"
+      ],
+      "Outputs": [
+        "L<Ety>"
+      ],
+      "ConcreteID": 1046
+    },
+    {
+      "Name": "Force_Exit_Aiming_State",
+      "Translations": {
+        "en": "Force Exit Aiming State"
+      },
+      "ID": 200108,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Get_Ray_Detection_Result",
+      "Translations": {
+        "en": "Get Ray Detection Result"
+      },
+      "ID": 200109,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "XI. Ray",
+      "Inputs": [
+        "Ety",
+        "Vec",
+        "Vec",
+        "Flt",
+        "E<39>",
+        "L<E<13>>",
+        "L<E<30>>"
+      ],
+      "Outputs": [
+        "Vec",
+        "Ety"
+      ],
+      "ConcreteID": 1047
+    },
+    {
+      "Name": "Get_Ray_Filter_Type_List",
+      "Translations": {
+        "en": "Get Ray Filter Type List"
+      },
+      "ID": 200110,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "I. List Related",
+      "Inputs": [
+        "Int",
+        "E<30>",
+        "E<30>",
+        "E<30>",
+        "E<30>",
+        "E<30>",
+        "E<30>",
+        "E<30>",
+        "E<30>",
+        "E<30>",
+        "E<30>"
+      ],
+      "Outputs": [
+        "L<E<13>>"
+      ],
+      "ConcreteID": 1031
+    },
+    {
+      "Name": "Trigger_Spherical_Hitbox_at_Specific_Location",
+      "Translations": {
+        "en": "Trigger Spherical Hitbox at Specific Location"
+      },
+      "ID": 200111,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<39>",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "L<E<13>>",
+        "E<1042>",
+        "Int",
+        "E<3>",
+        "L<Vec>",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "E<30>",
+        "L<Str>",
+        "E<12>",
+        "Flt",
+        "E<26>",
+        "E<27>",
+        "Flt",
+        "Bol",
+        "Bol",
+        "Int",
+        "Int",
+        "E<31>",
+        "Bol",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "Int",
+        "E<35>",
+        "E<36>",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Trigger_Rectangular_Hitbox_at_Specific_Location",
+      "Translations": {
+        "en": "Trigger Rectangular Hitbox at Specific Location"
+      },
+      "ID": 200112,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<24>",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "L<E<13>>",
+        "E<1042>",
+        "Int",
+        "E<3>",
+        "L<Vec>",
+        "Bol",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "E<30>",
+        "L<Str>",
+        "E<12>",
+        "Flt",
+        "E<26>",
+        "E<27>",
+        "Flt",
+        "Bol",
+        "Bol",
+        "Int",
+        "Int",
+        "E<31>",
+        "Bol",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "Int",
+        "E<35>",
+        "E<36>",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Trigger_Sector_Hitbox_at_Specific_Location",
+      "Translations": {
+        "en": "Trigger Sector Hitbox at Specific Location"
+      },
+      "ID": 200113,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<39>",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "L<E<13>>",
+        "E<1042>",
+        "Int",
+        "E<3>",
+        "L<Vec>",
+        "Bol",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "E<33>",
+        "E<30>",
+        "L<Str>",
+        "E<12>",
+        "Flt",
+        "E<26>",
+        "E<27>",
+        "Flt",
+        "Bol",
+        "Bol",
+        "Int",
+        "Int",
+        "E<31>",
+        "Bol",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "Int",
+        "E<35>",
+        "E<36>",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Trigger_Spherical_Hitbox_at_Specified_Attachment_Point",
+      "Translations": {
+        "en": "Trigger Spherical Hitbox at Specified Attachment Point"
+      },
+      "ID": 200114,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<24>",
+        "Str",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "L<E<13>>",
+        "E<1042>",
+        "Int",
+        "E<3>",
+        "L<Vec>",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "E<30>",
+        "L<Str>",
+        "E<12>",
+        "Flt",
+        "E<26>",
+        "E<27>",
+        "Flt",
+        "Bol",
+        "Bol",
+        "Int",
+        "Int",
+        "E<31>",
+        "Bol",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "Int",
+        "E<35>",
+        "E<36>",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Trigger_Rectangular_Hitbox_at_Specified_Attachment_Point",
+      "Translations": {
+        "en": "Trigger Rectangular Hitbox at Specified Attachment Point"
+      },
+      "ID": 200115,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<39>",
+        "Str",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "L<E<13>>",
+        "E<1042>",
+        "Int",
+        "E<3>",
+        "L<Vec>",
+        "Bol",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "E<30>",
+        "L<Str>",
+        "E<12>",
+        "Flt",
+        "E<26>",
+        "E<27>",
+        "Flt",
+        "Bol",
+        "Bol",
+        "Int",
+        "Int",
+        "E<31>",
+        "Bol",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "Int",
+        "E<35>",
+        "E<36>",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Trigger_Sector_Hitbox_at_Specified_Attachment_Point",
+      "Translations": {
+        "en": "Trigger Sector Hitbox at Specified Attachment Point"
+      },
+      "ID": 200116,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "I. Character Skills",
+      "Inputs": [
+        "E<39>",
+        "Str",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "L<E<13>>",
+        "E<1042>",
+        "Int",
+        "E<3>",
+        "L<Vec>",
+        "Bol",
+        "Flt",
+        "Flt",
+        "Flt",
+        "Flt",
+        "E<33>",
+        "E<30>",
+        "L<Str>",
+        "E<12>",
+        "Flt",
+        "E<26>",
+        "E<27>",
+        "Flt",
+        "Bol",
+        "Bol",
+        "Int",
+        "Int",
+        "E<31>",
+        "Bol",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Str",
+        "Bol",
+        "Bol",
+        "Vec",
+        "Vec",
+        "Flt",
+        "Flt",
+        "Int",
+        "E<35>",
+        "E<36>",
+        "Flt",
+        "Flt"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Test_Send_Client_Signal",
+      "Translations": {
+        "en": "(Test) Send Client Signal"
+      },
+      "ID": 200117,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Hidden",
+      "Family": "Execution",
+      "Inputs": [
+        "Str",
+        "Ety",
+        "L<Ety>",
+        "Int",
+        "L<Int>",
+        "Bol",
+        "L<Bol>",
+        "Flt",
+        "L<Flt>",
+        "Str",
+        "L<Str>",
+        "Vec",
+        "L<Vec>",
+        "Gid",
+        "L<Gid>",
+        "Fct",
+        "Cfg",
+        "L<Cfg>",
+        "Pfb",
+        "L<Pfb>"
+      ],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
+      "Name": "Get_Entity_Currently_Scanned_by_Scan_Component",
+      "Translations": {
+        "en": "Get Entity Currently Scanned by Scan Component"
+      },
+      "ID": 200118,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "XII. Scanning",
+      "Inputs": [],
+      "Outputs": [
+        "Ety",
+        "Cfg"
+      ],
+      "ConcreteID": 1039
+    },
+    {
+      "Name": "Get_All_Valid_Entities_That_Are_Scannable_by_Scan_Component",
+      "Translations": {
+        "en": "Get All Valid Entities That Are Scannable by Scan Component"
+      },
+      "ID": 200119,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "XII. Scanning",
+      "Inputs": [],
+      "Outputs": [
+        "L<Ety>"
+      ],
+      "ConcreteID": 1040
+    },
+    {
+      "Name": "Get_Entity_s_Scan_Status",
+      "Translations": {
+        "en": "Get Entity's Scan Status"
+      },
+      "ID": 200120,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "XII. Scanning",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "E<40>"
+      ],
+      "ConcreteID": 1041
+    },
+    {
+      "Name": "Get_Entity_s_Current_Active_Scan_Tags",
+      "Translations": {
+        "en": "Get Entity's Current Active Scan Tags"
+      },
+      "ID": 200121,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "XII. Scanning",
+      "Inputs": [
+        "Ety"
+      ],
+      "Outputs": [
+        "Cfg"
+      ],
+      "ConcreteID": 1042
+    },
+    {
+      "Name": "Node_Graph_End_Integer",
+      "Translations": {
+        "en": "Node Graph End (Integer)"
+      },
+      "ID": 200122,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Others",
+      "Family": "I. General",
+      "Inputs": [
+        "Bol",
+        "E<38>"
+      ],
+      "Outputs": [],
+      "ConcreteID": 0
+    },
+    {
+      "Name": "Get_Player_Client_Input_Device_Type",
+      "Translations": {
+        "en": "Get Player Client Input Device Type"
+      },
+      "ID": 200123,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Query",
+      "Family": "VI. Player and Character Related",
+      "Inputs": [],
+      "Outputs": [
+        "E<41>"
+      ],
+      "ConcreteID": 3004
+    },
+    {
+      "Name": "Send_Signal_to_Server_Node_Graph",
+      "Translations": {
+        "en": "Send Signal to Server Node Graph"
+      },
+      "ID": 200124,
+      "Type": "Simple",
+      "Range": "Client",
+      "Class": "Execution",
+      "Family": "IV. Signal",
+      "Inputs": [],
+      "Outputs": [],
+      "ConcreteID": 2000
+    },
+    {
       "Name": "Send_Signal",
       "Translations": {
         "en": "Send Signal"
@@ -57635,6 +62294,13 @@
             "en": "Hit All"
           },
           "ID": 2604
+        },
+        {
+          "Name": "Object Self-Collision",
+          "Translations": {
+            "en": "Object Self-Collision"
+          },
+          "ID": 2605
         }
       ]
     },

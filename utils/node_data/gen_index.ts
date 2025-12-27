@@ -1,13 +1,13 @@
 import { readFileSync, writeFileSync } from "fs";
-import { NODE_PIN_RECORDS, type NodePinsRecords, type SingleNodeData } from "./node_pin_records.ts";
+import { NODE_PIN_RECORDS, NODE_PIN_RECORDS_CLIENT, type NodePinsRecords, type SingleNodeData } from "./node_pin_records.ts";
 import yaml from "yaml";
-import { get_id, is_reflect, reflects } from "../gia_gen/nodes.ts";
-import { get_concrete_index } from "./helpers.ts";
+import { get_id, get_id_client, is_reflect, reflects } from "../gia_gen/nodes.ts";
+import { get_index_of_concrete } from "./helpers.ts";
 import { assert, assertEq } from "../../utils/utils.ts";
 import { ENUM_ID, ENUM_VALUE } from "./enum_id.ts";
 import { VarType } from "../protobuf/gia.proto.ts";
 import { TYPES_LIST } from "./types_list.ts";
-import { NODE_ID } from "./node_id.ts";
+import { CLIENT_NODE_ID, NODE_ID } from "./node_id.ts";
 
 // ====== Begin of Document Schema ====== //
 interface Document {
@@ -40,7 +40,7 @@ interface NodeEntry extends Entry {
   Family: string;                     // Family(sub-class) of the node
   Inputs: string[];                   // List of Input parameter types of the node
   Outputs: string[];                  // List of Output parameter types of the node
-  ConcreteID?: number;                // Concrete id for non-reflective nodes (different from ID for client)
+  ConcreteID?: number;                // Concrete id for non-reflective nodes (different from ID in Client Graph)
   TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic.
 }
 interface EnumEntry extends Entry {
@@ -54,7 +54,7 @@ interface TypeMapping {
 }
 interface EnumItem extends Entry {
 }
-const NodeClasses = ["Execution", "Trigger", "Control", "Query", "Arithmetic", "Hidden"] as const;
+const NodeClasses = ["Execution", "Trigger", "Control", "Query", "Arithmetic", "Others", "Hidden"] as const;
 const Language = ["cs", "de", "es", "en", "fr", "it", "ja", "ko", "pl", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"] as const;
 type Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages
 // ====== End of Document Schema ====== //
@@ -79,17 +79,35 @@ function find_class_family(server: node_id_type, id: number): [NodeEntry["Class"
   throw new Error("Cannot find class and family for " + id);
 }
 
-function get_type_map(rec: NodePinsRecords, index: number): TypeMapping {
+function get_type_map_client(rec: NodePinsRecords, index: number): TypeMapping {
   const GenericId = rec.reflectMap![index][0];
+  assert(typeof GenericId === "string");
   const Type = rec.reflectMap![index][1];
   const InputsIndexOfConcrete = rec.inputs.map((str, j) =>
     is_reflect(str) ?
-      get_concrete_index(rec.id, 3, j, get_id(reflects(str, Type))) :
+      get_index_of_concrete(rec.id, true, j, get_id_client(reflects(str, Type))) :
       null
   );
   const OutputsIndexOfConcrete = rec.outputs.map((str, j) =>
     is_reflect(str) ?
-      get_concrete_index(rec.id, 4, j, get_id(reflects(str, Type))) :
+      get_index_of_concrete(rec.id, false, j, get_id_client(reflects(str, Type))) :
+      null
+  );
+  return { ConcreteId: parseInt(GenericId.split(" ")[1]), Type, InputsIndexOfConcrete, OutputsIndexOfConcrete };
+}
+
+function get_type_map(rec: NodePinsRecords, index: number): TypeMapping {
+  const GenericId = rec.reflectMap![index][0];
+  assert(typeof GenericId === "number");
+  const Type = rec.reflectMap![index][1];
+  const InputsIndexOfConcrete = rec.inputs.map((str, j) =>
+    is_reflect(str) ?
+      get_index_of_concrete(rec.id, true, j, get_id(reflects(str, Type))) :
+      null
+  );
+  const OutputsIndexOfConcrete = rec.outputs.map((str, j) =>
+    is_reflect(str) ?
+      get_index_of_concrete(rec.id, false, j, get_id(reflects(str, Type))) :
       null
   );
   return { ConcreteId: GenericId, Type, InputsIndexOfConcrete, OutputsIndexOfConcrete };
@@ -97,11 +115,10 @@ function get_type_map(rec: NodePinsRecords, index: number): TypeMapping {
 
 function main() {
   const DIR = "./utils/node_data/";
-  const file = readFileSync(DIR + "concrete_map.ts").toString();
   const Schema = readFileSync(import.meta.filename).toString().replaceAll("\r", "").match(/\/\/\s*=*\s*Begin\s*of\s*Document\s*Schema\s*.+?\/\/\s*=*\s*End\s*of\s*Document\s*Schema\s*=*.+?\n/s)![0];
   const doc: Document = {
-    Version: file.match(/@version (.+)/)![1],
-    Author: file.match(/@author (.+)/)![1],
+    Version: "2.0.0",
+    Author: "Aluria",
     Date: new Date().toString(),
     Description: `This document contains all necessary information for this project, including types, nodes, and enums.`,
     Schema: Schema,
@@ -114,10 +131,11 @@ function main() {
 
   // ====== Nodes List ======
   const server: node_id_type = yaml.parse(readFileSync(DIR + "yaml/server_node_id.yaml").toString());
-  // const client = readFileSync(DIR + "client_node_id.yaml").toString();
+  const client: node_id_type = yaml.parse(readFileSync(DIR + "yaml/client_node_id.yaml").toString());
 
+  // Server
   for (const rec of NODE_PIN_RECORDS as SingleNodeData[]) {
-    const Name = rec.name!.replaceAll(/[^a-zA-Z0-9_]+/g, "_").replace(/^(?=\d)/, "_").replace(/_+$/, "");
+    const Name = rec.name!.replaceAll(/[^a-zA-Z0-9_]+/g, "_").replace(/^_/, "").replace(/^(?=\d)/, "_").replace(/_+$/, "");
     const Translations = { "en": rec.name! };
     const ID = rec.id;
     const [Class, Family, name] = find_class_family(server, rec.id);
@@ -141,6 +159,37 @@ function main() {
       Family,
       Inputs,
       Outputs,
+      TypeMappings,
+    });
+  }
+  // Client
+  for (const rec of NODE_PIN_RECORDS_CLIENT as (SingleNodeData & { cid?: number })[]) {
+    const Name = rec.name!.replaceAll(/[^a-zA-Z0-9_]+/g, "_").replace(/^_/, "").replace(/^(?=\d)/, "_").replace(/_+$/, "");
+    const Translations = { "en": rec.name };
+    const ID = rec.id;
+    const [Class, Family, name] = find_class_family(client, rec.id);
+    assertEq(rec.name, name);
+    const Type = rec.reflectMap === undefined ? "Simple" : "Generic";
+    const Range = "Client";
+    const Inputs = rec.inputs;
+    const Outputs = rec.outputs;
+    const ConcreteID = rec.cid;
+    const TypeMappings = rec.reflectMap?.map((_, i) => get_type_map_client(rec, i));
+    TypeMappings?.sort((a, b) => a.ConcreteId - b.ConcreteId);
+    if (ID.toString() === CLIENT_NODE_ID.Enumeration_Match__Generic.split(" ")[0]) {
+      TypeMappings!.forEach(t => t.InputsIndexOfConcrete.fill(parseInt(t.Type.slice(6, -2))))
+    }
+    doc.NodesList.push({
+      Name,
+      Translations,
+      ID,
+      Type,
+      Range,
+      Class,
+      Family,
+      Inputs,
+      Outputs,
+      ConcreteID,
       TypeMappings,
     });
   }

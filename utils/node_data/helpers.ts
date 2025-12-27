@@ -1,4 +1,4 @@
-import { get_type, get_id, type NodeType } from "../gia_gen/nodes.ts";
+import { get_type, get_id, type NodeType, get_id_client } from "../gia_gen/nodes.ts";
 import { assert, DEBUG, STRICT } from "../utils.ts";
 import { CONCRETE_MAP, type ConcreteMap } from "./concrete_map.ts";
 import { CLIENT_NODE_ID, NODE_ID } from "./node_id.ts";
@@ -6,24 +6,34 @@ import { NODE_PIN_RECORDS, type SingleNodeData } from "./node_pin_records.ts";
 
 // ======================== Concrete Map Helpers ========================
 
-/** Find index of concrete from type */
+
+export function get_index_of_concrete(generic_id: number, is_input: boolean, pin_index: number, type: number): number | null;
+export function get_index_of_concrete(generic_id: number, is_input: boolean, pin_index: number, type: NodeType, is_server: boolean): number | null;
+/** Find index of concrete from type
+ * - Note1: type should be type number corresponding to server or client
+ * - Note2: if using NodeType, is_server should also be provided!
+ */
 export function get_index_of_concrete(
   generic_id: number,
   is_input: boolean,
   pin_index: number,
   type: number | NodeType,
+  is_server?: boolean,
 ): number | null {
   const map = get_concrete_map(generic_id, is_input, pin_index);
   if (map === null) {
-    return null;
-  }
-  const index = map.indexOf(typeof type === "number" ? type : get_id(type));
-  if (index === -1) {
     if (typeof type !== "number" && type.t === "e") {
       return type.e;
     }
     return null;
   }
+  let index = -1;
+  if (is_server !== undefined) {
+    assert(typeof type !== "number")
+    type = is_server ? get_id(type) : get_id_client(type);
+  }
+  assert(typeof type === "number")
+  index = map.indexOf(type);
   return index;
 }
 /** return true if the pin is reflective kind */

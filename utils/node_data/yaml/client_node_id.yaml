@@ -1,8 +1,3 @@
-Header:
-  Version: 1.7.0
-  BY: Aluria
-  Note: Copy from /utils/extracting_nodes/dist/client.yaml
-
 Execution:
   - I. Character Skills:
       "200038": 2. Play Timed Effects
