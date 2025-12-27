@@ -20,22 +20,25 @@ jobs:
           ref: dev
           path: dev
           fetch-depth: 1
+      
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+          fetch-depth: 1
           
       - name: Setup Node.js 24
         uses: actions/setup-node@v5
         with:
           node-version: 24
+      - name: Install Dependency
+        run: npm install fast-glob fs-extra @google/genai
 
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          path: main
-          fetch-depth: 1
-
-      - name: Run tests
-        uses: Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/.github/actions/translate@dev
-        with:
-          API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      - name: Translate modified readme files
+        run: node dev/.github/workflows/scripts/translate.ts
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Sync and commit files
         run: node dev/.github/workflows/sync.ts main dev dev/sync-list.json
