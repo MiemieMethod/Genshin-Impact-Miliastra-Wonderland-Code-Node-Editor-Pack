@@ -5,7 +5,7 @@ import { type NodeType, reflects_records, get_id, type_equal, is_reflect, to_nod
 import { Counter, randomInt, randomName } from "./utils.ts";
 import { get_index_of_concrete, is_concrete_pin, get_generic_id, get_node_record, get_node_record_generic } from "../node_data/helpers.ts";
 import { extract_value, get_graph_vars, get_node_info } from "./extract.ts";
-import { type SingleNodeData } from "../node_data/node_pin_records.ts";
+import type { NodePinsRecords, SingleNodeData } from "../node_data/node_pin_records.ts";
 import { auto_layout } from "./auto_layout.ts";
 
 import { NODE_ID, CLIENT_NODE_ID } from "../node_data/node_id.ts";
@@ -58,17 +58,26 @@ export class Graph<M extends AllModes = "server"> {
     this.graph_var = new Map();
   }
 
+  private assert_is_server(): asserts this is Graph<ServerModes> {
+    assert(isServer(this.mode));
+  }
+  private assert_is_client(): asserts this is Graph<ServerModes> {
+    assert(!isServer(this.mode));
+  }
+
   /** 
    * @param node Node Id or Instance */
   add_node(node: NodeIdFor<M> | Node<M> | null, generic_id?: number): Node<M> {
     assert(!empty(node) || !empty(generic_id));
     if (typeof node === "number") {
       // should be server node
+      this.assert_is_server();
       const n = new Node(this.counter_idx.value, this.mode, node, generic_id);
       this.nodes.add(n);
       return n;
     } else if (typeof node === "string") {
       // should be client node
+      this.assert_is_client();
       const n = new Node(this.counter_idx.value, this.mode, node, generic_id);
       this.nodes.add(n);
       return n;
@@ -309,7 +318,7 @@ export class Node<M extends AllModes = "server"> {
   public readonly mode: M;
   private node_index: number;
   private node_id: NodeIdFor<M> | null;
-  private record: SingleNodeData;
+  private record: NodePinsRecords;
   private pin_len: [number, number];
   pins: Pin[];
   x: number = 0;
@@ -338,6 +347,14 @@ export class Node<M extends AllModes = "server"> {
       this.setConcrete(cid);
     }
   }
+
+  private assert_is_server(): asserts this is Graph<ServerModes> {
+    assert(isServer(this.mode));
+  }
+  private assert_is_client(): asserts this is Graph<ServerModes> {
+    assert(!isServer(this.mode));
+  }
+
   setConcrete(id: NodeIdFor<M>) {
     assert(this.record.id === id || this.record.reflectMap?.find(x => x[0] === id) !== undefined);
     this.node_id = id;
@@ -350,7 +367,7 @@ export class Node<M extends AllModes = "server"> {
       if (empty(rec.inputs[i])) {
         this.pins[i].clear();
       } else {
-        this.pins[i].setType(rec.inputs[i]);
+        this.pins[i].setType(rec.inputs[i], isServer(this.mode));
       }
     }
     for (let j = 0; j < rec.outputs.length; j++) {
@@ -361,7 +378,7 @@ export class Node<M extends AllModes = "server"> {
       if (empty(rec.outputs[j])) {
         this.pins[i].clear();
       } else {
-        this.pins[i].setType(rec.outputs[j]);
+        this.pins[i].setType(rec.outputs[j], isServer(this.mode));
       }
     }
   }
@@ -416,14 +433,14 @@ export class Node<M extends AllModes = "server"> {
     info.pins.forEach((p) => {
       if (p.kind === 3) {
         // Input
-        n.pins[p.index].setType(p.node_type);
+        n.pins[p.index].setType(p.node_type, isServer(mode));
         const val_pin = values.find((vp) => vp.index === p.index);
         if (!empty(val_pin) && !empty(val_pin.value)) {
           n.pins[p.index].setVal(val_pin.value);
         }
       } else if (p.kind === 4) {
         // Output
-        n.pins[n.pin_len[0] + p.index].setType(p.node_type);
+        n.pins[n.pin_len[0] + p.index].setType(p.node_type, isServer(mode));
       }
     });
     return n;
@@ -495,12 +512,12 @@ export class Pin {
     this.value = null;
   }
   // auto change index of concrete
-  setType(type: NodeType) {
+  setType(type: NodeType, is_server: boolean) {
     if (!empty(this.type) && type_equal(this.type, type)) {
       return;
     }
     this.type = type;
-    this.indexOfConcrete = get_index_of_concrete(this.generic_id, this.kind === 3, this.index, this.type);
+    this.indexOfConcrete = get_index_of_concrete(this.generic_id, this.kind === 3, this.index, this.type, is_server);
   }
   encode(opt: EncodeOptions, connects?: Connect[]): NodePin | null {
     if (empty(this.type)) {
