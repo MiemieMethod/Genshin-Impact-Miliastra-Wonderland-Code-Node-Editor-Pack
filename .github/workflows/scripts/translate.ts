@@ -44,7 +44,7 @@ const globs = [
   "!node_modules/**",
   "!.github/**",
   "Readme.md",
-  "utils/**/readme.md",
+  // "utils/**/readme.md",
   // "**/readme.md",
 ];
 
@@ -107,17 +107,17 @@ async function main() {
 
     // Determine if source content has changed
     let isSourceChanged = true;
+    let needNewTranslation = false;
 
-    if (fse.existsSync(mainFilePath)) {
-      const mainContent = await fse.readFile(mainFilePath, "utf-8");
-      if (devContent === mainContent) {
-        isSourceChanged = false;
-      }
-    } else {
-      console.log(`[NEW SOURCE] ${file}`);
+    if (!fse.existsSync(mainFilePath)) {
+      console.log(`[SKIP SOURCE] ${file}`);
+      continue;
     }
 
-    if (isSourceChanged && fse.existsSync(mainFilePath)) {
+    const mainContent = await fse.readFile(mainFilePath, "utf-8");
+    if (devContent === mainContent) {
+      isSourceChanged = false;
+    } else {
       console.log(`[MODIFIED SOURCE] ${file}`);
     }
 
@@ -141,6 +141,15 @@ async function main() {
       // 1. Source changed (isSourceChanged = true) -> Re-translate
       // 2. Source didn't change, but translation is missing -> Backfill translation
       tasks.push({ file, lang, content: devContent });
+      needNewTranslation = true;
+    }
+
+    if (!isSourceChanged) {
+      if (needNewTranslation) {
+        console.log(`[NEW TRANSLATION FILE REQUESTED] ${file}`);
+      } else {
+        console.log(`[UNCHANGED SOURCE] ${file}`);
+      }
     }
   }
 
@@ -152,8 +161,8 @@ async function main() {
   console.log(`🚀 Starting translation for ${tasks.length} tasks...`);
 
   // Process tasks
-  for (const task of tasks) {
-    const { file, lang, content } = task;
+  for (let i = 0; i < tasks.length; i++) {
+    const { file, lang, content } = tasks[i];
 
     // Construct target path: translate/subfolder/README.en.md
     const targetFileName = getTargetFileName(file, lang);
@@ -174,8 +183,9 @@ async function main() {
       await fse.outputFile(targetFilePath, translatedContent);
       console.log(`✅ Saved: ${targetFilePath}`);
 
-      await delay(1000);
-
+      if (i !== tasks.length - 1) {
+        await delay(15000); // waiting for 15 seconds
+      }
     } catch (err) {
       console.error(`❌ Failed to translate ${file} to ${lang}`, err);
     }
