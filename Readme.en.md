@@ -2,13 +2,15 @@
 
 <div align="center">
 
+[Chinese Documentation](Readme.md) | [English Documentation](Readme.en.md)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-24+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
-**A comprehensive toolset for Genshin Impact Miliastra Wonderland node graph development**
+**A comprehensive toolset for Genshin Impact's Miliastra Wonderland node graph development**
 
-*A complete solution from low-level file parsing to high-level code generation*
+*A complete solution from low-level file parsing to high-level code authoring*
 
 [Quick Start](#quick-start) · [Core Features](#core-features) · [Documentation](#module-documentation) · [Development Progress](#development-progress)
 
@@ -16,14 +18,14 @@
 
 ---
 
-## ✨ Features
+## ✨ Feature Highlights
 
 - 🔧 **GIA File Read/Write** — Programmatically read and write `.gia` node graph files using TypeScript
-- 📝 **DSL Code Language** — Describe node graphs as code, enjoying IDE intelligent completion and syntax highlighting
+- 📝 **DSL Code Language** — Describe node graphs as code, enjoying IDE autocompletion and syntax highlighting
 - 🔄 **Bidirectional Converters** — Complete DSL ⇔ IR ⇔ GIA compile/decompile toolchain
 - 📊 **Comprehensive Node Data** — Programmatically organized node IDs, enum values, and pin definitions
-- 🧩 **High-Level API** — `Graph` class encapsulation for easy creation and modification of node graphs
-- 🎯 **Type Safety** — Extensive TypeScript type definitions and compile-time checks
+- 🧩 **High-Level API** — `Graph` class encapsulation for easy node graph construction and modification
+- 🎯 **Type Safety** — Comprehensive TypeScript type definitions and compile-time checks
 
 ---
 
@@ -56,9 +58,9 @@ encode_gia_file("./output.gia", newGraph.encode());
 
 📖 Details: [GIA Generator](./utils/gia_gen/readme.en.md) | [Protobuf Utilities](./utils/protobuf/readme.en.md)
 
-### 2. DSL Code Writing
+### 2. DSL Code Authoring
 
-Use a TypeScript-based Domain Specific Language (DSL) to describe node graph logic in code, enjoying IDE intelligent completion, syntax highlighting, and version control advantages.
+Describe node graph logic as code using a TypeScript-based Domain Specific Language (DSL), enjoying IDE autocompletion, syntax highlighting, and version control advantages.
 
 ```typescript
 // Triggered when game object is created
@@ -85,9 +87,9 @@ Use a TypeScript-based Domain Specific Language (DSL) to describe node graph log
 
 📖 Details: [DSL User Guide](./docs/UserGuide.en.md) | [Language Design](./docs/SystemDesign.en.md) | [Function Definitions](./utils/functions/readme.en.md)
 
-### 3. Parser and Converter
+### 3. Parser and Converters
 
-A complete compile/decompile toolchain supporting mutual conversion between DSL text, Intermediate Representation (IR), and GIA node graphs.
+A complete compile/decompile toolchain, supporting mutual conversion between DSL text, Intermediate Representation (IR), and GIA node graphs.
 
 ```typescript
 import { createParserState, parse, decompile } from "./src/parser";
@@ -108,12 +110,12 @@ const irModule = giaIrConvertor(giaGraph, true);
 ┌─────────┐      parse       ┌──────┐     giaIrConvertor    ┌─────────┐
 │   DSL   │ ───────────────► │  IR  │ ◄──────────────────── │   GIA   │
 │  Code   │ ◄─────────────── │  AST │ ────────────────────► │  Graph  │
-└─────────┘     decompile    └──────┘     (WIP)             └─────────┘
+└─────────┘     decompile    └──────┘     (in progress)     └─────────┘
 ```
 
-📖 Details: [Parser](./src/parser/readme.en.md) | [Converter](./src/convertor/readme.en.md) | [IR Types](./src/types/readme.en.md)
+📖 Details: [Parser](./src/parser/readme.en.md) | [Converters](./src/convertor/readme.en.md) | [IR Types](./src/types/readme.en.md)
 
-### 4. Complete Node Data
+### 4. Comprehensive Node Data
 
 Programmatically organized server and client node data, including complete ID mappings, enum definitions, and pin information.
 
@@ -131,11 +133,11 @@ const compOp = ENUM_VALUE.ComparisonOperators_EqualTo;
 
 | Data Type | Description | Format |
 | :--- | :--- | :--- |
-| Node ID | Names and IDs of 770+ nodes | TypeScript |
+| Node IDs | Names and IDs of 770+ nodes | TypeScript |
 | Enum Definitions | 60+ enum types and values | TypeScript |
 | Pin Records | Input/output pin definitions for all nodes | TypeScript |
 | Type Mappings | Type index table for generic nodes | TypeScript |
-| Comprehensive Data | Structured summary of the above data | YAML / JSON |
+| Consolidated Data | Structured summary of the above data | YAML / JSON |
 
 📖 Details: [Node Data](./utils/node_data/readme.en.md)
 
@@ -152,41 +154,41 @@ const compOp = ENUM_VALUE.ComparisonOperators_EqualTo;
 │   │   └── graph_chain_split.ts  #  Graph structure analysis algorithm
 │   ├── parser/                 # DSL Parser
 │   │   ├── tokenizer.ts        #     Lexical analysis
-│   │   ├── parser.ts           #     Syntax analysis
-│   │   ├── decompiler.ts       #     IR → DSL decompiler
+│   │   ├── parser.ts           #     Syntactic analysis
+│   │   ├── decompiler.ts       #     IR → DSL Decompilation
 │   │   └── parse_*.ts          #     Sub-parsers
 │   └── types/                  # IR Type Definitions
-│       ├── IR*.ts              #     IR node types
+│       ├── IR*.ts              #     IR Node Types
 │       ├── types.ts            #     Base types
-│       └── consts.ts           #     Constant definitions
+│       └── consts.ts           #     Constants definitions
 │ 
 ├── utils/                      # Utility Library
 │   ├── gia_gen/                # GIA Graph Generator
 │   │   ├── graph.ts            #     Graph class (recommended)
 │   │   ├── basic.ts            #     Basic component generation
-│   │   ├── nodes.ts            #     Node generators
-│   │   ├── auto_layout.ts      #     Auto-layout algorithm
+│   │   ├── nodes.ts            #     Node generator
+│   │   ├── auto_layout.ts      #     Automatic layout algorithm
 │   │   └── ......              #     Other components
-│   ├── node_data/              # Static Node Data
-│   │   ├── node_id.ts          #     Node ID mappings
+│   ├── node_data/              # Node Static Data
+│   │   ├── node_id.ts          #     Node ID mapping
 │   │   ├── enum_id.ts          #     Enum definitions
 │   │   ├── data.ts             #     All data information
 │   │   ├── helpers.ts          #     Query helper functions
 │   │   └── ......              #     Other static definitions
 │   ├── protobuf/               # Protobuf Utilities
-│   │   ├── gia.proto           #     Protobuf structure definition
-│   │   ├── decode.ts           #     TypeScript encoding/decoding (standard structure)
-│   │   ├── decode.py           #     Python encoding/decoding (can display unknown fields)
-│   │   └── gia.proto.ts        #     Auto-generated types
+│   │   ├── gia.proto           #     Protobuf schema definition
+│   │   ├── decode.ts           #     TypeScript codec (standard structure)
+│   │   ├── decode.py           #     Python codec (can display unknown fields)
+│   │   └── gia.proto.ts        #     Automatically generated types
 │   ├── functions/              # DSL Function Definitions
 │   │   ├── math.ts             #     Function definition list
 │   │   └── function_defs.ts    #     Type system and parser
 │   └── gen_def.ts              # DSL Type Definition Generator
 │
 ├── docs/                       # User Documentation
-│   ├── UserGuide.md            # DSL User Manual
-│   ├── SystemDesign.md         # Language Design Document
-│   └── dsl.enbf                # DSL grammar specification
+│   ├── UserGuide.md            # DSL User Guide
+│   ├── SystemDesign.md         # Language Design Documentation
+│   └── dsl.enbf                # DSL Grammar Specification
 │
 ├── test.CI/                    # CI Test Cases (run by github actions)
 └── static/                     # Image Resources (for Readme.md display)
@@ -201,21 +203,21 @@ const compOp = ENUM_VALUE.ComparisonOperators_EqualTo;
 - **Node.js** 23.6+
 - **npm** or **pnpm**
 
-### Install Dependencies
+### Installation
 
 ```bash
 npm install
 ```
 
-### Run Examples
+### Running Examples
 
 ```bash
-// In progress, no full examples yet
+// In progress, no complete examples yet
 ```
 
 ### Quick Usage
 
-**1. Read and modify an existing GIA file**
+**1. Read and Modify an Existing GIA File**
 
 ```typescript
 import { decode_gia_file, encode_gia_file, Graph } from "./utils";
@@ -227,20 +229,20 @@ const graph = Graph.decode(data);
 graph.get_nodes()[0].setPos(100, 200);
 
 // Add a comment
-graph.add_comment("This is a test node", 100, 150);
+graph.add_comment("这是一个测试节点", 100, 150);
 
 // Save
 encode_gia_file("./myGraph_modified.gia", graph.encode());
 ```
 
-**2. Create a node graph from scratch**
+**2. Create a Node Graph from Scratch**
 
 ```typescript
 import { Graph, NODE_ID, encode_gia_file } from "./utils";
 
 const graph = new Graph("server");
 
-// Add trigger and function nodes
+// Add triggers and functional nodes
 const onCreate = graph.add_node(NODE_ID.When_Entity_Is_Created);
 const getPlayer = graph.add_node(NODE_ID.Get_Player_Entity);
 const teleport = graph.add_node(NODE_ID.Teleport_Player);
@@ -268,7 +270,7 @@ encode_gia_file("./newGraph.gia", graph.encode());
 
 | Module | Description | Documentation |
 | :--- | :--- | :--- |
-| **Source Code** | Parser, converter, type definitions | [src/readme.md](./src/readme.en.md) |
+| **Source Code** | Parser, converters, type definitions | [src/readme.md](./src/readme.en.md) |
 | **Utility Library** | GIA generation, node data, Protobuf | [utils/readme.md](./utils/readme.en.md) |
 
 ### Utility Modules
@@ -277,8 +279,8 @@ encode_gia_file("./newGraph.gia", graph.encode());
 | :--- | :--- | :--- |
 | **DSL Functions** | Math/Query node definitions and type generation | [functions/readme.md](./utils/functions/readme.en.md) |
 | **GIA Generator** | Programmatic construction and manipulation of node graphs | [gia_gen/readme.md](./utils/gia_gen/readme.en.md) |
-| **Node Data** | ID, enum, pin reflection data | [node_data/readme.md](./utils/node_data/readme.en.md) |
-| **Protobuf** | GIA file encoding/decoding | [protobuf/readme.md](./utils/protobuf/readme.en.md) |
+| **Node Data** | ID, enum, and pin reflection data | [node_data/readme.md](./utils/node_data/readme.en.md) |
+| **Protobuf** | GIA file encoding and decoding | [protobuf/readme.en.md](./utils/protobuf/readme.en.md) |
 
 ### User Documentation
 
@@ -292,7 +294,7 @@ encode_gia_file("./newGraph.gia", graph.encode());
 
 ## GIA File Format
 
-`.gia` files are the binary storage format for Genshin Impact Miliastra Wonderland node graphs, serialized using Protobuf.
+`.gia` files are the binary storage format for Genshin Impact's Miliastra Wonderland node graphs, serialized using Protobuf.
 
 ![GIA File Structure](./static/image.png)
 
@@ -302,7 +304,7 @@ encode_gia_file("./newGraph.gia", graph.encode());
 | Version | 0x04 | `0x01` | Fixed value |
 | Header Mark | 0x08 | `0x0326` | **Strict validation** |
 | File Type | 0x0C | `0x03` | GIA = 3 |
-| Content Length | 0x10 | `size - 24` | Protobuf data length |
+| Content Length | 0x10 | `size - 24` | Length of Protobuf data |
 | Protobuf | 0x14 | ... | Serialized node graph data |
 | Footer Mark | End | `0x0679` | **Strict validation** |
 
@@ -316,43 +318,43 @@ encode_gia_file("./newGraph.gia", graph.encode());
 
 | Feature | Status | Description |
 | :--- | :--- | :--- |
-| GIA file reverse engineering | ✅ Done | Complete file format parsing |
-| GIA file read/write API | ✅ Done | TypeScript + Python tools |
-| Graph high-level API | ✅ Done | Node, connection, comment, variable management |
-| DSL syntax design | ✅ Done | Complete syntax specification |
-| DSL → IR parser | ✅ Done | Lexical analysis + syntax analysis |
-| IR → DSL decompiler | ✅ Done | Full decompilation support |
-| Auto-layout algorithm | ✅ Done | Dagre-based auto-layout |
-| Node data organization | ✅ Done | 770+ nodes, 40+ enums |
-| CI automated testing | ✅ Done | Parser consistency testing |
+| GIA File Reverse Engineering | ✅ Completed | Complete file format parsing |
+| GIA File Read/Write Interface | ✅ Completed | TypeScript + Python utilities |
+| Graph High-Level API | ✅ Completed | Node, connection, comment, and variable management |
+| DSL Syntax Design | ✅ Completed | Complete syntax specification |
+| DSL → IR Parser | ✅ Completed | Lexical analysis + syntactic analysis |
+| IR → DSL Decompiler | ✅ Completed | Full decompilation support |
+| Automatic Layout Algorithm | ✅ Completed | Dagre-based automatic layout |
+| Node Data Organization | ✅ Completed | 770+ nodes, 40+ enums |
+| CI Automated Testing | ✅ Completed | Parser consistency testing |
 
 ### In Progress ⏳
 
 | Feature | Status | Description |
 | :--- | :--- | :--- |
-| GIA → IR converter | ⏳ In Progress | Raw mode already supported, optimizing |
-| IR → GIA converter | ⏳ In Progress | Constructing Graph from IR |
-| Client node support | ⏳ In Progress | Handling ID and enum differences |
+| GIA → IR Converter | ⏳ In Progress | Raw mode supported, optimizations ongoing |
+| IR → GIA Converter | ⏳ In Progress | Constructing Graph from IR |
+| Client Node Support | ⏳ In Progress | Handling ID and enum differences |
 
 ### Planned 📋
 
 | Feature | Description |
 | :--- | :--- |
-| VSCode language extension | Syntax highlighting and intelligent completion for `.dsl.ts` files |
-| Compiler type inference | Automatic type inference for DSL expressions |
-| Execution simulation | Local simulation of node graph logic |
+| VSCode Language Extension | Syntax highlighting and autocompletion for `.dsl.ts` files |
+| Compiler Type Inference | Automatic inference of DSL expression types |
+| Runtime Simulation | Local simulation of node graph logic execution |
 
-More plans available in [TODO.md](./TODO.en.md)
+More plans can be found in [TODO.md](./TODO.en.md)
 
 ---
 
 ## File Visibility
 
-According to [sync-list.json](./sync-list.json), the following content is only visible on the development branch (`dev`):
+According to [sync-list.json](./sync-list.json), the following content is only visible in the development branch (`dev`):
 
 | Path | Reason |
 | :--- | :--- |
-| `utils/extracting_nodes/` | Internal node extraction tool |
+| `utils/extracting_nodes/` | Internal node extraction tools |
 | `utils/**/ref/**` | Reference files |
 | `utils/node_data/yaml/**` | Intermediate data |
 | `**/test/**`, `**/temp/**` | Test and temporary files |
