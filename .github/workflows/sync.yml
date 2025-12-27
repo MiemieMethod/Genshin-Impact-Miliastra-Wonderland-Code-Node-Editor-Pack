@@ -61,6 +61,7 @@ jobs:
           # Check if main/dist/failed_list.txt is empty
           if [ -s main/dist/failed_list.txt ]; then
             cat main/dist/failed_list.txt
+            echo ""
             echo "Abort Workflow to Send Notification"
             exit 1
           fi
