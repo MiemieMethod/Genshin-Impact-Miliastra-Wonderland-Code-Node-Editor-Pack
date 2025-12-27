@@ -44,7 +44,7 @@ const globs = [
   "!node_modules/**",
   "!.github/**",
   "Readme.md",
-  // "utils/**/readme.md",
+  "utils/**/readme.md",
   // "**/readme.md",
 ];
 
@@ -110,14 +110,17 @@ async function main() {
     let needNewTranslation = false;
 
     if (!fse.existsSync(mainFilePath)) {
+      // no need to sync
       console.log(`[SKIP SOURCE] ${file}`);
       continue;
     }
 
     const mainContent = await fse.readFile(mainFilePath, "utf-8");
     if (devContent === mainContent) {
+      // source is unchanged, only need to translate if translation is missing
       isSourceChanged = false;
     } else {
+      // source is changed, need to translate all
       console.log(`[MODIFIED SOURCE] ${file}`);
     }
 
@@ -129,6 +132,10 @@ async function main() {
       const mainLangFilePath = path.join(MAIN_PATH, langFileName);
 
       const translationExists = fse.existsSync(mainLangFilePath);
+      if (translationExists) {
+        // copy the translation from main to translate (as backup)
+        fse.copyFileSync(mainLangFilePath, path.join(TARGET_PATH, langFileName));
+      }
 
       // SKIP LOGIC:
       // If the source hasn't changed AND the translation already exists in main, skip it.

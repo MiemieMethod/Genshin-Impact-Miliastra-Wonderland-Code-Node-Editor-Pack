@@ -20,20 +20,13 @@ jobs:
           ref: dev
           path: dev
           fetch-depth: 1
-      
-      - name: Checkout main
-        uses: actions/checkout@v6
-        with:
-          ref: 85e5fe9356d5a664fe6bde67f40b0d2baacc3501
-          path: main
-          fetch-depth: 1
+
       - name: Checkout main
         uses: actions/checkout@v6
         with:
           ref: main
-          path: main2
+          path: main
           fetch-depth: 1
-      - run: rm -rf main/.git && cp -rf main2/.git main && ls main -a -l
           
       - name: Setup Node.js 24
         uses: actions/setup-node@v5
