@@ -1,0 +1,2731 @@
+[
+  {
+    "name": "Enumeration Match",
+    "ioc": [
+      {
+        "type": "S<T:E<-1>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": -1
+          },
+          {
+            "index": 1,
+            "ioc": -1
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<0>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 0
+          },
+          {
+            "index": 1,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<1>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 1
+          },
+          {
+            "index": 1,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<2>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 2
+          },
+          {
+            "index": 1,
+            "ioc": 2
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<3>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 3
+          },
+          {
+            "index": 1,
+            "ioc": 3
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<4>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 4
+          },
+          {
+            "index": 1,
+            "ioc": 4
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<5>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 5
+          },
+          {
+            "index": 1,
+            "ioc": 5
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<6>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 6
+          },
+          {
+            "index": 1,
+            "ioc": 6
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<7>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 7
+          },
+          {
+            "index": 1,
+            "ioc": 7
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<8>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 8
+          },
+          {
+            "index": 1,
+            "ioc": 8
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<9>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 9
+          },
+          {
+            "index": 1,
+            "ioc": 9
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<10>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 10
+          },
+          {
+            "index": 1,
+            "ioc": 10
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<11>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 11
+          },
+          {
+            "index": 1,
+            "ioc": 11
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<12>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 12
+          },
+          {
+            "index": 1,
+            "ioc": 12
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<13>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 13
+          },
+          {
+            "index": 1,
+            "ioc": 13
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<14>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 14
+          },
+          {
+            "index": 1,
+            "ioc": 14
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<15>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 15
+          },
+          {
+            "index": 1,
+            "ioc": 15
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<16>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 16
+          },
+          {
+            "index": 1,
+            "ioc": 16
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<17>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 17
+          },
+          {
+            "index": 1,
+            "ioc": 17
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<18>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 18
+          },
+          {
+            "index": 1,
+            "ioc": 18
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<19>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 19
+          },
+          {
+            "index": 1,
+            "ioc": 19
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<20>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 20
+          },
+          {
+            "index": 1,
+            "ioc": 20
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<21>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 21
+          },
+          {
+            "index": 1,
+            "ioc": 21
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<22>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 22
+          },
+          {
+            "index": 1,
+            "ioc": 22
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<23>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 23
+          },
+          {
+            "index": 1,
+            "ioc": 23
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<24>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 24
+          },
+          {
+            "index": 1,
+            "ioc": 24
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<25>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 25
+          },
+          {
+            "index": 1,
+            "ioc": 25
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<26>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 26
+          },
+          {
+            "index": 1,
+            "ioc": 26
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<27>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 27
+          },
+          {
+            "index": 1,
+            "ioc": 27
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<28>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 28
+          },
+          {
+            "index": 1,
+            "ioc": 28
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<29>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 29
+          },
+          {
+            "index": 1,
+            "ioc": 29
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<30>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 30
+          },
+          {
+            "index": 1,
+            "ioc": 30
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<31>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 31
+          },
+          {
+            "index": 1,
+            "ioc": 31
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<32>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 32
+          },
+          {
+            "index": 1,
+            "ioc": 32
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<33>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 33
+          },
+          {
+            "index": 1,
+            "ioc": 33
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<7>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 7
+          },
+          {
+            "index": 1,
+            "ioc": 7
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<35>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 35
+          },
+          {
+            "index": 1,
+            "ioc": 35
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<36>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 36
+          },
+          {
+            "index": 1,
+            "ioc": 36
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<37>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 37
+          },
+          {
+            "index": 1,
+            "ioc": 37
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<38>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 38
+          },
+          {
+            "index": 1,
+            "ioc": 38
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<39>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 39
+          },
+          {
+            "index": 1,
+            "ioc": 39
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<40>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 40
+          },
+          {
+            "index": 1,
+            "ioc": 40
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:E<41>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 41
+          },
+          {
+            "index": 1,
+            "ioc": 41
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "Equal",
+    "ioc": [
+      {
+        "type": "S<T:Bol>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 2
+          },
+          {
+            "index": 2,
+            "ioc": 2
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 3
+          },
+          {
+            "index": 2,
+            "ioc": 3
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Gid>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 4
+          },
+          {
+            "index": 2,
+            "ioc": 4
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Ety>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 5
+          },
+          {
+            "index": 2,
+            "ioc": 5
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Vec>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 6
+          },
+          {
+            "index": 2,
+            "ioc": 6
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Fct>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 7
+          },
+          {
+            "index": 2,
+            "ioc": 7
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Cfg>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 8
+          },
+          {
+            "index": 2,
+            "ioc": 8
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Pfb>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 9
+          },
+          {
+            "index": 2,
+            "ioc": 9
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "Greater Than",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "Less Than",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "Less Than or Equal To",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "Greater Than or Equal To",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "Addition",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Subtraction",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Multiplication",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Division",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Absolute Value Operation",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Get Custom Variable",
+    "ioc": [
+      {
+        "type": "S<T:Bol>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Int>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 2
+          }
+        ]
+      },
+      {
+        "type": "S<T:Str>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<T:Gid>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 4
+          }
+        ]
+      },
+      {
+        "type": "S<T:Ety>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 5
+          }
+        ]
+      },
+      {
+        "type": "S<T:Vec>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 6
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Int>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 7
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Str>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 8
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Ety>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 9
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Gid>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 10
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Flt>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 11
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Vec>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 12
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Bol>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 13
+          }
+        ]
+      },
+      {
+        "type": "S<T:Cfg>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 14
+          }
+        ]
+      },
+      {
+        "type": "S<T:Pfb>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 15
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Cfg>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 16
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Pfb>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 17
+          }
+        ]
+      },
+      {
+        "type": "S<T:Fct>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 18
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Get Corresponding Value From List",
+    "ioc": [
+      {
+        "type": "S<T:Bol>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 2
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 2
+          }
+        ]
+      },
+      {
+        "type": "S<T:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 3
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<T:Gid>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 4
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 4
+          }
+        ]
+      },
+      {
+        "type": "S<T:Ety>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 5
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 5
+          }
+        ]
+      },
+      {
+        "type": "S<T:Vec>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 6
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 6
+          }
+        ]
+      },
+      {
+        "type": "S<T:Cfg>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 7
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 7
+          }
+        ]
+      },
+      {
+        "type": "S<T:Pfb>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 8
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Get List Length",
+    "ioc": [
+      {
+        "type": "S<T:L<Bol>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Int>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Flt>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 2
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Str>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Gid>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 4
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Ety>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 5
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Vec>>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 6
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "List Includes This Value",
+    "ioc": [
+      {
+        "type": "S<T:Bol>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 0
+          },
+          {
+            "index": 1,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 1
+          },
+          {
+            "index": 1,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 2
+          },
+          {
+            "index": 1,
+            "ioc": 2
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Str>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 3
+          },
+          {
+            "index": 1,
+            "ioc": 3
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Gid>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 4
+          },
+          {
+            "index": 1,
+            "ioc": 4
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Ety>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 5
+          },
+          {
+            "index": 1,
+            "ioc": 5
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Vec>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 6
+          },
+          {
+            "index": 1,
+            "ioc": 6
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Cfg>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 7
+          },
+          {
+            "index": 1,
+            "ioc": 7
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Pfb>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 8
+          },
+          {
+            "index": 1,
+            "ioc": 8
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "Get Maximum Value From List",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Get Minimum Value From List",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Data Type Conversion",
+    "ioc": [
+      {
+        "type": "S<K:Int,V:Bol>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<K:Bol,V:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      },
+      {
+        "type": "S<K:Flt,V:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 2
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      },
+      {
+        "type": "S<K:Int,V:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 2
+          }
+        ]
+      },
+      {
+        "type": "S<K:Bol,V:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<K:Int,V:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<K:Flt,V:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 2
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<K:Gid,V:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 3
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<K:Ety,V:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 4
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<K:Vec,V:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 5
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<K:Fct,V:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 6
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Get Random Number",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 0
+          },
+          {
+            "index": 1,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 0,
+            "ioc": 1
+          },
+          {
+            "index": 1,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Assembly List",
+    "ioc": [
+      {
+        "type": "S<T:Ety>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          },
+          {
+            "index": 2,
+            "ioc": 0
+          },
+          {
+            "index": 3,
+            "ioc": 0
+          },
+          {
+            "index": 4,
+            "ioc": 0
+          },
+          {
+            "index": 5,
+            "ioc": 0
+          },
+          {
+            "index": 6,
+            "ioc": 0
+          },
+          {
+            "index": 7,
+            "ioc": 0
+          },
+          {
+            "index": 8,
+            "ioc": 0
+          },
+          {
+            "index": 9,
+            "ioc": 0
+          },
+          {
+            "index": 10,
+            "ioc": 0
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          },
+          {
+            "index": 2,
+            "ioc": 1
+          },
+          {
+            "index": 3,
+            "ioc": 1
+          },
+          {
+            "index": 4,
+            "ioc": 1
+          },
+          {
+            "index": 5,
+            "ioc": 1
+          },
+          {
+            "index": 6,
+            "ioc": 1
+          },
+          {
+            "index": 7,
+            "ioc": 1
+          },
+          {
+            "index": 8,
+            "ioc": 1
+          },
+          {
+            "index": 9,
+            "ioc": 1
+          },
+          {
+            "index": 10,
+            "ioc": 1
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      },
+      {
+        "type": "S<T:Bol>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 2
+          },
+          {
+            "index": 2,
+            "ioc": 2
+          },
+          {
+            "index": 3,
+            "ioc": 2
+          },
+          {
+            "index": 4,
+            "ioc": 2
+          },
+          {
+            "index": 5,
+            "ioc": 2
+          },
+          {
+            "index": 6,
+            "ioc": 2
+          },
+          {
+            "index": 7,
+            "ioc": 2
+          },
+          {
+            "index": 8,
+            "ioc": 2
+          },
+          {
+            "index": 9,
+            "ioc": 2
+          },
+          {
+            "index": 10,
+            "ioc": 2
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 2
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 3
+          },
+          {
+            "index": 2,
+            "ioc": 3
+          },
+          {
+            "index": 3,
+            "ioc": 3
+          },
+          {
+            "index": 4,
+            "ioc": 3
+          },
+          {
+            "index": 5,
+            "ioc": 3
+          },
+          {
+            "index": 6,
+            "ioc": 3
+          },
+          {
+            "index": 7,
+            "ioc": 3
+          },
+          {
+            "index": 8,
+            "ioc": 3
+          },
+          {
+            "index": 9,
+            "ioc": 3
+          },
+          {
+            "index": 10,
+            "ioc": 3
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<T:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 4
+          },
+          {
+            "index": 2,
+            "ioc": 4
+          },
+          {
+            "index": 3,
+            "ioc": 4
+          },
+          {
+            "index": 4,
+            "ioc": 4
+          },
+          {
+            "index": 5,
+            "ioc": 4
+          },
+          {
+            "index": 6,
+            "ioc": 4
+          },
+          {
+            "index": 7,
+            "ioc": 4
+          },
+          {
+            "index": 8,
+            "ioc": 4
+          },
+          {
+            "index": 9,
+            "ioc": 4
+          },
+          {
+            "index": 10,
+            "ioc": 4
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 4
+          }
+        ]
+      },
+      {
+        "type": "S<T:Vec>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 5
+          },
+          {
+            "index": 2,
+            "ioc": 5
+          },
+          {
+            "index": 3,
+            "ioc": 5
+          },
+          {
+            "index": 4,
+            "ioc": 5
+          },
+          {
+            "index": 5,
+            "ioc": 5
+          },
+          {
+            "index": 6,
+            "ioc": 5
+          },
+          {
+            "index": 7,
+            "ioc": 5
+          },
+          {
+            "index": 8,
+            "ioc": 5
+          },
+          {
+            "index": 9,
+            "ioc": 5
+          },
+          {
+            "index": 10,
+            "ioc": 5
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 5
+          }
+        ]
+      },
+      {
+        "type": "S<T:Gid>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 6
+          },
+          {
+            "index": 2,
+            "ioc": 6
+          },
+          {
+            "index": 3,
+            "ioc": 6
+          },
+          {
+            "index": 4,
+            "ioc": 6
+          },
+          {
+            "index": 5,
+            "ioc": 6
+          },
+          {
+            "index": 6,
+            "ioc": 6
+          },
+          {
+            "index": 7,
+            "ioc": 6
+          },
+          {
+            "index": 8,
+            "ioc": 6
+          },
+          {
+            "index": 9,
+            "ioc": 6
+          },
+          {
+            "index": 10,
+            "ioc": 6
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 6
+          }
+        ]
+      },
+      {
+        "type": "S<T:Cfg>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 7
+          },
+          {
+            "index": 2,
+            "ioc": 7
+          },
+          {
+            "index": 3,
+            "ioc": 7
+          },
+          {
+            "index": 4,
+            "ioc": 7
+          },
+          {
+            "index": 5,
+            "ioc": 7
+          },
+          {
+            "index": 6,
+            "ioc": 7
+          },
+          {
+            "index": 7,
+            "ioc": 7
+          },
+          {
+            "index": 8,
+            "ioc": 7
+          },
+          {
+            "index": 9,
+            "ioc": 7
+          },
+          {
+            "index": 10,
+            "ioc": 7
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 7
+          }
+        ]
+      },
+      {
+        "type": "S<T:Pfb>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 8
+          },
+          {
+            "index": 2,
+            "ioc": 8
+          },
+          {
+            "index": 3,
+            "ioc": 8
+          },
+          {
+            "index": 4,
+            "ioc": 8
+          },
+          {
+            "index": 5,
+            "ioc": 8
+          },
+          {
+            "index": 6,
+            "ioc": 8
+          },
+          {
+            "index": 7,
+            "ioc": 8
+          },
+          {
+            "index": 8,
+            "ioc": 8
+          },
+          {
+            "index": 9,
+            "ioc": 8
+          },
+          {
+            "index": 10,
+            "ioc": 8
+          }
+        ],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Set Local Variable",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 0
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Str>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 1
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Ety>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 2
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Gid>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 3
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 4
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Vec>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 5
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Bol>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 6
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Int>>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 7
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Str>>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 8
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Ety>>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 9
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Gid>>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 10
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Flt>>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 11
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Vec>>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 12
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:L<Bol>>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 13
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Cfg>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 14
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Pfb>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 15
+          }
+        ],
+        "outs": []
+      },
+      {
+        "type": "S<T:Fct>",
+        "ins": [
+          {
+            "index": 1,
+            "ioc": 16
+          }
+        ],
+        "outs": []
+      }
+    ]
+  },
+  {
+    "name": "Get Local Variable",
+    "ioc": [
+      {
+        "type": "S<T:Int>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 0
+          }
+        ]
+      },
+      {
+        "type": "S<T:Str>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 1
+          }
+        ]
+      },
+      {
+        "type": "S<T:Ety>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 2
+          }
+        ]
+      },
+      {
+        "type": "S<T:Gid>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 3
+          }
+        ]
+      },
+      {
+        "type": "S<T:Flt>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 4
+          }
+        ]
+      },
+      {
+        "type": "S<T:Vec>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 5
+          }
+        ]
+      },
+      {
+        "type": "S<T:Bol>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 6
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Int>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 7
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Str>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 8
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Ety>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 9
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Gid>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 10
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Flt>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 11
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Vec>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 12
+          }
+        ]
+      },
+      {
+        "type": "S<T:L<Bol>>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 13
+          }
+        ]
+      },
+      {
+        "type": "S<T:Cfg>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 14
+          }
+        ]
+      },
+      {
+        "type": "S<T:Pfb>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 15
+          }
+        ]
+      },
+      {
+        "type": "S<T:Fct>",
+        "ins": [],
+        "outs": [
+          {
+            "index": 0,
+            "ioc": 16
+          }
+        ]
+      }
+    ]
+  }
+]

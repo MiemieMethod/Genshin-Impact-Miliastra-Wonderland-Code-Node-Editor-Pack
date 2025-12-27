@@ -40,7 +40,7 @@ interface NodeEntry extends Entry {
   Family: string;                     // Family(sub-class) of the node
   Inputs: string[];                   // List of Input parameter types of the node
   Outputs: string[];                  // List of Output parameter types of the node
-  TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic. 
+  TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic.
 }
 interface EnumEntry extends Entry {
   Items: EnumItem[];  // List of Enum items of current enum

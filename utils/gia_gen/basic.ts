@@ -1,4 +1,3 @@
-import assert from "node:assert";
 import type {
   GraphNode,
   NodeConnection,
@@ -31,7 +30,7 @@ import { type ConcreteMap } from "../node_data/concrete_map.ts";
 import { get_index_of_concrete } from "../node_data/helpers.ts";
 import { ENUM_ID } from "../node_data/enum_id.ts";
 import type { AnyType, GraphVar } from "./graph.ts";
-import { todo } from "../utils.ts";
+import { assert, todo } from "../utils.ts";
 
 const gameVersion = "6.2.0";
 

@@ -177,6 +177,10 @@ function add_enum_cid_format() {
         rec.reflectMap!.forEach(x => x[0] = rec.id + " " + x[0]);
         break;
     }
+    rec.reflectMap?.forEach((ref) => {
+      ref[0] = ref[0].replace("R", 'S');
+      ref[1] = ref[1].replace("R", 'S');
+    });
     rec.reflectMap?.forEach(([id, type]) => {
       const [gid, cid, tp, undef] = id.split(" ");
       assertEq(gid, rec.id.toString());

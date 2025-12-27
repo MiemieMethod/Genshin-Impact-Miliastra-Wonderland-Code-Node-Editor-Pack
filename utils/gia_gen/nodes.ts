@@ -1,6 +1,6 @@
-import assert from "node:assert";
+
 import { ClientVarType, VarType } from "../protobuf/gia.proto.ts";
-import { DEBUG, STRICT } from "../utils.ts";
+import { assert, assertEq, DEBUG, STRICT } from "../utils.ts";
 import { ENUM_ID } from "../node_data/enum_id.ts";
 import type { NodePinsRecords } from "../node_data/node_pin_records.ts";
 
@@ -98,41 +98,41 @@ export function parse(src: string): NodeType {
   const parseTokens = (tokens: string[]): NodeType => {
     switch (tokens[p++]) {
       case "L":
-        assert.equal(tokens[p++], "<");
+        assertEq(tokens[p++], "<");
         const item = parseTokens(tokens);
-        assert.equal(tokens[p++], ">");
+        assertEq(tokens[p++], ">");
         return { t: "l", i: item };
       case "D":
-        assert.equal(tokens[p++], "<");
+        assertEq(tokens[p++], "<");
         const key = parseTokens(tokens);
-        assert.equal(tokens[p++], ",");
+        assertEq(tokens[p++], ",");
         const value = parseTokens(tokens);
-        assert.equal(tokens[p++], ">");
+        assertEq(tokens[p++], ">");
         return { t: "d", k: key, v: value };
       case "R":
-        assert.equal(tokens[p++], "<");
+        assertEq(tokens[p++], "<");
         const name = tokens[p++];
         not_illegal_name(name);
-        assert.equal(tokens[p++], ">");
+        assertEq(tokens[p++], ">");
         return { t: "r", r: name };
       case "E":
-        assert.equal(tokens[p++], "<");
+        assertEq(tokens[p++], "<");
         const eid = tokens[p++];
-        assert.equal(parseInt(eid).toString(), eid);
-        assert.equal(tokens[p++], ">");
+        assertEq(parseInt(eid).toString(), eid);
+        assertEq(tokens[p++], ">");
         return { t: "e", e: parseInt(eid) };
       case "S":
-        assert.equal(tokens[p++], "<");
+        assertEq(tokens[p++], "<");
         const fields: [string, NodeType][] = [];
         while (tokens[p] !== ">") {
           assert(tokens[p - 1] === "<" || tokens[p++] === ",");
           const field = tokens[p++];
           not_illegal_name(field);
-          assert.equal(tokens[p++], ":");
+          assertEq(tokens[p++], ":");
           const type = parseTokens(tokens);
           fields.push([field, type]);
         }
-        assert.equal(tokens[p++], ">");
+        assertEq(tokens[p++], ">");
         return { t: "s", f: fields };
       default:
         assert(
@@ -144,12 +144,7 @@ export function parse(src: string): NodeType {
     }
   };
   const ret = parseTokens(tokens);
-  assert.equal(
-    p,
-    tokens.length,
-    `Extra Tokens after end of expression('${tokens[p]}'): "${tokens.slice(p + 1).join("")
-    }" `,
-  );
+  assertEq(p, tokens.length);
   return ret;
 
   // Deprecated
@@ -464,13 +459,13 @@ export function extract_reflect_fields(
       }
       return;
     }
-    assert.equal(t.t, r.t);
+    assertEq(t.t, r.t);
     switch (r.t) {
       case "b":
-        assert.equal(r.b, (t as any).b);
+        assertEq(r.b, (t as any).b);
         return;
       case "e":
-        assert.equal(r.e, (t as any).e);
+        assertEq(r.e, (t as any).e);
         return;
       case "l":
         core(r.i, (t as any).i);
@@ -719,8 +714,7 @@ export function get_id_client(node: NodeType): number {
         case 1017:  // Local Variable
           return ClientVarType.LocalVariable_;
       }
-      // 其他枚举类型返回 Entity_ 或处理为 UnknownVar_
-      return ClientVarType.Entity_;
+      return ClientVarType.EnumItem_;
     case "l":
       switch (node.i.t) {
         case "b":
@@ -925,7 +919,7 @@ export function to_node_pin(rec: NodePinsRecords): NodePins {
 // if (import.meta.main) {
 //   function check_parse(str: string) {
 //     const node = parse(str);
-//     assert.equal(stringify(node), str);
+//     assertEq(stringify(node), str);
 //     console.log(str);
 //     console.dir(node, { depth: null });
 //     console.log("Check Pass!\n\n\n");
@@ -958,9 +952,9 @@ export function to_node_pin(rec: NodePinsRecords): NodePins {
 //       const t = get_type(i);
 //       const n = stringify(t);
 //       console.log(i, t, n);
-//       assert.equal(n, stringify(parse(n)));
-//       assert.equal(i, get_id(parse(n)));
-//       assert.equal(i, get_id(t));
+//       assertEq(n, stringify(parse(n)));
+//       assertEq(i, get_id(parse(n)));
+//       assertEq(i, get_id(t));
 //     }
 //   }
 //   const node_def1: NodePinsRecords = {
@@ -1003,7 +997,7 @@ export function to_node_pin(rec: NodePinsRecords): NodePins {
 //     const node = unwrap_records(node_def).map(to_records);
 //     console.dir(node, { depth: null });
 
-//     assert.equal(s, to_string(to_records_full(s)));
+//     assertEq(s, to_string(to_records_full(s)));
 //   }
 
 //   function test_enum() {
