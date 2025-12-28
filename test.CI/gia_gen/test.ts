@@ -19,7 +19,7 @@ const DSL = `
 
 function createGraph() {
   console.log("Creating Graph......");
-  const graph = new Graph("server", undefined, "Github Actions CI Test Generated Graph");
+  const graph = new Graph("class", undefined, "Github Actions CI Test Generated Graph");
 
   // column 1
   const Trig = graph.add_node(NODE_ID.When_Tab_Is_Selected);

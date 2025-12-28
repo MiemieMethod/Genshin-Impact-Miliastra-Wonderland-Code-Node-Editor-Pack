@@ -24,15 +24,11 @@ import {
   VarBase_ItemType_ClassBase,
 } from "../protobuf/gia.proto.ts";
 import { get_id, get_type, type NodePins, type NodeType } from "./nodes.ts";
-
 import { counter_dynamic_id, counter_index, randomInt } from "./utils.ts";
-import { type ConcreteMap } from "../node_data/concrete_map.ts";
-import { get_index_of_concrete } from "../node_data/helpers.ts";
 import { ENUM_ID } from "../node_data/enum_id.ts";
 import type { AnyType, GraphVar } from "./graph.ts";
 import { assert, todo } from "../utils.ts";
-
-const gameVersion = "6.2.0";
+import { GAME_VERSION } from "../node_data/consts.ts";
 
 /**
  * GraphBody_ 接口定义了构建图的基本参数
@@ -106,7 +102,7 @@ export function graph_body(body: GraphBody_): Root {
     },
     accessories: [],
     filePath,
-    gameVersion,
+    gameVersion: GAME_VERSION,
   };
   return gia;
 }
@@ -800,74 +796,76 @@ export function node_type_pin_body(body: NodeTypePinBody_): NodePin {
   }
 }
 
-/**
- * NodeTypeNodeBody_ 接口定义了构建基于 NodeType 的节点的参数
- */
-export interface NodeTypeNodeBody_ {
-  /** 节点类型定义，包括输入/输出引脚类型列表 */
-  pins: NodePins;
-  /** 类型到具体实例映射表，用于确定具体类型索引，可选，默认使用 node.id 检索 */
-  map?: ConcreteMap;
-  /** 节点的泛类 ID，可选，默认使用 node.id */
-  generic_id?: number;
-  /** 节点的具体 ID，可选，默认使用 node.id */
-  concrete_id?: number;
-  /** 节点的 X 坐标 */
-  x?: number;
-  /** 节点的 Y 坐标 */
-  y?: number;
-  /** ⚠️ Warning: This may cause ID collision. 节点唯一索引，不建议填入 */
-  unique_index?: number;
-}
-/**
- * 根据 NodeType 构建完整 GraphNode（自动构建 pins&类型映射）
- *
- * 参数列表：
- * - body: {
- *     pins: NodePins;
- *     map?: TypeConcreteMap;
- *     generic_id?: number;
- *     concrete_id?: number;
- *     x?: number;
- *     y?: number;
- *   }
- *
- * @param body NodeType 节点参数
- * @returns GraphNode
- */
-export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
-  const generic_id = body.generic_id ?? body.pins.id;
-  const concrete_id = body.concrete_id ?? body.pins.id;
-  const pins: NodePin[] = [];
-  body.pins.inputs.forEach((p, i) => {
-    if (p === undefined) return;
-    pins.push(node_type_pin_body({
-      kind: NodePin_Index_Kind.InParam,
-      index: i,
-      type: p,
-      indexOfConcrete: get_index_of_concrete(generic_id, 3, i, get_id(p), body.map),
-      reflective: false
-    }));
-  });
-  body.pins.outputs.forEach((p, i) => {
-    if (p === undefined) return;
-    pins.push(node_type_pin_body({
-      kind: NodePin_Index_Kind.OutParam,
-      index: i,
-      type: p,
-      indexOfConcrete: get_index_of_concrete(generic_id, 4, i, get_id(p), body.map),
-      reflective: false
-    }));
-  });
-  return node_body({
-    pins,
-    generic_id: generic_id as any,
-    concrete_id: concrete_id as any,
-    x: body.x ?? 0,
-    y: body.y ?? 0,
-    unique_index: body.unique_index,
-  });
-}
+// /**
+//  * NodeTypeNodeBody_ 接口定义了构建基于 NodeType 的节点的参数
+//  */
+// export interface NodeTypeNodeBody_ {
+//   /** 节点类型定义，包括输入/输出引脚类型列表 */
+//   pins: NodePins;
+//   /** 类型到具体实例映射表，用于确定具体类型索引，可选，默认使用 node.id 检索 */
+//   map?: ConcreteMap;
+//   /** 节点的泛类 ID，可选，默认使用 node.id */
+//   generic_id?: number;
+//   /** 节点的具体 ID，可选，默认使用 node.id */
+//   concrete_id?: number;
+//   /** 节点的 X 坐标 */
+//   x?: number;
+//   /** 节点的 Y 坐标 */
+//   y?: number;
+//   /** ⚠️ Warning: This may cause ID collision. 节点唯一索引，不建议填入 */
+//   unique_index?: number;
+// }
+// /**
+//  * 根据 NodeType 构建完整 GraphNode（自动构建 pins&类型映射）
+//  *
+//  * 参数列表：
+//  * - body: {
+//  *     pins: NodePins;
+//  *     map?: TypeConcreteMap;
+//  *     generic_id?: number;
+//  *     concrete_id?: number;
+//  *     x?: number;
+//  *     y?: number;
+//  *   }
+//  *
+//  * @param body NodeType 节点参数
+//  * @returns GraphNode
+//  */
+// export function node_type_node_body(body: NodeTypeNodeBody_): GraphNode {
+//   const generic_id = body.generic_id ?? any_id_to_gid(body.pins.id);
+//   const concrete_id = body.concrete_id ?? any_id_to_cid(body.pins.id);
+//   const is_server = typeof body.pins.id === "number";
+
+//   const pins: NodePin[] = [];
+//   body.pins.inputs.forEach((p, i) => {
+//     if (p === undefined) return;
+//     pins.push(node_type_pin_body({
+//       kind: NodePin_Index_Kind.InParam,
+//       index: i,
+//       type: p,
+//       indexOfConcrete: get_index_of_concrete(generic_id, true, i,),
+//       reflective: false
+//     }));
+//   });
+//   body.pins.outputs.forEach((p, i) => {
+//     if (p === undefined) return;
+//     pins.push(node_type_pin_body({
+//       kind: NodePin_Index_Kind.OutParam,
+//       index: i,
+//       type: p,
+//       indexOfConcrete: get_index_of_concrete(generic_id, 4, i, get_id(p), body.map),
+//       reflective: false
+//     }));
+//   });
+//   return node_body({
+//     pins,
+//     generic_id: generic_id as any,
+//     concrete_id: concrete_id as any,
+//     x: body.x ?? 0,
+//     y: body.y ?? 0,
+//     unique_index: body.unique_index,
+//   });
+// }
 
 /** ⚠️ Warning: Do not use in productive environment.
  * @deprecated Create an empty frame for genshin to auto derive pin contents. */
