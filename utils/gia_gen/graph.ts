@@ -1,6 +1,6 @@
 import { assert, assertEq, empty, todo } from "../utils.ts";
 import type { Comments, GraphNode, NodeConnection, NodePin, NodePin_Index_Kind, Root } from "../protobuf/gia.proto.ts";
-import { encode_node_graph_var, graph_body, node_body, node_connect_from, node_connect_to, node_type_pin_body, pin_flow_body } from "./basic.ts";
+import { encode_node_graph_var_server, graph_body, node_body, node_connect_from, node_connect_to, node_type_pin_body, pin_flow_body } from "./basic.ts";
 import { type NodeType, reflects_records, get_id, type_equal, is_reflect, to_node_pin, parse, stringify, reflects } from "./nodes.ts";
 import { Counter, randomInt, randomName } from "./utils.ts";
 import { get_index_of_concrete, is_concrete_pin, get_node_record_generic, get_graph_const, get_graph_const_by_which, get_generic_id_client, get_generic_id_server, get_node_record_generic_server, get_node_record_generic_client, is_generic_id } from "../node_data/helpers.ts";
@@ -293,9 +293,10 @@ export class Graph<M extends AllModes = "server"> {
   }
 
   encode(opt?: EncodeOptions): Root {
-    const option = new EncodeOptionsBuilder(opt ?? {});
+    const option = new EncodeOptionsBuilder(opt ?? { is_server: isServer(this.mode) });
+    assertEq(option.is_server, isServer(this.mode));
     const nodes = [...this.nodes].map((n) => n.encode(option, this.get_connect_to(n), this.flows.get(n), this.get_node_comment(n)));
-    const graphValues = [...this.graph_var.values()].map(v => encode_node_graph_var(v));
+    const graphValues = [...this.graph_var.values()].map(v => encode_node_graph_var_server(v));
     return graph_body({
       graph_const: this.GraphConst,
       uid: this.uid,
@@ -676,6 +677,7 @@ export class Pin {
     const connect = connects?.find((c) => this.kind === 3 && c.to_index === this.index)?.encode(); // input can be connected
     try {
       return node_type_pin_body({
+        is_server: option.is_server,
         reflective: this.indexOfConcrete !== null,
         /** 引脚类型 (输入/输出) */
         kind: this.kind as NodePin_Index_Kind,
@@ -798,13 +800,16 @@ export class Comment {
 export interface EncodeOptions {
   pos_jitter?: boolean;
   fill_undefined?: boolean | number;
+  is_server?: boolean;
 }
 export class EncodeOptionsBuilder implements Required<EncodeOptions> {
   pos_jitter: boolean;
   fill_undefined: boolean | number;
-  constructor({ pos_jitter = true, fill_undefined = false }: EncodeOptions) {
+  is_server: boolean;
+  constructor({ pos_jitter = true, fill_undefined = false, is_server = true }: EncodeOptions) {
     this.pos_jitter = pos_jitter;
     this.fill_undefined = fill_undefined;
+    this.is_server = is_server;
   }
 }
 

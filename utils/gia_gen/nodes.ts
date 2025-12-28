@@ -1,6 +1,6 @@
 
 import { ClientVarType, VarType } from "../protobuf/gia.proto.ts";
-import { assert, assertEq, DEBUG, STRICT } from "../utils.ts";
+import { assert, assertEq, DEBUG, panic, STRICT } from "../utils.ts";
 import { ENUM_ID } from "../node_data/enum_id.ts";
 import type { NodePinsRecords } from "../node_data/node_pin_records.ts";
 
@@ -568,10 +568,10 @@ export function get_id(node: NodeType): number {
       break;
     case "e":
       switch (node.e) {
-        case 1016:  // Local Variable
-          return 16;
-        case 1028:  // Variable Snapshot
-          return 28;
+        case ENUM_ID.LocalVariable:  // Local Variable
+          return VarType.LocalVariable;
+        case ENUM_ID.VariableSnapshot:  // Variable Snapshot
+          return VarType.VariableSnapshot;
       }
       return VarType.EnumItem;
     case "l":
@@ -613,12 +613,7 @@ export function get_id(node: NodeType): number {
     case "s":
       return VarType.Struct;
   }
-  if (STRICT) {
-    throw new Error(
-      stringify(node) + "is not a basic type! Fallback to id = 0 !",
-    );
-  }
-  if (DEBUG) console.warn(node, "is not a basic type! Fallback to id = 0 !");
+  panic(stringify(node) + "is not a basic type! Fallback to id = 0 !");
   return 0;
 }
 /**
@@ -689,13 +684,11 @@ export function get_type(id: number): NodeType {
     case VarType.Dictionary:
       return { t: "d", k: { t: "b", b: "Ety" }, v: { t: "b", b: "Ety" } };
     case VarType.LocalVariable:
-      return { t: "e", e: 1016 };
+      return { t: "e", e: ENUM_ID.LocalVariable };
     case VarType.VariableSnapshot:
-      return { t: "e", e: 1028 };
+      return { t: "e", e: ENUM_ID.VariableSnapshot };
   }
-  // throw new Error("Invalid ID: " + id);
-  // console.error("Invalid ID: " + id);
-  return undefined as any;
+  return panic(id + " is not a known type!");
 }
 
 export function get_id_client(node: NodeType): number {
@@ -728,7 +721,7 @@ export function get_id_client(node: NodeType): number {
       switch (node.e) {
         case -1:  // Enum type
           return ClientVarType.EnumItem_;
-        case 1017:  // Local Variable
+        case ENUM_ID.LocalVariable:  // Local Variable
           return ClientVarType.LocalVariable_;
       }
       return ClientVarType.EnumItem_;
@@ -773,12 +766,7 @@ export function get_id_client(node: NodeType): number {
   }
 
   // 不包含类型的走最后的报错逻辑
-  if (STRICT) {
-    throw new Error(
-      stringify(node) + " is not a supported client type! Fallback to id = 0 !",
-    );
-  }
-  if (DEBUG) console.warn(node, "is not a supported client type! Fallback to id = 0 !");
+  panic(stringify(node) + " is not a supported client type!");
   return ClientVarType.UnknownVar_;
 }
 
@@ -817,7 +805,7 @@ export function get_type_client(id: number): NodeType {
     case ClientVarType.Faction_:
       return { t: "b", b: "Fct" };
     case ClientVarType.LocalVariable_:
-      return { t: "e", e: 1022 };
+      return { t: "e", e: ENUM_ID.LocalVariable };
     case ClientVarType.EnumList_:
       return { t: "l", i: { t: "e", e: -1 } };
     case ClientVarType.Configuration_:
@@ -830,11 +818,7 @@ export function get_type_client(id: number): NodeType {
       return { t: "l", i: { t: "b", b: "Pfb" } };
   }
   // 对于不支持的 ID，返回 undefined 或抛出错误
-  if (STRICT) {
-    throw new Error("Invalid client ID: " + id);
-  }
-  if (DEBUG) console.error("Invalid client ID: " + id);
-  return undefined as any;
+  return panic(id + " is not a known client type!");
 }
 
 export function to_node_pin(rec: NodePinsRecords): NodePins {
