@@ -1,5 +1,5 @@
-import { writeFileSync } from "fs";
-import { Graph, NODE_ID, encode_gia_file } from "../../utils/index.ts";
+import type { AllModes, ClientModes, ServerModes } from "../../utils/gia_gen/graph.ts";
+import { Graph, NODE_ID, CLIENT_NODE_ID, encode_gia_file } from "../../utils/index.ts";
 import { assertDeepEq, assertEq, exclude_keys } from "../../utils/utils.ts";
 import { inspect } from "util";
 
@@ -16,10 +16,22 @@ const DSL = `
   );
 `;
 
+const DSL2 = `
+[OnStart()].$(()=>q.attach_pos(Self, "GI_AvatarRoot"))[pos0] >> {
+  0: SendSignal(Signal.Dash, pos0, q.rot(Self))
+  1: $(()=>{
+      const p1 = m.rot(q.rot(), vec(0, 2, 6));
+      return [p1 + pos0, m.rot(q.rot(), vec(90, 0, 0))];
+    })[pos1, rot1].PlayEffect(10006238, pos1, rot1, 1, true),
+  2: PlayEffect(10011063, pos0, vec(0, 0, 0), 0, true),
+  3: PlayEffect(208, pos0 + vec(0, 1, 6), m.rot(q.rot(), vec(80, 4, 0), 1.3, false),
+}
+`;
 
-function createGraph() {
+
+function createGraph(mode: ServerModes) {
   console.log("Creating Graph......");
-  const graph = new Graph("class", undefined, "Github Actions CI Test Generated Graph");
+  const graph = new Graph(mode, undefined, "Github Actions CI Test Generated Graph");
 
   // column 1
   const Trig = graph.add_node(NODE_ID.When_Tab_Is_Selected);
@@ -100,31 +112,111 @@ function createGraph() {
 
 }
 
-if (import.meta.main) {
-  console.log("The equivalent DSL is:", DSL);
-  const graph = createGraph();
+function createGraphClient(mode: ClientModes) {
+  const graph = new Graph(mode, undefined, "Github Actions CI Test Generated Graph");
+
+  const Begin = graph.add_node(CLIENT_NODE_ID.Node_Graph_Begins);
+  const Signal = graph.add_node(CLIENT_NODE_ID.Send_Signal_to_Server_Node_Graph);
+  const Eff1 = graph.add_node(CLIENT_NODE_ID.Play_Timed_Effects);
+  const Eff2 = graph.add_node(CLIENT_NODE_ID.Play_Timed_Effects);
+  const Eff3 = graph.add_node(CLIENT_NODE_ID.Play_Timed_Effects);
+
+  graph.add_comment("Wind vortex", Eff1);
+  graph.add_comment("sound effect", Eff2);
+  graph.add_comment("Wind column", Eff3);
+
+  graph.flow(Begin, Eff1);
+  graph.flow(Begin, Signal);
+  graph.flow(Begin, Eff2);
+  graph.flow(Begin, Eff3);
+
+  const get_att_pt = graph.add_node(CLIENT_NODE_ID.Get_Target_Attachment_Point_Location);
+  const get_rot = graph.add_node(CLIENT_NODE_ID.Get_Entity_Rotation);
+  const get_slf = graph.add_node(CLIENT_NODE_ID.Get_Self_Entity);
+  const rot_v1 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Rotation);
+  const rot_v2 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Rotation);
+  const add_v1 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Addition);
+  const rot_v3 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Rotation);
+  const add_v2 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Addition);
+
+  graph.connect(get_slf, get_rot, 0, 0);
+  graph.connect(get_slf, get_att_pt, 0, 0);
+
+  graph.connect(get_att_pt, add_v2, 0, 1);
+  graph.connect(get_att_pt, Signal, 0, 1);
+  graph.connect(get_att_pt, Eff2, 0, 1);
+  graph.connect(get_att_pt, add_v1, 0, 0);
+
+  graph.connect(get_rot, rot_v1, 0, 1);
+  graph.connect(get_rot, rot_v2, 0, 1);
+  graph.connect(get_rot, Signal, 0, 2);
+  graph.connect(get_rot, rot_v3, 0, 1);
+
+  graph.connect(rot_v1, add_v1, 0, 0);
+  graph.connect(rot_v2, Eff1, 0, 2);
+  graph.connect(add_v1, Eff3, 0, 1);
+  graph.connect(rot_v3, Eff3, 0, 2);
+  graph.connect(add_v2, Eff1, 0, 1);
+
+  get_att_pt.setVal(1, "GI_AvatarRoot");
+  rot_v1.setVal(0, [0, 2, 6]);
+  rot_v2.setVal(0, [90, 0, 0]);
+  Signal.setVal(0, "Dash");
+  add_v1.setVal(0, [0, 1, 0]);
+  rot_v3.setVal(0, [80, 4, 0]);
+
+  Eff1.setVal(0, 10006238);
+  Eff1.setVal(3, 1);
+  Eff1.setVal(4, true);
+
+  Eff2.setVal(0, 10011063);
+  Eff2.setVal(2, [0, 0, 0]);
+  Eff2.setVal(3, 0);
+  Eff2.setVal(4, true);
+
+  Eff3.setVal(0, 208);
+  Eff3.setVal(3, 1.3);
+  Eff3.setVal(4, false);
+
+  // auto analysis layout
+  graph.autoLayout(1, 2);
+  return graph;
+}
+
+function test<T extends AllModes>(fun: (type: T) => Graph<T>, type: T) {
+  const graph = fun(type);
 
   const encoded = graph.encode({ pos_jitter: false, fill_undefined: false });
   const decode = Graph.decode(encoded);
   const encoded2 = decode.encode({ pos_jitter: false });
   const decode2 = Graph.decode(encoded2);
 
-  const graph_trim = exclude_keys(graph, ["nodes", "set", "record"]);
-  // const graph_trim = exclude_keys(graph, ["connects", "set", "to", "pins", "array", "value"], ["nodes", "set", "record"]);
-  graph_trim.connects = new Set([...graph_trim.connects].sort((a, b) => a.from.node_index - b.from.node_index || a.to.node_index - b.to.node_index));
+  const encoded3 = decode2.encode({ pos_jitter: false, fill_undefined: true });
+  const encoded3p = decode2.encode({ pos_jitter: false, fill_undefined: 123 });
+  const decode3 = Graph.decode(encoded3);
+  const decode3p = Graph.decode(encoded3p);
 
-  const decode_trim = exclude_keys(decode, ["nodes", "set", "record"]);
-  // const decode_trim = exclude_keys(decode, ["connects", "set", "to", "pins", "array", "value"], ["nodes", "set", "record"]);
-  decode_trim.connects = new Set([...decode_trim.connects].sort((a, b) => a.from.node_index - b.from.node_index || a.to.node_index - b.to.node_index));
-
-  writeFileSync("./dist/graph.cs", inspect(graph_trim, { depth: Infinity }));
-  writeFileSync("./dist/decode.cs", inspect(decode_trim, { depth: Infinity }));
-  writeFileSync("./dist/encode.cs", inspect(encoded, { depth: Infinity }));
-  // writeFileSync("./dist/encode2.cs", inspect(encode2, { depth: Infinity }));
 
   assertDeepEq(encoded, encoded2);
   assertDeepEq(decode, decode2);
-  assertDeepEq(graph_trim, decode_trim);
+
+  (graph as any).connects = new Set([...graph.connects].sort((a, b) => a.from.node_index - b.from.node_index || a.to.node_index - b.to.node_index));
+  (decode as any).connects = new Set([...decode.connects].sort((a, b) => a.from.node_index - b.from.node_index || a.to.node_index - b.to.node_index));
+
+  assertDeepEq(graph, decode, {
+    ignore_rules: (a, b) =>
+      a === null && (b instanceof Array && b.length === 0)
+      || a === true && b === 1
+  });
+
+  assertDeepEq(decode2, decode3, {
+    ignore_rules: (a, b) =>
+      a === null && (b === 0 || b instanceof Array && b.toString() === '0,0,0')
+  });
+  assertDeepEq(decode2, decode3p, {
+    ignore_rules: (a, b) =>
+      a === null && (b === 123 || b === 1 || b instanceof Array && b.toString() === '123,123,123')
+  });
 
   /** graph --> encoded --> decode --> encoded2 --> decode2
    * 
@@ -133,7 +225,20 @@ if (import.meta.main) {
    * - decode === decode2
    * Encode and Decode is lossless:
    * - graph.sort() === decode.sort()
+   * 
   */
-  encode_gia_file("./dist/GeneratedGraph.gia", graph.encode());
-  console.log("Saved to `./dist/GeneratedGraph.gia`");
+}
+
+if (import.meta.main) {
+  // test(createGraph, "class");
+  // test(createGraphClient, "skill");
+
+  // console.log("The equivalent DSL is:", DSL);
+  // encode_gia_file("./dist/GeneratedGraph.gia", createGraph("class").encode());
+  // console.log("Saved to `./dist/GeneratedGraph.gia`");
+
+  console.log("The equivalent DSL is:", DSL2);
+  encode_gia_file("./dist/GeneratedGraphClient.gia", createGraphClient("skill").encode());
+  console.log("Saved to `./dist/GeneratedGraphClient.gia`");
+
 }

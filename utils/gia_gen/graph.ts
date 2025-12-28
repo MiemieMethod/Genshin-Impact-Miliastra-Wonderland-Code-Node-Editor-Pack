@@ -3,23 +3,38 @@ import type { Comments, GraphNode, NodeConnection, NodePin, NodePin_Index_Kind, 
 import { encode_node_graph_var, graph_body, node_body, node_connect_from, node_connect_to, node_type_pin_body, pin_flow_body } from "./basic.ts";
 import { type NodeType, reflects_records, get_id, type_equal, is_reflect, to_node_pin } from "./nodes.ts";
 import { Counter, randomInt, randomName } from "./utils.ts";
-import { get_index_of_concrete, is_concrete_pin, get_generic_id, get_node_record, get_node_record_generic, get_graph_const, get_graph_const_by_which } from "../node_data/helpers.ts";
-import { extract_value, get_graph_vars, get_node_info } from "./extract.ts";
+import { get_index_of_concrete, is_concrete_pin, get_node_record_generic, get_graph_const, get_graph_const_by_which, get_generic_id_client, get_generic_id_server } from "../node_data/helpers.ts";
+import { extract_value, get_client_node_cid_from_info, get_graph_vars, get_node_info } from "./extract.ts";
 import type { NodePinsRecords, SingleNodeData } from "../node_data/node_pin_records.ts";
 import { auto_layout } from "./auto_layout.ts";
 
 import { NODE_ID, CLIENT_NODE_ID } from "../node_data/node_id.ts";
 import { type GraphConst } from "../node_data/consts.ts";
 
-type ServerModes = "server" | "status" | "class" | "item" | "composite";
-type ClientModes = "bool" | "int" | "skill";
-type AllModes = ServerModes | ClientModes;
+export type ServerModes = "server" | "status" | "class" | "item" | "composite";
+export type ClientModes = "bool" | "int" | "skill";
+export type AllModes = ServerModes | ClientModes;
 type ServerOrClient<M extends AllModes> = M extends ServerModes ? "server" : "client";
 type NodeIdFor<M extends AllModes> = M extends ServerModes ? NODE_ID : CLIENT_NODE_ID;
+type NodeNullFor<M extends AllModes> = M extends ServerModes ? 0 : "";
 function isServer(mode: AllModes): mode is ServerModes {
   return mode === "server" || mode === "status" || mode === "class" || mode === "item" || mode === "composite";
 }
-
+function IsServer<M extends AllModes>(mode: M): M extends ServerModes ? true : false {
+  return (mode === "server" || mode === "status" || mode === "class" || mode === "item" || mode === "composite") as any;
+}
+function assert_is_client(mode: AllModes): asserts mode is ClientModes {
+  assert(!isServer(mode));
+}
+function assert_is_server(mode: AllModes): asserts mode is ServerModes {
+  assert(isServer(mode));
+}
+function NodeIdNotNull<M extends AllModes>(id: NODE_ID | CLIENT_NODE_ID | 0 | ""): id is NodeIdFor<M> {
+  return id !== 0 && id !== "";
+}
+function GetNullFor<M extends AllModes>(mode: M): NodeNullFor<M> {
+  return isServer(mode) ? 0 as NodeNullFor<M> : "" as NodeNullFor<M>;
+}
 
 
 export type AnyType =
@@ -62,31 +77,28 @@ export class Graph<M extends AllModes = "server"> {
     this.graph_var = new Map();
   }
 
-  private assert_is_server(): asserts this is Graph<ServerModes> {
-    assert(isServer(this.mode));
-  }
-  private assert_is_client(): asserts this is Graph<ServerModes> {
-    assert(!isServer(this.mode));
-  }
-
   /** 
    * @param node Node Id or Instance */
+  add_node(node: Node<M>): Node<M>;
+  add_node(node: NodeIdFor<M>, generic_id?: number): Node<M>;
+  add_node(node: null, generic_id?: number): Node<M>;
   add_node(node: NodeIdFor<M> | Node<M> | null, generic_id?: number): Node<M> {
     assert(!empty(node) || !empty(generic_id));
     if (typeof node === "number") {
       // should be server node
-      this.assert_is_server();
+      assert_is_server(this.mode);
       const n = new Node(this.counter_idx.value, this.mode, node, generic_id);
       this.nodes.add(n);
       return n;
     } else if (typeof node === "string") {
       // should be client node
-      this.assert_is_client();
+      assert_is_client(this.mode);
       const n = new Node(this.counter_idx.value, this.mode, node, generic_id);
       this.nodes.add(n);
       return n;
     } else if (empty(node)) {
-      const n = new Node(this.counter_idx.value, this.mode, undefined, generic_id);
+      assert(!empty(generic_id));
+      const n = new Node(this.counter_idx.value, this.mode, GetNullFor(this.mode), generic_id);
       this.nodes.add(n);
       return n;
     }
@@ -226,12 +238,20 @@ export class Graph<M extends AllModes = "server"> {
     return connect;
   }
 
-  add_comment(content: string | Comment, x?: number, y?: number, attached_node: Node<M> | null = null): Comment {
+  add_comment(content: Comment): Comment;
+  add_comment(content: Comment, attach_to: Node<M>): Comment;
+  add_comment(content: string, attached_node: Node<M>): Comment;
+  add_comment(content: string, x: number, y: number): Comment;
+  add_comment(content: string | Comment, x?: number | Node<M>, y?: number): Comment {
     if (typeof content !== "string") {
+      if (x !== undefined && typeof x !== "number") content.attached_node = x;
       this.comments.add(content);
       return content;
     }
-    const comment = new Comment(content, x ?? 0, y ?? 0, attached_node);
+    const attached_node = typeof x === "number" ? null : x;
+    x = typeof x === "number" ? x : 0;
+    y = typeof x === "number" ? y! : 0;
+    const comment = new Comment(content, x, y, attached_node);
     this.comments.add(comment);
     return comment;
   }
@@ -323,47 +343,47 @@ export class Graph<M extends AllModes = "server"> {
   }
 }
 
-export class Node<M extends AllModes = "server"> {
+export class Node<M extends AllModes> {
   public readonly mode: M;
   public readonly GraphConst: GraphConst;
   public readonly node_index: number;
-  private node_id: NodeIdFor<M> | null;
+  /** Node concrete Id */
+  private node_id: NodeIdFor<M> | NodeNullFor<M>;
   public readonly record: NodePinsRecords;
   public readonly pin_len: [number, number];
   public pins: Pin[];
   public x: number = 0;
   public y: number = 0;
-  constructor(node_index: number, mode: M = "server" as M, concrete_id?: NodeIdFor<M>, generic_id?: number) {
+
+  constructor(node_index: number, mode: M, concrete_id: NodeNullFor<M>, generic_id: number);
+  constructor(node_index: number, mode: M, concrete_id: NodeIdFor<M>, generic_id?: number);
+  constructor(node_index: number, mode: M, concrete_id: NodeNullFor<M> | NodeIdFor<M>, generic_id?: number) {
     this.mode = mode;
     this.GraphConst = get_graph_const(mode);
-    assert(!empty(concrete_id) || !empty(generic_id));
-    // use generic_id if exist, or assume node_id is concrete, otherwise use node_id;
-    const gid: number = generic_id ?? get_generic_id(concrete_id!)! ?? (typeof concrete_id === "number" ? concrete_id : parseInt(concrete_id!));
-    const cid = concrete_id;
-
+    let gid: number | null;
+    this.node_id = concrete_id;
+    assert(NodeIdNotNull(concrete_id) || !empty(generic_id));
+    if (isServer(mode)) {
+      assert(typeof concrete_id === "number");
+      gid = generic_id ?? get_generic_id_server(concrete_id);
+    } else {
+      assert(typeof concrete_id === "string");
+      gid = generic_id ?? get_generic_id_client(concrete_id);
+    }
     assert(!empty(gid));
+    assert(empty(generic_id) || generic_id === gid);
 
+    const record = get_node_record_generic(gid)!;
+    assert(!empty(record));
+
+    this.record = record;
     this.node_index = node_index;
-    this.node_id = cid ?? null;
-    this.record = get_node_record_generic(gid) ?? {
-      id: gid,
-      inputs: [],
-      outputs: [],
-      reflectMap: undefined,
-    };
     this.pins = [];
     this.pin_len = [this.record.inputs.length, this.record.outputs.length];
     // Initialize pins based on node record
-    if (!empty(cid)) {
-      this.setConcrete(cid);
+    if (NodeIdNotNull(this.node_id)) {
+      this.setConcrete(this.node_id);
     }
-  }
-
-  private assert_is_server(): asserts this is Graph<ServerModes> {
-    assert(isServer(this.mode));
-  }
-  private assert_is_client(): asserts this is Graph<ServerModes> {
-    assert(!isServer(this.mode));
   }
 
   setConcrete(id: NodeIdFor<M>) {
@@ -437,11 +457,8 @@ export class Node<M extends AllModes = "server"> {
   static decode<M extends AllModes>(node: GraphNode, mode: M): Node<M> {
     const info = get_node_info(node);
     const g_id = info.generic_id;
-    const c_id = info.concrete_id;
-    const n = new Node(node.nodeIndex, mode, isServer(mode) ? c_id as NodeIdFor<M> : undefined, g_id);
-    if (!isServer(mode) && c_id !== undefined) {
-      todo("extract cid using index of concrete in client nodes");
-    }
+    const c_id = (IsServer(mode) ? get_client_node_cid_from_info(info) : info.concrete_id) as NodeIdFor<M> ?? GetNullFor(mode);
+    const n = new Node(node.nodeIndex, mode, c_id, g_id);
     n.setPos(node.x / 300, node.y / 200);
     const values = node.pins.filter((p) => p.i1.kind === 3).map((p) => Pin.decode(p));
     info.pins.forEach((p) => {

@@ -70,26 +70,44 @@ export function assertEq<T>(target: unknown, expect: T): asserts target is T {
   console.error("[Assertion]", target, "!==", expect);
   throw new Error("Assertion failed");
 }
-export function assertDeepEq<T>(target: T, expect: T, { client = false, print_l_r = true }: { client?: boolean, print_l_r?: boolean } = {}): asserts target is T {
+export function assertDeepEq<T>(
+  target: T,
+  expect: T,
+  {
+    client = false,
+    print_l_r = true,
+    ignore_rules = (a: any, b: any) => false,
+    enable_debugger = false,
+  }: {
+    client?: boolean,
+    print_l_r?: boolean,
+    ignore_rules?: (a: any, b: any) => boolean,
+    enable_debugger?: boolean
+  } = {}
+): asserts target is T {
   const isObject = (v: any) => v && typeof v === "object";
   const failure = {
     stack: [] as string[],
     info: ""
   };
   const pts = new Set();
-  function deepEqual(a: any, b: any, depth = 0): boolean {
+  const deepEqual = (a: any, b: any, depth = 0): boolean => {
     if (depth > 100) {
       failure.info = "Recursion depth exceeded";
+      if (enable_debugger) debugger;
       return false;
     }
+    if (ignore_rules(a, b)) return true;
     if (typeof a === "function" && typeof b === "function") return true;
     if (a === b) return true;
     if (a === undefined || a === null || b === undefined || b === null) {
       failure.info = `Null or Undefined: ${a} !== ${b}`;
+      if (enable_debugger) debugger;
       return false;
     }
     if (typeof a !== typeof b) {
       failure.info = `Type mismatch: ${typeof a} !== ${typeof b}`;
+      if (enable_debugger) debugger;
       return false;
     }
     if (isObject(a)) {
@@ -101,6 +119,7 @@ export function assertDeepEq<T>(target: T, expect: T, { client = false, print_l_
       if (a instanceof Array && b instanceof Array) {
         if (a.length !== b.length) {
           failure.info = `Array length mismatch: ${a.length} !== ${b.length}`;
+          if (enable_debugger) debugger;
           return false;
         }
         for (let i = 0; i < a.length; i++) {
@@ -115,13 +134,14 @@ export function assertDeepEq<T>(target: T, expect: T, { client = false, print_l_
       if (a instanceof Set && b instanceof Set) {
         if (a.size !== b.size) {
           failure.info = `Set size mismatch: ${a.size} !== ${b.size}`;
+          if (enable_debugger) debugger;
           return false;
         }
         const a_arr = [...a];
         const b_arr = [...b];
         for (let i = 0; i < a_arr.length; i++) {
           if (!deepEqual(a_arr[i], b_arr[i], depth + 1)) {
-            failure.stack.push(`Set(${i}:${a_arr[i]})`);
+            failure.stack.push(`Set(${i}:${a_arr[i]}|${b_arr[i]}|)`);
             return false;
           }
         }
@@ -131,17 +151,18 @@ export function assertDeepEq<T>(target: T, expect: T, { client = false, print_l_
       if (a instanceof Map && b instanceof Map) {
         if (a.size !== b.size) {
           failure.info = `Map size mismatch: ${a.size} !== ${b.size}`;
+          if (enable_debugger) debugger;
           return false;
         }
         const a_keys = [...a.keys()].sort();
         const b_keys = [...b.keys()].sort();
         for (let i = 0; i < a_keys.length; i++) {
           if (!deepEqual(a_keys[i], b_keys[i])) {
-            failure.stack.push(`MapKey(${i}:${a_keys[i]})`);
+            failure.stack.push(`MapKey(${i}:${a_keys[i]}|${b_keys[i]})`);
             return false;
           }
           if (!deepEqual(a.get(a_keys[i]), b.get(b_keys[i]), depth + 1)) {
-            failure.stack.push(`Map(${a_keys[i]})`);
+            failure.stack.push(`Map(${a_keys[i]}|${b_keys[i]})`);
             return false;
           }
         }
@@ -153,6 +174,7 @@ export function assertDeepEq<T>(target: T, expect: T, { client = false, print_l_
         const b_keys = Object.keys(b).sort();
         if (a_keys.length !== b_keys.length) {
           failure.info = `Object key Length Mismatch: ${a_keys.length} !== ${b_keys.length}`;
+          if (enable_debugger) debugger;
           return false;
         }
         for (let i = 0; i < a_keys.length; i++) {
@@ -168,6 +190,7 @@ export function assertDeepEq<T>(target: T, expect: T, { client = false, print_l_
         return true;
       }
       failure.info = "UNKNOWN"
+      if (enable_debugger) debugger;
       return false;
     }
     failure.info = `[Value mismatch]: ${a} !== ${b}`;

@@ -53,16 +53,20 @@ export function get_pin_info(pin: NodePin): PinInfo_ {
 
 interface NodeInfo_ {
   generic_id: number;
-  concrete_id: number | undefined;
+  concrete_id: number | null;
   pins: PinInfo_[];
 }
 export function get_node_info(node: GraphNode): NodeInfo_ {
   const ret: NodeInfo_ = {
     generic_id: node.genericId.nodeId,
-    concrete_id: node.concreteId?.nodeId,
+    concrete_id: node.concreteId?.nodeId ?? null,
     pins: node.pins.map((v) => get_pin_info(v)),
   };
   return ret;
+}
+
+export function get_client_node_cid_from_info(info: NodeInfo_): number | null {
+  throw new Error("Not implemented");
 }
 
 export function extract_value(value: VarBase): AnyType | undefined {
