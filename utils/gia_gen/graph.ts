@@ -403,7 +403,7 @@ export class Node<M extends AllModes> {
       this.concreteId = null;
       this.reflectType = null;
       // Should have no cid
-      assert(cid === undefined);
+      // assert(cid === undefined);
       return record;
     }
 

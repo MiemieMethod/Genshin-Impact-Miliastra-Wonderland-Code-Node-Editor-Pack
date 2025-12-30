@@ -6,7 +6,7 @@
  * 
  * @author Aluria
  * @version 2.1.0
- * @date Sun Dec 28 2025 12:49:14 GMT+0800 (中国标准时间)
+ * @date Tue Dec 30 2025 12:46:47 GMT+0800 (中国标准时间)
  */
 
 
@@ -41,10 +41,29 @@ interface NodeEntry extends Entry {
   Range: "Server" | "Client";         // The applicable range of the node
   Class: typeof NodeClasses[number];  // The class of the node
   Family: string;                     // Family(sub-class) of the node
-  Inputs: string[];                   // List of Input parameter types of the node
-  Outputs: string[];                  // List of Output parameter types of the node
+  Flows: FlowEntry[];                 // List of control flow pins of the node
+  Pins: PinEntry[];                   // List of data io pins of the node
   ConcreteID?: number;                // Concrete id for non-reflective nodes (different from ID in Client Graph)
   TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic.
+}
+interface PinBase {
+  Kind: string;                                     // The kind of the pin
+  Index: number;                                    // Index of the pin on each side
+  ConcreteIndex: number;                            // Inner index of the pin
+  Label: Translations;                              // Display name of the pin (Always be "" for most flows)
+  Visibility: "Display" | "Hidden" | "Conditional"; // Whether the pin is displayed, hidden or conditional
+  Remarks?: string                                  // Some additional information about the pin with special behavior
+}
+interface FlowEntry extends PinBase {
+  Kind: "FlowIn" | "FlowOut";                       // At Input or Output side
+}
+interface PinEntry extends PinBase {
+  Kind: "Input" | "Output" | "ClientSpecialInput";  // I'm unsure what ClientSpecialInput is
+  Placeholder: Translations;                        // Placeholder of the pin
+  Type: string;                                     // Type of the pin, could be generic type for reflective nodes
+  FixedVal?: PinValue;                              // Fixed value of the pin (For part of the hidden pin)
+  Connectable: boolean;                             // Whether the pin can be connected to another
+  IndexOfConcrete?: number;                         // For reflective nodes, the index of the pin for concrete type
 }
 interface EnumEntry extends Entry {
   Items: EnumItem[];  // List of Enum items of current enum
@@ -69,6 +88,7 @@ interface GraphConst {
   NodeType: number;    // Node.(genericId|concreteId).type
   NodeKind: number;    // Node.genericId.kind (The Node.concreteId.kind is always SysCall(22000))
 }
+type PinValue = string | number | boolean | null; // number could be enum or int
 const NodeClasses = ["Execution", "Trigger", "Control", "Query", "Arithmetic", "Others", "Hidden"] as const;
 const Language = ["cs", "de", "es", "en", "fr", "it", "ja", "ko", "pl", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"] as const;
 type Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages
@@ -87,7 +107,7 @@ export const AUTHOR = 'Aluria' as const satisfies string;
 
 export const Author: string = AUTHOR;
 
-export const DATE = 'Sun Dec 28 2025 12:49:14 GMT+0800 (中国标准时间)' as const satisfies string;
+export const DATE = 'Tue Dec 30 2025 12:46:47 GMT+0800 (中国标准时间)' as const satisfies string;
 
 export const Date: string = DATE;
 
@@ -95,7 +115,7 @@ export const DESCRIPTION = 'This document contains all necessary information for
 
 export const Description: string = DESCRIPTION;
 
-export const SCHEMA = `// ====== Begin of Document Schema ====== //\ninterface Document {\n  Version: string;              // Data & Schema version\n  GameVersion: string;          // Game version\n  Author: string;               // Author\n  Date: string;                 // Date of generation\n  Description: string;          // Description\n  Schema: string;               // TypeScript type definition source code\n  TypesList: TypeEntry[];       // Type list\n  NodesList: NodeEntry[];       // Node list\n  EnumList: EnumEntry[];        // Server enum list\n  ClientEnumList: EnumEntry[];  // Client enum list\n  GraphConstList: GraphConst[]; // Different node graph fixed field adoption value information\n}\ninterface Entry {\n  Name: string;               // Safe name used as object keys or query keys\n  Translations: Translations; // Raw texts displayed in game\n  ID: number;                 // An in-game unique id of the entry\n}\ninterface TypeEntry extends Entry {\n  ClientID: number | null;    // An in-game unique id of the any type in client \n  Expression: string;         // Static representation expression for convertor\n  DSLName: string;            // Name of var class(type) in DSL\n  BaseType: string;           // Base type of the entry in game runtime\n  BaseTypeID: number;         // Id of the base type\n}\ninterface NodeEntry extends Entry {\n  Type: "Simple" | "Generic";         // Whether a node is fixed-defined or generic-defined \n  Range: "Server" | "Client";         // The applicable range of the node\n  Class: typeof NodeClasses[number];  // The class of the node\n  Family: string;                     // Family(sub-class) of the node\n  Inputs: string[];                   // List of Input parameter types of the node\n  Outputs: string[];                  // List of Output parameter types of the node\n  ConcreteID?: number;                // Concrete id for non-reflective nodes (different from ID in Client Graph)\n  TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic.\n}\ninterface EnumEntry extends Entry {\n  Items: EnumItem[];  // List of Enum items of current enum\n}\ninterface TypeMapping {\n  ConcreteId: number;                         // Id of this concrete type\n  Type: string;                               // Type mapping rules of this concrete type\n  InputsIndexOfConcrete: (number | null)[];   // List of Input parameters' index of concrete\n  OutputsIndexOfConcrete: (number | null)[];  // List of Output parameters' index of concrete\n}\ninterface EnumItem extends Entry {\n}\ninterface GraphConst {\n  Name: string;        // Name of each graph type (used to identify inside gia_gen interface)\n  Class: number;       // Root.graph.id.class\n  Type: number;        // Root.graph.id.type\n  Which: number;       // Root.graph.which --> Also used to identify the graph type\n  GraphClass: number;  // Graph.id.class\n  GraphType: number;   // Graph.id.type\n  GraphKind: number;   // Graph.id.kind\n  NodeClass: number;   // Node.(genericId|concreteId).class\n  NodeType: number;    // Node.(genericId|concreteId).type\n  NodeKind: number;    // Node.genericId.kind (The Node.concreteId.kind is always SysCall(22000))\n}\nconst NodeClasses = ["Execution", "Trigger", "Control", "Query", "Arithmetic", "Others", "Hidden"] as const;\nconst Language = ["cs", "de", "es", "en", "fr", "it", "ja", "ko", "pl", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"] as const;\ntype Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages\n// ====== End of Document Schema ====== //\n` as const satisfies string;
+export const SCHEMA = `// ====== Begin of Document Schema ====== //\ninterface Document {\n  Version: string;              // Data & Schema version\n  GameVersion: string;          // Game version\n  Author: string;               // Author\n  Date: string;                 // Date of generation\n  Description: string;          // Description\n  Schema: string;               // TypeScript type definition source code\n  TypesList: TypeEntry[];       // Type list\n  NodesList: NodeEntry[];       // Node list\n  EnumList: EnumEntry[];        // Server enum list\n  ClientEnumList: EnumEntry[];  // Client enum list\n  GraphConstList: GraphConst[]; // Different node graph fixed field adoption value information\n}\ninterface Entry {\n  Name: string;               // Safe name used as object keys or query keys\n  Translations: Translations; // Raw texts displayed in game\n  ID: number;                 // An in-game unique id of the entry\n}\ninterface TypeEntry extends Entry {\n  ClientID: number | null;    // An in-game unique id of the any type in client \n  Expression: string;         // Static representation expression for convertor\n  DSLName: string;            // Name of var class(type) in DSL\n  BaseType: string;           // Base type of the entry in game runtime\n  BaseTypeID: number;         // Id of the base type\n}\ninterface NodeEntry extends Entry {\n  Type: "Simple" | "Generic";         // Whether a node is fixed-defined or generic-defined \n  Range: "Server" | "Client";         // The applicable range of the node\n  Class: typeof NodeClasses[number];  // The class of the node\n  Family: string;                     // Family(sub-class) of the node\n  Flows: FlowEntry[];                 // List of control flow pins of the node\n  Pins: PinEntry[];                   // List of data io pins of the node\n  ConcreteID?: number;                // Concrete id for non-reflective nodes (different from ID in Client Graph)\n  TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic.\n}\ninterface PinBase {\n  Kind: string;                                     // The kind of the pin\n  Index: number;                                    // Index of the pin on each side\n  ConcreteIndex: number;                            // Inner index of the pin\n  Label: Translations;                              // Display name of the pin (Always be "" for most flows)\n  Visibility: "Display" | "Hidden" | "Conditional"; // Whether the pin is displayed, hidden or conditional\n  Remarks?: string                                  // Some additional information about the pin with special behavior\n}\ninterface FlowEntry extends PinBase {\n  Kind: "FlowIn" | "FlowOut";                       // At Input or Output side\n}\ninterface PinEntry extends PinBase {\n  Kind: "Input" | "Output" | "ClientSpecialInput";  // I'm unsure what ClientSpecialInput is\n  Placeholder: Translations;                        // Placeholder of the pin\n  Type: string;                                     // Type of the pin, could be generic type for reflective nodes\n  FixedVal?: PinValue;                              // Fixed value of the pin (For part of the hidden pin)\n  Connectable: boolean;                             // Whether the pin can be connected to another\n  IndexOfConcrete?: number;                         // For reflective nodes, the index of the pin for concrete type\n}\ninterface EnumEntry extends Entry {\n  Items: EnumItem[];  // List of Enum items of current enum\n}\ninterface TypeMapping {\n  ConcreteId: number;                         // Id of this concrete type\n  Type: string;                               // Type mapping rules of this concrete type\n  InputsIndexOfConcrete: (number | null)[];   // List of Input parameters' index of concrete\n  OutputsIndexOfConcrete: (number | null)[];  // List of Output parameters' index of concrete\n}\ninterface EnumItem extends Entry {\n}\ninterface GraphConst {\n  Name: string;        // Name of each graph type (used to identify inside gia_gen interface)\n  Class: number;       // Root.graph.id.class\n  Type: number;        // Root.graph.id.type\n  Which: number;       // Root.graph.which --> Also used to identify the graph type\n  GraphClass: number;  // Graph.id.class\n  GraphType: number;   // Graph.id.type\n  GraphKind: number;   // Graph.id.kind\n  NodeClass: number;   // Node.(genericId|concreteId).class\n  NodeType: number;    // Node.(genericId|concreteId).type\n  NodeKind: number;    // Node.genericId.kind (The Node.concreteId.kind is always SysCall(22000))\n}\ntype PinValue = string | number | boolean | null; // number could be enum or int\nconst NodeClasses = ["Execution", "Trigger", "Control", "Query", "Arithmetic", "Others", "Hidden"] as const;\nconst Language = ["cs", "de", "es", "en", "fr", "it", "ja", "ko", "pl", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"] as const;\ntype Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages\n// ====== End of Document Schema ====== //\n` as const satisfies string;
 
 export const Schema: string = SCHEMA;
 
@@ -26380,55 +26400,55 @@ export const NODES_LIST = [
       {
         ConcreteId: 60,
         Type: 'S<T:Bol>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 0 ],
         OutputsIndexOfConcrete: [ 0 ]
       },
       {
         ConcreteId: 61,
         Type: 'S<T:Int>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 1 ],
         OutputsIndexOfConcrete: [ 1 ]
       },
       {
         ConcreteId: 62,
         Type: 'S<T:Flt>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 2 ],
         OutputsIndexOfConcrete: [ 2 ]
       },
       {
         ConcreteId: 63,
         Type: 'S<T:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 3 ],
         OutputsIndexOfConcrete: [ 3 ]
       },
       {
         ConcreteId: 64,
         Type: 'S<T:Gid>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 4 ],
         OutputsIndexOfConcrete: [ 4 ]
       },
       {
         ConcreteId: 65,
         Type: 'S<T:Ety>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 5 ],
         OutputsIndexOfConcrete: [ 5 ]
       },
       {
         ConcreteId: 66,
         Type: 'S<T:Vec>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 6 ],
         OutputsIndexOfConcrete: [ 6 ]
       },
       {
         ConcreteId: 67,
         Type: 'S<T:Cfg>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 7 ],
         OutputsIndexOfConcrete: [ 7 ]
       },
       {
         ConcreteId: 68,
         Type: 'S<T:Pfb>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 8 ],
         OutputsIndexOfConcrete: [ 8 ]
       }
     ]
@@ -26624,67 +26644,67 @@ export const NODES_LIST = [
       {
         ConcreteId: 130,
         Type: 'S<K:Int,V:Bol>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 1 ],
         OutputsIndexOfConcrete: [ 0 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Bol,V:Int>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 0 ],
         OutputsIndexOfConcrete: [ 1 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Flt,V:Int>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 2 ],
         OutputsIndexOfConcrete: [ 1 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Int,V:Flt>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 1 ],
         OutputsIndexOfConcrete: [ 2 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Bol,V:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 0 ],
         OutputsIndexOfConcrete: [ 3 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Int,V:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 1 ],
         OutputsIndexOfConcrete: [ 3 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Flt,V:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 2 ],
         OutputsIndexOfConcrete: [ 3 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Gid,V:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 3 ],
         OutputsIndexOfConcrete: [ 3 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Ety,V:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 4 ],
         OutputsIndexOfConcrete: [ 3 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Vec,V:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 5 ],
         OutputsIndexOfConcrete: [ 3 ]
       },
       {
         ConcreteId: 130,
         Type: 'S<K:Fct,V:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 6 ],
         OutputsIndexOfConcrete: [ 3 ]
       }
     ]
@@ -27596,103 +27616,103 @@ export const NODES_LIST = [
       {
         ConcreteId: 2000,
         Type: 'S<T:Int>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 0 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Str>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 1 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Ety>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 2 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Gid>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 3 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Flt>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 4 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Vec>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 5 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Bol>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 6 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:L<Int>>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 7 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:L<Str>>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 8 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:L<Ety>>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 9 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:L<Gid>>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 10 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:L<Flt>>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 11 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:L<Vec>>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 12 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:L<Bol>>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 13 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Cfg>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 14 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Pfb>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 15 ],
         OutputsIndexOfConcrete: []
       },
       {
         ConcreteId: 2000,
         Type: 'S<T:Fct>',
-        InputsIndexOfConcrete: [ null, null ],
+        InputsIndexOfConcrete: [ null, 16 ],
         OutputsIndexOfConcrete: []
       }
     ]

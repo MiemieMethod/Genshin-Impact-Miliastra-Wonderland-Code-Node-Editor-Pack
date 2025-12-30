@@ -1,7 +1,7 @@
 Version: 2.1.0
 GameVersion: 6.2.0
 Author: Aluria
-Date: Sun Dec 28 2025 12:49:14 GMT+0800 (中国标准时间)
+Date: Tue Dec 30 2025 12:46:47 GMT+0800 (中国标准时间)
 Description: This document contains all necessary information for this project, including types, nodes, and enums.
 Schema: |
   // ====== Begin of Document Schema ====== //
@@ -35,10 +35,29 @@ Schema: |
     Range: "Server" | "Client";         // The applicable range of the node
     Class: typeof NodeClasses[number];  // The class of the node
     Family: string;                     // Family(sub-class) of the node
-    Inputs: string[];                   // List of Input parameter types of the node
-    Outputs: string[];                  // List of Output parameter types of the node
+    Flows: FlowEntry[];                 // List of control flow pins of the node
+    Pins: PinEntry[];                   // List of data io pins of the node
     ConcreteID?: number;                // Concrete id for non-reflective nodes (different from ID in Client Graph)
     TypeMappings?: TypeMapping[];       // Type mappings is required when the node Type is Generic.
+  }
+  interface PinBase {
+    Kind: string;                                     // The kind of the pin
+    Index: number;                                    // Index of the pin on each side
+    ConcreteIndex: number;                            // Inner index of the pin
+    Label: Translations;                              // Display name of the pin (Always be "" for most flows)
+    Visibility: "Display" | "Hidden" | "Conditional"; // Whether the pin is displayed, hidden or conditional
+    Remarks?: string                                  // Some additional information about the pin with special behavior
+  }
+  interface FlowEntry extends PinBase {
+    Kind: "FlowIn" | "FlowOut";                       // At Input or Output side
+  }
+  interface PinEntry extends PinBase {
+    Kind: "Input" | "Output" | "ClientSpecialInput";  // I'm unsure what ClientSpecialInput is
+    Placeholder: Translations;                        // Placeholder of the pin
+    Type: string;                                     // Type of the pin, could be generic type for reflective nodes
+    FixedVal?: PinValue;                              // Fixed value of the pin (For part of the hidden pin)
+    Connectable: boolean;                             // Whether the pin can be connected to another
+    IndexOfConcrete?: number;                         // For reflective nodes, the index of the pin for concrete type
   }
   interface EnumEntry extends Entry {
     Items: EnumItem[];  // List of Enum items of current enum
@@ -63,6 +82,7 @@ Schema: |
     NodeType: number;    // Node.(genericId|concreteId).type
     NodeKind: number;    // Node.genericId.kind (The Node.concreteId.kind is always SysCall(22000))
   }
+  type PinValue = string | number | boolean | null; // number could be enum or int
   const NodeClasses = ["Execution", "Trigger", "Control", "Query", "Arithmetic", "Others", "Hidden"] as const;
   const Language = ["cs", "de", "es", "en", "fr", "it", "ja", "ko", "pl", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"] as const;
   type Translations = Partial<{ [key in typeof Language[number]]: string }>; // Display names of the entry in different languages
@@ -42781,63 +42801,63 @@ NodesList:
         Type: S<T:Bol>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 0
         OutputsIndexOfConcrete:
           - 0
       - ConcreteId: 61
         Type: S<T:Int>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 1
         OutputsIndexOfConcrete:
           - 1
       - ConcreteId: 62
         Type: S<T:Flt>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 2
         OutputsIndexOfConcrete:
           - 2
       - ConcreteId: 63
         Type: S<T:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 3
         OutputsIndexOfConcrete:
           - 3
       - ConcreteId: 64
         Type: S<T:Gid>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 4
         OutputsIndexOfConcrete:
           - 4
       - ConcreteId: 65
         Type: S<T:Ety>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 5
         OutputsIndexOfConcrete:
           - 5
       - ConcreteId: 66
         Type: S<T:Vec>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 6
         OutputsIndexOfConcrete:
           - 6
       - ConcreteId: 67
         Type: S<T:Cfg>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 7
         OutputsIndexOfConcrete:
           - 7
       - ConcreteId: 68
         Type: S<T:Pfb>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 8
         OutputsIndexOfConcrete:
           - 8
   - Name: Get_List_Length
@@ -43040,77 +43060,77 @@ NodesList:
         Type: S<K:Int,V:Bol>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 1
         OutputsIndexOfConcrete:
           - 0
       - ConcreteId: 130
         Type: S<K:Bol,V:Int>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 0
         OutputsIndexOfConcrete:
           - 1
       - ConcreteId: 130
         Type: S<K:Flt,V:Int>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 2
         OutputsIndexOfConcrete:
           - 1
       - ConcreteId: 130
         Type: S<K:Int,V:Flt>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 1
         OutputsIndexOfConcrete:
           - 2
       - ConcreteId: 130
         Type: S<K:Bol,V:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 0
         OutputsIndexOfConcrete:
           - 3
       - ConcreteId: 130
         Type: S<K:Int,V:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 1
         OutputsIndexOfConcrete:
           - 3
       - ConcreteId: 130
         Type: S<K:Flt,V:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 2
         OutputsIndexOfConcrete:
           - 3
       - ConcreteId: 130
         Type: S<K:Gid,V:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 3
         OutputsIndexOfConcrete:
           - 3
       - ConcreteId: 130
         Type: S<K:Ety,V:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 4
         OutputsIndexOfConcrete:
           - 3
       - ConcreteId: 130
         Type: S<K:Vec,V:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 5
         OutputsIndexOfConcrete:
           - 3
       - ConcreteId: 130
         Type: S<K:Fct,V:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 6
         OutputsIndexOfConcrete:
           - 3
   - Name: Query_Entity_by_GUID
@@ -44180,103 +44200,103 @@ NodesList:
         Type: S<T:Int>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 0
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Str>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 1
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Ety>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 2
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Gid>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 3
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Flt>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 4
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Vec>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 5
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Bol>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 6
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:L<Int>>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 7
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:L<Str>>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 8
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:L<Ety>>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 9
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:L<Gid>>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 10
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:L<Flt>>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 11
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:L<Vec>>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 12
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:L<Bol>>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 13
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Cfg>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 14
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Pfb>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 15
         OutputsIndexOfConcrete: []
       - ConcreteId: 2000
         Type: S<T:Fct>
         InputsIndexOfConcrete:
           - null
-          - null
+          - 16
         OutputsIndexOfConcrete: []
   - Name: Get_Local_Variable
     Translations:

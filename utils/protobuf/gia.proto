@@ -65,6 +65,7 @@ message CompositeDef {
     NodeGraph.Id genericId = 1;
     NodeGraph.Id concreteId = 2;
     NodeGraph.Id graphId = 4;
+    int32 xxx_is_sig = 5;
   }
   message ParameterFlow {
     message Type {
@@ -84,14 +85,15 @@ message CompositeDef {
       message ID { int64 id = 2; }
     }
     string name = 1;
-    bool visible = 2; // Maybe. Always 1
+    int32 xxxx_visible = 2; // Maybe. Always 1
     NodePin.Index index = 3;
     Type type = 4;
+    optional NodePin.Index signal_index = 5;
     int32 pinIndex = 8;
   }
   message ControlFlow {
     string name = 1;
-    bool visible = 2; // Maybe. Always 1
+    int32 xxxx_visible = 2; // Maybe. Always 1
     NodePin.Index index = 3;
     string description = 4;
     int32 pinIndex = 8;
@@ -100,14 +102,24 @@ message CompositeDef {
     enum Kind {
       Unknown = 0;
       Composite = 1000;
+      SendSignal = 1001;
+      ListenSignal = 1002;
       Assembly = 1003;
       Split = 1004;
       Modify = 1005;
     }
     message Id { int64 id = 1; }
+    message SignalDef {
+      // message Id {}
+      string signalName = 1;
+      NodeGraph.Id serverNodeId = 2;
+      NodeGraph.Id clientNodeId = 3;
+    }
 
     Kind kind = 1;
     oneof parent {
+      SignalDef sendSignal = 101;
+      SignalDef listenSignal = 102;
       Id assemble = 104;
       Id split = 105;
       Id modify = 106;
@@ -120,11 +132,12 @@ message CompositeDef {
   repeated ControlFlow outflows = 101;
   repeated ParameterFlow inputs = 102;
   repeated ParameterFlow outputs = 103;
+  repeated ParameterFlow signals = 106;
   Type type = 107;
 
   string name = 200;
   string description = 201;
-  int32 xxx = 203;
+  int32 which = 203; // 1signal, 6composite
 }
 
 message NodeGraph {
@@ -227,6 +240,7 @@ message StructureDefWrapper {
         // ESPECIALLY MAP/STRUCT BASE
       }
     }
+    message SignalDef {}
     Id id = 1;
     Content def = 3;
     string name = 5;
@@ -434,6 +448,7 @@ message GraphNode {
   float y = 6;                          // ypos
   optional Comments comments = 7;       // comments
   optional Input input = 8;             // Only in client filter Nodes
+  int32 xxxx_is_signals = 9;            // ? Signals
   repeated GraphAffiliation.Info usingStruct = 10;
 
   message Input {
@@ -463,7 +478,8 @@ message NodePin {
       OutFlow = 2;
       InParam = 3;
       OutParam = 4;
-      ClientExecNode = 5; // only in client execution nodes
+      InSignal = 5;
+      OutSignal = 6;
     }
     Kind kind = 1;
     int32 index = 2; // index of the pin

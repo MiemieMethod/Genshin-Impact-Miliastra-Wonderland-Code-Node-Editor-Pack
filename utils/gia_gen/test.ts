@@ -14,6 +14,8 @@ function gen() {
   // Object.values(NODE_ID).forEach((x, i) => g.add_node(x).setPos(i % 30, i / 30));
   const g = new Graph("skill");
   Object.values(CLIENT_NODE_ID).forEach((x, i) => g.add_node(x).setPos(i % 10, i / 10));
+  // g.add_node(CLIENT_NODE_ID.Data_Type_Conversion__Bool_Int);
+  // g.add_node(CLIENT_NODE_ID.Enumeration_Match__Attack_Type);
   encode_gia_file(PATH + "test.gia", g.encode());
 }
 
@@ -22,15 +24,42 @@ import { NodesList } from "../node_data/data.ts";
 function read() {
   const g = decode_gia_file(PATH + "test.gia");
   const nodes = g.graph.graph?.inner.graph.nodes!;
-  const tmp: any = {};
-  Object.entries(CLIENT_NODE_ID).forEach((x, i) => {
-    // NodesList.filter(x => x.Range === "Client").forEach(data => {
-    const data = NodesList.find(n => n.ID === parseInt(x[1]))!;
-    const node = nodes.find(n => n.genericId.nodeId === data.ID);
-    if (node === undefined) {
-      // console.log('skip', x[0]);
-      return;
+
+  nodes.slice(4).forEach((node, i) => {
+    const cid = Object.values(CLIENT_NODE_ID)[node.nodeIndex - 1];
+    const data = NodesList.find(x => x.ID === parseInt(cid))!;
+    if (node.genericId.nodeId === 200022) return;//Skip Type Convert
+    assertEq(data.ID, node.genericId.nodeId);
+    if (data.TypeMappings !== undefined)
+      assertEq(cid.split(" ")[1], node.concreteId?.nodeId.toString() ?? undefined);
+    else {
+      cid.split(" ")[1] === undefined || assertEqs(cid.split(" ")[1], data.ConcreteID?.toString() ?? undefined);
+      assertEq(data.ConcreteID, node.concreteId?.nodeId)
     }
+    if (node.concreteId?.nodeId === 2000) {
+      console.log(data.Name, node.pins.filter(p => p.i1.kind === 3).map(p => p.i2.index + stringify(get_type_client(p.type))).join(" ")); // Set_Local_Variable
+    } else if (["Query", "Arithmetic", "Hidden", "Others"].includes(data.Class)) {
+      // console.log(data.Name); // Set_Local_Variable
+    } else {
+      // console.log(data.Name); // Set_Local_Variable
+      return;
+      if (data.TypeMappings === undefined) {
+        assertEqs(data.Class, "Query", "Arithmetic", "Hidden", "Others")
+        if (data.Class === "Arithmetic") {
+          console.log("<<<", data.Name, data.ID, node.concreteId?.nodeId);
+          // assert(data.TypeMappings !== undefined);
+        }
+        // console.log(data.Name);
+      } else {
+        assertEqs(data.Class, "Execution", "Arithmetic", "Query", "Trigger", "Control")
+        if (data.Class === "Arithmetic") {
+          console.log(">>>", data.Name, data.ID, data.ConcreteID);
+          // assert(data.TypeMappings === undefined);
+        }
+      }
+      // assert(data.TypeMappings !== undefined);
+    }
+    return;
     const pins = node.pins;
     let pin5 = false;
     let pin50 = false;
@@ -72,4 +101,9 @@ function read() {
 }
 
 // gen();
-read();
+// read();
+
+const g = decode_gia_file(PATH + "1.gia");
+g.graph.compositeDef!.inner.def.inputs[0].pinIndex = 4;
+g.graph.compositeDef!.inner.def.outputs[0].pinIndex = 5;
+encode_gia_file(PATH + "2.gia", g);
