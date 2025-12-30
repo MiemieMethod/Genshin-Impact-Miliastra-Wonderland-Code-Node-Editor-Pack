@@ -73,12 +73,22 @@ message CompositeDef {
         VarType key = 3;
         VarType value = 4;
       }
+      message ListType {
+        message Inner {
+          VarBase.Class class = 1;
+          VarType type1 = 3;
+          VarType type2 = 4;
+        }
+        Inner inner = 1;
+      }
+      message EnumType { int32 enumId = 1; }
       VarBase.Class class = 1;
       VarType type1 = 3;
       VarType type2 = 4;
       oneof type {
+        EnumType enumType = 101;
+        ListType listType = 102;
         MapType mapType = 105;
-        // TODO
       }
 
       ID valueId = 104;
@@ -281,6 +291,9 @@ enum VarType {
   StructList = 26;
   Dictionary = 27;
   VariableSnapshot = 28;
+
+  // EnumTypes 10001.....
+  reserved 10000 to 10099;
 }
 enum ClientVarType {
   UnknownVar_ = 0;

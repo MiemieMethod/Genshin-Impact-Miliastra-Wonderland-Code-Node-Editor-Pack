@@ -1,13 +1,13 @@
 graph {
   id {
     class: AffiliatedNode
-    id: 1073741826
+    id: 1610612741
   }
   relatedIds {
     class: Basic
-    id: 1073741827
+    id: 1610612741
   }
-  name: "创建复合节点(3)(1)"
+  name: "创建复合节点"
   which: CompositeGraph
   compositeDef {
     inner {
@@ -17,52 +17,51 @@ graph {
             class: SystemDefined
             type: BasicNode
             kind: SysGraph
-            id: 1073741826
+            id: 1610612741
           }
           concreteId {
             class: SystemDefined
             type: BasicNode
             kind: SysGraph
-            id: 1073741826
+            id: 1610612741
           }
           graphId {
             class: UserDefined
             type: BasicNode
             kind: CompositeGraph
-            id: 1073741827
+            id: 1610612741
           }
         }
         inputs {
-          name: "旋转偏移"
+          name: "局部变量"
           xxxx_visible: 1
           index {
             kind: InParam
           }
           type {
-            class: VectorBase
-            type1: Vector
-            type2: Vector
+            type1: LocalVariable
+            type2: LocalVariable
           }
-          pinIndex: 16
+          pinIndex: 28
         }
         inputs {
-          name: "缩放倍率"
+          name: "值"
           xxxx_visible: 1
           index {
             kind: InParam
             index: 1
           }
           type {
-            class: FloatBase
-            type1: Float
-            type2: Float
+            class: StringBase
+            type1: String
+            type2: String
           }
-          pinIndex: 17
+          pinIndex: 29
         }
         type {
           kind: Composite
         }
-        name: "创建复合节点(3)(1)"
+        name: "创建复合节点"
         which: 6
       }
     }
@@ -71,7 +70,7 @@ graph {
 accessories {
   id {
     class: Basic
-    id: 1073741827
+    id: 1610612741
   }
   which: EntityNode
   graph {
@@ -81,88 +80,64 @@ accessories {
           class: UserDefined
           type: BasicNode
           kind: CompositeGraph
-          id: 1073741827
+          id: 1610612741
         }
         nodes {
-          nodeIndex: 1
+          nodeIndex: 5
           genericId {
             class: SystemDefined
             type: Server
             kind: SysCall
-            nodeId: 93
+            nodeId: 19
           }
           concreteId {
             class: SystemDefined
             type: Server
             kind: SysCall
-            nodeId: 93
+            nodeId: 2674
           }
           pins {
             i1 {
               kind: InParam
-              index: 4
+              index: 1
             }
             i2 {
               kind: InParam
-              index: 7
+              index: 1
             }
             value {
-              class: EnumBase
+              class: ConcreteBase
               alreadySetVal: true
-              itemType {
-                classBase: Server
-                type_server {
-                  type: Boolean
+              bConcreteValue {
+                indexOfConcrete: 2
+                value {
+                  class: StringBase
+                  itemType {
+                    classBase: Server
+                    type_server {
+                      type: String
+                    }
+                  }
+                  bString {
+                  }
                 }
               }
-              bEnum {
-              }
             }
-            type: 4
+            type: 6
           }
-          pins {
-            i1 {
-              kind: InParam
-              index: 5
-            }
-            i2 {
-              kind: InParam
-              index: 4
-            }
-            value {
-              class: VectorBase
-              alreadySetVal: true
-              itemType {
-                classBase: Server
-                type_server {
-                  type: Vector
-                }
-              }
-              bVector {
-                val {
-                  x: 12
-                  y: 2
-                  z: 3
-                }
-              }
-            }
-            type: 12
-          }
-          x: 12.6
-          y: -541
+          x: 43.8
+          y: -270.6
         }
         compositePins {
           outerPin {
             kind: InParam
           }
-          innerNodeId: 1
+          innerNodeId: 5
           innerPin {
             kind: InParam
-            index: 6
           }
           innerPin2 {
             kind: InParam
-            index: 5
           }
         }
         compositePins {
@@ -170,19 +145,19 @@ accessories {
             kind: InParam
             index: 1
           }
-          innerNodeId: 1
+          innerNodeId: 5
           innerPin {
             kind: InParam
-            index: 7
+            index: 1
           }
           innerPin2 {
             kind: InParam
-            index: 6
+            index: 1
           }
         }
       }
     }
   }
 }
-filePath: "201176311-1767088242-1073741840-\\1.gia"
+filePath: "201176311-1767089474-1073741840-\\1.gia"
 gameVersion: "6.2.0"
