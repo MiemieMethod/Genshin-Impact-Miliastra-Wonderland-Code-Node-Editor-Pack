@@ -35,6 +35,7 @@ message GraphUnit {
     StatusNode = 22;
     ClassNode = 23;
     StructureDefinition = 29;
+    LevelStructureDefinition = 37;
     ItemNode = 46;
     IntegerFilter = 47;
   };
@@ -60,12 +61,30 @@ message CompositeDefWrapper {
   InnerWrapper inner = 1;
 }
 
+message Any {}
+
+// message SpecialPinType {
+//   enum Kind {
+//     Unk = 0;
+//     SignalClient = 5;
+//     Signal = 6;
+//     Struct = 13;
+//     ModifyStructKey = 14;
+//     SetStructKey = 15;
+//     SelectStructKeys = 16;
+//   }
+//   Kind kind = 1;
+//   optional int32 class = 2;
+//   message ClientNodeId { int32 id = 1; }
+//   oneof inner { ClientNodeId clientNodeId = 100; }
+// }
+
 message CompositeDef {
   message Id {
     NodeGraph.Id genericId = 1;
     NodeGraph.Id concreteId = 2;
     NodeGraph.Id graphId = 4;
-    int32 xxx_is_sig = 5;
+    int32 signalVersion = 5;
   }
   message ParameterFlow {
     message Type {
@@ -78,33 +97,45 @@ message CompositeDef {
           VarBase.Class class = 1;
           VarType type1 = 3;
           VarType type2 = 4;
+          oneof type {
+            EnumType enumType = 101; // only appears at boolean list
+          }
         }
         Inner inner = 1;
       }
       message EnumType { int32 enumId = 1; }
       VarBase.Class class = 1;
-      VarType type1 = 3;
-      VarType type2 = 4;
+      VarType type1 = 3; // could be Client Var Type for Client Composite
+      VarType type2 = 4; // could be Server Var Type for Client Composite
+      optional DisplayState special_pin_state = 7; // Not Sure
       oneof type {
         EnumType enumType = 101;
         ListType listType = 102;
+        ID valueId = 104;
         MapType mapType = 105;
       }
 
-      ID valueId = 104;
       message ID { int64 id = 2; }
+      message DisplayState {
+        enum State {
+          Hide = 0;
+          ShowAndEditable = 4;
+        }
+        State state = 1;
+      }
     }
+
     string name = 1;
-    int32 xxxx_visible = 2; // Maybe. Always 1
-    NodePin.Index index = 3;
+    int32 xxxx_always_1 = 2; // Maybe. Always 1
+    PinIndex index = 3;
     Type type = 4;
-    optional NodePin.Index signal_index = 5;
+    optional PinIndex specialPinType = 5; // for signals/structs
     int32 pinIndex = 8;
   }
   message ControlFlow {
     string name = 1;
-    int32 xxxx_visible = 2; // Maybe. Always 1
-    NodePin.Index index = 3;
+    int32 xxxx_always_1 = 2; // Maybe. Always 1
+    PinIndex index = 3;
     string description = 4;
     int32 pinIndex = 8;
   }
@@ -145,9 +176,20 @@ message CompositeDef {
   repeated ParameterFlow signals = 106;
   Type type = 107;
 
+  enum WhichDef {
+    Unknown = 0;
+    SubWhich = 1;
+    ListenSignal = 2;
+    ModifyStruct = 3;
+    StructSub = 4;
+    Struct = 5;
+    UserComposite = 6;
+    SignalSub = 8;
+  }
   string name = 200;
   string description = 201;
-  int32 which = 203; // 1signal, 6composite
+  WhichDef which = 203;
+  WhichDef subWhich = 204;
 }
 
 message NodeGraph {
@@ -187,8 +229,8 @@ message NodeGraph {
   repeated GraphVariable graphValues = 6;
   repeated GraphAffiliation affiliations = 7;
 
-  optional int32 xxx = 100;  // always 1, not sure what it is
-  optional float xxxx = 101; // 0.3 for Bool/Int Filter
+  optional int32 xxx_exposed_pin_index = 100; // always 1, not sure what it is
+  optional float xxxx = 101; // 0.3 for Bool/Int Filter, or 0x3e99999a
 }
 
 message Comments {
@@ -213,12 +255,14 @@ message GraphAffiliation {
 message StructureDefWrapper {
   message StructureDef {
     Field genericField = 1;
-    Field connectField = 2; // same as 1
-    int32 index = 3;        // Not id, but index of structure(1,2,3...)
-    int32 itemCount = 4;    // item count
+    Field concreteField = 2; // same as 1
+    int32 structVersion = 3; // Version Updated as structure is modified and as
+                             // other structures modified
+    int32 itemCount = 4;     // item count
   }
   message Field {
     int64 id = 1;
+    int64 xxx = 2; // 2 for level stru def
     repeated VarDef vars = 3;
 
     string structName = 501;
@@ -227,19 +271,15 @@ message StructureDefWrapper {
   }
   message VarDef {
     message SubType {
-      int32 xxx = 1;
-      int64 xxxx = 2; // What are they?
+      VarType type = 1;
+      string xxxx_desc = 2; // What are they?
       VarType key = 502;
       VarType value = 503;
       int64 valueId = 504;
     }
-    message Id {
+    message TypeDef {
       VarType type = 1;
-      SubType sub = 2;
-    }
-    message Content {
-      VarType type = 1;
-      SubType sub = 2;
+      SubType subType = 2;
 
       oneof val {
         IntBaseValue intVal = 13;
@@ -250,13 +290,13 @@ message StructureDefWrapper {
         // ESPECIALLY MAP/STRUCT BASE
       }
     }
-    message SignalDef {}
-    Id id = 1;
-    Content def = 3;
+    TypeDef typedef1 = 1;
+    TypeDef typedef3 = 3;
     string name = 5;
-    string name2 = 501;
-    VarType type = 502;
-    int32 index = 503; // variable index
+
+    string varName = 501;
+    VarType varType = 502;
+    int32 varIndex = 503; // variable index
   }
   StructureDef def = 1;
 }
@@ -460,13 +500,9 @@ message GraphNode {
   float x = 5;                          // xpos
   float y = 6;                          // ypos
   optional Comments comments = 7;       // comments
-  optional Input input = 8;             // Only in client filter Nodes
-  int32 xxxx_is_signals = 9;            // ? Signals
+  optional PinIndex specialPin = 8;     // Only in client Nodes
+  optional int32 signalVersion = 9;     // Signals modified times
   repeated GraphAffiliation.Info usingStruct = 10;
-
-  message Input {
-    int32 xxx = 1; // 6
-  }
 }
 
 message NodeProperty {
@@ -483,43 +519,47 @@ message NodeProperty {
   int32 nodeId = 5;             // enum.ts/NodeId
 }
 
-message NodePin {
-  message Index {
-    enum Kind {
-      Unknown = 0;
-      InFlow = 1;
-      OutFlow = 2;
-      InParam = 3;
-      OutParam = 4;
-      InSignal = 5;
-      OutSignal = 6;
-    }
-    Kind kind = 1;
-    int32 index = 2; // index of the pin
+message PinIndex {
+  enum Kind {
+    Unknown = 0;
+    InFlow = 1;
+    OutFlow = 2;
+    InParam = 3;
+    OutParam = 4;
 
-    message Id { int64 id = 1; }
-    oneof clientExecNode { // only when used inside client nodes
-      Id nodeId = 100;
-    }
+    SignalClient = 5;
+    Signal = 6;
+    Struct = 13;
+    ModifyStructKey = 14;
+    SetStructKey = 15;
+    SelectStructKeys = 16;
   }
-  Index i1 = 1;
-  Index i2 = 2;
+  Kind kind = 1;
+  int32 index = 2; // index of the pin
+
+  message SignalId { int64 id = 1; }
+  optional SignalId signalSource = 100;
+}
+
+message NodePin {
+  PinIndex i1 = 1;
+  PinIndex i2 = 2;
   VarBase value = 3;
   int32 type = 4; // Be careful! VarType in Server and ClientVarType in Client
   repeated NodeConnection connects = 5; // OutFlow or InParam
-  optional Index clientExecNode = 6;    // Only when kind === ClientExecNode
-  optional int32 compositePinIndex = 7; // Only when calling composite node
+  optional PinIndex signalPin = 6;
+  optional int32 compositePinUid = 7; // Only when calling composite node
 }
 
 message NodeConnection {
   int32 id = 1;
-  NodePin.Index connect = 2;
-  NodePin.Index connect2 = 3;
+  PinIndex connect = 2;
+  PinIndex connect2 = 3;
 }
 
 message CompositePin {
-  NodePin.Index outerPin = 1;
+  PinIndex outerPin = 1;
   int32 innerNodeId = 2;
-  NodePin.Index innerPin = 3;
-  NodePin.Index innerPin2 = 4;
+  PinIndex innerPin = 3;
+  PinIndex innerPin2 = 4;
 }
