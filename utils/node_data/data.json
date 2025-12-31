@@ -41409,7 +41409,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Others.General.Node_Graph_End_Boolean",
+      "Identifier": "Others.Port.Node_Graph_End_Boolean",
       "ID": 200000,
       "KernelID": 0,
       "InGameName": {
@@ -43803,7 +43803,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Query.Get_Current_Camera_Template",
+      "Identifier": "Hidden.ClientQuery.Get_Current_Camera_Template",
       "ID": 200036,
       "KernelID": 1016,
       "InGameName": {
@@ -44101,7 +44101,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Others.General.Node_Graph_Begins",
+      "Identifier": "Others.Port.Node_Graph_Begins",
       "ID": 200042,
       "KernelID": 2001,
       "InGameName": {
@@ -44326,7 +44326,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Query.Get_Camera_Orientation",
+      "Identifier": "Hidden.ClientQuery.Get_Camera_Orientation",
       "ID": 200046,
       "KernelID": 1021,
       "InGameName": {
@@ -48748,7 +48748,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Others.Node_Graph_Ends",
+      "Identifier": "Hidden.ClientOthers.Node_Graph_Ends",
       "ID": 200104,
       "KernelID": 0,
       "InGameName": {
@@ -52493,7 +52493,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Execution.Test_Send_Client_Signal",
+      "Identifier": "Hidden.ClientExecution.Test_Send_Client_Signal",
       "ID": 200117,
       "KernelID": 2000,
       "InGameName": {
@@ -52880,7 +52880,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Others.General.Node_Graph_End_Integer",
+      "Identifier": "Others.Port.Node_Graph_End_Integer",
       "ID": 200122,
       "KernelID": 0,
       "InGameName": {

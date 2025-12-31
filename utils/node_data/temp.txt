@@ -1,585 +1,138 @@
-Generic: GNRC
-
-Comparison Operators: CMPR
-Equal To: eq
-Less Than: lt
-Less Than or Equal To: lte
-Greater Than: gt
-Greater Than or Equal To: gte
-
-Logical Operators: LOGC
-AND: and
-OR: or
-XOR: xor
-NOT: not
-
-Mathematical Operators: MATH
-Addition: add
-Subtraction: sub
-Multiplication: mul
-Division: div
-Modulo Operation: mod
-Exponentiation: pow
-Get Maximum Value: max
-Get Minimum Value: min
-Logarithm: log
-
-Attack Shapes: SHAP
-Rectangle: rect
-Sphere: sphere
-Sector: sector
-
-Survival Status: SURV
-Alive: alive
-Down: down
-
-Sorting Rules: SORT
-Ascending: asc
-Descending: desc
-
-Rounding Logic: ROND
-Round Up: up
-Round Down: down
-Round to Nearest: nearest
-Truncate: trunc
-
-Type Conversions: CAST
-Integer to Boolean: i_to_b
-Integer to Floating Point: i_to_f
-Integer to String: i_to_s
-Entity to String: e_to_s
-GUID to String: g_to_s
-Boolean to Integer: b_to_i
-Boolean to String: b_to_s
-Floating Point to Integer: f_to_i
-Floating Point to String: f_to_s
-3D Vector to String: v3_to_s
-Faction to String: fact_to_s
-
-Motion Path Point Types: MPPT
-Straight Line: straight
-Curve: curve
-
-Motion Types: MOTN
-One-Way: one_way
-Back and Forth: ping_pong
-Cyclic Movement: cyclic
-
-Follow Location Type: FOLO
-Completely Follow: full
-Follow Location: loc_only
-Follow Rotation: rot_only
-
-Coordinate System Type: COOR
-Relative Coordinate System: relative
-World Coordinate System: world
-
-Elemental Type: ELMT
-None: none
-Pyro: pyro
-Hydro: hydro
-Anemo: anemo
-Electro: electro
-Dendro: dendro
-Cryo: cryo
-Geo: geo
-
-Entity Type: ENTY
-Stage: stage
-Object: object
-Player: player
-Character: character
-Creation: creation
-
-Unit Status Addition Result: STAD
-Failed: Unexpected error: fail_error
-Failed: Operation paused for another process: fail_paused
-Failed: Maximum coexistence limit reached: fail_limit
-Failed: Unable to add additional stack: fail_stack
-Success: New status applied: succ_new
-Success: Slot stacking: succ_stack
-
-Unit Status Removal Reason: STRE
-Replaced by other unit status: replaced
-Duration exceeded: timeout
-Dispelled: dispelled
-Status expired: expired
-Class changed: class_chg
-
-Unit Status Removal Strategy: STRS
-All Coexisting Statuses With the Same Name: all_same
-Status With Fastest Stack Loss: fastest_loss
-
-Revive Point Selection Strategy: RPSS
-Nearest: nearest
-Most Recently Activated: latest
-Highest Priority: priority
-Random: random
-
-Cause of Being Down: DWNR
-Node Graph Triggered: node_graph
-Normal Defeat: normal
-Abnormal Defeat: abnormal
-
-Trigonometric Functions: TRIG
-cos: cos
-sin: sin
-tan: tan
-arccos: acos
-arcsin: asin
-arctan: atan
-Radians to Degrees: rad_to_deg
-Degrees to Radians: deg_to_rad
-
-Disruptor Device Type: DDVT
-Force Field Device: force_field
-Ejector: ejector
-Tractor Device: tractor
-
-Disruptor Device Orientation: DDOR
-Associate Character Orientation: follow_char
-Fixed Unidirectional: fixed
-
-UI Control Group Status: UICG
-Off: off
-On: on
-Hidden: hidden
-
-Target Type: TGTT
-None: none
-Allied Faction: ally
-Hostile Faction: hostile
-Self: self
-Own Faction: own
-All: all
-All Except Self: all_ex_self
-Allied Faction Self Included: ally_inc_self
-
-Trigger Restriction: TRGR
-Trigger Only Once: once
-Trigger Only Once per Entity: once_per_ent
-
-Hit Type: HITT
-None: none
-Default: default
-Slash: slash
-Smash: smash
-Projectile: projectile
-Piercing Attack: pierce
-
-Attack Type: ATKT
-None: none
-Melee Attack: melee
-Ranged Attack: ranged
-Default: default
-
-Hit Performance Level: HITP
-Default: default
-No Hit Performance: none
-Hit by Normal Arrow Without Charging: arrow_normal
-Combo Hit: combo
-Normal Hit: normal
-Heavy Hit: heavy
-Strong Impact: strong
-Ultimate Impact: ultimate
-Vertical Launch: v_launch
-Super Launch: s_launch
-Long-Range Throw: throw
-
-Skill Slot: SLOT
-Normal Attack: normal
-1: E: e
-2: Q: q
-3: R: r
-4: T: t
-Custom Skill Slot 1: custom_1
-Custom Skill Slot 2: custom_2
-Custom Skill Slot 3: custom_3
-Custom Skill Slot 4: custom_4
-Custom Skill Slot 5: custom_5
-Custom Skill Slot 6: custom_6
-Custom Skill Slot 7: custom_7
-Custom Skill Slot 8: custom_8
-Custom Skill Slot 9: custom_9
-Custom Skill Slot 10: custom_10
-Custom Skill Slot 11: custom_11
-Custom Skill Slot 12: custom_12
-Custom Skill Slot 13: custom_13
-Custom Skill Slot 14: custom_14
-Custom Skill Slot 15: custom_15
-
-Sound Attenuation Mode: SNDM
-Linear Attenuation: linear
-Fast Then Slow: fast_slow
-Slow Then Fast: slow_fast
-
-Select Completion Reason: SLCR
-Completed by Player: player
-Timeout: timeout
-Fixed-Quantity Refresh: fixed_refresh
-Refresh All: refresh_all
-Closed Manually: manual_close
-Closed by Node Graph: node_close
-
-Settlement Status: SETL
-TBC: tbc
-Victory: victory
-Failed: fail
-
-Reason for Item Change: ITMC
-Default: default
-Destroy: destroy
-Discard: discard
-Use: use
-Defeat Drops: drop
-Shop Trade: trade
-Node Graph Operation: node_op
-Pick Up: pickup
-
-Item Loot Type: LOOT
-Shared Reward: shared
-Individualized Reward: individual
-
-Decision Refresh Mode: DRFM
-Cannot Refresh: none
-Partial Refresh: partial
-Refresh All: all
-
-Elemental Reaction Type: REAC
-Overloaded: overloaded
-Vaporize: vaporize
-Burning: burning
-Wet: wet
-Bloom: bloom
-Melt: melt
-Frozen: frozen
-Electro-Charged: electro_charged
-Superconduct: superconduct
-Swirl: Pyro: swirl_pyro
-Swirl: Hydro: swirl_hydro
-Swirl: Electro: swirl_electro
-Swirl: Cryo: swirl_cryo
-Crystallize: Pyro: crystal_pyro
-Crystallize: Hydro: crystal_hydro
-Crystallize: Electro: crystal_electro
-Crystallize: Cryo: crystal_cryo
-Catalyze: catalyze
-Aggravate: aggravate
-Spread: spread
-Burgeon: burgeon
-Hyperbloom: hyperbloom
-
-Interrupt Status: INTS
-Interrupt Resistance Status: resistance
-Interrupt Vulnerability Status: vulnerability
-Protected Status: protected
-
-Gameplay Mode: GMOD
-Play: play
-Room Play: room
-Match Play: match
-
-Input Device Type: IDVT
-Keyboard and Mouse: kbm
-Controller: controller
-Touchscreen: touch
-
-Movement Mode: MOVE
-Instant Movement: instant
-Uniform Linear Motion: linear
-
-Fixed Motion Parameter Type: FMPR
-Fixed Speed: speed
-Fixed Time: time
-
-Generic: GNRC
-
-Comparison Operators: CPRS
-Equal To: eq
-Less Than: lt
-Less Than or Equal To: lte
-Greater Than: gt
-Greater Than or Equal To: gte
-
-Logical Operators: LOGI
-AND: and
-OR: or
-XOR: xor
-NOT: not
-
-Basic Mathematical Operators: BMAT
-Addition: add
-Subtraction: sub
-Multiplication: mul
-Division: div
-
-Attack Shapes: ASHX
-Rectangle: rect
-Sphere: sphere
-Sector: sector
-
-Survival Status: SURX
-Alive: alive
-Down: down
-
-Sorting Rules: SRTR
-Ascending: asc
-Descending: desc
-
-Rounding Logic: ROUN
-Round Up: up
-Round Down: down
-Round to Nearest: nearest
-Truncate: trunc
-
-Type Conversions: CNVT
-Integer to Boolean: i_to_b
-Integer to Floating Point: i_to_f
-Integer to String: i_to_s
-Entity to String: e_to_s
-GUID to String: g_to_s
-Boolean to Integer: b_to_i
-Boolean to String: b_to_s
-Floating Point to Integer: f_to_i
-Floating Point to String: f_to_s
-3D Vector to String: v3_to_s
-Faction to String: fact_to_s
-
-Type Conversions: CONV
-Integer to Boolean: i_to_b
-Integer to Floating Point: i_to_f
-Integer to String: i_to_s
-Entity to String: e_to_s
-GUID to String: g_to_s
-Boolean to Integer: b_to_i
-Boolean to String: b_to_s
-Floating Point to Integer: f_to_i
-Floating Point to String: f_to_s
-3D Vector to String: v3_to_s
-Faction to String: fact_to_s
-
-Motion Path Point Types: MPPX
-Straight Line: straight
-Curve: curve
-
-Motion Types: MTYP
-One-Way: one_way
-Back and Forth: ping_pong
-Cyclic Movement: cyclic
-
-Follow Location Type: FLOC
-Completely Follow: full
-Follow Location: loc_only
-Follow Rotation: rot_only
-
-Coordinate System Type: CSYS
-Relative Coordinate System: relative
-World Coordinate System: world
-
-Elemental Type: ELEM
-None: none
-Pyro: pyro
-Hydro: hydro
-Anemo: anemo
-Electro: electro
-Dendro: dendro
-Cryo: cryo
-Geo: geo
-
-Entity Type: ETIT
-Stage: stage
-Object: object
-Player: player
-Character: character
-Creation: creation
-
-Unit Status Addition Failure Reason: USAF
-Failed: Unexpected error: fail_error
-Failed: Operation paused for another process: fail_paused
-Failed: Maximum coexistence limit reached: fail_limit
-Failed: Unable to add additional stack: fail_stack
-
-Unit Status Addition Success Type: USAS
-Success: New status applied: succ_new
-Success: Slot stacking: succ_stack
-
-Unit Status Removal Reason: USTR
-Replaced by other unit status: replaced
-Duration exceeded: timeout
-Dispelled: dispelled
-Status expired: expired
-Class changed: class_chg
-
-Unit Status Removal Strategy: USTS
-All Coexisting Statuses With the Same Name: all_same
-Status With Fastest Stack Loss: fastest_loss
-
-Revive Point Selection Strategy: RVPS
-Nearest: nearest
-Most Recently Activated: latest
-Highest Priority: priority
-Random: random
-
-Cause of Being Down: DWNX
-Node Graph Triggered: node_graph
-Normal Defeat: normal
-Abnormal Defeat: abnormal
-
-Trigonometric Functions: TFNX
-cos: cos
-sin: sin
-tan: tan
-arccos: acos
-arcsin: asin
-arctan: atan
-Radians to Degrees: rad_to_deg
-Degrees to Radians: deg_to_rad
-
-Disruptor Device Type: DISD
-Force Field Device: force_field
-Ejector: ejector
-Tractor Device: tractor
-
-Disruptor Device Orientation: DORI
-Associate Character Orientation: follow_char
-Fixed Unidirectional: fixed
-
-UI Control Group Status: UISG
-Off: off
-On: on
-Hidden: hidden
-
-Target Type: TARG
-None: none
-Allied Faction: ally
-Hostile Faction: hostile
-Self: self
-Own Faction: own
-All: all
-All Except Self: all_ex_self
-Allied Faction Self Included: ally_inc_self
-
-Quick Mathematical Operators: QMAT
-Modulo Operation: mod
-Exponentiation: pow
-Get Maximum Value: max
-Get Minimum Value: min
-Logarithm: log
-
-Hit Type: HITX
-None: none
-Default: default
-Slash: slash
-Smash: smash
-Projectile: projectile
-Piercing Attack: pierce
-
-Attack Type: ATKX
-None: none
-Melee Attack: melee
-Ranged Attack: ranged
-Default: default
-
-Hit Performance Level: HPRL
-Default: default
-No Hit Performance: none
-Hit by Normal Arrow Without Charging: arrow_normal
-Combo Hit: combo
-Normal Hit: normal
-Heavy Hit: heavy
-Strong Impact: strong
-Ultimate Impact: ultimate
-Vertical Launch: v_launch
-Super Launch: s_launch
-Long-Range Throw: throw
-
-Target Sorting Rules: TGSR
-Default Sorting: default
-Random Order: random
-Sort From Near to Far: near_far
-
-Attack Layer Config: ALCF
-Only On-Hit Hurtbox: hurtbox_only
-Only On-Hit Scene: scene_only
-Hit All: all
-Object Self-Collision: self_collision
-
-Knockback Direction Type: KBDT
-Line Connecting Attacker and Hit Point: atk_to_hit
-Hitbox On-Hit Direction: hitbox_dir
-Line Connecting Attacker's Owner and Hit Point: owner_to_hit
-Tangent Line Between Attacker and Hit Point: tangent
-Opposite Direction to Hit: opposite
-Attacker's Facing Orientation: facing
-Opposite Direction to Line Connecting Attacker and Hit Point: inv_atk_to_hit
-
-Rotation Type: ROTT
-Target First, Then Input: target_input
-Input Orientation: input
-Target Orientation: target
-Target First, Then Camera: target_camera
-Camera Orientation: camera
-Input First, Then Target: input_target
-
-Sector Detection Direction: SDIR
-From Inside Out: inside_out
-Clockwise: clockwise
-Counterclockwise: counter_clockwise
-
-Retracing Type: RTRA
-Self: self
-Self Owner: owner
-Top Layer Self Owner: top_owner
-
-Hit Level: HLVL
-No Effect: none
-Light Tremor: tremor
-Light Hit: light
-Knockback Hit: knockback
-Launch: launch
-
-Elemental Reaction Type: EREA
-Overloaded: overloaded
-Vaporize: vaporize
-Burning: burning
-Wet: wet
-Bloom: bloom
-Melt: melt
-Frozen: frozen
-Electro-Charged: electro_charged
-Superconduct: superconduct
-Swirl: Pyro: swirl_pyro
-Swirl: Hydro: swirl_hydro
-Swirl: Electro: swirl_electro
-Swirl: Cryo: swirl_cryo
-Crystallize: Pyro: crystal_pyro
-Crystallize: Hydro: crystal_hydro
-Crystallize: Electro: crystal_electro
-Crystallize: Cryo: crystal_cryo
-Catalyze: catalyze
-Aggravate: aggravate
-Spread: spread
-Burgeon: burgeon
-Hyperbloom: hyperbloom
-
-Filter Return Type: FRTY
-Return Boolean: bool
-Return Integer: int
-
-Target Type (For Camera Orientation Node): TCON
-Don't Find Target: none
-Allied Faction: ally
-Hostile Faction: hostile
-Own Faction: own
-All Except Self: all_ex_self
-
-Scan Status: SCAN
-Unusable Target: unusable
-Current Scan Target: current
-Candidate Target: candidate
-Condition Not Met: invalid
-
-Input Device Type: IDVC
-Keyboard and Mouse: kbm
-Controller: controller
-Touchscreen: touch
+Arithmetic.Dictionary: Dictionary
+Arithmetic.General: General
+Arithmetic.General Client: General_Client
+Arithmetic.Lists Client: List_Client
+Arithmetic.Math: Math
+Arithmetic.Math Client: Math_Client
+Arithmetic.Structure: Structure
+Control.General: General
+Control.General Client: General_Client
+Execution.Achievements: Achievement
+Execution.Camera: Camera
+Execution.Character Disruptor Device: Character_Disruptor
+Execution.Character Skills Client: Character_Skill_Client
+Execution.Chat Channel: Chat_Channel
+Execution.Class: Class
+Execution.Collision: Collision
+Execution.Collision Trigger Source: Collision_Trigger_Source
+Execution.Collision Triggers: Collision_Trigger
+Execution.Combat: Combat
+Execution.Common Nodes: Common_Node
+Execution.Creation Patrol: Creation_Patrol
+Execution.Custom Aggro: Custom_Aggro
+Execution.Custom Aggro Client: Custom_Aggro_Client
+Execution.Custom Variables: Custom_Variable
+Execution.Deck Selector: Deck_Selector
+Execution.Dictionary: Dictionary
+Execution.Entity Deployment Group: Entity_Deployment
+Execution.Entity Related: Entity_Related
+Execution.Equipment: Equipment
+Execution.Faction Related: Faction_Related
+Execution.Follow Motion Device: Follow_Motion
+Execution.General Client: General_Client
+Execution.Global Timer: Global_Timer
+Execution.Items and Inventory: Inventory
+Execution.Leaderboard: Leaderboard
+Execution.Light Source Components: Light_Component
+Execution.List Operations: List_Operation
+Execution.Mini-Map Marker Component: Minimap_Marker
+Execution.Motion Devices: Motion_Device
+Execution.Nameplate: Nameplate
+Execution.Player and Character Related: Character_Related
+Execution.Preset Status: Preset_Status
+Execution.Projectiles: Projectile
+Execution.Rank: Rank
+Execution.Scan Tags: Scan_Tag
+Execution.Shop: Shop
+Execution.Signal Client: Signal_Client
+Execution.Signals: Signal
+Execution.Skills: Skill
+Execution.Sound Effects: Sound_Effect
+Execution.Special Effects: Special_Effect
+Execution.Stage Related: Stage_Related
+Execution.Stage Settlement: Stage_Settlement
+Execution.Structures: Structure
+Execution.Tabs: Tab
+Execution.Text Bubbles: Text_Bubble
+Execution.Timer: Timer
+Execution.UI Control Groups: UI_Control_Group
+Execution.Unit Status: Unit_Status
+Execution.Unit Tags: Unit_Tag
+Execution.Wonderland Gift Boxes: Wonderland_Box
+Hidden.ClientExecution Client: Execution_Client
+Hidden.ClientOthers Client: Other_Client
+Hidden.ClientQuery Client: Query_Client
+Hidden.Execution: Execution
+Hidden.Query: Query
+Hidden.Trigger: Trigger
+Others.Port Client: Port_Client
+Query.Achievements: Achievement
+Query.Class: Class
+Query.Collision Trigger: Collision_Trigger
+Query.Creation: Creation
+Query.Creature Patrol: Creature_Patrol
+Query.Custom Aggro: Custom_Aggro
+Query.Custom Aggro Client: Custom_Aggro_Client
+Query.Custom Variables: Custom_Variable
+Query.Custom Variables Client: Custom_Variable_Client
+Query.Dictionary: Dictionary
+Query.Entity Layout Group: Entity_Layout
+Query.Entity Related: Entity_Related
+Query.Entity Related Client: Entity_Related_Client
+Query.Equipment: Equipment
+Query.Faction Related: Faction_Related
+Query.Faction Related Client: Faction_Related_Client
+Query.Follow Motion Device: Follow_Motion
+Query.General: General
+Query.General Client: General_Client
+Query.Global Path: Global_Path
+Query.Global Timer: Global_Timer
+Query.Items: Item
+Query.List Related: List_Related
+Query.List Related Client: List_Related_Client
+Query.Math: Math
+Query.Mini-Map Marker Component: Minimap_Marker
+Query.Player and Character Related: Character_Related
+Query.Player and Character Related Client: Character_Related_Client
+Query.Preset Points: Preset_Point
+Query.Preset Status: Preset_Status
+Query.Preset Status Client: Preset_Status_Client
+Query.Rank Tier: Rank_Tier
+Query.Ray Client: Ray_Client
+Query.Scan Tags: Scan_Tag
+Query.Scanning Client: Scanning_Client
+Query.Shop: Shop
+Query.Skills: Skill
+Query.Stage Related: Stage_Related
+Query.Stage Settlement: Stage_Settlement
+Query.Triggers Client: Trigger_Client
+Query.UI Control Groups: UI_Control_Group
+Query.Unit Status: Unit_Status
+Query.Unit Tags: Unit_Tag
+Query.Unit Tags Client: Unit_Tag_Client
+Query.Wonderland Gift Box Related: Wonderland_Box_Related
+Trigger.Classes: Class
+Trigger.Collision Triggers: Collision_Trigger
+Trigger.Combat: Combat
+Trigger.Creation Patrol: Creation_Patrol
+Trigger.Creations: Creation
+Trigger.Custom Aggro: Custom_Aggro
+Trigger.Custom Variables: Custom_Variable
+Trigger.Deck Selector: Deck_Selector
+Trigger.Entity Related: Entity_Related
+Trigger.Equipment: Equipment
+Trigger.Faction Related: Faction_Related
+Trigger.Global Timer: Global_Timer
+Trigger.Hit Detection: Hit_Detection
+Trigger.Items: Item
+Trigger.Motion Device: Motion_Device
+Trigger.Player and Character Related: Character_Related
+Trigger.Preset Status: Preset_Status
+Trigger.Shop: Shop
+Trigger.Signals: Signal
+Trigger.Skills: Skill
+Trigger.Tabs: Tab
+Trigger.Text Bubbles: Text_Bubble
+Trigger.Timer: Timer
+Trigger.UI Control Groups: UI_Control_Group
+Trigger.Unit Status: Unit_Status

@@ -1,51 +1,19 @@
 import { readFileSync, writeFileSync } from "fs";
 import data from "./data.json" with {type: "json"};
 import { assert, assertDeepEq, assertEq, exclude_keys } from "../utils.ts";
-// const short = readFileSync(import.meta.dirname + "/temp.txt").toString().replaceAll("\r", "").split("\n\n").map(x => {
-//   const keys = x.split("\n").map(y => y.slice(0, y.lastIndexOf(":")).trim());
-//   const vals = x.split("\n").map(y => y.slice(y.lastIndexOf(":") + 1).trim());
-//   assert(keys.every(x => x.length > 0));
-//   assert(vals.every(x => x.length > 0));
-//   assert(vals[0].length === 4);
-//   return {
-//     key: keys[0],
-//     keyv: vals[0],
-//     vals: keys.slice(1),
-//     valsv: vals.slice(1),
-//   };
-// });
+const read = (path: string) => readFileSync(import.meta.dirname + "/" + path).toString();
+const save = (path: string, data: {}) => writeFileSync(import.meta.dirname + "/" + path, JSON.stringify(data));
 
-// data.Enums.forEach((x, i) => {
-//   const s = short[i];
-//   assertEq(s.key, x.InGameName.en);
-//   // if (x.InGameName.en === "Generic") return;
-//   if (![58, 59].includes(i)) assertEq(s.valsv.length, x.Items.length);
-//   x.Identifier = s.keyv;
-//   x.Items.forEach((y, j) => y.Identifier = s.valsv[j]);
-// });
-// // console.log(ret);
-// console.log(data.Enums);
 
-// // const fcc = [];
-// // fcc
+let a = data.Nodes.filter(x => x.System === "Server").sort((l, r) => l.Identifier.localeCompare(r.Identifier)).map(x => x.Identifier.split(".").slice(0, 2).join("."));
+let b = data.Nodes.filter(x => x.System === "Client").sort((l, r) => l.Identifier.localeCompare(r.Identifier)).map(x => x.Identifier.split(".").slice(0, 2).join(".") + " Client");
 
-// writeFileSync(import.meta.dirname + "/data.json", JSON.stringify(data, null, 2));
+const raw = [...new Set([...a, ...b].sort())];
+const res = new Map(read("temp.txt").split("\n").map((x, i) => (assertEq(x.split(":")[0].trim(), raw[i]), x.split(":").map(x => x.trim()))));
 
-// data.Enums.every(x => x.Identifier.length === 4 && /[A-Z]{4}/.test(x.Identifier));
-// data.Enums.every(x => x.Items.every(y => y.Identifier.length > 0 && /^[a-z_0-9]+$/.test(y.Identifier)));
+data.Nodes.forEach(x => {
+  let id = x.Identifier.split(".");
+  id[1] = res.get(id[0] + "." + id[1] + (x.System === "Client" ? " Client" : ""))!.trim();
+});
 
-// const p = data.Enums.map(x => x.Identifier);
-// assertEq(p.length, new Set(p).size)
-
-// const m = new Map();
-// data.Enums.forEach(x => {
-//   x.Items.forEach(z => {
-//     // const y = exclude_keys(z, "Alias");
-//     const y = z;
-//     if (m.has(y.ID)) {
-//       assertDeepEq(y, m.get(y.ID));
-//     } else {
-//       m.set(y.ID, y);
-//     }
-//   });
-// })
+save("data.ts", data);
