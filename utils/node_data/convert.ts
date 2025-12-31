@@ -27,16 +27,6 @@ const TypeMap = {
 const dft_map = new Map(DFT_VAL.map(x => [x.node, x]));
 
 data.Nodes.forEach(node => {
-  if (node.System === "Client" && dft_map.has(node.ID)) {
-    const v = dft_map.get(node.ID)!;
-    const pin = node.DataPins.find(x => x.ShellIndex === v.pin)!;
-    assert(pin.Type === v.type.replace(/\d+/, x => data.Enums.find(y => y.System === "Client" && y.ID === parseInt(x))!.Identifier));
-    pin.Visibility = "Hidden";
-    pin.Connectability = "False";
-    pin.Editability = "False";
-  }
-  return;
-
   // 确实有正确的引脚
   assert(node.DataPins.filter(x => x.Direction === "In").every((x, i) => x.ShellIndex === i));
   assert(node.DataPins.filter(x => x.Direction === "Out").every((x, i) => x.ShellIndex === i));
@@ -48,12 +38,13 @@ data.Nodes.forEach(node => {
   assert(ref !== undefined);
 
   const refIn = ref.ports.filter(p => p.kind === "data-in");
+  const realIn = node.DataPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden");
   if (refIn.length === 0) return;
-  if (node.DataPins.filter(x => x.Direction === "In").length !== refIn.length) {
+  if (realIn.length > refIn.length) {
     console.log(
       "Input Pin Count is not Equal:",
       node.Identifier,
-      node.DataPins.filter(x => x.Direction === "In").length,
+      realIn.length,
       refIn.length
     );
     node.__todo_set_in_pin = true;
@@ -93,4 +84,4 @@ data.Nodes.forEach(node => {
 
 });
 
-save("data.json", data);
+// save("data.json", data);

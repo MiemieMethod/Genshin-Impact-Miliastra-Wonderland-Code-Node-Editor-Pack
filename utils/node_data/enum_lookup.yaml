@@ -335,6 +335,17 @@ Server:
     items:
       speed: 5600
       time: 5601
+  - DMGP: 200045
+    name: Damage Pop-Up Type
+    items:
+      none: 5400
+      regular: 5401
+      crit_hit: 5402
+  - STPT: 10040
+    name: Scan Tag Prioritize Type
+    items:
+      view: 5100
+      distance: 5101
 Client:
   - GENE: -1
     name: Generic

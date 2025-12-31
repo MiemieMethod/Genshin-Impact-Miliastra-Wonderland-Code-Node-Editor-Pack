@@ -2420,7 +2420,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.setCustomVariable"
+      "__ref_id": "action.setCustomVariable",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Trigger.Custom_Variable.On_Variable_Change",
@@ -4106,7 +4107,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "query.customVar.get"
+      "__ref_id": "query.customVar.get",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Preset_Status.Set_Status",
@@ -4756,7 +4758,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.timer.start"
+      "__ref_id": "action.timer.start",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Timer.Pause",
@@ -6400,6 +6403,17 @@
           "Connectability": true
         },
         {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
           "Identifier": "value",
           "Direction": "Out",
           "Type": "R<T>",
@@ -7026,6 +7040,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SORT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -7687,7 +7712,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "math.list.assemble"
+      "__ref_id": "math.list.assemble",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Trigger.Motion_Device.On_Reach_Waypoint",
@@ -8880,7 +8906,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "math.log"
+      "__ref_id": "math.log",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Arithmetic.Math.Abs",
@@ -9176,6 +9203,17 @@
           "Connectability": true
         },
         {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<ROND>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
           "Identifier": "result",
           "Direction": "Out",
           "Type": "Int",
@@ -9466,7 +9504,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "math.logic.not"
+      "__ref_id": "math.logic.not",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Arithmetic.Math.Less_Than",
@@ -10076,6 +10115,28 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Input5",
+          "Direction": "In",
+          "Type": "E<COOR>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 5,
+          "KernelIndex": 5,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input6",
+          "Direction": "In",
+          "Type": "E<FOLO>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 6,
+          "KernelIndex": 6,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
@@ -10459,7 +10520,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.createComponent"
+      "__ref_id": "action.createComponent",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Trigger.Hit_Detection.On_Hit_Detected",
@@ -11801,7 +11863,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.reviveAllPlayerCharacters"
+      "__ref_id": "action.reviveAllPlayerCharacters",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Trigger.Character_Related.On_All_Down",
@@ -12839,7 +12902,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.unitState.remove"
+      "__ref_id": "action.unitState.remove",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Character_Disruptor.Modify_Device",
@@ -13941,19 +14005,32 @@
       "__ref_id": "query.entities.getAll"
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entities_By_Type",
+      "Identifier": "Query.Entity_Related.Get_Entity_By_Type",
       "ID": 319,
       "InGameName": {
-        "en": "Get Specified Type of Entities on the Field"
+        "en": "Get Specified Type of Entity on the Field"
       },
       "Alias": [
-        "Get_Specified_Type_of_Entities_on_the_Field"
+        "Get_Specified_Type_of_Entities_on_the_Field",
+        "Get_Specified_Type_of_Entity_on_the_Field",
+        "Get Specified Type of Entities on the Field"
       ],
       "Type": "Fixed",
       "System": "Server",
       "Domain": "Query",
       "FlowPins": [],
       "DataPins": [
+        {
+          "Identifier": "Input0",
+          "Direction": "In",
+          "Type": "E<ENTY>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
         {
           "Identifier": "entities",
           "Direction": "Out",
@@ -14938,6 +15015,17 @@
       "Domain": "Query",
       "FlowPins": [],
       "DataPins": [
+        {
+          "Identifier": "Input0",
+          "Direction": "In",
+          "Type": "Str",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
         {
           "Identifier": "value",
           "Direction": "Out",
@@ -16635,7 +16723,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.moverFollow.toggle"
+      "__ref_id": "action.moverFollow.toggle",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Hidden.Execution.Set_Disruptor_State",
@@ -16746,7 +16835,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.collisionSource.toggle"
+      "__ref_id": "action.collisionSource.toggle",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Entity_Related.Remove_Entity",
@@ -17088,6 +17178,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<ENTY>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         },
@@ -17551,6 +17652,17 @@
           "Placeholder": null,
           "ShellIndex": 1,
           "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input2",
+          "Direction": "In",
+          "Type": "E<UICG>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 2,
+          "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -18202,6 +18314,17 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Input2",
+          "Direction": "In",
+          "Type": "E<SLOT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 2,
+          "KernelIndex": 2,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
@@ -18289,6 +18412,17 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SLOT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
@@ -18316,6 +18450,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SLOT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         },
@@ -18367,6 +18512,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SLOT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -25624,6 +25780,17 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SETL>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
@@ -25793,6 +25960,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SETL>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -26005,6 +26183,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SETL>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         },
@@ -26420,6 +26609,28 @@
           "Placeholder": null,
           "ShellIndex": 4,
           "KernelIndex": 4,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input5",
+          "Direction": "In",
+          "Type": "E<COOR>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 5,
+          "KernelIndex": 5,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input6",
+          "Direction": "In",
+          "Type": "E<FOLO>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 6,
+          "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -27826,13 +28037,15 @@
       "__ref_id": "action.backpack.modifyItem"
     },
     {
-      "Identifier": "Execution.Inventory.Set_Drop_Currency",
+      "Identifier": "Execution.Inventory.Set_Drop_Amount",
       "ID": 687,
       "InGameName": {
-        "en": "Set Inventory Drop Items/Currency Amount"
+        "en": "Set Inventory Loot Item/Currency Quantity"
       },
       "Alias": [
-        "Set_Inventory_Drop_Items_Currency_Amount"
+        "Set_Inventory_Drop_Items_Currency_Amount",
+        "Set Inventory Drop Items/Currency Amount",
+        "Set_Inventory_Loot_Item_Currency_Quantity"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -27878,6 +28091,17 @@
           "Placeholder": null,
           "ShellIndex": 2,
           "KernelIndex": 2,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input3",
+          "Direction": "In",
+          "Type": "E<LOOT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 3,
+          "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -28280,13 +28504,15 @@
       "__ref_id": "event.equipmentUnequipped"
     },
     {
-      "Identifier": "Execution.Combat.HP_Loss",
+      "Identifier": "Execution.Combat.Loss_HP",
       "ID": 697,
       "InGameName": {
-        "en": "HP Loss"
+        "en": "Loss HP"
       },
       "Alias": [
-        "HP_Loss"
+        "HP_Loss",
+        "HP Loss",
+        "Loss_HP"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -28354,6 +28580,17 @@
           "Placeholder": null,
           "ShellIndex": 4,
           "KernelIndex": 4,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input5",
+          "Direction": "In",
+          "Type": "E<DMGP>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 5,
+          "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -30153,10 +30390,12 @@
       "Identifier": "Execution.Inventory.Set_Drop_Items",
       "ID": 720,
       "InGameName": {
-        "en": "Set Inventory Item Drop Contents"
+        "en": "Set Inventory Item Drop Content"
       },
       "Alias": [
-        "Set_Inventory_Item_Drop_Contents"
+        "Set_Inventory_Item_Drop_Contents",
+        "Set Inventory Item Drop Contents",
+        "Set_Inventory_Item_Drop_Content"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -30415,6 +30654,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "D<Cfg,Int>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -30926,6 +31176,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "Ety",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -32341,7 +32602,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.createComponentGroup"
+      "__ref_id": "action.createComponentGroup",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Query.Creation.Get_Aggro_List",
@@ -32899,7 +33161,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "action.chat.setChannelEnabled"
+      "__ref_id": "action.chat.setChannelEnabled",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Chat_Channel.Modify_Permission",
@@ -33682,7 +33945,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "math.bit.write"
+      "__ref_id": "math.bit.write",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Arithmetic.Math.Read_Bit",
@@ -33746,7 +34010,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "math.bit.read"
+      "__ref_id": "math.bit.read",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Trigger.Entity_Related.On_Speed_Condition",
@@ -41921,7 +42186,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "math.dict.assemble"
+      "__ref_id": "math.dict.assemble",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Dictionary.Sort_By_Key",
@@ -41954,6 +42220,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SORT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         },
@@ -42074,6 +42351,17 @@
           "Connectability": true
         },
         {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "E<SORT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
           "Identifier": "keys_out",
           "Direction": "Out",
           "Type": "L<R<K>>",
@@ -42189,6 +42477,28 @@
       "Domain": "Query",
       "FlowPins": [],
       "DataPins": [
+        {
+          "Identifier": "Input0",
+          "Direction": "In",
+          "Type": "Vss",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "Str",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
+        },
         {
           "Identifier": "value",
           "Direction": "Out",
@@ -43096,7 +43406,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "flow.graphEndBoolean"
+      "__ref_id": "flow.graphEndBoolean",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Arithmetic.Math_Client.And",
@@ -45005,7 +45316,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "client.math.typeCast"
+      "__ref_id": "client.math.typeCast",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Query.Entity_Related_Client.Get_By_GUID",
@@ -45720,7 +46032,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "client.action.playTimedEffect"
+      "__ref_id": "client.action.playTimedEffect",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Character_Skill_Client.Notify_Server",
@@ -46442,7 +46755,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "client.math.assembleList"
+      "__ref_id": "client.math.assembleList",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Query.List_Related_Client.Get_Entity_Types",
@@ -49104,7 +49418,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "client.action.restoreHp"
+      "__ref_id": "client.action.restoreHp",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Query.Character_Related_Client.Get_Current_Character",
@@ -51683,7 +51998,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "client.action.sphericalAttackBoxAtPosition"
+      "__ref_id": "client.action.sphericalAttackBoxAtPosition",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Loc",
@@ -52229,7 +52545,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "client.action.rectangularAttackBoxAtPosition"
+      "__ref_id": "client.action.rectangularAttackBoxAtPosition",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Loc",
@@ -52775,7 +53092,8 @@
         }
       ],
       "Implementation": null,
-      "__ref_id": "client.action.sectorAttackBoxAtPosition"
+      "__ref_id": "client.action.sectorAttackBoxAtPosition",
+      "__todo_set_in_pin": true
     },
     {
       "Identifier": "Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Socket",
@@ -54948,7 +55266,8 @@
       ],
       "DataPins": [],
       "Implementation": null,
-      "__ref_id": "client.action.sendSignalToServer"
+      "__ref_id": "client.action.sendSignalToServer",
+      "__todo_special_signal": true
     },
     {
       "Identifier": "Execution.Signal.Send",
@@ -55119,7 +55438,8 @@
       ],
       "DataPins": [],
       "Implementation": null,
-      "__ref_id": "action.struct.modify"
+      "__ref_id": "action.struct.modify",
+      "__todo_special_structure": true
     }
   ],
   "Enums": [
@@ -56389,7 +56709,8 @@
         "en": "UI Control Group Status"
       },
       "Alias": [
-        "UI_Control_Group_Status"
+        "UI_Control_Group_Status",
+        "Display_Status"
       ],
       "Items": [
         {
@@ -57767,6 +58088,82 @@
           },
           "Alias": [
             "Fixed_Time"
+          ]
+        }
+      ]
+    },
+    {
+      "Identifier": "DMGP",
+      "System": "Server",
+      "ID": 200045,
+      "InGameName": {
+        "en": "Damage Pop-Up Type"
+      },
+      "Alias": [
+        "Damage_Pop_Up_Type"
+      ],
+      "Items": [
+        {
+          "Identifier": "none",
+          "ID": 5400,
+          "InGameName": {
+            "en": "No Pop-Up"
+          },
+          "Alias": [
+            "No_Pop_Up"
+          ]
+        },
+        {
+          "Identifier": "regular",
+          "ID": 5401,
+          "InGameName": {
+            "en": "Regular Pop-Up"
+          },
+          "Alias": [
+            "Regular_Pop_Up"
+          ]
+        },
+        {
+          "Identifier": "crit_hit",
+          "ID": 5402,
+          "InGameName": {
+            "en": "CRIT Hit Pop-Up"
+          },
+          "Alias": [
+            "CRIT_Hit_Pop_Up"
+          ]
+        }
+      ]
+    },
+    {
+      "Identifier": "STPT",
+      "System": "Server",
+      "ID": 10040,
+      "InGameName": {
+        "en": "Scan Tag Prioritize Type"
+      },
+      "Alias": [
+        "Scan_Tag_Prioritize_Type"
+      ],
+      "Items": [
+        {
+          "Identifier": "view",
+          "ID": 5100,
+          "InGameName": {
+            "en": "Prioritize View"
+          },
+          "Alias": [
+            "Prioritize_View"
+          ]
+        },
+        {
+          "Identifier": "distance",
+          "ID": 5101,
+          "InGameName": {
+            "en": "Prioritize Distance"
+          },
+          "Alias": [
+            "Prioritize_Distance"
           ]
         }
       ]
