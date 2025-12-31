@@ -40,7 +40,9 @@ data.Nodes.forEach(node => {
   })
 })
 
-save
+save("data.json", data);
+
+
 
 data.Nodes.forEach(node => {
   // 确实有正确的引脚
