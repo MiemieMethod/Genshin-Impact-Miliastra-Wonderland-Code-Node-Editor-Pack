@@ -53137,7 +53137,7 @@
   ],
   "Enums": [
     {
-      "Identifier": null,
+      "Identifier": "GNRC",
       "System": "Server",
       "ID": 0,
       "InGameName": {
@@ -53149,7 +53149,7 @@
       "Items": []
     },
     {
-      "Identifier": null,
+      "Identifier": "CMPR",
       "System": "Server",
       "ID": 1,
       "InGameName": {
@@ -53160,7 +53160,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "eq",
           "ID": 100,
           "InGameName": {
             "en": "Equal To"
@@ -53170,7 +53170,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "lt",
           "ID": 101,
           "InGameName": {
             "en": "Less Than"
@@ -53180,7 +53180,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "lte",
           "ID": 102,
           "InGameName": {
             "en": "Less Than or Equal To"
@@ -53190,7 +53190,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "gt",
           "ID": 103,
           "InGameName": {
             "en": "Greater Than"
@@ -53200,7 +53200,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "gte",
           "ID": 104,
           "InGameName": {
             "en": "Greater Than or Equal To"
@@ -53212,7 +53212,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "LOGC",
       "System": "Server",
       "ID": 2,
       "InGameName": {
@@ -53223,7 +53223,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "and",
           "ID": 200,
           "InGameName": {
             "en": "AND"
@@ -53233,7 +53233,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "or",
           "ID": 201,
           "InGameName": {
             "en": "OR"
@@ -53243,7 +53243,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "xor",
           "ID": 202,
           "InGameName": {
             "en": "XOR"
@@ -53253,7 +53253,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "not",
           "ID": 203,
           "InGameName": {
             "en": "NOT"
@@ -53265,7 +53265,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "MATH",
       "System": "Server",
       "ID": 3,
       "InGameName": {
@@ -53276,7 +53276,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "add",
           "ID": 300,
           "InGameName": {
             "en": "Addition"
@@ -53286,7 +53286,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "sub",
           "ID": 301,
           "InGameName": {
             "en": "Subtraction"
@@ -53296,7 +53296,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "mul",
           "ID": 302,
           "InGameName": {
             "en": "Multiplication"
@@ -53306,7 +53306,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "div",
           "ID": 303,
           "InGameName": {
             "en": "Division"
@@ -53316,7 +53316,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "mod",
           "ID": 304,
           "InGameName": {
             "en": "Modulo Operation"
@@ -53326,7 +53326,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "pow",
           "ID": 305,
           "InGameName": {
             "en": "Exponentiation"
@@ -53336,7 +53336,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "max",
           "ID": 306,
           "InGameName": {
             "en": "Get Maximum Value"
@@ -53346,7 +53346,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "min",
           "ID": 307,
           "InGameName": {
             "en": "Get Minimum Value"
@@ -53356,7 +53356,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "log",
           "ID": 308,
           "InGameName": {
             "en": "Logarithm"
@@ -53368,7 +53368,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SHAP",
       "System": "Server",
       "ID": 4,
       "InGameName": {
@@ -53379,7 +53379,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "rect",
           "ID": 400,
           "InGameName": {
             "en": "Rectangle"
@@ -53389,7 +53389,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "sphere",
           "ID": 401,
           "InGameName": {
             "en": "Sphere"
@@ -53399,7 +53399,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "sector",
           "ID": 402,
           "InGameName": {
             "en": "Sector"
@@ -53411,7 +53411,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SURV",
       "System": "Server",
       "ID": 5,
       "InGameName": {
@@ -53422,7 +53422,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "alive",
           "ID": 500,
           "InGameName": {
             "en": "Alive"
@@ -53432,7 +53432,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "down",
           "ID": 501,
           "InGameName": {
             "en": "Down"
@@ -53444,7 +53444,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SORT",
       "System": "Server",
       "ID": 6,
       "InGameName": {
@@ -53455,7 +53455,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "asc",
           "ID": 600,
           "InGameName": {
             "en": "Ascending"
@@ -53465,7 +53465,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "desc",
           "ID": 601,
           "InGameName": {
             "en": "Descending"
@@ -53477,7 +53477,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ROND",
       "System": "Server",
       "ID": 7,
       "InGameName": {
@@ -53488,7 +53488,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "up",
           "ID": 700,
           "InGameName": {
             "en": "Round Up"
@@ -53498,7 +53498,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "down",
           "ID": 701,
           "InGameName": {
             "en": "Round Down"
@@ -53508,7 +53508,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "nearest",
           "ID": 702,
           "InGameName": {
             "en": "Round to Nearest"
@@ -53518,7 +53518,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "trunc",
           "ID": 703,
           "InGameName": {
             "en": "Truncate"
@@ -53530,7 +53530,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "CAST",
       "System": "Server",
       "ID": 8,
       "InGameName": {
@@ -53541,7 +53541,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "i_to_b",
           "ID": 800,
           "InGameName": {
             "en": "Integer to Boolean"
@@ -53551,7 +53551,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "i_to_f",
           "ID": 801,
           "InGameName": {
             "en": "Integer to Floating Point"
@@ -53561,7 +53561,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "i_to_s",
           "ID": 802,
           "InGameName": {
             "en": "Integer to String"
@@ -53571,7 +53571,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "e_to_s",
           "ID": 803,
           "InGameName": {
             "en": "Entity to String"
@@ -53581,7 +53581,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "g_to_s",
           "ID": 804,
           "InGameName": {
             "en": "GUID to String"
@@ -53591,7 +53591,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "b_to_i",
           "ID": 805,
           "InGameName": {
             "en": "Boolean to Integer"
@@ -53601,7 +53601,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "b_to_s",
           "ID": 806,
           "InGameName": {
             "en": "Boolean to String"
@@ -53611,7 +53611,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "f_to_i",
           "ID": 807,
           "InGameName": {
             "en": "Floating Point to Integer"
@@ -53621,7 +53621,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "f_to_s",
           "ID": 808,
           "InGameName": {
             "en": "Floating Point to String"
@@ -53631,7 +53631,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "v3_to_s",
           "ID": 809,
           "InGameName": {
             "en": "3D Vector to String"
@@ -53641,7 +53641,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fact_to_s",
           "ID": 810,
           "InGameName": {
             "en": "Faction to String"
@@ -53653,7 +53653,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "MPPT",
       "System": "Server",
       "ID": 9,
       "InGameName": {
@@ -53664,7 +53664,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "straight",
           "ID": 900,
           "InGameName": {
             "en": "Straight Line"
@@ -53674,7 +53674,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "curve",
           "ID": 901,
           "InGameName": {
             "en": "Curve"
@@ -53686,7 +53686,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "MOTN",
       "System": "Server",
       "ID": 10,
       "InGameName": {
@@ -53697,7 +53697,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "one_way",
           "ID": 1000,
           "InGameName": {
             "en": "One-Way"
@@ -53707,7 +53707,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ping_pong",
           "ID": 1001,
           "InGameName": {
             "en": "Back and Forth"
@@ -53717,7 +53717,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "cyclic",
           "ID": 1002,
           "InGameName": {
             "en": "Cyclic Movement"
@@ -53729,7 +53729,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "FOLO",
       "System": "Server",
       "ID": 11,
       "InGameName": {
@@ -53740,7 +53740,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "full",
           "ID": 1100,
           "InGameName": {
             "en": "Completely Follow"
@@ -53750,7 +53750,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "loc_only",
           "ID": 1101,
           "InGameName": {
             "en": "Follow Location"
@@ -53760,7 +53760,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "rot_only",
           "ID": 1102,
           "InGameName": {
             "en": "Follow Rotation"
@@ -53772,7 +53772,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "COOR",
       "System": "Server",
       "ID": 12,
       "InGameName": {
@@ -53783,7 +53783,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "relative",
           "ID": 1200,
           "InGameName": {
             "en": "Relative Coordinate System"
@@ -53793,7 +53793,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "world",
           "ID": 1201,
           "InGameName": {
             "en": "World Coordinate System"
@@ -53805,7 +53805,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ELMT",
       "System": "Server",
       "ID": 13,
       "InGameName": {
@@ -53816,7 +53816,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 1300,
           "InGameName": {
             "en": "None"
@@ -53826,7 +53826,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "pyro",
           "ID": 1301,
           "InGameName": {
             "en": "Pyro"
@@ -53836,7 +53836,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hydro",
           "ID": 1302,
           "InGameName": {
             "en": "Hydro"
@@ -53846,7 +53846,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "anemo",
           "ID": 1303,
           "InGameName": {
             "en": "Anemo"
@@ -53856,7 +53856,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "electro",
           "ID": 1304,
           "InGameName": {
             "en": "Electro"
@@ -53866,7 +53866,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "dendro",
           "ID": 1305,
           "InGameName": {
             "en": "Dendro"
@@ -53876,7 +53876,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "cryo",
           "ID": 1306,
           "InGameName": {
             "en": "Cryo"
@@ -53886,7 +53886,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "geo",
           "ID": 1307,
           "InGameName": {
             "en": "Geo"
@@ -53898,7 +53898,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ENTY",
       "System": "Server",
       "ID": 14,
       "InGameName": {
@@ -53909,7 +53909,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "stage",
           "ID": 1401,
           "InGameName": {
             "en": "Stage"
@@ -53919,7 +53919,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "object",
           "ID": 1402,
           "InGameName": {
             "en": "Object"
@@ -53929,7 +53929,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "player",
           "ID": 1403,
           "InGameName": {
             "en": "Player"
@@ -53939,7 +53939,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "character",
           "ID": 1404,
           "InGameName": {
             "en": "Character"
@@ -53949,7 +53949,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "creation",
           "ID": 1405,
           "InGameName": {
             "en": "Creation"
@@ -53961,7 +53961,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "STAD",
       "System": "Server",
       "ID": 16,
       "InGameName": {
@@ -53972,7 +53972,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "fail_error",
           "ID": 1500,
           "InGameName": {
             "en": "Failed: Unexpected error"
@@ -53982,7 +53982,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fail_paused",
           "ID": 1501,
           "InGameName": {
             "en": "Failed: Operation paused for another process"
@@ -53992,7 +53992,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fail_limit",
           "ID": 1502,
           "InGameName": {
             "en": "Failed: Maximum coexistence limit reached"
@@ -54002,7 +54002,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fail_stack",
           "ID": 1503,
           "InGameName": {
             "en": "Failed: Unable to add additional stack"
@@ -54012,7 +54012,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "succ_new",
           "ID": 1504,
           "InGameName": {
             "en": "Success: New status applied"
@@ -54022,7 +54022,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "succ_stack",
           "ID": 1505,
           "InGameName": {
             "en": "Success: Slot stacking"
@@ -54034,7 +54034,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "STRE",
       "System": "Server",
       "ID": 17,
       "InGameName": {
@@ -54045,7 +54045,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "replaced",
           "ID": 1506,
           "InGameName": {
             "en": "Replaced by other unit status"
@@ -54055,7 +54055,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "timeout",
           "ID": 1507,
           "InGameName": {
             "en": "Duration exceeded"
@@ -54065,7 +54065,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "dispelled",
           "ID": 1508,
           "InGameName": {
             "en": "Dispelled"
@@ -54075,7 +54075,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "expired",
           "ID": 1509,
           "InGameName": {
             "en": "Status expired"
@@ -54085,7 +54085,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "class_chg",
           "ID": 1510,
           "InGameName": {
             "en": "Class changed"
@@ -54097,7 +54097,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "STRS",
       "System": "Server",
       "ID": 18,
       "InGameName": {
@@ -54108,7 +54108,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "all_same",
           "ID": 1540,
           "InGameName": {
             "en": "All Coexisting Statuses With the Same Name"
@@ -54118,7 +54118,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fastest_loss",
           "ID": 1541,
           "InGameName": {
             "en": "Status With Fastest Stack Loss"
@@ -54130,7 +54130,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "RPSS",
       "System": "Server",
       "ID": 19,
       "InGameName": {
@@ -54141,7 +54141,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "nearest",
           "ID": 1601,
           "InGameName": {
             "en": "Nearest"
@@ -54151,7 +54151,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "latest",
           "ID": 1602,
           "InGameName": {
             "en": "Most Recently Activated"
@@ -54161,7 +54161,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "priority",
           "ID": 1603,
           "InGameName": {
             "en": "Highest Priority"
@@ -54171,7 +54171,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "random",
           "ID": 1604,
           "InGameName": {
             "en": "Random"
@@ -54183,7 +54183,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "DWNR",
       "System": "Server",
       "ID": 20,
       "InGameName": {
@@ -54194,7 +54194,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "node_graph",
           "ID": 1605,
           "InGameName": {
             "en": "Node Graph Triggered"
@@ -54204,7 +54204,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "normal",
           "ID": 1606,
           "InGameName": {
             "en": "Normal Defeat"
@@ -54214,7 +54214,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "abnormal",
           "ID": 1607,
           "InGameName": {
             "en": "Abnormal Defeat"
@@ -54226,7 +54226,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "TRIG",
       "System": "Server",
       "ID": 21,
       "InGameName": {
@@ -54237,7 +54237,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "cos",
           "ID": 1700,
           "InGameName": {
             "en": "cos"
@@ -54247,7 +54247,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "sin",
           "ID": 1701,
           "InGameName": {
             "en": "sin"
@@ -54257,7 +54257,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "tan",
           "ID": 1702,
           "InGameName": {
             "en": "tan"
@@ -54267,7 +54267,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "acos",
           "ID": 1703,
           "InGameName": {
             "en": "arccos"
@@ -54277,7 +54277,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "asin",
           "ID": 1704,
           "InGameName": {
             "en": "arcsin"
@@ -54287,7 +54287,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "atan",
           "ID": 1705,
           "InGameName": {
             "en": "arctan"
@@ -54297,7 +54297,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "rad_to_deg",
           "ID": 1706,
           "InGameName": {
             "en": "Radians to Degrees"
@@ -54307,7 +54307,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "deg_to_rad",
           "ID": 1707,
           "InGameName": {
             "en": "Degrees to Radians"
@@ -54319,7 +54319,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "DDVT",
       "System": "Server",
       "ID": 22,
       "InGameName": {
@@ -54330,7 +54330,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "force_field",
           "ID": 1801,
           "InGameName": {
             "en": "Force Field Device"
@@ -54340,7 +54340,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ejector",
           "ID": 1802,
           "InGameName": {
             "en": "Ejector"
@@ -54350,7 +54350,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "tractor",
           "ID": 1803,
           "InGameName": {
             "en": "Tractor Device"
@@ -54362,7 +54362,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "DDOR",
       "System": "Server",
       "ID": 23,
       "InGameName": {
@@ -54373,7 +54373,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "follow_char",
           "ID": 1810,
           "InGameName": {
             "en": "Associate Character Orientation"
@@ -54383,7 +54383,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fixed",
           "ID": 1811,
           "InGameName": {
             "en": "Fixed Unidirectional"
@@ -54395,7 +54395,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "UICG",
       "System": "Server",
       "ID": 24,
       "InGameName": {
@@ -54406,7 +54406,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "off",
           "ID": 1900,
           "InGameName": {
             "en": "Off"
@@ -54416,7 +54416,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "on",
           "ID": 1901,
           "InGameName": {
             "en": "On"
@@ -54426,7 +54426,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hidden",
           "ID": 1902,
           "InGameName": {
             "en": "Hidden"
@@ -54438,7 +54438,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "TGTT",
       "System": "Server",
       "ID": 25,
       "InGameName": {
@@ -54449,17 +54449,17 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2000,
           "InGameName": {
-            "en": "None"
+            "en": "Don't Find Target"
           },
           "Alias": [
-            "None"
+            "Don't Find Target"
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ally",
           "ID": 2001,
           "InGameName": {
             "en": "Allied Faction"
@@ -54469,7 +54469,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hostile",
           "ID": 2002,
           "InGameName": {
             "en": "Hostile Faction"
@@ -54479,7 +54479,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "self",
           "ID": 2003,
           "InGameName": {
             "en": "Self"
@@ -54489,7 +54489,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "own",
           "ID": 2004,
           "InGameName": {
             "en": "Own Faction"
@@ -54499,7 +54499,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "all",
           "ID": 2005,
           "InGameName": {
             "en": "All"
@@ -54509,7 +54509,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "all_ex_self",
           "ID": 2006,
           "InGameName": {
             "en": "All Except Self"
@@ -54519,7 +54519,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ally_inc_self",
           "ID": 2007,
           "InGameName": {
             "en": "Allied Faction Self Included"
@@ -54531,7 +54531,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "TRGR",
       "System": "Server",
       "ID": 26,
       "InGameName": {
@@ -54542,7 +54542,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "once",
           "ID": 2101,
           "InGameName": {
             "en": "Trigger Only Once"
@@ -54552,7 +54552,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "once_per_ent",
           "ID": 2102,
           "InGameName": {
             "en": "Trigger Only Once per Entity"
@@ -54564,7 +54564,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "HITT",
       "System": "Server",
       "ID": 27,
       "InGameName": {
@@ -54575,7 +54575,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2200,
           "InGameName": {
             "en": "None"
@@ -54585,7 +54585,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "default",
           "ID": 2201,
           "InGameName": {
             "en": "Default"
@@ -54595,7 +54595,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "slash",
           "ID": 2202,
           "InGameName": {
             "en": "Slash"
@@ -54605,7 +54605,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "smash",
           "ID": 2203,
           "InGameName": {
             "en": "Smash"
@@ -54615,7 +54615,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "projectile",
           "ID": 2204,
           "InGameName": {
             "en": "Projectile"
@@ -54625,7 +54625,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "pierce",
           "ID": 2205,
           "InGameName": {
             "en": "Piercing Attack"
@@ -54637,7 +54637,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ATKT",
       "System": "Server",
       "ID": 28,
       "InGameName": {
@@ -54648,7 +54648,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2300,
           "InGameName": {
             "en": "None"
@@ -54658,7 +54658,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "melee",
           "ID": 2301,
           "InGameName": {
             "en": "Melee Attack"
@@ -54668,7 +54668,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ranged",
           "ID": 2302,
           "InGameName": {
             "en": "Ranged Attack"
@@ -54678,7 +54678,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "default",
           "ID": 2303,
           "InGameName": {
             "en": "Default"
@@ -54690,7 +54690,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "HITP",
       "System": "Server",
       "ID": 29,
       "InGameName": {
@@ -54701,7 +54701,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "default",
           "ID": 2400,
           "InGameName": {
             "en": "Default"
@@ -54711,7 +54711,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2401,
           "InGameName": {
             "en": "No Hit Performance"
@@ -54721,7 +54721,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "arrow_normal",
           "ID": 2402,
           "InGameName": {
             "en": "Hit by Normal Arrow Without Charging"
@@ -54731,7 +54731,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "combo",
           "ID": 2403,
           "InGameName": {
             "en": "Combo Hit"
@@ -54741,7 +54741,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "normal",
           "ID": 2404,
           "InGameName": {
             "en": "Normal Hit"
@@ -54751,7 +54751,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "heavy",
           "ID": 2405,
           "InGameName": {
             "en": "Heavy Hit"
@@ -54761,7 +54761,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "strong",
           "ID": 2406,
           "InGameName": {
             "en": "Strong Impact"
@@ -54771,7 +54771,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ultimate",
           "ID": 2407,
           "InGameName": {
             "en": "Ultimate Impact"
@@ -54781,7 +54781,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "v_launch",
           "ID": 2408,
           "InGameName": {
             "en": "Vertical Launch"
@@ -54791,7 +54791,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "s_launch",
           "ID": 2409,
           "InGameName": {
             "en": "Super Launch"
@@ -54801,7 +54801,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "throw",
           "ID": 2410,
           "InGameName": {
             "en": "Long-Range Throw"
@@ -54813,7 +54813,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SLOT",
       "System": "Server",
       "ID": 30,
       "InGameName": {
@@ -54824,7 +54824,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "normal",
           "ID": 3100,
           "InGameName": {
             "en": "Normal Attack"
@@ -54834,7 +54834,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "e",
           "ID": 3111,
           "InGameName": {
             "en": "1: E"
@@ -54844,7 +54844,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "q",
           "ID": 3112,
           "InGameName": {
             "en": "2: Q"
@@ -54854,7 +54854,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "r",
           "ID": 3113,
           "InGameName": {
             "en": "3: R"
@@ -54864,7 +54864,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "t",
           "ID": 3114,
           "InGameName": {
             "en": "4: T"
@@ -54874,7 +54874,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_1",
           "ID": 3121,
           "InGameName": {
             "en": "Custom Skill Slot 1"
@@ -54884,7 +54884,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_2",
           "ID": 3122,
           "InGameName": {
             "en": "Custom Skill Slot 2"
@@ -54894,7 +54894,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_3",
           "ID": 3123,
           "InGameName": {
             "en": "Custom Skill Slot 3"
@@ -54904,7 +54904,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_4",
           "ID": 3124,
           "InGameName": {
             "en": "Custom Skill Slot 4"
@@ -54914,7 +54914,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_5",
           "ID": 3125,
           "InGameName": {
             "en": "Custom Skill Slot 5"
@@ -54924,7 +54924,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_6",
           "ID": 3126,
           "InGameName": {
             "en": "Custom Skill Slot 6"
@@ -54934,7 +54934,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_7",
           "ID": 3127,
           "InGameName": {
             "en": "Custom Skill Slot 7"
@@ -54944,7 +54944,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_8",
           "ID": 3128,
           "InGameName": {
             "en": "Custom Skill Slot 8"
@@ -54954,7 +54954,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_9",
           "ID": 3129,
           "InGameName": {
             "en": "Custom Skill Slot 9"
@@ -54964,7 +54964,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_10",
           "ID": 3130,
           "InGameName": {
             "en": "Custom Skill Slot 10"
@@ -54974,7 +54974,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_11",
           "ID": 3131,
           "InGameName": {
             "en": "Custom Skill Slot 11"
@@ -54984,7 +54984,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_12",
           "ID": 3132,
           "InGameName": {
             "en": "Custom Skill Slot 12"
@@ -54994,7 +54994,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_13",
           "ID": 3133,
           "InGameName": {
             "en": "Custom Skill Slot 13"
@@ -55004,7 +55004,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_14",
           "ID": 3134,
           "InGameName": {
             "en": "Custom Skill Slot 14"
@@ -55014,7 +55014,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "custom_15",
           "ID": 3135,
           "InGameName": {
             "en": "Custom Skill Slot 15"
@@ -55026,7 +55026,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SNDM",
       "System": "Server",
       "ID": 31,
       "InGameName": {
@@ -55037,7 +55037,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "linear",
           "ID": 3400,
           "InGameName": {
             "en": "Linear Attenuation"
@@ -55047,7 +55047,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fast_slow",
           "ID": 3401,
           "InGameName": {
             "en": "Fast Then Slow"
@@ -55057,7 +55057,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "slow_fast",
           "ID": 3402,
           "InGameName": {
             "en": "Slow Then Fast"
@@ -55069,7 +55069,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SLCR",
       "System": "Server",
       "ID": 32,
       "InGameName": {
@@ -55080,7 +55080,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "player",
           "ID": 3500,
           "InGameName": {
             "en": "Completed by Player"
@@ -55090,7 +55090,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "timeout",
           "ID": 3501,
           "InGameName": {
             "en": "Timeout"
@@ -55100,7 +55100,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fixed_refresh",
           "ID": 3502,
           "InGameName": {
             "en": "Fixed-Quantity Refresh"
@@ -55110,7 +55110,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "refresh_all",
           "ID": 3503,
           "InGameName": {
             "en": "Refresh All"
@@ -55120,7 +55120,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "manual_close",
           "ID": 3504,
           "InGameName": {
             "en": "Closed Manually"
@@ -55130,7 +55130,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "node_close",
           "ID": 3505,
           "InGameName": {
             "en": "Closed by Node Graph"
@@ -55142,7 +55142,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SETL",
       "System": "Server",
       "ID": 33,
       "InGameName": {
@@ -55153,7 +55153,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "tbc",
           "ID": 4100,
           "InGameName": {
             "en": "TBC"
@@ -55163,7 +55163,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "victory",
           "ID": 4101,
           "InGameName": {
             "en": "Victory"
@@ -55173,7 +55173,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fail",
           "ID": 4102,
           "InGameName": {
             "en": "Failed"
@@ -55185,7 +55185,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ITMC",
       "System": "Server",
       "ID": 35,
       "InGameName": {
@@ -55196,7 +55196,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "default",
           "ID": 0,
           "InGameName": {
             "en": "Default"
@@ -55206,7 +55206,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "destroy",
           "ID": 4900,
           "InGameName": {
             "en": "Destroy"
@@ -55216,7 +55216,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "discard",
           "ID": 4901,
           "InGameName": {
             "en": "Discard"
@@ -55226,7 +55226,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "use",
           "ID": 4902,
           "InGameName": {
             "en": "Use"
@@ -55236,7 +55236,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "drop",
           "ID": 4903,
           "InGameName": {
             "en": "Defeat Drops"
@@ -55246,7 +55246,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "trade",
           "ID": 4904,
           "InGameName": {
             "en": "Shop Trade"
@@ -55256,7 +55256,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "node_op",
           "ID": 4905,
           "InGameName": {
             "en": "Node Graph Operation"
@@ -55266,7 +55266,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "pickup",
           "ID": 4950,
           "InGameName": {
             "en": "Pick Up"
@@ -55278,7 +55278,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "LOOT",
       "System": "Server",
       "ID": 36,
       "InGameName": {
@@ -55289,7 +55289,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "shared",
           "ID": 4350,
           "InGameName": {
             "en": "Shared Reward"
@@ -55299,7 +55299,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "individual",
           "ID": 4351,
           "InGameName": {
             "en": "Individualized Reward"
@@ -55311,7 +55311,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "DRFM",
       "System": "Server",
       "ID": 37,
       "InGameName": {
@@ -55322,7 +55322,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 3510,
           "InGameName": {
             "en": "Cannot Refresh"
@@ -55332,7 +55332,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "partial",
           "ID": 3511,
           "InGameName": {
             "en": "Partial Refresh"
@@ -55342,7 +55342,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "all",
           "ID": 3512,
           "InGameName": {
             "en": "Refresh All"
@@ -55354,7 +55354,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "REAC",
       "System": "Server",
       "ID": 38,
       "InGameName": {
@@ -55365,7 +55365,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "overloaded",
           "ID": 4701,
           "InGameName": {
             "en": "Overloaded"
@@ -55375,7 +55375,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "vaporize",
           "ID": 4702,
           "InGameName": {
             "en": "Vaporize"
@@ -55385,7 +55385,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "burning",
           "ID": 4703,
           "InGameName": {
             "en": "Burning"
@@ -55395,7 +55395,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "wet",
           "ID": 4705,
           "InGameName": {
             "en": "Wet"
@@ -55405,7 +55405,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "bloom",
           "ID": 4706,
           "InGameName": {
             "en": "Bloom"
@@ -55415,7 +55415,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "melt",
           "ID": 4707,
           "InGameName": {
             "en": "Melt"
@@ -55425,7 +55425,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "frozen",
           "ID": 4708,
           "InGameName": {
             "en": "Frozen"
@@ -55435,7 +55435,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "electro_charged",
           "ID": 4712,
           "InGameName": {
             "en": "Electro-Charged"
@@ -55445,7 +55445,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "superconduct",
           "ID": 4716,
           "InGameName": {
             "en": "Superconduct"
@@ -55455,7 +55455,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "swirl_pyro",
           "ID": 4717,
           "InGameName": {
             "en": "Swirl: Pyro"
@@ -55465,7 +55465,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "swirl_hydro",
           "ID": 4718,
           "InGameName": {
             "en": "Swirl: Hydro"
@@ -55475,7 +55475,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "swirl_electro",
           "ID": 4719,
           "InGameName": {
             "en": "Swirl: Electro"
@@ -55485,7 +55485,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "swirl_cryo",
           "ID": 4720,
           "InGameName": {
             "en": "Swirl: Cryo"
@@ -55495,7 +55495,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "crystal_pyro",
           "ID": 4727,
           "InGameName": {
             "en": "Crystallize: Pyro"
@@ -55505,7 +55505,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "crystal_hydro",
           "ID": 4728,
           "InGameName": {
             "en": "Crystallize: Hydro"
@@ -55515,7 +55515,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "crystal_electro",
           "ID": 4729,
           "InGameName": {
             "en": "Crystallize: Electro"
@@ -55525,7 +55525,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "crystal_cryo",
           "ID": 4730,
           "InGameName": {
             "en": "Crystallize: Cryo"
@@ -55535,7 +55535,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "catalyze",
           "ID": 4733,
           "InGameName": {
             "en": "Catalyze"
@@ -55545,7 +55545,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "aggravate",
           "ID": 4734,
           "InGameName": {
             "en": "Aggravate"
@@ -55555,7 +55555,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "spread",
           "ID": 4735,
           "InGameName": {
             "en": "Spread"
@@ -55565,7 +55565,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "burgeon",
           "ID": 4736,
           "InGameName": {
             "en": "Burgeon"
@@ -55575,7 +55575,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hyperbloom",
           "ID": 4737,
           "InGameName": {
             "en": "Hyperbloom"
@@ -55587,7 +55587,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "INTS",
       "System": "Server",
       "ID": 39,
       "InGameName": {
@@ -55598,7 +55598,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "resistance",
           "ID": 5200,
           "InGameName": {
             "en": "Interrupt Resistance Status"
@@ -55608,7 +55608,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "vulnerability",
           "ID": 5201,
           "InGameName": {
             "en": "Interrupt Vulnerability Status"
@@ -55618,7 +55618,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "protected",
           "ID": 5202,
           "InGameName": {
             "en": "Protected Status"
@@ -55630,7 +55630,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "GMOD",
       "System": "Server",
       "ID": 40,
       "InGameName": {
@@ -55641,7 +55641,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "play",
           "ID": 5700,
           "InGameName": {
             "en": "Play"
@@ -55651,7 +55651,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "room",
           "ID": 5701,
           "InGameName": {
             "en": "Room Play"
@@ -55661,7 +55661,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "match",
           "ID": 5702,
           "InGameName": {
             "en": "Match Play"
@@ -55673,7 +55673,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "IDVT",
       "System": "Server",
       "ID": 41,
       "InGameName": {
@@ -55684,7 +55684,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "kbm",
           "ID": 5800,
           "InGameName": {
             "en": "Keyboard and Mouse"
@@ -55694,7 +55694,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "controller",
           "ID": 5801,
           "InGameName": {
             "en": "Controller"
@@ -55704,7 +55704,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "touch",
           "ID": 5802,
           "InGameName": {
             "en": "Touchscreen"
@@ -55716,7 +55716,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "MOVE",
       "System": "Server",
       "ID": 1042,
       "InGameName": {
@@ -55727,7 +55727,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "instant",
           "ID": 5500,
           "InGameName": {
             "en": "Instant Movement"
@@ -55737,7 +55737,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "linear",
           "ID": 5501,
           "InGameName": {
             "en": "Uniform Linear Motion"
@@ -55749,7 +55749,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "FMPR",
       "System": "Server",
       "ID": 1043,
       "InGameName": {
@@ -55760,7 +55760,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "speed",
           "ID": 5600,
           "InGameName": {
             "en": "Fixed Speed"
@@ -55770,7 +55770,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "time",
           "ID": 5601,
           "InGameName": {
             "en": "Fixed Time"
@@ -55782,7 +55782,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "GENE",
       "System": "Client",
       "ID": -1,
       "InGameName": {
@@ -55794,7 +55794,7 @@
       "Items": []
     },
     {
-      "Identifier": null,
+      "Identifier": "CPRS",
       "System": "Client",
       "ID": 0,
       "InGameName": {
@@ -55805,7 +55805,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "eq",
           "ID": 100,
           "InGameName": {
             "en": "Equal To"
@@ -55815,7 +55815,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "lt",
           "ID": 101,
           "InGameName": {
             "en": "Less Than"
@@ -55825,7 +55825,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "lte",
           "ID": 102,
           "InGameName": {
             "en": "Less Than or Equal To"
@@ -55835,7 +55835,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "gt",
           "ID": 103,
           "InGameName": {
             "en": "Greater Than"
@@ -55845,7 +55845,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "gte",
           "ID": 104,
           "InGameName": {
             "en": "Greater Than or Equal To"
@@ -55857,7 +55857,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "LOGI",
       "System": "Client",
       "ID": 1,
       "InGameName": {
@@ -55868,7 +55868,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "and",
           "ID": 200,
           "InGameName": {
             "en": "AND"
@@ -55878,7 +55878,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "or",
           "ID": 201,
           "InGameName": {
             "en": "OR"
@@ -55888,7 +55888,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "xor",
           "ID": 202,
           "InGameName": {
             "en": "XOR"
@@ -55898,7 +55898,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "not",
           "ID": 203,
           "InGameName": {
             "en": "NOT"
@@ -55910,7 +55910,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "BMAT",
       "System": "Client",
       "ID": 2,
       "InGameName": {
@@ -55921,7 +55921,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "add",
           "ID": 300,
           "InGameName": {
             "en": "Addition"
@@ -55931,7 +55931,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "sub",
           "ID": 301,
           "InGameName": {
             "en": "Subtraction"
@@ -55941,7 +55941,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "mul",
           "ID": 302,
           "InGameName": {
             "en": "Multiplication"
@@ -55951,7 +55951,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "div",
           "ID": 303,
           "InGameName": {
             "en": "Division"
@@ -55963,7 +55963,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ASHX",
       "System": "Client",
       "ID": 3,
       "InGameName": {
@@ -55974,7 +55974,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "rect",
           "ID": 400,
           "InGameName": {
             "en": "Rectangle"
@@ -55984,7 +55984,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "sphere",
           "ID": 401,
           "InGameName": {
             "en": "Sphere"
@@ -55994,7 +55994,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "sector",
           "ID": 402,
           "InGameName": {
             "en": "Sector"
@@ -56006,7 +56006,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SURX",
       "System": "Client",
       "ID": 4,
       "InGameName": {
@@ -56017,7 +56017,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "alive",
           "ID": 500,
           "InGameName": {
             "en": "Alive"
@@ -56027,7 +56027,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "down",
           "ID": 501,
           "InGameName": {
             "en": "Down"
@@ -56039,7 +56039,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SRTR",
       "System": "Client",
       "ID": 5,
       "InGameName": {
@@ -56050,7 +56050,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "asc",
           "ID": 600,
           "InGameName": {
             "en": "Ascending"
@@ -56060,7 +56060,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "desc",
           "ID": 601,
           "InGameName": {
             "en": "Descending"
@@ -56072,7 +56072,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ROUN",
       "System": "Client",
       "ID": 6,
       "InGameName": {
@@ -56083,7 +56083,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "up",
           "ID": 700,
           "InGameName": {
             "en": "Round Up"
@@ -56093,7 +56093,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "down",
           "ID": 701,
           "InGameName": {
             "en": "Round Down"
@@ -56103,7 +56103,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "nearest",
           "ID": 702,
           "InGameName": {
             "en": "Round to Nearest"
@@ -56113,7 +56113,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "trunc",
           "ID": 703,
           "InGameName": {
             "en": "Truncate"
@@ -56125,7 +56125,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "CNVT",
       "System": "Client",
       "ID": 7,
       "InGameName": {
@@ -56136,7 +56136,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "i_to_b",
           "ID": 800,
           "InGameName": {
             "en": "Integer to Boolean"
@@ -56146,7 +56146,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "i_to_f",
           "ID": 801,
           "InGameName": {
             "en": "Integer to Floating Point"
@@ -56156,7 +56156,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "i_to_s",
           "ID": 802,
           "InGameName": {
             "en": "Integer to String"
@@ -56166,7 +56166,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "e_to_s",
           "ID": 803,
           "InGameName": {
             "en": "Entity to String"
@@ -56176,7 +56176,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "g_to_s",
           "ID": 804,
           "InGameName": {
             "en": "GUID to String"
@@ -56186,7 +56186,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "b_to_i",
           "ID": 805,
           "InGameName": {
             "en": "Boolean to Integer"
@@ -56196,7 +56196,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "b_to_s",
           "ID": 806,
           "InGameName": {
             "en": "Boolean to String"
@@ -56206,7 +56206,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "f_to_i",
           "ID": 807,
           "InGameName": {
             "en": "Floating Point to Integer"
@@ -56216,7 +56216,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "f_to_s",
           "ID": 808,
           "InGameName": {
             "en": "Floating Point to String"
@@ -56226,7 +56226,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "v3_to_s",
           "ID": 809,
           "InGameName": {
             "en": "3D Vector to String"
@@ -56236,7 +56236,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fact_to_s",
           "ID": 810,
           "InGameName": {
             "en": "Faction to String"
@@ -56248,7 +56248,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "CONV",
       "System": "Client",
       "ID": 7,
       "InGameName": {
@@ -56259,7 +56259,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "i_to_b",
           "ID": 800,
           "InGameName": {
             "en": "Integer to Boolean"
@@ -56269,7 +56269,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "i_to_f",
           "ID": 801,
           "InGameName": {
             "en": "Integer to Floating Point"
@@ -56279,7 +56279,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "i_to_s",
           "ID": 802,
           "InGameName": {
             "en": "Integer to String"
@@ -56289,7 +56289,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "e_to_s",
           "ID": 803,
           "InGameName": {
             "en": "Entity to String"
@@ -56299,7 +56299,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "g_to_s",
           "ID": 804,
           "InGameName": {
             "en": "GUID to String"
@@ -56309,7 +56309,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "b_to_i",
           "ID": 805,
           "InGameName": {
             "en": "Boolean to Integer"
@@ -56319,7 +56319,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "b_to_s",
           "ID": 806,
           "InGameName": {
             "en": "Boolean to String"
@@ -56329,7 +56329,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "f_to_i",
           "ID": 807,
           "InGameName": {
             "en": "Floating Point to Integer"
@@ -56339,7 +56339,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "f_to_s",
           "ID": 808,
           "InGameName": {
             "en": "Floating Point to String"
@@ -56349,7 +56349,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "v3_to_s",
           "ID": 809,
           "InGameName": {
             "en": "3D Vector to String"
@@ -56359,7 +56359,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fact_to_s",
           "ID": 810,
           "InGameName": {
             "en": "Faction to String"
@@ -56371,7 +56371,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "MPPX",
       "System": "Client",
       "ID": 8,
       "InGameName": {
@@ -56382,7 +56382,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "straight",
           "ID": 900,
           "InGameName": {
             "en": "Straight Line"
@@ -56392,7 +56392,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "curve",
           "ID": 901,
           "InGameName": {
             "en": "Curve"
@@ -56404,7 +56404,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "MTYP",
       "System": "Client",
       "ID": 9,
       "InGameName": {
@@ -56415,7 +56415,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "one_way",
           "ID": 1000,
           "InGameName": {
             "en": "One-Way"
@@ -56425,7 +56425,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ping_pong",
           "ID": 1001,
           "InGameName": {
             "en": "Back and Forth"
@@ -56435,7 +56435,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "cyclic",
           "ID": 1002,
           "InGameName": {
             "en": "Cyclic Movement"
@@ -56447,7 +56447,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "FLOC",
       "System": "Client",
       "ID": 10,
       "InGameName": {
@@ -56458,7 +56458,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "full",
           "ID": 1100,
           "InGameName": {
             "en": "Completely Follow"
@@ -56468,7 +56468,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "loc_only",
           "ID": 1101,
           "InGameName": {
             "en": "Follow Location"
@@ -56478,7 +56478,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "rot_only",
           "ID": 1102,
           "InGameName": {
             "en": "Follow Rotation"
@@ -56490,7 +56490,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "CSYS",
       "System": "Client",
       "ID": 11,
       "InGameName": {
@@ -56501,7 +56501,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "relative",
           "ID": 1200,
           "InGameName": {
             "en": "Relative Coordinate System"
@@ -56511,7 +56511,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "world",
           "ID": 1201,
           "InGameName": {
             "en": "World Coordinate System"
@@ -56523,7 +56523,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ELEM",
       "System": "Client",
       "ID": 12,
       "InGameName": {
@@ -56534,7 +56534,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 1300,
           "InGameName": {
             "en": "None"
@@ -56544,7 +56544,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "pyro",
           "ID": 1301,
           "InGameName": {
             "en": "Pyro"
@@ -56554,7 +56554,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hydro",
           "ID": 1302,
           "InGameName": {
             "en": "Hydro"
@@ -56564,7 +56564,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "anemo",
           "ID": 1303,
           "InGameName": {
             "en": "Anemo"
@@ -56574,7 +56574,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "electro",
           "ID": 1304,
           "InGameName": {
             "en": "Electro"
@@ -56584,7 +56584,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "dendro",
           "ID": 1305,
           "InGameName": {
             "en": "Dendro"
@@ -56594,7 +56594,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "cryo",
           "ID": 1306,
           "InGameName": {
             "en": "Cryo"
@@ -56604,7 +56604,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "geo",
           "ID": 1307,
           "InGameName": {
             "en": "Geo"
@@ -56616,7 +56616,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ETIT",
       "System": "Client",
       "ID": 13,
       "InGameName": {
@@ -56627,7 +56627,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "stage",
           "ID": 1401,
           "InGameName": {
             "en": "Stage"
@@ -56637,7 +56637,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "object",
           "ID": 1402,
           "InGameName": {
             "en": "Object"
@@ -56647,7 +56647,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "player",
           "ID": 1403,
           "InGameName": {
             "en": "Player"
@@ -56657,7 +56657,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "character",
           "ID": 1404,
           "InGameName": {
             "en": "Character"
@@ -56667,7 +56667,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "creation",
           "ID": 1405,
           "InGameName": {
             "en": "Creation"
@@ -56679,7 +56679,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "USAF",
       "System": "Client",
       "ID": 14,
       "InGameName": {
@@ -56688,10 +56688,51 @@
       "Alias": [
         "Unit_Status_Addition_Failure_Reason"
       ],
-      "Items": []
+      "Items": [
+        {
+          "Identifier": "fail_error",
+          "ID": 1500,
+          "InGameName": {
+            "en": "Failed: Unexpected error"
+          },
+          "Alias": [
+            "Failed_Unexpected_error"
+          ]
+        },
+        {
+          "Identifier": "fail_paused",
+          "ID": 1501,
+          "InGameName": {
+            "en": "Failed: Operation paused for another process"
+          },
+          "Alias": [
+            "Failed_Operation_paused_for_another_process"
+          ]
+        },
+        {
+          "Identifier": "fail_limit",
+          "ID": 1502,
+          "InGameName": {
+            "en": "Failed: Maximum coexistence limit reached"
+          },
+          "Alias": [
+            "Failed_Maximum_coexistence_limit_reached"
+          ]
+        },
+        {
+          "Identifier": "fail_stack",
+          "ID": 1503,
+          "InGameName": {
+            "en": "Failed: Unable to add additional stack"
+          },
+          "Alias": [
+            "Failed_Unable_to_add_additional_stack"
+          ]
+        }
+      ]
     },
     {
-      "Identifier": null,
+      "Identifier": "USAS",
       "System": "Client",
       "ID": 15,
       "InGameName": {
@@ -56700,10 +56741,31 @@
       "Alias": [
         "Unit_Status_Addition_Success_Type"
       ],
-      "Items": []
+      "Items": [
+        {
+          "Identifier": "succ_new",
+          "ID": 1504,
+          "InGameName": {
+            "en": "Success: New status applied"
+          },
+          "Alias": [
+            "Success_New_status_applied"
+          ]
+        },
+        {
+          "Identifier": "succ_stack",
+          "ID": 1505,
+          "InGameName": {
+            "en": "Success: Slot stacking"
+          },
+          "Alias": [
+            "Success_Slot_stacking"
+          ]
+        }
+      ]
     },
     {
-      "Identifier": null,
+      "Identifier": "USTR",
       "System": "Client",
       "ID": 16,
       "InGameName": {
@@ -56714,7 +56776,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "replaced",
           "ID": 1506,
           "InGameName": {
             "en": "Replaced by other unit status"
@@ -56724,7 +56786,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "timeout",
           "ID": 1507,
           "InGameName": {
             "en": "Duration exceeded"
@@ -56734,7 +56796,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "dispelled",
           "ID": 1508,
           "InGameName": {
             "en": "Dispelled"
@@ -56744,7 +56806,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "expired",
           "ID": 1509,
           "InGameName": {
             "en": "Status expired"
@@ -56754,7 +56816,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "class_chg",
           "ID": 1510,
           "InGameName": {
             "en": "Class changed"
@@ -56766,7 +56828,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "USTS",
       "System": "Client",
       "ID": 17,
       "InGameName": {
@@ -56777,7 +56839,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "all_same",
           "ID": 1540,
           "InGameName": {
             "en": "All Coexisting Statuses With the Same Name"
@@ -56787,7 +56849,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fastest_loss",
           "ID": 1541,
           "InGameName": {
             "en": "Status With Fastest Stack Loss"
@@ -56799,7 +56861,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "RVPS",
       "System": "Client",
       "ID": 18,
       "InGameName": {
@@ -56810,7 +56872,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "nearest",
           "ID": 1601,
           "InGameName": {
             "en": "Nearest"
@@ -56820,7 +56882,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "latest",
           "ID": 1602,
           "InGameName": {
             "en": "Most Recently Activated"
@@ -56830,7 +56892,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "priority",
           "ID": 1603,
           "InGameName": {
             "en": "Highest Priority"
@@ -56840,7 +56902,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "random",
           "ID": 1604,
           "InGameName": {
             "en": "Random"
@@ -56852,7 +56914,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "DWNX",
       "System": "Client",
       "ID": 19,
       "InGameName": {
@@ -56863,7 +56925,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "node_graph",
           "ID": 1605,
           "InGameName": {
             "en": "Node Graph Triggered"
@@ -56873,7 +56935,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "normal",
           "ID": 1606,
           "InGameName": {
             "en": "Normal Defeat"
@@ -56883,7 +56945,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "abnormal",
           "ID": 1607,
           "InGameName": {
             "en": "Abnormal Defeat"
@@ -56895,7 +56957,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "TFNX",
       "System": "Client",
       "ID": 20,
       "InGameName": {
@@ -56906,7 +56968,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "cos",
           "ID": 1700,
           "InGameName": {
             "en": "cos"
@@ -56916,7 +56978,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "sin",
           "ID": 1701,
           "InGameName": {
             "en": "sin"
@@ -56926,7 +56988,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "tan",
           "ID": 1702,
           "InGameName": {
             "en": "tan"
@@ -56936,7 +56998,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "acos",
           "ID": 1703,
           "InGameName": {
             "en": "arccos"
@@ -56946,7 +57008,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "asin",
           "ID": 1704,
           "InGameName": {
             "en": "arcsin"
@@ -56956,7 +57018,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "atan",
           "ID": 1705,
           "InGameName": {
             "en": "arctan"
@@ -56966,7 +57028,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "rad_to_deg",
           "ID": 1706,
           "InGameName": {
             "en": "Radians to Degrees"
@@ -56976,7 +57038,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "deg_to_rad",
           "ID": 1707,
           "InGameName": {
             "en": "Degrees to Radians"
@@ -56988,7 +57050,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "DISD",
       "System": "Client",
       "ID": 21,
       "InGameName": {
@@ -56999,7 +57061,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "force_field",
           "ID": 1801,
           "InGameName": {
             "en": "Force Field Device"
@@ -57009,7 +57071,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ejector",
           "ID": 1802,
           "InGameName": {
             "en": "Ejector"
@@ -57019,7 +57081,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "tractor",
           "ID": 1803,
           "InGameName": {
             "en": "Tractor Device"
@@ -57031,7 +57093,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "DORI",
       "System": "Client",
       "ID": 22,
       "InGameName": {
@@ -57042,7 +57104,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "follow_char",
           "ID": 1810,
           "InGameName": {
             "en": "Associate Character Orientation"
@@ -57052,7 +57114,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "fixed",
           "ID": 1811,
           "InGameName": {
             "en": "Fixed Unidirectional"
@@ -57064,7 +57126,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "UISG",
       "System": "Client",
       "ID": 23,
       "InGameName": {
@@ -57075,7 +57137,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "off",
           "ID": 1900,
           "InGameName": {
             "en": "Off"
@@ -57085,7 +57147,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "on",
           "ID": 1901,
           "InGameName": {
             "en": "On"
@@ -57095,7 +57157,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hidden",
           "ID": 1902,
           "InGameName": {
             "en": "Hidden"
@@ -57107,7 +57169,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "TARG",
       "System": "Client",
       "ID": 24,
       "InGameName": {
@@ -57118,17 +57180,17 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2000,
           "InGameName": {
-            "en": "None"
+            "en": "Don't Find Target"
           },
           "Alias": [
-            "None"
+            "Don't Find Target"
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ally",
           "ID": 2001,
           "InGameName": {
             "en": "Allied Faction"
@@ -57138,7 +57200,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hostile",
           "ID": 2002,
           "InGameName": {
             "en": "Hostile Faction"
@@ -57148,7 +57210,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "self",
           "ID": 2003,
           "InGameName": {
             "en": "Self"
@@ -57158,7 +57220,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "own",
           "ID": 2004,
           "InGameName": {
             "en": "Own Faction"
@@ -57168,7 +57230,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "all",
           "ID": 2005,
           "InGameName": {
             "en": "All"
@@ -57178,7 +57240,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "all_ex_self",
           "ID": 2006,
           "InGameName": {
             "en": "All Except Self"
@@ -57188,7 +57250,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ally_inc_self",
           "ID": 2007,
           "InGameName": {
             "en": "Allied Faction Self Included"
@@ -57200,7 +57262,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "QMAT",
       "System": "Client",
       "ID": 25,
       "InGameName": {
@@ -57211,7 +57273,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "mod",
           "ID": 304,
           "InGameName": {
             "en": "Modulo Operation"
@@ -57221,7 +57283,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "pow",
           "ID": 305,
           "InGameName": {
             "en": "Exponentiation"
@@ -57231,7 +57293,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "max",
           "ID": 306,
           "InGameName": {
             "en": "Get Maximum Value"
@@ -57241,7 +57303,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "min",
           "ID": 307,
           "InGameName": {
             "en": "Get Minimum Value"
@@ -57251,7 +57313,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "log",
           "ID": 308,
           "InGameName": {
             "en": "Logarithm"
@@ -57263,7 +57325,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "HITX",
       "System": "Client",
       "ID": 26,
       "InGameName": {
@@ -57274,7 +57336,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2200,
           "InGameName": {
             "en": "None"
@@ -57284,7 +57346,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "default",
           "ID": 2201,
           "InGameName": {
             "en": "Default"
@@ -57294,7 +57356,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "slash",
           "ID": 2202,
           "InGameName": {
             "en": "Slash"
@@ -57304,7 +57366,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "smash",
           "ID": 2203,
           "InGameName": {
             "en": "Smash"
@@ -57314,7 +57376,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "projectile",
           "ID": 2204,
           "InGameName": {
             "en": "Projectile"
@@ -57324,7 +57386,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "pierce",
           "ID": 2205,
           "InGameName": {
             "en": "Piercing Attack"
@@ -57336,7 +57398,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ATKX",
       "System": "Client",
       "ID": 27,
       "InGameName": {
@@ -57347,7 +57409,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2300,
           "InGameName": {
             "en": "None"
@@ -57357,7 +57419,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "melee",
           "ID": 2301,
           "InGameName": {
             "en": "Melee Attack"
@@ -57367,7 +57429,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ranged",
           "ID": 2302,
           "InGameName": {
             "en": "Ranged Attack"
@@ -57377,7 +57439,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "default",
           "ID": 2303,
           "InGameName": {
             "en": "Default"
@@ -57389,7 +57451,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "HPRL",
       "System": "Client",
       "ID": 28,
       "InGameName": {
@@ -57400,7 +57462,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "default",
           "ID": 2400,
           "InGameName": {
             "en": "Default"
@@ -57410,7 +57472,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2401,
           "InGameName": {
             "en": "No Hit Performance"
@@ -57420,7 +57482,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "arrow_normal",
           "ID": 2402,
           "InGameName": {
             "en": "Hit by Normal Arrow Without Charging"
@@ -57430,7 +57492,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "combo",
           "ID": 2403,
           "InGameName": {
             "en": "Combo Hit"
@@ -57440,7 +57502,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "normal",
           "ID": 2404,
           "InGameName": {
             "en": "Normal Hit"
@@ -57450,7 +57512,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "heavy",
           "ID": 2405,
           "InGameName": {
             "en": "Heavy Hit"
@@ -57460,7 +57522,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "strong",
           "ID": 2406,
           "InGameName": {
             "en": "Strong Impact"
@@ -57470,7 +57532,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ultimate",
           "ID": 2407,
           "InGameName": {
             "en": "Ultimate Impact"
@@ -57480,7 +57542,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "v_launch",
           "ID": 2408,
           "InGameName": {
             "en": "Vertical Launch"
@@ -57490,7 +57552,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "s_launch",
           "ID": 2409,
           "InGameName": {
             "en": "Super Launch"
@@ -57500,7 +57562,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "throw",
           "ID": 2410,
           "InGameName": {
             "en": "Long-Range Throw"
@@ -57512,7 +57574,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "TGSR",
       "System": "Client",
       "ID": 29,
       "InGameName": {
@@ -57523,7 +57585,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "default",
           "ID": 1000001,
           "InGameName": {
             "en": "Default Sorting"
@@ -57533,7 +57595,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "random",
           "ID": 1000002,
           "InGameName": {
             "en": "Random Order"
@@ -57543,7 +57605,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "near_far",
           "ID": 1000003,
           "InGameName": {
             "en": "Sort From Near to Far"
@@ -57555,7 +57617,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ALCF",
       "System": "Client",
       "ID": 30,
       "InGameName": {
@@ -57566,7 +57628,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "hurtbox_only",
           "ID": 2601,
           "InGameName": {
             "en": "Only On-Hit Hurtbox"
@@ -57576,7 +57638,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "scene_only",
           "ID": 2602,
           "InGameName": {
             "en": "Only On-Hit Scene"
@@ -57586,7 +57648,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "all",
           "ID": 2604,
           "InGameName": {
             "en": "Hit All"
@@ -57596,7 +57658,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "self_collision",
           "ID": 2605,
           "InGameName": {
             "en": "Object Self-Collision"
@@ -57608,7 +57670,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "KBDT",
       "System": "Client",
       "ID": 31,
       "InGameName": {
@@ -57619,7 +57681,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "atk_to_hit",
           "ID": 2501,
           "InGameName": {
             "en": "Line Connecting Attacker and Hit Point"
@@ -57629,7 +57691,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hitbox_dir",
           "ID": 2502,
           "InGameName": {
             "en": "Hitbox On-Hit Direction"
@@ -57639,7 +57701,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "owner_to_hit",
           "ID": 2503,
           "InGameName": {
             "en": "Line Connecting Attacker's Owner and Hit Point"
@@ -57649,7 +57711,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "tangent",
           "ID": 2504,
           "InGameName": {
             "en": "Tangent Line Between Attacker and Hit Point"
@@ -57659,7 +57721,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "opposite",
           "ID": 2505,
           "InGameName": {
             "en": "Opposite Direction to Hit"
@@ -57669,7 +57731,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "facing",
           "ID": 2506,
           "InGameName": {
             "en": "Attacker's Facing Orientation"
@@ -57679,7 +57741,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "inv_atk_to_hit",
           "ID": 2507,
           "InGameName": {
             "en": "Opposite Direction to Line Connecting Attacker and Hit Point"
@@ -57691,7 +57753,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "ROTT",
       "System": "Client",
       "ID": 32,
       "InGameName": {
@@ -57702,7 +57764,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "target_input",
           "ID": 2900,
           "InGameName": {
             "en": "Target First, Then Input"
@@ -57712,7 +57774,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "input",
           "ID": 2901,
           "InGameName": {
             "en": "Input Orientation"
@@ -57722,7 +57784,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "target",
           "ID": 2902,
           "InGameName": {
             "en": "Target Orientation"
@@ -57732,7 +57794,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "target_camera",
           "ID": 2903,
           "InGameName": {
             "en": "Target First, Then Camera"
@@ -57742,7 +57804,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "camera",
           "ID": 2904,
           "InGameName": {
             "en": "Camera Orientation"
@@ -57752,7 +57814,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "input_target",
           "ID": 2905,
           "InGameName": {
             "en": "Input First, Then Target"
@@ -57764,7 +57826,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SDIR",
       "System": "Client",
       "ID": 33,
       "InGameName": {
@@ -57775,7 +57837,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "inside_out",
           "ID": 450,
           "InGameName": {
             "en": "From Inside Out"
@@ -57785,7 +57847,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "clockwise",
           "ID": 451,
           "InGameName": {
             "en": "Clockwise"
@@ -57795,7 +57857,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "counter_clockwise",
           "ID": 452,
           "InGameName": {
             "en": "Counterclockwise"
@@ -57807,7 +57869,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "RTRA",
       "System": "Client",
       "ID": 35,
       "InGameName": {
@@ -57818,7 +57880,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "self",
           "ID": 3200,
           "InGameName": {
             "en": "Self"
@@ -57828,7 +57890,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "owner",
           "ID": 3201,
           "InGameName": {
             "en": "Self Owner"
@@ -57838,7 +57900,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "top_owner",
           "ID": 3202,
           "InGameName": {
             "en": "Top Layer Self Owner"
@@ -57850,7 +57912,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "HLVL",
       "System": "Client",
       "ID": 36,
       "InGameName": {
@@ -57861,7 +57923,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 3900,
           "InGameName": {
             "en": "No Effect"
@@ -57871,7 +57933,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "tremor",
           "ID": 3901,
           "InGameName": {
             "en": "Light Tremor"
@@ -57881,7 +57943,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "light",
           "ID": 3902,
           "InGameName": {
             "en": "Light Hit"
@@ -57891,7 +57953,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "knockback",
           "ID": 3903,
           "InGameName": {
             "en": "Knockback Hit"
@@ -57901,7 +57963,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "launch",
           "ID": 3904,
           "InGameName": {
             "en": "Launch"
@@ -57913,7 +57975,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "EREA",
       "System": "Client",
       "ID": 37,
       "InGameName": {
@@ -57924,7 +57986,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "overloaded",
           "ID": 4701,
           "InGameName": {
             "en": "Overloaded"
@@ -57934,7 +57996,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "vaporize",
           "ID": 4702,
           "InGameName": {
             "en": "Vaporize"
@@ -57944,7 +58006,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "burning",
           "ID": 4703,
           "InGameName": {
             "en": "Burning"
@@ -57954,7 +58016,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "wet",
           "ID": 4705,
           "InGameName": {
             "en": "Wet"
@@ -57964,7 +58026,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "bloom",
           "ID": 4706,
           "InGameName": {
             "en": "Bloom"
@@ -57974,7 +58036,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "melt",
           "ID": 4707,
           "InGameName": {
             "en": "Melt"
@@ -57984,7 +58046,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "frozen",
           "ID": 4708,
           "InGameName": {
             "en": "Frozen"
@@ -57994,7 +58056,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "electro_charged",
           "ID": 4712,
           "InGameName": {
             "en": "Electro-Charged"
@@ -58004,7 +58066,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "superconduct",
           "ID": 4716,
           "InGameName": {
             "en": "Superconduct"
@@ -58014,7 +58076,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "swirl_pyro",
           "ID": 4717,
           "InGameName": {
             "en": "Swirl: Pyro"
@@ -58024,7 +58086,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "swirl_hydro",
           "ID": 4718,
           "InGameName": {
             "en": "Swirl: Hydro"
@@ -58034,7 +58096,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "swirl_electro",
           "ID": 4719,
           "InGameName": {
             "en": "Swirl: Electro"
@@ -58044,7 +58106,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "swirl_cryo",
           "ID": 4720,
           "InGameName": {
             "en": "Swirl: Cryo"
@@ -58054,7 +58116,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "crystal_pyro",
           "ID": 4727,
           "InGameName": {
             "en": "Crystallize: Pyro"
@@ -58064,7 +58126,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "crystal_hydro",
           "ID": 4728,
           "InGameName": {
             "en": "Crystallize: Hydro"
@@ -58074,7 +58136,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "crystal_electro",
           "ID": 4729,
           "InGameName": {
             "en": "Crystallize: Electro"
@@ -58084,7 +58146,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "crystal_cryo",
           "ID": 4730,
           "InGameName": {
             "en": "Crystallize: Cryo"
@@ -58094,7 +58156,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "catalyze",
           "ID": 4733,
           "InGameName": {
             "en": "Catalyze"
@@ -58104,7 +58166,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "aggravate",
           "ID": 4734,
           "InGameName": {
             "en": "Aggravate"
@@ -58114,7 +58176,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "spread",
           "ID": 4735,
           "InGameName": {
             "en": "Spread"
@@ -58124,7 +58186,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "burgeon",
           "ID": 4736,
           "InGameName": {
             "en": "Burgeon"
@@ -58134,7 +58196,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hyperbloom",
           "ID": 4737,
           "InGameName": {
             "en": "Hyperbloom"
@@ -58146,7 +58208,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "FRTY",
       "System": "Client",
       "ID": 38,
       "InGameName": {
@@ -58157,7 +58219,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "bool",
           "ID": 1000010,
           "InGameName": {
             "en": "Return Boolean"
@@ -58167,7 +58229,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "int",
           "ID": 10000011,
           "InGameName": {
             "en": "Return Integer"
@@ -58179,7 +58241,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "TCON",
       "System": "Client",
       "ID": 39,
       "InGameName": {
@@ -58190,7 +58252,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "none",
           "ID": 2000,
           "InGameName": {
             "en": "Don't Find Target"
@@ -58200,7 +58262,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "ally",
           "ID": 2001,
           "InGameName": {
             "en": "Allied Faction"
@@ -58210,7 +58272,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "hostile",
           "ID": 2002,
           "InGameName": {
             "en": "Hostile Faction"
@@ -58220,7 +58282,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "own",
           "ID": 2004,
           "InGameName": {
             "en": "Own Faction"
@@ -58230,7 +58292,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "all_ex_self",
           "ID": 2006,
           "InGameName": {
             "en": "All Except Self"
@@ -58242,7 +58304,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "SCAN",
       "System": "Client",
       "ID": 40,
       "InGameName": {
@@ -58253,7 +58315,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "unusable",
           "ID": 5000,
           "InGameName": {
             "en": "Unusable Target"
@@ -58263,7 +58325,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "current",
           "ID": 5001,
           "InGameName": {
             "en": "Current Scan Target"
@@ -58273,7 +58335,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "candidate",
           "ID": 5002,
           "InGameName": {
             "en": "Candidate Target"
@@ -58283,7 +58345,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "invalid",
           "ID": 5003,
           "InGameName": {
             "en": "Condition Not Met"
@@ -58295,7 +58357,7 @@
       ]
     },
     {
-      "Identifier": null,
+      "Identifier": "IDVC",
       "System": "Client",
       "ID": 41,
       "InGameName": {
@@ -58306,7 +58368,7 @@
       ],
       "Items": [
         {
-          "Identifier": null,
+          "Identifier": "kbm",
           "ID": 5800,
           "InGameName": {
             "en": "Keyboard and Mouse"
@@ -58316,7 +58378,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "controller",
           "ID": 5801,
           "InGameName": {
             "en": "Controller"
@@ -58326,7 +58388,7 @@
           ]
         },
         {
-          "Identifier": null,
+          "Identifier": "touch",
           "ID": 5802,
           "InGameName": {
             "en": "Touchscreen"

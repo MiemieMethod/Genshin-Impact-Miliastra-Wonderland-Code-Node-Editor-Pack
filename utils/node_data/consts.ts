@@ -105,7 +105,7 @@ interface InjectedDef {
 }
 type ImplementationDef = {
   Kind: "RPC";
-  Messages: Partial<PinDef>[];
+  Messages: Partial<PinDef>[];  // Signal Pins(With data)
 };
 // ------------------------------------------------------------------
 // System Constants (Registry)
