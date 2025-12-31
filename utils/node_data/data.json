@@ -16966,6 +16966,17 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Output7",
+          "Direction": "Out",
+          "Type": "E<INTS>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 7,
+          "KernelIndex": 7,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
@@ -25011,6 +25022,17 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Output0",
+          "Direction": "Out",
+          "Type": "E<SETL>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
@@ -25161,6 +25183,17 @@
           "Identifier": "Input0",
           "Direction": "In",
           "Type": "Fct",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Output0",
+          "Direction": "Out",
+          "Type": "E<SETL>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 0,
@@ -26848,6 +26881,17 @@
           "Placeholder": null,
           "ShellIndex": 4,
           "KernelIndex": 4,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Output5",
+          "Direction": "Out",
+          "Type": "E<ITMC>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 5,
+          "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -29653,7 +29697,7 @@
       "__ref_id": "action.loot.modifyCurrencyCountOnDropEntity"
     },
     {
-      "Identifier": "Query.Item.Get_Loot_Item",
+      "Identifier": "Query.Item.Get_Loot_Item_Amount",
       "ID": 728,
       "InGameName": {
         "en": "Get Loot Component Item Quantity"
@@ -29704,7 +29748,7 @@
       "__ref_id": "query.drop.itemCount"
     },
     {
-      "Identifier": "Query.Item.Get_Loot_Currency",
+      "Identifier": "Query.Item.Get_Loot_Currency_Amount",
       "ID": 729,
       "InGameName": {
         "en": "Get Loot Component Currency Quantity"
@@ -29755,13 +29799,15 @@
       "__ref_id": "query.drop.coinCount"
     },
     {
-      "Identifier": "Query.Item.Get_Trophy_Items",
+      "Identifier": "Query.Item.Get_Loot_Items",
       "ID": 730,
       "InGameName": {
-        "en": "Get All Trophy Items"
+        "en": "Get All Items from Loot Component"
       },
       "Alias": [
-        "Get_All_Trophy_Items"
+        "Get_All_Trophy_Items",
+        "Get All Trophy Items",
+        "Get_All_Items_from_Loot_Component"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -29778,19 +29824,32 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Output0",
+          "Direction": "Out",
+          "Type": "D<Cfg,Int>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
       "__ref_id": "query.reward.allItems"
     },
     {
-      "Identifier": "Query.Item.Get_Trophy_Currency",
+      "Identifier": "Query.Item.Get_Loot_Currency",
       "ID": 731,
       "InGameName": {
-        "en": "Get All Trophy Currency"
+        "en": "Get All Currency from Loot Component"
       },
       "Alias": [
-        "Get_All_Trophy_Currency"
+        "Get_All_Trophy_Currency",
+        "Get All Trophy Currency",
+        "Get_All_Currency_from_Loot_Component"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -29801,6 +29860,17 @@
           "Identifier": "Input0",
           "Direction": "In",
           "Type": "Ety",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Output0",
+          "Direction": "Out",
+          "Type": "D<Cfg,Int>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 0,
@@ -30207,6 +30277,17 @@
           "Placeholder": null,
           "ShellIndex": 8,
           "KernelIndex": 8,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Output9",
+          "Direction": "Out",
+          "Type": "E<INTS>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 9,
+          "KernelIndex": 9,
           "Visibility": "Display",
           "Connectability": true
         }
@@ -31714,6 +31795,17 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Output1",
+          "Direction": "Out",
+          "Type": "E<GMOD>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
@@ -31777,6 +31869,17 @@
           "Identifier": "Input0",
           "Direction": "In",
           "Type": "Ety",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Output0",
+          "Direction": "Out",
+          "Type": "E<IDVT>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 0,

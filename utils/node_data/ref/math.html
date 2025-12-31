@@ -1,0 +1,4603 @@
+<div>
+  <h1>I. General</h1>
+  <h2><strong>1. Enumerations Equal</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>After confirming the Enumeration type, determines whether the two
+    input values are equal</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Enumeration 1</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Enumeration 2</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p>Output True if equal, False if not equal</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>2. Assembly List</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Assembles multiple Input Parameters of the
+    same type (up to 100) into a single List</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>0~99</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p>Assembles up to 100 parameters into a list</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>List</p>
+          </td>
+          <td>
+            <p>Generic List</p>
+          </td>
+          <td>
+            <p>The assembled list</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>3. Equal</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Determines whether two inputs are equal</p>
+  <p>Some Parameter Types have special comparison rules:</p>
+  <p>Floating Point Numbers: Floating Point Numbers are compared using
+    approximate equality. When the difference between two Floating Point Numbers is less than an extremely small value,
+    the two numbers are considered equal. For example: 2.0000001 and 2.0 are considered equal</p>
+  <p>3D Vector: The x, y, and z components of a 3D Vector are compared
+    using Floating Point approximate equality</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Enumeration 1</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Enumeration 2</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p>Output True if equal, False if
+              not equal</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>4. Data Type Conversion</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Converts input parameter types to another
+    type for output. For specific rules, see <span><a>Basic Concepts</a></span> - [Conversion Rules Between Basic Data
+    Types]</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Output</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h1>II. Math</h1>
+  <h2><strong>1. Split 3D Vector</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Outputs the x, y, and z components of a 3D
+    Vector as three Floating Point Numbers</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>X-Component</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Y-Component</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Z-Component</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>2. Multiplication</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs multiplication, supporting Floating
+    Point and Integer multiplication</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>3. Division</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs division, supporting Floating Point
+    division and Integer division. Integer division returns the quotient result</p>
+  <p>The divisor should not be 0, otherwise it may return an illegal
+    value</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>4. Create 3D Vector</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Creates a 3D Vector from x, y, and z
+    components</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>X-Component</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Y-Component</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Z-Component</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>5. Logarithm Operation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the logarithm of the argument
+    with the specified base</p>
+  <p>The base should not be negative or equal to 1, and the argument
+    should not be negative, otherwise illegal values may be generated</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Real Number</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Base</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>6. Arccosine Function</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the arccosine of the input and
+    returns the value in radians</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Radian</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>7. Arctangent Function</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the arctangent of the input and
+    returns the value in radians</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Radian</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>8. Arcsine Function</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the arcsine of the input and
+    returns the value in radians</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Radian</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>9. Range Limiting Operation</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Clamps the input value to the range [lower
+    limit, upper limit] (both bounds inclusive) and outputs the result</p>
+  <div>
+    <div></div>
+    <div>If the input falls within [lower limit, upper limit], returns the original value</div>
+  </div>
+  <div>
+    <div></div>
+    <div>If the input is below the lower limit, returns the lower limit; if it exceeds the upper
+      limit, returns the upper limit</div>
+  </div>
+  <div>
+    <div></div>
+    <div>If the lower limit is greater than the upper limit, treats the input as invalid and
+      returns an illegal value</div>
+  </div>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Lower Limit</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Upper Limit</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>10. Direction Vector to
+      Rotation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Converts the Forward Vector and Upward Vector to Euler Angles</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Forward Vector</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p>Represents the desired
+              Orientation of the Unit</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Upward Vector</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p>Defines the Unit's Up direction
+              (used to determine the rotation angle). Default is the positive Y-axis of the World Coordinate System</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Rotate</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>11. Calculate Timestamp From
+      Formatted Time</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Converts a formatted time to a timestamp</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Year</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Month</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Day</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Hour</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Minute</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Second</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Timestamp</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>12. Calculate Formatted Time From
+      Timestamp</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Converts a timestamp to formatted time</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Timestamp</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Year</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Month</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Day</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Hour</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Minute</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Second</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>13. Calculate Day of the Week From
+      Timestamp</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Converts a timestamp to the day of the week
+  </p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Timestamp</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Weekday</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>14. Radians to Degrees</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Converts radians to degrees</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Radian Value</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Angle Value</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>15. Addition</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Adds two Floating Point Numbers or Integers
+  </p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>16. Subtraction</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Subtracts two Floating Point Numbers or
+    Integers</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>17. Degrees to Radians</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Converts degrees to radians</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Angle Value</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Radian Value</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>18. Take Larger Value</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns the larger of two inputs</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 1</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 2</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Larger Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>19. Take Smaller Value</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns the smaller of two inputs</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 1</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 2</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Smaller Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>20. Absolute Value
+      Operation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns the absolute value of the input</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>21. Distance Between Two Coordinate
+      Points</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the Euclidean distance between
+    two coordinates</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Coordinate Point 1</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Coordinate Point 2</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Distance</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>22. Logical NOT Operation</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a logical NOT operation on the
+    input Boolean value and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>23. Logical OR Operation</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a logical OR operation on the two
+    input Boolean values and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 1</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 2</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>24. Logical XOR Operation</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a logical XOR operation on the two
+    input Boolean values and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 1</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 2</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>25. Logical AND Operation</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a logical AND operation on the two
+    input Boolean values and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 1</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input 2</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>26. Exponentiation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Raises the base to the given exponent and
+    returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Base</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Exponent</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>27. Modulo Operation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns the modulus of Input 2 and Input 1
+  </p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>28. Arithmetic Square Root
+      Operation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns the arithmetic square root of the
+    input value</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>29. Sign Operation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>When the input is positive, returns 1</p>
+  <p>When the input is negative, returns -1</p>
+  <p>When the input is 0, returns 0</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>30. Round to Integer
+      Operation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a rounding operation based on the
+    rounding method and returns the rounded positive number</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Input</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Rounding Mode</p>
+          </td>
+          <td>
+            <p>Enumeration</p>
+          </td>
+          <td>
+            <p>Round: Rounds to the nearest
+              integer according to standard rules</p>
+            <p>Round Up: Returns the smallest
+              integer greater than the input value. For example: input 1.2 → 2; input −2.3 → −2</p>
+            <p>Round Down: Returns the largest
+              integer smaller than the input value. For example: input 1.2 → 1; input −2.3 → −3</p>
+            <p>Truncate: Removes the decimal
+              part of the floating point number (rounds toward zero). For example: input 1.2 → 1; input −2.3 → −2</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>31. 3D Vector Normalization</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Normalizes the length of a 3D Vector and
+    outputs the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>32. 3D Vector Addition</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the sum of two 3D Vectors</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 1</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 2</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>33. 3D Vector Angle</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the angle between two 3D Vectors and outputs it in
+    radians</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 1</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 2</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Angle (Radians)</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>34. 3D Vector Subtraction</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the difference of two 3D Vectors
+  </p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 1</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 2</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>35. 3D Vector Modulo
+      Operation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the magnitude of the input 3D
+    Vector</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>36. 3D Vector Dot Product</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the dot product of two input 3D
+    Vectors</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 1</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 2</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>37. 3D Vector Zoom</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Scales the input 3D Vector (scalar
+    multiplication) and outputs the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Zoom Multiplier</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>38. 3D Vector Cross Product</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the cross product of two 3D
+    Vectors</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 1</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>3D Vector 2</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>39. 3D Vector Rotation</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Rotates the input 3D Vector by the Euler
+    Angles specified by the rotation and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Rotate</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p>This 3D input vector represents
+              a specific rotation in Euler angles</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Rotated 3D Vector</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>3D Vector</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>40. Greater Than</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns whether the left value is greater
+    than the right value</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Left Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Right Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>41. Greater Than or Equal
+      To</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns whether the left value is greater
+    than or equal to the right value</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Left Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Right Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>42. Less Than</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns whether the left value is less than
+    the right value</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Left Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Right Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>43. Less Than or Equal To</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns whether the left value is less than
+    or equal to the right value</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Left Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Right Value</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Boolean</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>44. Cosine Function</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the cosine of the input in
+    radians</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Radian</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>45. Tangent Function</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the tangent of the input in
+    radians</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Radian</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>46. Sine Function</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Calculates the sine of the input in radians
+  </p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Radian</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Floating Point Numbers</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>47. Left Shift Operation</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a logical left shift on the input
+    by the specified bit count and outputs the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Left Shift Count</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>48. Right Shift Operation</strong>
+  </h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a logical right shift on the input
+    by the specified bit count and outputs the result</p>
+  <p>Performs an arithmetic right shift, preserving the sign bit</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Right Shift Count</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>49. Bitwise AND</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a bitwise AND operation on the two
+    inputs and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value 1</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value 2</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>50. Bitwise OR</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a bitwise OR operation on the two
+    inputs and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value 1</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value 2</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>51. XOR (Exclusive OR)</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a bitwise XOR operation on the two
+    inputs and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value 1</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value 2</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>52. Bitwise Complement</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Performs a bitwise complement operation on
+    the input and returns the result</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>53. Write by bit</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Writes the write value as a binary number to
+    the [start bit, end bit] of the target value (also a binary number). The start bit is indexed from 0, and the write
+    length includes both the start and end bits</p>
+  <p>If the binary significant length of the write value (counted from
+    the first 1 from the left) exceeds the write length, the write fails and returns the original value</p>
+  <p>If the write value is negative, it also fails due to exceeding the
+    write length (the first bit of a negative number's binary representation is the sign bit 1)</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Written value</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Write value</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Write starting position</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Write end position</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>54. Read by bit</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Reads the value from [start bit, end bit] of
+    the value (in binary representation)</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Read starting position</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Read end position</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Result</p>
+          </td>
+          <td>
+            <p>Integer</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h1>III. Dictionary</h1>
+  <h2><strong>1. Create Dictionary</strong></h2>
+  <p>
+  </p>
+  <p><strong>Node Functions</strong></p>
+  <p>Creates Key-Value Pairs sequentially from
+    the input key and value lists</p>
+  <p>This node builds the Dictionary using the shorter of the key and
+    value lists; extra items are truncated</p>
+  <p>If duplicate keys are found in the key list, creation fails and
+    returns an empty Dictionary</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Key List</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value List</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Dictionary</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>2. Assembly Dictionary</strong></h2>
+  <p></p>
+  <p><strong>Node Functions</strong></p>
+  <p>Combines up to 50 Key-Value Pairs into one
+    Dictionary</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Key 0~49</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Input Parameter</p>
+          </td>
+          <td>
+            <p>Value 0~49</p>
+          </td>
+          <td>
+            <p>Generic</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Output Parameter</p>
+          </td>
+          <td>
+            <p>Dictionary</p>
+          </td>
+          <td>
+            <p>Generic Dictionary</p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h1>IV. Structures</h1>
+  <h2><strong>1. Split Structure</strong></h2>
+  <p></p>
+  <p><strong>Node Functions</strong></p>
+  <p>Returns all parameters of the specified
+    Structure</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2><strong>2. Assemble Structure</strong></h2>
+  <p></p>
+  <p><strong>Node Functions</strong></p>
+  <p>Combines multiple parameters into a single
+    Structure-type value</p>
+  <p><strong>Node Parameters</strong></p>
+  <div>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Parameter Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Parameter Name</strong></p>
+          </td>
+          <td>
+            <p><strong>Type</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h1></h1>
+  <h1></h1>
+</div>

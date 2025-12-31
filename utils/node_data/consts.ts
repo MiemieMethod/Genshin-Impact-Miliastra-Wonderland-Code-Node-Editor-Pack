@@ -73,7 +73,7 @@ interface NodeDef {
 interface PinDef {
   Identifier: string;                               // 每个节点内部唯一标识 (e.g., "Arg1", "FlowIn")
   Label: Translations;                              // UI 显示文本
-  Placeholder: Translations;                        // Placeholder of the pin
+  Placeholder?: Translations;                       // Placeholder of the pin
   Direction: "In" | "Out";                          // Direction of the pin
   ShellIndex: number;                               // Outer index of the pin
   KernelIndex: number;                              // Inner index of the pin

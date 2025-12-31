@@ -6,43 +6,21 @@ import { parse, stringify } from "yaml";
 const read = (path: string) => readFileSync(import.meta.dirname + "/" + path).toString();
 const save = (path: string, data: {} | string) => writeFileSync(import.meta.dirname + "/" + path, typeof data === "string" ? data : JSON.stringify(data, null, 2));
 
-// save("enum_lookup.yaml", stringify({
-//   Server: data.Enums.filter(x => x.System === "Server").map(x => Object.fromEntries([
-//     [x.Identifier, x.ID],
-//     ["name", x.InGameName.en],
-//     ["items", Object.fromEntries(x.Items.map(y => [y.Identifier, y.ID]))]
-//   ])),
-//   Client: data.Enums.filter(x => x.System === "Client").map(x => Object.fromEntries([
-//     [x.Identifier, x.ID],
-//     ["name", x.InGameName.en],
-//     ["items", Object.fromEntries(x.Items.map(y => [y.Identifier, y.ID]))]
-//   ]))
-// }));
-
-// assertEq(new Set(data.Enums.map(x => x.Identifier)).size, data.Enums.length);
-
-// 修改全部枚举类型为标准枚举
-data.Nodes.forEach(node => {
-  node.DataPins.forEach(p => {
-    if (/^E\<.+\>$/.test(p.Type)) {
-      if (p.Type === "E<1016>") {
-        p.Type = "Loc"
-        return;
-      }
-      if (p.Type === "E<1028>") {
-        p.Type = "Vss"
-        return;
-      }
-      const cc4 = data.Enums.find(x => x.System === node.System && x.ID === parseInt(p.Type.slice(2, -1)));
-      assert(cc4 !== undefined);
-      p.Type = `E<${cc4.Identifier}>`
-    }
-  })
-})
-
-save("data.json", data);
-
-
+const TypeMap = {
+  "string": "Str",
+  "bool": "Bol",
+  "int": "Int",
+  "float": "Flt",
+  "vector3": "Vec",
+  "entity": 'Ety',
+  "guid": "Gid",
+  "list": /^L<.+>$/,
+  "enum": /^E<[A-Z]{4}>$/,
+  "any": /R<.+>|^D<.+>$/,
+  "camp": "Fct",
+  "configId": "Cfg",
+  "componentId": "Pfb",
+};
 
 data.Nodes.forEach(node => {
   // 确实有正确的引脚
@@ -55,13 +33,46 @@ data.Nodes.forEach(node => {
   const ref = REF.find(x => x.id === node.__ref_id)!;
   assert(ref !== undefined);
 
-  if (node.DataPins.filter(x => x.Direction === "Out").length !== ref.ports.filter(p => p.kind === "data-out").length) {
-    console.log(
-      node.Identifier,
-      node.DataPins.filter(x => x.Direction === "Out").length,
-      ref.ports.filter(p => p.kind === "data-out").length
-    );
+  const refOut = ref.ports.filter(p => p.kind === "data-out");
+  if (refOut.length === 0) return;
+  if (node.DataPins.filter(x => x.Direction === "Out").length !== refOut.length) {
+    // console.log(
+    //   "Output Pin Count is not Equal:",
+    //   node.Identifier,
+    //   node.DataPins.filter(x => x.Direction === "Out").length,
+    //   ref.ports.filter(p => p.kind === "data-out").length
+    // );
+    return;
   }
+
+  let warn: any[] = [];
+  let isStrCfg = false;
+  node.DataPins.filter(x => x.Direction === "Out").forEach((pin, i) => {
+    const refp = refOut[i];
+    assert(refp.kind === "data-out");
+    const pat = TypeMap[refp.valueType];
+    if (typeof pat === "string" ? pat === pin.Type : pat.test(pin.Type)) {
+
+    } else {
+      warn.push([node.Identifier, i, pat, pin.Type]);
+      if (pat === "Int" && pin.Type === "Cfg") isStrCfg = true;
+    }
+  });
+  // if (warn.length > 1) console.log(warn); // allows
+  // if (warn.length === 1 && warn[0][1] < refOut.length - 1) console.log(warn); // not likely to be wrong 
+  // if (warn.length === 1 && warn[0][1] === refOut.length - 1) console.log(warn); // manually checked
+
+  node.DataPins.filter(x => x.Direction === "Out").forEach((pin, i) => {
+    const refp = refOut[i];
+    const identifier = refp.id.replace(/[A-Z]/g, x => "_" + x.toLowerCase());
+    const nameCN = refp.label.trim();
+    assert(nameCN.length > 0);
+    if (!/^[a-z][a-z_]*$/.test(identifier)) console.log(identifier); // pass
+    assertEq(pin.Identifier, "Output" + i);
+    pin.Identifier = identifier;
+    pin.Label ??= {};
+    pin.Label["zh-Hans"] = nameCN;
+  });
 
 });
 
