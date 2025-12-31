@@ -478,7 +478,7 @@
   ],
   "Nodes": [
     {
-      "Identifier": "Execution.Common_Node.Print_String",
+      "Identifier": "Execution.Common_Node.Print",
       "ID": 1,
       "InGameName": {
         "en": "Print String"
@@ -515,7 +515,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Control.General.Double_Branch",
+      "Identifier": "Control.General.Branch",
       "ID": 2,
       "InGameName": {
         "en": "Double Branch"
@@ -552,7 +552,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Control.General.Multiple_Branches",
+      "Identifier": "Control.General.Switch",
       "ID": 3,
       "InGameName": {
         "en": "Multiple Branches"
@@ -612,7 +612,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Common_Node.Finite_Loop",
+      "Identifier": "Execution.Common_Node.For_Loop",
       "ID": 5,
       "InGameName": {
         "en": "Finite Loop"
@@ -671,7 +671,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Common_Node.Break_Loop",
+      "Identifier": "Execution.Common_Node.Break",
       "ID": 6,
       "InGameName": {
         "en": "Break Loop"
@@ -696,7 +696,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math.Get_Random_Floating_Point_Number",
+      "Identifier": "Query.Math.Random_Float",
       "ID": 7,
       "InGameName": {
         "en": "Get Random Floating Point Number"
@@ -785,7 +785,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Split_3D_Vector",
+      "Identifier": "Arithmetic.Math.Split_Vector",
       "ID": 9,
       "InGameName": {
         "en": "Split 3D Vector"
@@ -846,7 +846,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Addition",
+      "Identifier": "Arithmetic.Math.Vector_Add",
       "ID": 10,
       "InGameName": {
         "en": "3D Vector Addition"
@@ -896,7 +896,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Subtraction",
+      "Identifier": "Arithmetic.Math.Vector_Subtract",
       "ID": 11,
       "InGameName": {
         "en": "3D Vector Subtraction"
@@ -946,7 +946,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Zoom",
+      "Identifier": "Arithmetic.Math.Vector_Scale",
       "ID": 12,
       "InGameName": {
         "en": "3D Vector Zoom"
@@ -996,7 +996,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Angle",
+      "Identifier": "Arithmetic.Math.Vector_Angle",
       "ID": 13,
       "InGameName": {
         "en": "3D Vector Angle"
@@ -1148,7 +1148,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.General.Get_Local_Variable",
+      "Identifier": "Query.General.Get_Local",
       "ID": 18,
       "InGameName": {
         "en": "Get Local Variable"
@@ -1300,7 +1300,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Common_Node.Set_Local_Variable",
+      "Identifier": "Execution.Common_Node.Set_Local",
       "ID": 19,
       "InGameName": {
         "en": "Set Local Variable"
@@ -1450,7 +1450,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Variable.Set_Custom_Variable",
+      "Identifier": "Execution.Custom_Variable.Set_Variable",
       "ID": 22,
       "InGameName": {
         "en": "Set Custom Variable"
@@ -2298,7 +2298,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Custom_Variable.When_Custom_Variable_Changes",
+      "Identifier": "Trigger.Custom_Variable.On_Variable_Change",
       "ID": 36,
       "InGameName": {
         "en": "When Custom Variable Changes"
@@ -3142,7 +3142,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Variable.Get_Custom_Variable",
+      "Identifier": "Query.Custom_Variable.Get_Variable",
       "ID": 50,
       "InGameName": {
         "en": "Get Custom Variable"
@@ -3970,7 +3970,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Preset_Status.Set_Preset_Status",
+      "Identifier": "Execution.Preset_Status.Set_Status",
       "ID": 66,
       "InGameName": {
         "en": "Set Preset Status"
@@ -4029,7 +4029,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Preset_Status.When_Preset_Status_Changes",
+      "Identifier": "Trigger.Preset_Status.On_Status_Change",
       "ID": 67,
       "InGameName": {
         "en": "When Preset Status Changes"
@@ -4106,7 +4106,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Preset_Status.Get_Preset_Status",
+      "Identifier": "Query.Preset_Status.Get_Status",
       "ID": 68,
       "InGameName": {
         "en": "Get Preset Status"
@@ -4241,7 +4241,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Entity_Related.When_Entity_Is_Created",
+      "Identifier": "Trigger.Entity_Related.On_Created",
       "ID": 71,
       "InGameName": {
         "en": "When Entity Is Created"
@@ -4285,7 +4285,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Entity_Related.When_Entity_Is_Removed_Destroyed",
+      "Identifier": "Trigger.Entity_Related.On_Removed",
       "ID": 72,
       "InGameName": {
         "en": "When Entity Is Removed/Destroyed"
@@ -4318,7 +4318,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Self_Entity",
+      "Identifier": "Query.Entity_Related.Get_Self",
       "ID": 73,
       "InGameName": {
         "en": "Get Self Entity"
@@ -4346,7 +4346,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Normalization",
+      "Identifier": "Arithmetic.Math.Vector_Normalize",
       "ID": 74,
       "InGameName": {
         "en": "3D Vector Normalization"
@@ -4385,7 +4385,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Query_Entity_by_GUID",
+      "Identifier": "Query.Entity_Related.Get_By_GUID",
       "ID": 75,
       "InGameName": {
         "en": "Query Entity by GUID"
@@ -4424,7 +4424,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Query_GUID_by_Entity",
+      "Identifier": "Query.Entity_Related.Get_GUID",
       "ID": 76,
       "InGameName": {
         "en": "Query GUID by Entity"
@@ -4463,7 +4463,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Stage_Related.Settle_Stage",
+      "Identifier": "Execution.Stage_Related.Settle",
       "ID": 77,
       "InGameName": {
         "en": "Settle Stage"
@@ -4500,7 +4500,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Timer.Start_Timer",
+      "Identifier": "Execution.Timer.Start",
       "ID": 79,
       "InGameName": {
         "en": "Start Timer"
@@ -4581,7 +4581,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Timer.Pause_Timer",
+      "Identifier": "Execution.Timer.Pause",
       "ID": 80,
       "InGameName": {
         "en": "Pause Timer"
@@ -4629,7 +4629,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Timer.Resume_Timer",
+      "Identifier": "Execution.Timer.Resume",
       "ID": 81,
       "InGameName": {
         "en": "Resume Timer"
@@ -4677,7 +4677,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Timer.Stop_Timer",
+      "Identifier": "Execution.Timer.Stop",
       "ID": 82,
       "InGameName": {
         "en": "Stop Timer"
@@ -4725,7 +4725,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Timer.When_Timer_Is_Triggered",
+      "Identifier": "Trigger.Timer.On_Timer_Trigger",
       "ID": 83,
       "InGameName": {
         "en": "When Timer Is Triggered"
@@ -4813,7 +4813,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Motion_Device.Add_Uniform_Basic_Linear_Motion_Device",
+      "Identifier": "Execution.Motion_Device.Add_Linear_Motion",
       "ID": 84,
       "InGameName": {
         "en": "Add Uniform Basic Linear Motion Device"
@@ -4883,7 +4883,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Motion_Device.Add_Uniform_Basic_Rotation_Based_Motion_Device",
+      "Identifier": "Execution.Motion_Device.Add_Rotation_Motion",
       "ID": 85,
       "InGameName": {
         "en": "Add Uniform Basic Rotation-Based Motion Device"
@@ -4964,7 +4964,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Motion_Device.Stop_and_Delete_Basic_Motion_Device",
+      "Identifier": "Execution.Motion_Device.Stop_Delete",
       "ID": 86,
       "InGameName": {
         "en": "Stop and Delete Basic Motion Device"
@@ -5023,7 +5023,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Motion_Device.Pause_Basic_Motion_Device",
+      "Identifier": "Execution.Motion_Device.Pause",
       "ID": 87,
       "InGameName": {
         "en": "Pause Basic Motion Device"
@@ -5071,7 +5071,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Motion_Device.Recover_Basic_Motion_Device",
+      "Identifier": "Execution.Motion_Device.Resume",
       "ID": 88,
       "InGameName": {
         "en": "Recover Basic Motion Device"
@@ -5119,7 +5119,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Motion_Device.When_Basic_Motion_Device_Stops",
+      "Identifier": "Trigger.Motion_Device.On_Motion_Stop",
       "ID": 89,
       "InGameName": {
         "en": "When Basic Motion Device Stops"
@@ -5174,7 +5174,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Collision_Trigger.Activate_Disable_Collision_Trigger",
+      "Identifier": "Execution.Collision_Trigger.Set_Trigger_State",
       "ID": 90,
       "InGameName": {
         "en": "Activate/Disable Collision Trigger"
@@ -5233,7 +5233,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Collision_Trigger.When_Exiting_Collision_Trigger",
+      "Identifier": "Trigger.Collision_Trigger.On_Exit",
       "ID": 91,
       "InGameName": {
         "en": "When Exiting Collision Trigger"
@@ -5310,7 +5310,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Collision_Trigger.When_Entering_Collision_Trigger",
+      "Identifier": "Trigger.Collision_Trigger.On_Enter",
       "ID": 92,
       "InGameName": {
         "en": "When Entering Collision Trigger"
@@ -5387,7 +5387,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Special_Effect.Play_Timed_Effects",
+      "Identifier": "Execution.Special_Effect.Play_Timed",
       "ID": 93,
       "InGameName": {
         "en": "Play Timed Effects"
@@ -5512,7 +5512,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Special_Effect.Mount_Looping_Special_Effect",
+      "Identifier": "Execution.Special_Effect.Play_Loop",
       "ID": 94,
       "InGameName": {
         "en": "Mount Looping Special Effect"
@@ -5648,7 +5648,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Special_Effect.Clear_Looping_Special_Effect",
+      "Identifier": "Execution.Special_Effect.Stop_Loop",
       "ID": 95,
       "InGameName": {
         "en": "Clear Looping Special Effect"
@@ -5696,7 +5696,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_Location_and_Rotation",
+      "Identifier": "Query.Entity_Related.Get_Transform",
       "ID": 99,
       "InGameName": {
         "en": "Get Entity Location and Rotation"
@@ -5746,7 +5746,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.List_Operation.Concatenate_List",
+      "Identifier": "Execution.List_Operation.Concatenate",
       "ID": 100,
       "InGameName": {
         "en": "Concatenate List"
@@ -5846,7 +5846,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.List_Operation.Clear_List",
+      "Identifier": "Execution.List_Operation.Clear",
       "ID": 107,
       "InGameName": {
         "en": "Clear List"
@@ -5935,7 +5935,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related.List_Includes_This_Value",
+      "Identifier": "Query.List_Related.Contains",
       "ID": 114,
       "InGameName": {
         "en": "List Includes This Value"
@@ -6037,7 +6037,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related.Search_List_and_Return_Value_ID",
+      "Identifier": "Query.List_Related.Find_Index",
       "ID": 121,
       "InGameName": {
         "en": "Search List and Return Value ID"
@@ -6139,7 +6139,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related.Get_Corresponding_Value_From_List",
+      "Identifier": "Query.List_Related.Get_At_Index",
       "ID": 128,
       "InGameName": {
         "en": "Get Corresponding Value From List"
@@ -6230,7 +6230,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.List_Operation.Insert_Value_Into_List",
+      "Identifier": "Execution.List_Operation.Insert",
       "ID": 135,
       "InGameName": {
         "en": "Insert Value Into List"
@@ -6341,7 +6341,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related.Get_List_Length",
+      "Identifier": "Query.List_Related.Get_Length",
       "ID": 142,
       "InGameName": {
         "en": "Get List Length"
@@ -6432,7 +6432,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related.Get_Maximum_Value_from_List",
+      "Identifier": "Query.List_Related.Get_Max",
       "ID": 149,
       "InGameName": {
         "en": "Get Maximum Value from List"
@@ -6483,7 +6483,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related.Get_Minimum_Value_From_List",
+      "Identifier": "Query.List_Related.Get_Min",
       "ID": 151,
       "InGameName": {
         "en": "Get Minimum Value From List"
@@ -6534,7 +6534,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.List_Operation.Remove_Value_From_List",
+      "Identifier": "Execution.List_Operation.Remove",
       "ID": 153,
       "InGameName": {
         "en": "Remove Value From List"
@@ -6634,7 +6634,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.List_Operation.Modify_Value_in_List",
+      "Identifier": "Execution.List_Operation.Modify_Index",
       "ID": 160,
       "InGameName": {
         "en": "Modify Value in List"
@@ -6745,7 +6745,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.List_Operation.List_Sorting",
+      "Identifier": "Execution.List_Operation.Sort",
       "ID": 167,
       "InGameName": {
         "en": "List Sorting"
@@ -6794,7 +6794,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.General.Assembly_List",
+      "Identifier": "Arithmetic.General.Assemble_List",
       "ID": 169,
       "InGameName": {
         "en": "Assembly List"
@@ -7435,7 +7435,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Motion_Device.When_Path_Reaches_Waypoint",
+      "Identifier": "Trigger.Motion_Device.On_Reach_Waypoint",
       "ID": 177,
       "InGameName": {
         "en": "When Path Reaches Waypoint"
@@ -7512,7 +7512,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Entity_Deployment.Activate_Disable_Entity_Deployment_Group",
+      "Identifier": "Execution.Entity_Deployment.Set_Group_State",
       "ID": 178,
       "InGameName": {
         "en": "Activate/Disable Entity Deployment Group"
@@ -7560,7 +7560,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Layout.Get_Currently_Active_Entity_Deployment_Groups",
+      "Identifier": "Query.Entity_Layout.Get_Active_Groups",
       "ID": 179,
       "InGameName": {
         "en": "Get Currently Active Entity Deployment Groups"
@@ -7588,7 +7588,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.General.Data_Type_Conversion",
+      "Identifier": "Arithmetic.General.Convert_Type",
       "ID": 180,
       "InGameName": {
         "en": "Data Type Conversion"
@@ -7684,7 +7684,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Common_Node.Forwarding_Event",
+      "Identifier": "Execution.Common_Node.Forward_Event",
       "ID": 190,
       "InGameName": {
         "en": "Forwarding Event"
@@ -7760,7 +7760,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math._3D_Vector_Zero_Vector",
+      "Identifier": "Query.Math.Vector_Zero",
       "ID": 192,
       "InGameName": {
         "en": "3D Vector: Zero Vector"
@@ -7799,7 +7799,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math._3D_Vector_Up",
+      "Identifier": "Query.Math.Vector_Up",
       "ID": 193,
       "InGameName": {
         "en": "3D Vector: Up"
@@ -7838,7 +7838,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math._3D_Vector_Down",
+      "Identifier": "Query.Math.Vector_Down",
       "ID": 194,
       "InGameName": {
         "en": "3D Vector: Down"
@@ -7877,7 +7877,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math._3D_Vector_Left",
+      "Identifier": "Query.Math.Vector_Left",
       "ID": 195,
       "InGameName": {
         "en": "3D Vector: Left"
@@ -7916,7 +7916,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math._3D_Vector_Right",
+      "Identifier": "Query.Math.Vector_Right",
       "ID": 196,
       "InGameName": {
         "en": "3D Vector: Right"
@@ -7955,7 +7955,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math._3D_Vector_Forward",
+      "Identifier": "Query.Math.Vector_Forward",
       "ID": 197,
       "InGameName": {
         "en": "3D Vector: Forward"
@@ -7994,7 +7994,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math._3D_Vector_Backward",
+      "Identifier": "Query.Math.Vector_Backward",
       "ID": 198,
       "InGameName": {
         "en": "3D Vector: Backward"
@@ -8033,7 +8033,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Addition",
+      "Identifier": "Arithmetic.Math.Add",
       "ID": 200,
       "InGameName": {
         "en": "Addition"
@@ -8095,7 +8095,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Subtraction",
+      "Identifier": "Arithmetic.Math.Subtract",
       "ID": 202,
       "InGameName": {
         "en": "Subtraction"
@@ -8157,7 +8157,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Multiplication",
+      "Identifier": "Arithmetic.Math.Multiply",
       "ID": 204,
       "InGameName": {
         "en": "Multiplication"
@@ -8219,7 +8219,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Division",
+      "Identifier": "Arithmetic.Math.Divide",
       "ID": 206,
       "InGameName": {
         "en": "Division"
@@ -8281,7 +8281,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Modulo_Operation",
+      "Identifier": "Arithmetic.Math.Modulo",
       "ID": 208,
       "InGameName": {
         "en": "Modulo Operation"
@@ -8331,7 +8331,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Exponentiation",
+      "Identifier": "Arithmetic.Math.Power",
       "ID": 209,
       "InGameName": {
         "en": "Exponentiation"
@@ -8393,7 +8393,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Take_Larger_Value",
+      "Identifier": "Arithmetic.Math.Max",
       "ID": 211,
       "InGameName": {
         "en": "Take Larger Value"
@@ -8455,7 +8455,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Take_Smaller_Value",
+      "Identifier": "Arithmetic.Math.Min",
       "ID": 213,
       "InGameName": {
         "en": "Take Smaller Value"
@@ -8517,7 +8517,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Logarithm_Operation",
+      "Identifier": "Arithmetic.Math.Log",
       "ID": 215,
       "InGameName": {
         "en": "Logarithm Operation"
@@ -8567,7 +8567,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Absolute_Value_Operation",
+      "Identifier": "Arithmetic.Math.Abs",
       "ID": 216,
       "InGameName": {
         "en": "Absolute Value Operation"
@@ -8618,7 +8618,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Sign_Operation",
+      "Identifier": "Arithmetic.Math.Sign",
       "ID": 218,
       "InGameName": {
         "en": "Sign Operation"
@@ -8669,7 +8669,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Modulo_Operation",
+      "Identifier": "Arithmetic.Math.Vector_Length",
       "ID": 220,
       "InGameName": {
         "en": "3D Vector Modulo Operation"
@@ -8708,7 +8708,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Arithmetic_Square_Root_Operation",
+      "Identifier": "Arithmetic.Math.Sqrt",
       "ID": 221,
       "InGameName": {
         "en": "Arithmetic Square Root Operation"
@@ -8747,7 +8747,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Range_Limiting_Operation",
+      "Identifier": "Arithmetic.Math.Clamp",
       "ID": 222,
       "InGameName": {
         "en": "Range Limiting Operation"
@@ -8820,7 +8820,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Round_to_Integer_Operation",
+      "Identifier": "Arithmetic.Math.Round",
       "ID": 224,
       "InGameName": {
         "en": "Round to Integer Operation"
@@ -8859,7 +8859,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Create_3D_Vector",
+      "Identifier": "Arithmetic.Math.Create_Vector",
       "ID": 225,
       "InGameName": {
         "en": "Create 3D Vector"
@@ -8920,7 +8920,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Logical_AND_Operation",
+      "Identifier": "Arithmetic.Math.And",
       "ID": 226,
       "InGameName": {
         "en": "Logical AND Operation"
@@ -8970,7 +8970,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Logical_OR_Operation",
+      "Identifier": "Arithmetic.Math.Or",
       "ID": 227,
       "InGameName": {
         "en": "Logical OR Operation"
@@ -9020,7 +9020,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Logical_XOR_Operation",
+      "Identifier": "Arithmetic.Math.Xor",
       "ID": 228,
       "InGameName": {
         "en": "Logical XOR Operation"
@@ -9070,7 +9070,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Logical_NOT_Operation",
+      "Identifier": "Arithmetic.Math.Not",
       "ID": 229,
       "InGameName": {
         "en": "Logical NOT Operation"
@@ -9182,7 +9182,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Less_Than_or_Equal_To",
+      "Identifier": "Arithmetic.Math.Less_Equal",
       "ID": 231,
       "InGameName": {
         "en": "Less Than or Equal To"
@@ -9306,7 +9306,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Greater_Than_or_Equal_To",
+      "Identifier": "Arithmetic.Math.Greater_Equal",
       "ID": 233,
       "InGameName": {
         "en": "Greater Than or Equal To"
@@ -9368,7 +9368,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Collision.Activate_Disable_Native_Collision",
+      "Identifier": "Execution.Collision.Set_Native_Collision",
       "ID": 240,
       "InGameName": {
         "en": "Activate/Disable Native Collision"
@@ -9416,7 +9416,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Collision.Activate_Disable_Native_Collision_Climbability",
+      "Identifier": "Execution.Collision.Set_Native_Climb",
       "ID": 241,
       "InGameName": {
         "en": "Activate/Disable Native Collision Climbability"
@@ -9464,7 +9464,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Collision.Activate_Disable_Extra_Collision",
+      "Identifier": "Execution.Collision.Set_Extra_Collision",
       "ID": 242,
       "InGameName": {
         "en": "Activate/Disable Extra Collision"
@@ -9523,7 +9523,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Collision.Activate_Disable_Extra_Collision_Climbability",
+      "Identifier": "Execution.Collision.Set_Extra_Climb",
       "ID": 243,
       "InGameName": {
         "en": "Activate/Disable Extra Collision Climbability"
@@ -9582,7 +9582,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Distance_Between_Two_Coordinate_Points",
+      "Identifier": "Arithmetic.Math.Distance",
       "ID": 244,
       "InGameName": {
         "en": "Distance Between Two Coordinate Points"
@@ -9632,7 +9632,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Follow_Motion.Switch_Follow_Motion_Device_Target_by_GUID",
+      "Identifier": "Execution.Follow_Motion.Set_Target_GUID",
       "ID": 245,
       "InGameName": {
         "en": "Switch Follow Motion Device Target by GUID"
@@ -9713,7 +9713,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Follow_Motion.Get_Follow_Motion_Device_Target",
+      "Identifier": "Query.Follow_Motion.Get_Target",
       "ID": 246,
       "InGameName": {
         "en": "Get Follow Motion Device Target"
@@ -9763,7 +9763,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_List_of_Player_Entities_on_the_Field",
+      "Identifier": "Query.Character_Related.Get_All_Players",
       "ID": 248,
       "InGameName": {
         "en": "Get List of Player Entities on the Field"
@@ -9791,7 +9791,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Faction_Related.Query_Entity_Faction",
+      "Identifier": "Query.Faction_Related.Get_Faction",
       "ID": 249,
       "InGameName": {
         "en": "Query Entity Faction"
@@ -9830,7 +9830,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Faction_Related.Modify_Entity_Faction",
+      "Identifier": "Execution.Faction_Related.Set_Faction",
       "ID": 250,
       "InGameName": {
         "en": "Modify Entity Faction"
@@ -9878,7 +9878,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Faction_Related.When_Entity_Faction_Changes",
+      "Identifier": "Trigger.Faction_Related.On_Faction_Change",
       "ID": 251,
       "InGameName": {
         "en": "When Entity Faction Changes"
@@ -10069,7 +10069,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Hit_Detection.When_On_Hit_Detection_Is_Triggered",
+      "Identifier": "Trigger.Hit_Detection.On_Hit_Detected",
       "ID": 253,
       "InGameName": {
         "en": "When On-Hit Detection Is Triggered"
@@ -10146,7 +10146,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Projectile.Create_Projectile",
+      "Identifier": "Execution.Projectile.Create",
       "ID": 256,
       "InGameName": {
         "en": "Create Projectile"
@@ -10271,7 +10271,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math.Get_Random_Integer",
+      "Identifier": "Query.Math.Random_Int",
       "ID": 257,
       "InGameName": {
         "en": "Get Random Integer"
@@ -10321,7 +10321,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_All_Character_Entities_of_Specified_Player",
+      "Identifier": "Query.Character_Related.Get_Player_Characters",
       "ID": 258,
       "InGameName": {
         "en": "Get All Character Entities of Specified Player"
@@ -10360,7 +10360,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_Player_Entity_to_Which_the_Character_Belongs",
+      "Identifier": "Query.Character_Related.Get_Owner_Player",
       "ID": 259,
       "InGameName": {
         "en": "Get Player Entity to Which the Character Belongs"
@@ -10399,7 +10399,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_Type",
+      "Identifier": "Query.Entity_Related.Get_Type",
       "ID": 260,
       "InGameName": {
         "en": "Get Entity Type"
@@ -10427,7 +10427,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Camera.Switch_Main_Camera_Template",
+      "Identifier": "Execution.Camera.Switch_Template",
       "ID": 261,
       "InGameName": {
         "en": "Switch Main Camera Template"
@@ -10609,7 +10609,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Execution.Activate_Screen_Shake",
+      "Identifier": "Hidden.Execution.Play_Screen_Shake",
       "ID": 266,
       "InGameName": {
         "en": "Activate Screen Shake"
@@ -10670,7 +10670,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Motion_Device.Activate_Basic_Motion_Device",
+      "Identifier": "Execution.Motion_Device.Activate",
       "ID": 267,
       "InGameName": {
         "en": "Activate Basic Motion Device"
@@ -10718,7 +10718,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Preset_Point.Query_Preset_Point_Position_Rotation",
+      "Identifier": "Query.Preset_Point.Get_Transform",
       "ID": 270,
       "InGameName": {
         "en": "Query Preset Point Position Rotation"
@@ -10768,7 +10768,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Preset_Point.Get_Preset_Point_List_by_Unit_Tag",
+      "Identifier": "Query.Preset_Point.Get_By_Tag",
       "ID": 271,
       "InGameName": {
         "en": "Get Preset Point List by Unit Tag"
@@ -10903,7 +10903,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Related.Allow_Forbid_Player_to_Revive",
+      "Identifier": "Execution.Character_Related.Set_Revive_Allowed",
       "ID": 274,
       "InGameName": {
         "en": "Allow/Forbid Player to Revive"
@@ -10951,7 +10951,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_Player_Remaining_Revives",
+      "Identifier": "Query.Character_Related.Get_Revives",
       "ID": 275,
       "InGameName": {
         "en": "Get Player Remaining Revives"
@@ -10990,7 +10990,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Related.Set_Player_Remaining_Revives",
+      "Identifier": "Execution.Character_Related.Set_Revive_Count",
       "ID": 276,
       "InGameName": {
         "en": "Set Player Remaining Revives"
@@ -11038,7 +11038,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_Player_Revive_Time",
+      "Identifier": "Query.Character_Related.Get_Revive_Time",
       "ID": 277,
       "InGameName": {
         "en": "Get Player Revive Time"
@@ -11077,7 +11077,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Related.Set_Player_Revive_Time",
+      "Identifier": "Execution.Character_Related.Set_Revive_Time",
       "ID": 278,
       "InGameName": {
         "en": "Set Player Revive Time"
@@ -11125,7 +11125,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Related.Revive_Character",
+      "Identifier": "Execution.Character_Related.Revive_Single",
       "ID": 279,
       "InGameName": {
         "en": "Revive Character"
@@ -11162,7 +11162,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Character_Related.When_the_Character_Is_Down",
+      "Identifier": "Trigger.Character_Related.On_Character_Down",
       "ID": 280,
       "InGameName": {
         "en": "When the Character Is Down"
@@ -11217,7 +11217,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Character_Related.When_Character_Revives",
+      "Identifier": "Trigger.Character_Related.On_Character_Revive",
       "ID": 281,
       "InGameName": {
         "en": "When Character Revives"
@@ -11250,7 +11250,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Related.Defeat_All_Player_s_Characters",
+      "Identifier": "Execution.Character_Related.Defeat_All",
       "ID": 282,
       "InGameName": {
         "en": "Defeat All Player's Characters"
@@ -11287,7 +11287,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Related.Revive_All_Player_s_Characters",
+      "Identifier": "Execution.Character_Related.Revive_All",
       "ID": 283,
       "InGameName": {
         "en": "Revive All Player's Characters"
@@ -11335,7 +11335,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Character_Related.When_All_Player_s_Characters_Are_Down",
+      "Identifier": "Trigger.Character_Related.On_All_Down",
       "ID": 284,
       "InGameName": {
         "en": "When All Player's Characters Are Down"
@@ -11368,7 +11368,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Character_Related.When_Player_Is_Abnormally_Downed_and_Revives",
+      "Identifier": "Trigger.Character_Related.On_Abnormal_Revive",
       "ID": 285,
       "InGameName": {
         "en": "When Player Is Abnormally Downed and Revives"
@@ -11401,7 +11401,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Character_Related.When_All_Player_s_Characters_Are_Revived",
+      "Identifier": "Trigger.Character_Related.On_All_Revived",
       "ID": 286,
       "InGameName": {
         "en": "When All Player's Characters Are Revived"
@@ -11434,7 +11434,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Query_If_All_Player_Characters_Are_Down",
+      "Identifier": "Query.Character_Related.Is_All_Down",
       "ID": 287,
       "InGameName": {
         "en": "Query If All Player Characters Are Down"
@@ -11473,7 +11473,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Related.Teleport_Player",
+      "Identifier": "Execution.Character_Related.Teleport",
       "ID": 288,
       "InGameName": {
         "en": "Teleport Player"
@@ -11532,7 +11532,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Character_Related.When_Player_Teleport_Completes",
+      "Identifier": "Trigger.Character_Related.On_Teleport_Complete",
       "ID": 289,
       "InGameName": {
         "en": "When Player Teleport Completes"
@@ -11576,7 +11576,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Stage_Related.Query_Game_Time_Elapsed",
+      "Identifier": "Query.Stage_Related.Get_Elapsed_Time",
       "ID": 290,
       "InGameName": {
         "en": "Query Game Time Elapsed"
@@ -11604,7 +11604,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Sine_Function",
+      "Identifier": "Arithmetic.Math.Sin",
       "ID": 291,
       "InGameName": {
         "en": "Sine Function"
@@ -11643,7 +11643,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Cosine_Function",
+      "Identifier": "Arithmetic.Math.Cos",
       "ID": 292,
       "InGameName": {
         "en": "Cosine Function"
@@ -11682,7 +11682,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Tangent_Function",
+      "Identifier": "Arithmetic.Math.Tan",
       "ID": 293,
       "InGameName": {
         "en": "Tangent Function"
@@ -11721,7 +11721,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Arcsine_Function",
+      "Identifier": "Arithmetic.Math.Asin",
       "ID": 294,
       "InGameName": {
         "en": "Arcsine Function"
@@ -11760,7 +11760,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Arccosine_Function",
+      "Identifier": "Arithmetic.Math.Acos",
       "ID": 295,
       "InGameName": {
         "en": "Arccosine Function"
@@ -11799,7 +11799,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Arctangent_Function",
+      "Identifier": "Arithmetic.Math.Atan",
       "ID": 296,
       "InGameName": {
         "en": "Arctangent Function"
@@ -11838,7 +11838,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Unit_Status.Add_Unit_Status",
+      "Identifier": "Execution.Unit_Status.Add_Status",
       "ID": 297,
       "InGameName": {
         "en": "Add Unit Status"
@@ -11941,7 +11941,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Unit_Status.When_Unit_Status_Ends",
+      "Identifier": "Trigger.Unit_Status.On_Status_End",
       "ID": 299,
       "InGameName": {
         "en": "When Unit Status Ends"
@@ -12073,7 +12073,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Unit_Status.When_Unit_Status_Changes",
+      "Identifier": "Trigger.Unit_Status.On_Status_Change",
       "ID": 300,
       "InGameName": {
         "en": "When Unit Status Changes"
@@ -12194,7 +12194,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Unit_Status.Remove_Unit_Status",
+      "Identifier": "Execution.Unit_Status.Remove_Status",
       "ID": 301,
       "InGameName": {
         "en": "Remove Unit Status"
@@ -12275,7 +12275,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Disruptor.Modifying_Character_Disruptor_Device",
+      "Identifier": "Execution.Character_Disruptor.Modify_Device",
       "ID": 302,
       "InGameName": {
         "en": "Modifying Character Disruptor Device"
@@ -12323,7 +12323,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Combat.Initiate_Attack",
+      "Identifier": "Execution.Combat.Attack",
       "ID": 303,
       "InGameName": {
         "en": "Initiate Attack"
@@ -12437,7 +12437,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Combat.When_Attacked",
+      "Identifier": "Trigger.Combat.On_Be_Attacked",
       "ID": 304,
       "InGameName": {
         "en": "When Attacked"
@@ -12536,7 +12536,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Combat.When_Attack_Hits",
+      "Identifier": "Trigger.Combat.On_Hit_Target",
       "ID": 305,
       "InGameName": {
         "en": "When Attack Hits"
@@ -12635,7 +12635,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Tab.Activate_Disable_Tab",
+      "Identifier": "Execution.Tab.Set_State",
       "ID": 306,
       "InGameName": {
         "en": "Activate/Disable Tab"
@@ -12694,7 +12694,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Tab.When_Tab_Is_Selected",
+      "Identifier": "Trigger.Tab.On_Tab_Select",
       "ID": 307,
       "InGameName": {
         "en": "When Tab Is Selected"
@@ -12771,7 +12771,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Entity_Related.Activate_Disable_Model_Display",
+      "Identifier": "Execution.Entity_Related.Set_Model_Visible",
       "ID": 308,
       "InGameName": {
         "en": "Activate/Disable Model Display"
@@ -12819,7 +12819,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Global_Timer.Pause_Global_Timer",
+      "Identifier": "Execution.Global_Timer.Pause",
       "ID": 309,
       "InGameName": {
         "en": "Pause Global Timer"
@@ -12867,7 +12867,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Global_Timer.Get_Current_Global_Timer_Time",
+      "Identifier": "Query.Global_Timer.Get_Time",
       "ID": 310,
       "InGameName": {
         "en": "Get Current Global Timer Time"
@@ -12917,7 +12917,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Global_Timer.Start_Global_Timer",
+      "Identifier": "Execution.Global_Timer.Start",
       "ID": 311,
       "InGameName": {
         "en": "Start Global Timer"
@@ -12965,7 +12965,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Global_Timer.Recover_Global_Timer",
+      "Identifier": "Execution.Global_Timer.Resume",
       "ID": 312,
       "InGameName": {
         "en": "Recover Global Timer"
@@ -13013,7 +13013,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Global_Timer.Stop_Global_Timer",
+      "Identifier": "Execution.Global_Timer.Stop",
       "ID": 313,
       "InGameName": {
         "en": "Stop Global Timer"
@@ -13061,7 +13061,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Global_Timer.Modify_Global_Timer",
+      "Identifier": "Execution.Global_Timer.Modify",
       "ID": 314,
       "InGameName": {
         "en": "Modify Global Timer"
@@ -13120,7 +13120,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Global_Timer.When_Global_Timer_Is_Triggered",
+      "Identifier": "Trigger.Global_Timer.On_Timer_Trigger",
       "ID": 315,
       "InGameName": {
         "en": "When Global Timer Is Triggered"
@@ -13175,7 +13175,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.UI_Control_Group.When_UI_Control_Group_Is_Triggered",
+      "Identifier": "Trigger.UI_Control_Group.On_Group_Trigger",
       "ID": 316,
       "InGameName": {
         "en": "When UI Control Group Is Triggered"
@@ -13241,7 +13241,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.UI_Control_Group.Get_Player_s_Current_UI_Layout",
+      "Identifier": "Query.UI_Control_Group.Get_Current_Layout",
       "ID": 317,
       "InGameName": {
         "en": "Get Player's Current UI Layout"
@@ -13280,7 +13280,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_All_Entities_on_the_Field",
+      "Identifier": "Query.Entity_Related.Get_All_Entities",
       "ID": 318,
       "InGameName": {
         "en": "Get All Entities on the Field"
@@ -13308,7 +13308,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Specified_Type_of_Entities_on_the_Field",
+      "Identifier": "Query.Entity_Related.Get_Entities_By_Type",
       "ID": 319,
       "InGameName": {
         "en": "Get Specified Type of Entities on the Field"
@@ -13336,7 +13336,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entities_With_Specified_Prefab_on_the_Field",
+      "Identifier": "Query.Entity_Related.Get_By_Prefab",
       "ID": 320,
       "InGameName": {
         "en": "Get Entities With Specified Prefab on the Field"
@@ -13375,7 +13375,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Radians_to_Degrees",
+      "Identifier": "Arithmetic.Math.Rad_To_Deg",
       "ID": 321,
       "InGameName": {
         "en": "Radians to Degrees"
@@ -13414,7 +13414,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Degrees_to_Radians",
+      "Identifier": "Arithmetic.Math.Deg_To_Rad",
       "ID": 322,
       "InGameName": {
         "en": "Degrees to Radians"
@@ -13453,7 +13453,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Variable.Set_Node_Graph_Variable",
+      "Identifier": "Execution.Custom_Variable.Set_Graph_Variable",
       "ID": 323,
       "InGameName": {
         "en": "Set Node Graph Variable"
@@ -14279,7 +14279,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Variable.Get_Node_Graph_Variable",
+      "Identifier": "Query.Custom_Variable.Get_Graph_Variable",
       "ID": 337,
       "InGameName": {
         "en": "Get Node Graph Variable"
@@ -15074,7 +15074,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Custom_Variable.When_Node_Graph_Variable_Changes",
+      "Identifier": "Trigger.Custom_Variable.On_Graph_Variable_Change",
       "ID": 351,
       "InGameName": {
         "en": "When Node Graph Variable Changes"
@@ -15918,7 +15918,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Follow_Motion.Activate_Disable_Follow_Motion_Device",
+      "Identifier": "Execution.Follow_Motion.Set_Device_State",
       "ID": 365,
       "InGameName": {
         "en": "Activate/Disable Follow Motion Device"
@@ -15977,7 +15977,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Execution.Activate_Disable_Character_Disruptor_Device",
+      "Identifier": "Hidden.Execution.Set_Disruptor_State",
       "ID": 366,
       "InGameName": {
         "en": "Activate/Disable Character Disruptor Device"
@@ -16027,7 +16027,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Collision_Trigger_Source.Activate_Disable_Collision_Trigger_Source",
+      "Identifier": "Execution.Collision_Trigger_Source.Set_Source_State",
       "ID": 367,
       "InGameName": {
         "en": "Activate/Disable Collision Trigger Source"
@@ -16123,7 +16123,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Entity_Related.When_Entity_Is_Destroyed",
+      "Identifier": "Trigger.Entity_Related.On_Destroyed",
       "ID": 373,
       "InGameName": {
         "en": "When Entity Is Destroyed"
@@ -16244,7 +16244,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Creation.When_Creation_Enters_Combat",
+      "Identifier": "Trigger.Creation.On_Enter_Combat",
       "ID": 374,
       "InGameName": {
         "en": "When Creation Enters Combat"
@@ -16288,7 +16288,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Creation.When_Creation_Leaves_Combat",
+      "Identifier": "Trigger.Creation.On_Leave_Combat",
       "ID": 375,
       "InGameName": {
         "en": "When Creation Leaves Combat"
@@ -16332,7 +16332,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Creation.Get_Creation_s_Current_Target",
+      "Identifier": "Query.Creation.Get_Target",
       "ID": 376,
       "InGameName": {
         "en": "Get Creation's Current Target"
@@ -16371,7 +16371,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_List_by_Specified_Type",
+      "Identifier": "Query.Entity_Related.Get_By_Type",
       "ID": 377,
       "InGameName": {
         "en": "Get Entity List by Specified Type"
@@ -16410,7 +16410,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_List_by_Specified_Prefab",
+      "Identifier": "Query.Entity_Related.Get_By_Prefab",
       "ID": 378,
       "InGameName": {
         "en": "Get Entity List by Specified Prefab"
@@ -16460,7 +16460,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_List_by_Specified_Faction",
+      "Identifier": "Query.Entity_Related.Get_By_Faction",
       "ID": 379,
       "InGameName": {
         "en": "Get Entity List by Specified Faction"
@@ -16510,7 +16510,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_List_by_Specified_Range",
+      "Identifier": "Query.Entity_Related.Get_By_Range",
       "ID": 380,
       "InGameName": {
         "en": "Get Entity List by Specified Range"
@@ -16571,7 +16571,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Creation.Get_Creation_Attribute",
+      "Identifier": "Query.Creation.Get_Attribute",
       "ID": 381,
       "InGameName": {
         "en": "Get Creation Attribute"
@@ -16676,7 +16676,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.UI_Control_Group.Switch_Current_Interface_Layout",
+      "Identifier": "Execution.UI_Control_Group.Switch_Layout",
       "ID": 382,
       "InGameName": {
         "en": "Switch Current Interface Layout"
@@ -16724,7 +16724,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.UI_Control_Group.Activate_UI_Control_Group_in_Control_Group_Library",
+      "Identifier": "Execution.UI_Control_Group.Activate_Group",
       "ID": 383,
       "InGameName": {
         "en": "Activate UI Control Group in Control Group Library"
@@ -16772,7 +16772,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.UI_Control_Group.Modify_UI_Control_Status_Within_the_Interface_Layout",
+      "Identifier": "Execution.UI_Control_Group.Modify_Status",
       "ID": 384,
       "InGameName": {
         "en": "Modify UI Control Status Within the Interface Layout"
@@ -16820,7 +16820,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Class.When_Player_Class_Changes",
+      "Identifier": "Trigger.Class.On_Class_Change",
       "ID": 385,
       "InGameName": {
         "en": "When Player Class Changes"
@@ -16886,7 +16886,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Class.When_Player_Class_Level_Changes",
+      "Identifier": "Trigger.Class.On_Level_Change",
       "ID": 386,
       "InGameName": {
         "en": "When Player Class Level Changes"
@@ -16952,7 +16952,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Class.Query_Player_Class",
+      "Identifier": "Query.Class.Get_Class",
       "ID": 387,
       "InGameName": {
         "en": "Query Player Class"
@@ -16991,7 +16991,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Class.Query_Player_Class_Level",
+      "Identifier": "Query.Class.Get_Level",
       "ID": 388,
       "InGameName": {
         "en": "Query Player Class Level"
@@ -17041,7 +17041,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Class.Change_Player_Class",
+      "Identifier": "Execution.Class.Change_Class",
       "ID": 389,
       "InGameName": {
         "en": "Change Player Class"
@@ -17089,7 +17089,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Class.Increase_Player_s_Current_Class_EXP",
+      "Identifier": "Execution.Class.Add_Exp",
       "ID": 390,
       "InGameName": {
         "en": "Increase Player's Current Class EXP"
@@ -17137,7 +17137,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Class.Change_Player_s_Current_Class_Level",
+      "Identifier": "Execution.Class.Set_Level",
       "ID": 391,
       "InGameName": {
         "en": "Change Player's Current Class Level"
@@ -17185,7 +17185,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Skill.When_Skill_Node_Is_Called",
+      "Identifier": "Trigger.Skill.On_Skill_Call",
       "ID": 392,
       "InGameName": {
         "en": "When Skill Node Is Called"
@@ -17262,7 +17262,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Modify_Skill_Resource_Amount",
+      "Identifier": "Execution.Skill.Modify_Resource",
       "ID": 393,
       "InGameName": {
         "en": "Modify Skill Resource Amount"
@@ -17321,7 +17321,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Set_Skill_Resource_Amount",
+      "Identifier": "Execution.Skill.Set_Resource",
       "ID": 394,
       "InGameName": {
         "en": "Set Skill Resource Amount"
@@ -17380,7 +17380,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Add_Character_Skill",
+      "Identifier": "Execution.Skill.Add_Skill",
       "ID": 395,
       "InGameName": {
         "en": "Add Character Skill"
@@ -17428,7 +17428,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Delete_Character_Skill_by_ID",
+      "Identifier": "Execution.Skill.Remove_By_ID",
       "ID": 396,
       "InGameName": {
         "en": "Delete Character Skill by ID"
@@ -17476,7 +17476,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Initialize_Character_Skill",
+      "Identifier": "Execution.Skill.Init_Skill",
       "ID": 397,
       "InGameName": {
         "en": "Initialize Character Skill"
@@ -17513,7 +17513,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Skill.Query_Character_Skill",
+      "Identifier": "Query.Skill.Get_Skill_Info",
       "ID": 398,
       "InGameName": {
         "en": "Query Character Skill"
@@ -17552,7 +17552,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Delete_Character_Skill_by_Slot",
+      "Identifier": "Execution.Skill.Remove_By_Slot",
       "ID": 399,
       "InGameName": {
         "en": "Delete Character Skill by Slot"
@@ -17589,7 +17589,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Trigger.When_Native_Custom_Value_Changes",
+      "Identifier": "Hidden.Trigger.On_Native_Value_Change",
       "ID": 428,
       "InGameName": {
         "en": "When Native Custom Value Changes"
@@ -18439,7 +18439,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Execution.Native_Setting_Custom_Value",
+      "Identifier": "Hidden.Execution.Set_Native_Value",
       "ID": 445,
       "InGameName": {
         "en": "Native Setting Custom Value"
@@ -19278,7 +19278,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Query.Native_Query_Custom_Value",
+      "Identifier": "Hidden.Query.Get_Native_Value",
       "ID": 459,
       "InGameName": {
         "en": "Native Query Custom Value"
@@ -20106,7 +20106,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Special_Effect.Clear_Special_Effects_Based_on_Special_Effect_Assets",
+      "Identifier": "Execution.Special_Effect.Stop_By_Asset",
       "ID": 473,
       "InGameName": {
         "en": "Clear Special Effects Based on Special Effect Assets"
@@ -20154,7 +20154,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Rotation",
+      "Identifier": "Arithmetic.Math.Vector_Rotate",
       "ID": 474,
       "InGameName": {
         "en": "3D Vector Rotation"
@@ -20204,7 +20204,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.General.Enumerations_Equal",
+      "Identifier": "Arithmetic.General.Enum_Equal",
       "ID": 475,
       "InGameName": {
         "en": "Enumerations Equal"
@@ -20451,7 +20451,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Dot_Product",
+      "Identifier": "Arithmetic.Math.Vector_Dot",
       "ID": 505,
       "InGameName": {
         "en": "3D Vector Dot Product"
@@ -20501,7 +20501,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math._3D_Vector_Cross_Product",
+      "Identifier": "Arithmetic.Math.Vector_Cross",
       "ID": 506,
       "InGameName": {
         "en": "3D Vector Cross Product"
@@ -20551,7 +20551,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Query_If_Entity_Is_on_the_Field",
+      "Identifier": "Query.Entity_Related.Is_Active",
       "ID": 507,
       "InGameName": {
         "en": "Query If Entity Is on the Field"
@@ -20590,7 +20590,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Unit_Status.Query_If_Entity_Has_Unit_Status",
+      "Identifier": "Query.Unit_Status.Has_Status",
       "ID": 508,
       "InGameName": {
         "en": "Query If Entity Has Unit Status"
@@ -20640,7 +20640,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.List_Operation.List_Iteration_Loop",
+      "Identifier": "Execution.List_Operation.For_Each",
       "ID": 509,
       "InGameName": {
         "en": "List Iteration Loop"
@@ -20740,7 +20740,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_Forward_Vector",
+      "Identifier": "Query.Entity_Related.Get_Forward",
       "ID": 516,
       "InGameName": {
         "en": "Get Entity Forward Vector"
@@ -20779,7 +20779,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_Right_Vector",
+      "Identifier": "Query.Entity_Related.Get_Right",
       "ID": 517,
       "InGameName": {
         "en": "Get Entity Right Vector"
@@ -20818,7 +20818,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_Upward_Vector",
+      "Identifier": "Query.Entity_Related.Get_Up",
       "ID": 518,
       "InGameName": {
         "en": "Get Entity Upward Vector"
@@ -20857,7 +20857,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Direction_Vector_to_Rotation",
+      "Identifier": "Arithmetic.Math.Vector_To_Rotation",
       "ID": 519,
       "InGameName": {
         "en": "Direction Vector to Rotation"
@@ -20907,7 +20907,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Motion_Device.Add_Target_Oriented_Rotation_Based_Motion_Device",
+      "Identifier": "Execution.Motion_Device.Add_Target_Rotation",
       "ID": 520,
       "InGameName": {
         "en": "Add Target-Oriented Rotation-Based Motion Device"
@@ -20977,7 +20977,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.UI_Control_Group.Remove_Interface_Control_Group_From_Control_Group_Library",
+      "Identifier": "Execution.UI_Control_Group.Remove_Group",
       "ID": 521,
       "InGameName": {
         "en": "Remove Interface Control Group From Control Group Library"
@@ -21025,7 +21025,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Object_Attribute",
+      "Identifier": "Query.Entity_Related.Get_Obj_Attr",
       "ID": 580,
       "InGameName": {
         "en": "Get Object Attribute"
@@ -21211,7 +21211,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Combat.When_HP_Is_Recovered",
+      "Identifier": "Trigger.Combat.On_HP_Recover",
       "ID": 584,
       "InGameName": {
         "en": "When HP Is Recovered"
@@ -21288,7 +21288,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Combat.When_Initiating_HP_Recovery",
+      "Identifier": "Trigger.Combat.On_HP_Recovery_Start",
       "ID": 585,
       "InGameName": {
         "en": "When Initiating HP Recovery"
@@ -21365,7 +21365,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Unit_Tag.Add_Unit_Tag_to_Entity",
+      "Identifier": "Execution.Unit_Tag.Add_Tag",
       "ID": 586,
       "InGameName": {
         "en": "Add Unit Tag to Entity"
@@ -21413,7 +21413,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Unit_Tag.Remove_Unit_Tag_from_Entity",
+      "Identifier": "Execution.Unit_Tag.Remove_Tag",
       "ID": 587,
       "InGameName": {
         "en": "Remove Unit Tag from Entity"
@@ -21461,7 +21461,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Unit_Tag.Clear_Unit_Tags_from_Entity",
+      "Identifier": "Execution.Unit_Tag.Clear_Tags",
       "ID": 588,
       "InGameName": {
         "en": "Clear Unit Tags from Entity"
@@ -21498,7 +21498,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Unit_Tag.Get_Entity_Unit_Tag_List",
+      "Identifier": "Query.Unit_Tag.Get_Tags",
       "ID": 589,
       "InGameName": {
         "en": "Get Entity Unit Tag List"
@@ -21537,7 +21537,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Unit_Tag.Get_Entity_List_by_Unit_Tag",
+      "Identifier": "Query.Unit_Tag.Get_By_Tag",
       "ID": 590,
       "InGameName": {
         "en": "Get Entity List by Unit Tag"
@@ -21576,7 +21576,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Sound_Effect.Close_Specified_Sound_Effect_Player",
+      "Identifier": "Execution.Sound_Effect.Close_Player",
       "ID": 591,
       "InGameName": {
         "en": "Close Specified Sound Effect Player"
@@ -21624,7 +21624,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Sound_Effect.Start_Pause_Specified_Sound_Effect_Player",
+      "Identifier": "Execution.Sound_Effect.Toggle_Player",
       "ID": 592,
       "InGameName": {
         "en": "Start/Pause Specified Sound Effect Player"
@@ -21683,7 +21683,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Sound_Effect.Adjust_Specified_Sound_Effect_Player",
+      "Identifier": "Execution.Sound_Effect.Adjust_Player",
       "ID": 593,
       "InGameName": {
         "en": "Adjust Specified Sound Effect Player"
@@ -21753,7 +21753,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Sound_Effect.Add_Sound_Effect_Player",
+      "Identifier": "Execution.Sound_Effect.Add_Player",
       "ID": 594,
       "InGameName": {
         "en": "Add Sound Effect Player"
@@ -21911,7 +21911,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Sound_Effect.Start_Pause_Player_Background_Music",
+      "Identifier": "Execution.Sound_Effect.Toggle_BGM",
       "ID": 595,
       "InGameName": {
         "en": "Start/Pause Player Background Music"
@@ -21959,7 +21959,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Sound_Effect.Adjust_Player_Background_Music_Volume",
+      "Identifier": "Execution.Sound_Effect.Set_BGM_Volume",
       "ID": 596,
       "InGameName": {
         "en": "Adjust Player Background Music Volume"
@@ -22007,7 +22007,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Sound_Effect.Modify_Player_Background_Music",
+      "Identifier": "Execution.Sound_Effect.Set_BGM",
       "ID": 597,
       "InGameName": {
         "en": "Modify Player Background Music"
@@ -22132,7 +22132,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Sound_Effect.Player_Plays_One_Shot_2D_Sound_Effect",
+      "Identifier": "Execution.Sound_Effect.Play_2D_One_Shot",
       "ID": 598,
       "InGameName": {
         "en": "Player Plays One-Shot 2D Sound Effect"
@@ -22202,7 +22202,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro.Set_the_Aggro_Value_of_Specified_Entity",
+      "Identifier": "Execution.Custom_Aggro.Set_Aggro",
       "ID": 599,
       "InGameName": {
         "en": "Set the Aggro Value of Specified Entity"
@@ -22261,7 +22261,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro.Remove_Target_Entity_From_Aggro_List",
+      "Identifier": "Execution.Custom_Aggro.Remove_Aggro",
       "ID": 600,
       "InGameName": {
         "en": "Remove Target Entity From Aggro List"
@@ -22309,7 +22309,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro.Clear_Specified_Target_s_Aggro_List",
+      "Identifier": "Execution.Custom_Aggro.Clear_Aggro",
       "ID": 601,
       "InGameName": {
         "en": "Clear Specified Target's Aggro List"
@@ -22346,7 +22346,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro.Taunt_Target",
+      "Identifier": "Execution.Custom_Aggro.Taunt",
       "ID": 602,
       "InGameName": {
         "en": "Taunt Target"
@@ -22394,7 +22394,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro.Query_the_Aggro_Value_of_the_Specified_Entity",
+      "Identifier": "Query.Custom_Aggro.Get_Aggro_Value",
       "ID": 603,
       "InGameName": {
         "en": "Query the Aggro Value of the Specified Entity"
@@ -22444,7 +22444,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro.Query_the_Aggro_Multiplier_of_the_Specified_Entity",
+      "Identifier": "Query.Custom_Aggro.Get_Multiplier",
       "ID": 604,
       "InGameName": {
         "en": "Query the Aggro Multiplier of the Specified Entity"
@@ -22483,7 +22483,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro.Query_Global_Aggro_Transfer_Multiplier",
+      "Identifier": "Query.Custom_Aggro.Get_Global_Multiplier",
       "ID": 605,
       "InGameName": {
         "en": "Query Global Aggro Transfer Multiplier"
@@ -22511,7 +22511,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro.Get_the_Aggro_Target_of_the_Specified_Entity",
+      "Identifier": "Query.Custom_Aggro.Get_Aggro_Target",
       "ID": 606,
       "InGameName": {
         "en": "Get the Aggro Target of the Specified Entity"
@@ -22550,7 +22550,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro.Get_List_of_Owners_Who_Have_the_Target_in_Their_Aggro_List",
+      "Identifier": "Query.Custom_Aggro.Get_Aggro_Owners",
       "ID": 607,
       "InGameName": {
         "en": "Get List of Owners Who Have the Target in Their Aggro List"
@@ -22589,7 +22589,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro.Get_List_of_Owners_That_Have_the_Target_As_Their_Aggro_Target",
+      "Identifier": "Query.Custom_Aggro.Get_Targeting_Owners",
       "ID": 608,
       "InGameName": {
         "en": "Get List of Owners That Have the Target As Their Aggro Target"
@@ -22628,7 +22628,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro.Get_the_Aggro_List_of_the_Specified_Entity",
+      "Identifier": "Query.Custom_Aggro.Get_Aggro_List",
       "ID": 609,
       "InGameName": {
         "en": "Get the Aggro List of the Specified Entity"
@@ -22667,7 +22667,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro.Query_if_Specified_Entity_Is_in_Combat",
+      "Identifier": "Query.Custom_Aggro.Is_In_Combat",
       "ID": 610,
       "InGameName": {
         "en": "Query if Specified Entity Is in Combat"
@@ -22706,7 +22706,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Custom_Aggro.When_Aggro_Target_Changes",
+      "Identifier": "Trigger.Custom_Aggro.On_Target_Change",
       "ID": 611,
       "InGameName": {
         "en": "When Aggro Target Changes"
@@ -22772,7 +22772,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Custom_Aggro.When_Self_Enters_Combat",
+      "Identifier": "Trigger.Custom_Aggro.On_Enter_Combat",
       "ID": 612,
       "InGameName": {
         "en": "When Self Enters Combat"
@@ -22816,7 +22816,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Custom_Aggro.When_Self_Leaves_Combat",
+      "Identifier": "Trigger.Custom_Aggro.On_Leave_Combat",
       "ID": 613,
       "InGameName": {
         "en": "When Self Leaves Combat"
@@ -22860,7 +22860,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Faction_Related.Query_If_Faction_Is_Hostile",
+      "Identifier": "Query.Faction_Related.Is_Hostile",
       "ID": 614,
       "InGameName": {
         "en": "Query If Faction Is Hostile"
@@ -22910,7 +22910,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Execution.Add_Entity_Active_Nameplate",
+      "Identifier": "Hidden.Execution.Add_Nameplate",
       "ID": 615,
       "InGameName": {
         "en": "Add Entity Active Nameplate"
@@ -22949,7 +22949,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Execution.Delete_Entity_Active_Nameplate",
+      "Identifier": "Hidden.Execution.Remove_Nameplate",
       "ID": 616,
       "InGameName": {
         "en": "Delete Entity Active Nameplate"
@@ -22988,7 +22988,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Nameplate.Set_Entity_Active_Nameplate",
+      "Identifier": "Execution.Nameplate.Set_Nameplate",
       "ID": 617,
       "InGameName": {
         "en": "Set Entity Active Nameplate"
@@ -23036,7 +23036,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Creation_Patrol.Switch_Creation_Patrol_Template",
+      "Identifier": "Execution.Creation_Patrol.Switch_Template",
       "ID": 618,
       "InGameName": {
         "en": "Switch Creation Patrol Template"
@@ -23084,7 +23084,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Creature_Patrol.Get_Current_Creation_s_Patrol_Template",
+      "Identifier": "Query.Creature_Patrol.Get_Patrol_Template",
       "ID": 619,
       "InGameName": {
         "en": "Get Current Creation's Patrol Template"
@@ -23145,7 +23145,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Creation_Patrol.When_Creation_Reaches_Patrol_Waypoint",
+      "Identifier": "Trigger.Creation_Patrol.On_Reach_Waypoint",
       "ID": 620,
       "InGameName": {
         "en": "When Creation Reaches Patrol Waypoint"
@@ -23233,7 +23233,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Global_Path.Get_Specified_Waypoint_Info",
+      "Identifier": "Query.Global_Path.Get_Waypoint",
       "ID": 621,
       "InGameName": {
         "en": "Get Specified Waypoint Info"
@@ -23294,7 +23294,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Text_Bubble.Switch_Active_Text_Bubble",
+      "Identifier": "Execution.Text_Bubble.Set_Bubble",
       "ID": 631,
       "InGameName": {
         "en": "Switch Active Text Bubble"
@@ -23342,7 +23342,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Deck_Selector.Invoke_Deck_Selector",
+      "Identifier": "Execution.Deck_Selector.Open",
       "ID": 632,
       "InGameName": {
         "en": "Invoke Deck Selector"
@@ -23489,7 +23489,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Deck_Selector.When_Deck_Selector_Is_Complete",
+      "Identifier": "Trigger.Deck_Selector.On_Deck_Selected",
       "ID": 633,
       "InGameName": {
         "en": "When Deck Selector Is Complete"
@@ -23555,7 +23555,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Minimap_Marker.Modify_Mini_Map_Zoom",
+      "Identifier": "Execution.Minimap_Marker.Set_Zoom",
       "ID": 634,
       "InGameName": {
         "en": "Modify Mini-Map Zoom"
@@ -23603,7 +23603,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Minimap_Marker.Modify_Mini_Map_Marker_Activation_Status",
+      "Identifier": "Execution.Minimap_Marker.Set_Marker_State",
       "ID": 635,
       "InGameName": {
         "en": "Modify Mini-Map Marker Activation Status"
@@ -23662,7 +23662,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Minimap_Marker.Modify_Player_List_for_Visible_Mini_Map_Markers",
+      "Identifier": "Execution.Minimap_Marker.Set_Visible_List",
       "ID": 636,
       "InGameName": {
         "en": "Modify Player List for Visible Mini-Map Markers"
@@ -23721,7 +23721,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Minimap_Marker.Modify_Player_List_for_Tracking_Mini_Map_Markers",
+      "Identifier": "Execution.Minimap_Marker.Set_Track_List",
       "ID": 637,
       "InGameName": {
         "en": "Modify Player List for Tracking Mini-Map Markers"
@@ -23780,7 +23780,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Minimap_Marker.Query_Specified_Mini_Map_Marker_Information",
+      "Identifier": "Query.Minimap_Marker.Get_Marker_Info",
       "ID": 638,
       "InGameName": {
         "en": "Query Specified Mini-Map Marker Information"
@@ -23852,7 +23852,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Minimap_Marker.Get_Entity_s_Mini_Map_Marker_Status",
+      "Identifier": "Query.Minimap_Marker.Get_Marker_Status",
       "ID": 639,
       "InGameName": {
         "en": "Get Entity's Mini-Map Marker Status"
@@ -23913,7 +23913,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Minimap_Marker.Modify_Player_Markers_on_the_Mini_Map",
+      "Identifier": "Execution.Minimap_Marker.Update_Markers",
       "ID": 640,
       "InGameName": {
         "en": "Modify Player Markers on the Mini-Map"
@@ -23972,7 +23972,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Deck_Selector.Close_Deck_Selector",
+      "Identifier": "Execution.Deck_Selector.Close",
       "ID": 641,
       "InGameName": {
         "en": "Close Deck Selector"
@@ -24020,7 +24020,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Unit_Status.When_Elemental_Reaction_Event_Occurs",
+      "Identifier": "Trigger.Unit_Status.On_Element_Reaction",
       "ID": 642,
       "InGameName": {
         "en": "When Elemental Reaction Event Occurs"
@@ -24097,7 +24097,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Unit_Status.When_Shield_Is_Attacked",
+      "Identifier": "Trigger.Unit_Status.On_Shield_Hit",
       "ID": 643,
       "InGameName": {
         "en": "When Shield Is Attacked"
@@ -24218,7 +24218,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Achievement.Query_If_Achievement_Is_Completed",
+      "Identifier": "Query.Achievement.Is_Completed",
       "ID": 644,
       "InGameName": {
         "en": "Query If Achievement Is Completed"
@@ -24268,7 +24268,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Achievement.Set_Achievement_Progress_Tally",
+      "Identifier": "Execution.Achievement.Set_Progress",
       "ID": 645,
       "InGameName": {
         "en": "Set Achievement Progress Tally"
@@ -24327,7 +24327,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Achievement.Change_Achievement_Progress_Tally",
+      "Identifier": "Execution.Achievement.Add_Progress",
       "ID": 646,
       "InGameName": {
         "en": "Change Achievement Progress Tally"
@@ -24386,7 +24386,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Stage_Settlement.Set_Player_Settlement_Scoreboard_Data_Display",
+      "Identifier": "Execution.Stage_Settlement.Set_Scoreboard",
       "ID": 647,
       "InGameName": {
         "en": "Set Player Settlement Scoreboard Data Display"
@@ -24473,7 +24473,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Stage_Settlement.Set_Player_Settlement_Ranking_Value",
+      "Identifier": "Execution.Stage_Settlement.Set_Player_Rank",
       "ID": 650,
       "InGameName": {
         "en": "Set Player Settlement Ranking Value"
@@ -24521,7 +24521,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Stage_Settlement.Get_Player_Settlement_Ranking_Value",
+      "Identifier": "Query.Stage_Settlement.Get_Player_Rank",
       "ID": 651,
       "InGameName": {
         "en": "Get Player Settlement Ranking Value"
@@ -24560,7 +24560,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Stage_Settlement.Set_Player_Settlement_Success_Status",
+      "Identifier": "Execution.Stage_Settlement.Set_Player_Result",
       "ID": 652,
       "InGameName": {
         "en": "Set Player Settlement Success Status"
@@ -24597,7 +24597,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Stage_Settlement.Get_Player_Settlement_Success_Status",
+      "Identifier": "Query.Stage_Settlement.Get_Player_Result",
       "ID": 653,
       "InGameName": {
         "en": "Get Player Settlement Success Status"
@@ -24625,7 +24625,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Stage_Settlement.Set_Faction_Settlement_Ranking_Value",
+      "Identifier": "Execution.Stage_Settlement.Set_Faction_Rank",
       "ID": 654,
       "InGameName": {
         "en": "Set Faction Settlement Ranking Value"
@@ -24673,7 +24673,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Stage_Settlement.Get_Faction_Settlement_Ranking_Value",
+      "Identifier": "Query.Stage_Settlement.Get_Faction_Rank",
       "ID": 655,
       "InGameName": {
         "en": "Get Faction Settlement Ranking Value"
@@ -24712,7 +24712,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Stage_Settlement.Set_Faction_Settlement_Success_Status",
+      "Identifier": "Execution.Stage_Settlement.Set_Faction_Result",
       "ID": 656,
       "InGameName": {
         "en": "Set Faction Settlement Success Status"
@@ -24749,7 +24749,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Stage_Settlement.Get_Faction_Settlement_Success_Status",
+      "Identifier": "Query.Stage_Settlement.Get_Faction_Result",
       "ID": 657,
       "InGameName": {
         "en": "Get Faction Settlement Success Status"
@@ -24777,7 +24777,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Rank_Tier.Get_Player_Ranking_Info",
+      "Identifier": "Query.Rank_Tier.Get_Rank_Info",
       "ID": 658,
       "InGameName": {
         "en": "Get Player Ranking Info"
@@ -24849,7 +24849,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Rank.Set_Player_Rank_Score_Change",
+      "Identifier": "Execution.Rank.Modify_Score",
       "ID": 659,
       "InGameName": {
         "en": "Set Player Rank Score Change"
@@ -24908,7 +24908,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Rank_Tier.Get_Player_Rank_Score_Change",
+      "Identifier": "Query.Rank_Tier.Get_Score_Change",
       "ID": 660,
       "InGameName": {
         "en": "Get Player Rank Score Change"
@@ -24947,7 +24947,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Rank.Set_Player_Escape_Validity",
+      "Identifier": "Execution.Rank.Set_Escape_Valid",
       "ID": 661,
       "InGameName": {
         "en": "Set Player Escape Validity"
@@ -24995,7 +24995,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Rank_Tier.Get_Player_Escape_Validity",
+      "Identifier": "Query.Rank_Tier.Get_Escape_Status",
       "ID": 662,
       "InGameName": {
         "en": "Get Player Escape Validity"
@@ -25034,7 +25034,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Rank.Switch_the_scoring_group_that_affects_player_s_competitive_rank",
+      "Identifier": "Execution.Rank.Switch_Score_Group",
       "ID": 663,
       "InGameName": {
         "en": "Switch the scoring group that affects player's competitive rank"
@@ -25082,7 +25082,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Stage_Related.Query_Current_Environment_Time",
+      "Identifier": "Query.Stage_Related.Get_Env_Time",
       "ID": 664,
       "InGameName": {
         "en": "Query Current Environment Time"
@@ -25121,7 +25121,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Stage_Related.Set_Current_Environment_Time",
+      "Identifier": "Execution.Stage_Related.Set_Time",
       "ID": 665,
       "InGameName": {
         "en": "Set Current Environment Time"
@@ -25158,7 +25158,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Stage_Related.Set_Environment_Time_Passage_Speed",
+      "Identifier": "Execution.Stage_Related.Set_Time_Speed",
       "ID": 666,
       "InGameName": {
         "en": "Set Environment Time Passage Speed"
@@ -25195,7 +25195,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Light_Component.Toggle_Entity_Light_Source",
+      "Identifier": "Execution.Light_Component.Toggle_Light",
       "ID": 667,
       "InGameName": {
         "en": "Toggle Entity Light Source"
@@ -25254,7 +25254,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Follow_Motion.Switch_Follow_Motion_Device_Target_by_Entity",
+      "Identifier": "Execution.Follow_Motion.Set_Target_Entity",
       "ID": 668,
       "InGameName": {
         "en": "Switch Follow Motion Device Target by Entity"
@@ -25335,7 +25335,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Collision_Trigger.Get_All_Entities_Within_the_Collision_Trigger",
+      "Identifier": "Query.Collision_Trigger.Get_Overlapping_Entities",
       "ID": 669,
       "InGameName": {
         "en": "Get All Entities Within the Collision Trigger"
@@ -25385,7 +25385,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_Advanced_Attribute",
+      "Identifier": "Query.Entity_Related.Get_Adv_Attr",
       "ID": 670,
       "InGameName": {
         "en": "Get Entity Advanced Attribute"
@@ -25501,7 +25501,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Entity_Elemental_Attribute",
+      "Identifier": "Query.Entity_Related.Get_Elem_Attr",
       "ID": 671,
       "InGameName": {
         "en": "Get Entity Elemental Attribute"
@@ -25705,7 +25705,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Equipment.Add_Affix_to_Equipment",
+      "Identifier": "Execution.Equipment.Add_Affix",
       "ID": 672,
       "InGameName": {
         "en": "Add Affix to Equipment"
@@ -25775,7 +25775,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Equipment.Remove_Equipment_Affix",
+      "Identifier": "Execution.Equipment.Remove_Affix",
       "ID": 673,
       "InGameName": {
         "en": "Remove Equipment Affix"
@@ -25823,7 +25823,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Equipment.Modify_Equipment_Affix_Value",
+      "Identifier": "Execution.Equipment.Modify_Affix",
       "ID": 674,
       "InGameName": {
         "en": "Modify Equipment Affix Value"
@@ -25882,7 +25882,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Equipment.Get_Equipment_Affix_List",
+      "Identifier": "Query.Equipment.Get_Affixes",
       "ID": 675,
       "InGameName": {
         "en": "Get Equipment Affix List"
@@ -25921,7 +25921,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Equipment.Get_Equipment_Affix_Config_ID",
+      "Identifier": "Query.Equipment.Get_Affix_Config",
       "ID": 676,
       "InGameName": {
         "en": "Get Equipment Affix Config ID"
@@ -25971,7 +25971,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Equipment.Get_Equipment_Affix_Value",
+      "Identifier": "Query.Equipment.Get_Affix_Value",
       "ID": 677,
       "InGameName": {
         "en": "Get Equipment Affix Value"
@@ -26021,7 +26021,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Execution.Update_Player_Leaderboard_Score",
+      "Identifier": "Hidden.Execution.Update_Leaderboard",
       "ID": 678,
       "InGameName": {
         "en": "Update Player Leaderboard Score"
@@ -26071,7 +26071,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Text_Bubble.When_Text_Bubble_Is_Completed",
+      "Identifier": "Trigger.Text_Bubble.On_Bubble_Complete",
       "ID": 679,
       "InGameName": {
         "en": "When Text Bubble Is Completed"
@@ -26137,7 +26137,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Equipment.When_Equipment_Affix_Value_Changes",
+      "Identifier": "Trigger.Equipment.On_Affix_Change",
       "ID": 680,
       "InGameName": {
         "en": "When Equipment Affix Value Changes"
@@ -26225,7 +26225,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Item.When_Item_Is_Added_to_Inventory",
+      "Identifier": "Trigger.Item.On_Item_Add",
       "ID": 681,
       "InGameName": {
         "en": "When Item Is Added to Inventory"
@@ -26291,7 +26291,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Item.When_Item_Is_Lost_From_Inventory",
+      "Identifier": "Trigger.Item.On_Item_Lose",
       "ID": 682,
       "InGameName": {
         "en": "When Item Is Lost From Inventory"
@@ -26357,7 +26357,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Item.When_the_Quantity_of_Inventory_Item_Changes",
+      "Identifier": "Trigger.Item.On_Item_Quantity_Change",
       "ID": 683,
       "InGameName": {
         "en": "When the Quantity of Inventory Item Changes"
@@ -26434,7 +26434,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Item.When_the_Quantity_of_Inventory_Currency_Changes",
+      "Identifier": "Trigger.Item.On_Currency_Change",
       "ID": 684,
       "InGameName": {
         "en": "When the Quantity of Inventory Currency Changes"
@@ -26500,7 +26500,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Increase_Maximum_Inventory_Capacity",
+      "Identifier": "Execution.Inventory.Expand_Capacity",
       "ID": 685,
       "InGameName": {
         "en": "Increase Maximum Inventory Capacity"
@@ -26548,7 +26548,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Modify_Inventory_Item_Quantity",
+      "Identifier": "Execution.Inventory.Modify_Item",
       "ID": 686,
       "InGameName": {
         "en": "Modify Inventory Item Quantity"
@@ -26607,7 +26607,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Set_Inventory_Drop_Items_Currency_Amount",
+      "Identifier": "Execution.Inventory.Set_Drop_Currency",
       "ID": 687,
       "InGameName": {
         "en": "Set Inventory Drop Items/Currency Amount"
@@ -26666,7 +26666,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Modify_Inventory_Currency_Quantity",
+      "Identifier": "Execution.Inventory.Modify_Currency",
       "ID": 688,
       "InGameName": {
         "en": "Modify Inventory Currency Quantity"
@@ -26725,7 +26725,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_Inventory_Capacity",
+      "Identifier": "Query.Item.Get_Capacity",
       "ID": 689,
       "InGameName": {
         "en": "Get Inventory Capacity"
@@ -26764,7 +26764,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_Inventory_Item_Quantity",
+      "Identifier": "Query.Item.Get_Item_Amount",
       "ID": 690,
       "InGameName": {
         "en": "Get Inventory Item Quantity"
@@ -26814,7 +26814,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_Inventory_Currency_Quantity",
+      "Identifier": "Query.Item.Get_Currency_Amount",
       "ID": 691,
       "InGameName": {
         "en": "Get Inventory Currency Quantity"
@@ -26864,7 +26864,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Equipment.When_Equipment_Is_Initialized",
+      "Identifier": "Trigger.Equipment.On_Init",
       "ID": 694,
       "InGameName": {
         "en": "When Equipment Is Initialized"
@@ -26919,7 +26919,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Equipment.When_Equipment_Is_Equipped",
+      "Identifier": "Trigger.Equipment.On_Equip",
       "ID": 695,
       "InGameName": {
         "en": "When Equipment Is Equipped"
@@ -26974,7 +26974,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Equipment.When_Equipment_Is_Unequipped",
+      "Identifier": "Trigger.Equipment.On_Unequip",
       "ID": 696,
       "InGameName": {
         "en": "When Equipment Is Unequipped"
@@ -27110,7 +27110,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Combat.Recover_HP_Directly",
+      "Identifier": "Execution.Combat.Recover_HP_Instant",
       "ID": 698,
       "InGameName": {
         "en": "Recover HP Directly"
@@ -27213,7 +27213,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Shop.When_Custom_Shop_Item_Is_Sold",
+      "Identifier": "Trigger.Shop.On_Custom_Item_Sold",
       "ID": 700,
       "InGameName": {
         "en": "When Custom Shop Item Is Sold"
@@ -27301,7 +27301,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Shop.When_Selling_Inventory_Items_in_the_Shop",
+      "Identifier": "Trigger.Shop.On_Inv_Item_Sold",
       "ID": 701,
       "InGameName": {
         "en": "When Selling Inventory Items in the Shop"
@@ -27389,7 +27389,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Open_Shop",
+      "Identifier": "Execution.Shop.Open",
       "ID": 702,
       "InGameName": {
         "en": "Open Shop"
@@ -27448,7 +27448,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Close_Shop",
+      "Identifier": "Execution.Shop.Close",
       "ID": 703,
       "InGameName": {
         "en": "Close Shop"
@@ -27485,7 +27485,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Modify_Custom_Shop_Item_Sales_Info",
+      "Identifier": "Execution.Shop.Modify_Custom_Sale",
       "ID": 704,
       "InGameName": {
         "en": "Modify Custom Shop Item Sales Info"
@@ -27621,7 +27621,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Shop.When_selling_items_to_the_shop",
+      "Identifier": "Trigger.Shop.On_Sell_Item",
       "ID": 705,
       "InGameName": {
         "en": "When selling items to the shop"
@@ -27698,7 +27698,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Modify_Inventory_Shop_Item_Sales_Info",
+      "Identifier": "Execution.Shop.Modify_Inventory_Sale",
       "ID": 706,
       "InGameName": {
         "en": "Modify Inventory Shop Item Sales Info"
@@ -27801,7 +27801,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Modify_Item_Purchase_Info_in_the_Purchase_List",
+      "Identifier": "Execution.Shop.Modify_Cart_Item",
       "ID": 707,
       "InGameName": {
         "en": "Modify Item Purchase Info in the Purchase List"
@@ -27882,7 +27882,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Add_New_Item_to_Custom_Shop_Sales_List",
+      "Identifier": "Execution.Shop.Add_Custom_Sale",
       "ID": 708,
       "InGameName": {
         "en": "Add New Item to Custom Shop Sales List"
@@ -28018,7 +28018,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Add_New_Item_to_Inventory_Shop_Sales_List",
+      "Identifier": "Execution.Shop.Add_Inventory_Sale",
       "ID": 709,
       "InGameName": {
         "en": "Add New Item to Inventory Shop Sales List"
@@ -28121,7 +28121,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Add_Items_to_the_Purchase_List",
+      "Identifier": "Execution.Shop.Add_To_Cart",
       "ID": 710,
       "InGameName": {
         "en": "Add Items to the Purchase List"
@@ -28202,7 +28202,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Remove_Item_From_Custom_Shop_Sales_List",
+      "Identifier": "Execution.Shop.Remove_Custom_Sale",
       "ID": 711,
       "InGameName": {
         "en": "Remove Item From Custom Shop Sales List"
@@ -28261,7 +28261,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Remove_Item_From_Inventory_Shop_Sales_List",
+      "Identifier": "Execution.Shop.Remove_Inventory_Sale",
       "ID": 712,
       "InGameName": {
         "en": "Remove Item From Inventory Shop Sales List"
@@ -28320,7 +28320,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Shop.Remove_item_from_purchase_list",
+      "Identifier": "Execution.Shop.Remove_From_Cart",
       "ID": 713,
       "InGameName": {
         "en": "Remove item from purchase list"
@@ -28379,7 +28379,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Shop.Query_Custom_Shop_Item_Sales_List",
+      "Identifier": "Query.Shop.Get_Custom_Sales",
       "ID": 714,
       "InGameName": {
         "en": "Query Custom Shop Item Sales List"
@@ -28429,7 +28429,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Shop.Query_Inventory_Shop_Item_Sales_List",
+      "Identifier": "Query.Shop.Get_Inv_Sales",
       "ID": 715,
       "InGameName": {
         "en": "Query Inventory Shop Item Sales List"
@@ -28479,7 +28479,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Shop.Query_Shop_Purchase_Item_List",
+      "Identifier": "Query.Shop.Get_Cart_Items",
       "ID": 716,
       "InGameName": {
         "en": "Query Shop Purchase Item List"
@@ -28529,7 +28529,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Shop.Query_Custom_Shop_Item_Sales_Info",
+      "Identifier": "Query.Shop.Get_Custom_Item_Info",
       "ID": 717,
       "InGameName": {
         "en": "Query Custom Shop Item Sales Info"
@@ -28656,7 +28656,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Shop.Query_Inventory_Shop_Item_Sales_Info",
+      "Identifier": "Query.Shop.Get_Inv_Item_Info",
       "ID": 718,
       "InGameName": {
         "en": "Query Inventory Shop Item Sales Info"
@@ -28739,7 +28739,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Shop.Query_Shop_Item_Purchase_Info",
+      "Identifier": "Query.Shop.Get_Purchase_Info",
       "ID": 719,
       "InGameName": {
         "en": "Query Shop Item Purchase Info"
@@ -28811,7 +28811,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Set_Inventory_Item_Drop_Contents",
+      "Identifier": "Execution.Inventory.Set_Drop_Items",
       "ID": 720,
       "InGameName": {
         "en": "Set Inventory Item Drop Contents"
@@ -28870,7 +28870,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_all_basic_items_from_Inventory",
+      "Identifier": "Query.Item.Get_Basic_Items",
       "ID": 721,
       "InGameName": {
         "en": "Get all basic items from Inventory"
@@ -28909,7 +28909,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_All_Currency_From_Inventory",
+      "Identifier": "Query.Item.Get_Currency_All",
       "ID": 722,
       "InGameName": {
         "en": "Get All Currency From Inventory"
@@ -28948,7 +28948,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_all_equipment_from_Inventory",
+      "Identifier": "Query.Item.Get_Equipment_All",
       "ID": 723,
       "InGameName": {
         "en": "Get all equipment from Inventory"
@@ -28987,7 +28987,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Trigger_Loot_Drop",
+      "Identifier": "Execution.Inventory.Trigger_Drop",
       "ID": 724,
       "InGameName": {
         "en": "Trigger Loot Drop"
@@ -29035,7 +29035,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Set_Loot_Drop_Content",
+      "Identifier": "Execution.Inventory.Set_Loot_Content",
       "ID": 725,
       "InGameName": {
         "en": "Set Loot Drop Content"
@@ -29072,7 +29072,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Modify_Loot_Item_Component_Quantity",
+      "Identifier": "Execution.Inventory.Modify_Loot_Item",
       "ID": 726,
       "InGameName": {
         "en": "Modify Loot Item Component Quantity"
@@ -29131,7 +29131,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Inventory.Modify_Loot_Component_Currency_Amount",
+      "Identifier": "Execution.Inventory.Modify_Loot_Currency",
       "ID": 727,
       "InGameName": {
         "en": "Modify Loot Component Currency Amount"
@@ -29190,7 +29190,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_Loot_Component_Item_Quantity",
+      "Identifier": "Query.Item.Get_Loot_Item",
       "ID": 728,
       "InGameName": {
         "en": "Get Loot Component Item Quantity"
@@ -29240,7 +29240,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_Loot_Component_Currency_Quantity",
+      "Identifier": "Query.Item.Get_Loot_Currency",
       "ID": 729,
       "InGameName": {
         "en": "Get Loot Component Currency Quantity"
@@ -29290,7 +29290,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_All_Trophy_Items",
+      "Identifier": "Query.Item.Get_Trophy_Items",
       "ID": 730,
       "InGameName": {
         "en": "Get All Trophy Items"
@@ -29318,7 +29318,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_All_Trophy_Currency",
+      "Identifier": "Query.Item.Get_Trophy_Currency",
       "ID": 731,
       "InGameName": {
         "en": "Get All Trophy Currency"
@@ -29346,7 +29346,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Item.Get_All_Equipment_from_Loot_Component",
+      "Identifier": "Query.Item.Get_Loot_Equipment",
       "ID": 732,
       "InGameName": {
         "en": "Get All Equipment from Loot Component"
@@ -29385,7 +29385,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Item.When_Items_in_the_Inventory_Are_Used",
+      "Identifier": "Trigger.Item.On_Item_Use",
       "ID": 733,
       "InGameName": {
         "en": "When Items in the Inventory Are Used"
@@ -29451,7 +29451,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Equipment.Query_Equipment_Tag_List",
+      "Identifier": "Query.Equipment.Get_Tags",
       "ID": 734,
       "InGameName": {
         "en": "Query Equipment Tag List"
@@ -29490,7 +29490,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Scan_Tag.Set_Scan_Tag_Rules",
+      "Identifier": "Execution.Scan_Tag.Set_Rules",
       "ID": 735,
       "InGameName": {
         "en": "Set Scan Tag Rules"
@@ -29527,7 +29527,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Scan_Tag.Set_Scan_Component_s_Active_Scan_Tag_ID",
+      "Identifier": "Execution.Scan_Tag.Set_Active_Tag",
       "ID": 736,
       "InGameName": {
         "en": "Set Scan Component's Active Scan Tag ID"
@@ -29575,7 +29575,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Scan_Tag.Get_the_Currently_Active_Scan_Tag_Config_ID",
+      "Identifier": "Query.Scan_Tag.Get_Active_Tag",
       "ID": 737,
       "InGameName": {
         "en": "Get the Currently Active Scan Tag Config ID"
@@ -29614,7 +29614,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Character_Attribute",
+      "Identifier": "Query.Entity_Related.Get_Character_Attr",
       "ID": 738,
       "InGameName": {
         "en": "Get Character Attribute"
@@ -29741,7 +29741,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Set_Character_Skill_CD",
+      "Identifier": "Execution.Skill.Set_CD",
       "ID": 739,
       "InGameName": {
         "en": "Set Character Skill CD"
@@ -29811,7 +29811,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Modify_Character_Skill_CD",
+      "Identifier": "Execution.Skill.Modify_CD",
       "ID": 740,
       "InGameName": {
         "en": "Modify Character Skill CD"
@@ -29881,7 +29881,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Skill.Modify_Skill_CD_Percentage_Based_on_Max_CD",
+      "Identifier": "Execution.Skill.Modify_CD_Ratio",
       "ID": 741,
       "InGameName": {
         "en": "Modify Skill CD Percentage Based on Max CD"
@@ -29951,7 +29951,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Equipment.Add_Affix_to_Equipment_at_Specified_ID",
+      "Identifier": "Execution.Equipment.Add_Affix_By_ID",
       "ID": 742,
       "InGameName": {
         "en": "Add Affix to Equipment at Specified ID"
@@ -30032,7 +30032,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Deck_Selector.Random_Deck_Selector_Selection_List",
+      "Identifier": "Execution.Deck_Selector.Get_Random_List",
       "ID": 743,
       "InGameName": {
         "en": "Random Deck Selector Selection List"
@@ -30069,7 +30069,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_Owner_Entity",
+      "Identifier": "Query.Entity_Related.Get_Owner",
       "ID": 744,
       "InGameName": {
         "en": "Get Owner Entity"
@@ -30108,7 +30108,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Get_List_of_Entities_Owned_by_the_Entity",
+      "Identifier": "Query.Entity_Related.Get_Owned_Entities",
       "ID": 745,
       "InGameName": {
         "en": "Get List of Entities Owned by the Entity"
@@ -30147,7 +30147,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Unit_Status.Query_Unit_Status_Stacks_by_Slot_ID",
+      "Identifier": "Query.Unit_Status.Get_Status_Stacks",
       "ID": 746,
       "InGameName": {
         "en": "Query Unit Status Stacks by Slot ID"
@@ -30208,7 +30208,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Unit_Status.Query_Unit_Status_Applier_by_Slot_ID",
+      "Identifier": "Query.Unit_Status.Get_Status_Applier",
       "ID": 747,
       "InGameName": {
         "en": "Query Unit Status Applier by Slot ID"
@@ -30269,7 +30269,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Unit_Status.List_of_Slot_IDs_Querying_Unit_Status",
+      "Identifier": "Query.Unit_Status.Get_Status_Slots",
       "ID": 748,
       "InGameName": {
         "en": "List of Slot IDs Querying Unit Status"
@@ -30319,7 +30319,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Equipment.Query_Equipment_Config_ID_by_Equipment_ID",
+      "Identifier": "Query.Equipment.Get_Config_ID",
       "ID": 749,
       "InGameName": {
         "en": "Query Equipment Config ID by Equipment ID"
@@ -30358,7 +30358,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_Player_GUID_by_Player_ID",
+      "Identifier": "Query.Character_Related.Get_GUID_By_ID",
       "ID": 750,
       "InGameName": {
         "en": "Get Player GUID by Player ID"
@@ -30397,7 +30397,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_Player_ID_by_Player_GUID",
+      "Identifier": "Query.Character_Related.Get_ID_By_GUID",
       "ID": 751,
       "InGameName": {
         "en": "Get Player ID by Player GUID"
@@ -30436,7 +30436,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Calculate_formatted_time_from_timestamp",
+      "Identifier": "Arithmetic.Math.Timestamp_To_Time",
       "ID": 752,
       "InGameName": {
         "en": "Calculate formatted time from timestamp"
@@ -30530,7 +30530,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Calculate_Timestamp_From_Formatted_Time",
+      "Identifier": "Arithmetic.Math.Time_To_Timestamp",
       "ID": 753,
       "InGameName": {
         "en": "Calculate Timestamp From Formatted Time"
@@ -30624,7 +30624,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Calculate_day_of_the_week_from_timestamp",
+      "Identifier": "Arithmetic.Math.Timestamp_To_Weekday",
       "ID": 754,
       "InGameName": {
         "en": "Calculate day of the week from timestamp"
@@ -30663,7 +30663,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math.Query_Timestamp_UTC_0",
+      "Identifier": "Query.Math.Get_Timestamp",
       "ID": 755,
       "InGameName": {
         "en": "Query Timestamp (UTC+0)"
@@ -30691,7 +30691,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Math.Query_Server_Time_Zone",
+      "Identifier": "Query.Math.Get_Timezone",
       "ID": 756,
       "InGameName": {
         "en": "Query Server Time Zone"
@@ -30844,7 +30844,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Creation.Get_Aggro_List_of_Creation_in_Default_Mode",
+      "Identifier": "Query.Creation.Get_Aggro_List",
       "ID": 758,
       "InGameName": {
         "en": "Get Aggro List of Creation in Default Mode"
@@ -30883,7 +30883,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Leaderboard.Set_Player_Leaderboard_Score_as_an_Integer",
+      "Identifier": "Execution.Leaderboard.Set_Score_Int",
       "ID": 761,
       "InGameName": {
         "en": "Set Player Leaderboard Score as an Integer"
@@ -30942,7 +30942,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Leaderboard.Set_Player_Leaderboard_Score_as_a_Float",
+      "Identifier": "Execution.Leaderboard.Set_Score_Float",
       "ID": 762,
       "InGameName": {
         "en": "Set Player Leaderboard Score as a Float"
@@ -31001,7 +31001,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Related.Modify_environment_settings",
+      "Identifier": "Execution.Character_Related.Modify_Environment",
       "ID": 763,
       "InGameName": {
         "en": "Modify environment settings"
@@ -31071,7 +31071,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Class.When_Player_Class_Is_Removed",
+      "Identifier": "Trigger.Class.On_Class_Remove",
       "ID": 764,
       "InGameName": {
         "en": "When Player Class Is Removed"
@@ -31137,7 +31137,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Combat.When_Entering_an_Interruptible_State",
+      "Identifier": "Trigger.Combat.On_Interruptible",
       "ID": 765,
       "InGameName": {
         "en": "When Entering an Interruptible State"
@@ -31192,7 +31192,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.General.Query_Game_Mode_and_Player_Number",
+      "Identifier": "Query.General.Get_Game_Info",
       "ID": 766,
       "InGameName": {
         "en": "Query Game Mode and Player Number"
@@ -31220,7 +31220,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_Player_Nickname",
+      "Identifier": "Query.Character_Related.Get_Nickname",
       "ID": 767,
       "InGameName": {
         "en": "Get Player Nickname"
@@ -31259,7 +31259,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related.Get_Player_Client_Input_Device_Type",
+      "Identifier": "Query.Character_Related.Get_Input_Type",
       "ID": 768,
       "InGameName": {
         "en": "Get Player Client Input Device Type"
@@ -31287,7 +31287,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Chat_Channel.Set_Chat_Channel_Switch",
+      "Identifier": "Execution.Chat_Channel.Set_Switch",
       "ID": 769,
       "InGameName": {
         "en": "Set Chat Channel Switch"
@@ -31346,7 +31346,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Chat_Channel.Modify_Player_Channel_Permission",
+      "Identifier": "Execution.Chat_Channel.Modify_Permission",
       "ID": 770,
       "InGameName": {
         "en": "Modify Player Channel Permission"
@@ -31405,7 +31405,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Chat_Channel.Set_Player_s_Current_Channel",
+      "Identifier": "Execution.Chat_Channel.Set_Current_Channel",
       "ID": 771,
       "InGameName": {
         "en": "Set Player's Current Channel"
@@ -31453,7 +31453,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Wonderland_Box.Consume_Gift_Box",
+      "Identifier": "Execution.Wonderland_Box.Consume_Box",
       "ID": 772,
       "InGameName": {
         "en": "Consume Gift Box"
@@ -31512,7 +31512,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Wonderland_Box_Related.Query_Corresponding_Gift_Box_Quantity",
+      "Identifier": "Query.Wonderland_Box_Related.Get_Box_Quantity",
       "ID": 773,
       "InGameName": {
         "en": "Query Corresponding Gift Box Quantity"
@@ -31562,7 +31562,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Wonderland_Box_Related.Query_Corresponding_Gift_Box_Consumption",
+      "Identifier": "Query.Wonderland_Box_Related.Get_Box_Consumption",
       "ID": 774,
       "InGameName": {
         "en": "Query Corresponding Gift Box Consumption"
@@ -31612,7 +31612,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Motion_Device.Activate_Fixed_Point_Motion_Device",
+      "Identifier": "Execution.Motion_Device.Activate_Fixed_Point",
       "ID": 775,
       "InGameName": {
         "en": "Activate Fixed-Point Motion Device"
@@ -31737,7 +31737,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Left_Shift_Operation",
+      "Identifier": "Arithmetic.Math.Left_Shift",
       "ID": 778,
       "InGameName": {
         "en": "Left Shift Operation"
@@ -31787,7 +31787,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Right_Shift_Operation",
+      "Identifier": "Arithmetic.Math.Right_Shift",
       "ID": 779,
       "InGameName": {
         "en": "Right Shift Operation"
@@ -31837,7 +31837,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Bitwise_AND",
+      "Identifier": "Arithmetic.Math.Bitwise_And",
       "ID": 780,
       "InGameName": {
         "en": "Bitwise AND"
@@ -31887,7 +31887,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Bitwise_OR",
+      "Identifier": "Arithmetic.Math.Bitwise_Or",
       "ID": 781,
       "InGameName": {
         "en": "Bitwise OR"
@@ -31937,7 +31937,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.XOR_Exclusive_OR",
+      "Identifier": "Arithmetic.Math.Bitwise_Xor",
       "ID": 782,
       "InGameName": {
         "en": "XOR (Exclusive OR)"
@@ -31987,7 +31987,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Bitwise_Complement",
+      "Identifier": "Arithmetic.Math.Bitwise_Not",
       "ID": 783,
       "InGameName": {
         "en": "Bitwise Complement"
@@ -32026,7 +32026,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Write_by_bit",
+      "Identifier": "Arithmetic.Math.Write_Bit",
       "ID": 784,
       "InGameName": {
         "en": "Write by bit"
@@ -32098,7 +32098,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math.Read_by_bit",
+      "Identifier": "Arithmetic.Math.Read_Bit",
       "ID": 785,
       "InGameName": {
         "en": "Read by bit"
@@ -32159,7 +32159,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Entity_Related.When_Character_Movement_SPD_Meets_Condition",
+      "Identifier": "Trigger.Entity_Related.On_Speed_Condition",
       "ID": 946,
       "InGameName": {
         "en": "When Character Movement SPD Meets Condition"
@@ -32247,7 +32247,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related.Query_Character_s_Current_Movement_SPD",
+      "Identifier": "Query.Entity_Related.Get_Move_Speed",
       "ID": 947,
       "InGameName": {
         "en": "Query Character's Current Movement SPD"
@@ -32297,7 +32297,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Dictionary.Set_or_Add_Key_Value_Pairs_to_Dictionary",
+      "Identifier": "Execution.Dictionary.Set_Value",
       "ID": 948,
       "InGameName": {
         "en": "Set or Add Key Value Pairs to Dictionary"
@@ -33425,7 +33425,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Dictionary.Query_Dictionary_Value_by_Key",
+      "Identifier": "Query.Dictionary.Get_Value",
       "ID": 1158,
       "InGameName": {
         "en": "Query Dictionary Value by Key"
@@ -34142,7 +34142,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Dictionary.Remove_Key_Value_Pairs_from_Dictionary_by_Key",
+      "Identifier": "Execution.Dictionary.Remove_By_Key",
       "ID": 1298,
       "InGameName": {
         "en": "Remove Key Value Pairs from Dictionary by Key"
@@ -34857,7 +34857,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Dictionary.Query_If_Dictionary_Contains_Specific_Key",
+      "Identifier": "Query.Dictionary.Has_Key",
       "ID": 1368,
       "InGameName": {
         "en": "Query If Dictionary Contains Specific Key"
@@ -35574,7 +35574,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Dictionary.Query_If_Dictionary_Contains_Specific_Value",
+      "Identifier": "Query.Dictionary.Has_Value",
       "ID": 1438,
       "InGameName": {
         "en": "Query If Dictionary Contains Specific Value"
@@ -35976,7 +35976,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Dictionary.Get_List_of_Keys_from_Dictionary",
+      "Identifier": "Query.Dictionary.Get_Keys",
       "ID": 1508,
       "InGameName": {
         "en": "Get List of Keys from Dictionary"
@@ -36682,7 +36682,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Dictionary.Get_List_of_Values_from_Dictionary",
+      "Identifier": "Query.Dictionary.Get_Values",
       "ID": 1578,
       "InGameName": {
         "en": "Get List of Values from Dictionary"
@@ -37073,7 +37073,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Dictionary.Query_Dictionary_s_Length",
+      "Identifier": "Query.Dictionary.Get_Length",
       "ID": 1648,
       "InGameName": {
         "en": "Query Dictionary's Length"
@@ -37779,7 +37779,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Dictionary.Clear_Dictionary",
+      "Identifier": "Execution.Dictionary.Clear",
       "ID": 1718,
       "InGameName": {
         "en": "Clear Dictionary"
@@ -38483,7 +38483,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Dictionary.Assembly_Dictionary",
+      "Identifier": "Arithmetic.Dictionary.Assemble_Dictionary",
       "ID": 1788,
       "InGameName": {
         "en": "Assembly Dictionary"
@@ -40289,7 +40289,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Dictionary.Sort_Dictionary_by_Key",
+      "Identifier": "Execution.Dictionary.Sort_By_Key",
       "ID": 1928,
       "InGameName": {
         "en": "Sort Dictionary by Key"
@@ -40400,7 +40400,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Dictionary.Sort_Dictionary_by_Value",
+      "Identifier": "Execution.Dictionary.Sort_By_Value",
       "ID": 1938,
       "InGameName": {
         "en": "Sort Dictionary by Value"
@@ -40531,7 +40531,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Variable.Query_Custom_Variable_Snapshot",
+      "Identifier": "Query.Custom_Variable.Get_Snapshot",
       "ID": 3360,
       "InGameName": {
         "en": "Query Custom Variable Snapshot"
@@ -41326,7 +41326,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Trigger.When_Calling_GM_This_Node_is_Hidden_Externally",
+      "Identifier": "Hidden.Trigger.On_GM_Call",
       "ID": 100000,
       "InGameName": {
         "en": "When Calling GM (This Node is Hidden Externally)"
@@ -41409,7 +41409,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Others.Port_Client.Node_Graph_End_Boolean",
+      "Identifier": "Others.Port_Client.Graph_End_Bool",
       "ID": 200000,
       "KernelID": 0,
       "InGameName": {
@@ -41449,7 +41449,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Logical_AND_Operation",
+      "Identifier": "Arithmetic.Math_Client.And",
       "ID": 200001,
       "KernelID": 1,
       "InGameName": {
@@ -41500,7 +41500,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Logical_OR_Operation",
+      "Identifier": "Arithmetic.Math_Client.Or",
       "ID": 200002,
       "KernelID": 2,
       "InGameName": {
@@ -41551,7 +41551,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Logical_NOT_Operation",
+      "Identifier": "Arithmetic.Math_Client.Not",
       "ID": 200003,
       "KernelID": 3,
       "InGameName": {
@@ -41591,7 +41591,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Logical_XOR_Operation",
+      "Identifier": "Arithmetic.Math_Client.Xor",
       "ID": 200004,
       "KernelID": 4,
       "InGameName": {
@@ -41642,7 +41642,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.General_Client.Enumeration_Match",
+      "Identifier": "Arithmetic.General_Client.Enum_Match",
       "ID": 200005,
       "InGameName": {
         "en": "Enumeration Match"
@@ -42168,7 +42168,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Less_Than_or_Equal_To",
+      "Identifier": "Arithmetic.Math_Client.Less_Equal",
       "ID": 200009,
       "InGameName": {
         "en": "Less Than or Equal To"
@@ -42241,7 +42241,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Greater_Than_or_Equal_To",
+      "Identifier": "Arithmetic.Math_Client.Greater_Equal",
       "ID": 200010,
       "InGameName": {
         "en": "Greater Than or Equal To"
@@ -42314,7 +42314,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Addition",
+      "Identifier": "Arithmetic.Math_Client.Add",
       "ID": 200011,
       "InGameName": {
         "en": "Addition"
@@ -42387,7 +42387,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Subtraction",
+      "Identifier": "Arithmetic.Math_Client.Subtract",
       "ID": 200012,
       "InGameName": {
         "en": "Subtraction"
@@ -42460,7 +42460,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Multiplication",
+      "Identifier": "Arithmetic.Math_Client.Multiply",
       "ID": 200013,
       "InGameName": {
         "en": "Multiplication"
@@ -42533,7 +42533,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Division",
+      "Identifier": "Arithmetic.Math_Client.Divide",
       "ID": 200014,
       "InGameName": {
         "en": "Division"
@@ -42606,7 +42606,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Absolute_Value_Operation",
+      "Identifier": "Arithmetic.Math_Client.Abs",
       "ID": 200015,
       "InGameName": {
         "en": "Absolute Value Operation"
@@ -42657,7 +42657,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Variable_Client.Get_Custom_Variable",
+      "Identifier": "Query.Custom_Variable_Client.Get_Variable",
       "ID": 200016,
       "InGameName": {
         "en": "Get Custom Variable"
@@ -42804,7 +42804,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related_Client.Get_Corresponding_Value_From_List",
+      "Identifier": "Query.List_Related_Client.Get_At_Index",
       "ID": 200017,
       "InGameName": {
         "en": "Get Corresponding Value From List"
@@ -42901,7 +42901,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related_Client.Get_List_Length",
+      "Identifier": "Query.List_Related_Client.Get_Length",
       "ID": 200018,
       "InGameName": {
         "en": "Get List Length"
@@ -42977,7 +42977,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related_Client.List_Includes_This_Value",
+      "Identifier": "Query.List_Related_Client.Contains",
       "ID": 200019,
       "InGameName": {
         "en": "List Includes This Value"
@@ -43074,7 +43074,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related_Client.Get_Maximum_Value_From_List",
+      "Identifier": "Query.List_Related_Client.Get_Max",
       "ID": 200020,
       "InGameName": {
         "en": "Get Maximum Value From List"
@@ -43125,7 +43125,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related_Client.Get_Minimum_Value_From_List",
+      "Identifier": "Query.List_Related_Client.Get_Min",
       "ID": 200021,
       "InGameName": {
         "en": "Get Minimum Value From List"
@@ -43176,7 +43176,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.General_Client.Data_Type_Conversion",
+      "Identifier": "Arithmetic.General_Client.Convert_Type",
       "ID": 200022,
       "InGameName": {
         "en": "Data Type Conversion"
@@ -43283,7 +43283,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Query_Entity_by_GUID",
+      "Identifier": "Query.Entity_Related_Client.Get_By_GUID",
       "ID": 200023,
       "KernelID": 1001,
       "InGameName": {
@@ -43323,7 +43323,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related_Client.Get_Character_Entity_of_Specified_Player",
+      "Identifier": "Query.Character_Related_Client.Get_Player_Character",
       "ID": 200024,
       "KernelID": 1002,
       "InGameName": {
@@ -43363,7 +43363,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related_Client.Get_Player_Entity_to_Which_the_Character_Belongs",
+      "Identifier": "Query.Character_Related_Client.Get_Owner_Player",
       "ID": 200025,
       "KernelID": 1003,
       "InGameName": {
@@ -43403,7 +43403,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related_Client.Get_List_of_Player_Entities_on_the_Field",
+      "Identifier": "Query.Character_Related_Client.Get_All_Players",
       "ID": 200026,
       "KernelID": 1004,
       "InGameName": {
@@ -43432,7 +43432,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related_Client.Query_GUID_by_Entity",
+      "Identifier": "Query.Character_Related_Client.Get_GUID",
       "ID": 200027,
       "KernelID": 1005,
       "InGameName": {
@@ -43472,7 +43472,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Preset_Status_Client.Get_Preset_Status",
+      "Identifier": "Query.Preset_Status_Client.Get_Status",
       "ID": 200028,
       "KernelID": 1006,
       "InGameName": {
@@ -43523,7 +43523,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Faction_Related_Client.Query_Entity_Faction",
+      "Identifier": "Query.Faction_Related_Client.Get_Faction",
       "ID": 200029,
       "KernelID": 1007,
       "InGameName": {
@@ -43563,7 +43563,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Get_Entity_Location",
+      "Identifier": "Query.Entity_Related_Client.Get_Location",
       "ID": 200030,
       "KernelID": 1008,
       "InGameName": {
@@ -43603,7 +43603,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Get_Entity_Rotation",
+      "Identifier": "Query.Entity_Related_Client.Get_Rotation",
       "ID": 200031,
       "KernelID": 1009,
       "InGameName": {
@@ -43643,7 +43643,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Get_Random_Number",
+      "Identifier": "Arithmetic.Math_Client.Random",
       "ID": 200032,
       "InGameName": {
         "en": "Get Random Number"
@@ -43705,7 +43705,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Get_Self_Entity",
+      "Identifier": "Query.Entity_Related_Client.Get_Self",
       "ID": 200033,
       "KernelID": 1013,
       "InGameName": {
@@ -43734,7 +43734,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Get_Target_Entity",
+      "Identifier": "Query.Entity_Related_Client.Get_Target",
       "ID": 200034,
       "KernelID": 1014,
       "InGameName": {
@@ -43763,7 +43763,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Get_Unit_Attack_Target",
+      "Identifier": "Query.Entity_Related_Client.Get_Attack_Target",
       "ID": 200035,
       "KernelID": 1015,
       "InGameName": {
@@ -43803,7 +43803,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Query_Client.Get_Current_Camera_Template",
+      "Identifier": "Hidden.Query_Client.Get_Camera_Template",
       "ID": 200036,
       "KernelID": 1016,
       "InGameName": {
@@ -43832,7 +43832,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related_Client.Query_If_Self_Is_in_Combat",
+      "Identifier": "Query.Character_Related_Client.Is_In_Combat",
       "ID": 200037,
       "KernelID": 1017,
       "InGameName": {
@@ -43861,7 +43861,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Play_Timed_Effects",
+      "Identifier": "Execution.Character_Skill_Client.Play_Timed_FX",
       "ID": 200038,
       "KernelID": 2000,
       "InGameName": {
@@ -43954,7 +43954,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Notify_Server_Node_Graph",
+      "Identifier": "Execution.Character_Skill_Client.Notify_Server",
       "ID": 200039,
       "KernelID": 2000,
       "InGameName": {
@@ -44014,7 +44014,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Player_Turning",
+      "Identifier": "Execution.Character_Skill_Client.Turn_Player",
       "ID": 200040,
       "KernelID": 2000,
       "InGameName": {
@@ -44052,7 +44052,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Set_Own_Attack_Target",
+      "Identifier": "Execution.Character_Skill_Client.Set_Target",
       "ID": 200041,
       "KernelID": 2000,
       "InGameName": {
@@ -44101,7 +44101,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Others.Port_Client.Node_Graph_Begins",
+      "Identifier": "Others.Port_Client.Graph_Start",
       "ID": 200042,
       "KernelID": 2001,
       "InGameName": {
@@ -44118,7 +44118,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Filter_Entity_List_Within_Spherical_Range",
+      "Identifier": "Query.Entity_Related_Client.Filter_Sphere",
       "ID": 200043,
       "KernelID": 1019,
       "InGameName": {
@@ -44191,7 +44191,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Filter_Entity_List_Within_Square_Range",
+      "Identifier": "Query.Entity_Related_Client.Filter_Square",
       "ID": 200044,
       "KernelID": 1018,
       "InGameName": {
@@ -44286,7 +44286,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Get_Entity_s_Type",
+      "Identifier": "Query.Entity_Related_Client.Get_Type",
       "ID": 200045,
       "KernelID": 1020,
       "InGameName": {
@@ -44326,7 +44326,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Query_Client.Get_Camera_Orientation",
+      "Identifier": "Hidden.Query_Client.Get_Camera_Rotation",
       "ID": 200046,
       "KernelID": 1021,
       "InGameName": {
@@ -44355,7 +44355,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Get_Target_Attachment_Point_Location",
+      "Identifier": "Query.Entity_Related_Client.Get_Socket_Loc",
       "ID": 200047,
       "KernelID": 1022,
       "InGameName": {
@@ -44406,7 +44406,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Get_Target_Attachment_Point_Rotation",
+      "Identifier": "Query.Entity_Related_Client.Get_Socket_Rot",
       "ID": 200048,
       "KernelID": 1023,
       "InGameName": {
@@ -44457,7 +44457,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.List_Client.Assembly_List",
+      "Identifier": "Arithmetic.List_Client.Assemble_List",
       "ID": 200049,
       "InGameName": {
         "en": "Assembly List"
@@ -44653,7 +44653,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related_Client.Get_Entity_Type_List",
+      "Identifier": "Query.List_Related_Client.Get_Entity_Types",
       "ID": 200050,
       "KernelID": 1031,
       "InGameName": {
@@ -44803,7 +44803,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Hitbox_at_Specific_Location",
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Hitbox_Loc",
       "ID": 200051,
       "KernelID": 2000,
       "InGameName": {
@@ -45347,7 +45347,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Fixed_Point_Projectile_Launch",
+      "Identifier": "Execution.Character_Skill_Client.Launch_Projectile",
       "ID": 200052,
       "KernelID": 2000,
       "InGameName": {
@@ -45429,7 +45429,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Fixed_Point_Displacement",
+      "Identifier": "Execution.Character_Skill_Client.Move_To_Point",
       "ID": 200053,
       "KernelID": 2000,
       "InGameName": {
@@ -45511,7 +45511,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Traverse_Entity_List",
+      "Identifier": "Execution.Character_Skill_Client.For_Each_Entity",
       "ID": 200055,
       "KernelID": 2000,
       "InGameName": {
@@ -45560,7 +45560,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Control.General_Client.Double_Branch",
+      "Identifier": "Control.General_Client.Branch",
       "ID": 200056,
       "KernelID": 2000,
       "InGameName": {
@@ -45598,7 +45598,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Add_Unit_Status",
+      "Identifier": "Execution.Character_Skill_Client.Add_Status",
       "ID": 200057,
       "KernelID": 2000,
       "InGameName": {
@@ -45658,7 +45658,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Remove_Unit_Status",
+      "Identifier": "Execution.Character_Skill_Client.Remove_Status",
       "ID": 200058,
       "KernelID": 2000,
       "InGameName": {
@@ -45707,7 +45707,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Hitbox_at_Specified_Attachment_Point",
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Hitbox_Socket",
       "ID": 200059,
       "KernelID": 2000,
       "InGameName": {
@@ -46262,7 +46262,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Remove_Specified_Character_Disruptor_Device",
+      "Identifier": "Execution.Character_Skill_Client.Remove_Device",
       "ID": 200060,
       "KernelID": 2000,
       "InGameName": {
@@ -46300,7 +46300,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Modify_Attack_Weight",
+      "Identifier": "Execution.Character_Skill_Client.Modify_Weight",
       "ID": 200061,
       "KernelID": 2000,
       "InGameName": {
@@ -46349,7 +46349,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Camera_Orientation_Detection_Data",
+      "Identifier": "Execution.Character_Skill_Client.Get_Camera_Data",
       "ID": 200062,
       "KernelID": 2000,
       "InGameName": {
@@ -46442,7 +46442,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Dot_Product",
+      "Identifier": "Arithmetic.Math_Client.Vector_Dot",
       "ID": 200063,
       "KernelID": 131,
       "InGameName": {
@@ -46493,7 +46493,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Cross_Product",
+      "Identifier": "Arithmetic.Math_Client.Vector_Cross",
       "ID": 200064,
       "KernelID": 132,
       "InGameName": {
@@ -46544,7 +46544,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Split_3D_Vector",
+      "Identifier": "Arithmetic.Math_Client.Split_Vector",
       "ID": 200065,
       "KernelID": 133,
       "InGameName": {
@@ -46606,7 +46606,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Zoom",
+      "Identifier": "Arithmetic.Math_Client.Vector_Scale",
       "ID": 200066,
       "KernelID": 134,
       "InGameName": {
@@ -46657,7 +46657,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Angle",
+      "Identifier": "Arithmetic.Math_Client.Vector_Angle",
       "ID": 200067,
       "KernelID": 135,
       "InGameName": {
@@ -46708,7 +46708,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Rotation",
+      "Identifier": "Arithmetic.Math_Client.Vector_Rotate",
       "ID": 200068,
       "KernelID": 136,
       "InGameName": {
@@ -46759,7 +46759,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Modulo_Operation",
+      "Identifier": "Arithmetic.Math_Client.Vector_Length",
       "ID": 200069,
       "KernelID": 137,
       "InGameName": {
@@ -46799,7 +46799,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Create_3D_Vector",
+      "Identifier": "Arithmetic.Math_Client.Create_Vector",
       "ID": 200070,
       "KernelID": 1024,
       "InGameName": {
@@ -46861,7 +46861,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Addition",
+      "Identifier": "Arithmetic.Math_Client.Vector_Add",
       "ID": 200071,
       "KernelID": 34,
       "InGameName": {
@@ -46923,7 +46923,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Subtraction",
+      "Identifier": "Arithmetic.Math_Client.Vector_Subtract",
       "ID": 200072,
       "KernelID": 34,
       "InGameName": {
@@ -46985,7 +46985,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Direction_Vector_to_Rotation",
+      "Identifier": "Arithmetic.Math_Client.Vector_To_Rotation",
       "ID": 200073,
       "KernelID": 139,
       "InGameName": {
@@ -47036,7 +47036,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Orientation_to_Rotation",
+      "Identifier": "Arithmetic.Math_Client.Orientation_To_Rotation",
       "ID": 200074,
       "KernelID": 139,
       "InGameName": {
@@ -47275,7 +47275,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Unit_Tag_Client.Get_Entity_s_Unit_Tag_List",
+      "Identifier": "Query.Unit_Tag_Client.Get_Tags",
       "ID": 200077,
       "KernelID": 1035,
       "InGameName": {
@@ -47315,7 +47315,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Unit_Tag_Client.Get_Entity_List_by_Unit_Tag",
+      "Identifier": "Query.Unit_Tag_Client.Get_By_Tag",
       "ID": 200078,
       "KernelID": 1034,
       "InGameName": {
@@ -47355,7 +47355,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.General_Client.Finite_Loop",
+      "Identifier": "Execution.General_Client.For_Loop",
       "ID": 200079,
       "KernelID": 2000,
       "InGameName": {
@@ -47415,7 +47415,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.General_Client.Break_Loop",
+      "Identifier": "Execution.General_Client.Break",
       "ID": 200080,
       "KernelID": 2000,
       "InGameName": {
@@ -47441,7 +47441,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.General_Client.Set_Local_Variable",
+      "Identifier": "Execution.General_Client.Set_Local",
       "ID": 200081,
       "InGameName": {
         "en": "Set Local Variable"
@@ -47576,7 +47576,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.General_Client.Get_Local_Variable",
+      "Identifier": "Query.General_Client.Get_Local",
       "ID": 200082,
       "InGameName": {
         "en": "Get Local Variable"
@@ -47702,7 +47702,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro_Client.Set_the_Aggro_Value_of_the_Specified_Entity",
+      "Identifier": "Execution.Custom_Aggro_Client.Set_Aggro",
       "ID": 200083,
       "KernelID": 2000,
       "InGameName": {
@@ -47762,7 +47762,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro_Client.Modify_the_Aggro_Value_of_the_Specified_Entity",
+      "Identifier": "Execution.Custom_Aggro_Client.Modify_Aggro",
       "ID": 200084,
       "KernelID": 2000,
       "InGameName": {
@@ -47822,7 +47822,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro_Client.Modify_the_Aggro_Value_of_the_Specified_Entity_Proportionally",
+      "Identifier": "Execution.Custom_Aggro_Client.Modify_Aggro_Ratio",
       "ID": 200085,
       "KernelID": 2000,
       "InGameName": {
@@ -47882,7 +47882,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro_Client.Transfer_the_Aggro_Value_of_the_Specified_Entity_Proportionally",
+      "Identifier": "Execution.Custom_Aggro_Client.Transfer_Aggro",
       "ID": 200086,
       "KernelID": 2000,
       "InGameName": {
@@ -47953,7 +47953,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro_Client.Clear_the_Aggro_List_of_the_Specified_Entity",
+      "Identifier": "Execution.Custom_Aggro_Client.Clear_Aggro",
       "ID": 200087,
       "KernelID": 2000,
       "InGameName": {
@@ -47991,7 +47991,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro_Client.Remove_Target_Entity_From_Aggro_List",
+      "Identifier": "Execution.Custom_Aggro_Client.Remove_Aggro",
       "ID": 200088,
       "KernelID": 2000,
       "InGameName": {
@@ -48040,7 +48040,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Custom_Aggro_Client.Taunt_Target",
+      "Identifier": "Execution.Custom_Aggro_Client.Taunt",
       "ID": 200089,
       "KernelID": 2000,
       "InGameName": {
@@ -48089,7 +48089,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro_Client.Get_the_Aggro_Target_of_the_Specified_Entity",
+      "Identifier": "Query.Custom_Aggro_Client.Get_Aggro_Target",
       "ID": 200090,
       "KernelID": 3000,
       "InGameName": {
@@ -48129,7 +48129,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro_Client.Get_the_Aggro_List_of_the_Specified_Entity",
+      "Identifier": "Query.Custom_Aggro_Client.Get_Aggro_List",
       "ID": 200091,
       "KernelID": 3001,
       "InGameName": {
@@ -48169,7 +48169,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Custom_Aggro_Client.Query_if_Specified_Entity_is_in_Combat",
+      "Identifier": "Query.Custom_Aggro_Client.Is_In_Combat",
       "ID": 200092,
       "KernelID": 3003,
       "InGameName": {
@@ -48209,7 +48209,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Faction_Related_Client.Query_If_Faction_Is_Hostile",
+      "Identifier": "Query.Faction_Related_Client.Is_Hostile",
       "ID": 200093,
       "KernelID": 1037,
       "InGameName": {
@@ -48260,7 +48260,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Sine_Function",
+      "Identifier": "Arithmetic.Math_Client.Sin",
       "ID": 200094,
       "KernelID": 35,
       "InGameName": {
@@ -48311,7 +48311,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Cosine_Function",
+      "Identifier": "Arithmetic.Math_Client.Cos",
       "ID": 200095,
       "KernelID": 35,
       "InGameName": {
@@ -48362,7 +48362,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Tangent_Function",
+      "Identifier": "Arithmetic.Math_Client.Tan",
       "ID": 200096,
       "KernelID": 35,
       "InGameName": {
@@ -48413,7 +48413,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Arcsine_Function",
+      "Identifier": "Arithmetic.Math_Client.Asin",
       "ID": 200097,
       "KernelID": 35,
       "InGameName": {
@@ -48464,7 +48464,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Arccosine_Function",
+      "Identifier": "Arithmetic.Math_Client.Acos",
       "ID": 200098,
       "KernelID": 35,
       "InGameName": {
@@ -48515,7 +48515,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Arctangent_Function",
+      "Identifier": "Arithmetic.Math_Client.Atan",
       "ID": 200099,
       "KernelID": 35,
       "InGameName": {
@@ -48566,7 +48566,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client._3D_Vector_Normalization",
+      "Identifier": "Arithmetic.Math_Client.Vector_Normalize",
       "ID": 200100,
       "KernelID": 138,
       "InGameName": {
@@ -48606,7 +48606,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Radians_to_Degrees",
+      "Identifier": "Arithmetic.Math_Client.Rad_To_Deg",
       "ID": 200101,
       "KernelID": 35,
       "InGameName": {
@@ -48657,7 +48657,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Math_Client.Degrees_to_Radians",
+      "Identifier": "Arithmetic.Math_Client.Deg_To_Rad",
       "ID": 200102,
       "KernelID": 35,
       "InGameName": {
@@ -48708,7 +48708,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Entity_Related_Client.Query_If_Entity_Is_on_the_Field",
+      "Identifier": "Query.Entity_Related_Client.Is_Active",
       "ID": 200103,
       "KernelID": 1038,
       "InGameName": {
@@ -48748,7 +48748,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Other_Client.Node_Graph_Ends",
+      "Identifier": "Hidden.Other_Client.Graph_End",
       "ID": 200104,
       "KernelID": 0,
       "InGameName": {
@@ -48788,7 +48788,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Player_Turns_to_Face_Set_Direction",
+      "Identifier": "Execution.Character_Skill_Client.Turn_To_Face",
       "ID": 200105,
       "KernelID": 2000,
       "InGameName": {
@@ -48826,7 +48826,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Reset_Skill_Target",
+      "Identifier": "Execution.Character_Skill_Client.Reset_Target",
       "ID": 200106,
       "KernelID": 2000,
       "InGameName": {
@@ -48852,7 +48852,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Trigger_Client.Get_All_Entities_Within_the_Collision_Trigger",
+      "Identifier": "Query.Trigger_Client.Get_Overlapping_Entities",
       "ID": 200107,
       "KernelID": 1046,
       "InGameName": {
@@ -48903,7 +48903,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Force_Exit_Aiming_State",
+      "Identifier": "Execution.Character_Skill_Client.Exit_Aiming",
       "ID": 200108,
       "KernelID": 2000,
       "InGameName": {
@@ -48929,7 +48929,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Ray_Client.Get_Ray_Detection_Result",
+      "Identifier": "Query.Ray_Client.Get_Ray_Result",
       "ID": 200109,
       "KernelID": 1047,
       "InGameName": {
@@ -49046,7 +49046,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.List_Related_Client.Get_Ray_Filter_Type_List",
+      "Identifier": "Query.List_Related_Client.Get_Ray_Filters",
       "ID": 200110,
       "KernelID": 1031,
       "InGameName": {
@@ -49196,7 +49196,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Spherical_Hitbox_at_Specific_Location",
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Loc",
       "ID": 200111,
       "KernelID": 2000,
       "InGameName": {
@@ -49740,7 +49740,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Rectangular_Hitbox_at_Specific_Location",
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Loc",
       "ID": 200112,
       "KernelID": 2000,
       "InGameName": {
@@ -50284,7 +50284,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_at_Specific_Location",
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Loc",
       "ID": 200113,
       "KernelID": 2000,
       "InGameName": {
@@ -50828,7 +50828,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Spherical_Hitbox_at_Specified_Attachment_Point",
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Socket",
       "ID": 200114,
       "KernelID": 2000,
       "InGameName": {
@@ -51383,7 +51383,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Rectangular_Hitbox_at_Specified_Attachment_Point",
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Socket",
       "ID": 200115,
       "KernelID": 2000,
       "InGameName": {
@@ -51938,7 +51938,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_at_Specified_Attachment_Point",
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Socket",
       "ID": 200116,
       "KernelID": 2000,
       "InGameName": {
@@ -52493,7 +52493,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Hidden.Execution_Client.Test_Send_Client_Signal",
+      "Identifier": "Hidden.Execution_Client.Test_Send_Signal",
       "ID": 200117,
       "KernelID": 2000,
       "InGameName": {
@@ -52731,7 +52731,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Scanning_Client.Get_Entity_Currently_Scanned_by_Scan_Component",
+      "Identifier": "Query.Scanning_Client.Get_Scanned_Entity",
       "ID": 200118,
       "KernelID": 1039,
       "InGameName": {
@@ -52771,7 +52771,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Scanning_Client.Get_All_Valid_Entities_That_Are_Scannable_by_Scan_Component",
+      "Identifier": "Query.Scanning_Client.Get_Scannable_Entities",
       "ID": 200119,
       "KernelID": 1040,
       "InGameName": {
@@ -52800,7 +52800,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Scanning_Client.Get_Entity_s_Scan_Status",
+      "Identifier": "Query.Scanning_Client.Get_Scan_Status",
       "ID": 200120,
       "KernelID": 1041,
       "InGameName": {
@@ -52840,7 +52840,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Scanning_Client.Get_Entity_s_Current_Active_Scan_Tags",
+      "Identifier": "Query.Scanning_Client.Get_Active_Tags",
       "ID": 200121,
       "KernelID": 1042,
       "InGameName": {
@@ -52880,7 +52880,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Others.Port_Client.Node_Graph_End_Integer",
+      "Identifier": "Others.Port_Client.Graph_End_Int",
       "ID": 200122,
       "KernelID": 0,
       "InGameName": {
@@ -52920,7 +52920,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Query.Character_Related_Client.Get_Player_Client_Input_Device_Type",
+      "Identifier": "Query.Character_Related_Client.Get_Input_Type",
       "ID": 200123,
       "KernelID": 3004,
       "InGameName": {
@@ -52949,7 +52949,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Signal_Client.Send_Signal_to_Server_Node_Graph",
+      "Identifier": "Execution.Signal_Client.Send_To_Server",
       "ID": 200124,
       "KernelID": 2000,
       "InGameName": {
@@ -52975,7 +52975,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Signal.Send_Signal",
+      "Identifier": "Execution.Signal.Send",
       "ID": 300000,
       "InGameName": {
         "en": "Send Signal"
@@ -53012,7 +53012,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Trigger.Signal.Monitor_Signal",
+      "Identifier": "Trigger.Signal.On_Signal",
       "ID": 300001,
       "InGameName": {
         "en": "Monitor Signal"
@@ -53078,7 +53078,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Structure.Assemble_Structure",
+      "Identifier": "Arithmetic.Structure.Assemble_Struct",
       "ID": 300002,
       "InGameName": {
         "en": "Assemble Structure"
@@ -53094,7 +53094,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Arithmetic.Structure.Split_Structure",
+      "Identifier": "Arithmetic.Structure.Split_Struct",
       "ID": 300003,
       "InGameName": {
         "en": "Split Structure"
@@ -53110,7 +53110,7 @@
       "Implementation": null
     },
     {
-      "Identifier": "Execution.Structure.Modify_Structure",
+      "Identifier": "Execution.Structure.Modify",
       "ID": 300004,
       "InGameName": {
         "en": "Modify Structure"
