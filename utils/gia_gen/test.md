@@ -1,8 +1,78 @@
-似乎已经有了一个清晰的框架, 但还有一些小问题:
-在子系统B中, Kernel_2000(或Type5) 的次序为0的引脚有一个额外字段对应外壳id, SendSignal的次序为1的引脚是名称.
-在子系统A中, 除了 SendSignal 和 ListenSignal 其余节点均不包含 Type5 的引脚. 但是子系统A的这两个节点的只有一个Type5是次序为0的引脚为名称. 它们使用的Kernel的id与外壳id相同(动态id). 能否分析出更多的机制?
+参考上面我们总结的结构, 以及我之前猜测的proto3结构, 重新规范每个字段的名称和作用, 有不清楚的地方, 或有一些猜测要询问我.
 
-此外, 一些隐藏引脚具有固定值, 可变类型节点也有一些引脚具有可变的固定值(随类型变化), 这如何处理?
+message GraphNode {
+  int32 nodeIndex = 1;                  // 1
+  NodeProperty shellId = 2;             // Node's Template's Id
+  optional NodeProperty kernelId = 3;   // Node's own Id(Null for generic nodes without types)
+  repeated NodePin pins = 4;            // connect to other nodes
+  float x = 5;                          // xpos
+  float y = 6;                          // ypos
+  optional Comments comments = 7;       // comments
+  optional PinIndex specialPin = 8;     // Only in client Nodes
+  optional int32 signalVersion = 9;     // Signals modified times
+  repeated GraphAffiliation.Info usingStruct = 10;
+}
+
+message NodeProperty {
+  enum Type {
+    Unknown = 0;
+    Server = 20000;
+    Filter = 20001;
+    Skill = 20002;
+  }
+
+  NodeGraph.Id.Class class = 1; // 10001
+  Type type = 2;                // 20000 / 20002
+  NodeGraph.Id.Kind kind = 3;   // 22000
+  int32 nodeId = 5;             // enum.ts/NodeId
+}
+
+message PinIndex {
+  enum Kind {
+    Unknown = 0;
+    InFlow = 1;
+    OutFlow = 2;
+    InParam = 3;
+    OutParam = 4;
+
+    SignalClient = 5;
+    Signal = 6;
+    Struct = 13;
+    ModifyStructKey = 14;
+    SetStructKey = 15;
+    SelectStructKeys = 16;
+  }
+  Kind kind = 1;
+  int32 index = 2; // index of the pin
+
+  message SignalId { int64 id = 1; }
+  optional SignalId signalSource = 100;
+}
+
+message NodePin {
+  PinIndex i1 = 1;
+  PinIndex i2 = 2;
+  VarBase value = 3;
+  int32 type = 4; // Be careful! VarType in Server and ClientVarType in Client
+  repeated NodeConnection connects = 5; // OutFlow or InParam
+  optional PinIndex signalPin = 6;
+  optional int32 compositePinUid = 7; // Only when calling composite node
+}
+
+message NodeConnection {
+  int32 id = 1;
+  PinIndex connect = 2;
+  PinIndex connect2 = 3;
+}
+
+message CompositePin {
+  PinIndex outerPin = 1;
+  int32 innerNodeId = 2;
+  PinIndex innerPin = 3;
+  PinIndex innerPin2 = 4;
+}
+
+
 
 
 composite 定义分为两个部分: 外壳定义与内部结构定义.

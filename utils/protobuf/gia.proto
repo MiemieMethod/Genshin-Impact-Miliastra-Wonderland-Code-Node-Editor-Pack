@@ -61,24 +61,6 @@ message CompositeDefWrapper {
   InnerWrapper inner = 1;
 }
 
-message Any {}
-
-// message SpecialPinType {
-//   enum Kind {
-//     Unk = 0;
-//     SignalClient = 5;
-//     Signal = 6;
-//     Struct = 13;
-//     ModifyStructKey = 14;
-//     SetStructKey = 15;
-//     SelectStructKeys = 16;
-//   }
-//   Kind kind = 1;
-//   optional int32 class = 2;
-//   message ClientNodeId { int32 id = 1; }
-//   oneof inner { ClientNodeId clientNodeId = 100; }
-// }
-
 message CompositeDef {
   message Id {
     NodeGraph.Id shellId = 1;
@@ -494,8 +476,8 @@ message ComplexValueStruct { // Map KV, Array Item, Struct Item
 
 message GraphNode {
   int32 nodeIndex = 1;                  // 1
-  NodeProperty shellId = 2;           // Node's Template's Id
-  optional NodeProperty kernelId = 3; // Node's own Id(Null for generic nodes without types)
+  NodeProperty shellId = 2;             // Node's Template's Id
+  optional NodeProperty kernelId = 3;   // Node's own Id(Null for generic nodes without types)
   repeated NodePin pins = 4;            // connect to other nodes
   float x = 5;                          // xpos
   float y = 6;                          // ypos
