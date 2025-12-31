@@ -6,6 +6,8 @@ import { parse, stringify } from "yaml";
 const read = (path: string) => readFileSync(import.meta.dirname + "/" + path).toString();
 const save = (path: string, data: {} | string) => writeFileSync(import.meta.dirname + "/" + path, typeof data === "string" ? data : JSON.stringify(data, null, 2));
 
+import DFT_VAL from "../extracting_nodes/dist/node_pins_default_vals.json" with {type: "json"};
+
 const TypeMap = {
   "string": "Str",
   "bool": "Bol",
@@ -22,7 +24,19 @@ const TypeMap = {
   "componentId": "Pfb",
 };
 
+const dft_map = new Map(DFT_VAL.map(x => [x.node, x]));
+
 data.Nodes.forEach(node => {
+  if (node.System === "Client" && dft_map.has(node.ID)) {
+    const v = dft_map.get(node.ID)!;
+    const pin = node.DataPins.find(x => x.ShellIndex === v.pin)!;
+    assert(pin.Type === v.type.replace(/\d+/, x => data.Enums.find(y => y.System === "Client" && y.ID === parseInt(x))!.Identifier));
+    pin.Visibility = "Hidden";
+    pin.Connectability = "False";
+    pin.Editability = "False";
+  }
+  return;
+
   // 确实有正确的引脚
   assert(node.DataPins.filter(x => x.Direction === "In").every((x, i) => x.ShellIndex === i));
   assert(node.DataPins.filter(x => x.Direction === "Out").every((x, i) => x.ShellIndex === i));
@@ -33,23 +47,25 @@ data.Nodes.forEach(node => {
   const ref = REF.find(x => x.id === node.__ref_id)!;
   assert(ref !== undefined);
 
-  const refOut = ref.ports.filter(p => p.kind === "data-out");
-  if (refOut.length === 0) return;
-  if (node.DataPins.filter(x => x.Direction === "Out").length !== refOut.length) {
+  const refIn = ref.ports.filter(p => p.kind === "data-in");
+  if (refIn.length === 0) return;
+  if (node.DataPins.filter(x => x.Direction === "In").length !== refIn.length) {
     console.log(
-      "Output Pin Count is not Equal:",
+      "Input Pin Count is not Equal:",
       node.Identifier,
-      node.DataPins.filter(x => x.Direction === "Out").length,
-      refOut.length
+      node.DataPins.filter(x => x.Direction === "In").length,
+      refIn.length
     );
-    node.__todo_set_out_pin = true;
+    node.__todo_set_in_pin = true;
     return;
   }
 
+  return;
+
   let warn: any[] = [];
   let isStrCfg = false;
-  node.DataPins.filter(x => x.Direction === "Out").forEach((pin, i) => {
-    const refp = refOut[i];
+  node.DataPins.filter(x => x.Direction === "In").forEach((pin, i) => {
+    const refp = refIn[i];
     assert(refp.kind === "data-out");
     const pat = TypeMap[refp.valueType];
     if (typeof pat === "string" ? pat === pin.Type : pat.test(pin.Type)) {
@@ -63,8 +79,8 @@ data.Nodes.forEach(node => {
   // if (warn.length === 1 && warn[0][1] < refOut.length - 1) console.log(warn); // not likely to be wrong 
   // if (warn.length === 1 && warn[0][1] === refOut.length - 1) console.log(warn); // manually checked
 
-  node.DataPins.filter(x => x.Direction === "Out").forEach((pin, i) => {
-    const refp = refOut[i];
+  node.DataPins.filter(x => x.Direction === "In").forEach((pin, i) => {
+    const refp = refIn[i];
     const identifier = refp.id.replace(/[A-Z]/g, x => "_" + x.toLowerCase());
     const nameCN = refp.label.trim();
     assert(nameCN.length > 0);
