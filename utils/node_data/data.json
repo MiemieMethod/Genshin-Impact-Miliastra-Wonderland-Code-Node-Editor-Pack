@@ -46016,7 +46016,7 @@
           "Placeholder": null,
           "ShellIndex": 4,
           "KernelIndex": 4,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47037,7 +47037,7 @@
         {
           "Identifier": "Input9",
           "Direction": "In",
-          "Type": "L<Vec>",
+          "Type": "Vec",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 9,
@@ -47196,7 +47196,7 @@
           "Placeholder": null,
           "ShellIndex": 23,
           "KernelIndex": 23,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47224,12 +47224,12 @@
         {
           "Identifier": "Input26",
           "Direction": "In",
-          "Type": "Int",
+          "Type": "E<KBDT>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 26,
           "KernelIndex": 26,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47262,7 +47262,7 @@
           "Placeholder": null,
           "ShellIndex": 29,
           "KernelIndex": 29,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47273,7 +47273,7 @@
           "Placeholder": null,
           "ShellIndex": 30,
           "KernelIndex": 30,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47284,7 +47284,7 @@
           "Placeholder": null,
           "ShellIndex": 31,
           "KernelIndex": 31,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47328,7 +47328,7 @@
           "Placeholder": null,
           "ShellIndex": 35,
           "KernelIndex": 35,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47339,7 +47339,7 @@
           "Placeholder": null,
           "ShellIndex": 36,
           "KernelIndex": 36,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47350,7 +47350,7 @@
           "Placeholder": null,
           "ShellIndex": 37,
           "KernelIndex": 37,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -47857,7 +47857,7 @@
         {
           "Identifier": "Input0",
           "Direction": "In",
-          "Type": "E<TCON>",
+          "Type": "E<TARG>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 0,
@@ -47967,7 +47967,7 @@
         {
           "Identifier": "Input10",
           "Direction": "In",
-          "Type": "L<Vec>",
+          "Type": "Vec",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 10,
@@ -48126,7 +48126,7 @@
           "Placeholder": null,
           "ShellIndex": 24,
           "KernelIndex": 24,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -48159,7 +48159,7 @@
           "Placeholder": null,
           "ShellIndex": 27,
           "KernelIndex": 27,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -48192,7 +48192,7 @@
           "Placeholder": null,
           "ShellIndex": 30,
           "KernelIndex": 30,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -48203,7 +48203,7 @@
           "Placeholder": null,
           "ShellIndex": 31,
           "KernelIndex": 31,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -48214,7 +48214,7 @@
           "Placeholder": null,
           "ShellIndex": 32,
           "KernelIndex": 32,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -48258,7 +48258,7 @@
           "Placeholder": null,
           "ShellIndex": 36,
           "KernelIndex": 36,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -48269,7 +48269,7 @@
           "Placeholder": null,
           "ShellIndex": 37,
           "KernelIndex": 37,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -48280,7 +48280,7 @@
           "Placeholder": null,
           "ShellIndex": 38,
           "KernelIndex": 38,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -49313,7 +49313,7 @@
           "Placeholder": null,
           "ShellIndex": 2,
           "KernelIndex": 2,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -49324,7 +49324,7 @@
           "Placeholder": null,
           "ShellIndex": 3,
           "KernelIndex": 3,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -49335,7 +49335,7 @@
           "Placeholder": null,
           "ShellIndex": 4,
           "KernelIndex": 4,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -49346,7 +49346,7 @@
           "Placeholder": null,
           "ShellIndex": 5,
           "KernelIndex": 5,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -49357,7 +49357,7 @@
           "Placeholder": null,
           "ShellIndex": 6,
           "KernelIndex": 6,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -49379,7 +49379,7 @@
           "Placeholder": null,
           "ShellIndex": 8,
           "KernelIndex": 8,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51481,7 +51481,7 @@
         {
           "Identifier": "Input0",
           "Direction": "In",
-          "Type": "E<TCON>",
+          "Type": "E<TARG>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 0,
@@ -51574,13 +51574,13 @@
           "Placeholder": null,
           "ShellIndex": 8,
           "KernelIndex": 8,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
           "Identifier": "Input9",
           "Direction": "In",
-          "Type": "L<Vec>",
+          "Type": "Vec",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 9,
@@ -51596,7 +51596,7 @@
           "Placeholder": null,
           "ShellIndex": 10,
           "KernelIndex": 10,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51607,7 +51607,7 @@
           "Placeholder": null,
           "ShellIndex": 11,
           "KernelIndex": 11,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51618,7 +51618,7 @@
           "Placeholder": null,
           "ShellIndex": 12,
           "KernelIndex": 12,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51629,7 +51629,7 @@
           "Placeholder": null,
           "ShellIndex": 13,
           "KernelIndex": 13,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51640,18 +51640,18 @@
           "Placeholder": null,
           "ShellIndex": 14,
           "KernelIndex": 14,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
           "Identifier": "Input15",
           "Direction": "In",
-          "Type": "Flt",
+          "Type": "E<Unk>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 15,
           "KernelIndex": 15,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51739,7 +51739,7 @@
           "Placeholder": null,
           "ShellIndex": 23,
           "KernelIndex": 23,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51767,12 +51767,12 @@
         {
           "Identifier": "Input26",
           "Direction": "In",
-          "Type": "Int",
+          "Type": "E<KBDT>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 26,
           "KernelIndex": 26,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51805,7 +51805,7 @@
           "Placeholder": null,
           "ShellIndex": 29,
           "KernelIndex": 29,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51816,7 +51816,7 @@
           "Placeholder": null,
           "ShellIndex": 30,
           "KernelIndex": 30,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51827,7 +51827,7 @@
           "Placeholder": null,
           "ShellIndex": 31,
           "KernelIndex": 31,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51871,7 +51871,7 @@
           "Placeholder": null,
           "ShellIndex": 35,
           "KernelIndex": 35,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51882,7 +51882,7 @@
           "Placeholder": null,
           "ShellIndex": 36,
           "KernelIndex": 36,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -51893,7 +51893,7 @@
           "Placeholder": null,
           "ShellIndex": 37,
           "KernelIndex": 37,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52121,13 +52121,13 @@
           "Placeholder": null,
           "ShellIndex": 8,
           "KernelIndex": 8,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
           "Identifier": "Input9",
           "Direction": "In",
-          "Type": "L<Vec>",
+          "Type": "Vec",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 9,
@@ -52138,12 +52138,12 @@
         {
           "Identifier": "Input10",
           "Direction": "In",
-          "Type": "Bol",
+          "Type": "Flt",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 10,
           "KernelIndex": 10,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52154,7 +52154,7 @@
           "Placeholder": null,
           "ShellIndex": 11,
           "KernelIndex": 11,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52165,7 +52165,7 @@
           "Placeholder": null,
           "ShellIndex": 12,
           "KernelIndex": 12,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52176,7 +52176,7 @@
           "Placeholder": null,
           "ShellIndex": 13,
           "KernelIndex": 13,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52187,18 +52187,18 @@
           "Placeholder": null,
           "ShellIndex": 14,
           "KernelIndex": 14,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
           "Identifier": "Input15",
           "Direction": "In",
-          "Type": "Flt",
+          "Type": "E<SDIR>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 15,
           "KernelIndex": 15,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52286,7 +52286,7 @@
           "Placeholder": null,
           "ShellIndex": 23,
           "KernelIndex": 23,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52314,12 +52314,12 @@
         {
           "Identifier": "Input26",
           "Direction": "In",
-          "Type": "Int",
+          "Type": "E<KBDT>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 26,
           "KernelIndex": 26,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52352,7 +52352,7 @@
           "Placeholder": null,
           "ShellIndex": 29,
           "KernelIndex": 29,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52363,7 +52363,7 @@
           "Placeholder": null,
           "ShellIndex": 30,
           "KernelIndex": 30,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52374,7 +52374,7 @@
           "Placeholder": null,
           "ShellIndex": 31,
           "KernelIndex": 31,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52418,7 +52418,7 @@
           "Placeholder": null,
           "ShellIndex": 35,
           "KernelIndex": 35,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52429,7 +52429,7 @@
           "Placeholder": null,
           "ShellIndex": 36,
           "KernelIndex": 36,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52440,7 +52440,7 @@
           "Placeholder": null,
           "ShellIndex": 37,
           "KernelIndex": 37,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52575,7 +52575,7 @@
         {
           "Identifier": "Input0",
           "Direction": "In",
-          "Type": "E<TCON>",
+          "Type": "E<TARG>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 0,
@@ -52668,29 +52668,29 @@
           "Placeholder": null,
           "ShellIndex": 8,
           "KernelIndex": 8,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
           "Identifier": "Input9",
           "Direction": "In",
-          "Type": "L<Vec>",
+          "Type": "Vec",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 9,
           "KernelIndex": 9,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
           "Identifier": "Input10",
           "Direction": "In",
-          "Type": "Bol",
+          "Type": "Flt",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 10,
           "KernelIndex": 10,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52833,7 +52833,7 @@
           "Placeholder": null,
           "ShellIndex": 23,
           "KernelIndex": 23,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52861,12 +52861,12 @@
         {
           "Identifier": "Input26",
           "Direction": "In",
-          "Type": "Int",
+          "Type": "E<KBDT>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 26,
           "KernelIndex": 26,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52899,7 +52899,7 @@
           "Placeholder": null,
           "ShellIndex": 29,
           "KernelIndex": 29,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52910,7 +52910,7 @@
           "Placeholder": null,
           "ShellIndex": 30,
           "KernelIndex": 30,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52921,7 +52921,7 @@
           "Placeholder": null,
           "ShellIndex": 31,
           "KernelIndex": 31,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52965,7 +52965,7 @@
           "Placeholder": null,
           "ShellIndex": 35,
           "KernelIndex": 35,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52976,7 +52976,7 @@
           "Placeholder": null,
           "ShellIndex": 36,
           "KernelIndex": 36,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -52987,7 +52987,7 @@
           "Placeholder": null,
           "ShellIndex": 37,
           "KernelIndex": 37,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -53226,564 +53226,7 @@
           "Placeholder": null,
           "ShellIndex": 9,
           "KernelIndex": 9,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input10",
-          "Direction": "In",
-          "Type": "L<Vec>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 10,
-          "KernelIndex": 10,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input11",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 11,
-          "KernelIndex": 11,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input12",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 12,
-          "KernelIndex": 12,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input13",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 13,
-          "KernelIndex": 13,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input14",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 14,
-          "KernelIndex": 14,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input15",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 15,
-          "KernelIndex": 15,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input16",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 16,
-          "KernelIndex": 16,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input17",
-          "Direction": "In",
-          "Type": "E<ALCF>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 17,
-          "KernelIndex": 17,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input18",
-          "Direction": "In",
-          "Type": "L<Str>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 18,
-          "KernelIndex": 18,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input19",
-          "Direction": "In",
-          "Type": "E<ELEM>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 19,
-          "KernelIndex": 19,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input20",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 20,
-          "KernelIndex": 20,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input21",
-          "Direction": "In",
-          "Type": "E<HITX>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 21,
-          "KernelIndex": 21,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input22",
-          "Direction": "In",
-          "Type": "E<ATKX>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 22,
-          "KernelIndex": 22,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input23",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 23,
-          "KernelIndex": 23,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input24",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 24,
-          "KernelIndex": 24,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input25",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 25,
-          "KernelIndex": 25,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input26",
-          "Direction": "In",
-          "Type": "Int",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 26,
-          "KernelIndex": 26,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input27",
-          "Direction": "In",
-          "Type": "Int",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 27,
-          "KernelIndex": 27,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input28",
-          "Direction": "In",
-          "Type": "E<KBDT>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 28,
-          "KernelIndex": 28,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input29",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 29,
-          "KernelIndex": 29,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input30",
-          "Direction": "In",
-          "Type": "Str",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 30,
-          "KernelIndex": 30,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input31",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 31,
-          "KernelIndex": 31,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input32",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 32,
-          "KernelIndex": 32,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input33",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 33,
-          "KernelIndex": 33,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input34",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 34,
-          "KernelIndex": 34,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input35",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 35,
-          "KernelIndex": 35,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input36",
-          "Direction": "In",
-          "Type": "Str",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 36,
-          "KernelIndex": 36,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input37",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 37,
-          "KernelIndex": 37,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input38",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 38,
-          "KernelIndex": 38,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input39",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 39,
-          "KernelIndex": 39,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input40",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 40,
-          "KernelIndex": 40,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input41",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 41,
-          "KernelIndex": 41,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input42",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 42,
-          "KernelIndex": 42,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input43",
-          "Direction": "In",
-          "Type": "Int",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 43,
-          "KernelIndex": 43,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input44",
-          "Direction": "In",
-          "Type": "E<RTRA>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 44,
-          "KernelIndex": 44,
           "Visibility": "Hidden",
-          "Connectability": "False",
-          "Editability": "False"
-        },
-        {
-          "Identifier": "Input45",
-          "Direction": "In",
-          "Type": "E<HLVL>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 45,
-          "KernelIndex": 45,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input46",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 46,
-          "KernelIndex": 46,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input47",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 47,
-          "KernelIndex": 47,
-          "Visibility": "Display",
-          "Connectability": true
-        }
-      ],
-      "Implementation": null,
-      "__not_find_in_ref": true
-    },
-    {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Socket",
-      "ID": 200115,
-      "KernelID": 2000,
-      "InGameName": {
-        "en": "Trigger Rectangular Hitbox at Specified Attachment Point"
-      },
-      "Alias": [
-        "Trigger_Rectangular_Hitbox_at_Specified_Attachment_Point"
-      ],
-      "Type": "Fixed",
-      "System": "Client",
-      "Domain": "Execution",
-      "FlowPins": [
-        {
-          "Identifier": "FlowIn",
-          "Direction": "In"
-        },
-        {
-          "Identifier": "FlowOut",
-          "Direction": "Out"
-        }
-      ],
-      "DataPins": [
-        {
-          "Identifier": "Input0",
-          "Direction": "In",
-          "Type": "E<TCON>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 0,
-          "KernelIndex": 0,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input1",
-          "Direction": "In",
-          "Type": "Str",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 1,
-          "KernelIndex": 1,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input2",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 2,
-          "KernelIndex": 2,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input3",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 3,
-          "KernelIndex": 3,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input4",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 4,
-          "KernelIndex": 4,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input5",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 5,
-          "KernelIndex": 5,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input6",
-          "Direction": "In",
-          "Type": "L<E<13>>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 6,
-          "KernelIndex": 6,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input7",
-          "Direction": "In",
-          "Type": "E<TIGR>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 7,
-          "KernelIndex": 7,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input8",
-          "Direction": "In",
-          "Type": "Int",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 8,
-          "KernelIndex": 8,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input9",
-          "Direction": "In",
-          "Type": "E<ASHX>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 9,
-          "KernelIndex": 9,
-          "Visibility": "Display",
           "Connectability": true
         },
         {
@@ -53794,575 +53237,18 @@
           "Placeholder": null,
           "ShellIndex": 10,
           "KernelIndex": 10,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input11",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 11,
-          "KernelIndex": 11,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input12",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 12,
-          "KernelIndex": 12,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input13",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 13,
-          "KernelIndex": 13,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input14",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 14,
-          "KernelIndex": 14,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input15",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 15,
-          "KernelIndex": 15,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input16",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 16,
-          "KernelIndex": 16,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input17",
-          "Direction": "In",
-          "Type": "E<ALCF>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 17,
-          "KernelIndex": 17,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input18",
-          "Direction": "In",
-          "Type": "L<Str>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 18,
-          "KernelIndex": 18,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input19",
-          "Direction": "In",
-          "Type": "E<ELEM>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 19,
-          "KernelIndex": 19,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input20",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 20,
-          "KernelIndex": 20,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input21",
-          "Direction": "In",
-          "Type": "E<HITX>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 21,
-          "KernelIndex": 21,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input22",
-          "Direction": "In",
-          "Type": "E<ATKX>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 22,
-          "KernelIndex": 22,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input23",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 23,
-          "KernelIndex": 23,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input24",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 24,
-          "KernelIndex": 24,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input25",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 25,
-          "KernelIndex": 25,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input26",
-          "Direction": "In",
-          "Type": "Int",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 26,
-          "KernelIndex": 26,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input27",
-          "Direction": "In",
-          "Type": "Int",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 27,
-          "KernelIndex": 27,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input28",
-          "Direction": "In",
-          "Type": "E<KBDT>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 28,
-          "KernelIndex": 28,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input29",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 29,
-          "KernelIndex": 29,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input30",
-          "Direction": "In",
-          "Type": "Str",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 30,
-          "KernelIndex": 30,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input31",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 31,
-          "KernelIndex": 31,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input32",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 32,
-          "KernelIndex": 32,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input33",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 33,
-          "KernelIndex": 33,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input34",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 34,
-          "KernelIndex": 34,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input35",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 35,
-          "KernelIndex": 35,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input36",
-          "Direction": "In",
-          "Type": "Str",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 36,
-          "KernelIndex": 36,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input37",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 37,
-          "KernelIndex": 37,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input38",
-          "Direction": "In",
-          "Type": "Bol",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 38,
-          "KernelIndex": 38,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input39",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 39,
-          "KernelIndex": 39,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input40",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 40,
-          "KernelIndex": 40,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input41",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 41,
-          "KernelIndex": 41,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input42",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 42,
-          "KernelIndex": 42,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input43",
-          "Direction": "In",
-          "Type": "Int",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 43,
-          "KernelIndex": 43,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input44",
-          "Direction": "In",
-          "Type": "E<RTRA>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 44,
-          "KernelIndex": 44,
           "Visibility": "Hidden",
-          "Connectability": "False",
-          "Editability": "False"
-        },
-        {
-          "Identifier": "Input45",
-          "Direction": "In",
-          "Type": "E<HLVL>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 45,
-          "KernelIndex": 45,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input46",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 46,
-          "KernelIndex": 46,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input47",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 47,
-          "KernelIndex": 47,
-          "Visibility": "Display",
-          "Connectability": true
-        }
-      ],
-      "Implementation": null,
-      "__not_find_in_ref": true
-    },
-    {
-      "Identifier": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Socket",
-      "ID": 200116,
-      "KernelID": 2000,
-      "InGameName": {
-        "en": "Trigger Sector Hitbox at Specified Attachment Point"
-      },
-      "Alias": [
-        "Trigger_Sector_Hitbox_at_Specified_Attachment_Point"
-      ],
-      "Type": "Fixed",
-      "System": "Client",
-      "Domain": "Execution",
-      "FlowPins": [
-        {
-          "Identifier": "FlowIn",
-          "Direction": "In"
-        },
-        {
-          "Identifier": "FlowOut",
-          "Direction": "Out"
-        }
-      ],
-      "DataPins": [
-        {
-          "Identifier": "Input0",
-          "Direction": "In",
-          "Type": "E<TCON>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 0,
-          "KernelIndex": 0,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input1",
-          "Direction": "In",
-          "Type": "Str",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 1,
-          "KernelIndex": 1,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input2",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 2,
-          "KernelIndex": 2,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input3",
-          "Direction": "In",
-          "Type": "Vec",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 3,
-          "KernelIndex": 3,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input4",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 4,
-          "KernelIndex": 4,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input5",
-          "Direction": "In",
-          "Type": "Flt",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 5,
-          "KernelIndex": 5,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input6",
-          "Direction": "In",
-          "Type": "L<E<13>>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 6,
-          "KernelIndex": 6,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input7",
-          "Direction": "In",
-          "Type": "E<TIGR>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 7,
-          "KernelIndex": 7,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input8",
-          "Direction": "In",
-          "Type": "Int",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 8,
-          "KernelIndex": 8,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input9",
-          "Direction": "In",
-          "Type": "E<ASHX>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 9,
-          "KernelIndex": 9,
-          "Visibility": "Display",
-          "Connectability": true
-        },
-        {
-          "Identifier": "Input10",
-          "Direction": "In",
-          "Type": "L<Vec>",
-          "Label": null,
-          "Placeholder": null,
-          "ShellIndex": 10,
-          "KernelIndex": 10,
-          "Visibility": "Display",
           "Connectability": true
         },
         {
           "Identifier": "Input11",
           "Direction": "In",
-          "Type": "Bol",
+          "Type": "Flt",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 11,
           "KernelIndex": 11,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -54505,7 +53391,7 @@
           "Placeholder": null,
           "ShellIndex": 24,
           "KernelIndex": 24,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -54538,7 +53424,7 @@
           "Placeholder": null,
           "ShellIndex": 27,
           "KernelIndex": 27,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -54571,7 +53457,7 @@
           "Placeholder": null,
           "ShellIndex": 30,
           "KernelIndex": 30,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -54582,7 +53468,7 @@
           "Placeholder": null,
           "ShellIndex": 31,
           "KernelIndex": 31,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -54593,7 +53479,7 @@
           "Placeholder": null,
           "ShellIndex": 32,
           "KernelIndex": 32,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -54637,7 +53523,7 @@
           "Placeholder": null,
           "ShellIndex": 36,
           "KernelIndex": 36,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -54648,7 +53534,7 @@
           "Placeholder": null,
           "ShellIndex": 37,
           "KernelIndex": 37,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -54659,7 +53545,1121 @@
           "Placeholder": null,
           "ShellIndex": 38,
           "KernelIndex": 38,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input39",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 39,
+          "KernelIndex": 39,
           "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input40",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 40,
+          "KernelIndex": 40,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input41",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 41,
+          "KernelIndex": 41,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input42",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 42,
+          "KernelIndex": 42,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input43",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 43,
+          "KernelIndex": 43,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input44",
+          "Direction": "In",
+          "Type": "E<RTRA>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 44,
+          "KernelIndex": 44,
+          "Visibility": "Hidden",
+          "Connectability": "False",
+          "Editability": "False"
+        },
+        {
+          "Identifier": "Input45",
+          "Direction": "In",
+          "Type": "E<HLVL>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 45,
+          "KernelIndex": 45,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input46",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 46,
+          "KernelIndex": 46,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input47",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 47,
+          "KernelIndex": 47,
+          "Visibility": "Display",
+          "Connectability": true
+        }
+      ],
+      "Implementation": null,
+      "__not_find_in_ref": true
+    },
+    {
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Socket",
+      "ID": 200115,
+      "KernelID": 2000,
+      "InGameName": {
+        "en": "Trigger Rectangular Hitbox at Specified Attachment Point"
+      },
+      "Alias": [
+        "Trigger_Rectangular_Hitbox_at_Specified_Attachment_Point"
+      ],
+      "Type": "Fixed",
+      "System": "Client",
+      "Domain": "Execution",
+      "FlowPins": [
+        {
+          "Identifier": "FlowIn",
+          "Direction": "In"
+        },
+        {
+          "Identifier": "FlowOut",
+          "Direction": "Out"
+        }
+      ],
+      "DataPins": [
+        {
+          "Identifier": "Input0",
+          "Direction": "In",
+          "Type": "E<TARG>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "Str",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input2",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 2,
+          "KernelIndex": 2,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input3",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 3,
+          "KernelIndex": 3,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input4",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 4,
+          "KernelIndex": 4,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input5",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 5,
+          "KernelIndex": 5,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input6",
+          "Direction": "In",
+          "Type": "L<E<13>>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 6,
+          "KernelIndex": 6,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input7",
+          "Direction": "In",
+          "Type": "E<TIGR>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 7,
+          "KernelIndex": 7,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input8",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 8,
+          "KernelIndex": 8,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input9",
+          "Direction": "In",
+          "Type": "E<ASHX>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 9,
+          "KernelIndex": 9,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input10",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 10,
+          "KernelIndex": 10,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input11",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 11,
+          "KernelIndex": 11,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input12",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 12,
+          "KernelIndex": 12,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input13",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 13,
+          "KernelIndex": 13,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input14",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 14,
+          "KernelIndex": 14,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input15",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 15,
+          "KernelIndex": 15,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input16",
+          "Direction": "In",
+          "Type": "E<SDIR>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 16,
+          "KernelIndex": 16,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input17",
+          "Direction": "In",
+          "Type": "E<ALCF>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 17,
+          "KernelIndex": 17,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input18",
+          "Direction": "In",
+          "Type": "L<Str>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 18,
+          "KernelIndex": 18,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input19",
+          "Direction": "In",
+          "Type": "E<ELEM>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 19,
+          "KernelIndex": 19,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input20",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 20,
+          "KernelIndex": 20,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input21",
+          "Direction": "In",
+          "Type": "E<HITX>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 21,
+          "KernelIndex": 21,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input22",
+          "Direction": "In",
+          "Type": "E<ATKX>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 22,
+          "KernelIndex": 22,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input23",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 23,
+          "KernelIndex": 23,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input24",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 24,
+          "KernelIndex": 24,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input25",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 25,
+          "KernelIndex": 25,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input26",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 26,
+          "KernelIndex": 26,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input27",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 27,
+          "KernelIndex": 27,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input28",
+          "Direction": "In",
+          "Type": "E<KBDT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 28,
+          "KernelIndex": 28,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input29",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 29,
+          "KernelIndex": 29,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input30",
+          "Direction": "In",
+          "Type": "Str",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 30,
+          "KernelIndex": 30,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input31",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 31,
+          "KernelIndex": 31,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input32",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 32,
+          "KernelIndex": 32,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input33",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 33,
+          "KernelIndex": 33,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input34",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 34,
+          "KernelIndex": 34,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input35",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 35,
+          "KernelIndex": 35,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input36",
+          "Direction": "In",
+          "Type": "Str",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 36,
+          "KernelIndex": 36,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input37",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 37,
+          "KernelIndex": 37,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input38",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 38,
+          "KernelIndex": 38,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input39",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 39,
+          "KernelIndex": 39,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input40",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 40,
+          "KernelIndex": 40,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input41",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 41,
+          "KernelIndex": 41,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input42",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 42,
+          "KernelIndex": 42,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input43",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 43,
+          "KernelIndex": 43,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input44",
+          "Direction": "In",
+          "Type": "E<RTRA>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 44,
+          "KernelIndex": 44,
+          "Visibility": "Hidden",
+          "Connectability": "False",
+          "Editability": "False"
+        },
+        {
+          "Identifier": "Input45",
+          "Direction": "In",
+          "Type": "E<HLVL>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 45,
+          "KernelIndex": 45,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input46",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 46,
+          "KernelIndex": 46,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input47",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 47,
+          "KernelIndex": 47,
+          "Visibility": "Display",
+          "Connectability": true
+        }
+      ],
+      "Implementation": null,
+      "__not_find_in_ref": true
+    },
+    {
+      "Identifier": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Socket",
+      "ID": 200116,
+      "KernelID": 2000,
+      "InGameName": {
+        "en": "Trigger Sector Hitbox at Specified Attachment Point"
+      },
+      "Alias": [
+        "Trigger_Sector_Hitbox_at_Specified_Attachment_Point"
+      ],
+      "Type": "Fixed",
+      "System": "Client",
+      "Domain": "Execution",
+      "FlowPins": [
+        {
+          "Identifier": "FlowIn",
+          "Direction": "In"
+        },
+        {
+          "Identifier": "FlowOut",
+          "Direction": "Out"
+        }
+      ],
+      "DataPins": [
+        {
+          "Identifier": "Input0",
+          "Direction": "In",
+          "Type": "E<TARG>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input1",
+          "Direction": "In",
+          "Type": "Str",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input2",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 2,
+          "KernelIndex": 2,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input3",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 3,
+          "KernelIndex": 3,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input4",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 4,
+          "KernelIndex": 4,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input5",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 5,
+          "KernelIndex": 5,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input6",
+          "Direction": "In",
+          "Type": "L<E<13>>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 6,
+          "KernelIndex": 6,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input7",
+          "Direction": "In",
+          "Type": "E<TIGR>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 7,
+          "KernelIndex": 7,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input8",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 8,
+          "KernelIndex": 8,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input9",
+          "Direction": "In",
+          "Type": "E<ASHX>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 9,
+          "KernelIndex": 9,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input10",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 10,
+          "KernelIndex": 10,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input11",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 11,
+          "KernelIndex": 11,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input12",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 12,
+          "KernelIndex": 12,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input13",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 13,
+          "KernelIndex": 13,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input14",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 14,
+          "KernelIndex": 14,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input15",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 15,
+          "KernelIndex": 15,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input16",
+          "Direction": "In",
+          "Type": "E<SDIR>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 16,
+          "KernelIndex": 16,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input17",
+          "Direction": "In",
+          "Type": "E<ALCF>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 17,
+          "KernelIndex": 17,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input18",
+          "Direction": "In",
+          "Type": "L<Str>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 18,
+          "KernelIndex": 18,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input19",
+          "Direction": "In",
+          "Type": "E<ELEM>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 19,
+          "KernelIndex": 19,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input20",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 20,
+          "KernelIndex": 20,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input21",
+          "Direction": "In",
+          "Type": "E<HITX>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 21,
+          "KernelIndex": 21,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input22",
+          "Direction": "In",
+          "Type": "E<ATKX>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 22,
+          "KernelIndex": 22,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input23",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 23,
+          "KernelIndex": 23,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input24",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 24,
+          "KernelIndex": 24,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input25",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 25,
+          "KernelIndex": 25,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input26",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 26,
+          "KernelIndex": 26,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input27",
+          "Direction": "In",
+          "Type": "Int",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 27,
+          "KernelIndex": 27,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input28",
+          "Direction": "In",
+          "Type": "E<KBDT>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 28,
+          "KernelIndex": 28,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input29",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 29,
+          "KernelIndex": 29,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input30",
+          "Direction": "In",
+          "Type": "Str",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 30,
+          "KernelIndex": 30,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input31",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 31,
+          "KernelIndex": 31,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input32",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 32,
+          "KernelIndex": 32,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input33",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 33,
+          "KernelIndex": 33,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input34",
+          "Direction": "In",
+          "Type": "Vec",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 34,
+          "KernelIndex": 34,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input35",
+          "Direction": "In",
+          "Type": "Flt",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 35,
+          "KernelIndex": 35,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input36",
+          "Direction": "In",
+          "Type": "Str",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 36,
+          "KernelIndex": 36,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input37",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 37,
+          "KernelIndex": 37,
+          "Visibility": "Hidden",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Input38",
+          "Direction": "In",
+          "Type": "Bol",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 38,
+          "KernelIndex": 38,
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -56848,7 +56848,8 @@
         "en": "Trigger Restriction"
       },
       "Alias": [
-        "Trigger_Restriction"
+        "Trigger_Restriction",
+        "Trigger_Type"
       ],
       "Items": [
         {

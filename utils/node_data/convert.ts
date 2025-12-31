@@ -25,21 +25,6 @@ const TypeMap = {
   "componentId": "Pfb",
 };
 
-data.Nodes.filter(x => x.System === "Client").forEach(node => {
-  if (node.DataPins[0]?.Direction === "In" && node.DataPins[0].Type.startsWith("E<")) {
-    if (node.Domain === "Arithmetic") {
-      console.log("Hide Pin[0]", node.Identifier);
-      node.DataPins[0].Visibility = "Hidden";
-    }
-  }
-});
-
-save("data.json", data);
-
-exit(0);
-
-const dft_map = new Map(DFT_VAL.map(x => [x.node, x]));
-
 data.Nodes.forEach(node => {
   // 确实有正确的引脚
   assert(node.DataPins.filter(x => x.Direction === "In").every((x, i) => x.ShellIndex === i));
@@ -53,15 +38,17 @@ data.Nodes.forEach(node => {
 
   const refIn = ref.ports.filter(p => p.kind === "data-in");
   const realIn = node.DataPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden");
-  if (refIn.length === 0) return;
-  if (realIn.length > refIn.length) {
+  if (refIn.length === 0) {
+    if (realIn.length > 0) console.log(node.Identifier);
+  }
+  if (realIn.length !== refIn.length) {
     console.log(
       "Input Pin Count is not Equal:",
       node.Identifier,
       realIn.length,
       refIn.length
     );
-    console.log(...realIn.map((x, i) => [i, x.Type]).flat())
+    console.log(...realIn.map((x, i) => [i, x.Type, refIn[i]?.valueType]).flat())
     node.__todo_set_in_pin = true;
     return;
   }
