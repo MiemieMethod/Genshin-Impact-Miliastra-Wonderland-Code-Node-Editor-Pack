@@ -1,0 +1,673 @@
+Server:
+  - GNRC: 0
+    name: Generic
+    items: {}
+  - CMPR: 1
+    name: Comparison Operators
+    items:
+      eq: 100
+      lt: 101
+      lte: 102
+      gt: 103
+      gte: 104
+  - LOGC: 2
+    name: Logical Operators
+    items:
+      and: 200
+      or: 201
+      xor: 202
+      not: 203
+  - MATH: 3
+    name: Mathematical Operators
+    items:
+      add: 300
+      sub: 301
+      mul: 302
+      div: 303
+      mod: 304
+      pow: 305
+      max: 306
+      min: 307
+      log: 308
+  - SHAP: 4
+    name: Attack Shapes
+    items:
+      rect: 400
+      sphere: 401
+      sector: 402
+  - SURV: 5
+    name: Survival Status
+    items:
+      alive: 500
+      down: 501
+  - SORT: 6
+    name: Sorting Rules
+    items:
+      asc: 600
+      desc: 601
+  - ROND: 7
+    name: Rounding Logic
+    items:
+      up: 700
+      down: 701
+      nearest: 702
+      trunc: 703
+  - CAST: 8
+    name: Type Conversions
+    items:
+      i_to_b: 800
+      i_to_f: 801
+      i_to_s: 802
+      e_to_s: 803
+      g_to_s: 804
+      b_to_i: 805
+      b_to_s: 806
+      f_to_i: 807
+      f_to_s: 808
+      v3_to_s: 809
+      fact_to_s: 810
+  - MPPT: 9
+    name: Motion Path Point Types
+    items:
+      straight: 900
+      curve: 901
+  - MOTN: 10
+    name: Motion Types
+    items:
+      one_way: 1000
+      ping_pong: 1001
+      cyclic: 1002
+  - FOLO: 11
+    name: Follow Location Type
+    items:
+      full: 1100
+      loc_only: 1101
+      rot_only: 1102
+  - COOR: 12
+    name: Coordinate System Type
+    items:
+      relative: 1200
+      world: 1201
+  - ELMT: 13
+    name: Elemental Type
+    items:
+      none: 1300
+      pyro: 1301
+      hydro: 1302
+      anemo: 1303
+      electro: 1304
+      dendro: 1305
+      cryo: 1306
+      geo: 1307
+  - ENTY: 14
+    name: Entity Type
+    items:
+      stage: 1401
+      object: 1402
+      player: 1403
+      character: 1404
+      creation: 1405
+  - STAD: 16
+    name: Unit Status Addition Result
+    items:
+      fail_error: 1500
+      fail_paused: 1501
+      fail_limit: 1502
+      fail_stack: 1503
+      succ_new: 1504
+      succ_stack: 1505
+  - STRE: 17
+    name: Unit Status Removal Reason
+    items:
+      replaced: 1506
+      timeout: 1507
+      dispelled: 1508
+      expired: 1509
+      class_chg: 1510
+  - STRS: 18
+    name: Unit Status Removal Strategy
+    items:
+      all_same: 1540
+      fastest_loss: 1541
+  - RPSS: 19
+    name: Revive Point Selection Strategy
+    items:
+      nearest: 1601
+      latest: 1602
+      priority: 1603
+      random: 1604
+  - DWNR: 20
+    name: Cause of Being Down
+    items:
+      node_graph: 1605
+      normal: 1606
+      abnormal: 1607
+  - TRIG: 21
+    name: Trigonometric Functions
+    items:
+      cos: 1700
+      sin: 1701
+      tan: 1702
+      acos: 1703
+      asin: 1704
+      atan: 1705
+      rad_to_deg: 1706
+      deg_to_rad: 1707
+  - DDVT: 22
+    name: Disruptor Device Type
+    items:
+      force_field: 1801
+      ejector: 1802
+      tractor: 1803
+  - DDOR: 23
+    name: Disruptor Device Orientation
+    items:
+      follow_char: 1810
+      fixed: 1811
+  - UICG: 24
+    name: UI Control Group Status
+    items:
+      off: 1900
+      on: 1901
+      hidden: 1902
+  - TGTT: 25
+    name: Target Type
+    items:
+      none: 2000
+      ally: 2001
+      hostile: 2002
+      self: 2003
+      own: 2004
+      all: 2005
+      all_ex_self: 2006
+      ally_inc_self: 2007
+  - TRGR: 26
+    name: Trigger Restriction
+    items:
+      once: 2101
+      once_per_ent: 2102
+  - HITT: 27
+    name: Hit Type
+    items:
+      none: 2200
+      default: 2201
+      slash: 2202
+      smash: 2203
+      projectile: 2204
+      pierce: 2205
+  - ATKT: 28
+    name: Attack Type
+    items:
+      none: 2300
+      melee: 2301
+      ranged: 2302
+      default: 2303
+  - HITP: 29
+    name: Hit Performance Level
+    items:
+      default: 2400
+      none: 2401
+      arrow_normal: 2402
+      combo: 2403
+      normal: 2404
+      heavy: 2405
+      strong: 2406
+      ultimate: 2407
+      v_launch: 2408
+      s_launch: 2409
+      throw: 2410
+  - SLOT: 30
+    name: Skill Slot
+    items:
+      normal: 3100
+      e: 3111
+      q: 3112
+      r: 3113
+      t: 3114
+      custom_1: 3121
+      custom_2: 3122
+      custom_3: 3123
+      custom_4: 3124
+      custom_5: 3125
+      custom_6: 3126
+      custom_7: 3127
+      custom_8: 3128
+      custom_9: 3129
+      custom_10: 3130
+      custom_11: 3131
+      custom_12: 3132
+      custom_13: 3133
+      custom_14: 3134
+      custom_15: 3135
+  - SNDM: 31
+    name: Sound Attenuation Mode
+    items:
+      linear: 3400
+      fast_slow: 3401
+      slow_fast: 3402
+  - SLCR: 32
+    name: Select Completion Reason
+    items:
+      player: 3500
+      timeout: 3501
+      fixed_refresh: 3502
+      refresh_all: 3503
+      manual_close: 3504
+      node_close: 3505
+  - SETL: 33
+    name: Settlement Status
+    items:
+      tbc: 4100
+      victory: 4101
+      fail: 4102
+  - ITMC: 35
+    name: Reason for Item Change
+    items:
+      default: 0
+      destroy: 4900
+      discard: 4901
+      use: 4902
+      drop: 4903
+      trade: 4904
+      node_op: 4905
+      pickup: 4950
+  - LOOT: 36
+    name: Item Loot Type
+    items:
+      shared: 4350
+      individual: 4351
+  - DRFM: 37
+    name: Decision Refresh Mode
+    items:
+      none: 3510
+      partial: 3511
+      all: 3512
+  - REAC: 38
+    name: Elemental Reaction Type
+    items:
+      overloaded: 4701
+      vaporize: 4702
+      burning: 4703
+      wet: 4705
+      bloom: 4706
+      melt: 4707
+      frozen: 4708
+      electro_charged: 4712
+      superconduct: 4716
+      swirl_pyro: 4717
+      swirl_hydro: 4718
+      swirl_electro: 4719
+      swirl_cryo: 4720
+      crystal_pyro: 4727
+      crystal_hydro: 4728
+      crystal_electro: 4729
+      crystal_cryo: 4730
+      catalyze: 4733
+      aggravate: 4734
+      spread: 4735
+      burgeon: 4736
+      hyperbloom: 4737
+  - INTS: 39
+    name: Interrupt Status
+    items:
+      resistance: 5200
+      vulnerability: 5201
+      protected: 5202
+  - GMOD: 40
+    name: Gameplay Mode
+    items:
+      play: 5700
+      room: 5701
+      match: 5702
+  - IDVT: 41
+    name: Input Device Type
+    items:
+      kbm: 5800
+      controller: 5801
+      touch: 5802
+  - MOVE: 1042
+    name: Movement Mode
+    items:
+      instant: 5500
+      linear: 5501
+  - FMPR: 1043
+    name: Fixed Motion Parameter Type
+    items:
+      speed: 5600
+      time: 5601
+Client:
+  - GENE: -1
+    name: Generic
+    items: {}
+  - CPRS: 0
+    name: Comparison Operators
+    items:
+      eq: 100
+      lt: 101
+      lte: 102
+      gt: 103
+      gte: 104
+  - LOGI: 1
+    name: Logical Operators
+    items:
+      and: 200
+      or: 201
+      xor: 202
+      not: 203
+  - BMAT: 2
+    name: Basic Mathematical Operators
+    items:
+      add: 300
+      sub: 301
+      mul: 302
+      div: 303
+  - ASHX: 3
+    name: Attack Shapes
+    items:
+      rect: 400
+      sphere: 401
+      sector: 402
+  - SURX: 4
+    name: Survival Status
+    items:
+      alive: 500
+      down: 501
+  - SRTR: 5
+    name: Sorting Rules
+    items:
+      asc: 600
+      desc: 601
+  - ROUN: 6
+    name: Rounding Logic
+    items:
+      up: 700
+      down: 701
+      nearest: 702
+      trunc: 703
+  - CNVT: 7
+    name: Type Conversions
+    items:
+      i_to_b: 800
+      i_to_f: 801
+      i_to_s: 802
+      e_to_s: 803
+      g_to_s: 804
+      b_to_i: 805
+      b_to_s: 806
+      f_to_i: 807
+      f_to_s: 808
+      v3_to_s: 809
+      fact_to_s: 810
+  - CONV: 7
+    name: Type Conversions
+    items:
+      i_to_b: 800
+      i_to_f: 801
+      i_to_s: 802
+      e_to_s: 803
+      g_to_s: 804
+      b_to_i: 805
+      b_to_s: 806
+      f_to_i: 807
+      f_to_s: 808
+      v3_to_s: 809
+      fact_to_s: 810
+  - MPPX: 8
+    name: Motion Path Point Types
+    items:
+      straight: 900
+      curve: 901
+  - MTYP: 9
+    name: Motion Types
+    items:
+      one_way: 1000
+      ping_pong: 1001
+      cyclic: 1002
+  - FLOC: 10
+    name: Follow Location Type
+    items:
+      full: 1100
+      loc_only: 1101
+      rot_only: 1102
+  - CSYS: 11
+    name: Coordinate System Type
+    items:
+      relative: 1200
+      world: 1201
+  - ELEM: 12
+    name: Elemental Type
+    items:
+      none: 1300
+      pyro: 1301
+      hydro: 1302
+      anemo: 1303
+      electro: 1304
+      dendro: 1305
+      cryo: 1306
+      geo: 1307
+  - ETIT: 13
+    name: Entity Type
+    items:
+      stage: 1401
+      object: 1402
+      player: 1403
+      character: 1404
+      creation: 1405
+  - USAF: 14
+    name: Unit Status Addition Failure Reason
+    items:
+      fail_error: 1500
+      fail_paused: 1501
+      fail_limit: 1502
+      fail_stack: 1503
+  - USAS: 15
+    name: Unit Status Addition Success Type
+    items:
+      succ_new: 1504
+      succ_stack: 1505
+  - USTR: 16
+    name: Unit Status Removal Reason
+    items:
+      replaced: 1506
+      timeout: 1507
+      dispelled: 1508
+      expired: 1509
+      class_chg: 1510
+  - USTS: 17
+    name: Unit Status Removal Strategy
+    items:
+      all_same: 1540
+      fastest_loss: 1541
+  - RVPS: 18
+    name: Revive Point Selection Strategy
+    items:
+      nearest: 1601
+      latest: 1602
+      priority: 1603
+      random: 1604
+  - DWNX: 19
+    name: Cause of Being Down
+    items:
+      node_graph: 1605
+      normal: 1606
+      abnormal: 1607
+  - TFNX: 20
+    name: Trigonometric Functions
+    items:
+      cos: 1700
+      sin: 1701
+      tan: 1702
+      acos: 1703
+      asin: 1704
+      atan: 1705
+      rad_to_deg: 1706
+      deg_to_rad: 1707
+  - DISD: 21
+    name: Disruptor Device Type
+    items:
+      force_field: 1801
+      ejector: 1802
+      tractor: 1803
+  - DORI: 22
+    name: Disruptor Device Orientation
+    items:
+      follow_char: 1810
+      fixed: 1811
+  - UISG: 23
+    name: UI Control Group Status
+    items:
+      off: 1900
+      on: 1901
+      hidden: 1902
+  - TARG: 24
+    name: Target Type
+    items:
+      none: 2000
+      ally: 2001
+      hostile: 2002
+      self: 2003
+      own: 2004
+      all: 2005
+      all_ex_self: 2006
+      ally_inc_self: 2007
+  - QMAT: 25
+    name: Quick Mathematical Operators
+    items:
+      mod: 304
+      pow: 305
+      max: 306
+      min: 307
+      log: 308
+  - HITX: 26
+    name: Hit Type
+    items:
+      none: 2200
+      default: 2201
+      slash: 2202
+      smash: 2203
+      projectile: 2204
+      pierce: 2205
+  - ATKX: 27
+    name: Attack Type
+    items:
+      none: 2300
+      melee: 2301
+      ranged: 2302
+      default: 2303
+  - HPRL: 28
+    name: Hit Performance Level
+    items:
+      default: 2400
+      none: 2401
+      arrow_normal: 2402
+      combo: 2403
+      normal: 2404
+      heavy: 2405
+      strong: 2406
+      ultimate: 2407
+      v_launch: 2408
+      s_launch: 2409
+      throw: 2410
+  - TGSR: 29
+    name: Target Sorting Rules
+    items:
+      default: 1000001
+      random: 1000002
+      near_far: 1000003
+  - ALCF: 30
+    name: Attack Layer Config
+    items:
+      hurtbox_only: 2601
+      scene_only: 2602
+      all: 2604
+      self_collision: 2605
+  - KBDT: 31
+    name: Knockback Direction Type
+    items:
+      atk_to_hit: 2501
+      hitbox_dir: 2502
+      owner_to_hit: 2503
+      tangent: 2504
+      opposite: 2505
+      facing: 2506
+      inv_atk_to_hit: 2507
+  - ROTT: 32
+    name: Rotation Type
+    items:
+      target_input: 2900
+      input: 2901
+      target: 2902
+      target_camera: 2903
+      camera: 2904
+      input_target: 2905
+  - SDIR: 33
+    name: Sector Detection Direction
+    items:
+      inside_out: 450
+      clockwise: 451
+      counter_clockwise: 452
+  - RTRA: 35
+    name: Retracing Type
+    items:
+      self: 3200
+      owner: 3201
+      top_owner: 3202
+  - HLVL: 36
+    name: Hit Level
+    items:
+      none: 3900
+      tremor: 3901
+      light: 3902
+      knockback: 3903
+      launch: 3904
+  - EREA: 37
+    name: Elemental Reaction Type
+    items:
+      overloaded: 4701
+      vaporize: 4702
+      burning: 4703
+      wet: 4705
+      bloom: 4706
+      melt: 4707
+      frozen: 4708
+      electro_charged: 4712
+      superconduct: 4716
+      swirl_pyro: 4717
+      swirl_hydro: 4718
+      swirl_electro: 4719
+      swirl_cryo: 4720
+      crystal_pyro: 4727
+      crystal_hydro: 4728
+      crystal_electro: 4729
+      crystal_cryo: 4730
+      catalyze: 4733
+      aggravate: 4734
+      spread: 4735
+      burgeon: 4736
+      hyperbloom: 4737
+  - FRTY: 38
+    name: Filter Return Type
+    items:
+      bool: 1000010
+      int: 10000011
+  - TCON: 39
+    name: Target Type (For Camera Orientation Node)
+    items:
+      none: 2000
+      ally: 2001
+      hostile: 2002
+      own: 2004
+      all_ex_self: 2006
+  - SCAN: 40
+    name: Scan Status
+    items:
+      unusable: 5000
+      current: 5001
+      candidate: 5002
+      invalid: 5003
+  - IDVC: 41
+    name: Input Device Type
+    items:
+      kbm: 5800
+      controller: 5801
+      touch: 5802

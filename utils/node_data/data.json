@@ -10620,6 +10620,17 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true
+        },
+        {
+          "Identifier": "Output0",
+          "Direction": "Out",
+          "Type": "E<14>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 0,
+          "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
         }
       ],
       "Implementation": null,
@@ -11581,6 +11592,17 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
+          "Visibility": "Display",
+          "Connectability": true
+        },
+        {
+          "Identifier": "Output1",
+          "Direction": "Out",
+          "Type": "E<20>",
+          "Label": null,
+          "Placeholder": null,
+          "ShellIndex": 1,
+          "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true
         }
