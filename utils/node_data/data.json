@@ -4671,7 +4671,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         }
       ],
@@ -8033,7 +8033,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -8075,7 +8075,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -8117,7 +8117,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -8159,7 +8159,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -8201,7 +8201,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -8243,7 +8243,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -8285,7 +8285,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -8327,7 +8327,7 @@
           "Placeholder": null,
           "ShellIndex": 0,
           "KernelIndex": 0,
-          "Visibility": "Display",
+          "Visibility": "Hidden",
           "Connectability": true
         },
         {
@@ -31182,7 +31182,7 @@
         {
           "Identifier": "Input1",
           "Direction": "In",
-          "Type": "Ety",
+          "Type": "E<STPT>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 1,
@@ -31865,7 +31865,7 @@
       "Identifier": "Query.Unit_Status.Get_Status_Stacks",
       "ID": 746,
       "InGameName": {
-        "en": "Query Unit Status Stacks by Slot ID"
+        "en": "Execution.UI_Control_Group.Modify_Status"
       },
       "Alias": [
         "Query_Unit_Status_Stacks_by_Slot_ID"
