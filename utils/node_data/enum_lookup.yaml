@@ -671,3 +671,8 @@ Client:
       kbm: 5800
       controller: 5801
       touch: 5802
+  - TRGR: 1042
+    name: Trigger Restriction
+    items:
+      once: 2101
+      once_per_ent: 2102

@@ -24,12 +24,23 @@ const save = (path: string, data: {} | string) => writeFileSync(import.meta.dirn
 // 修改全部枚举类型为标准枚举
 data.Nodes.forEach(node => {
   node.DataPins.forEach(p => {
-    let q = /^E\<.+\>$/.exec(p.Type);
-    if (q) {
-      p.
+    if (/^E\<.+\>$/.test(p.Type)) {
+      if (p.Type === "E<1016>") {
+        p.Type = "Loc"
+        return;
+      }
+      if (p.Type === "E<1028>") {
+        p.Type = "Vss"
+        return;
+      }
+      const cc4 = data.Enums.find(x => x.System === node.System && x.ID === parseInt(p.Type.slice(2, -1)));
+      assert(cc4 !== undefined);
+      p.Type = `E<${cc4.Identifier}>`
     }
   })
 })
+
+save
 
 data.Nodes.forEach(node => {
   // 确实有正确的引脚

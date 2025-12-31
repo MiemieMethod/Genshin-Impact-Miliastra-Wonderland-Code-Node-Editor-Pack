@@ -55218,7 +55218,8 @@
             "en": "Trigger Only Once"
           },
           "Alias": [
-            "Trigger_Only_Once"
+            "Trigger_Only_Once",
+            "Trigger_Only_Once_per_Lifecycle"
           ]
         },
         {
@@ -59069,6 +59070,40 @@
           },
           "Alias": [
             "Touchscreen"
+          ]
+        }
+      ]
+    },
+    {
+      "Identifier": "TIGR",
+      "System": "Client",
+      "ID": 1042,
+      "InGameName": {
+        "en": "Trigger Restriction"
+      },
+      "Alias": [
+        "Trigger_Restriction"
+      ],
+      "Items": [
+        {
+          "Identifier": "once",
+          "ID": 2101,
+          "InGameName": {
+            "en": "Trigger Only Once"
+          },
+          "Alias": [
+            "Trigger_Only_Once",
+            "Trigger_Only_Once_per_Lifecycle"
+          ]
+        },
+        {
+          "Identifier": "once_per_ent",
+          "ID": 2102,
+          "InGameName": {
+            "en": "Trigger Only Once per Entity"
+          },
+          "Alias": [
+            "Trigger_Only_Once_per_Entity"
           ]
         }
       ]
