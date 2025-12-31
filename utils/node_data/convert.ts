@@ -22,7 +22,7 @@ const doc: Document = {
     BaseTypeID: item.BaseTypeID,
   } as any as TypeDef)),
   Nodes: (OLD as any).NODES_LIST.map((item: any) => ({
-    Identifier: `${item.Class}.${item.Family.replace(/^(IVXL)+\. /, "").replace(/\./g, "")}.${item.Name}`,
+    Identifier: `${item.Class}.${item.Family.replace(/^[IVXL]+\. /, "").replace(/\./g, "")}.${item.Name}`,
     ID: item.ID,
     KernelID: item.ConcreteID,
     InGameName: item.Translations,
