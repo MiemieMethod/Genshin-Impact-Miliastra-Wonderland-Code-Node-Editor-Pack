@@ -48436,8 +48436,8 @@
       "Domain": "Others",
       "FlowPins": [
         {
-          "Identifier": "FlowIn",
-          "Direction": "In"
+          "Identifier": "FlowOut",
+          "Direction": "Out"
         }
       ],
       "DataPins": [],
