@@ -481,7 +481,8 @@
       "Identifier": "Execution.Common_Node.Print",
       "ID": 1,
       "InGameName": {
-        "en": "Print String"
+        "en": "Print String",
+        "zh-Hans": "打印字符串"
       },
       "Alias": [
         "Print_String"
@@ -521,7 +522,8 @@
       "Identifier": "Control.General.Branch",
       "ID": 2,
       "InGameName": {
-        "en": "Double Branch"
+        "en": "Double Branch",
+        "zh-Hans": "双分支"
       },
       "Alias": [
         "Double_Branch"
@@ -568,7 +570,8 @@
       "Identifier": "Control.General.Switch",
       "ID": 3,
       "InGameName": {
-        "en": "Multiple Branches"
+        "en": "Multiple Branches",
+        "zh-Hans": "多分支"
       },
       "Alias": [
         "Multiple_Branches"
@@ -705,7 +708,8 @@
       "Identifier": "Execution.Common_Node.For_Loop",
       "ID": 5,
       "InGameName": {
-        "en": "Finite Loop"
+        "en": "Finite Loop",
+        "zh-Hans": "有限循环"
       },
       "Alias": [
         "Finite_Loop"
@@ -771,7 +775,8 @@
       "Identifier": "Execution.Common_Node.Break",
       "ID": 6,
       "InGameName": {
-        "en": "Break Loop"
+        "en": "Break Loop",
+        "zh-Hans": "跳出循环"
       },
       "Alias": [
         "Break_Loop"
@@ -797,7 +802,8 @@
       "Identifier": "Query.Math.Random_Float",
       "ID": 7,
       "InGameName": {
-        "en": "Get Random Floating Point Number"
+        "en": "Get Random Floating Point Number",
+        "zh-Hans": "获取随机浮点数"
       },
       "Alias": [
         "Get_Random_Floating_Point_Number"
@@ -854,7 +860,8 @@
       "Identifier": "Query.Math.Weighted_Random",
       "ID": 8,
       "InGameName": {
-        "en": "Weighted Random"
+        "en": "Weighted Random",
+        "zh-Hans": "权重随机"
       },
       "Alias": [
         "Weighted_Random"
@@ -898,7 +905,8 @@
       "Identifier": "Arithmetic.Math.Split_Vector",
       "ID": 9,
       "InGameName": {
-        "en": "Split 3D Vector"
+        "en": "Split 3D Vector",
+        "zh-Hans": "拆分三维向量"
       },
       "Alias": [
         "Split_3D_Vector"
@@ -968,7 +976,8 @@
       "Identifier": "Arithmetic.Math.Vector_Add",
       "ID": 10,
       "InGameName": {
-        "en": "3D Vector Addition"
+        "en": "3D Vector Addition",
+        "zh-Hans": "三维向量加法"
       },
       "Alias": [
         "_3D_Vector_Addition"
@@ -1025,7 +1034,8 @@
       "Identifier": "Arithmetic.Math.Vector_Subtract",
       "ID": 11,
       "InGameName": {
-        "en": "3D Vector Subtraction"
+        "en": "3D Vector Subtraction",
+        "zh-Hans": "三维向量减法"
       },
       "Alias": [
         "_3D_Vector_Subtraction"
@@ -1082,7 +1092,8 @@
       "Identifier": "Arithmetic.Math.Vector_Scale",
       "ID": 12,
       "InGameName": {
-        "en": "3D Vector Zoom"
+        "en": "3D Vector Zoom",
+        "zh-Hans": "三维向量缩放"
       },
       "Alias": [
         "_3D_Vector_Zoom"
@@ -1139,7 +1150,8 @@
       "Identifier": "Arithmetic.Math.Vector_Angle",
       "ID": 13,
       "InGameName": {
-        "en": "3D Vector Angle"
+        "en": "3D Vector Angle",
+        "zh-Hans": "三维向量夹角"
       },
       "Alias": [
         "_3D_Vector_Angle"
@@ -1196,7 +1208,8 @@
       "Identifier": "Arithmetic.General.Equal",
       "ID": 14,
       "InGameName": {
-        "en": "Equal"
+        "en": "Equal",
+        "zh-Hans": "是否相等"
       },
       "Alias": [
         "Equal"
@@ -1305,7 +1318,8 @@
       "Identifier": "Query.General.Get_Local",
       "ID": 18,
       "InGameName": {
-        "en": "Get Local Variable"
+        "en": "Get Local Variable",
+        "zh-Hans": "获取局部变量"
       },
       "Alias": [
         "Get_Local_Variable"
@@ -1464,7 +1478,8 @@
       "Identifier": "Execution.Common_Node.Set_Local",
       "ID": 19,
       "InGameName": {
-        "en": "Set Local Variable"
+        "en": "Set Local Variable",
+        "zh-Hans": "设置局部变量"
       },
       "Alias": [
         "Set_Local_Variable"
@@ -1619,7 +1634,8 @@
       "Identifier": "Execution.Custom_Variable.Set_Variable",
       "ID": 22,
       "InGameName": {
-        "en": "Set Custom Variable"
+        "en": "Set Custom Variable",
+        "zh-Hans": "设置自定义变量"
       },
       "Alias": [
         "Set_Custom_Variable"
@@ -2477,7 +2493,8 @@
       "Identifier": "Trigger.Custom_Variable.On_Variable_Change",
       "ID": 36,
       "InGameName": {
-        "en": "When Custom Variable Changes"
+        "en": "When Custom Variable Changes",
+        "zh-Hans": "自定义变量变化时"
       },
       "Alias": [
         "When_Custom_Variable_Changes"
@@ -3332,7 +3349,8 @@
       "Identifier": "Query.Custom_Variable.Get_Variable",
       "ID": 50,
       "InGameName": {
-        "en": "Get Custom Variable"
+        "en": "Get Custom Variable",
+        "zh-Hans": "获取自定义变量"
       },
       "Alias": [
         "Get_Custom_Variable"
@@ -4168,7 +4186,8 @@
       "Identifier": "Execution.Preset_Status.Set_Status",
       "ID": 66,
       "InGameName": {
-        "en": "Set Preset Status"
+        "en": "Set Preset Status",
+        "zh-Hans": "设置预设状态"
       },
       "Alias": [
         "Set_Preset_Status"
@@ -4234,7 +4253,8 @@
       "Identifier": "Trigger.Preset_Status.On_Status_Change",
       "ID": 67,
       "InGameName": {
-        "en": "When Preset Status Changes"
+        "en": "When Preset Status Changes",
+        "zh-Hans": "预设状态变化时"
       },
       "Alias": [
         "When_Preset_Status_Changes"
@@ -4322,7 +4342,8 @@
       "Identifier": "Query.Preset_Status.Get_Status",
       "ID": 68,
       "InGameName": {
-        "en": "Get Preset Status"
+        "en": "Get Preset Status",
+        "zh-Hans": "获取预设状态"
       },
       "Alias": [
         "Get_Preset_Status"
@@ -4379,7 +4400,8 @@
       "Identifier": "Execution.Entity_Related.Destroy_Entity",
       "ID": 69,
       "InGameName": {
-        "en": "Destroy Entity"
+        "en": "Destroy Entity",
+        "zh-Hans": "销毁实体"
       },
       "Alias": [
         "Destroy_Entity"
@@ -4419,7 +4441,8 @@
       "Identifier": "Execution.Entity_Related.Create_Entity",
       "ID": 70,
       "InGameName": {
-        "en": "Create Entity"
+        "en": "Create Entity",
+        "zh-Hans": "创建实体"
       },
       "Alias": [
         "Create_Entity"
@@ -4472,7 +4495,8 @@
       "Identifier": "Trigger.Entity_Related.On_Created",
       "ID": 71,
       "InGameName": {
-        "en": "When Entity Is Created"
+        "en": "When Entity Is Created",
+        "zh-Hans": "实体创建时"
       },
       "Alias": [
         "When_Entity_Is_Created"
@@ -4521,7 +4545,8 @@
       "Identifier": "Trigger.Entity_Related.On_Removed",
       "ID": 72,
       "InGameName": {
-        "en": "When Entity Is Removed/Destroyed"
+        "en": "When Entity Is Removed/Destroyed",
+        "zh-Hans": "实体移除/销毁时"
       },
       "Alias": [
         "When_Entity_Is_Removed_Destroyed"
@@ -4557,7 +4582,8 @@
       "Identifier": "Query.Entity_Related.Get_Self",
       "ID": 73,
       "InGameName": {
-        "en": "Get Self Entity"
+        "en": "Get Self Entity",
+        "zh-Hans": "获取自身实体"
       },
       "Alias": [
         "Get_Self_Entity"
@@ -4588,7 +4614,8 @@
       "Identifier": "Arithmetic.Math.Vector_Normalize",
       "ID": 74,
       "InGameName": {
-        "en": "3D Vector Normalization"
+        "en": "3D Vector Normalization",
+        "zh-Hans": "三维向量归一化"
       },
       "Alias": [
         "_3D_Vector_Normalization"
@@ -4632,7 +4659,8 @@
       "Identifier": "Query.Entity_Related.Get_By_GUID",
       "ID": 75,
       "InGameName": {
-        "en": "Query Entity by GUID"
+        "en": "Query Entity by GUID",
+        "zh-Hans": "以GUID查询实体"
       },
       "Alias": [
         "Query_Entity_by_GUID"
@@ -4676,7 +4704,8 @@
       "Identifier": "Query.Entity_Related.Get_GUID",
       "ID": 76,
       "InGameName": {
-        "en": "Query GUID by Entity"
+        "en": "Query GUID by Entity",
+        "zh-Hans": "以实体查询GUID"
       },
       "Alias": [
         "Query_GUID_by_Entity"
@@ -4720,7 +4749,8 @@
       "Identifier": "Execution.Stage_Related.Settle",
       "ID": 77,
       "InGameName": {
-        "en": "Settle Stage"
+        "en": "Settle Stage",
+        "zh-Hans": "结算关卡"
       },
       "Alias": [
         "Settle_Stage"
@@ -4758,7 +4788,8 @@
       "Identifier": "Execution.Timer.Start",
       "ID": 79,
       "InGameName": {
-        "en": "Start Timer"
+        "en": "Start Timer",
+        "zh-Hans": "启动定时器"
       },
       "Alias": [
         "Start_Timer"
@@ -4849,7 +4880,8 @@
       "Identifier": "Execution.Timer.Pause",
       "ID": 80,
       "InGameName": {
-        "en": "Pause Timer"
+        "en": "Pause Timer",
+        "zh-Hans": "暂停定时器"
       },
       "Alias": [
         "Pause_Timer"
@@ -4902,7 +4934,8 @@
       "Identifier": "Execution.Timer.Resume",
       "ID": 81,
       "InGameName": {
-        "en": "Resume Timer"
+        "en": "Resume Timer",
+        "zh-Hans": "恢复定时器"
       },
       "Alias": [
         "Resume_Timer"
@@ -4955,7 +4988,8 @@
       "Identifier": "Execution.Timer.Stop",
       "ID": 82,
       "InGameName": {
-        "en": "Stop Timer"
+        "en": "Stop Timer",
+        "zh-Hans": "终止定时器"
       },
       "Alias": [
         "Stop_Timer"
@@ -5008,7 +5042,8 @@
       "Identifier": "Trigger.Timer.On_Timer_Trigger",
       "ID": 83,
       "InGameName": {
-        "en": "When Timer Is Triggered"
+        "en": "When Timer Is Triggered",
+        "zh-Hans": "定时器触发时"
       },
       "Alias": [
         "When_Timer_Is_Triggered"
@@ -5098,7 +5133,8 @@
       "Identifier": "Execution.Motion_Device.Add_Linear_Motion",
       "ID": 84,
       "InGameName": {
-        "en": "Add Uniform Basic Linear Motion Device"
+        "en": "Add Uniform Basic Linear Motion Device",
+        "zh-Hans": "添加匀速直线型基础运动器"
       },
       "Alias": [
         "Add_Uniform_Basic_Linear_Motion_Device"
@@ -5177,7 +5213,8 @@
       "Identifier": "Execution.Motion_Device.Add_Rotation_Motion",
       "ID": 85,
       "InGameName": {
-        "en": "Add Uniform Basic Rotation-Based Motion Device"
+        "en": "Add Uniform Basic Rotation-Based Motion Device",
+        "zh-Hans": "添加匀速旋转型基础运动器"
       },
       "Alias": [
         "Add_Uniform_Basic_Rotation_Based_Motion_Device"
@@ -5269,7 +5306,8 @@
       "Identifier": "Execution.Motion_Device.Stop_Delete",
       "ID": 86,
       "InGameName": {
-        "en": "Stop and Delete Basic Motion Device"
+        "en": "Stop and Delete Basic Motion Device",
+        "zh-Hans": "停止并删除基础运动器"
       },
       "Alias": [
         "Stop_and_Delete_Basic_Motion_Device"
@@ -5335,7 +5373,8 @@
       "Identifier": "Execution.Motion_Device.Pause",
       "ID": 87,
       "InGameName": {
-        "en": "Pause Basic Motion Device"
+        "en": "Pause Basic Motion Device",
+        "zh-Hans": "暂停基础运动器"
       },
       "Alias": [
         "Pause_Basic_Motion_Device"
@@ -5388,7 +5427,8 @@
       "Identifier": "Execution.Motion_Device.Resume",
       "ID": 88,
       "InGameName": {
-        "en": "Recover Basic Motion Device"
+        "en": "Recover Basic Motion Device",
+        "zh-Hans": "恢复基础运动器"
       },
       "Alias": [
         "Recover_Basic_Motion_Device"
@@ -5441,7 +5481,8 @@
       "Identifier": "Trigger.Motion_Device.On_Motion_Stop",
       "ID": 89,
       "InGameName": {
-        "en": "When Basic Motion Device Stops"
+        "en": "When Basic Motion Device Stops",
+        "zh-Hans": "基础运动器停止时"
       },
       "Alias": [
         "When_Basic_Motion_Device_Stops"
@@ -5503,7 +5544,8 @@
       "Identifier": "Execution.Collision_Trigger.Set_Trigger_State",
       "ID": 90,
       "InGameName": {
-        "en": "Activate/Disable Collision Trigger"
+        "en": "Activate/Disable Collision Trigger",
+        "zh-Hans": "注册/关闭碰撞触发器"
       },
       "Alias": [
         "Activate_Disable_Collision_Trigger"
@@ -5569,7 +5611,8 @@
       "Identifier": "Trigger.Collision_Trigger.On_Exit",
       "ID": 91,
       "InGameName": {
-        "en": "When Exiting Collision Trigger"
+        "en": "When Exiting Collision Trigger",
+        "zh-Hans": "离开碰撞触发器时"
       },
       "Alias": [
         "When_Exiting_Collision_Trigger"
@@ -5657,7 +5700,8 @@
       "Identifier": "Trigger.Collision_Trigger.On_Enter",
       "ID": 92,
       "InGameName": {
-        "en": "When Entering Collision Trigger"
+        "en": "When Entering Collision Trigger",
+        "zh-Hans": "进入碰撞触发器时"
       },
       "Alias": [
         "When_Entering_Collision_Trigger"
@@ -5745,7 +5789,8 @@
       "Identifier": "Execution.Special_Effect.Play_Timed",
       "ID": 93,
       "InGameName": {
-        "en": "Play Timed Effects"
+        "en": "Play Timed Effects",
+        "zh-Hans": "播放限时特效"
       },
       "Alias": [
         "Play_Timed_Effects"
@@ -5889,7 +5934,8 @@
       "Identifier": "Execution.Special_Effect.Play_Loop",
       "ID": 94,
       "InGameName": {
-        "en": "Mount Looping Special Effect"
+        "en": "Mount Looping Special Effect",
+        "zh-Hans": "挂载循环特效"
       },
       "Alias": [
         "Mount_Looping_Special_Effect"
@@ -6046,7 +6092,8 @@
       "Identifier": "Execution.Special_Effect.Stop_Loop",
       "ID": 95,
       "InGameName": {
-        "en": "Clear Looping Special Effect"
+        "en": "Clear Looping Special Effect",
+        "zh-Hans": "清除循环特效"
       },
       "Alias": [
         "Clear_Looping_Special_Effect"
@@ -6099,7 +6146,8 @@
       "Identifier": "Query.Entity_Related.Get_Transform",
       "ID": 99,
       "InGameName": {
-        "en": "Get Entity Location and Rotation"
+        "en": "Get Entity Location and Rotation",
+        "zh-Hans": "获取实体位置与旋转"
       },
       "Alias": [
         "Get_Entity_Location_and_Rotation"
@@ -6156,7 +6204,8 @@
       "Identifier": "Execution.List_Operation.Concatenate",
       "ID": 100,
       "InGameName": {
-        "en": "Concatenate List"
+        "en": "Concatenate List",
+        "zh-Hans": "拼接列表"
       },
       "Alias": [
         "Concatenate_List"
@@ -6261,7 +6310,8 @@
       "Identifier": "Execution.List_Operation.Clear",
       "ID": 107,
       "InGameName": {
-        "en": "Clear List"
+        "en": "Clear List",
+        "zh-Hans": "清除列表"
       },
       "Alias": [
         "Clear_List"
@@ -6353,7 +6403,8 @@
       "Identifier": "Query.List_Related.Contains",
       "ID": 114,
       "InGameName": {
-        "en": "List Includes This Value"
+        "en": "List Includes This Value",
+        "zh-Hans": "列表是否包含该值"
       },
       "Alias": [
         "List_Includes_This_Value"
@@ -6462,7 +6513,8 @@
       "Identifier": "Query.List_Related.Find_Index",
       "ID": 121,
       "InGameName": {
-        "en": "Search List and Return Value ID"
+        "en": "Search List and Return Value ID",
+        "zh-Hans": "查找列表并返回值的序号"
       },
       "Alias": [
         "Search_List_and_Return_Value_ID"
@@ -6571,7 +6623,8 @@
       "Identifier": "Query.List_Related.Get_At_Index",
       "ID": 128,
       "InGameName": {
-        "en": "Get Corresponding Value From List"
+        "en": "Get Corresponding Value From List",
+        "zh-Hans": "获取列表对应值"
       },
       "Alias": [
         "Get_Corresponding_Value_From_List"
@@ -6680,7 +6733,8 @@
       "Identifier": "Execution.List_Operation.Insert",
       "ID": 135,
       "InGameName": {
-        "en": "Insert Value Into List"
+        "en": "Insert Value Into List",
+        "zh-Hans": "对列表插入值"
       },
       "Alias": [
         "Insert_Value_Into_List"
@@ -6798,7 +6852,8 @@
       "Identifier": "Query.List_Related.Get_Length",
       "ID": 142,
       "InGameName": {
-        "en": "Get List Length"
+        "en": "Get List Length",
+        "zh-Hans": "获取列表长度"
       },
       "Alias": [
         "Get_List_Length"
@@ -6894,7 +6949,8 @@
       "Identifier": "Query.List_Related.Get_Max",
       "ID": 149,
       "InGameName": {
-        "en": "Get Maximum Value from List"
+        "en": "Get Maximum Value from List",
+        "zh-Hans": "获取列表最大值"
       },
       "Alias": [
         "Get_Maximum_Value_from_List"
@@ -6950,7 +7006,8 @@
       "Identifier": "Query.List_Related.Get_Min",
       "ID": 151,
       "InGameName": {
-        "en": "Get Minimum Value From List"
+        "en": "Get Minimum Value From List",
+        "zh-Hans": "获取列表最小值"
       },
       "Alias": [
         "Get_Minimum_Value_From_List"
@@ -7006,7 +7063,8 @@
       "Identifier": "Execution.List_Operation.Remove",
       "ID": 153,
       "InGameName": {
-        "en": "Remove Value From List"
+        "en": "Remove Value From List",
+        "zh-Hans": "对列表移除值"
       },
       "Alias": [
         "Remove_Value_From_List"
@@ -7111,7 +7169,8 @@
       "Identifier": "Execution.List_Operation.Modify_Index",
       "ID": 160,
       "InGameName": {
-        "en": "Modify Value in List"
+        "en": "Modify Value in List",
+        "zh-Hans": "对列表修改值"
       },
       "Alias": [
         "Modify_Value_in_List"
@@ -7229,7 +7288,8 @@
       "Identifier": "Execution.List_Operation.Sort",
       "ID": 167,
       "InGameName": {
-        "en": "List Sorting"
+        "en": "List Sorting",
+        "zh-Hans": "列表排序"
       },
       "Alias": [
         "List_Sorting"
@@ -7294,7 +7354,8 @@
       "Identifier": "Arithmetic.General.Assemble_List",
       "ID": 169,
       "InGameName": {
-        "en": "Assembly List"
+        "en": "Assembly List",
+        "zh-Hans": "拼装列表"
       },
       "Alias": [
         "Assembly_List"
@@ -7939,7 +8000,8 @@
       "Identifier": "Trigger.Motion_Device.On_Reach_Waypoint",
       "ID": 177,
       "InGameName": {
-        "en": "When Path Reaches Waypoint"
+        "en": "When Path Reaches Waypoint",
+        "zh-Hans": "路径到达路点时"
       },
       "Alias": [
         "When_Path_Reaches_Waypoint"
@@ -8018,7 +8080,8 @@
       "Identifier": "Execution.Entity_Deployment.Set_Group_State",
       "ID": 178,
       "InGameName": {
-        "en": "Activate/Disable Entity Deployment Group"
+        "en": "Activate/Disable Entity Deployment Group",
+        "zh-Hans": "激活/关闭实体布设组"
       },
       "Alias": [
         "Activate_Disable_Entity_Deployment_Group"
@@ -8071,7 +8134,8 @@
       "Identifier": "Query.Entity_Layout.Get_Active_Groups",
       "ID": 179,
       "InGameName": {
-        "en": "Get Currently Active Entity Deployment Groups"
+        "en": "Get Currently Active Entity Deployment Groups",
+        "zh-Hans": "查询当前激活的实体布设组列表"
       },
       "Alias": [
         "Get_Currently_Active_Entity_Deployment_Groups"
@@ -8102,7 +8166,8 @@
       "Identifier": "Arithmetic.General.Convert_Type",
       "ID": 180,
       "InGameName": {
-        "en": "Data Type Conversion"
+        "en": "Data Type Conversion",
+        "zh-Hans": "数据类型转换"
       },
       "Alias": [
         "Data_Type_Conversion"
@@ -8203,7 +8268,8 @@
       "Identifier": "Execution.Common_Node.Forward_Event",
       "ID": 190,
       "InGameName": {
-        "en": "Forwarding Event"
+        "en": "Forwarding Event",
+        "zh-Hans": "转发事件"
       },
       "Alias": [
         "Forwarding_Event"
@@ -8243,7 +8309,8 @@
       "Identifier": "Query.Math.Pi",
       "ID": 191,
       "InGameName": {
-        "en": "Pi (π)"
+        "en": "Pi (π)",
+        "zh-Hans": "圆周率"
       },
       "Alias": [
         "Pi"
@@ -8285,7 +8352,8 @@
       "Identifier": "Query.Math.Vector_Zero",
       "ID": 192,
       "InGameName": {
-        "en": "3D Vector: Zero Vector"
+        "en": "3D Vector: Zero Vector",
+        "zh-Hans": "三维向量：零向量"
       },
       "Alias": [
         "_3D_Vector_Zero_Vector"
@@ -8327,7 +8395,8 @@
       "Identifier": "Query.Math.Vector_Up",
       "ID": 193,
       "InGameName": {
-        "en": "3D Vector: Up"
+        "en": "3D Vector: Up",
+        "zh-Hans": "三维向量：上方"
       },
       "Alias": [
         "_3D_Vector_Up"
@@ -8369,7 +8438,8 @@
       "Identifier": "Query.Math.Vector_Down",
       "ID": 194,
       "InGameName": {
-        "en": "3D Vector: Down"
+        "en": "3D Vector: Down",
+        "zh-Hans": "三维向量：下方"
       },
       "Alias": [
         "_3D_Vector_Down"
@@ -8411,7 +8481,8 @@
       "Identifier": "Query.Math.Vector_Left",
       "ID": 195,
       "InGameName": {
-        "en": "3D Vector: Left"
+        "en": "3D Vector: Left",
+        "zh-Hans": "三维向量：左侧"
       },
       "Alias": [
         "_3D_Vector_Left"
@@ -8453,7 +8524,8 @@
       "Identifier": "Query.Math.Vector_Right",
       "ID": 196,
       "InGameName": {
-        "en": "3D Vector: Right"
+        "en": "3D Vector: Right",
+        "zh-Hans": "三维向量：右侧"
       },
       "Alias": [
         "_3D_Vector_Right"
@@ -8495,7 +8567,8 @@
       "Identifier": "Query.Math.Vector_Forward",
       "ID": 197,
       "InGameName": {
-        "en": "3D Vector: Forward"
+        "en": "3D Vector: Forward",
+        "zh-Hans": "三维向量：前方"
       },
       "Alias": [
         "_3D_Vector_Forward"
@@ -8537,7 +8610,8 @@
       "Identifier": "Query.Math.Vector_Backward",
       "ID": 198,
       "InGameName": {
-        "en": "3D Vector: Backward"
+        "en": "3D Vector: Backward",
+        "zh-Hans": "三维向量：后方"
       },
       "Alias": [
         "_3D_Vector_Backward"
@@ -8579,7 +8653,8 @@
       "Identifier": "Arithmetic.Math.Add",
       "ID": 200,
       "InGameName": {
-        "en": "Addition"
+        "en": "Addition",
+        "zh-Hans": "加法运算"
       },
       "Alias": [
         "Addition"
@@ -8648,7 +8723,8 @@
       "Identifier": "Arithmetic.Math.Subtract",
       "ID": 202,
       "InGameName": {
-        "en": "Subtraction"
+        "en": "Subtraction",
+        "zh-Hans": "减法运算"
       },
       "Alias": [
         "Subtraction"
@@ -8717,7 +8793,8 @@
       "Identifier": "Arithmetic.Math.Multiply",
       "ID": 204,
       "InGameName": {
-        "en": "Multiplication"
+        "en": "Multiplication",
+        "zh-Hans": "乘法运算"
       },
       "Alias": [
         "Multiplication"
@@ -8786,7 +8863,8 @@
       "Identifier": "Arithmetic.Math.Divide",
       "ID": 206,
       "InGameName": {
-        "en": "Division"
+        "en": "Division",
+        "zh-Hans": "除法运算"
       },
       "Alias": [
         "Division"
@@ -8855,7 +8933,8 @@
       "Identifier": "Arithmetic.Math.Modulo",
       "ID": 208,
       "InGameName": {
-        "en": "Modulo Operation"
+        "en": "Modulo Operation",
+        "zh-Hans": "模运算"
       },
       "Alias": [
         "Modulo_Operation"
@@ -8912,7 +8991,8 @@
       "Identifier": "Arithmetic.Math.Power",
       "ID": 209,
       "InGameName": {
-        "en": "Exponentiation"
+        "en": "Exponentiation",
+        "zh-Hans": "幂运算"
       },
       "Alias": [
         "Exponentiation"
@@ -8981,7 +9061,8 @@
       "Identifier": "Arithmetic.Math.Max",
       "ID": 211,
       "InGameName": {
-        "en": "Take Larger Value"
+        "en": "Take Larger Value",
+        "zh-Hans": "取较大值"
       },
       "Alias": [
         "Take_Larger_Value"
@@ -9050,7 +9131,8 @@
       "Identifier": "Arithmetic.Math.Min",
       "ID": 213,
       "InGameName": {
-        "en": "Take Smaller Value"
+        "en": "Take Smaller Value",
+        "zh-Hans": "取较小值"
       },
       "Alias": [
         "Take_Smaller_Value"
@@ -9119,7 +9201,8 @@
       "Identifier": "Arithmetic.Math.Log",
       "ID": 215,
       "InGameName": {
-        "en": "Logarithm Operation"
+        "en": "Logarithm Operation",
+        "zh-Hans": "对数运算"
       },
       "Alias": [
         "Logarithm_Operation"
@@ -9173,7 +9256,8 @@
       "Identifier": "Arithmetic.Math.Abs",
       "ID": 216,
       "InGameName": {
-        "en": "Absolute Value Operation"
+        "en": "Absolute Value Operation",
+        "zh-Hans": "绝对值运算"
       },
       "Alias": [
         "Absolute_Value_Operation"
@@ -9229,7 +9313,8 @@
       "Identifier": "Arithmetic.Math.Sign",
       "ID": 218,
       "InGameName": {
-        "en": "Sign Operation"
+        "en": "Sign Operation",
+        "zh-Hans": "取符号运算"
       },
       "Alias": [
         "Sign_Operation"
@@ -9285,7 +9370,8 @@
       "Identifier": "Arithmetic.Math.Vector_Length",
       "ID": 220,
       "InGameName": {
-        "en": "3D Vector Modulo Operation"
+        "en": "3D Vector Modulo Operation",
+        "zh-Hans": "三维向量模运算"
       },
       "Alias": [
         "_3D_Vector_Modulo_Operation"
@@ -9329,7 +9415,8 @@
       "Identifier": "Arithmetic.Math.Sqrt",
       "ID": 221,
       "InGameName": {
-        "en": "Arithmetic Square Root Operation"
+        "en": "Arithmetic Square Root Operation",
+        "zh-Hans": "算术平方根运算"
       },
       "Alias": [
         "Arithmetic_Square_Root_Operation"
@@ -9373,7 +9460,8 @@
       "Identifier": "Arithmetic.Math.Clamp",
       "ID": 222,
       "InGameName": {
-        "en": "Range Limiting Operation"
+        "en": "Range Limiting Operation",
+        "zh-Hans": "范围限制运算"
       },
       "Alias": [
         "Range_Limiting_Operation"
@@ -9455,7 +9543,8 @@
       "Identifier": "Arithmetic.Math.Round",
       "ID": 224,
       "InGameName": {
-        "en": "Round to Integer Operation"
+        "en": "Round to Integer Operation",
+        "zh-Hans": "取整数运算"
       },
       "Alias": [
         "Round_to_Integer_Operation"
@@ -9512,7 +9601,8 @@
       "Identifier": "Arithmetic.Math.Create_Vector",
       "ID": 225,
       "InGameName": {
-        "en": "Create 3D Vector"
+        "en": "Create 3D Vector",
+        "zh-Hans": "创建三维向量"
       },
       "Alias": [
         "Create_3D_Vector"
@@ -9582,7 +9672,8 @@
       "Identifier": "Arithmetic.Math.And",
       "ID": 226,
       "InGameName": {
-        "en": "Logical AND Operation"
+        "en": "Logical AND Operation",
+        "zh-Hans": "逻辑与运算"
       },
       "Alias": [
         "Logical_AND_Operation"
@@ -9639,7 +9730,8 @@
       "Identifier": "Arithmetic.Math.Or",
       "ID": 227,
       "InGameName": {
-        "en": "Logical OR Operation"
+        "en": "Logical OR Operation",
+        "zh-Hans": "逻辑或运算"
       },
       "Alias": [
         "Logical_OR_Operation"
@@ -9696,7 +9788,8 @@
       "Identifier": "Arithmetic.Math.Xor",
       "ID": 228,
       "InGameName": {
-        "en": "Logical XOR Operation"
+        "en": "Logical XOR Operation",
+        "zh-Hans": "逻辑异或运算"
       },
       "Alias": [
         "Logical_XOR_Operation"
@@ -9753,7 +9846,8 @@
       "Identifier": "Arithmetic.Math.Not",
       "ID": 229,
       "InGameName": {
-        "en": "Logical NOT Operation"
+        "en": "Logical NOT Operation",
+        "zh-Hans": "逻辑非运算"
       },
       "Alias": [
         "Logical_NOT_Operation"
@@ -9809,7 +9903,8 @@
       "Identifier": "Arithmetic.Math.Less_Than",
       "ID": 230,
       "InGameName": {
-        "en": "Less Than"
+        "en": "Less Than",
+        "zh-Hans": "数值小于"
       },
       "Alias": [
         "Less_Than"
@@ -9878,7 +9973,8 @@
       "Identifier": "Arithmetic.Math.Less_Equal",
       "ID": 231,
       "InGameName": {
-        "en": "Less Than or Equal To"
+        "en": "Less Than or Equal To",
+        "zh-Hans": "数值小于等于"
       },
       "Alias": [
         "Less_Than_or_Equal_To"
@@ -9947,7 +10043,8 @@
       "Identifier": "Arithmetic.Math.Greater_Than",
       "ID": 232,
       "InGameName": {
-        "en": "Greater Than"
+        "en": "Greater Than",
+        "zh-Hans": "数值大于"
       },
       "Alias": [
         "Greater_Than"
@@ -10016,7 +10113,8 @@
       "Identifier": "Arithmetic.Math.Greater_Equal",
       "ID": 233,
       "InGameName": {
-        "en": "Greater Than or Equal To"
+        "en": "Greater Than or Equal To",
+        "zh-Hans": "数值大于等于"
       },
       "Alias": [
         "Greater_Than_or_Equal_To"
@@ -10085,7 +10183,8 @@
       "Identifier": "Execution.Collision.Set_Native_Collision",
       "ID": 240,
       "InGameName": {
-        "en": "Activate/Disable Native Collision"
+        "en": "Activate/Disable Native Collision",
+        "zh-Hans": "激活/关闭原生碰撞"
       },
       "Alias": [
         "Activate_Disable_Native_Collision"
@@ -10138,7 +10237,8 @@
       "Identifier": "Execution.Collision.Set_Native_Climb",
       "ID": 241,
       "InGameName": {
-        "en": "Activate/Disable Native Collision Climbability"
+        "en": "Activate/Disable Native Collision Climbability",
+        "zh-Hans": "激活/关闭原生碰撞可攀爬性"
       },
       "Alias": [
         "Activate_Disable_Native_Collision_Climbability"
@@ -10191,7 +10291,8 @@
       "Identifier": "Execution.Collision.Set_Extra_Collision",
       "ID": 242,
       "InGameName": {
-        "en": "Activate/Disable Extra Collision"
+        "en": "Activate/Disable Extra Collision",
+        "zh-Hans": "激活/关闭额外碰撞"
       },
       "Alias": [
         "Activate_Disable_Extra_Collision"
@@ -10257,7 +10358,8 @@
       "Identifier": "Execution.Collision.Set_Extra_Climb",
       "ID": 243,
       "InGameName": {
-        "en": "Activate/Disable Extra Collision Climbability"
+        "en": "Activate/Disable Extra Collision Climbability",
+        "zh-Hans": "激活/关闭额外碰撞可攀爬性"
       },
       "Alias": [
         "Activate_Disable_Extra_Collision_Climbability"
@@ -10323,7 +10425,8 @@
       "Identifier": "Arithmetic.Math.Distance",
       "ID": 244,
       "InGameName": {
-        "en": "Distance Between Two Coordinate Points"
+        "en": "Distance Between Two Coordinate Points",
+        "zh-Hans": "两坐标点距离"
       },
       "Alias": [
         "Distance_Between_Two_Coordinate_Points"
@@ -10380,7 +10483,8 @@
       "Identifier": "Execution.Follow_Motion.Set_Target_GUID",
       "ID": 245,
       "InGameName": {
-        "en": "Switch Follow Motion Device Target by GUID"
+        "en": "Switch Follow Motion Device Target by GUID",
+        "zh-Hans": "以GUID切换跟随运动器的目标"
       },
       "Alias": [
         "Switch_Follow_Motion_Device_Target_by_GUID"
@@ -10498,7 +10602,8 @@
       "Identifier": "Query.Follow_Motion.Get_Target",
       "ID": 246,
       "InGameName": {
-        "en": "Get Follow Motion Device Target"
+        "en": "Get Follow Motion Device Target",
+        "zh-Hans": "获取跟随运动器的目标"
       },
       "Alias": [
         "Get_Follow_Motion_Device_Target"
@@ -10555,7 +10660,8 @@
       "Identifier": "Query.Character_Related.Get_All_Players",
       "ID": 248,
       "InGameName": {
-        "en": "Get List of Player Entities on the Field"
+        "en": "Get List of Player Entities on the Field",
+        "zh-Hans": "获取在场玩家实体列表"
       },
       "Alias": [
         "Get_List_of_Player_Entities_on_the_Field"
@@ -10586,7 +10692,8 @@
       "Identifier": "Query.Faction_Related.Get_Faction",
       "ID": 249,
       "InGameName": {
-        "en": "Query Entity Faction"
+        "en": "Query Entity Faction",
+        "zh-Hans": "查询实体阵营"
       },
       "Alias": [
         "Query_Entity_Faction"
@@ -10630,7 +10737,8 @@
       "Identifier": "Execution.Faction_Related.Set_Faction",
       "ID": 250,
       "InGameName": {
-        "en": "Modify Entity Faction"
+        "en": "Modify Entity Faction",
+        "zh-Hans": "修改实体阵营"
       },
       "Alias": [
         "Modify_Entity_Faction"
@@ -10683,7 +10791,8 @@
       "Identifier": "Trigger.Faction_Related.On_Faction_Change",
       "ID": 251,
       "InGameName": {
-        "en": "When Entity Faction Changes"
+        "en": "When Entity Faction Changes",
+        "zh-Hans": "实体阵营变化时"
       },
       "Alias": [
         "When_Entity_Faction_Changes"
@@ -10758,7 +10867,8 @@
       "Identifier": "Execution.Entity_Related.Create_Prefab",
       "ID": 252,
       "InGameName": {
-        "en": "Create Prefab"
+        "en": "Create Prefab",
+        "zh-Hans": "创建元件"
       },
       "Alias": [
         "Create_Prefab"
@@ -10901,7 +11011,8 @@
       "Identifier": "Trigger.Hit_Detection.On_Hit_Detected",
       "ID": 253,
       "InGameName": {
-        "en": "When On-Hit Detection Is Triggered"
+        "en": "When On-Hit Detection Is Triggered",
+        "zh-Hans": "命中检测触发时"
       },
       "Alias": [
         "When_On_Hit_Detection_Is_Triggered"
@@ -10989,7 +11100,8 @@
       "Identifier": "Execution.Projectile.Create",
       "ID": 256,
       "InGameName": {
-        "en": "Create Projectile"
+        "en": "Create Projectile",
+        "zh-Hans": "创建投射物"
       },
       "Alias": [
         "Create_Projectile"
@@ -11133,7 +11245,8 @@
       "Identifier": "Query.Math.Random_Int",
       "ID": 257,
       "InGameName": {
-        "en": "Get Random Integer"
+        "en": "Get Random Integer",
+        "zh-Hans": "获取随机整数"
       },
       "Alias": [
         "Get_Random_Integer"
@@ -11190,7 +11303,8 @@
       "Identifier": "Query.Character_Related.Get_Player_Characters",
       "ID": 258,
       "InGameName": {
-        "en": "Get All Character Entities of Specified Player"
+        "en": "Get All Character Entities of Specified Player",
+        "zh-Hans": "获取指定玩家所有角色实体"
       },
       "Alias": [
         "Get_All_Character_Entities_of_Specified_Player"
@@ -11234,7 +11348,8 @@
       "Identifier": "Query.Character_Related.Get_Owner_Player",
       "ID": 259,
       "InGameName": {
-        "en": "Get Player Entity to Which the Character Belongs"
+        "en": "Get Player Entity to Which the Character Belongs",
+        "zh-Hans": "获取角色归属的玩家实体"
       },
       "Alias": [
         "Get_Player_Entity_to_Which_the_Character_Belongs"
@@ -11278,7 +11393,8 @@
       "Identifier": "Query.Entity_Related.Get_Type",
       "ID": 260,
       "InGameName": {
-        "en": "Get Entity Type"
+        "en": "Get Entity Type",
+        "zh-Hans": "获取实体类型"
       },
       "Alias": [
         "Get_Entity_Type"
@@ -11322,7 +11438,8 @@
       "Identifier": "Execution.Camera.Switch_Template",
       "ID": 261,
       "InGameName": {
-        "en": "Switch Main Camera Template"
+        "en": "Switch Main Camera Template",
+        "zh-Hans": "切换主镜头模板"
       },
       "Alias": [
         "Switch_Main_Camera_Template"
@@ -11575,7 +11692,8 @@
       "Identifier": "Execution.Motion_Device.Activate",
       "ID": 267,
       "InGameName": {
-        "en": "Activate Basic Motion Device"
+        "en": "Activate Basic Motion Device",
+        "zh-Hans": "激活基础运动器"
       },
       "Alias": [
         "Activate_Basic_Motion_Device"
@@ -11628,7 +11746,8 @@
       "Identifier": "Query.Preset_Point.Get_Transform",
       "ID": 270,
       "InGameName": {
-        "en": "Query Preset Point Position Rotation"
+        "en": "Query Preset Point Position Rotation",
+        "zh-Hans": "查询预设点位置旋转"
       },
       "Alias": [
         "Query_Preset_Point_Position_Rotation"
@@ -11685,7 +11804,8 @@
       "Identifier": "Query.Preset_Point.Get_By_Tag",
       "ID": 271,
       "InGameName": {
-        "en": "Get Preset Point List by Unit Tag"
+        "en": "Get Preset Point List by Unit Tag",
+        "zh-Hans": "以单位标签获取预设点位列表"
       },
       "Alias": [
         "Get_Preset_Point_List_by_Unit_Tag"
@@ -11729,7 +11849,8 @@
       "Identifier": "Execution.Character_Related.Activate_Revive_Point",
       "ID": 272,
       "InGameName": {
-        "en": "Activate Revive Point"
+        "en": "Activate Revive Point",
+        "zh-Hans": "激活复苏点"
       },
       "Alias": [
         "Activate_Revive_Point"
@@ -11782,7 +11903,8 @@
       "Identifier": "Execution.Character_Related.Deactivate_Revive_Point",
       "ID": 273,
       "InGameName": {
-        "en": "Deactivate Revive Point"
+        "en": "Deactivate Revive Point",
+        "zh-Hans": "注销复苏点"
       },
       "Alias": [
         "Deactivate_Revive_Point"
@@ -11835,7 +11957,8 @@
       "Identifier": "Execution.Character_Related.Set_Revive_Allowed",
       "ID": 274,
       "InGameName": {
-        "en": "Allow/Forbid Player to Revive"
+        "en": "Allow/Forbid Player to Revive",
+        "zh-Hans": "允许/禁止玩家复苏"
       },
       "Alias": [
         "Allow_Forbid_Player_to_Revive"
@@ -11888,7 +12011,8 @@
       "Identifier": "Query.Character_Related.Get_Revives",
       "ID": 275,
       "InGameName": {
-        "en": "Get Player Remaining Revives"
+        "en": "Get Player Remaining Revives",
+        "zh-Hans": "获取玩家剩余复苏次数"
       },
       "Alias": [
         "Get_Player_Remaining_Revives"
@@ -11932,7 +12056,8 @@
       "Identifier": "Execution.Character_Related.Set_Revive_Count",
       "ID": 276,
       "InGameName": {
-        "en": "Set Player Remaining Revives"
+        "en": "Set Player Remaining Revives",
+        "zh-Hans": "设置玩家剩余复苏次数"
       },
       "Alias": [
         "Set_Player_Remaining_Revives"
@@ -11985,7 +12110,8 @@
       "Identifier": "Query.Character_Related.Get_Revive_Time",
       "ID": 277,
       "InGameName": {
-        "en": "Get Player Revive Time"
+        "en": "Get Player Revive Time",
+        "zh-Hans": "获取玩家复苏耗时"
       },
       "Alias": [
         "Get_Player_Revive_Time"
@@ -12029,7 +12155,8 @@
       "Identifier": "Execution.Character_Related.Set_Revive_Time",
       "ID": 278,
       "InGameName": {
-        "en": "Set Player Revive Time"
+        "en": "Set Player Revive Time",
+        "zh-Hans": "设置玩家复苏耗时"
       },
       "Alias": [
         "Set_Player_Revive_Time"
@@ -12082,7 +12209,8 @@
       "Identifier": "Execution.Character_Related.Revive_Single",
       "ID": 279,
       "InGameName": {
-        "en": "Revive Character"
+        "en": "Revive Character",
+        "zh-Hans": "复苏角色"
       },
       "Alias": [
         "Revive_Character"
@@ -12122,7 +12250,8 @@
       "Identifier": "Trigger.Character_Related.On_Character_Down",
       "ID": 280,
       "InGameName": {
-        "en": "When the Character Is Down"
+        "en": "When the Character Is Down",
+        "zh-Hans": "角色倒下时"
       },
       "Alias": [
         "When_the_Character_Is_Down"
@@ -12184,7 +12313,8 @@
       "Identifier": "Trigger.Character_Related.On_Character_Revive",
       "ID": 281,
       "InGameName": {
-        "en": "When Character Revives"
+        "en": "When Character Revives",
+        "zh-Hans": "角色复苏时"
       },
       "Alias": [
         "When_Character_Revives"
@@ -12220,7 +12350,8 @@
       "Identifier": "Execution.Character_Related.Defeat_All",
       "ID": 282,
       "InGameName": {
-        "en": "Defeat All Player's Characters"
+        "en": "Defeat All Player's Characters",
+        "zh-Hans": "击倒玩家所有角色"
       },
       "Alias": [
         "Defeat_All_Player_s_Characters"
@@ -12260,7 +12391,8 @@
       "Identifier": "Execution.Character_Related.Revive_All",
       "ID": 283,
       "InGameName": {
-        "en": "Revive All Player's Characters"
+        "en": "Revive All Player's Characters",
+        "zh-Hans": "复苏玩家所有角色"
       },
       "Alias": [
         "Revive_All_Player_s_Characters"
@@ -12310,7 +12442,8 @@
       "Identifier": "Trigger.Character_Related.On_All_Down",
       "ID": 284,
       "InGameName": {
-        "en": "When All Player's Characters Are Down"
+        "en": "When All Player's Characters Are Down",
+        "zh-Hans": "玩家所有角色倒下时"
       },
       "Alias": [
         "When_All_Player_s_Characters_Are_Down"
@@ -12359,7 +12492,8 @@
       "Identifier": "Trigger.Character_Related.On_Abnormal_Revive",
       "ID": 285,
       "InGameName": {
-        "en": "When Player Is Abnormally Downed and Revives"
+        "en": "When Player Is Abnormally Downed and Revives",
+        "zh-Hans": "玩家异常倒下并复苏时"
       },
       "Alias": [
         "When_Player_Is_Abnormally_Downed_and_Revives"
@@ -12395,7 +12529,8 @@
       "Identifier": "Trigger.Character_Related.On_All_Revived",
       "ID": 286,
       "InGameName": {
-        "en": "When All Player's Characters Are Revived"
+        "en": "When All Player's Characters Are Revived",
+        "zh-Hans": "玩家所有角色复苏时"
       },
       "Alias": [
         "When_All_Player_s_Characters_Are_Revived"
@@ -12431,7 +12566,8 @@
       "Identifier": "Query.Character_Related.Is_All_Down",
       "ID": 287,
       "InGameName": {
-        "en": "Query If All Player Characters Are Down"
+        "en": "Query If All Player Characters Are Down",
+        "zh-Hans": "查询玩家角色是否全部倒下"
       },
       "Alias": [
         "Query_If_All_Player_Characters_Are_Down"
@@ -12475,7 +12611,8 @@
       "Identifier": "Execution.Character_Related.Teleport",
       "ID": 288,
       "InGameName": {
-        "en": "Teleport Player"
+        "en": "Teleport Player",
+        "zh-Hans": "传送玩家"
       },
       "Alias": [
         "Teleport_Player"
@@ -12541,7 +12678,8 @@
       "Identifier": "Trigger.Character_Related.On_Teleport_Complete",
       "ID": 289,
       "InGameName": {
-        "en": "When Player Teleport Completes"
+        "en": "When Player Teleport Completes",
+        "zh-Hans": "玩家传送完成时"
       },
       "Alias": [
         "When_Player_Teleport_Completes"
@@ -12590,7 +12728,8 @@
       "Identifier": "Query.Stage_Related.Get_Elapsed_Time",
       "ID": 290,
       "InGameName": {
-        "en": "Query Game Time Elapsed"
+        "en": "Query Game Time Elapsed",
+        "zh-Hans": "获取游戏已进行时间"
       },
       "Alias": [
         "Query_Game_Time_Elapsed"
@@ -12621,7 +12760,8 @@
       "Identifier": "Arithmetic.Math.Sin",
       "ID": 291,
       "InGameName": {
-        "en": "Sine Function"
+        "en": "Sine Function",
+        "zh-Hans": "正弦函数"
       },
       "Alias": [
         "Sine_Function"
@@ -12665,7 +12805,8 @@
       "Identifier": "Arithmetic.Math.Cos",
       "ID": 292,
       "InGameName": {
-        "en": "Cosine Function"
+        "en": "Cosine Function",
+        "zh-Hans": "余弦函数"
       },
       "Alias": [
         "Cosine_Function"
@@ -12709,7 +12850,8 @@
       "Identifier": "Arithmetic.Math.Tan",
       "ID": 293,
       "InGameName": {
-        "en": "Tangent Function"
+        "en": "Tangent Function",
+        "zh-Hans": "正切函数"
       },
       "Alias": [
         "Tangent_Function"
@@ -12753,7 +12895,8 @@
       "Identifier": "Arithmetic.Math.Asin",
       "ID": 294,
       "InGameName": {
-        "en": "Arcsine Function"
+        "en": "Arcsine Function",
+        "zh-Hans": "反正弦函数"
       },
       "Alias": [
         "Arcsine_Function"
@@ -12797,7 +12940,8 @@
       "Identifier": "Arithmetic.Math.Acos",
       "ID": 295,
       "InGameName": {
-        "en": "Arccosine Function"
+        "en": "Arccosine Function",
+        "zh-Hans": "反余弦函数"
       },
       "Alias": [
         "Arccosine_Function"
@@ -12841,7 +12985,8 @@
       "Identifier": "Arithmetic.Math.Atan",
       "ID": 296,
       "InGameName": {
-        "en": "Arctangent Function"
+        "en": "Arctangent Function",
+        "zh-Hans": "反正切函数"
       },
       "Alias": [
         "Arctangent_Function"
@@ -12885,7 +13030,8 @@
       "Identifier": "Execution.Unit_Status.Add_Status",
       "ID": 297,
       "InGameName": {
-        "en": "Add Unit Status"
+        "en": "Add Unit Status",
+        "zh-Hans": "添加单位状态"
       },
       "Alias": [
         "Add_Unit_Status"
@@ -13003,7 +13149,8 @@
       "Identifier": "Trigger.Unit_Status.On_Status_End",
       "ID": 299,
       "InGameName": {
-        "en": "When Unit Status Ends"
+        "en": "When Unit Status Ends",
+        "zh-Hans": "单位状态结束时"
       },
       "Alias": [
         "When_Unit_Status_Ends"
@@ -13156,7 +13303,8 @@
       "Identifier": "Trigger.Unit_Status.On_Status_Change",
       "ID": 300,
       "InGameName": {
-        "en": "When Unit Status Changes"
+        "en": "When Unit Status Changes",
+        "zh-Hans": "单位状态变更时"
       },
       "Alias": [
         "When_Unit_Status_Changes"
@@ -13296,7 +13444,8 @@
       "Identifier": "Execution.Unit_Status.Remove_Status",
       "ID": 301,
       "InGameName": {
-        "en": "Remove Unit Status"
+        "en": "Remove Unit Status",
+        "zh-Hans": "移除单位状态"
       },
       "Alias": [
         "Remove_Unit_Status"
@@ -13387,7 +13536,8 @@
       "Identifier": "Execution.Character_Disruptor.Modify_Device",
       "ID": 302,
       "InGameName": {
-        "en": "Modifying Character Disruptor Device"
+        "en": "Modifying Character Disruptor Device",
+        "zh-Hans": "修改角色扰动装置"
       },
       "Alias": [
         "Modifying_Character_Disruptor_Device"
@@ -13440,7 +13590,8 @@
       "Identifier": "Execution.Combat.Attack",
       "ID": 303,
       "InGameName": {
-        "en": "Initiate Attack"
+        "en": "Initiate Attack",
+        "zh-Hans": "发起攻击"
       },
       "Alias": [
         "Initiate_Attack"
@@ -13571,7 +13722,8 @@
       "Identifier": "Trigger.Combat.On_Be_Attacked",
       "ID": 304,
       "InGameName": {
-        "en": "When Attacked"
+        "en": "When Attacked",
+        "zh-Hans": "受到攻击时"
       },
       "Alias": [
         "When_Attacked"
@@ -13685,7 +13837,8 @@
       "Identifier": "Trigger.Combat.On_Hit_Target",
       "ID": 305,
       "InGameName": {
-        "en": "When Attack Hits"
+        "en": "When Attack Hits",
+        "zh-Hans": "攻击命中时"
       },
       "Alias": [
         "When_Attack_Hits"
@@ -13799,7 +13952,8 @@
       "Identifier": "Execution.Tab.Set_State",
       "ID": 306,
       "InGameName": {
-        "en": "Activate/Disable Tab"
+        "en": "Activate/Disable Tab",
+        "zh-Hans": "激活/关闭选项卡"
       },
       "Alias": [
         "Activate_Disable_Tab"
@@ -13865,7 +14019,8 @@
       "Identifier": "Trigger.Tab.On_Tab_Select",
       "ID": 307,
       "InGameName": {
-        "en": "When Tab Is Selected"
+        "en": "When Tab Is Selected",
+        "zh-Hans": "选项卡选中时"
       },
       "Alias": [
         "When_Tab_Is_Selected"
@@ -13944,7 +14099,8 @@
       "Identifier": "Execution.Entity_Related.Set_Model_Visible",
       "ID": 308,
       "InGameName": {
-        "en": "Activate/Disable Model Display"
+        "en": "Activate/Disable Model Display",
+        "zh-Hans": "激活/关闭模型显示"
       },
       "Alias": [
         "Activate_Disable_Model_Display"
@@ -13997,7 +14153,8 @@
       "Identifier": "Execution.Global_Timer.Pause",
       "ID": 309,
       "InGameName": {
-        "en": "Pause Global Timer"
+        "en": "Pause Global Timer",
+        "zh-Hans": "暂停全局计时器"
       },
       "Alias": [
         "Pause_Global_Timer"
@@ -14050,7 +14207,8 @@
       "Identifier": "Query.Global_Timer.Get_Time",
       "ID": 310,
       "InGameName": {
-        "en": "Get Current Global Timer Time"
+        "en": "Get Current Global Timer Time",
+        "zh-Hans": "获取全局计时器当前时间"
       },
       "Alias": [
         "Get_Current_Global_Timer_Time"
@@ -14107,7 +14265,8 @@
       "Identifier": "Execution.Global_Timer.Start",
       "ID": 311,
       "InGameName": {
-        "en": "Start Global Timer"
+        "en": "Start Global Timer",
+        "zh-Hans": "启动全局计时器"
       },
       "Alias": [
         "Start_Global_Timer"
@@ -14160,7 +14319,8 @@
       "Identifier": "Execution.Global_Timer.Resume",
       "ID": 312,
       "InGameName": {
-        "en": "Recover Global Timer"
+        "en": "Recover Global Timer",
+        "zh-Hans": "恢复全局计时器"
       },
       "Alias": [
         "Recover_Global_Timer"
@@ -14213,7 +14373,8 @@
       "Identifier": "Execution.Global_Timer.Stop",
       "ID": 313,
       "InGameName": {
-        "en": "Stop Global Timer"
+        "en": "Stop Global Timer",
+        "zh-Hans": "终止全局计时器"
       },
       "Alias": [
         "Stop_Global_Timer"
@@ -14266,7 +14427,8 @@
       "Identifier": "Execution.Global_Timer.Modify",
       "ID": 314,
       "InGameName": {
-        "en": "Modify Global Timer"
+        "en": "Modify Global Timer",
+        "zh-Hans": "修改全局计时器"
       },
       "Alias": [
         "Modify_Global_Timer"
@@ -14332,7 +14494,8 @@
       "Identifier": "Trigger.Global_Timer.On_Timer_Trigger",
       "ID": 315,
       "InGameName": {
-        "en": "When Global Timer Is Triggered"
+        "en": "When Global Timer Is Triggered",
+        "zh-Hans": "全局计时器触发时"
       },
       "Alias": [
         "When_Global_Timer_Is_Triggered"
@@ -14394,7 +14557,8 @@
       "Identifier": "Trigger.UI_Control_Group.On_Group_Trigger",
       "ID": 316,
       "InGameName": {
-        "en": "When UI Control Group Is Triggered"
+        "en": "When UI Control Group Is Triggered",
+        "zh-Hans": "界面控件组触发时"
       },
       "Alias": [
         "When_UI_Control_Group_Is_Triggered"
@@ -14469,7 +14633,8 @@
       "Identifier": "Query.UI_Control_Group.Get_Current_Layout",
       "ID": 317,
       "InGameName": {
-        "en": "Get Player's Current UI Layout"
+        "en": "Get Player's Current UI Layout",
+        "zh-Hans": "获取玩家当前界面布局"
       },
       "Alias": [
         "Get_Player_s_Current_UI_Layout"
@@ -14513,7 +14678,8 @@
       "Identifier": "Query.Entity_Related.Get_All_Entities",
       "ID": 318,
       "InGameName": {
-        "en": "Get All Entities on the Field"
+        "en": "Get All Entities on the Field",
+        "zh-Hans": "获取场上所有实体"
       },
       "Alias": [
         "Get_All_Entities_on_the_Field"
@@ -14544,7 +14710,8 @@
       "Identifier": "Query.Entity_Related.Get_Entity_By_Type",
       "ID": 319,
       "InGameName": {
-        "en": "Get Specified Type of Entity on the Field"
+        "en": "Get Specified Type of Entity on the Field",
+        "zh-Hans": "获取场上指定类型实体"
       },
       "Alias": [
         "Get_Specified_Type_of_Entities_on_the_Field",
@@ -14590,7 +14757,8 @@
       "Identifier": "Query.Entity_Related.Get_By_Prefab",
       "ID": 320,
       "InGameName": {
-        "en": "Get Entities With Specified Prefab on the Field"
+        "en": "Get Entities With Specified Prefab on the Field",
+        "zh-Hans": "获取场上指定元件ID的实体"
       },
       "Alias": [
         "Get_Entities_With_Specified_Prefab_on_the_Field"
@@ -14634,7 +14802,8 @@
       "Identifier": "Arithmetic.Math.Rad_To_Deg",
       "ID": 321,
       "InGameName": {
-        "en": "Radians to Degrees"
+        "en": "Radians to Degrees",
+        "zh-Hans": "弧度转角度"
       },
       "Alias": [
         "Radians_to_Degrees"
@@ -14678,7 +14847,8 @@
       "Identifier": "Arithmetic.Math.Deg_To_Rad",
       "ID": 322,
       "InGameName": {
-        "en": "Degrees to Radians"
+        "en": "Degrees to Radians",
+        "zh-Hans": "角度转弧度"
       },
       "Alias": [
         "Degrees_to_Radians"
@@ -14722,7 +14892,8 @@
       "Identifier": "Execution.Custom_Variable.Set_Graph_Variable",
       "ID": 323,
       "InGameName": {
-        "en": "Set Node Graph Variable"
+        "en": "Set Node Graph Variable",
+        "zh-Hans": "设置节点图变量"
       },
       "Alias": [
         "Set_Node_Graph_Variable"
@@ -15555,7 +15726,8 @@
       "Identifier": "Query.Custom_Variable.Get_Graph_Variable",
       "ID": 337,
       "InGameName": {
-        "en": "Get Node Graph Variable"
+        "en": "Get Node Graph Variable",
+        "zh-Hans": "获取节点图变量"
       },
       "Alias": [
         "Get_Node_Graph_Variable"
@@ -16366,7 +16538,8 @@
       "Identifier": "Trigger.Custom_Variable.On_Graph_Variable_Change",
       "ID": 351,
       "InGameName": {
-        "en": "When Node Graph Variable Changes"
+        "en": "When Node Graph Variable Changes",
+        "zh-Hans": "节点图变量变化时"
       },
       "Alias": [
         "When_Node_Graph_Variable_Changes"
@@ -17221,7 +17394,8 @@
       "Identifier": "Execution.Follow_Motion.Set_Device_State",
       "ID": 365,
       "InGameName": {
-        "en": "Activate/Disable Follow Motion Device"
+        "en": "Activate/Disable Follow Motion Device",
+        "zh-Hans": "激活/关闭跟随运动器"
       },
       "Alias": [
         "Activate_Disable_Follow_Motion_Device"
@@ -17337,7 +17511,8 @@
       "Identifier": "Execution.Collision_Trigger_Source.Set_Source_State",
       "ID": 367,
       "InGameName": {
-        "en": "Activate/Disable Collision Trigger Source"
+        "en": "Activate/Disable Collision Trigger Source",
+        "zh-Hans": "激活/关闭碰撞触发发源"
       },
       "Alias": [
         "Activate_Disable_Collision_Trigger_Source"
@@ -17402,7 +17577,8 @@
       "Identifier": "Execution.Entity_Related.Remove_Entity",
       "ID": 372,
       "InGameName": {
-        "en": "Remove Entity"
+        "en": "Remove Entity",
+        "zh-Hans": "移除实体"
       },
       "Alias": [
         "Remove_Entity"
@@ -17442,7 +17618,8 @@
       "Identifier": "Trigger.Entity_Related.On_Destroyed",
       "ID": 373,
       "InGameName": {
-        "en": "When Entity Is Destroyed"
+        "en": "When Entity Is Destroyed",
+        "zh-Hans": "实体销毁时"
       },
       "Alias": [
         "When_Entity_Is_Destroyed"
@@ -17582,7 +17759,8 @@
       "Identifier": "Trigger.Creation.On_Enter_Combat",
       "ID": 374,
       "InGameName": {
-        "en": "When Creation Enters Combat"
+        "en": "When Creation Enters Combat",
+        "zh-Hans": "造物入战时"
       },
       "Alias": [
         "When_Creation_Enters_Combat"
@@ -17631,7 +17809,8 @@
       "Identifier": "Trigger.Creation.On_Leave_Combat",
       "ID": 375,
       "InGameName": {
-        "en": "When Creation Leaves Combat"
+        "en": "When Creation Leaves Combat",
+        "zh-Hans": "造物脱战时"
       },
       "Alias": [
         "When_Creation_Leaves_Combat"
@@ -17680,7 +17859,8 @@
       "Identifier": "Query.Creation.Get_Target",
       "ID": 376,
       "InGameName": {
-        "en": "Get Creation's Current Target"
+        "en": "Get Creation's Current Target",
+        "zh-Hans": "获取造物当前目标"
       },
       "Alias": [
         "Get_Creation_s_Current_Target"
@@ -17724,7 +17904,8 @@
       "Identifier": "Query.Entity_Related.Get_By_Type",
       "ID": 377,
       "InGameName": {
-        "en": "Get Entity List by Specified Type"
+        "en": "Get Entity List by Specified Type",
+        "zh-Hans": "获取指定类型的实体列表"
       },
       "Alias": [
         "Get_Entity_List_by_Specified_Type"
@@ -17781,7 +17962,8 @@
       "Identifier": "Query.Entity_Related.Get_By_Prefab",
       "ID": 378,
       "InGameName": {
-        "en": "Get Entity List by Specified Prefab"
+        "en": "Get Entity List by Specified Prefab",
+        "zh-Hans": "获取指定元件ID的实体列表"
       },
       "Alias": [
         "Get_Entity_List_by_Specified_Prefab"
@@ -17838,7 +18020,8 @@
       "Identifier": "Query.Entity_Related.Get_By_Faction",
       "ID": 379,
       "InGameName": {
-        "en": "Get Entity List by Specified Faction"
+        "en": "Get Entity List by Specified Faction",
+        "zh-Hans": "获取指定阵营的实体列表"
       },
       "Alias": [
         "Get_Entity_List_by_Specified_Faction"
@@ -17895,7 +18078,8 @@
       "Identifier": "Query.Entity_Related.Get_By_Range",
       "ID": 380,
       "InGameName": {
-        "en": "Get Entity List by Specified Range"
+        "en": "Get Entity List by Specified Range",
+        "zh-Hans": "获取指定范围的实体列表"
       },
       "Alias": [
         "Get_Entity_List_by_Specified_Range"
@@ -17965,7 +18149,8 @@
       "Identifier": "Query.Creation.Get_Attribute",
       "ID": 381,
       "InGameName": {
-        "en": "Get Creation Attribute"
+        "en": "Get Creation Attribute",
+        "zh-Hans": "获取造物属性"
       },
       "Alias": [
         "Get_Creation_Attribute"
@@ -18100,7 +18285,8 @@
       "Identifier": "Execution.UI_Control_Group.Switch_Layout",
       "ID": 382,
       "InGameName": {
-        "en": "Switch Current Interface Layout"
+        "en": "Switch Current Interface Layout",
+        "zh-Hans": "切换当前界面布局"
       },
       "Alias": [
         "Switch_Current_Interface_Layout"
@@ -18153,7 +18339,8 @@
       "Identifier": "Execution.UI_Control_Group.Activate_Group",
       "ID": 383,
       "InGameName": {
-        "en": "Activate UI Control Group in Control Group Library"
+        "en": "Activate UI Control Group in Control Group Library",
+        "zh-Hans": "激活控件组库内界面控件组"
       },
       "Alias": [
         "Activate_UI_Control_Group_in_Control_Group_Library"
@@ -18206,7 +18393,8 @@
       "Identifier": "Execution.UI_Control_Group.Modify_Status",
       "ID": 384,
       "InGameName": {
-        "en": "Modify UI Control Status Within the Interface Layout"
+        "en": "Modify UI Control Status Within the Interface Layout",
+        "zh-Hans": "修改界面布局内界面控件状态"
       },
       "Alias": [
         "Modify_UI_Control_Status_Within_the_Interface_Layout"
@@ -18272,7 +18460,8 @@
       "Identifier": "Trigger.Class.On_Class_Change",
       "ID": 385,
       "InGameName": {
-        "en": "When Player Class Changes"
+        "en": "When Player Class Changes",
+        "zh-Hans": "玩家职业更改时"
       },
       "Alias": [
         "When_Player_Class_Changes"
@@ -18347,7 +18536,8 @@
       "Identifier": "Trigger.Class.On_Level_Change",
       "ID": 386,
       "InGameName": {
-        "en": "When Player Class Level Changes"
+        "en": "When Player Class Level Changes",
+        "zh-Hans": "玩家职业等级变化时"
       },
       "Alias": [
         "When_Player_Class_Level_Changes"
@@ -18422,7 +18612,8 @@
       "Identifier": "Query.Class.Get_Class",
       "ID": 387,
       "InGameName": {
-        "en": "Query Player Class"
+        "en": "Query Player Class",
+        "zh-Hans": "查询玩家职业"
       },
       "Alias": [
         "Query_Player_Class"
@@ -18466,7 +18657,8 @@
       "Identifier": "Query.Class.Get_Level",
       "ID": 388,
       "InGameName": {
-        "en": "Query Player Class Level"
+        "en": "Query Player Class Level",
+        "zh-Hans": "查询玩家职业的等级"
       },
       "Alias": [
         "Query_Player_Class_Level"
@@ -18523,7 +18715,8 @@
       "Identifier": "Execution.Class.Change_Class",
       "ID": 389,
       "InGameName": {
-        "en": "Change Player Class"
+        "en": "Change Player Class",
+        "zh-Hans": "更改玩家职业"
       },
       "Alias": [
         "Change_Player_Class"
@@ -18576,7 +18769,8 @@
       "Identifier": "Execution.Class.Add_Exp",
       "ID": 390,
       "InGameName": {
-        "en": "Increase Player's Current Class EXP"
+        "en": "Increase Player's Current Class EXP",
+        "zh-Hans": "提升玩家当前职业经验"
       },
       "Alias": [
         "Increase_Player_s_Current_Class_EXP"
@@ -18629,7 +18823,8 @@
       "Identifier": "Execution.Class.Set_Level",
       "ID": 391,
       "InGameName": {
-        "en": "Change Player's Current Class Level"
+        "en": "Change Player's Current Class Level",
+        "zh-Hans": "更改玩家当前职业等级"
       },
       "Alias": [
         "Change_Player_s_Current_Class_Level"
@@ -18682,7 +18877,8 @@
       "Identifier": "Trigger.Skill.On_Skill_Call",
       "ID": 392,
       "InGameName": {
-        "en": "When Skill Node Is Called"
+        "en": "When Skill Node Is Called",
+        "zh-Hans": "技能节点调用时"
       },
       "Alias": [
         "When_Skill_Node_Is_Called"
@@ -18770,7 +18966,8 @@
       "Identifier": "Execution.Skill.Modify_Resource",
       "ID": 393,
       "InGameName": {
-        "en": "Modify Skill Resource Amount"
+        "en": "Modify Skill Resource Amount",
+        "zh-Hans": "修改技能资源量"
       },
       "Alias": [
         "Modify_Skill_Resource_Amount"
@@ -18836,7 +19033,8 @@
       "Identifier": "Execution.Skill.Set_Resource",
       "ID": 394,
       "InGameName": {
-        "en": "Set Skill Resource Amount"
+        "en": "Set Skill Resource Amount",
+        "zh-Hans": "设置技能资源量"
       },
       "Alias": [
         "Set_Skill_Resource_Amount"
@@ -18902,7 +19100,8 @@
       "Identifier": "Execution.Skill.Add_Skill",
       "ID": 395,
       "InGameName": {
-        "en": "Add Character Skill"
+        "en": "Add Character Skill",
+        "zh-Hans": "添加角色技能"
       },
       "Alias": [
         "Add_Character_Skill"
@@ -18968,7 +19167,8 @@
       "Identifier": "Execution.Skill.Remove_By_ID",
       "ID": 396,
       "InGameName": {
-        "en": "Delete Character Skill by ID"
+        "en": "Delete Character Skill by ID",
+        "zh-Hans": "以ID删除角色技能"
       },
       "Alias": [
         "Delete_Character_Skill_by_ID"
@@ -19021,7 +19221,8 @@
       "Identifier": "Execution.Skill.Init_Skill",
       "ID": 397,
       "InGameName": {
-        "en": "Initialize Character Skill"
+        "en": "Initialize Character Skill",
+        "zh-Hans": "初始化角色技能"
       },
       "Alias": [
         "Initialize_Character_Skill"
@@ -19074,7 +19275,8 @@
       "Identifier": "Query.Skill.Get_Skill_Info",
       "ID": 398,
       "InGameName": {
-        "en": "Query Character Skill"
+        "en": "Query Character Skill",
+        "zh-Hans": "查询角色技能"
       },
       "Alias": [
         "Query_Character_Skill"
@@ -19131,7 +19333,8 @@
       "Identifier": "Execution.Skill.Remove_By_Slot",
       "ID": 399,
       "InGameName": {
-        "en": "Delete Character Skill by Slot"
+        "en": "Delete Character Skill by Slot",
+        "zh-Hans": "以槽位删除角色技能"
       },
       "Alias": [
         "Delete_Character_Skill_by_Slot"
@@ -21704,7 +21907,8 @@
       "Identifier": "Execution.Special_Effect.Stop_By_Asset",
       "ID": 473,
       "InGameName": {
-        "en": "Clear Special Effects Based on Special Effect Assets"
+        "en": "Clear Special Effects Based on Special Effect Assets",
+        "zh-Hans": "根据特效资产清除特效"
       },
       "Alias": [
         "Clear_Special_Effects_Based_on_Special_Effect_Assets"
@@ -21757,7 +21961,8 @@
       "Identifier": "Arithmetic.Math.Vector_Rotate",
       "ID": 474,
       "InGameName": {
-        "en": "3D Vector Rotation"
+        "en": "3D Vector Rotation",
+        "zh-Hans": "三维向量旋转"
       },
       "Alias": [
         "_3D_Vector_Rotation"
@@ -21814,7 +22019,8 @@
       "Identifier": "Arithmetic.General.Enum_Equal",
       "ID": 475,
       "InGameName": {
-        "en": "Enumerations Equal"
+        "en": "Enumerations Equal",
+        "zh-Hans": "枚举是否相等"
       },
       "Alias": [
         "Enumerations_Equal"
@@ -22068,7 +22274,8 @@
       "Identifier": "Arithmetic.Math.Vector_Dot",
       "ID": 505,
       "InGameName": {
-        "en": "3D Vector Dot Product"
+        "en": "3D Vector Dot Product",
+        "zh-Hans": "三维向量内积"
       },
       "Alias": [
         "_3D_Vector_Dot_Product"
@@ -22125,7 +22332,8 @@
       "Identifier": "Arithmetic.Math.Vector_Cross",
       "ID": 506,
       "InGameName": {
-        "en": "3D Vector Cross Product"
+        "en": "3D Vector Cross Product",
+        "zh-Hans": "三维向量外积"
       },
       "Alias": [
         "_3D_Vector_Cross_Product"
@@ -22182,7 +22390,8 @@
       "Identifier": "Query.Entity_Related.Is_Active",
       "ID": 507,
       "InGameName": {
-        "en": "Query If Entity Is on the Field"
+        "en": "Query If Entity Is on the Field",
+        "zh-Hans": "查询实体是否在场"
       },
       "Alias": [
         "Query_If_Entity_Is_on_the_Field"
@@ -22226,7 +22435,8 @@
       "Identifier": "Query.Unit_Status.Has_Status",
       "ID": 508,
       "InGameName": {
-        "en": "Query If Entity Has Unit Status"
+        "en": "Query If Entity Has Unit Status",
+        "zh-Hans": "查询实体是否具有单位状态"
       },
       "Alias": [
         "Query_If_Entity_Has_Unit_Status"
@@ -22283,7 +22493,8 @@
       "Identifier": "Execution.List_Operation.For_Each",
       "ID": 509,
       "InGameName": {
-        "en": "List Iteration Loop"
+        "en": "List Iteration Loop",
+        "zh-Hans": "列表迭代循环"
       },
       "Alias": [
         "List_Iteration_Loop"
@@ -22388,7 +22599,8 @@
       "Identifier": "Query.Entity_Related.Get_Forward",
       "ID": 516,
       "InGameName": {
-        "en": "Get Entity Forward Vector"
+        "en": "Get Entity Forward Vector",
+        "zh-Hans": "获取实体向前向量"
       },
       "Alias": [
         "Get_Entity_Forward_Vector"
@@ -22432,7 +22644,8 @@
       "Identifier": "Query.Entity_Related.Get_Right",
       "ID": 517,
       "InGameName": {
-        "en": "Get Entity Right Vector"
+        "en": "Get Entity Right Vector",
+        "zh-Hans": "获取实体向右向量"
       },
       "Alias": [
         "Get_Entity_Right_Vector"
@@ -22476,7 +22689,8 @@
       "Identifier": "Query.Entity_Related.Get_Up",
       "ID": 518,
       "InGameName": {
-        "en": "Get Entity Upward Vector"
+        "en": "Get Entity Upward Vector",
+        "zh-Hans": "获取实体向上向量"
       },
       "Alias": [
         "Get_Entity_Upward_Vector"
@@ -22520,7 +22734,8 @@
       "Identifier": "Arithmetic.Math.Vector_To_Rotation",
       "ID": 519,
       "InGameName": {
-        "en": "Direction Vector to Rotation"
+        "en": "Direction Vector to Rotation",
+        "zh-Hans": "方向向量旋转"
       },
       "Alias": [
         "Direction_Vector_to_Rotation"
@@ -22577,7 +22792,8 @@
       "Identifier": "Execution.Motion_Device.Add_Target_Rotation",
       "ID": 520,
       "InGameName": {
-        "en": "Add Target-Oriented Rotation-Based Motion Device"
+        "en": "Add Target-Oriented Rotation-Based Motion Device",
+        "zh-Hans": "添加朝向目标旋转型基础运动器"
       },
       "Alias": [
         "Add_Target_Oriented_Rotation_Based_Motion_Device"
@@ -22656,7 +22872,8 @@
       "Identifier": "Execution.UI_Control_Group.Remove_Group",
       "ID": 521,
       "InGameName": {
-        "en": "Remove Interface Control Group From Control Group Library"
+        "en": "Remove Interface Control Group From Control Group Library",
+        "zh-Hans": "移除控件组库内界面控件组"
       },
       "Alias": [
         "Remove_Interface_Control_Group_From_Control_Group_Library"
@@ -22709,7 +22926,8 @@
       "Identifier": "Query.Entity_Related.Get_Obj_Attr",
       "ID": 580,
       "InGameName": {
-        "en": "Get Object Attribute"
+        "en": "Get Object Attribute",
+        "zh-Hans": "获取物件属性"
       },
       "Alias": [
         "Get_Object_Attribute"
@@ -22831,7 +23049,8 @@
       "Identifier": "Execution.Combat.Recover_HP",
       "ID": 583,
       "InGameName": {
-        "en": "Recover HP"
+        "en": "Recover HP",
+        "zh-Hans": "恢复生命"
       },
       "Alias": [
         "Recover_HP"
@@ -22923,7 +23142,8 @@
       "Identifier": "Trigger.Combat.On_HP_Recover",
       "ID": 584,
       "InGameName": {
-        "en": "When HP Is Recovered"
+        "en": "When HP Is Recovered",
+        "zh-Hans": "被恢复生命值时"
       },
       "Alias": [
         "When_HP_Is_Recovered"
@@ -23011,7 +23231,8 @@
       "Identifier": "Trigger.Combat.On_HP_Recovery_Start",
       "ID": 585,
       "InGameName": {
-        "en": "When Initiating HP Recovery"
+        "en": "When Initiating HP Recovery",
+        "zh-Hans": "发起恢复生命值时"
       },
       "Alias": [
         "When_Initiating_HP_Recovery"
@@ -23099,7 +23320,8 @@
       "Identifier": "Execution.Unit_Tag.Add_Tag",
       "ID": 586,
       "InGameName": {
-        "en": "Add Unit Tag to Entity"
+        "en": "Add Unit Tag to Entity",
+        "zh-Hans": "实体添加单位标签"
       },
       "Alias": [
         "Add_Unit_Tag_to_Entity"
@@ -23152,7 +23374,8 @@
       "Identifier": "Execution.Unit_Tag.Remove_Tag",
       "ID": 587,
       "InGameName": {
-        "en": "Remove Unit Tag from Entity"
+        "en": "Remove Unit Tag from Entity",
+        "zh-Hans": "实体移除单位标签"
       },
       "Alias": [
         "Remove_Unit_Tag_from_Entity"
@@ -23205,7 +23428,8 @@
       "Identifier": "Execution.Unit_Tag.Clear_Tags",
       "ID": 588,
       "InGameName": {
-        "en": "Clear Unit Tags from Entity"
+        "en": "Clear Unit Tags from Entity",
+        "zh-Hans": "实体清空单位标签"
       },
       "Alias": [
         "Clear_Unit_Tags_from_Entity"
@@ -23245,7 +23469,8 @@
       "Identifier": "Query.Unit_Tag.Get_Tags",
       "ID": 589,
       "InGameName": {
-        "en": "Get Entity Unit Tag List"
+        "en": "Get Entity Unit Tag List",
+        "zh-Hans": "获取实体单位标签列表"
       },
       "Alias": [
         "Get_Entity_Unit_Tag_List"
@@ -23289,7 +23514,8 @@
       "Identifier": "Query.Unit_Tag.Get_By_Tag",
       "ID": 590,
       "InGameName": {
-        "en": "Get Entity List by Unit Tag"
+        "en": "Get Entity List by Unit Tag",
+        "zh-Hans": "获取单位标签的实体列表"
       },
       "Alias": [
         "Get_Entity_List_by_Unit_Tag"
@@ -23333,7 +23559,8 @@
       "Identifier": "Execution.Sound_Effect.Close_Player",
       "ID": 591,
       "InGameName": {
-        "en": "Close Specified Sound Effect Player"
+        "en": "Close Specified Sound Effect Player",
+        "zh-Hans": "关闭指定音效播放器"
       },
       "Alias": [
         "Close_Specified_Sound_Effect_Player"
@@ -23386,7 +23613,8 @@
       "Identifier": "Execution.Sound_Effect.Toggle_Player",
       "ID": 592,
       "InGameName": {
-        "en": "Start/Pause Specified Sound Effect Player"
+        "en": "Start/Pause Specified Sound Effect Player",
+        "zh-Hans": "启动/暂停指定音效播放器"
       },
       "Alias": [
         "Start_Pause_Specified_Sound_Effect_Player"
@@ -23452,7 +23680,8 @@
       "Identifier": "Execution.Sound_Effect.Adjust_Player",
       "ID": 593,
       "InGameName": {
-        "en": "Adjust Specified Sound Effect Player"
+        "en": "Adjust Specified Sound Effect Player",
+        "zh-Hans": "调整指定音效播放器"
       },
       "Alias": [
         "Adjust_Specified_Sound_Effect_Player"
@@ -23531,7 +23760,8 @@
       "Identifier": "Execution.Sound_Effect.Add_Player",
       "ID": 594,
       "InGameName": {
-        "en": "Add Sound Effect Player"
+        "en": "Add Sound Effect Player",
+        "zh-Hans": "添加音效播放器"
       },
       "Alias": [
         "Add_Sound_Effect_Player"
@@ -23714,7 +23944,8 @@
       "Identifier": "Execution.Sound_Effect.Toggle_BGM",
       "ID": 595,
       "InGameName": {
-        "en": "Start/Pause Player Background Music"
+        "en": "Start/Pause Player Background Music",
+        "zh-Hans": "启动/暂停玩家背景音乐"
       },
       "Alias": [
         "Start_Pause_Player_Background_Music"
@@ -23767,7 +23998,8 @@
       "Identifier": "Execution.Sound_Effect.Set_BGM_Volume",
       "ID": 596,
       "InGameName": {
-        "en": "Adjust Player Background Music Volume"
+        "en": "Adjust Player Background Music Volume",
+        "zh-Hans": "调整玩家背景音乐音量"
       },
       "Alias": [
         "Adjust_Player_Background_Music_Volume"
@@ -23820,7 +24052,8 @@
       "Identifier": "Execution.Sound_Effect.Set_BGM",
       "ID": 597,
       "InGameName": {
-        "en": "Modify Player Background Music"
+        "en": "Modify Player Background Music",
+        "zh-Hans": "修改玩家背景音乐"
       },
       "Alias": [
         "Modify_Player_Background_Music"
@@ -23964,7 +24197,8 @@
       "Identifier": "Execution.Sound_Effect.Play_2D_One_Shot",
       "ID": 598,
       "InGameName": {
-        "en": "Player Plays One-Shot 2D Sound Effect"
+        "en": "Player Plays One-Shot 2D Sound Effect",
+        "zh-Hans": "玩家播放单次2D音效"
       },
       "Alias": [
         "Player_Plays_One_Shot_2D_Sound_Effect"
@@ -24043,7 +24277,8 @@
       "Identifier": "Execution.Custom_Aggro.Set_Aggro",
       "ID": 599,
       "InGameName": {
-        "en": "Set the Aggro Value of Specified Entity"
+        "en": "Set the Aggro Value of Specified Entity",
+        "zh-Hans": "设置指定实体的仇恨值"
       },
       "Alias": [
         "Set_the_Aggro_Value_of_Specified_Entity"
@@ -24109,7 +24344,8 @@
       "Identifier": "Execution.Custom_Aggro.Remove_Aggro",
       "ID": 600,
       "InGameName": {
-        "en": "Remove Target Entity From Aggro List"
+        "en": "Remove Target Entity From Aggro List",
+        "zh-Hans": "将目标实体移除出仇恨列表"
       },
       "Alias": [
         "Remove_Target_Entity_From_Aggro_List"
@@ -24162,7 +24398,8 @@
       "Identifier": "Execution.Custom_Aggro.Clear_Aggro",
       "ID": 601,
       "InGameName": {
-        "en": "Clear Specified Target's Aggro List"
+        "en": "Clear Specified Target's Aggro List",
+        "zh-Hans": "清空指定目标的仇恨列表"
       },
       "Alias": [
         "Clear_Specified_Target_s_Aggro_List"
@@ -24202,7 +24439,8 @@
       "Identifier": "Execution.Custom_Aggro.Taunt",
       "ID": 602,
       "InGameName": {
-        "en": "Taunt Target"
+        "en": "Taunt Target",
+        "zh-Hans": "嘲讽目标"
       },
       "Alias": [
         "Taunt_Target"
@@ -24255,7 +24493,8 @@
       "Identifier": "Query.Custom_Aggro.Get_Aggro_Value",
       "ID": 603,
       "InGameName": {
-        "en": "Query the Aggro Value of the Specified Entity"
+        "en": "Query the Aggro Value of the Specified Entity",
+        "zh-Hans": "查询指定实体的仇恨值"
       },
       "Alias": [
         "Query_the_Aggro_Value_of_the_Specified_Entity"
@@ -24312,7 +24551,8 @@
       "Identifier": "Query.Custom_Aggro.Get_Multiplier",
       "ID": 604,
       "InGameName": {
-        "en": "Query the Aggro Multiplier of the Specified Entity"
+        "en": "Query the Aggro Multiplier of the Specified Entity",
+        "zh-Hans": "查询指定实体的仇恨倍率"
       },
       "Alias": [
         "Query_the_Aggro_Multiplier_of_the_Specified_Entity"
@@ -24356,7 +24596,8 @@
       "Identifier": "Query.Custom_Aggro.Get_Global_Multiplier",
       "ID": 605,
       "InGameName": {
-        "en": "Query Global Aggro Transfer Multiplier"
+        "en": "Query Global Aggro Transfer Multiplier",
+        "zh-Hans": "查询全局仇恨转移倍率"
       },
       "Alias": [
         "Query_Global_Aggro_Transfer_Multiplier"
@@ -24387,7 +24628,8 @@
       "Identifier": "Query.Custom_Aggro.Get_Aggro_Target",
       "ID": 606,
       "InGameName": {
-        "en": "Get the Aggro Target of the Specified Entity"
+        "en": "Get the Aggro Target of the Specified Entity",
+        "zh-Hans": "获取指定实体的仇恨目标"
       },
       "Alias": [
         "Get_the_Aggro_Target_of_the_Specified_Entity"
@@ -24431,7 +24673,8 @@
       "Identifier": "Query.Custom_Aggro.Get_Aggro_Owners",
       "ID": 607,
       "InGameName": {
-        "en": "Get List of Owners Who Have the Target in Their Aggro List"
+        "en": "Get List of Owners Who Have the Target in Their Aggro List",
+        "zh-Hans": "获取目标所在仇恨列表的拥有者列表"
       },
       "Alias": [
         "Get_List_of_Owners_Who_Have_the_Target_in_Their_Aggro_List"
@@ -24475,7 +24718,8 @@
       "Identifier": "Query.Custom_Aggro.Get_Targeting_Owners",
       "ID": 608,
       "InGameName": {
-        "en": "Get List of Owners That Have the Target As Their Aggro Target"
+        "en": "Get List of Owners That Have the Target As Their Aggro Target",
+        "zh-Hans": "获取以目标为仇恨目标的拥有者列表"
       },
       "Alias": [
         "Get_List_of_Owners_That_Have_the_Target_As_Their_Aggro_Target"
@@ -24519,7 +24763,8 @@
       "Identifier": "Query.Custom_Aggro.Get_Aggro_List",
       "ID": 609,
       "InGameName": {
-        "en": "Get the Aggro List of the Specified Entity"
+        "en": "Get the Aggro List of the Specified Entity",
+        "zh-Hans": "获取指定实体的仇恨列表"
       },
       "Alias": [
         "Get_the_Aggro_List_of_the_Specified_Entity"
@@ -24563,7 +24808,8 @@
       "Identifier": "Query.Custom_Aggro.Is_In_Combat",
       "ID": 610,
       "InGameName": {
-        "en": "Query if Specified Entity Is in Combat"
+        "en": "Query if Specified Entity Is in Combat",
+        "zh-Hans": "查询指定实体是否已入战"
       },
       "Alias": [
         "Query_if_Specified_Entity_Is_in_Combat"
@@ -24607,7 +24853,8 @@
       "Identifier": "Trigger.Custom_Aggro.On_Target_Change",
       "ID": 611,
       "InGameName": {
-        "en": "When Aggro Target Changes"
+        "en": "When Aggro Target Changes",
+        "zh-Hans": "仇恨目标变化时"
       },
       "Alias": [
         "When_Aggro_Target_Changes"
@@ -24682,7 +24929,8 @@
       "Identifier": "Trigger.Custom_Aggro.On_Enter_Combat",
       "ID": 612,
       "InGameName": {
-        "en": "When Self Enters Combat"
+        "en": "When Self Enters Combat",
+        "zh-Hans": "自身入战时"
       },
       "Alias": [
         "When_Self_Enters_Combat"
@@ -24731,7 +24979,8 @@
       "Identifier": "Trigger.Custom_Aggro.On_Leave_Combat",
       "ID": 613,
       "InGameName": {
-        "en": "When Self Leaves Combat"
+        "en": "When Self Leaves Combat",
+        "zh-Hans": "自身脱战时"
       },
       "Alias": [
         "When_Self_Leaves_Combat"
@@ -24780,7 +25029,8 @@
       "Identifier": "Query.Faction_Related.Is_Hostile",
       "ID": 614,
       "InGameName": {
-        "en": "Query If Faction Is Hostile"
+        "en": "Query If Faction Is Hostile",
+        "zh-Hans": "获取阵营是否敌对"
       },
       "Alias": [
         "Query_If_Faction_Is_Hostile"
@@ -24917,7 +25167,8 @@
       "Identifier": "Execution.Nameplate.Set_Nameplate",
       "ID": 617,
       "InGameName": {
-        "en": "Set Entity Active Nameplate"
+        "en": "Set Entity Active Nameplate",
+        "zh-Hans": "设置实体生效铭牌"
       },
       "Alias": [
         "Set_Entity_Active_Nameplate"
@@ -24970,7 +25221,8 @@
       "Identifier": "Execution.Creation_Patrol.Switch_Template",
       "ID": 618,
       "InGameName": {
-        "en": "Switch Creation Patrol Template"
+        "en": "Switch Creation Patrol Template",
+        "zh-Hans": "切换造物巡逻模板"
       },
       "Alias": [
         "Switch_Creation_Patrol_Template"
@@ -25023,7 +25275,8 @@
       "Identifier": "Query.Creature_Patrol.Get_Patrol_Template",
       "ID": 619,
       "InGameName": {
-        "en": "Get Current Creation's Patrol Template"
+        "en": "Get Current Creation's Patrol Template",
+        "zh-Hans": "获取当前造物的巡逻模板"
       },
       "Alias": [
         "Get_Current_Creation_s_Patrol_Template"
@@ -25093,7 +25346,8 @@
       "Identifier": "Trigger.Creation_Patrol.On_Reach_Waypoint",
       "ID": 620,
       "InGameName": {
-        "en": "When Creation Reaches Patrol Waypoint"
+        "en": "When Creation Reaches Patrol Waypoint",
+        "zh-Hans": "造物抵达巡逻路点时"
       },
       "Alias": [
         "When_Creation_Reaches_Patrol_Waypoint"
@@ -25194,7 +25448,8 @@
       "Identifier": "Query.Global_Path.Get_Waypoint",
       "ID": 621,
       "InGameName": {
-        "en": "Get Specified Waypoint Info"
+        "en": "Get Specified Waypoint Info",
+        "zh-Hans": "获取指定路径点信息"
       },
       "Alias": [
         "Get_Specified_Waypoint_Info"
@@ -25264,7 +25519,8 @@
       "Identifier": "Execution.Text_Bubble.Set_Bubble",
       "ID": 631,
       "InGameName": {
-        "en": "Switch Active Text Bubble"
+        "en": "Switch Active Text Bubble",
+        "zh-Hans": "切换生效的文本气泡"
       },
       "Alias": [
         "Switch_Active_Text_Bubble"
@@ -25317,7 +25573,8 @@
       "Identifier": "Execution.Deck_Selector.Open",
       "ID": 632,
       "InGameName": {
-        "en": "Invoke Deck Selector"
+        "en": "Invoke Deck Selector",
+        "zh-Hans": "唤起卡牌选择器"
       },
       "Alias": [
         "Invoke_Deck_Selector"
@@ -25487,7 +25744,8 @@
       "Identifier": "Trigger.Deck_Selector.On_Deck_Selected",
       "ID": 633,
       "InGameName": {
-        "en": "When Deck Selector Is Complete"
+        "en": "When Deck Selector Is Complete",
+        "zh-Hans": "卡牌选择器完成时"
       },
       "Alias": [
         "When_Deck_Selector_Is_Complete"
@@ -25562,7 +25820,8 @@
       "Identifier": "Execution.Minimap_Marker.Set_Zoom",
       "ID": 634,
       "InGameName": {
-        "en": "Modify Mini-Map Zoom"
+        "en": "Modify Mini-Map Zoom",
+        "zh-Hans": "修改小地图缩放"
       },
       "Alias": [
         "Modify_Mini_Map_Zoom"
@@ -25615,7 +25874,8 @@
       "Identifier": "Execution.Minimap_Marker.Set_Marker_State",
       "ID": 635,
       "InGameName": {
-        "en": "Modify Mini-Map Marker Activation Status"
+        "en": "Modify Mini-Map Marker Activation Status",
+        "zh-Hans": "修改小地图标识生效状态"
       },
       "Alias": [
         "Modify_Mini_Map_Marker_Activation_Status"
@@ -25681,7 +25941,8 @@
       "Identifier": "Execution.Minimap_Marker.Set_Visible_List",
       "ID": 636,
       "InGameName": {
-        "en": "Modify Player List for Visible Mini-Map Markers"
+        "en": "Modify Player List for Visible Mini-Map Markers",
+        "zh-Hans": "修改可见小地图标识的玩家列表"
       },
       "Alias": [
         "Modify_Player_List_for_Visible_Mini_Map_Markers"
@@ -25747,7 +26008,8 @@
       "Identifier": "Execution.Minimap_Marker.Set_Track_List",
       "ID": 637,
       "InGameName": {
-        "en": "Modify Player List for Tracking Mini-Map Markers"
+        "en": "Modify Player List for Tracking Mini-Map Markers",
+        "zh-Hans": "修改追踪小地图标识的玩家列表"
       },
       "Alias": [
         "Modify_Player_List_for_Tracking_Mini_Map_Markers"
@@ -25813,7 +26075,8 @@
       "Identifier": "Query.Minimap_Marker.Get_Marker_Info",
       "ID": 638,
       "InGameName": {
-        "en": "Query Specified Mini-Map Marker Information"
+        "en": "Query Specified Mini-Map Marker Information",
+        "zh-Hans": "查询指定小地图标识信息"
       },
       "Alias": [
         "Query_Specified_Mini_Map_Marker_Information"
@@ -25896,7 +26159,8 @@
       "Identifier": "Query.Minimap_Marker.Get_Marker_Status",
       "ID": 639,
       "InGameName": {
-        "en": "Get Entity's Mini-Map Marker Status"
+        "en": "Get Entity's Mini-Map Marker Status",
+        "zh-Hans": "获取实体的小地图标识状态"
       },
       "Alias": [
         "Get_Entity_s_Mini_Map_Marker_Status"
@@ -25966,7 +26230,8 @@
       "Identifier": "Execution.Minimap_Marker.Update_Markers",
       "ID": 640,
       "InGameName": {
-        "en": "Modify Player Markers on the Mini-Map"
+        "en": "Modify Player Markers on the Mini-Map",
+        "zh-Hans": "修改小地图标识的玩家标记"
       },
       "Alias": [
         "Modify_Player_Markers_on_the_Mini_Map"
@@ -26032,7 +26297,8 @@
       "Identifier": "Execution.Deck_Selector.Close",
       "ID": 641,
       "InGameName": {
-        "en": "Close Deck Selector"
+        "en": "Close Deck Selector",
+        "zh-Hans": "关闭卡牌选择器"
       },
       "Alias": [
         "Close_Deck_Selector"
@@ -26085,7 +26351,8 @@
       "Identifier": "Trigger.Unit_Status.On_Element_Reaction",
       "ID": 642,
       "InGameName": {
-        "en": "When Elemental Reaction Event Occurs"
+        "en": "When Elemental Reaction Event Occurs",
+        "zh-Hans": "发生元素反应事件时"
       },
       "Alias": [
         "When_Elemental_Reaction_Event_Occurs"
@@ -26173,7 +26440,8 @@
       "Identifier": "Trigger.Unit_Status.On_Shield_Hit",
       "ID": 643,
       "InGameName": {
-        "en": "When Shield Is Attacked"
+        "en": "When Shield Is Attacked",
+        "zh-Hans": "护盾受到攻击时"
       },
       "Alias": [
         "When_Shield_Is_Attacked"
@@ -26313,7 +26581,8 @@
       "Identifier": "Query.Achievement.Is_Completed",
       "ID": 644,
       "InGameName": {
-        "en": "Query If Achievement Is Completed"
+        "en": "Query If Achievement Is Completed",
+        "zh-Hans": "查询成就是否完成"
       },
       "Alias": [
         "Query_If_Achievement_Is_Completed"
@@ -26370,7 +26639,8 @@
       "Identifier": "Execution.Achievement.Set_Progress",
       "ID": 645,
       "InGameName": {
-        "en": "Set Achievement Progress Tally"
+        "en": "Set Achievement Progress Tally",
+        "zh-Hans": "设置成就进度计数"
       },
       "Alias": [
         "Set_Achievement_Progress_Tally"
@@ -26436,7 +26706,8 @@
       "Identifier": "Execution.Achievement.Add_Progress",
       "ID": 646,
       "InGameName": {
-        "en": "Change Achievement Progress Tally"
+        "en": "Change Achievement Progress Tally",
+        "zh-Hans": "变更成就进度计数"
       },
       "Alias": [
         "Change_Achievement_Progress_Tally"
@@ -26502,7 +26773,8 @@
       "Identifier": "Execution.Stage_Settlement.Set_Scoreboard",
       "ID": 647,
       "InGameName": {
-        "en": "Set Player Settlement Scoreboard Data Display"
+        "en": "Set Player Settlement Scoreboard Data Display",
+        "zh-Hans": "设置玩家结算计分板展示数据"
       },
       "Alias": [
         "Set_Player_Settlement_Scoreboard_Data_Display"
@@ -26598,7 +26870,8 @@
       "Identifier": "Execution.Stage_Settlement.Set_Player_Rank",
       "ID": 650,
       "InGameName": {
-        "en": "Set Player Settlement Ranking Value"
+        "en": "Set Player Settlement Ranking Value",
+        "zh-Hans": "设置玩家结算排名数值"
       },
       "Alias": [
         "Set_Player_Settlement_Ranking_Value"
@@ -26651,7 +26924,8 @@
       "Identifier": "Query.Stage_Settlement.Get_Player_Rank",
       "ID": 651,
       "InGameName": {
-        "en": "Get Player Settlement Ranking Value"
+        "en": "Get Player Settlement Ranking Value",
+        "zh-Hans": "获取玩家结算排名数值"
       },
       "Alias": [
         "Get_Player_Settlement_Ranking_Value"
@@ -26695,7 +26969,8 @@
       "Identifier": "Execution.Stage_Settlement.Set_Player_Result",
       "ID": 652,
       "InGameName": {
-        "en": "Set Player Settlement Success Status"
+        "en": "Set Player Settlement Success Status",
+        "zh-Hans": "设置玩家结算成功状态"
       },
       "Alias": [
         "Set_Player_Settlement_Success_Status"
@@ -26748,7 +27023,8 @@
       "Identifier": "Query.Stage_Settlement.Get_Player_Result",
       "ID": 653,
       "InGameName": {
-        "en": "Get Player Settlement Success Status"
+        "en": "Get Player Settlement Success Status",
+        "zh-Hans": "获取玩家结算成功状态"
       },
       "Alias": [
         "Get_Player_Settlement_Success_Status"
@@ -26792,7 +27068,8 @@
       "Identifier": "Execution.Stage_Settlement.Set_Faction_Rank",
       "ID": 654,
       "InGameName": {
-        "en": "Set Faction Settlement Ranking Value"
+        "en": "Set Faction Settlement Ranking Value",
+        "zh-Hans": "设置阵营结算排名数值"
       },
       "Alias": [
         "Set_Faction_Settlement_Ranking_Value"
@@ -26845,7 +27122,8 @@
       "Identifier": "Query.Stage_Settlement.Get_Faction_Rank",
       "ID": 655,
       "InGameName": {
-        "en": "Get Faction Settlement Ranking Value"
+        "en": "Get Faction Settlement Ranking Value",
+        "zh-Hans": "获取阵营结算排名数值"
       },
       "Alias": [
         "Get_Faction_Settlement_Ranking_Value"
@@ -26889,7 +27167,8 @@
       "Identifier": "Execution.Stage_Settlement.Set_Faction_Result",
       "ID": 656,
       "InGameName": {
-        "en": "Set Faction Settlement Success Status"
+        "en": "Set Faction Settlement Success Status",
+        "zh-Hans": "设置阵营结算成功状态"
       },
       "Alias": [
         "Set_Faction_Settlement_Success_Status"
@@ -26942,7 +27221,8 @@
       "Identifier": "Query.Stage_Settlement.Get_Faction_Result",
       "ID": 657,
       "InGameName": {
-        "en": "Get Faction Settlement Success Status"
+        "en": "Get Faction Settlement Success Status",
+        "zh-Hans": "获取阵营结算成功状态"
       },
       "Alias": [
         "Get_Faction_Settlement_Success_Status"
@@ -26986,7 +27266,8 @@
       "Identifier": "Query.Rank_Tier.Get_Rank_Info",
       "ID": 658,
       "InGameName": {
-        "en": "Get Player Ranking Info"
+        "en": "Get Player Ranking Info",
+        "zh-Hans": "获取玩家段位信息"
       },
       "Alias": [
         "Get_Player_Ranking_Info"
@@ -27069,7 +27350,8 @@
       "Identifier": "Execution.Rank.Modify_Score",
       "ID": 659,
       "InGameName": {
-        "en": "Set Player Rank Score Change"
+        "en": "Set Player Rank Score Change",
+        "zh-Hans": "设置玩家段位变化分数"
       },
       "Alias": [
         "Set_Player_Rank_Score_Change"
@@ -27135,7 +27417,8 @@
       "Identifier": "Query.Rank_Tier.Get_Score_Change",
       "ID": 660,
       "InGameName": {
-        "en": "Get Player Rank Score Change"
+        "en": "Get Player Rank Score Change",
+        "zh-Hans": "获取玩家段位变化分数"
       },
       "Alias": [
         "Get_Player_Rank_Score_Change"
@@ -27192,7 +27475,8 @@
       "Identifier": "Execution.Rank.Set_Escape_Valid",
       "ID": 661,
       "InGameName": {
-        "en": "Set Player Escape Validity"
+        "en": "Set Player Escape Validity",
+        "zh-Hans": "设置玩家逃跑合法性"
       },
       "Alias": [
         "Set_Player_Escape_Validity"
@@ -27245,7 +27529,8 @@
       "Identifier": "Query.Rank_Tier.Get_Escape_Status",
       "ID": 662,
       "InGameName": {
-        "en": "Get Player Escape Validity"
+        "en": "Get Player Escape Validity",
+        "zh-Hans": "获取玩家逃跑合法性"
       },
       "Alias": [
         "Get_Player_Escape_Validity"
@@ -27289,7 +27574,8 @@
       "Identifier": "Execution.Rank.Switch_Score_Group",
       "ID": 663,
       "InGameName": {
-        "en": "Switch the scoring group that affects player's competitive rank"
+        "en": "Switch the scoring group that affects player's competitive rank",
+        "zh-Hans": "切换玩家竞技段位生效的计分组"
       },
       "Alias": [
         "Switch_the_scoring_group_that_affects_player_s_competitive_rank"
@@ -27342,7 +27628,8 @@
       "Identifier": "Query.Stage_Related.Get_Env_Time",
       "ID": 664,
       "InGameName": {
-        "en": "Query Current Environment Time"
+        "en": "Query Current Environment Time",
+        "zh-Hans": "查询当前环境时间"
       },
       "Alias": [
         "Query_Current_Environment_Time"
@@ -27386,7 +27673,8 @@
       "Identifier": "Execution.Stage_Related.Set_Time",
       "ID": 665,
       "InGameName": {
-        "en": "Set Current Environment Time"
+        "en": "Set Current Environment Time",
+        "zh-Hans": "设置当前环境时间"
       },
       "Alias": [
         "Set_Current_Environment_Time"
@@ -27426,7 +27714,8 @@
       "Identifier": "Execution.Stage_Related.Set_Time_Speed",
       "ID": 666,
       "InGameName": {
-        "en": "Set Environment Time Passage Speed"
+        "en": "Set Environment Time Passage Speed",
+        "zh-Hans": "设置环境时间流逝速度"
       },
       "Alias": [
         "Set_Environment_Time_Passage_Speed"
@@ -27466,7 +27755,8 @@
       "Identifier": "Execution.Light_Component.Toggle_Light",
       "ID": 667,
       "InGameName": {
-        "en": "Toggle Entity Light Source"
+        "en": "Toggle Entity Light Source",
+        "zh-Hans": "开关实体光源"
       },
       "Alias": [
         "Toggle_Entity_Light_Source"
@@ -27532,7 +27822,8 @@
       "Identifier": "Execution.Follow_Motion.Set_Target_Entity",
       "ID": 668,
       "InGameName": {
-        "en": "Switch Follow Motion Device Target by Entity"
+        "en": "Switch Follow Motion Device Target by Entity",
+        "zh-Hans": "以实体切换跟随运动器的目标"
       },
       "Alias": [
         "Switch_Follow_Motion_Device_Target_by_Entity"
@@ -27650,7 +27941,8 @@
       "Identifier": "Query.Collision_Trigger.Get_Overlapping_Entities",
       "ID": 669,
       "InGameName": {
-        "en": "Get All Entities Within the Collision Trigger"
+        "en": "Get All Entities Within the Collision Trigger",
+        "zh-Hans": "获取碰撞触发器内所有实体"
       },
       "Alias": [
         "Get_All_Entities_Within_the_Collision_Trigger"
@@ -27707,7 +27999,8 @@
       "Identifier": "Query.Entity_Related.Get_Adv_Attr",
       "ID": 670,
       "InGameName": {
-        "en": "Get Entity Advanced Attribute"
+        "en": "Get Entity Advanced Attribute",
+        "zh-Hans": "获取实体进阶属性"
       },
       "Alias": [
         "Get_Entity_Advanced_Attribute"
@@ -27827,7 +28120,8 @@
       "Identifier": "Query.Entity_Related.Get_Elem_Attr",
       "ID": 671,
       "InGameName": {
-        "en": "Get Entity Elemental Attribute"
+        "en": "Get Entity Elemental Attribute",
+        "zh-Hans": "获取实体元素属性"
       },
       "Alias": [
         "Get_Entity_Elemental_Attribute"
@@ -28066,7 +28360,8 @@
       "Identifier": "Execution.Equipment.Add_Affix",
       "ID": 672,
       "InGameName": {
-        "en": "Add Affix to Equipment"
+        "en": "Add Affix to Equipment",
+        "zh-Hans": "装备添加词条"
       },
       "Alias": [
         "Add_Affix_to_Equipment"
@@ -28145,7 +28440,8 @@
       "Identifier": "Execution.Equipment.Remove_Affix",
       "ID": 673,
       "InGameName": {
-        "en": "Remove Equipment Affix"
+        "en": "Remove Equipment Affix",
+        "zh-Hans": "移除装备词条"
       },
       "Alias": [
         "Remove_Equipment_Affix"
@@ -28198,7 +28494,8 @@
       "Identifier": "Execution.Equipment.Modify_Affix",
       "ID": 674,
       "InGameName": {
-        "en": "Modify Equipment Affix Value"
+        "en": "Modify Equipment Affix Value",
+        "zh-Hans": "修改装备词条值"
       },
       "Alias": [
         "Modify_Equipment_Affix_Value"
@@ -28264,7 +28561,8 @@
       "Identifier": "Query.Equipment.Get_Affixes",
       "ID": 675,
       "InGameName": {
-        "en": "Get Equipment Affix List"
+        "en": "Get Equipment Affix List",
+        "zh-Hans": "获取装备词条列表"
       },
       "Alias": [
         "Get_Equipment_Affix_List"
@@ -28308,7 +28606,8 @@
       "Identifier": "Query.Equipment.Get_Affix_Config",
       "ID": 676,
       "InGameName": {
-        "en": "Get Equipment Affix Config ID"
+        "en": "Get Equipment Affix Config ID",
+        "zh-Hans": "获取装备词条配置ID"
       },
       "Alias": [
         "Get_Equipment_Affix_Config_ID"
@@ -28365,7 +28664,8 @@
       "Identifier": "Query.Equipment.Get_Affix_Value",
       "ID": 677,
       "InGameName": {
-        "en": "Get Equipment Affix Value"
+        "en": "Get Equipment Affix Value",
+        "zh-Hans": "获取装备词条数值"
       },
       "Alias": [
         "Get_Equipment_Affix_Value"
@@ -28473,7 +28773,8 @@
       "Identifier": "Trigger.Text_Bubble.On_Bubble_Complete",
       "ID": 679,
       "InGameName": {
-        "en": "When Text Bubble Is Completed"
+        "en": "When Text Bubble Is Completed",
+        "zh-Hans": "文本气泡完成时"
       },
       "Alias": [
         "When_Text_Bubble_Is_Completed"
@@ -28548,7 +28849,8 @@
       "Identifier": "Trigger.Equipment.On_Affix_Change",
       "ID": 680,
       "InGameName": {
-        "en": "When Equipment Affix Value Changes"
+        "en": "When Equipment Affix Value Changes",
+        "zh-Hans": "装备的词条数值改变时"
       },
       "Alias": [
         "When_Equipment_Affix_Value_Changes"
@@ -28649,7 +28951,8 @@
       "Identifier": "Trigger.Item.On_Item_Add",
       "ID": 681,
       "InGameName": {
-        "en": "When Item Is Added to Inventory"
+        "en": "When Item Is Added to Inventory",
+        "zh-Hans": "背包道具新增时"
       },
       "Alias": [
         "When_Item_Is_Added_to_Inventory"
@@ -28724,7 +29027,8 @@
       "Identifier": "Trigger.Item.On_Item_Lose",
       "ID": 682,
       "InGameName": {
-        "en": "When Item Is Lost From Inventory"
+        "en": "When Item Is Lost From Inventory",
+        "zh-Hans": "背包道具失去时"
       },
       "Alias": [
         "When_Item_Is_Lost_From_Inventory"
@@ -28799,7 +29103,8 @@
       "Identifier": "Trigger.Item.On_Item_Quantity_Change",
       "ID": 683,
       "InGameName": {
-        "en": "When the Quantity of Inventory Item Changes"
+        "en": "When the Quantity of Inventory Item Changes",
+        "zh-Hans": "背包道具数量变化时"
       },
       "Alias": [
         "When_the_Quantity_of_Inventory_Item_Changes"
@@ -28900,7 +29205,8 @@
       "Identifier": "Trigger.Item.On_Currency_Change",
       "ID": 684,
       "InGameName": {
-        "en": "When the Quantity of Inventory Currency Changes"
+        "en": "When the Quantity of Inventory Currency Changes",
+        "zh-Hans": "背包货币数量变化时"
       },
       "Alias": [
         "When_the_Quantity_of_Inventory_Currency_Changes"
@@ -28975,7 +29281,8 @@
       "Identifier": "Execution.Inventory.Expand_Capacity",
       "ID": 685,
       "InGameName": {
-        "en": "Increase Maximum Inventory Capacity"
+        "en": "Increase Maximum Inventory Capacity",
+        "zh-Hans": "增加背包最大容量"
       },
       "Alias": [
         "Increase_Maximum_Inventory_Capacity"
@@ -29028,7 +29335,8 @@
       "Identifier": "Execution.Inventory.Modify_Item",
       "ID": 686,
       "InGameName": {
-        "en": "Modify Inventory Item Quantity"
+        "en": "Modify Inventory Item Quantity",
+        "zh-Hans": "修改背包道具数量"
       },
       "Alias": [
         "Modify_Inventory_Item_Quantity"
@@ -29094,7 +29402,8 @@
       "Identifier": "Execution.Inventory.Set_Drop_Amount",
       "ID": 687,
       "InGameName": {
-        "en": "Set Inventory Loot Item/Currency Quantity"
+        "en": "Set Inventory Loot Item/Currency Quantity",
+        "zh-Hans": "设置背包掉落道具/货币数量"
       },
       "Alias": [
         "Set_Inventory_Drop_Items_Currency_Amount",
@@ -29175,7 +29484,8 @@
       "Identifier": "Execution.Inventory.Modify_Currency",
       "ID": 688,
       "InGameName": {
-        "en": "Modify Inventory Currency Quantity"
+        "en": "Modify Inventory Currency Quantity",
+        "zh-Hans": "修改背包货币数量"
       },
       "Alias": [
         "Modify_Inventory_Currency_Quantity"
@@ -29241,7 +29551,8 @@
       "Identifier": "Query.Item.Get_Capacity",
       "ID": 689,
       "InGameName": {
-        "en": "Get Inventory Capacity"
+        "en": "Get Inventory Capacity",
+        "zh-Hans": "获取背包容量"
       },
       "Alias": [
         "Get_Inventory_Capacity"
@@ -29285,7 +29596,8 @@
       "Identifier": "Query.Item.Get_Item_Amount",
       "ID": 690,
       "InGameName": {
-        "en": "Get Inventory Item Quantity"
+        "en": "Get Inventory Item Quantity",
+        "zh-Hans": "获取背包道具数量"
       },
       "Alias": [
         "Get_Inventory_Item_Quantity"
@@ -29342,7 +29654,8 @@
       "Identifier": "Query.Item.Get_Currency_Amount",
       "ID": 691,
       "InGameName": {
-        "en": "Get Inventory Currency Quantity"
+        "en": "Get Inventory Currency Quantity",
+        "zh-Hans": "获取背包货币数量"
       },
       "Alias": [
         "Get_Inventory_Currency_Quantity"
@@ -29399,7 +29712,8 @@
       "Identifier": "Trigger.Equipment.On_Init",
       "ID": 694,
       "InGameName": {
-        "en": "When Equipment Is Initialized"
+        "en": "When Equipment Is Initialized",
+        "zh-Hans": "装备初始化时"
       },
       "Alias": [
         "When_Equipment_Is_Initialized"
@@ -29461,7 +29775,8 @@
       "Identifier": "Trigger.Equipment.On_Equip",
       "ID": 695,
       "InGameName": {
-        "en": "When Equipment Is Equipped"
+        "en": "When Equipment Is Equipped",
+        "zh-Hans": "装备被穿戴时"
       },
       "Alias": [
         "When_Equipment_Is_Equipped"
@@ -29523,7 +29838,8 @@
       "Identifier": "Trigger.Equipment.On_Unequip",
       "ID": 696,
       "InGameName": {
-        "en": "When Equipment Is Unequipped"
+        "en": "When Equipment Is Unequipped",
+        "zh-Hans": "装备被卸下时"
       },
       "Alias": [
         "When_Equipment_Is_Unequipped"
@@ -29585,7 +29901,8 @@
       "Identifier": "Execution.Combat.Loss_HP",
       "ID": 697,
       "InGameName": {
-        "en": "Loss HP"
+        "en": "Loss HP",
+        "zh-Hans": "损失生命"
       },
       "Alias": [
         "HP_Loss",
@@ -29692,7 +30009,8 @@
       "Identifier": "Execution.Combat.Recover_HP_Instant",
       "ID": 698,
       "InGameName": {
-        "en": "Recover HP Directly"
+        "en": "Recover HP Directly",
+        "zh-Hans": "直接恢复生命"
       },
       "Alias": [
         "Recover_HP_Directly"
@@ -29810,7 +30128,8 @@
       "Identifier": "Trigger.Shop.On_Custom_Item_Sold",
       "ID": 700,
       "InGameName": {
-        "en": "When Custom Shop Item Is Sold"
+        "en": "When Custom Shop Item Is Sold",
+        "zh-Hans": "商店出售自定义商品时"
       },
       "Alias": [
         "When_Custom_Shop_Item_Is_Sold"
@@ -29911,7 +30230,8 @@
       "Identifier": "Trigger.Shop.On_Inv_Item_Sold",
       "ID": 701,
       "InGameName": {
-        "en": "When Selling Inventory Items in the Shop"
+        "en": "When Selling Inventory Items in the Shop",
+        "zh-Hans": "商店出售背包物品时"
       },
       "Alias": [
         "When_Selling_Inventory_Items_in_the_Shop"
@@ -30012,7 +30332,8 @@
       "Identifier": "Execution.Shop.Open",
       "ID": 702,
       "InGameName": {
-        "en": "Open Shop"
+        "en": "Open Shop",
+        "zh-Hans": "打开商店"
       },
       "Alias": [
         "Open_Shop"
@@ -30078,7 +30399,8 @@
       "Identifier": "Execution.Shop.Close",
       "ID": 703,
       "InGameName": {
-        "en": "Close Shop"
+        "en": "Close Shop",
+        "zh-Hans": "关闭商店"
       },
       "Alias": [
         "Close_Shop"
@@ -30118,7 +30440,8 @@
       "Identifier": "Execution.Shop.Modify_Custom_Sale",
       "ID": 704,
       "InGameName": {
-        "en": "Modify Custom Shop Item Sales Info"
+        "en": "Modify Custom Shop Item Sales Info",
+        "zh-Hans": "修改自定义商店商品出售信息"
       },
       "Alias": [
         "Modify_Custom_Shop_Item_Sales_Info"
@@ -30275,7 +30598,8 @@
       "Identifier": "Trigger.Shop.On_Sell_Item",
       "ID": 705,
       "InGameName": {
-        "en": "When selling items to the shop"
+        "en": "When selling items to the shop",
+        "zh-Hans": "商店收购道具时"
       },
       "Alias": [
         "When_selling_items_to_the_shop"
@@ -30363,7 +30687,8 @@
       "Identifier": "Execution.Shop.Modify_Inventory_Sale",
       "ID": 706,
       "InGameName": {
-        "en": "Modify Inventory Shop Item Sales Info"
+        "en": "Modify Inventory Shop Item Sales Info",
+        "zh-Hans": "修改背包商店商品出售信息"
       },
       "Alias": [
         "Modify_Inventory_Shop_Item_Sales_Info"
@@ -30481,7 +30806,8 @@
       "Identifier": "Execution.Shop.Modify_Cart_Item",
       "ID": 707,
       "InGameName": {
-        "en": "Modify Item Purchase Info in the Purchase List"
+        "en": "Modify Item Purchase Info in the Purchase List",
+        "zh-Hans": "修改物品收购表中道具收购信息"
       },
       "Alias": [
         "Modify_Item_Purchase_Info_in_the_Purchase_List"
@@ -30573,7 +30899,8 @@
       "Identifier": "Execution.Shop.Add_Custom_Sale",
       "ID": 708,
       "InGameName": {
-        "en": "Add New Item to Custom Shop Sales List"
+        "en": "Add New Item to Custom Shop Sales List",
+        "zh-Hans": "向自定义商店出售表中新增商品"
       },
       "Alias": [
         "Add_New_Item_to_Custom_Shop_Sales_List"
@@ -30730,7 +31057,8 @@
       "Identifier": "Execution.Shop.Add_Inventory_Sale",
       "ID": 709,
       "InGameName": {
-        "en": "Add New Item to Inventory Shop Sales List"
+        "en": "Add New Item to Inventory Shop Sales List",
+        "zh-Hans": "向背包商店出售表中新增商品"
       },
       "Alias": [
         "Add_New_Item_to_Inventory_Shop_Sales_List"
@@ -30848,7 +31176,8 @@
       "Identifier": "Execution.Shop.Add_To_Cart",
       "ID": 710,
       "InGameName": {
-        "en": "Add Items to the Purchase List"
+        "en": "Add Items to the Purchase List",
+        "zh-Hans": "向物品收购表中新增物品"
       },
       "Alias": [
         "Add_Items_to_the_Purchase_List"
@@ -30940,7 +31269,8 @@
       "Identifier": "Execution.Shop.Remove_Custom_Sale",
       "ID": 711,
       "InGameName": {
-        "en": "Remove Item From Custom Shop Sales List"
+        "en": "Remove Item From Custom Shop Sales List",
+        "zh-Hans": "从自定义商店出售表中移除商品"
       },
       "Alias": [
         "Remove_Item_From_Custom_Shop_Sales_List"
@@ -31006,7 +31336,8 @@
       "Identifier": "Execution.Shop.Remove_Inventory_Sale",
       "ID": 712,
       "InGameName": {
-        "en": "Remove Item From Inventory Shop Sales List"
+        "en": "Remove Item From Inventory Shop Sales List",
+        "zh-Hans": "从背包商店出售表中移除商品"
       },
       "Alias": [
         "Remove_Item_From_Inventory_Shop_Sales_List"
@@ -31072,7 +31403,8 @@
       "Identifier": "Execution.Shop.Remove_From_Cart",
       "ID": 713,
       "InGameName": {
-        "en": "Remove item from purchase list"
+        "en": "Remove item from purchase list",
+        "zh-Hans": "从物品收购表中移除物品"
       },
       "Alias": [
         "Remove_item_from_purchase_list"
@@ -31138,7 +31470,8 @@
       "Identifier": "Query.Shop.Get_Custom_Sales",
       "ID": 714,
       "InGameName": {
-        "en": "Query Custom Shop Item Sales List"
+        "en": "Query Custom Shop Item Sales List",
+        "zh-Hans": "查询自定义商店商品出售列表"
       },
       "Alias": [
         "Query_Custom_Shop_Item_Sales_List"
@@ -31195,7 +31528,8 @@
       "Identifier": "Query.Shop.Get_Inv_Sales",
       "ID": 715,
       "InGameName": {
-        "en": "Query Inventory Shop Item Sales List"
+        "en": "Query Inventory Shop Item Sales List",
+        "zh-Hans": "查询背包商店物品出售列表"
       },
       "Alias": [
         "Query_Inventory_Shop_Item_Sales_List"
@@ -31252,7 +31586,8 @@
       "Identifier": "Query.Shop.Get_Cart_Items",
       "ID": 716,
       "InGameName": {
-        "en": "Query Shop Purchase Item List"
+        "en": "Query Shop Purchase Item List",
+        "zh-Hans": "查询商店收购物品列表"
       },
       "Alias": [
         "Query_Shop_Purchase_Item_List"
@@ -31309,7 +31644,8 @@
       "Identifier": "Query.Shop.Get_Custom_Item_Info",
       "ID": 717,
       "InGameName": {
-        "en": "Query Custom Shop Item Sales Info"
+        "en": "Query Custom Shop Item Sales Info",
+        "zh-Hans": "查询自定义商店商品出售信息"
       },
       "Alias": [
         "Query_Custom_Shop_Item_Sales_Info"
@@ -31457,7 +31793,8 @@
       "Identifier": "Query.Shop.Get_Inv_Item_Info",
       "ID": 718,
       "InGameName": {
-        "en": "Query Inventory Shop Item Sales Info"
+        "en": "Query Inventory Shop Item Sales Info",
+        "zh-Hans": "查询背包商店商品出售信息"
       },
       "Alias": [
         "Query_Inventory_Shop_Item_Sales_Info"
@@ -31553,7 +31890,8 @@
       "Identifier": "Query.Shop.Get_Purchase_Info",
       "ID": 719,
       "InGameName": {
-        "en": "Query Shop Item Purchase Info"
+        "en": "Query Shop Item Purchase Info",
+        "zh-Hans": "查询商店商品收购信息"
       },
       "Alias": [
         "Query_Shop_Item_Purchase_Info"
@@ -31636,7 +31974,8 @@
       "Identifier": "Execution.Inventory.Set_Drop_Items",
       "ID": 720,
       "InGameName": {
-        "en": "Set Inventory Item Drop Content"
+        "en": "Set Inventory Item Drop Content",
+        "zh-Hans": "设置背包道具掉落内容"
       },
       "Alias": [
         "Set_Inventory_Item_Drop_Contents",
@@ -31704,7 +32043,8 @@
       "Identifier": "Query.Item.Get_Basic_Items",
       "ID": 721,
       "InGameName": {
-        "en": "Get all basic items from Inventory"
+        "en": "Get all basic items from Inventory",
+        "zh-Hans": "获取背包所有基础道具"
       },
       "Alias": [
         "Get_all_basic_items_from_Inventory"
@@ -31748,7 +32088,8 @@
       "Identifier": "Query.Item.Get_Currency_All",
       "ID": 722,
       "InGameName": {
-        "en": "Get All Currency From Inventory"
+        "en": "Get All Currency From Inventory",
+        "zh-Hans": "获取背包所有货币"
       },
       "Alias": [
         "Get_All_Currency_From_Inventory"
@@ -31792,7 +32133,8 @@
       "Identifier": "Query.Item.Get_Equipment_All",
       "ID": 723,
       "InGameName": {
-        "en": "Get all equipment from Inventory"
+        "en": "Get all equipment from Inventory",
+        "zh-Hans": "获取背包所有装备"
       },
       "Alias": [
         "Get_all_equipment_from_Inventory"
@@ -31836,7 +32178,8 @@
       "Identifier": "Execution.Inventory.Trigger_Drop",
       "ID": 724,
       "InGameName": {
-        "en": "Trigger Loot Drop"
+        "en": "Trigger Loot Drop",
+        "zh-Hans": "触发战利品掉落"
       },
       "Alias": [
         "Trigger_Loot_Drop"
@@ -31889,7 +32232,8 @@
       "Identifier": "Execution.Inventory.Set_Loot_Content",
       "ID": 725,
       "InGameName": {
-        "en": "Set Loot Drop Content"
+        "en": "Set Loot Drop Content",
+        "zh-Hans": "设置战利品掉落内容"
       },
       "Alias": [
         "Set_Loot_Drop_Content"
@@ -31942,7 +32286,8 @@
       "Identifier": "Execution.Inventory.Modify_Loot_Item",
       "ID": 726,
       "InGameName": {
-        "en": "Modify Loot Item Component Quantity"
+        "en": "Modify Loot Item Component Quantity",
+        "zh-Hans": "修改掉落物组件道具数量"
       },
       "Alias": [
         "Modify_Loot_Item_Component_Quantity"
@@ -32008,7 +32353,8 @@
       "Identifier": "Execution.Inventory.Modify_Loot_Currency",
       "ID": 727,
       "InGameName": {
-        "en": "Modify Loot Component Currency Amount"
+        "en": "Modify Loot Component Currency Amount",
+        "zh-Hans": "修改掉落物组件货币数量"
       },
       "Alias": [
         "Modify_Loot_Component_Currency_Amount"
@@ -32074,7 +32420,8 @@
       "Identifier": "Query.Item.Get_Loot_Item_Amount",
       "ID": 728,
       "InGameName": {
-        "en": "Get Loot Component Item Quantity"
+        "en": "Get Loot Component Item Quantity",
+        "zh-Hans": "获取掉落物组件道具数量"
       },
       "Alias": [
         "Get_Loot_Component_Item_Quantity"
@@ -32131,7 +32478,8 @@
       "Identifier": "Query.Item.Get_Loot_Currency_Amount",
       "ID": 729,
       "InGameName": {
-        "en": "Get Loot Component Currency Quantity"
+        "en": "Get Loot Component Currency Quantity",
+        "zh-Hans": "获取凋落物组件货币数量"
       },
       "Alias": [
         "Get_Loot_Component_Currency_Quantity"
@@ -32188,7 +32536,8 @@
       "Identifier": "Query.Item.Get_Loot_Items",
       "ID": 730,
       "InGameName": {
-        "en": "Get All Items from Loot Component"
+        "en": "Get All Items from Loot Component",
+        "zh-Hans": "获取战利品所有道具"
       },
       "Alias": [
         "Get_All_Trophy_Items",
@@ -32234,7 +32583,8 @@
       "Identifier": "Query.Item.Get_Loot_Currency",
       "ID": 731,
       "InGameName": {
-        "en": "Get All Currency from Loot Component"
+        "en": "Get All Currency from Loot Component",
+        "zh-Hans": "获取战利品所有货币"
       },
       "Alias": [
         "Get_All_Trophy_Currency",
@@ -32280,7 +32630,8 @@
       "Identifier": "Query.Item.Get_Loot_Equipment",
       "ID": 732,
       "InGameName": {
-        "en": "Get All Equipment from Loot Component"
+        "en": "Get All Equipment from Loot Component",
+        "zh-Hans": "获取掉落物件所有装备"
       },
       "Alias": [
         "Get_All_Equipment_from_Loot_Component"
@@ -32324,7 +32675,8 @@
       "Identifier": "Trigger.Item.On_Item_Use",
       "ID": 733,
       "InGameName": {
-        "en": "When Items in the Inventory Are Used"
+        "en": "When Items in the Inventory Are Used",
+        "zh-Hans": "背包内道具被使用时"
       },
       "Alias": [
         "When_Items_in_the_Inventory_Are_Used"
@@ -32399,7 +32751,8 @@
       "Identifier": "Query.Equipment.Get_Tags",
       "ID": 734,
       "InGameName": {
-        "en": "Query Equipment Tag List"
+        "en": "Query Equipment Tag List",
+        "zh-Hans": "查询装备标签列表"
       },
       "Alias": [
         "Query_Equipment_Tag_List"
@@ -32443,7 +32796,8 @@
       "Identifier": "Execution.Scan_Tag.Set_Rules",
       "ID": 735,
       "InGameName": {
-        "en": "Set Scan Tag Rules"
+        "en": "Set Scan Tag Rules",
+        "zh-Hans": "设置扫描标签的规则"
       },
       "Alias": [
         "Set_Scan_Tag_Rules"
@@ -32496,7 +32850,8 @@
       "Identifier": "Execution.Scan_Tag.Set_Active_Tag",
       "ID": 736,
       "InGameName": {
-        "en": "Set Scan Component's Active Scan Tag ID"
+        "en": "Set Scan Component's Active Scan Tag ID",
+        "zh-Hans": "设置扫描组件的生效扫描标签序号"
       },
       "Alias": [
         "Set_Scan_Component_s_Active_Scan_Tag_ID"
@@ -32549,7 +32904,8 @@
       "Identifier": "Query.Scan_Tag.Get_Active_Tag",
       "ID": 737,
       "InGameName": {
-        "en": "Get the Currently Active Scan Tag Config ID"
+        "en": "Get the Currently Active Scan Tag Config ID",
+        "zh-Hans": "获取当前生效的扫描标签配置ID"
       },
       "Alias": [
         "Get_the_Currently_Active_Scan_Tag_Config_ID"
@@ -32593,7 +32949,8 @@
       "Identifier": "Query.Entity_Related.Get_Character_Attr",
       "ID": 738,
       "InGameName": {
-        "en": "Get Character Attribute"
+        "en": "Get Character Attribute",
+        "zh-Hans": "获取角色属性"
       },
       "Alias": [
         "Get_Character_Attribute"
@@ -32754,7 +33111,8 @@
       "Identifier": "Execution.Skill.Set_CD",
       "ID": 739,
       "InGameName": {
-        "en": "Set Character Skill CD"
+        "en": "Set Character Skill CD",
+        "zh-Hans": "设置角色技能冷却"
       },
       "Alias": [
         "Set_Character_Skill_CD"
@@ -32833,7 +33191,8 @@
       "Identifier": "Execution.Skill.Modify_CD",
       "ID": 740,
       "InGameName": {
-        "en": "Modify Character Skill CD"
+        "en": "Modify Character Skill CD",
+        "zh-Hans": "修改角色技能冷却"
       },
       "Alias": [
         "Modify_Character_Skill_CD"
@@ -32912,7 +33271,8 @@
       "Identifier": "Execution.Skill.Modify_CD_Ratio",
       "ID": 741,
       "InGameName": {
-        "en": "Modify Skill CD Percentage Based on Max CD"
+        "en": "Modify Skill CD Percentage Based on Max CD",
+        "zh-Hans": "按最大冷却时间修改技能冷却百分比"
       },
       "Alias": [
         "Modify_Skill_CD_Percentage_Based_on_Max_CD"
@@ -32991,7 +33351,8 @@
       "Identifier": "Execution.Equipment.Add_Affix_By_ID",
       "ID": 742,
       "InGameName": {
-        "en": "Add Affix to Equipment at Specified ID"
+        "en": "Add Affix to Equipment at Specified ID",
+        "zh-Hans": "装备指定序号添加词条"
       },
       "Alias": [
         "Add_Affix_to_Equipment_at_Specified_ID"
@@ -33083,7 +33444,8 @@
       "Identifier": "Execution.Deck_Selector.Get_Random_List",
       "ID": 743,
       "InGameName": {
-        "en": "Random Deck Selector Selection List"
+        "en": "Random Deck Selector Selection List",
+        "zh-Hans": "随机卡牌选择器选择列表"
       },
       "Alias": [
         "Random_Deck_Selector_Selection_List"
@@ -33123,7 +33485,8 @@
       "Identifier": "Query.Entity_Related.Get_Owner",
       "ID": 744,
       "InGameName": {
-        "en": "Get Owner Entity"
+        "en": "Get Owner Entity",
+        "zh-Hans": "获取拥有者实体"
       },
       "Alias": [
         "Get_Owner_Entity"
@@ -33167,7 +33530,8 @@
       "Identifier": "Query.Entity_Related.Get_Owned_Entities",
       "ID": 745,
       "InGameName": {
-        "en": "Get List of Entities Owned by the Entity"
+        "en": "Get List of Entities Owned by the Entity",
+        "zh-Hans": "获取实体拥有的实体列表"
       },
       "Alias": [
         "Get_List_of_Entities_Owned_by_the_Entity"
@@ -33211,7 +33575,8 @@
       "Identifier": "Query.Unit_Status.Get_Status_Stacks",
       "ID": 746,
       "InGameName": {
-        "en": "Execution.UI_Control_Group.Modify_Status"
+        "en": "Execution.UI_Control_Group.Modify_Status",
+        "zh-Hans": "根据槽位序号查询单位状态层数"
       },
       "Alias": [
         "Query_Unit_Status_Stacks_by_Slot_ID"
@@ -33281,7 +33646,8 @@
       "Identifier": "Query.Unit_Status.Get_Status_Applier",
       "ID": 747,
       "InGameName": {
-        "en": "Query Unit Status Applier by Slot ID"
+        "en": "Query Unit Status Applier by Slot ID",
+        "zh-Hans": "根据槽位序号查询单位状态施加者"
       },
       "Alias": [
         "Query_Unit_Status_Applier_by_Slot_ID"
@@ -33351,7 +33717,8 @@
       "Identifier": "Query.Unit_Status.Get_Status_Slots",
       "ID": 748,
       "InGameName": {
-        "en": "List of Slot IDs Querying Unit Status"
+        "en": "List of Slot IDs Querying Unit Status",
+        "zh-Hans": "查询单位状态的槽位序号列表"
       },
       "Alias": [
         "List_of_Slot_IDs_Querying_Unit_Status"
@@ -33408,7 +33775,8 @@
       "Identifier": "Query.Equipment.Get_Config_ID",
       "ID": 749,
       "InGameName": {
-        "en": "Query Equipment Config ID by Equipment ID"
+        "en": "Query Equipment Config ID by Equipment ID",
+        "zh-Hans": "根据装备索引查询装备配置ID"
       },
       "Alias": [
         "Query_Equipment_Config_ID_by_Equipment_ID"
@@ -33452,7 +33820,8 @@
       "Identifier": "Query.Character_Related.Get_GUID_By_ID",
       "ID": 750,
       "InGameName": {
-        "en": "Get Player GUID by Player ID"
+        "en": "Get Player GUID by Player ID",
+        "zh-Hans": "根据玩家序号获取玩家GUID"
       },
       "Alias": [
         "Get_Player_GUID_by_Player_ID"
@@ -33496,7 +33865,8 @@
       "Identifier": "Query.Character_Related.Get_ID_By_GUID",
       "ID": 751,
       "InGameName": {
-        "en": "Get Player ID by Player GUID"
+        "en": "Get Player ID by Player GUID",
+        "zh-Hans": "根据玩家GUID获取玩家序号"
       },
       "Alias": [
         "Get_Player_ID_by_Player_GUID"
@@ -33540,7 +33910,8 @@
       "Identifier": "Arithmetic.Math.Timestamp_To_Time",
       "ID": 752,
       "InGameName": {
-        "en": "Calculate formatted time from timestamp"
+        "en": "Calculate formatted time from timestamp",
+        "zh-Hans": "根据时间戳计算格式化时间"
       },
       "Alias": [
         "Calculate_formatted_time_from_timestamp"
@@ -33649,7 +34020,8 @@
       "Identifier": "Arithmetic.Math.Time_To_Timestamp",
       "ID": 753,
       "InGameName": {
-        "en": "Calculate Timestamp From Formatted Time"
+        "en": "Calculate Timestamp From Formatted Time",
+        "zh-Hans": "根据格式化时间计算时间戳"
       },
       "Alias": [
         "Calculate_Timestamp_From_Formatted_Time"
@@ -33758,7 +34130,8 @@
       "Identifier": "Arithmetic.Math.Timestamp_To_Weekday",
       "ID": 754,
       "InGameName": {
-        "en": "Calculate day of the week from timestamp"
+        "en": "Calculate day of the week from timestamp",
+        "zh-Hans": "根据时间戳计算星期几"
       },
       "Alias": [
         "Calculate_day_of_the_week_from_timestamp"
@@ -33802,7 +34175,8 @@
       "Identifier": "Query.Math.Get_Timestamp",
       "ID": 755,
       "InGameName": {
-        "en": "Query Timestamp (UTC+0)"
+        "en": "Query Timestamp (UTC+0)",
+        "zh-Hans": "查询时间戳（UTC+0时区）"
       },
       "Alias": [
         "Query_Timestamp_UTC_0"
@@ -33833,7 +34207,8 @@
       "Identifier": "Query.Math.Get_Timezone",
       "ID": 756,
       "InGameName": {
-        "en": "Query Server Time Zone"
+        "en": "Query Server Time Zone",
+        "zh-Hans": "查询服务器时区"
       },
       "Alias": [
         "Query_Server_Time_Zone"
@@ -33864,7 +34239,8 @@
       "Identifier": "Execution.Entity_Related.Create_Prefab_Group",
       "ID": 757,
       "InGameName": {
-        "en": "Create Prefab Group"
+        "en": "Create Prefab Group",
+        "zh-Hans": "创建元件组"
       },
       "Alias": [
         "Create_Prefab_Group"
@@ -34007,7 +34383,8 @@
       "Identifier": "Query.Creation.Get_Aggro_List",
       "ID": 758,
       "InGameName": {
-        "en": "Get Aggro List of Creation in Default Mode"
+        "en": "Get Aggro List of Creation in Default Mode",
+        "zh-Hans": "获取默认模式的造物仇恨列表"
       },
       "Alias": [
         "Get_Aggro_List_of_Creation_in_Default_Mode"
@@ -34051,7 +34428,8 @@
       "Identifier": "Execution.Leaderboard.Set_Score_Int",
       "ID": 761,
       "InGameName": {
-        "en": "Set Player Leaderboard Score as an Integer"
+        "en": "Set Player Leaderboard Score as an Integer",
+        "zh-Hans": "以整数设置玩家排行榜分数"
       },
       "Alias": [
         "Set_Player_Leaderboard_Score_as_an_Integer"
@@ -34117,7 +34495,8 @@
       "Identifier": "Execution.Leaderboard.Set_Score_Float",
       "ID": 762,
       "InGameName": {
-        "en": "Set Player Leaderboard Score as a Float"
+        "en": "Set Player Leaderboard Score as a Float",
+        "zh-Hans": "以浮点数设置玩家排行榜分数"
       },
       "Alias": [
         "Set_Player_Leaderboard_Score_as_a_Float"
@@ -34183,7 +34562,8 @@
       "Identifier": "Execution.Character_Related.Modify_Environment",
       "ID": 763,
       "InGameName": {
-        "en": "Modify environment settings"
+        "en": "Modify environment settings",
+        "zh-Hans": "修改环境配置"
       },
       "Alias": [
         "Modify_environment_settings"
@@ -34262,7 +34642,8 @@
       "Identifier": "Trigger.Class.On_Class_Remove",
       "ID": 764,
       "InGameName": {
-        "en": "When Player Class Is Removed"
+        "en": "When Player Class Is Removed",
+        "zh-Hans": "玩家职业解除时"
       },
       "Alias": [
         "When_Player_Class_Is_Removed"
@@ -34337,7 +34718,8 @@
       "Identifier": "Trigger.Combat.On_Interruptible",
       "ID": 765,
       "InGameName": {
-        "en": "When Entering an Interruptible State"
+        "en": "When Entering an Interruptible State",
+        "zh-Hans": "进入易受打断状态时"
       },
       "Alias": [
         "When_Entering_an_Interruptible_State"
@@ -34399,7 +34781,8 @@
       "Identifier": "Query.General.Get_Game_Info",
       "ID": 766,
       "InGameName": {
-        "en": "Query Game Mode and Player Number"
+        "en": "Query Game Mode and Player Number",
+        "zh-Hans": "查询对局游玩方式及人数"
       },
       "Alias": [
         "Query_Game_Mode_and_Player_Number"
@@ -34443,7 +34826,8 @@
       "Identifier": "Query.Character_Related.Get_Nickname",
       "ID": 767,
       "InGameName": {
-        "en": "Get Player Nickname"
+        "en": "Get Player Nickname",
+        "zh-Hans": "获取玩家昵称"
       },
       "Alias": [
         "Get_Player_Nickname"
@@ -34487,7 +34871,8 @@
       "Identifier": "Query.Character_Related.Get_Input_Type",
       "ID": 768,
       "InGameName": {
-        "en": "Get Player Client Input Device Type"
+        "en": "Get Player Client Input Device Type",
+        "zh-Hans": "获得玩家客户端输入设备类型"
       },
       "Alias": [
         "Get_Player_Client_Input_Device_Type"
@@ -34531,7 +34916,8 @@
       "Identifier": "Execution.Chat_Channel.Set_Switch",
       "ID": 769,
       "InGameName": {
-        "en": "Set Chat Channel Switch"
+        "en": "Set Chat Channel Switch",
+        "zh-Hans": "设置聊天频道开关"
       },
       "Alias": [
         "Set_Chat_Channel_Switch"
@@ -34596,7 +34982,8 @@
       "Identifier": "Execution.Chat_Channel.Modify_Permission",
       "ID": 770,
       "InGameName": {
-        "en": "Modify Player Channel Permission"
+        "en": "Modify Player Channel Permission",
+        "zh-Hans": "修改玩家频道权限"
       },
       "Alias": [
         "Modify_Player_Channel_Permission"
@@ -34662,7 +35049,8 @@
       "Identifier": "Execution.Chat_Channel.Set_Current_Channel",
       "ID": 771,
       "InGameName": {
-        "en": "Set Player's Current Channel"
+        "en": "Set Player's Current Channel",
+        "zh-Hans": "设置玩家当前频道"
       },
       "Alias": [
         "Set_Player_s_Current_Channel"
@@ -34715,7 +35103,8 @@
       "Identifier": "Execution.Wonderland_Box.Consume_Box",
       "ID": 772,
       "InGameName": {
-        "en": "Consume Gift Box"
+        "en": "Consume Gift Box",
+        "zh-Hans": "消耗礼盒"
       },
       "Alias": [
         "Consume_Gift_Box"
@@ -34781,7 +35170,8 @@
       "Identifier": "Query.Wonderland_Box_Related.Get_Box_Quantity",
       "ID": 773,
       "InGameName": {
-        "en": "Query Corresponding Gift Box Quantity"
+        "en": "Query Corresponding Gift Box Quantity",
+        "zh-Hans": "查询对应礼盒数量"
       },
       "Alias": [
         "Query_Corresponding_Gift_Box_Quantity"
@@ -34838,7 +35228,8 @@
       "Identifier": "Query.Wonderland_Box_Related.Get_Box_Consumption",
       "ID": 774,
       "InGameName": {
-        "en": "Query Corresponding Gift Box Consumption"
+        "en": "Query Corresponding Gift Box Consumption",
+        "zh-Hans": "查询对应礼盒消耗数量"
       },
       "Alias": [
         "Query_Corresponding_Gift_Box_Consumption"
@@ -34895,7 +35286,8 @@
       "Identifier": "Execution.Motion_Device.Activate_Fixed_Point",
       "ID": 775,
       "InGameName": {
-        "en": "Activate Fixed-Point Motion Device"
+        "en": "Activate Fixed-Point Motion Device",
+        "zh-Hans": "开启定点运动器"
       },
       "Alias": [
         "Activate_Fixed_Point_Motion_Device"
@@ -35039,7 +35431,8 @@
       "Identifier": "Arithmetic.Math.Left_Shift",
       "ID": 778,
       "InGameName": {
-        "en": "Left Shift Operation"
+        "en": "Left Shift Operation",
+        "zh-Hans": "左移运算"
       },
       "Alias": [
         "Left_Shift_Operation"
@@ -35096,7 +35489,8 @@
       "Identifier": "Arithmetic.Math.Right_Shift",
       "ID": 779,
       "InGameName": {
-        "en": "Right Shift Operation"
+        "en": "Right Shift Operation",
+        "zh-Hans": "右移运算"
       },
       "Alias": [
         "Right_Shift_Operation"
@@ -35153,7 +35547,8 @@
       "Identifier": "Arithmetic.Math.Bitwise_And",
       "ID": 780,
       "InGameName": {
-        "en": "Bitwise AND"
+        "en": "Bitwise AND",
+        "zh-Hans": "按位与"
       },
       "Alias": [
         "Bitwise_AND"
@@ -35210,7 +35605,8 @@
       "Identifier": "Arithmetic.Math.Bitwise_Or",
       "ID": 781,
       "InGameName": {
-        "en": "Bitwise OR"
+        "en": "Bitwise OR",
+        "zh-Hans": "按位或"
       },
       "Alias": [
         "Bitwise_OR"
@@ -35267,7 +35663,8 @@
       "Identifier": "Arithmetic.Math.Bitwise_Xor",
       "ID": 782,
       "InGameName": {
-        "en": "XOR (Exclusive OR)"
+        "en": "XOR (Exclusive OR)",
+        "zh-Hans": "按位异或"
       },
       "Alias": [
         "XOR_Exclusive_OR"
@@ -35324,7 +35721,8 @@
       "Identifier": "Arithmetic.Math.Bitwise_Not",
       "ID": 783,
       "InGameName": {
-        "en": "Bitwise Complement"
+        "en": "Bitwise Complement",
+        "zh-Hans": "按位取补"
       },
       "Alias": [
         "Bitwise_Complement"
@@ -35368,7 +35766,8 @@
       "Identifier": "Arithmetic.Math.Write_Bit",
       "ID": 784,
       "InGameName": {
-        "en": "Write by bit"
+        "en": "Write by bit",
+        "zh-Hans": "按位写入"
       },
       "Alias": [
         "Write_by_bit"
@@ -35444,7 +35843,8 @@
       "Identifier": "Arithmetic.Math.Read_Bit",
       "ID": 785,
       "InGameName": {
-        "en": "Read by bit"
+        "en": "Read by bit",
+        "zh-Hans": "按位读出"
       },
       "Alias": [
         "Read_by_bit"
@@ -35509,7 +35909,8 @@
       "Identifier": "Trigger.Entity_Related.On_Speed_Condition",
       "ID": 946,
       "InGameName": {
-        "en": "When Character Movement SPD Meets Condition"
+        "en": "When Character Movement SPD Meets Condition",
+        "zh-Hans": "角色移动速度达到条件时"
       },
       "Alias": [
         "When_Character_Movement_SPD_Meets_Condition"
@@ -35610,7 +36011,8 @@
       "Identifier": "Query.Entity_Related.Get_Move_Speed",
       "ID": 947,
       "InGameName": {
-        "en": "Query Character's Current Movement SPD"
+        "en": "Query Character's Current Movement SPD",
+        "zh-Hans": "查询角色当前移动速度"
       },
       "Alias": [
         "Query_Character_s_Current_Movement_SPD"
@@ -35667,7 +36069,8 @@
       "Identifier": "Execution.Dictionary.Set_Value",
       "ID": 948,
       "InGameName": {
-        "en": "Set or Add Key Value Pairs to Dictionary"
+        "en": "Set or Add Key Value Pairs to Dictionary",
+        "zh-Hans": "对字典设置或新增键值对"
       },
       "Alias": [
         "Set_or_Add_Key_Value_Pairs_to_Dictionary"
@@ -36400,7 +36803,8 @@
       "Identifier": "Arithmetic.Dictionary.Create_Dictionary",
       "ID": 1088,
       "InGameName": {
-        "en": "Create Dictionary"
+        "en": "Create Dictionary",
+        "zh-Hans": "建立字典"
       },
       "Alias": [
         "Create_Dictionary"
@@ -36809,7 +37213,8 @@
       "Identifier": "Query.Dictionary.Get_Value",
       "ID": 1158,
       "InGameName": {
-        "en": "Query Dictionary Value by Key"
+        "en": "Query Dictionary Value by Key",
+        "zh-Hans": "以键查询字典值"
       },
       "Alias": [
         "Query_Dictionary_Value_by_Key"
@@ -37533,7 +37938,8 @@
       "Identifier": "Execution.Dictionary.Remove_By_Key",
       "ID": 1298,
       "InGameName": {
-        "en": "Remove Key Value Pairs from Dictionary by Key"
+        "en": "Remove Key Value Pairs from Dictionary by Key",
+        "zh-Hans": "以键对字典移除键值对"
       },
       "Alias": [
         "Remove_Key_Value_Pairs_from_Dictionary_by_Key"
@@ -38253,7 +38659,8 @@
       "Identifier": "Query.Dictionary.Has_Key",
       "ID": 1368,
       "InGameName": {
-        "en": "Query If Dictionary Contains Specific Key"
+        "en": "Query If Dictionary Contains Specific Key",
+        "zh-Hans": "查询字典是否包含特定键"
       },
       "Alias": [
         "Query_If_Dictionary_Contains_Specific_Key"
@@ -38977,7 +39384,8 @@
       "Identifier": "Query.Dictionary.Has_Value",
       "ID": 1438,
       "InGameName": {
-        "en": "Query If Dictionary Contains Specific Value"
+        "en": "Query If Dictionary Contains Specific Value",
+        "zh-Hans": "查询字典是否包含特定值"
       },
       "Alias": [
         "Query_If_Dictionary_Contains_Specific_Value"
@@ -39386,7 +39794,8 @@
       "Identifier": "Query.Dictionary.Get_Keys",
       "ID": 1508,
       "InGameName": {
-        "en": "Get List of Keys from Dictionary"
+        "en": "Get List of Keys from Dictionary",
+        "zh-Hans": "获取字典中键组成的列表"
       },
       "Alias": [
         "Get_List_of_Keys_from_Dictionary"
@@ -40097,7 +40506,8 @@
       "Identifier": "Query.Dictionary.Get_Values",
       "ID": 1578,
       "InGameName": {
-        "en": "Get List of Values from Dictionary"
+        "en": "Get List of Values from Dictionary",
+        "zh-Hans": "获取字典中值组成的列表"
       },
       "Alias": [
         "Get_List_of_Values_from_Dictionary"
@@ -40493,7 +40903,8 @@
       "Identifier": "Query.Dictionary.Get_Length",
       "ID": 1648,
       "InGameName": {
-        "en": "Query Dictionary's Length"
+        "en": "Query Dictionary's Length",
+        "zh-Hans": "查询字典长度"
       },
       "Alias": [
         "Query_Dictionary_s_Length"
@@ -41204,7 +41615,8 @@
       "Identifier": "Execution.Dictionary.Clear",
       "ID": 1718,
       "InGameName": {
-        "en": "Clear Dictionary"
+        "en": "Clear Dictionary",
+        "zh-Hans": "清空字典"
       },
       "Alias": [
         "Clear_Dictionary"
@@ -41911,7 +42323,8 @@
       "Identifier": "Arithmetic.Dictionary.Assemble_Dictionary",
       "ID": 1788,
       "InGameName": {
-        "en": "Assembly Dictionary"
+        "en": "Assembly Dictionary",
+        "zh-Hans": "拼装字典"
       },
       "Alias": [
         "Assembly_Dictionary"
@@ -43721,7 +44134,8 @@
       "Identifier": "Execution.Dictionary.Sort_By_Key",
       "ID": 1928,
       "InGameName": {
-        "en": "Sort Dictionary by Key"
+        "en": "Sort Dictionary by Key",
+        "zh-Hans": "对字典按键排序"
       },
       "Alias": [
         "Sort_Dictionary_by_Key"
@@ -43852,7 +44266,8 @@
       "Identifier": "Execution.Dictionary.Sort_By_Value",
       "ID": 1938,
       "InGameName": {
-        "en": "Sort Dictionary by Value"
+        "en": "Sort Dictionary by Value",
+        "zh-Hans": "对字典按值排序"
       },
       "Alias": [
         "Sort_Dictionary_by_Value"
@@ -44003,7 +44418,8 @@
       "Identifier": "Query.Custom_Variable.Get_Snapshot",
       "ID": 3360,
       "InGameName": {
-        "en": "Query Custom Variable Snapshot"
+        "en": "Query Custom Variable Snapshot",
+        "zh-Hans": "查询自定义变量快照"
       },
       "Alias": [
         "Query_Custom_Variable_Snapshot"
@@ -44912,7 +45328,8 @@
       "ID": 200000,
       "KernelID": 0,
       "InGameName": {
-        "en": "Node Graph End (Boolean)"
+        "en": "Node Graph End (Boolean)",
+        "zh-Hans": "节点图结束（布尔型）"
       },
       "Alias": [
         "Node_Graph_End_Boolean"
@@ -44956,7 +45373,8 @@
       "ID": 200001,
       "KernelID": 1,
       "InGameName": {
-        "en": "Logical AND Operation"
+        "en": "Logical AND Operation",
+        "zh-Hans": "逻辑与运算"
       },
       "Alias": [
         "Logical_AND_Operation"
@@ -45014,7 +45432,8 @@
       "ID": 200002,
       "KernelID": 2,
       "InGameName": {
-        "en": "Logical OR Operation"
+        "en": "Logical OR Operation",
+        "zh-Hans": "逻辑或运算"
       },
       "Alias": [
         "Logical_OR_Operation"
@@ -45072,7 +45491,8 @@
       "ID": 200003,
       "KernelID": 3,
       "InGameName": {
-        "en": "Logical NOT Operation"
+        "en": "Logical NOT Operation",
+        "zh-Hans": "逻辑非运算"
       },
       "Alias": [
         "Logical_NOT_Operation"
@@ -45117,7 +45537,8 @@
       "ID": 200004,
       "KernelID": 4,
       "InGameName": {
-        "en": "Logical XOR Operation"
+        "en": "Logical XOR Operation",
+        "zh-Hans": "逻辑异或运算"
       },
       "Alias": [
         "Logical_XOR_Operation"
@@ -45174,7 +45595,8 @@
       "Identifier": "Arithmetic.General_Client.Enum_Match",
       "ID": 200005,
       "InGameName": {
-        "en": "Enumeration Match"
+        "en": "Enumeration Match",
+        "zh-Hans": "枚举匹配"
       },
       "Alias": [
         "Enumeration_Match"
@@ -45448,7 +45870,8 @@
       "Identifier": "Arithmetic.General_Client.Equal",
       "ID": 200006,
       "InGameName": {
-        "en": "Equal"
+        "en": "Equal",
+        "zh-Hans": "是否相等"
       },
       "Alias": [
         "Equal"
@@ -45567,7 +45990,8 @@
       "Identifier": "Arithmetic.Math_Client.Greater_Than",
       "ID": 200007,
       "InGameName": {
-        "en": "Greater Than"
+        "en": "Greater Than",
+        "zh-Hans": "是否大于"
       },
       "Alias": [
         "Greater_Than"
@@ -45646,7 +46070,8 @@
       "Identifier": "Arithmetic.Math_Client.Less_Than",
       "ID": 200008,
       "InGameName": {
-        "en": "Less Than"
+        "en": "Less Than",
+        "zh-Hans": "是否小于"
       },
       "Alias": [
         "Less_Than"
@@ -45725,7 +46150,8 @@
       "Identifier": "Arithmetic.Math_Client.Less_Equal",
       "ID": 200009,
       "InGameName": {
-        "en": "Less Than or Equal To"
+        "en": "Less Than or Equal To",
+        "zh-Hans": "是否小于等于"
       },
       "Alias": [
         "Less_Than_or_Equal_To"
@@ -45804,7 +46230,8 @@
       "Identifier": "Arithmetic.Math_Client.Greater_Equal",
       "ID": 200010,
       "InGameName": {
-        "en": "Greater Than or Equal To"
+        "en": "Greater Than or Equal To",
+        "zh-Hans": "是否大于等于"
       },
       "Alias": [
         "Greater_Than_or_Equal_To"
@@ -45883,7 +46310,8 @@
       "Identifier": "Arithmetic.Math_Client.Add",
       "ID": 200011,
       "InGameName": {
-        "en": "Addition"
+        "en": "Addition",
+        "zh-Hans": "加法运算"
       },
       "Alias": [
         "Addition"
@@ -45962,7 +46390,8 @@
       "Identifier": "Arithmetic.Math_Client.Subtract",
       "ID": 200012,
       "InGameName": {
-        "en": "Subtraction"
+        "en": "Subtraction",
+        "zh-Hans": "减法运算"
       },
       "Alias": [
         "Subtraction"
@@ -46041,7 +46470,8 @@
       "Identifier": "Arithmetic.Math_Client.Multiply",
       "ID": 200013,
       "InGameName": {
-        "en": "Multiplication"
+        "en": "Multiplication",
+        "zh-Hans": "乘法运算"
       },
       "Alias": [
         "Multiplication"
@@ -46120,7 +46550,8 @@
       "Identifier": "Arithmetic.Math_Client.Divide",
       "ID": 200014,
       "InGameName": {
-        "en": "Division"
+        "en": "Division",
+        "zh-Hans": "除法运算"
       },
       "Alias": [
         "Division"
@@ -46199,7 +46630,8 @@
       "Identifier": "Arithmetic.Math_Client.Abs",
       "ID": 200015,
       "InGameName": {
-        "en": "Absolute Value Operation"
+        "en": "Absolute Value Operation",
+        "zh-Hans": "绝对值运算"
       },
       "Alias": [
         "Absolute_Value_Operation"
@@ -46255,7 +46687,8 @@
       "Identifier": "Query.Custom_Variable_Client.Get_Variable",
       "ID": 200016,
       "InGameName": {
-        "en": "Get Custom Variable"
+        "en": "Get Custom Variable",
+        "zh-Hans": "获取自定义变量"
       },
       "Alias": [
         "Get_Custom_Variable"
@@ -46409,7 +46842,8 @@
       "Identifier": "Query.List_Related_Client.Get_At_Index",
       "ID": 200017,
       "InGameName": {
-        "en": "Get Corresponding Value From List"
+        "en": "Get Corresponding Value From List",
+        "zh-Hans": "获取列表对应值"
       },
       "Alias": [
         "Get_Corresponding_Value_From_List"
@@ -46513,7 +46947,8 @@
       "Identifier": "Query.List_Related_Client.Get_Length",
       "ID": 200018,
       "InGameName": {
-        "en": "Get List Length"
+        "en": "Get List Length",
+        "zh-Hans": "获取列表长度"
       },
       "Alias": [
         "Get_List_Length"
@@ -46594,7 +47029,8 @@
       "Identifier": "Query.List_Related_Client.Contains",
       "ID": 200019,
       "InGameName": {
-        "en": "List Includes This Value"
+        "en": "List Includes This Value",
+        "zh-Hans": "列表是否包含该值"
       },
       "Alias": [
         "List_Includes_This_Value"
@@ -46698,7 +47134,8 @@
       "Identifier": "Query.List_Related_Client.Get_Max",
       "ID": 200020,
       "InGameName": {
-        "en": "Get Maximum Value From List"
+        "en": "Get Maximum Value From List",
+        "zh-Hans": "获取列表最大值"
       },
       "Alias": [
         "Get_Maximum_Value_From_List"
@@ -46754,7 +47191,8 @@
       "Identifier": "Query.List_Related_Client.Get_Min",
       "ID": 200021,
       "InGameName": {
-        "en": "Get Minimum Value From List"
+        "en": "Get Minimum Value From List",
+        "zh-Hans": "获取列表最小值"
       },
       "Alias": [
         "Get_Minimum_Value_From_List"
@@ -46810,7 +47248,8 @@
       "Identifier": "Arithmetic.General_Client.Convert_Type",
       "ID": 200022,
       "InGameName": {
-        "en": "Data Type Conversion"
+        "en": "Data Type Conversion",
+        "zh-Hans": "数据类型转换"
       },
       "Alias": [
         "Data_Type_Conversion"
@@ -46924,7 +47363,8 @@
       "ID": 200023,
       "KernelID": 1001,
       "InGameName": {
-        "en": "Query Entity by GUID"
+        "en": "Query Entity by GUID",
+        "zh-Hans": "以GUID查询实体"
       },
       "Alias": [
         "Query_Entity_by_GUID"
@@ -46969,7 +47409,8 @@
       "ID": 200024,
       "KernelID": 1002,
       "InGameName": {
-        "en": "Get Character Entity of Specified Player"
+        "en": "Get Character Entity of Specified Player",
+        "zh-Hans": "获取指定玩家的角色实体"
       },
       "Alias": [
         "Get_Character_Entity_of_Specified_Player"
@@ -47014,7 +47455,8 @@
       "ID": 200025,
       "KernelID": 1003,
       "InGameName": {
-        "en": "Get Player Entity to Which the Character Belongs"
+        "en": "Get Player Entity to Which the Character Belongs",
+        "zh-Hans": "获取角色归属的玩家实体"
       },
       "Alias": [
         "Get_Player_Entity_to_Which_the_Character_Belongs"
@@ -47059,7 +47501,8 @@
       "ID": 200026,
       "KernelID": 1004,
       "InGameName": {
-        "en": "Get List of Player Entities on the Field"
+        "en": "Get List of Player Entities on the Field",
+        "zh-Hans": "获取在场玩家实体列表"
       },
       "Alias": [
         "Get_List_of_Player_Entities_on_the_Field"
@@ -47091,7 +47534,8 @@
       "ID": 200027,
       "KernelID": 1005,
       "InGameName": {
-        "en": "Query GUID by Entity"
+        "en": "Query GUID by Entity",
+        "zh-Hans": "以实体查询GUID"
       },
       "Alias": [
         "Query_GUID_by_Entity"
@@ -47136,7 +47580,8 @@
       "ID": 200028,
       "KernelID": 1006,
       "InGameName": {
-        "en": "Get Preset Status"
+        "en": "Get Preset Status",
+        "zh-Hans": "获取预设状态"
       },
       "Alias": [
         "Get_Preset_Status"
@@ -47194,7 +47639,8 @@
       "ID": 200029,
       "KernelID": 1007,
       "InGameName": {
-        "en": "Query Entity Faction"
+        "en": "Query Entity Faction",
+        "zh-Hans": "查询实体阵营"
       },
       "Alias": [
         "Query_Entity_Faction"
@@ -47239,7 +47685,8 @@
       "ID": 200030,
       "KernelID": 1008,
       "InGameName": {
-        "en": "Get Entity Location"
+        "en": "Get Entity Location",
+        "zh-Hans": "获取实体位置"
       },
       "Alias": [
         "Get_Entity_Location"
@@ -47284,7 +47731,8 @@
       "ID": 200031,
       "KernelID": 1009,
       "InGameName": {
-        "en": "Get Entity Rotation"
+        "en": "Get Entity Rotation",
+        "zh-Hans": "获取实体旋转"
       },
       "Alias": [
         "Get_Entity_Rotation"
@@ -47328,7 +47776,8 @@
       "Identifier": "Arithmetic.Math_Client.Random",
       "ID": 200032,
       "InGameName": {
-        "en": "Get Random Number"
+        "en": "Get Random Number",
+        "zh-Hans": "获取随机数"
       },
       "Alias": [
         "Get_Random_Number"
@@ -47398,7 +47847,8 @@
       "ID": 200033,
       "KernelID": 1013,
       "InGameName": {
-        "en": "Get Self Entity"
+        "en": "Get Self Entity",
+        "zh-Hans": "获取自身实体"
       },
       "Alias": [
         "Get_Self_Entity"
@@ -47430,7 +47880,8 @@
       "ID": 200034,
       "KernelID": 1014,
       "InGameName": {
-        "en": "Get Target Entity"
+        "en": "Get Target Entity",
+        "zh-Hans": "获取目标实体"
       },
       "Alias": [
         "Get_Target_Entity"
@@ -47462,7 +47913,8 @@
       "ID": 200035,
       "KernelID": 1015,
       "InGameName": {
-        "en": "Get Unit Attack Target"
+        "en": "Get Unit Attack Target",
+        "zh-Hans": "获取单位攻击目标"
       },
       "Alias": [
         "Get_Unit_Attack_Target"
@@ -47537,7 +47989,8 @@
       "ID": 200037,
       "KernelID": 1017,
       "InGameName": {
-        "en": "Query If Self Is in Combat"
+        "en": "Query If Self Is in Combat",
+        "zh-Hans": "查询自身是否已入战"
       },
       "Alias": [
         "Query_If_Self_Is_in_Combat"
@@ -47569,7 +48022,8 @@
       "ID": 200038,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Play Timed Effects"
+        "en": "Play Timed Effects",
+        "zh-Hans": "播放限时特效"
       },
       "Alias": [
         "Play_Timed_Effects"
@@ -47674,7 +48128,8 @@
       "ID": 200039,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Notify Server Node Graph"
+        "en": "Notify Server Node Graph",
+        "zh-Hans": "通知服务器节点图"
       },
       "Alias": [
         "Notify_Server_Node_Graph"
@@ -47741,7 +48196,8 @@
       "ID": 200040,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Player Turning"
+        "en": "Player Turning",
+        "zh-Hans": "玩家转向"
       },
       "Alias": [
         "Player_Turning"
@@ -47782,7 +48238,8 @@
       "ID": 200041,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Set Own Attack Target"
+        "en": "Set Own Attack Target",
+        "zh-Hans": "设置自身攻击目标"
       },
       "Alias": [
         "Set_Own_Attack_Target"
@@ -47836,7 +48293,8 @@
       "ID": 200042,
       "KernelID": 2001,
       "InGameName": {
-        "en": "Node Graph Begins"
+        "en": "Node Graph Begins",
+        "zh-Hans": "节点图开始"
       },
       "Alias": [
         "Node_Graph_Begins"
@@ -47854,7 +48312,8 @@
       "ID": 200043,
       "KernelID": 1019,
       "InGameName": {
-        "en": "Filter Entity List Within Spherical Range"
+        "en": "Filter Entity List Within Spherical Range",
+        "zh-Hans": "筛选球体范围内的实体列表"
       },
       "Alias": [
         "Filter_Entity_List_Within_Spherical_Range"
@@ -47938,7 +48397,8 @@
       "ID": 200044,
       "KernelID": 1018,
       "InGameName": {
-        "en": "Filter Entity List Within Square Range"
+        "en": "Filter Entity List Within Square Range",
+        "zh-Hans": "筛选方形范围内的实体列表"
       },
       "Alias": [
         "Filter_Entity_List_Within_Square_Range"
@@ -48048,7 +48508,8 @@
       "ID": 200045,
       "KernelID": 1020,
       "InGameName": {
-        "en": "Get Entity's Type"
+        "en": "Get Entity's Type",
+        "zh-Hans": "获取实体的类型"
       },
       "Alias": [
         "Get_Entity_s_Type"
@@ -48123,7 +48584,8 @@
       "ID": 200047,
       "KernelID": 1022,
       "InGameName": {
-        "en": "Get Target Attachment Point Location"
+        "en": "Get Target Attachment Point Location",
+        "zh-Hans": "获取目标挂接点位置"
       },
       "Alias": [
         "Get_Target_Attachment_Point_Location"
@@ -48181,7 +48643,8 @@
       "ID": 200048,
       "KernelID": 1023,
       "InGameName": {
-        "en": "Get Target Attachment Point Rotation"
+        "en": "Get Target Attachment Point Rotation",
+        "zh-Hans": "获取目标挂接点旋转"
       },
       "Alias": [
         "Get_Target_Attachment_Point_Rotation"
@@ -48238,7 +48701,8 @@
       "Identifier": "Arithmetic.List_Client.Assemble_List",
       "ID": 200049,
       "InGameName": {
-        "en": "Assembly List"
+        "en": "Assembly List",
+        "zh-Hans": "拼装列表"
       },
       "Alias": [
         "Assembly_List"
@@ -48439,7 +48903,8 @@
       "ID": 200050,
       "KernelID": 1031,
       "InGameName": {
-        "en": "Get Entity Type List"
+        "en": "Get Entity Type List",
+        "zh-Hans": "获取实体类型列表"
       },
       "Alias": [
         "Get_Entity_Type_List"
@@ -49139,7 +49604,8 @@
       "ID": 200052,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Fixed-Point Projectile Launch"
+        "en": "Fixed-Point Projectile Launch",
+        "zh-Hans": "定点发射投射物"
       },
       "Alias": [
         "Fixed_Point_Projectile_Launch"
@@ -49232,7 +49698,8 @@
       "ID": 200053,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Fixed-Point Displacement"
+        "en": "Fixed-Point Displacement",
+        "zh-Hans": "定点位移"
       },
       "Alias": [
         "Fixed_Point_Displacement"
@@ -49325,7 +49792,8 @@
       "ID": 200055,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Traverse Entity List"
+        "en": "Traverse Entity List",
+        "zh-Hans": "遍历实体列表"
       },
       "Alias": [
         "Traverse_Entity_List"
@@ -49379,7 +49847,8 @@
       "ID": 200056,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Double Branch"
+        "en": "Double Branch",
+        "zh-Hans": "双分支"
       },
       "Alias": [
         "Double_Branch"
@@ -49424,7 +49893,8 @@
       "ID": 200057,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Add Unit Status"
+        "en": "Add Unit Status",
+        "zh-Hans": "添加单位状态"
       },
       "Alias": [
         "Add_Unit_Status"
@@ -49491,7 +49961,8 @@
       "ID": 200058,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Remove Unit Status"
+        "en": "Remove Unit Status",
+        "zh-Hans": "移除单位状态"
       },
       "Alias": [
         "Remove_Unit_Status"
@@ -50102,7 +50573,8 @@
       "ID": 200060,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Remove Specified Character Disruptor Device"
+        "en": "Remove Specified Character Disruptor Device",
+        "zh-Hans": "移除指定角色扰动装置"
       },
       "Alias": [
         "Remove_Specified_Character_Disruptor_Device"
@@ -50143,7 +50615,8 @@
       "ID": 200061,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Modify Attack Weight"
+        "en": "Modify Attack Weight",
+        "zh-Hans": "修改攻击权重"
       },
       "Alias": [
         "Modify_Attack_Weight"
@@ -50197,7 +50670,8 @@
       "ID": 200062,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Camera Orientation Detection Data"
+        "en": "Camera Orientation Detection Data",
+        "zh-Hans": "镜头朝向检测数据"
       },
       "Alias": [
         "Camera_Orientation_Detection_Data"
@@ -50303,7 +50777,8 @@
       "ID": 200063,
       "KernelID": 131,
       "InGameName": {
-        "en": "3D Vector Dot Product"
+        "en": "3D Vector Dot Product",
+        "zh-Hans": "三维向量内积"
       },
       "Alias": [
         "_3D_Vector_Dot_Product"
@@ -50361,7 +50836,8 @@
       "ID": 200064,
       "KernelID": 132,
       "InGameName": {
-        "en": "3D Vector Cross Product"
+        "en": "3D Vector Cross Product",
+        "zh-Hans": "三维向量外积"
       },
       "Alias": [
         "_3D_Vector_Cross_Product"
@@ -50419,7 +50895,8 @@
       "ID": 200065,
       "KernelID": 133,
       "InGameName": {
-        "en": "Split 3D Vector"
+        "en": "Split 3D Vector",
+        "zh-Hans": "拆分三维向量"
       },
       "Alias": [
         "Split_3D_Vector"
@@ -50490,7 +50967,8 @@
       "ID": 200066,
       "KernelID": 134,
       "InGameName": {
-        "en": "3D Vector Zoom"
+        "en": "3D Vector Zoom",
+        "zh-Hans": "三维向量缩放"
       },
       "Alias": [
         "_3D_Vector_Zoom"
@@ -50548,7 +51026,8 @@
       "ID": 200067,
       "KernelID": 135,
       "InGameName": {
-        "en": "3D Vector Angle"
+        "en": "3D Vector Angle",
+        "zh-Hans": "三维向量夹角"
       },
       "Alias": [
         "_3D_Vector_Angle"
@@ -50606,7 +51085,8 @@
       "ID": 200068,
       "KernelID": 136,
       "InGameName": {
-        "en": "3D Vector Rotation"
+        "en": "3D Vector Rotation",
+        "zh-Hans": "三维向量旋转"
       },
       "Alias": [
         "_3D_Vector_Rotation"
@@ -50664,7 +51144,8 @@
       "ID": 200069,
       "KernelID": 137,
       "InGameName": {
-        "en": "3D Vector Modulo Operation"
+        "en": "3D Vector Modulo Operation",
+        "zh-Hans": "三维向量模运算"
       },
       "Alias": [
         "_3D_Vector_Modulo_Operation"
@@ -50709,7 +51190,8 @@
       "ID": 200070,
       "KernelID": 1024,
       "InGameName": {
-        "en": "Create 3D Vector"
+        "en": "Create 3D Vector",
+        "zh-Hans": "创建三维向量"
       },
       "Alias": [
         "Create_3D_Vector"
@@ -50780,7 +51262,8 @@
       "ID": 200071,
       "KernelID": 34,
       "InGameName": {
-        "en": "3D Vector Addition"
+        "en": "3D Vector Addition",
+        "zh-Hans": "三维向量加法"
       },
       "Alias": [
         "_3D_Vector_Addition"
@@ -50850,7 +51333,8 @@
       "ID": 200072,
       "KernelID": 34,
       "InGameName": {
-        "en": "3D Vector Subtraction"
+        "en": "3D Vector Subtraction",
+        "zh-Hans": "三维向量减法"
       },
       "Alias": [
         "_3D_Vector_Subtraction"
@@ -50920,7 +51404,8 @@
       "ID": 200073,
       "KernelID": 139,
       "InGameName": {
-        "en": "Direction Vector to Rotation"
+        "en": "Direction Vector to Rotation",
+        "zh-Hans": "方向向量转旋转"
       },
       "Alias": [
         "Direction_Vector_to_Rotation"
@@ -51030,7 +51515,8 @@
       "ID": 200075,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Recover HP"
+        "en": "Recover HP",
+        "zh-Hans": "恢复生命值"
       },
       "Alias": [
         "Recover_HP"
@@ -51202,7 +51688,8 @@
       "ID": 200076,
       "KernelID": 1032,
       "InGameName": {
-        "en": "Get Current Character"
+        "en": "Get Current Character",
+        "zh-Hans": "获取当前角色"
       },
       "Alias": [
         "Get_Current_Character"
@@ -51234,7 +51721,8 @@
       "ID": 200077,
       "KernelID": 1035,
       "InGameName": {
-        "en": "Get Entity's Unit Tag List"
+        "en": "Get Entity's Unit Tag List",
+        "zh-Hans": "获取实体的单位标签列表"
       },
       "Alias": [
         "Get_Entity_s_Unit_Tag_List"
@@ -51279,7 +51767,8 @@
       "ID": 200078,
       "KernelID": 1034,
       "InGameName": {
-        "en": "Get Entity List by Unit Tag"
+        "en": "Get Entity List by Unit Tag",
+        "zh-Hans": "获取单位标签的实体列表"
       },
       "Alias": [
         "Get_Entity_List_by_Unit_Tag"
@@ -51324,7 +51813,8 @@
       "ID": 200079,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Finite Loop"
+        "en": "Finite Loop",
+        "zh-Hans": "有限循环"
       },
       "Alias": [
         "Finite_Loop"
@@ -51391,7 +51881,8 @@
       "ID": 200080,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Break Loop"
+        "en": "Break Loop",
+        "zh-Hans": "跳出循环"
       },
       "Alias": [
         "Break_Loop"
@@ -51417,7 +51908,8 @@
       "Identifier": "Execution.General_Client.Set_Local",
       "ID": 200081,
       "InGameName": {
-        "en": "Set Local Variable"
+        "en": "Set Local Variable",
+        "zh-Hans": "设置局部变量"
       },
       "Alias": [
         "Set_Local_Variable"
@@ -51557,7 +52049,8 @@
       "Identifier": "Query.General_Client.Get_Local",
       "ID": 200082,
       "InGameName": {
-        "en": "Get Local Variable"
+        "en": "Get Local Variable",
+        "zh-Hans": "获取局部变量"
       },
       "Alias": [
         "Get_Local_Variable"
@@ -51689,7 +52182,8 @@
       "ID": 200083,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Set the Aggro Value of the Specified Entity"
+        "en": "Set the Aggro Value of the Specified Entity",
+        "zh-Hans": "设置指定实体的仇恨值"
       },
       "Alias": [
         "Set_the_Aggro_Value_of_the_Specified_Entity"
@@ -51756,7 +52250,8 @@
       "ID": 200084,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Modify the Aggro Value of the Specified Entity"
+        "en": "Modify the Aggro Value of the Specified Entity",
+        "zh-Hans": "修改指定实体的仇恨值"
       },
       "Alias": [
         "Modify_the_Aggro_Value_of_the_Specified_Entity"
@@ -51823,7 +52318,8 @@
       "ID": 200085,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Modify the Aggro Value of the Specified Entity Proportionally"
+        "en": "Modify the Aggro Value of the Specified Entity Proportionally",
+        "zh-Hans": "按比例修改指定实体的仇恨值"
       },
       "Alias": [
         "Modify_the_Aggro_Value_of_the_Specified_Entity_Proportionally"
@@ -51890,7 +52386,8 @@
       "ID": 200086,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Transfer the Aggro Value of the Specified Entity Proportionally"
+        "en": "Transfer the Aggro Value of the Specified Entity Proportionally",
+        "zh-Hans": "按比例转移指定实体的仇恨值"
       },
       "Alias": [
         "Transfer_the_Aggro_Value_of_the_Specified_Entity_Proportionally"
@@ -51970,7 +52467,8 @@
       "ID": 200087,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Clear the Aggro List of the Specified Entity"
+        "en": "Clear the Aggro List of the Specified Entity",
+        "zh-Hans": "清空指定实体的仇恨列表"
       },
       "Alias": [
         "Clear_the_Aggro_List_of_the_Specified_Entity"
@@ -52011,7 +52509,8 @@
       "ID": 200088,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Remove Target Entity From Aggro List"
+        "en": "Remove Target Entity From Aggro List",
+        "zh-Hans": "将目标实体移除出仇恨列表"
       },
       "Alias": [
         "Remove_Target_Entity_From_Aggro_List"
@@ -52065,7 +52564,8 @@
       "ID": 200089,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Taunt Target"
+        "en": "Taunt Target",
+        "zh-Hans": "嘲讽目标"
       },
       "Alias": [
         "Taunt_Target"
@@ -52119,7 +52619,8 @@
       "ID": 200090,
       "KernelID": 3000,
       "InGameName": {
-        "en": "Get the Aggro Target of the Specified Entity"
+        "en": "Get the Aggro Target of the Specified Entity",
+        "zh-Hans": "获取指定实体的仇恨目标"
       },
       "Alias": [
         "Get_the_Aggro_Target_of_the_Specified_Entity"
@@ -52164,7 +52665,8 @@
       "ID": 200091,
       "KernelID": 3001,
       "InGameName": {
-        "en": "Get the Aggro List of the Specified Entity"
+        "en": "Get the Aggro List of the Specified Entity",
+        "zh-Hans": "获取指定实体的仇恨列表"
       },
       "Alias": [
         "Get_the_Aggro_List_of_the_Specified_Entity"
@@ -52209,7 +52711,8 @@
       "ID": 200092,
       "KernelID": 3003,
       "InGameName": {
-        "en": "Query if Specified Entity is in Combat"
+        "en": "Query if Specified Entity is in Combat",
+        "zh-Hans": "查询指定实体是否入战"
       },
       "Alias": [
         "Query_if_Specified_Entity_is_in_Combat"
@@ -52254,7 +52757,8 @@
       "ID": 200093,
       "KernelID": 1037,
       "InGameName": {
-        "en": "Query If Faction Is Hostile"
+        "en": "Query If Faction Is Hostile",
+        "zh-Hans": "查询阵营是否敌对"
       },
       "Alias": [
         "Query_If_Faction_Is_Hostile"
@@ -52312,7 +52816,8 @@
       "ID": 200094,
       "KernelID": 35,
       "InGameName": {
-        "en": "Sine Function"
+        "en": "Sine Function",
+        "zh-Hans": "正弦函数"
       },
       "Alias": [
         "Sine_Function"
@@ -52369,7 +52874,8 @@
       "ID": 200095,
       "KernelID": 35,
       "InGameName": {
-        "en": "Cosine Function"
+        "en": "Cosine Function",
+        "zh-Hans": "余弦函数"
       },
       "Alias": [
         "Cosine_Function"
@@ -52479,7 +52985,8 @@
       "ID": 200097,
       "KernelID": 35,
       "InGameName": {
-        "en": "Arcsine Function"
+        "en": "Arcsine Function",
+        "zh-Hans": "反正弦函数"
       },
       "Alias": [
         "Arcsine_Function"
@@ -52536,7 +53043,8 @@
       "ID": 200098,
       "KernelID": 35,
       "InGameName": {
-        "en": "Arccosine Function"
+        "en": "Arccosine Function",
+        "zh-Hans": "反余弦函数"
       },
       "Alias": [
         "Arccosine_Function"
@@ -52593,7 +53101,8 @@
       "ID": 200099,
       "KernelID": 35,
       "InGameName": {
-        "en": "Arctangent Function"
+        "en": "Arctangent Function",
+        "zh-Hans": "反正切函数"
       },
       "Alias": [
         "Arctangent_Function"
@@ -52650,7 +53159,8 @@
       "ID": 200100,
       "KernelID": 138,
       "InGameName": {
-        "en": "3D Vector Normalization"
+        "en": "3D Vector Normalization",
+        "zh-Hans": "三维向量归一化"
       },
       "Alias": [
         "_3D_Vector_Normalization"
@@ -52695,7 +53205,8 @@
       "ID": 200101,
       "KernelID": 35,
       "InGameName": {
-        "en": "Radians to Degrees"
+        "en": "Radians to Degrees",
+        "zh-Hans": "弧度转角度"
       },
       "Alias": [
         "Radians_to_Degrees"
@@ -52752,7 +53263,8 @@
       "ID": 200102,
       "KernelID": 35,
       "InGameName": {
-        "en": "Degrees to Radians"
+        "en": "Degrees to Radians",
+        "zh-Hans": "角度转弧度"
       },
       "Alias": [
         "Degrees_to_Radians"
@@ -52809,7 +53321,8 @@
       "ID": 200103,
       "KernelID": 1038,
       "InGameName": {
-        "en": "Query If Entity Is on the Field"
+        "en": "Query If Entity Is on the Field",
+        "zh-Hans": "查询实体是否在场"
       },
       "Alias": [
         "Query_If_Entity_Is_on_the_Field"
@@ -52895,7 +53408,8 @@
       "ID": 200105,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Player Turns to Face Set Direction"
+        "en": "Player Turns to Face Set Direction",
+        "zh-Hans": "玩家转向指定朝向"
       },
       "Alias": [
         "Player_Turns_to_Face_Set_Direction"
@@ -52936,7 +53450,8 @@
       "ID": 200106,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Reset Skill Target"
+        "en": "Reset Skill Target",
+        "zh-Hans": "重置技能目标"
       },
       "Alias": [
         "Reset_Skill_Target"
@@ -52963,7 +53478,8 @@
       "ID": 200107,
       "KernelID": 1046,
       "InGameName": {
-        "en": "Get All Entities Within the Collision Trigger"
+        "en": "Get All Entities Within the Collision Trigger",
+        "zh-Hans": "获取碰撞触发器内所有实体"
       },
       "Alias": [
         "Get_All_Entities_Within_the_Collision_Trigger"
@@ -53021,7 +53537,8 @@
       "ID": 200108,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Force Exit Aiming State"
+        "en": "Force Exit Aiming State",
+        "zh-Hans": "强制退出瞄准状态"
       },
       "Alias": [
         "Force_Exit_Aiming_State"
@@ -53166,7 +53683,8 @@
       "ID": 200110,
       "KernelID": 1031,
       "InGameName": {
-        "en": "Get Ray Filter Type List"
+        "en": "Get Ray Filter Type List",
+        "zh-Hans": "获取射线筛选类型列表"
       },
       "Alias": [
         "Get_Ray_Filter_Type_List"
@@ -53320,7 +53838,8 @@
       "ID": 200111,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Trigger Spherical Hitbox at Specific Location"
+        "en": "Trigger Spherical Hitbox at Specific Location",
+        "zh-Hans": "特定位置打球形攻击盒"
       },
       "Alias": [
         "Trigger_Spherical_Hitbox_at_Specific_Location"
@@ -53929,7 +54448,8 @@
       "ID": 200112,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Trigger Rectangular Hitbox at Specific Location"
+        "en": "Trigger Rectangular Hitbox at Specific Location",
+        "zh-Hans": "特定位置打矩形攻击盒"
       },
       "Alias": [
         "Trigger_Rectangular_Hitbox_at_Specific_Location"
@@ -54538,7 +55058,8 @@
       "ID": 200113,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Trigger Sector Hitbox at Specific Location"
+        "en": "Trigger Sector Hitbox at Specific Location",
+        "zh-Hans": "特定位置打扇形攻击盒"
       },
       "Alias": [
         "Trigger_Sector_Hitbox_at_Specific_Location"
@@ -57065,7 +57586,8 @@
       "ID": 200118,
       "KernelID": 1039,
       "InGameName": {
-        "en": "Get Entity Currently Scanned by Scan Component"
+        "en": "Get Entity Currently Scanned by Scan Component",
+        "zh-Hans": "获取扫描组件当前扫描到的实体"
       },
       "Alias": [
         "Get_Entity_Currently_Scanned_by_Scan_Component"
@@ -57110,7 +57632,8 @@
       "ID": 200119,
       "KernelID": 1040,
       "InGameName": {
-        "en": "Get All Valid Entities That Are Scannable by Scan Component"
+        "en": "Get All Valid Entities That Are Scannable by Scan Component",
+        "zh-Hans": "获取扫描组件可扫描的所有合法对象"
       },
       "Alias": [
         "Get_All_Valid_Entities_That_Are_Scannable_by_Scan_Component"
@@ -57142,7 +57665,8 @@
       "ID": 200120,
       "KernelID": 1041,
       "InGameName": {
-        "en": "Get Entity's Scan Status"
+        "en": "Get Entity's Scan Status",
+        "zh-Hans": "获取实体扫描状态"
       },
       "Alias": [
         "Get_Entity_s_Scan_Status"
@@ -57187,7 +57711,8 @@
       "ID": 200121,
       "KernelID": 1042,
       "InGameName": {
-        "en": "Get Entity's Current Active Scan Tags"
+        "en": "Get Entity's Current Active Scan Tags",
+        "zh-Hans": "获取实体当前生效的扫描标签"
       },
       "Alias": [
         "Get_Entity_s_Current_Active_Scan_Tags"
@@ -57273,7 +57798,8 @@
       "ID": 200123,
       "KernelID": 3004,
       "InGameName": {
-        "en": "Get Player Client Input Device Type"
+        "en": "Get Player Client Input Device Type",
+        "zh-Hans": "获得玩家客户端输入设备类型"
       },
       "Alias": [
         "Get_Player_Client_Input_Device_Type"
@@ -57305,7 +57831,8 @@
       "ID": 200124,
       "KernelID": 2000,
       "InGameName": {
-        "en": "Send Signal to Server Node Graph"
+        "en": "Send Signal to Server Node Graph",
+        "zh-Hans": "向服务器节点图发送信号"
       },
       "Alias": [
         "Send_Signal_to_Server_Node_Graph"
@@ -57371,7 +57898,8 @@
       "Identifier": "Trigger.Signal.On_Signal",
       "ID": 300001,
       "InGameName": {
-        "en": "Monitor Signal"
+        "en": "Monitor Signal",
+        "zh-Hans": "监听信号"
       },
       "Alias": [
         "Monitor_Signal"
@@ -57480,7 +58008,8 @@
       "Identifier": "Execution.Structure.Modify",
       "ID": 300004,
       "InGameName": {
-        "en": "Modify Structure"
+        "en": "Modify Structure",
+        "zh-Hans": "修改结构体"
       },
       "Alias": [
         "Modify_Structure"
