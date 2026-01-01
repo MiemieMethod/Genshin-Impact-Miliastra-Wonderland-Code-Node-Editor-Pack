@@ -194,7 +194,7 @@
     "2005": All
     "2006": Remove All of Self
     "2007": Allied Faction Self Included
-- TRGR: 27 # TIGR
+- TIGR: 27
   name: Trigger Restriction
   items:
     "2101": Trigger Only Once
@@ -360,7 +360,7 @@
     "5601": Fixed Time
 
 
-- GENE: -1 # CGEN
+- GENE: 1 # CGEN
   id: 200000
   name: Generic
   items: {}
@@ -622,7 +622,7 @@
     "1000001": Default Sorting
     "1000002": Random Order
     "1000003": Sort From Near to Far
-- ALCF: 30 # CALR
+- ALCF: 30 # CALC
   id: 200032
   name: Attack Layer Config
   items:
@@ -768,12 +768,12 @@
     "2002": Hostile Faction
     "2004": Own Faction
     "2006": All Except Self
-- ALCF: 30 # CATX
+- CATX: 200042
   id: 200042
   name: Attack Layer Config
   items:
-    "2601": Only On-Hit Hurtbox
-    "2602": Only On-Hit Scene
+    "2601": Only On-Hit Hurtbox # Hurtbox
+    "2602": Only On-Hit Scene # Scene
     "2605": Object Self-Collision
 - CIRS: 200043
   id: 200043

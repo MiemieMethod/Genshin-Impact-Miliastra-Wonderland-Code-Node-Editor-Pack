@@ -126961,7 +126961,7 @@
           ]
         },
         {
-          "Constraints": "S<T:E<ALCF>>",
+          "Constraints": "S<T:E<CALC>>",
           "KernelID": 10,
           "InjectedContents": [
             {
@@ -131505,7 +131505,7 @@
         {
           "Identifier": "list",
           "Direction": "Out",
-          "Type": "L<E<ALCF>>",
+          "Type": "L<E<CETY>>",
           "Label": {
             "zh-Hans": "列表"
           },
@@ -131731,7 +131731,7 @@
         {
           "Identifier": "Input16",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CALC>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 16,
@@ -132796,7 +132796,7 @@
         {
           "Identifier": "Input17",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CALC>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 17,
@@ -136609,7 +136609,7 @@
         {
           "Identifier": "Input6",
           "Direction": "In",
-          "Type": "L<E<ALCF>>",
+          "Type": "L<E<CETY>>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 6,
@@ -136673,7 +136673,7 @@
         {
           "Identifier": "Input1",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 1,
@@ -136684,7 +136684,7 @@
         {
           "Identifier": "Input2",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 2,
@@ -136695,7 +136695,7 @@
         {
           "Identifier": "Input3",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 3,
@@ -136706,7 +136706,7 @@
         {
           "Identifier": "Input4",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 4,
@@ -136717,7 +136717,7 @@
         {
           "Identifier": "Input5",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 5,
@@ -136728,7 +136728,7 @@
         {
           "Identifier": "Input6",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 6,
@@ -136739,7 +136739,7 @@
         {
           "Identifier": "Input7",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 7,
@@ -136750,7 +136750,7 @@
         {
           "Identifier": "Input8",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 8,
@@ -136761,7 +136761,7 @@
         {
           "Identifier": "Input9",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 9,
@@ -136772,7 +136772,7 @@
         {
           "Identifier": "Input10",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CATX>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 10,
@@ -137032,7 +137032,7 @@
         {
           "Identifier": "hit_layer_filter",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CALC>",
           "Label": {
             "zh-Hans": "攻击层筛选"
           },
@@ -137654,7 +137654,7 @@
         {
           "Identifier": "hit_layer_filter",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CALC>",
           "Label": {
             "zh-Hans": "攻击层筛选"
           },
@@ -138284,7 +138284,7 @@
         {
           "Identifier": "hit_layer_filter",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CALC>",
           "Label": {
             "zh-Hans": "攻击层筛选"
           },
@@ -138894,7 +138894,7 @@
         {
           "Identifier": "Input17",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CALC>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 17,
@@ -139459,7 +139459,7 @@
         {
           "Identifier": "Input17",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CALC>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 17,
@@ -140024,7 +140024,7 @@
         {
           "Identifier": "Input17",
           "Direction": "In",
-          "Type": "E<ALCF>",
+          "Type": "E<CALC>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 17,
@@ -145944,7 +145944,7 @@
       ]
     },
     {
-      "Identifier": "ALCF",
+      "Identifier": "CALC",
       "System": "Client",
       "ID": 30,
       "InGameName": {

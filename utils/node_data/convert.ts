@@ -21,14 +21,34 @@ const save = (path: string, data: {} | string) =>
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
 import { exit } from "process";
 
-save("enum_lookup.yaml", stringify(data.Enums.sort((a, b) => b.System.localeCompare(a.System) || a.ID - b.ID).map(x => {
-  // assert(x.ID + 10000 === x.TypeID);
-  let res = {};
-  res[x.Identifier] = x.ID;
-  res["name"] = x.InGameName.en;
-  res["items"] = Object.fromEntries(x.Items.map(y => [y.ID, y.InGameName.en]));
-  return res;
-})));
+// save("enum_lookup.yaml", stringify(data.Enums.sort((a, b) => b.System.localeCompare(a.System) || a.ID - b.ID).map(x => {
+//   // assert(x.ID + 10000 === x.TypeID);
+//   let res = {};
+//   res[x.Identifier] = x.ID;
+//   res["name"] = x.InGameName.en;
+//   res["items"] = Object.fromEntries(x.Items.map(y => [y.ID, y.InGameName.en]));
+//   return res;
+// })));
+
+const sets = new Set(readFileSync("./utils/node_data/enum_lookup.yaml").toString().split("\n")
+  .filter(l => /^- [A-Z]{4}: \d+$/.test(l.trim()))
+  .map(l => l.trim().slice(2, 6)));
+const maps = new Map(readFileSync("./utils/node_data/enum_lookup.yaml").toString().split("\n")
+  .filter(l => /^- [A-Z]{4}: \d+ # C[A-Z]{3}$/.test(l.trim()))
+  .map(l => [l.trim().slice(2, 6), l.trim().slice(-4)]));
+[...maps.values()].forEach(z => sets.add(z));
+
+data.Nodes.forEach(n => {
+  n.DataPins.forEach(p => {
+    p.Type.replaceAll(/E<([A-Z]{4})>/g, (_, x) => {
+      const mx = maps.get(x);
+      const sx = sets.has(x);
+      assertEq(!mx, sx);
+      return `E<${mx ?? x}>`;
+    })
+  })
+});
+
 exit();
 
 // IMPORTANT 提取 ENUM id 信息的很新颖的方法: 导入composite节点时是不检查内外一致性的, 因此可以手动生成接口而不用找到内部实际对应的节点......
