@@ -141101,7 +141101,7 @@
     {
       "Identifier": "GNRC",
       "System": "Server",
-      "ID": 1,
+      "ID": 0,
       "InGameName": {
         "en": "Generic"
       },
@@ -141110,6 +141110,42 @@
       ],
       "Items": [],
       "__old_id": 0,
+      "TypeID": 10000
+    },
+    {
+      "Identifier": "BOOL",
+      "System": "Server",
+      "ID": 1,
+      "InGameName": {
+        "en": "Boolean"
+      },
+      "Alias": [
+        "Boolean"
+      ],
+      "Items": [
+        {
+          "Identifier": "false",
+          "ID": 0,
+          "InGameName": {
+            "en": "No"
+          },
+          "Alias": [
+            "No",
+            "False"
+          ]
+        },
+        {
+          "Identifier": "true",
+          "ID": 1,
+          "InGameName": {
+            "en": "Yes"
+          },
+          "Alias": [
+            "Yes",
+            "True"
+          ]
+        }
+      ],
       "TypeID": 10001
     },
     {
@@ -141640,7 +141676,9 @@
         "en": "Motion Path Point Types"
       },
       "Alias": [
-        "Motion_Path_Point_Types"
+        "Motion_Path_Point_Types",
+        "Motion_Path_Points",
+        "Motion Path Points"
       ],
       "Items": [
         {
@@ -141953,6 +141991,59 @@
       "TypeID": 10015
     },
     {
+      "Identifier": "USAF",
+      "System": "Server",
+      "ID": 16,
+      "InGameName": {
+        "en": "Unit Status Addition Failure Reason"
+      },
+      "Alias": [
+        "Unit_Status_Addition_Failure_Reason"
+      ],
+      "Items": [
+        {
+          "Identifier": "fail_error",
+          "ID": 1500,
+          "InGameName": {
+            "en": "Failed: Unexpected error"
+          },
+          "Alias": [
+            "Failed_Unexpected_error"
+          ]
+        },
+        {
+          "Identifier": "fail_paused",
+          "ID": 1501,
+          "InGameName": {
+            "en": "Failed: Operation paused for another process"
+          },
+          "Alias": [
+            "Failed_Operation_paused_for_another_process"
+          ]
+        },
+        {
+          "Identifier": "fail_limit",
+          "ID": 1502,
+          "InGameName": {
+            "en": "Failed: Maximum coexistence limit reached"
+          },
+          "Alias": [
+            "Failed_Maximum_coexistence_limit_reached"
+          ]
+        },
+        {
+          "Identifier": "fail_stack",
+          "ID": 1503,
+          "InGameName": {
+            "en": "Failed: Unable to add additional stack"
+          },
+          "Alias": [
+            "Failed_Unable_to_add_additional_stack"
+          ]
+        }
+      ]
+    },
+    {
       "Identifier": "STAD",
       "System": "Server",
       "ID": 17,
@@ -142086,6 +142177,26 @@
           },
           "Alias": [
             "Class_changed"
+          ]
+        },
+        {
+          "Identifier": "affix_expired",
+          "ID": 1511,
+          "InGameName": {
+            "en": "Affix Expired"
+          },
+          "Alias": [
+            "Affix_Expired"
+          ]
+        },
+        {
+          "Identifier": "shield",
+          "ID": 1512,
+          "InGameName": {
+            "en": "Shield Depleted to Zero"
+          },
+          "Alias": [
+            "Shield_Depleted_to_Zero"
           ]
         }
       ],
@@ -143218,6 +143329,61 @@
       "TypeID": 10034
     },
     {
+      "Identifier": "STMT",
+      "System": "Server",
+      "ID": 34,
+      "InGameName": {
+        "en": "Settlement Status"
+      },
+      "Alias": [
+        "Settlement_Status"
+      ],
+      "Items": [
+        {
+          "Identifier": "tbc",
+          "ID": 4100,
+          "InGameName": {
+            "en": "TBC"
+          },
+          "Alias": [
+            "TBC"
+          ]
+        },
+        {
+          "Identifier": "victory",
+          "ID": 4101,
+          "InGameName": {
+            "en": "Victory"
+          },
+          "Alias": [
+            "Victory"
+          ]
+        },
+        {
+          "Identifier": "fail",
+          "ID": 4102,
+          "InGameName": {
+            "en": "Failed"
+          },
+          "Alias": [
+            "Failed"
+          ]
+        },
+        {
+          "Identifier": "escape",
+          "ID": 4103,
+          "InGameName": {
+            "en": "Escape"
+          },
+          "Alias": [
+            "Escape"
+          ]
+        }
+      ],
+      "__old_id": 33,
+      "TypeID": 10034
+    },
+    {
       "Identifier": "ITMC",
       "System": "Server",
       "ID": 36,
@@ -143687,10 +143853,11 @@
           "Identifier": "play",
           "ID": 5700,
           "InGameName": {
-            "en": "Play"
+            "en": "Test Play"
           },
           "Alias": [
-            "Play"
+            "Play",
+            "Test_Play"
           ]
         },
         {
@@ -143911,6 +144078,31 @@
           ]
         }
       ]
+    },
+    {
+      "Identifier": "SRTR",
+      "System": "Server",
+      "ID": 41,
+      "InGameName": {
+        "en": "Sorting Rules"
+      },
+      "Alias": [
+        "Sorting_Rules"
+      ],
+      "Items": [
+        {
+          "Identifier": "random",
+          "ID": 602,
+          "InGameName": {
+            "en": "Random"
+          },
+          "Alias": [
+            "Random"
+          ]
+        }
+      ],
+      "__old_id": 6,
+      "TypeID": 10041
     },
     {
       "Identifier": "GENE",
@@ -145373,13 +145565,15 @@
           ]
         },
         {
-          "Identifier": "all_ex_self",
+          "Identifier": "all_of_self",
           "ID": 2006,
           "InGameName": {
-            "en": "All Except Self"
+            "en": "Remove All of Self"
           },
           "Alias": [
-            "All Except Self"
+            "All_Except_Self",
+            "All Except Self",
+            "Remove_All_of_Self"
           ]
         },
         {

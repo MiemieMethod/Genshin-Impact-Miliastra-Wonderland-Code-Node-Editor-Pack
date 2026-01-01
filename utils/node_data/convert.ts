@@ -19,7 +19,17 @@ const save = (path: string, data: {} | string) =>
 //   console.log(e.Identifier);
 // })
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
+import { exit } from "process";
 
+save("enum_lookup.yaml", stringify(data.Enums.filter(x => x.System === "Server").sort((a, b) => a.ID - b.ID).map(x => {
+  assert(x.ID === x.TypeID + 10000);
+  let res = {};
+  res[x.Identifier] = x.ID;
+  res["name"] = x.InGameName.en;
+  res["items"] = Object.fromEntries(x.Items.map(y => [y.ID, y.InGameName.en]));
+  return res;
+})));
+exit();
 
 // IMPORTANT 提取 ENUM id 信息的很新颖的方法: 导入composite节点时是不检查内外一致性的, 因此可以手动生成接口而不用找到内部实际对应的节点......
 const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/1.gia");
