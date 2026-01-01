@@ -13,49 +13,40 @@ const save = (path: string, data: {} | string) =>
   );
 
 // TODO: VisiblePin8(10) of Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Loc's type conflicts with others
-// TODO: get Enum Real Id
 
+// 打印未能提供的 enum
+// data.Enums.filter(x => x.System === "Server" && x.TypeID === undefined).forEach(e => {
+//   console.log(e.Identifier);
+// })
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
 
-// const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/1.gia");
 
-// const inputs = g.graph.compositeDef?.inner.def?.inputs!;
+// IMPORTANT 提取 ENUM id 信息的很新颖的方法: 导入composite节点时是不检查内外一致性的, 因此可以手动生成接口而不用找到内部实际对应的节点......
+const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/1.gia");
+const input = g.graph.compositeDef?.inner.def.inputs!;
+for (let k = 0; k < 50; k++) {
+  const i = structuredClone(input[0]);
+  i.name = "Enum_id_" + k;
+  i.type.type1 = 10000 + k;
+  i.type.enumType.enumId = k;
+  i.index.index = k;
+  i.pinIndex = 50 + k;
+  input[k] = i;
+}
+encode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/2.gia", g)
 
-// const nodes = g.accessories[0].graph?.inner.graph.nodes!;
-// const node = nodes[0];
-// nodes.length = 0;
-
-// const match = data.Nodes.find(x => x.Identifier === "Arithmetic.General.Enum_Equal")!;
-// match.Variants!.forEach((v, i) => {
-//   const n: any = structuredClone(node);
-//   n.kernelId.nodeId = v.KernelID;
-//   n.pins.forEach((p: any) => {
-//     p.value.bConcreteValue.indexOfConcrete = v.InjectedContents[0].TypeSelectorIndex;
+// data.Enums.filter(x => x.System === "Client" && x.TypeID === undefined).forEach(e => {
+//   // console.log(e.Identifier);
+//   let p = new Set();
+//   e.Items.forEach(i => {
+//     const a = data.Enums.find(x => x.System === 'Server' && x.Items.find(y => y.ID === i.ID) !== undefined);
+//     if (a !== undefined) {
+//       p.add(a);
+//     }
 //   });
-//   n.nodeIndex = i + 1;
-//   n.y = -200 * i;
-//   nodes.push(n);
-// });
+//   if (p.size !== 1) {
+//     console.log(e.Identifier, p);
+//   }
+// })
 
-// encode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/2.gia", g);
-
-
-const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/3.gia");
-const inputs = g.graph.compositeDef?.inner.def?.inputs!;
-const match = data.Nodes.find(x => x.Identifier === "Arithmetic.General.Enum_Equal")!;
-match.Variants!.forEach((v, i) => {
-  const VarType = inputs[i].type.type1;
-  const enumId = inputs[i].type.enumType.enumId;
-  console.log(v.Constraints, VarType, enumId);
-  const e = data.Enums.find(x => x.System === "Server" && x.Identifier === v.Constraints.slice(6, -2));
-  assert(e !== undefined);
-  e.__old_id = e.ID;
-  e.ID = enumId;
-  e.TypeID = VarType;
-
-});
-
-// console.log(inputs);
-// console.log(node);
-
-save("data.json", data);
+// save("data.json", data);

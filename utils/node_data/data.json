@@ -141101,14 +141101,16 @@
     {
       "Identifier": "GNRC",
       "System": "Server",
-      "ID": 0,
+      "ID": 1,
       "InGameName": {
         "en": "Generic"
       },
       "Alias": [
         "Generic"
       ],
-      "Items": []
+      "Items": [],
+      "__old_id": 0,
+      "TypeID": 10001
     },
     {
       "Identifier": "CMPR",
@@ -143763,7 +143765,9 @@
     {
       "Identifier": "MOVE",
       "System": "Server",
-      "ID": 1042,
+      "ID": 44,
+      "__old_id": 1042,
+      "TypeID": 10044,
       "InGameName": {
         "en": "Movement Mode"
       },
@@ -143796,7 +143800,9 @@
     {
       "Identifier": "FMPR",
       "System": "Server",
-      "ID": 1043,
+      "ID": 45,
+      "__old_id": 1043,
+      "TypeID": 10045,
       "InGameName": {
         "en": "Fixed Motion Parameter Type"
       },
@@ -143830,6 +143836,8 @@
       "Identifier": "DMGP",
       "System": "Server",
       "ID": 200045,
+      "__old_id": 200045,
+      "TypeID": 210045,
       "InGameName": {
         "en": "Damage Pop-Up Type"
       },
@@ -143872,7 +143880,9 @@
     {
       "Identifier": "STPT",
       "System": "Server",
-      "ID": 10040,
+      "ID": 40,
+      "__old_id": 200040,
+      "TypeID": 10040,
       "InGameName": {
         "en": "Scan Tag Prioritize Type"
       },
