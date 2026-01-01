@@ -28,10 +28,22 @@ const TypeMap = {
 // TODO: VisiblePin8(10) of Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Loc's type conflicts with others
 
 data.Nodes.forEach(node => {
-  const ref = REF.find(r => r.id === node.__ref_id);
-  if (ref === undefined) return;
-  assert(ref.displayName.trim().length > 0);
-  node.InGameName["zh-Hans"] = ref.displayName;
+  // const ref = REF.find(r => r.id === node.__ref_id);
+  // if (ref === undefined) return;
+  node.DataPins.forEach(pin => {
+    pin.Type = pin.Type.replaceAll(/E<(\d*)>/g, (match, p1) => {
+      const cc4 = data.Enums.find(e => e.System === node.System && e.ID === parseInt(p1));
+      assert(cc4 !== undefined);
+      return `E<${cc4.Identifier}>`;
+    })
+  })
+  node.Variants?.forEach(v => {
+    v.Constraints = v.Constraints.replaceAll(/E<(\d*)>/g, (match, p1) => {
+      const cc4 = data.Enums.find(e => e.System === node.System && e.ID === parseInt(p1));
+      assert(cc4 !== undefined);
+      return `E<${cc4.Identifier}>`;
+    })
+  })
 })
 
 
