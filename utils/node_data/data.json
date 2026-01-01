@@ -141113,7 +141113,7 @@
     {
       "Identifier": "CMPR",
       "System": "Server",
-      "ID": 1,
+      "ID": 2,
       "InGameName": {
         "en": "Comparison Operators"
       },
@@ -141171,12 +141171,14 @@
             "Greater_Than_or_Equal_To"
           ]
         }
-      ]
+      ],
+      "__old_id": 1,
+      "TypeID": 10002
     },
     {
       "Identifier": "LOGC",
       "System": "Server",
-      "ID": 2,
+      "ID": 3,
       "InGameName": {
         "en": "Logical Operators"
       },
@@ -141224,12 +141226,14 @@
             "NOT"
           ]
         }
-      ]
+      ],
+      "__old_id": 2,
+      "TypeID": 10003
     },
     {
       "Identifier": "MATH",
       "System": "Server",
-      "ID": 3,
+      "ID": 4,
       "InGameName": {
         "en": "Mathematical Operators"
       },
@@ -141327,12 +141331,14 @@
             "Logarithm"
           ]
         }
-      ]
+      ],
+      "__old_id": 3,
+      "TypeID": 10004
     },
     {
       "Identifier": "SHAP",
       "System": "Server",
-      "ID": 4,
+      "ID": 5,
       "InGameName": {
         "en": "Attack Shapes"
       },
@@ -141370,12 +141376,14 @@
             "Sector"
           ]
         }
-      ]
+      ],
+      "__old_id": 4,
+      "TypeID": 10005
     },
     {
       "Identifier": "SURV",
       "System": "Server",
-      "ID": 5,
+      "ID": 6,
       "InGameName": {
         "en": "Survival Status"
       },
@@ -141403,12 +141411,14 @@
             "Down"
           ]
         }
-      ]
+      ],
+      "__old_id": 5,
+      "TypeID": 10006
     },
     {
       "Identifier": "SORT",
       "System": "Server",
-      "ID": 6,
+      "ID": 7,
       "InGameName": {
         "en": "Sorting Rules"
       },
@@ -141436,12 +141446,14 @@
             "Descending"
           ]
         }
-      ]
+      ],
+      "__old_id": 6,
+      "TypeID": 10007
     },
     {
       "Identifier": "ROND",
       "System": "Server",
-      "ID": 7,
+      "ID": 8,
       "InGameName": {
         "en": "Rounding Logic"
       },
@@ -141489,12 +141501,14 @@
             "Truncate"
           ]
         }
-      ]
+      ],
+      "__old_id": 7,
+      "TypeID": 10008
     },
     {
       "Identifier": "CAST",
       "System": "Server",
-      "ID": 8,
+      "ID": 9,
       "InGameName": {
         "en": "Type Conversions"
       },
@@ -141612,12 +141626,14 @@
             "Faction_to_String"
           ]
         }
-      ]
+      ],
+      "__old_id": 8,
+      "TypeID": 10009
     },
     {
       "Identifier": "MPPT",
       "System": "Server",
-      "ID": 9,
+      "ID": 10,
       "InGameName": {
         "en": "Motion Path Point Types"
       },
@@ -141645,12 +141661,14 @@
             "Curve"
           ]
         }
-      ]
+      ],
+      "__old_id": 9,
+      "TypeID": 10010
     },
     {
       "Identifier": "MOTN",
       "System": "Server",
-      "ID": 10,
+      "ID": 11,
       "InGameName": {
         "en": "Motion Types"
       },
@@ -141688,12 +141706,14 @@
             "Cyclic_Movement"
           ]
         }
-      ]
+      ],
+      "__old_id": 10,
+      "TypeID": 10011
     },
     {
       "Identifier": "FOLO",
       "System": "Server",
-      "ID": 11,
+      "ID": 12,
       "InGameName": {
         "en": "Follow Location Type"
       },
@@ -141731,12 +141751,14 @@
             "Follow_Rotation"
           ]
         }
-      ]
+      ],
+      "__old_id": 11,
+      "TypeID": 10012
     },
     {
       "Identifier": "COOR",
       "System": "Server",
-      "ID": 12,
+      "ID": 13,
       "InGameName": {
         "en": "Coordinate System Type"
       },
@@ -141764,12 +141786,14 @@
             "World_Coordinate_System"
           ]
         }
-      ]
+      ],
+      "__old_id": 12,
+      "TypeID": 10013
     },
     {
       "Identifier": "ELMT",
       "System": "Server",
-      "ID": 13,
+      "ID": 14,
       "InGameName": {
         "en": "Elemental Type"
       },
@@ -141857,12 +141881,14 @@
             "Geo"
           ]
         }
-      ]
+      ],
+      "__old_id": 13,
+      "TypeID": 10014
     },
     {
       "Identifier": "ENTY",
       "System": "Server",
-      "ID": 14,
+      "ID": 15,
       "InGameName": {
         "en": "Entity Type"
       },
@@ -141920,12 +141946,14 @@
             "Creation"
           ]
         }
-      ]
+      ],
+      "__old_id": 14,
+      "TypeID": 10015
     },
     {
       "Identifier": "STAD",
       "System": "Server",
-      "ID": 16,
+      "ID": 17,
       "InGameName": {
         "en": "Unit Status Addition Result"
       },
@@ -141993,12 +142021,14 @@
             "Success_Slot_stacking"
           ]
         }
-      ]
+      ],
+      "__old_id": 16,
+      "TypeID": 10017
     },
     {
       "Identifier": "STRE",
       "System": "Server",
-      "ID": 17,
+      "ID": 18,
       "InGameName": {
         "en": "Unit Status Removal Reason"
       },
@@ -142056,12 +142086,14 @@
             "Class_changed"
           ]
         }
-      ]
+      ],
+      "__old_id": 17,
+      "TypeID": 10018
     },
     {
       "Identifier": "STRS",
       "System": "Server",
-      "ID": 18,
+      "ID": 19,
       "InGameName": {
         "en": "Unit Status Removal Strategy"
       },
@@ -142089,12 +142121,14 @@
             "Status_With_Fastest_Stack_Loss"
           ]
         }
-      ]
+      ],
+      "__old_id": 18,
+      "TypeID": 10019
     },
     {
       "Identifier": "RPSS",
       "System": "Server",
-      "ID": 19,
+      "ID": 20,
       "InGameName": {
         "en": "Revive Point Selection Strategy"
       },
@@ -142142,12 +142176,14 @@
             "Random"
           ]
         }
-      ]
+      ],
+      "__old_id": 19,
+      "TypeID": 10020
     },
     {
       "Identifier": "DWNR",
       "System": "Server",
-      "ID": 20,
+      "ID": 21,
       "InGameName": {
         "en": "Cause of Being Down"
       },
@@ -142185,12 +142221,14 @@
             "Abnormal_Defeat"
           ]
         }
-      ]
+      ],
+      "__old_id": 20,
+      "TypeID": 10021
     },
     {
       "Identifier": "TRIG",
       "System": "Server",
-      "ID": 21,
+      "ID": 22,
       "InGameName": {
         "en": "Trigonometric Functions"
       },
@@ -142278,12 +142316,14 @@
             "Degrees_to_Radians"
           ]
         }
-      ]
+      ],
+      "__old_id": 21,
+      "TypeID": 10022
     },
     {
       "Identifier": "DDVT",
       "System": "Server",
-      "ID": 22,
+      "ID": 23,
       "InGameName": {
         "en": "Disruptor Device Type"
       },
@@ -142321,12 +142361,14 @@
             "Tractor_Device"
           ]
         }
-      ]
+      ],
+      "__old_id": 22,
+      "TypeID": 10023
     },
     {
       "Identifier": "DDOR",
       "System": "Server",
-      "ID": 23,
+      "ID": 24,
       "InGameName": {
         "en": "Disruptor Device Orientation"
       },
@@ -142354,12 +142396,14 @@
             "Fixed_Unidirectional"
           ]
         }
-      ]
+      ],
+      "__old_id": 23,
+      "TypeID": 10024
     },
     {
       "Identifier": "UICG",
       "System": "Server",
-      "ID": 24,
+      "ID": 25,
       "InGameName": {
         "en": "UI Control Group Status"
       },
@@ -142398,12 +142442,14 @@
             "Hidden"
           ]
         }
-      ]
+      ],
+      "__old_id": 24,
+      "TypeID": 10025
     },
     {
       "Identifier": "TGTT",
       "System": "Server",
-      "ID": 25,
+      "ID": 26,
       "InGameName": {
         "en": "Target Type"
       },
@@ -142493,12 +142539,14 @@
             "Allied_Faction_Self_Included"
           ]
         }
-      ]
+      ],
+      "__old_id": 25,
+      "TypeID": 10026
     },
     {
       "Identifier": "TRGR",
       "System": "Server",
-      "ID": 26,
+      "ID": 27,
       "InGameName": {
         "en": "Trigger Restriction"
       },
@@ -142528,12 +142576,14 @@
             "Trigger_Only_Once_per_Entity"
           ]
         }
-      ]
+      ],
+      "__old_id": 26,
+      "TypeID": 10027
     },
     {
       "Identifier": "HITT",
       "System": "Server",
-      "ID": 27,
+      "ID": 28,
       "InGameName": {
         "en": "Hit Type"
       },
@@ -142601,12 +142651,14 @@
             "Piercing_Attack"
           ]
         }
-      ]
+      ],
+      "__old_id": 27,
+      "TypeID": 10028
     },
     {
       "Identifier": "ATKT",
       "System": "Server",
-      "ID": 28,
+      "ID": 29,
       "InGameName": {
         "en": "Attack Type"
       },
@@ -142654,12 +142706,14 @@
             "Default"
           ]
         }
-      ]
+      ],
+      "__old_id": 28,
+      "TypeID": 10029
     },
     {
       "Identifier": "HITP",
       "System": "Server",
-      "ID": 29,
+      "ID": 30,
       "InGameName": {
         "en": "Hit Performance Level"
       },
@@ -142777,12 +142831,14 @@
             "Long_Range_Throw"
           ]
         }
-      ]
+      ],
+      "__old_id": 29,
+      "TypeID": 10030
     },
     {
       "Identifier": "SLOT",
       "System": "Server",
-      "ID": 30,
+      "ID": 31,
       "InGameName": {
         "en": "Skill Slot"
       },
@@ -142990,12 +143046,14 @@
             "Custom_Skill_Slot_15"
           ]
         }
-      ]
+      ],
+      "__old_id": 30,
+      "TypeID": 10031
     },
     {
       "Identifier": "SNDM",
       "System": "Server",
-      "ID": 31,
+      "ID": 32,
       "InGameName": {
         "en": "Sound Attenuation Mode"
       },
@@ -143033,12 +143091,14 @@
             "Slow_Then_Fast"
           ]
         }
-      ]
+      ],
+      "__old_id": 31,
+      "TypeID": 10032
     },
     {
       "Identifier": "SLCR",
       "System": "Server",
-      "ID": 32,
+      "ID": 33,
       "InGameName": {
         "en": "Select Completion Reason"
       },
@@ -143106,12 +143166,14 @@
             "Closed_by_Node_Graph"
           ]
         }
-      ]
+      ],
+      "__old_id": 32,
+      "TypeID": 10033
     },
     {
       "Identifier": "SETL",
       "System": "Server",
-      "ID": 33,
+      "ID": 34,
       "InGameName": {
         "en": "Settlement Status"
       },
@@ -143149,12 +143211,14 @@
             "Failed"
           ]
         }
-      ]
+      ],
+      "__old_id": 33,
+      "TypeID": 10034
     },
     {
       "Identifier": "ITMC",
       "System": "Server",
-      "ID": 35,
+      "ID": 36,
       "InGameName": {
         "en": "Reason for Item Change"
       },
@@ -143242,12 +143306,14 @@
             "Pick_Up"
           ]
         }
-      ]
+      ],
+      "__old_id": 35,
+      "TypeID": 10036
     },
     {
       "Identifier": "LOOT",
       "System": "Server",
-      "ID": 36,
+      "ID": 37,
       "InGameName": {
         "en": "Item Loot Type"
       },
@@ -143275,12 +143341,14 @@
             "Individualized_Reward"
           ]
         }
-      ]
+      ],
+      "__old_id": 36,
+      "TypeID": 10037
     },
     {
       "Identifier": "DRFM",
       "System": "Server",
-      "ID": 37,
+      "ID": 38,
       "InGameName": {
         "en": "Decision Refresh Mode"
       },
@@ -143318,12 +143386,14 @@
             "Refresh_All"
           ]
         }
-      ]
+      ],
+      "__old_id": 37,
+      "TypeID": 10038
     },
     {
       "Identifier": "REAC",
       "System": "Server",
-      "ID": 38,
+      "ID": 39,
       "InGameName": {
         "en": "Elemental Reaction Type"
       },
@@ -143551,12 +143621,14 @@
             "Hyperbloom"
           ]
         }
-      ]
+      ],
+      "__old_id": 38,
+      "TypeID": 10039
     },
     {
       "Identifier": "INTS",
       "System": "Server",
-      "ID": 39,
+      "ID": 200043,
       "InGameName": {
         "en": "Interrupt Status"
       },
@@ -143594,12 +143666,14 @@
             "Protected_Status"
           ]
         }
-      ]
+      ],
+      "__old_id": 39,
+      "TypeID": 210043
     },
     {
       "Identifier": "GMOD",
       "System": "Server",
-      "ID": 40,
+      "ID": 42,
       "InGameName": {
         "en": "Gameplay Mode"
       },
@@ -143637,12 +143711,14 @@
             "Match_Play"
           ]
         }
-      ]
+      ],
+      "__old_id": 40,
+      "TypeID": 10042
     },
     {
       "Identifier": "IDVT",
       "System": "Server",
-      "ID": 41,
+      "ID": 43,
       "InGameName": {
         "en": "Input Device Type"
       },
@@ -143680,7 +143756,9 @@
             "Touchscreen"
           ]
         }
-      ]
+      ],
+      "__old_id": 41,
+      "TypeID": 10043
     },
     {
       "Identifier": "MOVE",

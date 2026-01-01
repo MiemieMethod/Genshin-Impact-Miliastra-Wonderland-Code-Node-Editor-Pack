@@ -9,64 +9,53 @@ const save = (path: string, data: {} | string) =>
     import.meta.dirname + "/" + path, typeof data === "string" ?
     data :
     JSON.stringify(data, null, 2)
-    // format(JSON.parse(stableStringify(data)!), {
-    //   indent: 2,
-    //   maxLength: 120 // 关键：超过 120 字符才换行
-    // })
+    // format(JSON.parse(stableStringify(data)!), { indent: 2, maxLength: 120 })
   );
 
 // TODO: VisiblePin8(10) of Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Loc's type conflicts with others
 // TODO: get Enum Real Id
 
-// 添加 index of type selector
-import { NodesList as old } from "./data.ts";
-data.Nodes.forEach(node => {
-  if (node.Variants === undefined) return;
-  const ref = old.filter(x => x.ID === node.ID);
-  assert(ref.length === 1);
-  assertEq(node.Variants.length, ref[0].TypeMappings?.length);
-  const in_n = node.DataPins.filter(x => x.Direction === "In" && /R<.+>/.test(x.Type));
-  const out_n = node.DataPins.filter(x => x.Direction === "Out" && /R<.+>/.test(x.Type));
-  node.Variants.forEach((variant, i) => {
-    assert(variant.InjectedContents.length === 0);
-    const old_id = variant.Constraints.replace(/\b[A-Z]{4}\b/g, x => data.Enums.find(y => y.Identifier === x)!.ID.toString());
-    assertEq(old_id, ref[0].TypeMappings![i].Type);
-    // console.log(node.Identifier);
-    let cnt = 0;
-    ref[0].TypeMappings![i].InputsIndexOfConcrete.forEach((x, j) => {
-      if (x === null) {
-        assert(in_n[cnt]?.ShellIndex !== j);
-        return;
-      }
-      const n = in_n[cnt++];
-      assertEq(n.ShellIndex, j);
-      (variant.InjectedContents as any).push({
-        PinIdentifier: n.Identifier,
-        TypeSelectorIndex: x,
-      });
-    });
-    assertEq(cnt, in_n.length);
-    if (ref[0].TypeMappings![i].InputsIndexOfConcrete.length !== node.DataPins.filter(x => x.Direction === "In").length) {
-      console.log("In Len unequal", node.ID, node.Identifier);
-      // Manually check pass
-    }
-    cnt = 0;
-    ref[0].TypeMappings![i].OutputsIndexOfConcrete.forEach((x, j) => {
-      if (x === null) {
-        assert(out_n[cnt]?.ShellIndex !== j);
-        return;
-      }
-      const n = out_n[cnt++];
-      assertEq(n.ShellIndex, j);
-      (variant.InjectedContents as any).push({
-        PinIdentifier: n.Identifier,
-        TypeSelectorIndex: x,
-      })
-    });
-    assertEq(cnt, out_n.length);
-    assertEq(ref[0].TypeMappings![i].OutputsIndexOfConcrete.length, node.DataPins.filter(x => x.Direction === "Out").length);
-  })
+import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
+
+// const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/1.gia");
+
+// const inputs = g.graph.compositeDef?.inner.def?.inputs!;
+
+// const nodes = g.accessories[0].graph?.inner.graph.nodes!;
+// const node = nodes[0];
+// nodes.length = 0;
+
+// const match = data.Nodes.find(x => x.Identifier === "Arithmetic.General.Enum_Equal")!;
+// match.Variants!.forEach((v, i) => {
+//   const n: any = structuredClone(node);
+//   n.kernelId.nodeId = v.KernelID;
+//   n.pins.forEach((p: any) => {
+//     p.value.bConcreteValue.indexOfConcrete = v.InjectedContents[0].TypeSelectorIndex;
+//   });
+//   n.nodeIndex = i + 1;
+//   n.y = -200 * i;
+//   nodes.push(n);
+// });
+
+// encode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/2.gia", g);
+
+
+const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/3.gia");
+const inputs = g.graph.compositeDef?.inner.def?.inputs!;
+const match = data.Nodes.find(x => x.Identifier === "Arithmetic.General.Enum_Equal")!;
+match.Variants!.forEach((v, i) => {
+  const VarType = inputs[i].type.type1;
+  const enumId = inputs[i].type.enumType.enumId;
+  console.log(v.Constraints, VarType, enumId);
+  const e = data.Enums.find(x => x.System === "Server" && x.Identifier === v.Constraints.slice(6, -2));
+  assert(e !== undefined);
+  e.__old_id = e.ID;
+  e.ID = enumId;
+  e.TypeID = VarType;
+
 });
 
+// console.log(inputs);
+// console.log(node);
 
 save("data.json", data);
