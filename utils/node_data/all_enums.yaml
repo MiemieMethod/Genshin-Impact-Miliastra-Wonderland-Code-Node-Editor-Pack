@@ -429,8 +429,8 @@
   item_abbrs:
     1: HURTBOX_ONLY
     2: SCENE_ONLY
-    3: HIT_ALL
-    4: SELF_COLLISION
+    4: HIT_ALL
+    5: SELF_COLLISION
 - id: 29
   name: Rotation Type
   abbr: RotationType

@@ -1,0 +1,3191 @@
+[
+  {
+    "Identifier": "BooleanGeneric.FALSE_DEFAULT",
+    "ID": 0,
+    "InGameName": {
+      "en": "No"
+    },
+    "Alias": [
+      "No",
+      "False",
+      "Default"
+    ],
+    "Category": "BooleanGeneric"
+  },
+  {
+    "Identifier": "BooleanGeneric.TRUE_YES",
+    "ID": 1,
+    "InGameName": {
+      "en": "Yes"
+    },
+    "Alias": [
+      "Yes",
+      "True"
+    ],
+    "Category": "BooleanGeneric"
+  },
+  {
+    "Identifier": "ComparisonOperator.EQUAL",
+    "ID": 100,
+    "InGameName": {
+      "en": "Equal To"
+    },
+    "Alias": [
+      "Equal_To",
+      "Equal To"
+    ],
+    "Category": "ComparisonOperator"
+  },
+  {
+    "Identifier": "ComparisonOperator.LESS_THAN",
+    "ID": 101,
+    "InGameName": {
+      "en": "Less Than"
+    },
+    "Alias": [
+      "Less_Than",
+      "Less Than"
+    ],
+    "Category": "ComparisonOperator"
+  },
+  {
+    "Identifier": "ComparisonOperator.LESS_EQUAL",
+    "ID": 102,
+    "InGameName": {
+      "en": "Less Than or Equal To"
+    },
+    "Alias": [
+      "Less_Than_or_Equal_To",
+      "Less Than or Equal To"
+    ],
+    "Category": "ComparisonOperator"
+  },
+  {
+    "Identifier": "ComparisonOperator.GREATER_THAN",
+    "ID": 103,
+    "InGameName": {
+      "en": "Greater Than"
+    },
+    "Alias": [
+      "Greater_Than",
+      "Greater Than"
+    ],
+    "Category": "ComparisonOperator"
+  },
+  {
+    "Identifier": "ComparisonOperator.GREATER_EQUAL",
+    "ID": 104,
+    "InGameName": {
+      "en": "Greater Than or Equal To"
+    },
+    "Alias": [
+      "Greater_Than_or_Equal_To",
+      "Greater Than or Equal To"
+    ],
+    "Category": "ComparisonOperator"
+  },
+  {
+    "Identifier": "LogicalOperator.AND",
+    "ID": 200,
+    "InGameName": {
+      "en": "AND"
+    },
+    "Alias": [
+      "AND"
+    ],
+    "Category": "LogicalOperator"
+  },
+  {
+    "Identifier": "LogicalOperator.OR",
+    "ID": 201,
+    "InGameName": {
+      "en": "OR"
+    },
+    "Alias": [
+      "OR"
+    ],
+    "Category": "LogicalOperator"
+  },
+  {
+    "Identifier": "LogicalOperator.XOR",
+    "ID": 202,
+    "InGameName": {
+      "en": "XOR"
+    },
+    "Alias": [
+      "XOR"
+    ],
+    "Category": "LogicalOperator"
+  },
+  {
+    "Identifier": "LogicalOperator.NOT",
+    "ID": 203,
+    "InGameName": {
+      "en": "NOT"
+    },
+    "Alias": [
+      "NOT"
+    ],
+    "Category": "LogicalOperator"
+  },
+  {
+    "Identifier": "MathOperator.ADD",
+    "ID": 300,
+    "InGameName": {
+      "en": "Addition"
+    },
+    "Alias": [
+      "Addition"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "MathOperator.SUBTRACT",
+    "ID": 301,
+    "InGameName": {
+      "en": "Subtraction"
+    },
+    "Alias": [
+      "Subtraction"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "MathOperator.MULTIPLY",
+    "ID": 302,
+    "InGameName": {
+      "en": "Multiplication"
+    },
+    "Alias": [
+      "Multiplication"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "MathOperator.DIVIDE",
+    "ID": 303,
+    "InGameName": {
+      "en": "Division"
+    },
+    "Alias": [
+      "Division"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "MathOperator.MODULO",
+    "ID": 304,
+    "InGameName": {
+      "en": "Modulo Operation"
+    },
+    "Alias": [
+      "Modulo_Operation",
+      "Modulo Operation"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "MathOperator.POWER",
+    "ID": 305,
+    "InGameName": {
+      "en": "Exponentiation"
+    },
+    "Alias": [
+      "Exponentiation"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "MathOperator.MAX",
+    "ID": 306,
+    "InGameName": {
+      "en": "Get Maximum Value"
+    },
+    "Alias": [
+      "Get_Maximum_Value",
+      "Get Maximum Value"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "MathOperator.MIN",
+    "ID": 307,
+    "InGameName": {
+      "en": "Get Minimum Value"
+    },
+    "Alias": [
+      "Get_Minimum_Value",
+      "Get Minimum Value"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "MathOperator.LOG",
+    "ID": 308,
+    "InGameName": {
+      "en": "Logarithm"
+    },
+    "Alias": [
+      "Logarithm"
+    ],
+    "Category": "MathOperator"
+  },
+  {
+    "Identifier": "AttackShape.RECTANGLE",
+    "ID": 400,
+    "InGameName": {
+      "en": "Rectangle"
+    },
+    "Alias": [
+      "Rectangle",
+      "Cuboid"
+    ],
+    "Category": "AttackShape"
+  },
+  {
+    "Identifier": "AttackShape.SPHERE",
+    "ID": 401,
+    "InGameName": {
+      "en": "Sphere"
+    },
+    "Alias": [
+      "Sphere"
+    ],
+    "Category": "AttackShape"
+  },
+  {
+    "Identifier": "AttackShape.SECTOR",
+    "ID": 402,
+    "InGameName": {
+      "en": "Sector"
+    },
+    "Alias": [
+      "Sector"
+    ],
+    "Category": "AttackShape"
+  },
+  {
+    "Identifier": "AttackShape.INSIDE_OUT",
+    "ID": 450,
+    "InGameName": {
+      "en": "From Inside Out"
+    },
+    "Alias": [
+      "From Inside Out"
+    ],
+    "Category": "AttackShape"
+  },
+  {
+    "Identifier": "AttackShape.CLOCKWISE",
+    "ID": 451,
+    "InGameName": {
+      "en": "Clockwise"
+    },
+    "Alias": [
+      "Clockwise"
+    ],
+    "Category": "AttackShape"
+  },
+  {
+    "Identifier": "AttackShape.COUNTER_CLOCKWISE",
+    "ID": 452,
+    "InGameName": {
+      "en": "Counterclockwise"
+    },
+    "Alias": [
+      "Counterclockwise"
+    ],
+    "Category": "AttackShape"
+  },
+  {
+    "Identifier": "SurvivalStatus.ALIVE",
+    "ID": 500,
+    "InGameName": {
+      "en": "Alive"
+    },
+    "Alias": [
+      "Alive"
+    ],
+    "Category": "SurvivalStatus"
+  },
+  {
+    "Identifier": "SurvivalStatus.DOWN",
+    "ID": 501,
+    "InGameName": {
+      "en": "Down"
+    },
+    "Alias": [
+      "Down"
+    ],
+    "Category": "SurvivalStatus"
+  },
+  {
+    "Identifier": "SortingRule.ASCENDING",
+    "ID": 600,
+    "InGameName": {
+      "en": "Ascending"
+    },
+    "Alias": [
+      "Ascending"
+    ],
+    "Category": "SortingRule"
+  },
+  {
+    "Identifier": "SortingRule.DESCENDING",
+    "ID": 601,
+    "InGameName": {
+      "en": "Descending"
+    },
+    "Alias": [
+      "Descending"
+    ],
+    "Category": "SortingRule"
+  },
+  {
+    "Identifier": "SortingRule.RANDOM",
+    "ID": 602,
+    "InGameName": {
+      "en": "Random"
+    },
+    "Alias": [
+      "Random"
+    ],
+    "Category": "SortingRule"
+  },
+  {
+    "Identifier": "RoundingLogic.ROUND_UP",
+    "ID": 700,
+    "InGameName": {
+      "en": "Round Up"
+    },
+    "Alias": [
+      "Round_Up",
+      "Round Up"
+    ],
+    "Category": "RoundingLogic"
+  },
+  {
+    "Identifier": "RoundingLogic.ROUND_DOWN",
+    "ID": 701,
+    "InGameName": {
+      "en": "Round Down"
+    },
+    "Alias": [
+      "Round_Down",
+      "Round Down"
+    ],
+    "Category": "RoundingLogic"
+  },
+  {
+    "Identifier": "RoundingLogic.ROUND_NEAREST",
+    "ID": 702,
+    "InGameName": {
+      "en": "Round to Nearest"
+    },
+    "Alias": [
+      "Round_to_Nearest",
+      "Round to Nearest"
+    ],
+    "Category": "RoundingLogic"
+  },
+  {
+    "Identifier": "RoundingLogic.TRUNCATE",
+    "ID": 703,
+    "InGameName": {
+      "en": "Truncate"
+    },
+    "Alias": [
+      "Truncate"
+    ],
+    "Category": "RoundingLogic"
+  },
+  {
+    "Identifier": "TypeConversion.INT_TO_BOOL",
+    "ID": 800,
+    "InGameName": {
+      "en": "Integer to Boolean"
+    },
+    "Alias": [
+      "Integer_to_Boolean",
+      "Integer to Boolean"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.INT_TO_FLOAT",
+    "ID": 801,
+    "InGameName": {
+      "en": "Integer to Floating Point"
+    },
+    "Alias": [
+      "Integer_to_Floating_Point",
+      "Integer to Floating Point"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.INT_TO_STRING",
+    "ID": 802,
+    "InGameName": {
+      "en": "Integer to String"
+    },
+    "Alias": [
+      "Integer_to_String",
+      "Integer to String"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.ENTITY_TO_STRING",
+    "ID": 803,
+    "InGameName": {
+      "en": "Entity to String"
+    },
+    "Alias": [
+      "Entity_to_String",
+      "Entity to String"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.GUID_TO_STRING",
+    "ID": 804,
+    "InGameName": {
+      "en": "GUID to String"
+    },
+    "Alias": [
+      "GUID_to_String",
+      "GUID to String"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.BOOL_TO_INT",
+    "ID": 805,
+    "InGameName": {
+      "en": "Boolean to Integer"
+    },
+    "Alias": [
+      "Boolean_to_Integer",
+      "Boolean to Integer"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.BOOL_TO_STRING",
+    "ID": 806,
+    "InGameName": {
+      "en": "Boolean to String"
+    },
+    "Alias": [
+      "Boolean_to_String",
+      "Boolean to String"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.FLOAT_TO_INT",
+    "ID": 807,
+    "InGameName": {
+      "en": "Floating Point to Integer"
+    },
+    "Alias": [
+      "Floating_Point_to_Integer",
+      "Floating Point to Integer"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.FLOAT_TO_STRING",
+    "ID": 808,
+    "InGameName": {
+      "en": "Floating Point to String"
+    },
+    "Alias": [
+      "Floating_Point_to_String",
+      "Floating Point to String"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.VEC3_TO_STRING",
+    "ID": 809,
+    "InGameName": {
+      "en": "3D Vector to String"
+    },
+    "Alias": [
+      "_3D_Vector_to_String",
+      "3D Vector to String"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "TypeConversion.FACTION_TO_STRING",
+    "ID": 810,
+    "InGameName": {
+      "en": "Faction to String"
+    },
+    "Alias": [
+      "Faction_to_String",
+      "Faction to String"
+    ],
+    "Category": "TypeConversion"
+  },
+  {
+    "Identifier": "PathPointType.STRAIGHT",
+    "ID": 900,
+    "InGameName": {
+      "en": "Straight Line"
+    },
+    "Alias": [
+      "Straight_Line",
+      "Straight Line"
+    ],
+    "Category": "PathPointType"
+  },
+  {
+    "Identifier": "PathPointType.CURVE",
+    "ID": 901,
+    "InGameName": {
+      "en": "Curve"
+    },
+    "Alias": [
+      "Curve"
+    ],
+    "Category": "PathPointType"
+  },
+  {
+    "Identifier": "MotionType.ONE_WAY",
+    "ID": 1000,
+    "InGameName": {
+      "en": "One-Way"
+    },
+    "Alias": [
+      "One_Way",
+      "One-Way"
+    ],
+    "Category": "MotionType"
+  },
+  {
+    "Identifier": "MotionType.PING_PONG",
+    "ID": 1001,
+    "InGameName": {
+      "en": "Back and Forth"
+    },
+    "Alias": [
+      "Back_and_Forth",
+      "Back and Forth"
+    ],
+    "Category": "MotionType"
+  },
+  {
+    "Identifier": "MotionType.CYCLIC",
+    "ID": 1002,
+    "InGameName": {
+      "en": "Cyclic Movement"
+    },
+    "Alias": [
+      "Cyclic_Movement",
+      "Cyclic Movement"
+    ],
+    "Category": "MotionType"
+  },
+  {
+    "Identifier": "FollowType.FULL_FOLLOW",
+    "ID": 1100,
+    "InGameName": {
+      "en": "Completely Follow"
+    },
+    "Alias": [
+      "Completely_Follow",
+      "Full (Location + Orientation)",
+      "Completely Follow"
+    ],
+    "Category": "FollowType"
+  },
+  {
+    "Identifier": "FollowType.FOLLOW_LOCATION",
+    "ID": 1101,
+    "InGameName": {
+      "en": "Follow Location"
+    },
+    "Alias": [
+      "Follow_Location",
+      "Location",
+      "Follow Location"
+    ],
+    "Category": "FollowType"
+  },
+  {
+    "Identifier": "FollowType.FOLLOW_ROTATION",
+    "ID": 1102,
+    "InGameName": {
+      "en": "Follow Rotation"
+    },
+    "Alias": [
+      "Follow_Rotation",
+      "Orientation",
+      "Follow Rotation"
+    ],
+    "Category": "FollowType"
+  },
+  {
+    "Identifier": "CoordinateSystem.RELATIVE",
+    "ID": 1200,
+    "InGameName": {
+      "en": "Relative Coordinate System"
+    },
+    "Alias": [
+      "Relative_Coordinate_System",
+      "Relative Location",
+      "Relative Coordinate System"
+    ],
+    "Category": "CoordinateSystem"
+  },
+  {
+    "Identifier": "CoordinateSystem.WORLD",
+    "ID": 1201,
+    "InGameName": {
+      "en": "World Coordinate System"
+    },
+    "Alias": [
+      "World_Coordinate_System",
+      "Absolute Location",
+      "World Coordinate System"
+    ],
+    "Category": "CoordinateSystem"
+  },
+  {
+    "Identifier": "ElementType.NONE",
+    "ID": 1300,
+    "InGameName": {
+      "en": "None"
+    },
+    "Alias": [
+      "None"
+    ],
+    "Category": "ElementType"
+  },
+  {
+    "Identifier": "ElementType.PYRO",
+    "ID": 1301,
+    "InGameName": {
+      "en": "Pyro"
+    },
+    "Alias": [
+      "Pyro"
+    ],
+    "Category": "ElementType"
+  },
+  {
+    "Identifier": "ElementType.HYDRO",
+    "ID": 1302,
+    "InGameName": {
+      "en": "Hydro"
+    },
+    "Alias": [
+      "Hydro"
+    ],
+    "Category": "ElementType"
+  },
+  {
+    "Identifier": "ElementType.ANEMO",
+    "ID": 1303,
+    "InGameName": {
+      "en": "Anemo"
+    },
+    "Alias": [
+      "Anemo"
+    ],
+    "Category": "ElementType"
+  },
+  {
+    "Identifier": "ElementType.ELECTRO",
+    "ID": 1304,
+    "InGameName": {
+      "en": "Electro"
+    },
+    "Alias": [
+      "Electro"
+    ],
+    "Category": "ElementType"
+  },
+  {
+    "Identifier": "ElementType.DENDRO",
+    "ID": 1305,
+    "InGameName": {
+      "en": "Dendro"
+    },
+    "Alias": [
+      "Dendro"
+    ],
+    "Category": "ElementType"
+  },
+  {
+    "Identifier": "ElementType.CRYO",
+    "ID": 1306,
+    "InGameName": {
+      "en": "Cryo"
+    },
+    "Alias": [
+      "Cryo"
+    ],
+    "Category": "ElementType"
+  },
+  {
+    "Identifier": "ElementType.GEO",
+    "ID": 1307,
+    "InGameName": {
+      "en": "Geo"
+    },
+    "Alias": [
+      "Geo"
+    ],
+    "Category": "ElementType"
+  },
+  {
+    "Identifier": "EntityType.STAGE",
+    "ID": 1401,
+    "InGameName": {
+      "en": "Stage"
+    },
+    "Alias": [
+      "Stage"
+    ],
+    "Category": "EntityType"
+  },
+  {
+    "Identifier": "EntityType.OBJECT",
+    "ID": 1402,
+    "InGameName": {
+      "en": "Object"
+    },
+    "Alias": [
+      "Object"
+    ],
+    "Category": "EntityType"
+  },
+  {
+    "Identifier": "EntityType.PLAYER",
+    "ID": 1403,
+    "InGameName": {
+      "en": "Player"
+    },
+    "Alias": [
+      "Player"
+    ],
+    "Category": "EntityType"
+  },
+  {
+    "Identifier": "EntityType.CHARACTER",
+    "ID": 1404,
+    "InGameName": {
+      "en": "Character"
+    },
+    "Alias": [
+      "Character"
+    ],
+    "Category": "EntityType"
+  },
+  {
+    "Identifier": "EntityType.CREATION",
+    "ID": 1405,
+    "InGameName": {
+      "en": "Creation"
+    },
+    "Alias": [
+      "Creation"
+    ],
+    "Category": "EntityType"
+  },
+  {
+    "Identifier": "StatusChangeReason.FAIL_UNKNOWN",
+    "ID": 1500,
+    "InGameName": {
+      "en": "Failed: Unexpected error"
+    },
+    "Alias": [
+      "Failed_Unexpected_error",
+      "Failed: Unexpected error"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.FAIL_PAUSED",
+    "ID": 1501,
+    "InGameName": {
+      "en": "Failed: Operation paused for another process"
+    },
+    "Alias": [
+      "Failed_Operation_paused_for_another_process",
+      "Failed: Operation paused for another process"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.FAIL_LIMIT_REACHED",
+    "ID": 1502,
+    "InGameName": {
+      "en": "Failed: Maximum coexistence limit reached"
+    },
+    "Alias": [
+      "Failed_Maximum_coexistence_limit_reached",
+      "Failed: Maximum coexistence limit reached"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.FAIL_STACK_LIMIT",
+    "ID": 1503,
+    "InGameName": {
+      "en": "Failed: Unable to add additional stack"
+    },
+    "Alias": [
+      "Failed_Unable_to_add_additional_stack",
+      "Failed: Unable to add additional stack"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.SUCCESS_NEW",
+    "ID": 1504,
+    "InGameName": {
+      "en": "Success: New status applied"
+    },
+    "Alias": [
+      "Success_New_status_applied",
+      "Success: New status applied"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.SUCCESS_STACK",
+    "ID": 1505,
+    "InGameName": {
+      "en": "Success: Slot stacking"
+    },
+    "Alias": [
+      "Success_Slot_stacking",
+      "Success: Slot stacking"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.REPLACED",
+    "ID": 1506,
+    "InGameName": {
+      "en": "Replaced by other unit status"
+    },
+    "Alias": [
+      "Replaced_by_other_unit_status",
+      "Replaced by other unit status"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.DURATION_EXCEEDED",
+    "ID": 1507,
+    "InGameName": {
+      "en": "Duration exceeded"
+    },
+    "Alias": [
+      "Duration_exceeded",
+      "Duration exceeded"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.DISPELLED",
+    "ID": 1508,
+    "InGameName": {
+      "en": "Dispelled"
+    },
+    "Alias": [
+      "Dispelled"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.EXPIRED",
+    "ID": 1509,
+    "InGameName": {
+      "en": "Status expired"
+    },
+    "Alias": [
+      "Status_expired",
+      "Status expired"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.CLASS_CHANGED",
+    "ID": 1510,
+    "InGameName": {
+      "en": "Class changed"
+    },
+    "Alias": [
+      "Class_changed",
+      "Class changed"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.AFFIX_EXPIRED",
+    "ID": 1511,
+    "InGameName": {
+      "en": "Affix Expired"
+    },
+    "Alias": [
+      "Affix_Expired",
+      "Affix Expired"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.SHIELD_BROKEN",
+    "ID": 1512,
+    "InGameName": {
+      "en": "Shield Depleted to Zero"
+    },
+    "Alias": [
+      "Shield_Depleted_to_Zero",
+      "Shield Depleted to Zero"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.ALL_SAME_NAME",
+    "ID": 1540,
+    "InGameName": {
+      "en": "All Coexisting Statuses With the Same Name"
+    },
+    "Alias": [
+      "All_Coexisting_Statuses_With_the_Same_Name",
+      "All Coexisting Statuses With the Same Name"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "StatusChangeReason.FASTEST_STACK_LOSS",
+    "ID": 1541,
+    "InGameName": {
+      "en": "Status With Fastest Stack Loss"
+    },
+    "Alias": [
+      "Status_With_Fastest_Stack_Loss",
+      "Status With Fastest Stack Loss"
+    ],
+    "Category": "StatusChangeReason"
+  },
+  {
+    "Identifier": "ReviveSelection.NEAREST",
+    "ID": 1601,
+    "InGameName": {
+      "en": "Nearest"
+    },
+    "Alias": [
+      "Nearest"
+    ],
+    "Category": "ReviveSelection"
+  },
+  {
+    "Identifier": "ReviveSelection.RECENT",
+    "ID": 1602,
+    "InGameName": {
+      "en": "Most Recently Activated"
+    },
+    "Alias": [
+      "Most_Recently_Activated",
+      "Most Recently Activated"
+    ],
+    "Category": "ReviveSelection"
+  },
+  {
+    "Identifier": "ReviveSelection.HIGHEST_PRIORITY",
+    "ID": 1603,
+    "InGameName": {
+      "en": "Highest Priority"
+    },
+    "Alias": [
+      "Highest_Priority",
+      "Highest Priority"
+    ],
+    "Category": "ReviveSelection"
+  },
+  {
+    "Identifier": "ReviveSelection.RANDOM",
+    "ID": 1604,
+    "InGameName": {
+      "en": "Random"
+    },
+    "Alias": [
+      "Random"
+    ],
+    "Category": "ReviveSelection"
+  },
+  {
+    "Identifier": "ReviveSelection.NODE_GRAPH",
+    "ID": 1605,
+    "InGameName": {
+      "en": "Node Graph Triggered"
+    },
+    "Alias": [
+      "Node_Graph_Triggered",
+      "Node Graph Triggered"
+    ],
+    "Category": "ReviveSelection"
+  },
+  {
+    "Identifier": "ReviveSelection.NORMAL_DEFEAT",
+    "ID": 1606,
+    "InGameName": {
+      "en": "Normal Defeat"
+    },
+    "Alias": [
+      "Normal_Defeat",
+      "Normal Defeat"
+    ],
+    "Category": "ReviveSelection"
+  },
+  {
+    "Identifier": "ReviveSelection.ABNORMAL_DEFEAT",
+    "ID": 1607,
+    "InGameName": {
+      "en": "Abnormal Defeat"
+    },
+    "Alias": [
+      "Abnormal_Defeat",
+      "Abnormal Defeat"
+    ],
+    "Category": "ReviveSelection"
+  },
+  {
+    "Identifier": "TrigFunction.COS",
+    "ID": 1700,
+    "InGameName": {
+      "en": "cos"
+    },
+    "Alias": [
+      "cos"
+    ],
+    "Category": "TrigFunction"
+  },
+  {
+    "Identifier": "TrigFunction.SIN",
+    "ID": 1701,
+    "InGameName": {
+      "en": "sin"
+    },
+    "Alias": [
+      "sin"
+    ],
+    "Category": "TrigFunction"
+  },
+  {
+    "Identifier": "TrigFunction.TAN",
+    "ID": 1702,
+    "InGameName": {
+      "en": "tan"
+    },
+    "Alias": [
+      "tan"
+    ],
+    "Category": "TrigFunction"
+  },
+  {
+    "Identifier": "TrigFunction.ARCCOS",
+    "ID": 1703,
+    "InGameName": {
+      "en": "arccos"
+    },
+    "Alias": [
+      "arccos"
+    ],
+    "Category": "TrigFunction"
+  },
+  {
+    "Identifier": "TrigFunction.ARCSIN",
+    "ID": 1704,
+    "InGameName": {
+      "en": "arcsin"
+    },
+    "Alias": [
+      "arcsin"
+    ],
+    "Category": "TrigFunction"
+  },
+  {
+    "Identifier": "TrigFunction.ARCTAN",
+    "ID": 1705,
+    "InGameName": {
+      "en": "arctan"
+    },
+    "Alias": [
+      "arctan"
+    ],
+    "Category": "TrigFunction"
+  },
+  {
+    "Identifier": "TrigFunction.RAD_TO_DEG",
+    "ID": 1706,
+    "InGameName": {
+      "en": "Radians to Degrees"
+    },
+    "Alias": [
+      "Radians_to_Degrees",
+      "Radians to Degrees"
+    ],
+    "Category": "TrigFunction"
+  },
+  {
+    "Identifier": "TrigFunction.DEG_TO_RAD",
+    "ID": 1707,
+    "InGameName": {
+      "en": "Degrees to Radians"
+    },
+    "Alias": [
+      "Degrees_to_Radians",
+      "Degrees to Radians"
+    ],
+    "Category": "TrigFunction"
+  },
+  {
+    "Identifier": "DisruptorType.FORCE_FIELD",
+    "ID": 1801,
+    "InGameName": {
+      "en": "Force Field Device"
+    },
+    "Alias": [
+      "Force_Field_Device",
+      "Force Field Device"
+    ],
+    "Category": "DisruptorType"
+  },
+  {
+    "Identifier": "DisruptorType.EJECTOR",
+    "ID": 1802,
+    "InGameName": {
+      "en": "Ejector"
+    },
+    "Alias": [
+      "Ejector"
+    ],
+    "Category": "DisruptorType"
+  },
+  {
+    "Identifier": "DisruptorType.TRACTOR",
+    "ID": 1803,
+    "InGameName": {
+      "en": "Tractor Device"
+    },
+    "Alias": [
+      "Tractor_Device",
+      "Tractor Device"
+    ],
+    "Category": "DisruptorType"
+  },
+  {
+    "Identifier": "DisruptorType.CHAR_ORIENT",
+    "ID": 1810,
+    "InGameName": {
+      "en": "Associate Character Orientation"
+    },
+    "Alias": [
+      "Associate_Character_Orientation",
+      "Associate Character Orientation"
+    ],
+    "Category": "DisruptorType"
+  },
+  {
+    "Identifier": "DisruptorType.FIXED_DIR",
+    "ID": 1811,
+    "InGameName": {
+      "en": "Fixed Unidirectional"
+    },
+    "Alias": [
+      "Fixed_Unidirectional",
+      "Fixed Unidirectional"
+    ],
+    "Category": "DisruptorType"
+  },
+  {
+    "Identifier": "UIControlStatus.OFF",
+    "ID": 1900,
+    "InGameName": {
+      "en": "Off"
+    },
+    "Alias": [
+      "Off"
+    ],
+    "Category": "UIControlStatus"
+  },
+  {
+    "Identifier": "UIControlStatus.ON",
+    "ID": 1901,
+    "InGameName": {
+      "en": "On"
+    },
+    "Alias": [
+      "On"
+    ],
+    "Category": "UIControlStatus"
+  },
+  {
+    "Identifier": "UIControlStatus.HIDDEN",
+    "ID": 1902,
+    "InGameName": {
+      "en": "Hidden"
+    },
+    "Alias": [
+      "Hidden"
+    ],
+    "Category": "UIControlStatus"
+  },
+  {
+    "Identifier": "TargetType.NONE",
+    "ID": 2000,
+    "InGameName": {
+      "en": "None"
+    },
+    "Alias": [
+      "Don't Find Target",
+      "Don_t_Find_Target",
+      "Dont_Find_Target",
+      "None"
+    ],
+    "Category": "TargetType"
+  },
+  {
+    "Identifier": "TargetType.ALLY",
+    "ID": 2001,
+    "InGameName": {
+      "en": "Allied Faction"
+    },
+    "Alias": [
+      "Allied_Faction",
+      "Allied Faction"
+    ],
+    "Category": "TargetType"
+  },
+  {
+    "Identifier": "TargetType.ENEMY",
+    "ID": 2002,
+    "InGameName": {
+      "en": "Hostile Faction"
+    },
+    "Alias": [
+      "Hostile_Faction",
+      "Hostile Faction"
+    ],
+    "Category": "TargetType"
+  },
+  {
+    "Identifier": "TargetType.SELF",
+    "ID": 2003,
+    "InGameName": {
+      "en": "Self"
+    },
+    "Alias": [
+      "Self"
+    ],
+    "Category": "TargetType"
+  },
+  {
+    "Identifier": "TargetType.OWN_FACTION",
+    "ID": 2004,
+    "InGameName": {
+      "en": "Own Faction"
+    },
+    "Alias": [
+      "Own_Faction",
+      "Own Faction"
+    ],
+    "Category": "TargetType"
+  },
+  {
+    "Identifier": "TargetType.ALL",
+    "ID": 2005,
+    "InGameName": {
+      "en": "All"
+    },
+    "Alias": [
+      "All"
+    ],
+    "Category": "TargetType"
+  },
+  {
+    "Identifier": "TargetType.ALL_EXCEPT_SELF",
+    "ID": 2006,
+    "InGameName": {
+      "en": "Remove All of Self"
+    },
+    "Alias": [
+      "All_Except_Self",
+      "All Except Self",
+      "Remove_All_of_Self",
+      "Remove All of Self"
+    ],
+    "Category": "TargetType"
+  },
+  {
+    "Identifier": "TargetType.ALLY_WITH_SELF",
+    "ID": 2007,
+    "InGameName": {
+      "en": "Allied Faction Self Included"
+    },
+    "Alias": [
+      "Allied_Faction_Self_Included",
+      "Allied Faction Self Included"
+    ],
+    "Category": "TargetType"
+  },
+  {
+    "Identifier": "TriggerRestriction.ONCE_GLOBAL",
+    "ID": 2101,
+    "InGameName": {
+      "en": "Trigger Only Once"
+    },
+    "Alias": [
+      "Trigger_Only_Once",
+      "Trigger_Only_Once_per_Lifecycle",
+      "Trigger Only Once"
+    ],
+    "Category": "TriggerRestriction"
+  },
+  {
+    "Identifier": "TriggerRestriction.ONCE_PER_ENTITY",
+    "ID": 2102,
+    "InGameName": {
+      "en": "Trigger Only Once per Entity"
+    },
+    "Alias": [
+      "Trigger_Only_Once_per_Entity",
+      "Trigger Only Once per Entity"
+    ],
+    "Category": "TriggerRestriction"
+  },
+  {
+    "Identifier": "HitType.NONE",
+    "ID": 2200,
+    "InGameName": {
+      "en": "None"
+    },
+    "Alias": [
+      "None"
+    ],
+    "Category": "HitType"
+  },
+  {
+    "Identifier": "HitType.DEFAULT",
+    "ID": 2201,
+    "InGameName": {
+      "en": "Default"
+    },
+    "Alias": [
+      "Default"
+    ],
+    "Category": "HitType"
+  },
+  {
+    "Identifier": "HitType.SLASH",
+    "ID": 2202,
+    "InGameName": {
+      "en": "Slash"
+    },
+    "Alias": [
+      "Slash"
+    ],
+    "Category": "HitType"
+  },
+  {
+    "Identifier": "HitType.SMASH",
+    "ID": 2203,
+    "InGameName": {
+      "en": "Smash"
+    },
+    "Alias": [
+      "Smash"
+    ],
+    "Category": "HitType"
+  },
+  {
+    "Identifier": "HitType.PROJECTILE",
+    "ID": 2204,
+    "InGameName": {
+      "en": "Projectile"
+    },
+    "Alias": [
+      "Projectile"
+    ],
+    "Category": "HitType"
+  },
+  {
+    "Identifier": "HitType.PIERCING",
+    "ID": 2205,
+    "InGameName": {
+      "en": "Piercing Attack"
+    },
+    "Alias": [
+      "Piercing_Attack",
+      "Piercing Attack"
+    ],
+    "Category": "HitType"
+  },
+  {
+    "Identifier": "AttackType.NONE",
+    "ID": 2300,
+    "InGameName": {
+      "en": "None"
+    },
+    "Alias": [
+      "None"
+    ],
+    "Category": "AttackType"
+  },
+  {
+    "Identifier": "AttackType.MELEE",
+    "ID": 2301,
+    "InGameName": {
+      "en": "Melee Attack"
+    },
+    "Alias": [
+      "Melee_Attack",
+      "Melee Attack"
+    ],
+    "Category": "AttackType"
+  },
+  {
+    "Identifier": "AttackType.RANGED",
+    "ID": 2302,
+    "InGameName": {
+      "en": "Ranged Attack"
+    },
+    "Alias": [
+      "Ranged_Attack",
+      "Ranged Attack"
+    ],
+    "Category": "AttackType"
+  },
+  {
+    "Identifier": "AttackType.DEFAULT",
+    "ID": 2303,
+    "InGameName": {
+      "en": "Default"
+    },
+    "Alias": [
+      "Default"
+    ],
+    "Category": "AttackType"
+  },
+  {
+    "Identifier": "HitPerformance.DEFAULT",
+    "ID": 2400,
+    "InGameName": {
+      "en": "Default"
+    },
+    "Alias": [
+      "Default"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.NONE",
+    "ID": 2401,
+    "InGameName": {
+      "en": "No Hit Performance"
+    },
+    "Alias": [
+      "No_Hit_Performance",
+      "No Hit Performance"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.LIGHT_ARROW",
+    "ID": 2402,
+    "InGameName": {
+      "en": "Hit by Normal Arrow Without Charging"
+    },
+    "Alias": [
+      "Hit_by_Normal_Arrow_Without_Charging",
+      "Hit by Normal Arrow Without Charging"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.COMBO",
+    "ID": 2403,
+    "InGameName": {
+      "en": "Combo Hit"
+    },
+    "Alias": [
+      "Combo_Hit",
+      "Combo Hit"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.NORMAL",
+    "ID": 2404,
+    "InGameName": {
+      "en": "Normal Hit"
+    },
+    "Alias": [
+      "Normal_Hit",
+      "Normal Hit"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.HEAVY",
+    "ID": 2405,
+    "InGameName": {
+      "en": "Heavy Hit"
+    },
+    "Alias": [
+      "Heavy_Hit",
+      "Heavy Hit"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.STRONG",
+    "ID": 2406,
+    "InGameName": {
+      "en": "Strong Impact"
+    },
+    "Alias": [
+      "Strong_Impact",
+      "Strong Impact"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.ULTIMATE",
+    "ID": 2407,
+    "InGameName": {
+      "en": "Ultimate Impact"
+    },
+    "Alias": [
+      "Ultimate_Impact",
+      "Ultimate Impact"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.VERTICAL_LAUNCH",
+    "ID": 2408,
+    "InGameName": {
+      "en": "Vertical Launch"
+    },
+    "Alias": [
+      "Vertical_Launch",
+      "Vertical Launch"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.SUPER_LAUNCH",
+    "ID": 2409,
+    "InGameName": {
+      "en": "Super Launch"
+    },
+    "Alias": [
+      "Super_Launch",
+      "Super Launch"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "HitPerformance.LONG_THROW",
+    "ID": 2410,
+    "InGameName": {
+      "en": "Long-Range Throw"
+    },
+    "Alias": [
+      "Long_Range_Throw",
+      "Long-Range Throw"
+    ],
+    "Category": "HitPerformance"
+  },
+  {
+    "Identifier": "KnockbackDirection.ATTACKER_TO_HIT",
+    "ID": 2501,
+    "InGameName": {
+      "en": "Line Connecting Attacker and Hit Point"
+    },
+    "Alias": [
+      "Line Connecting Attacker and Hit Point"
+    ],
+    "Category": "KnockbackDirection"
+  },
+  {
+    "Identifier": "KnockbackDirection.HITBOX_DIR",
+    "ID": 2502,
+    "InGameName": {
+      "en": "Hitbox On-Hit Direction"
+    },
+    "Alias": [
+      "Hitbox On-Hit Direction"
+    ],
+    "Category": "KnockbackDirection"
+  },
+  {
+    "Identifier": "KnockbackDirection.OWNER_TO_HIT",
+    "ID": 2503,
+    "InGameName": {
+      "en": "Line Connecting Attacker's Owner and Hit Point"
+    },
+    "Alias": [
+      "Line Connecting Attacker's Owner and Hit Point"
+    ],
+    "Category": "KnockbackDirection"
+  },
+  {
+    "Identifier": "KnockbackDirection.TANGENT",
+    "ID": 2504,
+    "InGameName": {
+      "en": "Tangent Line Between Attacker and Hit Point"
+    },
+    "Alias": [
+      "Tangent Line Between Attacker and Hit Point"
+    ],
+    "Category": "KnockbackDirection"
+  },
+  {
+    "Identifier": "KnockbackDirection.OPPOSITE_HIT",
+    "ID": 2505,
+    "InGameName": {
+      "en": "Opposite Direction to Hit"
+    },
+    "Alias": [
+      "Opposite Direction to Hit"
+    ],
+    "Category": "KnockbackDirection"
+  },
+  {
+    "Identifier": "KnockbackDirection.ATTACKER_FACING",
+    "ID": 2506,
+    "InGameName": {
+      "en": "Attacker's Facing Orientation"
+    },
+    "Alias": [
+      "Attacker's Facing Orientation"
+    ],
+    "Category": "KnockbackDirection"
+  },
+  {
+    "Identifier": "KnockbackDirection.HIT_TO_ATTACKER",
+    "ID": 2507,
+    "InGameName": {
+      "en": "Opposite Direction to Line Connecting Attacker and Hit Point"
+    },
+    "Alias": [
+      "Opposite Direction to Line Connecting Attacker and Hit Point"
+    ],
+    "Category": "KnockbackDirection"
+  },
+  {
+    "Identifier": "AttackLayer.HURTBOX_ONLY",
+    "ID": 2601,
+    "InGameName": {
+      "en": "Only On-Hit Hurtbox"
+    },
+    "Alias": [
+      "Only On-Hit Hurtbox",
+      "Hurtbox"
+    ],
+    "Category": "AttackLayer"
+  },
+  {
+    "Identifier": "AttackLayer.SCENE_ONLY",
+    "ID": 2602,
+    "InGameName": {
+      "en": "Only On-Hit Scene"
+    },
+    "Alias": [
+      "Only On-Hit Scene",
+      "Scene"
+    ],
+    "Category": "AttackLayer"
+  },
+  {
+    "Identifier": "AttackLayer.HIT_ALL",
+    "ID": 2604,
+    "InGameName": {
+      "en": "Hit All"
+    },
+    "Alias": [
+      "Hit All"
+    ],
+    "Category": "AttackLayer"
+  },
+  {
+    "Identifier": "AttackLayer.SELF_COLLISION",
+    "ID": 2605,
+    "InGameName": {
+      "en": "Object Self-Collision"
+    },
+    "Alias": [
+      "Object Self-Collision"
+    ],
+    "Category": "AttackLayer"
+  },
+  {
+    "Identifier": "RotationType.TARGET_THEN_INPUT",
+    "ID": 2900,
+    "InGameName": {
+      "en": "Target First, Then Input"
+    },
+    "Alias": [
+      "Target First, Then Input"
+    ],
+    "Category": "RotationType"
+  },
+  {
+    "Identifier": "RotationType.INPUT_DIR",
+    "ID": 2901,
+    "InGameName": {
+      "en": "Input Orientation"
+    },
+    "Alias": [
+      "Input Orientation"
+    ],
+    "Category": "RotationType"
+  },
+  {
+    "Identifier": "RotationType.TARGET_DIR",
+    "ID": 2902,
+    "InGameName": {
+      "en": "Target Orientation"
+    },
+    "Alias": [
+      "Target Orientation"
+    ],
+    "Category": "RotationType"
+  },
+  {
+    "Identifier": "RotationType.TARGET_THEN_CAMERA",
+    "ID": 2903,
+    "InGameName": {
+      "en": "Target First, Then Camera"
+    },
+    "Alias": [
+      "Target First, Then Camera"
+    ],
+    "Category": "RotationType"
+  },
+  {
+    "Identifier": "RotationType.CAMERA_DIR",
+    "ID": 2904,
+    "InGameName": {
+      "en": "Camera Orientation"
+    },
+    "Alias": [
+      "Camera Orientation"
+    ],
+    "Category": "RotationType"
+  },
+  {
+    "Identifier": "RotationType.INPUT_THEN_TARGET",
+    "ID": 2905,
+    "InGameName": {
+      "en": "Input First, Then Target"
+    },
+    "Alias": [
+      "Input First, Then Target"
+    ],
+    "Category": "RotationType"
+  },
+  {
+    "Identifier": "SkillSlot.NORMAL_ATTACK",
+    "ID": 3100,
+    "InGameName": {
+      "en": "Normal Attack"
+    },
+    "Alias": [
+      "Normal_Attack",
+      "Normal Attack"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.SKILL_E",
+    "ID": 3111,
+    "InGameName": {
+      "en": "1: E"
+    },
+    "Alias": [
+      "_1_E",
+      "1: E"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.SKILL_Q",
+    "ID": 3112,
+    "InGameName": {
+      "en": "2: Q"
+    },
+    "Alias": [
+      "_2_Q",
+      "2: Q"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.SKILL_R",
+    "ID": 3113,
+    "InGameName": {
+      "en": "3: R"
+    },
+    "Alias": [
+      "_3_R",
+      "3: R"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.SKILL_T",
+    "ID": 3114,
+    "InGameName": {
+      "en": "4: T"
+    },
+    "Alias": [
+      "_4_T",
+      "4: T"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_1",
+    "ID": 3121,
+    "InGameName": {
+      "en": "Custom Skill Slot 1"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_1",
+      "Custom Skill Slot 1"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_2",
+    "ID": 3122,
+    "InGameName": {
+      "en": "Custom Skill Slot 2"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_2",
+      "Custom Skill Slot 2"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_3",
+    "ID": 3123,
+    "InGameName": {
+      "en": "Custom Skill Slot 3"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_3",
+      "Custom Skill Slot 3"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_4",
+    "ID": 3124,
+    "InGameName": {
+      "en": "Custom Skill Slot 4"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_4",
+      "Custom Skill Slot 4"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_5",
+    "ID": 3125,
+    "InGameName": {
+      "en": "Custom Skill Slot 5"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_5",
+      "Custom Skill Slot 5"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_6",
+    "ID": 3126,
+    "InGameName": {
+      "en": "Custom Skill Slot 6"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_6",
+      "Custom Skill Slot 6"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_7",
+    "ID": 3127,
+    "InGameName": {
+      "en": "Custom Skill Slot 7"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_7",
+      "Custom Skill Slot 7"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_8",
+    "ID": 3128,
+    "InGameName": {
+      "en": "Custom Skill Slot 8"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_8",
+      "Custom Skill Slot 8"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_9",
+    "ID": 3129,
+    "InGameName": {
+      "en": "Custom Skill Slot 9"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_9",
+      "Custom Skill Slot 9"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_10",
+    "ID": 3130,
+    "InGameName": {
+      "en": "Custom Skill Slot 10"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_10",
+      "Custom Skill Slot 10"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_11",
+    "ID": 3131,
+    "InGameName": {
+      "en": "Custom Skill Slot 11"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_11",
+      "Custom Skill Slot 11"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_12",
+    "ID": 3132,
+    "InGameName": {
+      "en": "Custom Skill Slot 12"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_12",
+      "Custom Skill Slot 12"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_13",
+    "ID": 3133,
+    "InGameName": {
+      "en": "Custom Skill Slot 13"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_13",
+      "Custom Skill Slot 13"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_14",
+    "ID": 3134,
+    "InGameName": {
+      "en": "Custom Skill Slot 14"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_14",
+      "Custom Skill Slot 14"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "SkillSlot.CUSTOM_15",
+    "ID": 3135,
+    "InGameName": {
+      "en": "Custom Skill Slot 15"
+    },
+    "Alias": [
+      "Custom_Skill_Slot_15",
+      "Custom Skill Slot 15"
+    ],
+    "Category": "SkillSlot"
+  },
+  {
+    "Identifier": "RetracingType.SELF",
+    "ID": 3200,
+    "InGameName": {
+      "en": "Self"
+    },
+    "Alias": [
+      "Self"
+    ],
+    "Category": "RetracingType"
+  },
+  {
+    "Identifier": "RetracingType.OWNER",
+    "ID": 3201,
+    "InGameName": {
+      "en": "Self Owner"
+    },
+    "Alias": [
+      "Self Owner"
+    ],
+    "Category": "RetracingType"
+  },
+  {
+    "Identifier": "RetracingType.ROOT_OWNER",
+    "ID": 3202,
+    "InGameName": {
+      "en": "Top Layer Self Owner"
+    },
+    "Alias": [
+      "Top Layer Self Owner"
+    ],
+    "Category": "RetracingType"
+  },
+  {
+    "Identifier": "SoundAttenuation.LINEAR",
+    "ID": 3400,
+    "InGameName": {
+      "en": "Linear Attenuation"
+    },
+    "Alias": [
+      "Linear_Attenuation",
+      "Linear Attenuation"
+    ],
+    "Category": "SoundAttenuation"
+  },
+  {
+    "Identifier": "SoundAttenuation.FAST_TO_SLOW",
+    "ID": 3401,
+    "InGameName": {
+      "en": "Fast Then Slow"
+    },
+    "Alias": [
+      "Fast_Then_Slow",
+      "Fast Then Slow"
+    ],
+    "Category": "SoundAttenuation"
+  },
+  {
+    "Identifier": "SoundAttenuation.SLOW_TO_FAST",
+    "ID": 3402,
+    "InGameName": {
+      "en": "Slow Then Fast"
+    },
+    "Alias": [
+      "Slow_Then_Fast",
+      "Slow Then Fast"
+    ],
+    "Category": "SoundAttenuation"
+  },
+  {
+    "Identifier": "SelectionResult.PLAYER_DONE",
+    "ID": 3500,
+    "InGameName": {
+      "en": "Completed by Player"
+    },
+    "Alias": [
+      "Completed_by_Player",
+      "Completed by Player"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "SelectionResult.TIMEOUT",
+    "ID": 3501,
+    "InGameName": {
+      "en": "Timeout"
+    },
+    "Alias": [
+      "Timeout"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "SelectionResult.FIXED_REFRESH",
+    "ID": 3502,
+    "InGameName": {
+      "en": "Fixed-Quantity Refresh"
+    },
+    "Alias": [
+      "Fixed_Quantity_Refresh",
+      "Fixed-Quantity Refresh"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "SelectionResult.REFRESH_ALL",
+    "ID": 3503,
+    "InGameName": {
+      "en": "Refresh All"
+    },
+    "Alias": [
+      "Refresh_All",
+      "Refresh All"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "SelectionResult.MANUAL_CLOSE",
+    "ID": 3504,
+    "InGameName": {
+      "en": "Closed Manually"
+    },
+    "Alias": [
+      "Closed_Manually",
+      "Closed Manually"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "SelectionResult.NODE_GRAPH_CLOSE",
+    "ID": 3505,
+    "InGameName": {
+      "en": "Closed by Node Graph"
+    },
+    "Alias": [
+      "Closed_by_Node_Graph",
+      "Closed by Node Graph"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "SelectionResult.NO_REFRESH",
+    "ID": 3510,
+    "InGameName": {
+      "en": "Cannot Refresh"
+    },
+    "Alias": [
+      "Cannot_Refresh",
+      "Cannot Refresh"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "SelectionResult.PARTIAL_REFRESH",
+    "ID": 3511,
+    "InGameName": {
+      "en": "Partial Refresh"
+    },
+    "Alias": [
+      "Partial_Refresh",
+      "Partial Refresh"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "SelectionResult.REFRESH_TOTAL",
+    "ID": 3512,
+    "InGameName": {
+      "en": "Refresh All"
+    },
+    "Alias": [
+      "Refresh_All",
+      "Refresh All"
+    ],
+    "Category": "SelectionResult"
+  },
+  {
+    "Identifier": "HitLevel.NONE",
+    "ID": 3900,
+    "InGameName": {
+      "en": "No Effect"
+    },
+    "Alias": [
+      "No Effect"
+    ],
+    "Category": "HitLevel"
+  },
+  {
+    "Identifier": "HitLevel.TREMOR",
+    "ID": 3901,
+    "InGameName": {
+      "en": "Light Tremor"
+    },
+    "Alias": [
+      "Light Tremor"
+    ],
+    "Category": "HitLevel"
+  },
+  {
+    "Identifier": "HitLevel.LIGHT",
+    "ID": 3902,
+    "InGameName": {
+      "en": "Light Hit"
+    },
+    "Alias": [
+      "Light Hit"
+    ],
+    "Category": "HitLevel"
+  },
+  {
+    "Identifier": "HitLevel.KNOCKBACK",
+    "ID": 3903,
+    "InGameName": {
+      "en": "Knockback Hit"
+    },
+    "Alias": [
+      "Knockback Hit"
+    ],
+    "Category": "HitLevel"
+  },
+  {
+    "Identifier": "HitLevel.LAUNCH",
+    "ID": 3904,
+    "InGameName": {
+      "en": "Launch"
+    },
+    "Alias": [
+      "Launch"
+    ],
+    "Category": "HitLevel"
+  },
+  {
+    "Identifier": "SettlementStatus.PENDING",
+    "ID": 4100,
+    "InGameName": {
+      "en": "TBC"
+    },
+    "Alias": [
+      "TBC"
+    ],
+    "Category": "SettlementStatus"
+  },
+  {
+    "Identifier": "SettlementStatus.VICTORY",
+    "ID": 4101,
+    "InGameName": {
+      "en": "Victory"
+    },
+    "Alias": [
+      "Victory"
+    ],
+    "Category": "SettlementStatus"
+  },
+  {
+    "Identifier": "SettlementStatus.FAILED",
+    "ID": 4102,
+    "InGameName": {
+      "en": "Failed"
+    },
+    "Alias": [
+      "Failed"
+    ],
+    "Category": "SettlementStatus"
+  },
+  {
+    "Identifier": "SettlementStatus.ESCAPED",
+    "ID": 4103,
+    "InGameName": {
+      "en": "Escape"
+    },
+    "Alias": [
+      "Escape"
+    ],
+    "Category": "SettlementStatus"
+  },
+  {
+    "Identifier": "LootType.SHARED",
+    "ID": 4350,
+    "InGameName": {
+      "en": "Shared Reward"
+    },
+    "Alias": [
+      "Shared_Reward",
+      "Shared Reward"
+    ],
+    "Category": "LootType"
+  },
+  {
+    "Identifier": "LootType.INDIVIDUAL",
+    "ID": 4351,
+    "InGameName": {
+      "en": "Individualized Reward"
+    },
+    "Alias": [
+      "Individualized_Reward",
+      "Individualized Reward"
+    ],
+    "Category": "LootType"
+  },
+  {
+    "Identifier": "ElementReaction.OVERLOADED",
+    "ID": 4701,
+    "InGameName": {
+      "en": "Overloaded"
+    },
+    "Alias": [
+      "Overloaded",
+      "Explode"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.VAPORIZE",
+    "ID": 4702,
+    "InGameName": {
+      "en": "Vaporize"
+    },
+    "Alias": [
+      "Vaporize",
+      "Stream"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.BURNING",
+    "ID": 4703,
+    "InGameName": {
+      "en": "Burning"
+    },
+    "Alias": [
+      "Burning"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.BURNED",
+    "ID": 4704,
+    "InGameName": {
+      "en": "Burned"
+    },
+    "Alias": [
+      "Burned"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.WET",
+    "ID": 4705,
+    "InGameName": {
+      "en": "Wet"
+    },
+    "Alias": [
+      "Wet"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.BLOOM",
+    "ID": 4706,
+    "InGameName": {
+      "en": "Bloom"
+    },
+    "Alias": [
+      "Bloom",
+      "Overgrow"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.MELT",
+    "ID": 4707,
+    "InGameName": {
+      "en": "Melt"
+    },
+    "Alias": [
+      "Melt"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.FROZEN",
+    "ID": 4708,
+    "InGameName": {
+      "en": "Frozen"
+    },
+    "Alias": [
+      "Frozen",
+      "Freeze"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.ANTI_FIRE",
+    "ID": 4709,
+    "InGameName": {
+      "en": "AntiFire"
+    },
+    "Alias": [
+      "AntiFire"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.ROCK",
+    "ID": 4710,
+    "InGameName": {
+      "en": "Rock"
+    },
+    "Alias": [
+      "Rock"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SLOW_DOWN",
+    "ID": 4711,
+    "InGameName": {
+      "en": "SlowDown"
+    },
+    "Alias": [
+      "SlowDown"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.ELECTRO_CHARGED",
+    "ID": 4712,
+    "InGameName": {
+      "en": "Electro-Charged"
+    },
+    "Alias": [
+      "Electro_Charged",
+      "Electro-Charged",
+      "Shock"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.WIND",
+    "ID": 4713,
+    "InGameName": {
+      "en": "Wind"
+    },
+    "Alias": [
+      "Wind"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.ELECTRIC",
+    "ID": 4714,
+    "InGameName": {
+      "en": "Electric"
+    },
+    "Alias": [
+      "Electric"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.FIRE",
+    "ID": 4715,
+    "InGameName": {
+      "en": "Fire"
+    },
+    "Alias": [
+      "Fire"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SUPERCONDUCT",
+    "ID": 4716,
+    "InGameName": {
+      "en": "Superconduct"
+    },
+    "Alias": [
+      "Superconduct",
+      "Superconductor"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SWIRL_PYRO",
+    "ID": 4717,
+    "InGameName": {
+      "en": "Swirl: Pyro"
+    },
+    "Alias": [
+      "Swirl_Pyro",
+      "Swirl: Pyro",
+      "SwirlFire"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SWIRL_HYDRO",
+    "ID": 4718,
+    "InGameName": {
+      "en": "Swirl: Hydro"
+    },
+    "Alias": [
+      "Swirl_Hydro",
+      "Swirl: Hydro",
+      "SwirlWater"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SWIRL_ELECTRO",
+    "ID": 4719,
+    "InGameName": {
+      "en": "Swirl: Electro"
+    },
+    "Alias": [
+      "Swirl_Electro",
+      "Swirl: Electro",
+      "SwirlElectric"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SWIRL_CRYO",
+    "ID": 4720,
+    "InGameName": {
+      "en": "Swirl: Cryo"
+    },
+    "Alias": [
+      "Swirl_Cryo",
+      "Swirl: Cryo",
+      "SwirlIce"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SWIRL_FIRE_ACCU",
+    "ID": 4721,
+    "InGameName": {
+      "en": "SwirlFireAccu"
+    },
+    "Alias": [
+      "SwirlFireAccu"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SWIRL_WATER_ACCU",
+    "ID": 4722,
+    "InGameName": {
+      "en": "SwirlWaterAccu"
+    },
+    "Alias": [
+      "SwirlWaterAccu"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SWIRL_ELEC_ACCU",
+    "ID": 4723,
+    "InGameName": {
+      "en": "SwirlElectricAccu"
+    },
+    "Alias": [
+      "SwirlElectricAccu"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SWIRL_ICE_ACCU",
+    "ID": 4724,
+    "InGameName": {
+      "en": "SwirlIceAccu"
+    },
+    "Alias": [
+      "SwirlIceAccu"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.STICK_ROCK",
+    "ID": 4725,
+    "InGameName": {
+      "en": "StickRock"
+    },
+    "Alias": [
+      "StickRock"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.STICK_WATER",
+    "ID": 4726,
+    "InGameName": {
+      "en": "StickWater"
+    },
+    "Alias": [
+      "StickWater"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.CRYSTAL_PYRO",
+    "ID": 4727,
+    "InGameName": {
+      "en": "Crystallize: Pyro"
+    },
+    "Alias": [
+      "Crystallize_Pyro",
+      "Crystallize: Pyro",
+      "CrystallizeFire"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.CRYSTAL_HYDRO",
+    "ID": 4728,
+    "InGameName": {
+      "en": "Crystallize: Hydro"
+    },
+    "Alias": [
+      "Crystallize_Hydro",
+      "Crystallize: Hydro",
+      "CrystallizeWater"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.CRYSTAL_ELECTRO",
+    "ID": 4729,
+    "InGameName": {
+      "en": "Crystallize: Electro"
+    },
+    "Alias": [
+      "Crystallize_Electro",
+      "Crystallize: Electro",
+      "CrystallizeElectric"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.CRYSTAL_CRYO",
+    "ID": 4730,
+    "InGameName": {
+      "en": "Crystallize: Cryo"
+    },
+    "Alias": [
+      "Crystallize_Cryo",
+      "Crystallize: Cryo",
+      "CrystallizeIce"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.FROZEN_BROKEN",
+    "ID": 4731,
+    "InGameName": {
+      "en": "FrozenBroken"
+    },
+    "Alias": [
+      "FrozenBroken"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.STICK_GRASS",
+    "ID": 4732,
+    "InGameName": {
+      "en": "StickGrass"
+    },
+    "Alias": [
+      "StickGrass"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.CATALYZE",
+    "ID": 4733,
+    "InGameName": {
+      "en": "Catalyze"
+    },
+    "Alias": [
+      "Catalyze",
+      "Overdose"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.AGGRAVATE",
+    "ID": 4734,
+    "InGameName": {
+      "en": "Aggravate"
+    },
+    "Alias": [
+      "Aggravate",
+      "OverdoseElectric"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.SPREAD",
+    "ID": 4735,
+    "InGameName": {
+      "en": "Spread"
+    },
+    "Alias": [
+      "Spread",
+      "OverdoseGrass"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.BURGEON",
+    "ID": 4736,
+    "InGameName": {
+      "en": "Burgeon"
+    },
+    "Alias": [
+      "Burgeon",
+      "OvergrowMushroomFire"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.HYPERBLOOM",
+    "ID": 4737,
+    "InGameName": {
+      "en": "Hyperbloom"
+    },
+    "Alias": [
+      "Hyperbloom",
+      "OvergrowMushroomElectric"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.PHLOG_SOLID",
+    "ID": 4738,
+    "InGameName": {
+      "en": "PhlogistonSolidification"
+    },
+    "Alias": [
+      "PhlogistonSolidification"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ElementReaction.PHLOG_SOLID_END",
+    "ID": 4739,
+    "InGameName": {
+      "en": "PhlogistonSolidificationEnd"
+    },
+    "Alias": [
+      "PhlogistonSolidificationEnd"
+    ],
+    "Category": "ElementReaction"
+  },
+  {
+    "Identifier": "ItemChangeReason.DESTROY",
+    "ID": 4900,
+    "InGameName": {
+      "en": "Destroy"
+    },
+    "Alias": [
+      "Destroy"
+    ],
+    "Category": "ItemChangeReason"
+  },
+  {
+    "Identifier": "ItemChangeReason.DISCARD",
+    "ID": 4901,
+    "InGameName": {
+      "en": "Discard"
+    },
+    "Alias": [
+      "Discard"
+    ],
+    "Category": "ItemChangeReason"
+  },
+  {
+    "Identifier": "ItemChangeReason.USE",
+    "ID": 4902,
+    "InGameName": {
+      "en": "Use"
+    },
+    "Alias": [
+      "Use"
+    ],
+    "Category": "ItemChangeReason"
+  },
+  {
+    "Identifier": "ItemChangeReason.DEFEAT_DROP",
+    "ID": 4903,
+    "InGameName": {
+      "en": "Defeat Drops"
+    },
+    "Alias": [
+      "Defeat_Drops",
+      "Defeat Drops"
+    ],
+    "Category": "ItemChangeReason"
+  },
+  {
+    "Identifier": "ItemChangeReason.SHOP_TRADE",
+    "ID": 4904,
+    "InGameName": {
+      "en": "Shop Trade"
+    },
+    "Alias": [
+      "Shop_Trade",
+      "Shop Trade"
+    ],
+    "Category": "ItemChangeReason"
+  },
+  {
+    "Identifier": "ItemChangeReason.NODE_GRAPH",
+    "ID": 4905,
+    "InGameName": {
+      "en": "Node Graph Operation"
+    },
+    "Alias": [
+      "Node_Graph_Operation",
+      "Node Graph Operation"
+    ],
+    "Category": "ItemChangeReason"
+  },
+  {
+    "Identifier": "ItemChangeReason.PICK_UP",
+    "ID": 4950,
+    "InGameName": {
+      "en": "Pick Up"
+    },
+    "Alias": [
+      "Pick_Up",
+      "Pick Up"
+    ],
+    "Category": "ItemChangeReason"
+  },
+  {
+    "Identifier": "ScanStatus.UNUSABLE",
+    "ID": 5000,
+    "InGameName": {
+      "en": "Unusable Target"
+    },
+    "Alias": [
+      "Unusable Target"
+    ],
+    "Category": "ScanStatus"
+  },
+  {
+    "Identifier": "ScanStatus.CURRENT",
+    "ID": 5001,
+    "InGameName": {
+      "en": "Current Scan Target"
+    },
+    "Alias": [
+      "Current Scan Target"
+    ],
+    "Category": "ScanStatus"
+  },
+  {
+    "Identifier": "ScanStatus.CANDIDATE",
+    "ID": 5002,
+    "InGameName": {
+      "en": "Candidate Target"
+    },
+    "Alias": [
+      "Candidate Target"
+    ],
+    "Category": "ScanStatus"
+  },
+  {
+    "Identifier": "ScanStatus.COND_NOT_MET",
+    "ID": 5003,
+    "InGameName": {
+      "en": "Condition Not Met"
+    },
+    "Alias": [
+      "Condition Not Met"
+    ],
+    "Category": "ScanStatus"
+  },
+  {
+    "Identifier": "ScanPriority.VIEW_FIRST",
+    "ID": 5100,
+    "InGameName": {
+      "en": "Prioritize View"
+    },
+    "Alias": [
+      "Prioritize_View",
+      "Prioritize View"
+    ],
+    "Category": "ScanPriority"
+  },
+  {
+    "Identifier": "ScanPriority.DISTANCE_FIRST",
+    "ID": 5101,
+    "InGameName": {
+      "en": "Prioritize Distance"
+    },
+    "Alias": [
+      "Prioritize_Distance",
+      "Prioritize Distance"
+    ],
+    "Category": "ScanPriority"
+  },
+  {
+    "Identifier": "InterruptStatus.RESISTANCE",
+    "ID": 5200,
+    "InGameName": {
+      "en": "Interrupt Resistance Status"
+    },
+    "Alias": [
+      "Interrupt_Resistance_Status",
+      "Interrupt Resistance Status"
+    ],
+    "Category": "InterruptStatus"
+  },
+  {
+    "Identifier": "InterruptStatus.VULNERABILITY",
+    "ID": 5201,
+    "InGameName": {
+      "en": "Interrupt Vulnerability Status"
+    },
+    "Alias": [
+      "Interrupt_Vulnerability_Status",
+      "Interrupt Vulnerability Status"
+    ],
+    "Category": "InterruptStatus"
+  },
+  {
+    "Identifier": "InterruptStatus.PROTECTED",
+    "ID": 5202,
+    "InGameName": {
+      "en": "Protected Status"
+    },
+    "Alias": [
+      "Protected_Status",
+      "Protected Status"
+    ],
+    "Category": "InterruptStatus"
+  },
+  {
+    "Identifier": "DamagePopType.NONE",
+    "ID": 5400,
+    "InGameName": {
+      "en": "No Pop-Up"
+    },
+    "Alias": [
+      "No_Pop_Up",
+      "No Pop-Up"
+    ],
+    "Category": "DamagePopType"
+  },
+  {
+    "Identifier": "DamagePopType.REGULAR",
+    "ID": 5401,
+    "InGameName": {
+      "en": "Regular Pop-Up"
+    },
+    "Alias": [
+      "Regular_Pop_Up",
+      "Regular Pop-Up"
+    ],
+    "Category": "DamagePopType"
+  },
+  {
+    "Identifier": "DamagePopType.CRITICAL",
+    "ID": 5402,
+    "InGameName": {
+      "en": "CRIT Hit Pop-Up"
+    },
+    "Alias": [
+      "CRIT_Hit_Pop_Up",
+      "CRIT Hit Pop-Up"
+    ],
+    "Category": "DamagePopType"
+  },
+  {
+    "Identifier": "MovementMode.INSTANT",
+    "ID": 5500,
+    "InGameName": {
+      "en": "Instant Movement"
+    },
+    "Alias": [
+      "Instant_Movement",
+      "Instant Movement"
+    ],
+    "Category": "MovementMode"
+  },
+  {
+    "Identifier": "MovementMode.LINEAR",
+    "ID": 5501,
+    "InGameName": {
+      "en": "Uniform Linear Motion"
+    },
+    "Alias": [
+      "Uniform_Linear_Motion",
+      "Uniform Linear Motion"
+    ],
+    "Category": "MovementMode"
+  },
+  {
+    "Identifier": "MotionParamType.SPEED",
+    "ID": 5600,
+    "InGameName": {
+      "en": "Fixed Speed"
+    },
+    "Alias": [
+      "Fixed_Speed",
+      "Fixed Speed"
+    ],
+    "Category": "MotionParamType"
+  },
+  {
+    "Identifier": "MotionParamType.TIME",
+    "ID": 5601,
+    "InGameName": {
+      "en": "Fixed Time"
+    },
+    "Alias": [
+      "Fixed_Time",
+      "Fixed Time"
+    ],
+    "Category": "MotionParamType"
+  },
+  {
+    "Identifier": "GameplayMode.TEST_PLAY",
+    "ID": 5700,
+    "InGameName": {
+      "en": "Test Play"
+    },
+    "Alias": [
+      "Play",
+      "Test_Play",
+      "Test Play"
+    ],
+    "Category": "GameplayMode"
+  },
+  {
+    "Identifier": "GameplayMode.ROOM_PLAY",
+    "ID": 5701,
+    "InGameName": {
+      "en": "Room Play"
+    },
+    "Alias": [
+      "Room_Play",
+      "Room Play"
+    ],
+    "Category": "GameplayMode"
+  },
+  {
+    "Identifier": "GameplayMode.MATCH_PLAY",
+    "ID": 5702,
+    "InGameName": {
+      "en": "Match Play"
+    },
+    "Alias": [
+      "Match_Play",
+      "Match Play"
+    ],
+    "Category": "GameplayMode"
+  },
+  {
+    "Identifier": "InputDevice.KEYBOARD_MOUSE",
+    "ID": 5800,
+    "InGameName": {
+      "en": "Keyboard and Mouse"
+    },
+    "Alias": [
+      "Keyboard_and_Mouse",
+      "Keyboard and Mouse"
+    ],
+    "Category": "InputDevice"
+  },
+  {
+    "Identifier": "InputDevice.CONTROLLER",
+    "ID": 5801,
+    "InGameName": {
+      "en": "Controller"
+    },
+    "Alias": [
+      "Controller"
+    ],
+    "Category": "InputDevice"
+  },
+  {
+    "Identifier": "InputDevice.TOUCHSCREEN",
+    "ID": 5802,
+    "InGameName": {
+      "en": "Touchscreen"
+    },
+    "Alias": [
+      "Touchscreen"
+    ],
+    "Category": "InputDevice"
+  },
+  {
+    "Identifier": "FilterRule.DEFAULT",
+    "ID": 1000001,
+    "InGameName": {
+      "en": "Default Sorting"
+    },
+    "Alias": [
+      "Default Sorting"
+    ],
+    "Category": "FilterRule"
+  },
+  {
+    "Identifier": "FilterRule.RANDOM",
+    "ID": 1000002,
+    "InGameName": {
+      "en": "Random Order"
+    },
+    "Alias": [
+      "Random Order"
+    ],
+    "Category": "FilterRule"
+  },
+  {
+    "Identifier": "FilterRule.NEAR_TO_FAR",
+    "ID": 1000003,
+    "InGameName": {
+      "en": "Sort From Near to Far"
+    },
+    "Alias": [
+      "Sort From Near to Far"
+    ],
+    "Category": "FilterRule"
+  },
+  {
+    "Identifier": "FilterRule.RET_BOOL",
+    "ID": 1000010,
+    "InGameName": {
+      "en": "Return Boolean"
+    },
+    "Alias": [
+      "Return Boolean"
+    ],
+    "Category": "FilterRule"
+  },
+  {
+    "Identifier": "FilterRule.RET_INT",
+    "ID": 1000011,
+    "InGameName": {
+      "en": "Return Integer"
+    },
+    "Alias": [
+      "Return Integer"
+    ],
+    "Category": "FilterRule"
+  }
+]

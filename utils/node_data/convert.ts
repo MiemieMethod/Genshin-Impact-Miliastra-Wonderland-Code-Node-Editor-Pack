@@ -31,20 +31,43 @@ import { exit } from "process";
 // })));
 
 // 重构, 汇总整理enumEntry
-const enums = data.Enums.map(e => e.Items.map(i => ({ ...i, __source: e.Identifier, __source_name: [e.InGameName.en, e.Alias.filter(x => x.includes(" "))] }))).flat().sort((a, b) => a.ID - b.ID);
-const groups = Object.groupBy(enums, (x) => Math.floor(x.ID / 100));
-const ret = Object.entries(groups)
-  .map(([key, val]) => ({
-    id: key,
-    name: [...new Set(val!.map(x => x.__source_name).flat(2))].join(", "),
-    items: Object.fromEntries(Object.entries(Object.groupBy(val!, x => x.ID % 100))
-      .map(([k, y]) => [
-        k,
-        [...new Set(y!.map(x => [x.InGameName.en, x.Alias.filter(y => !y.includes("_"))]).flat(2))].join(", ")
-      ]))
-  }));
+const enums = data.Enums.map(e => e.Items).flat(2).sort((a, b) => a.ID - b.ID);
+const groups = Object.groupBy(enums, (x) => x.ID);
+const ret = Object.values(groups).map((v) => {
+  const res = v![0];
+  assert(res !== undefined);
+  res.Alias.push(res.InGameName.en);
+  v!.slice(1).forEach(i => {
+    if (!["No", "Remove All of Self"].includes(res.InGameName.en)) assertEq(res.InGameName.en, i.InGameName.en);
+    res.Alias.push(...i.Alias, i.InGameName.en);
+  });
+  return res;
+}).map(x => ({
+  ...x,
+  Alias: [...new Set(x.Alias)]
+}));
 
-save("all_enums.yaml", stringify(ret));
+save("enums.json", ret);
+
+const NEW_NAME = parse(read("all_enums.yaml"));
+// console.log(NEW_NAME);
+const map = new Map();
+NEW_NAME.forEach((items) => {
+  const range = parseInt(items.id) * 100;
+  const Category = items.abbr;
+  Object.entries(items.item_abbrs).forEach(([k, abbr]) => {
+    map.set(range + parseInt(k), Category + "." + abbr);
+  });
+});
+console.log(map.size, ret.length);
+
+ret.forEach(item => {
+  const id = map.get(item.ID);
+  assert(id !== undefined, item.ID);
+  item.Identifier = id;
+  item.Category = id.split(".")[0];
+})
+save("enums.json", ret);
 
 exit();
 
