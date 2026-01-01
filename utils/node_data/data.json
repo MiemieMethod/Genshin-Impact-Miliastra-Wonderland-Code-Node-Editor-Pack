@@ -560,8 +560,8 @@
           "ShellIndex": 0,
           "KernelIndex": 0,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Yes",
+            "zh-Hans": "是"
           }
         },
         {
@@ -570,8 +570,8 @@
           "ShellIndex": 1,
           "KernelIndex": 1,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "No",
+            "zh-Hans": "否"
           }
         }
       ],
@@ -620,8 +620,8 @@
           "ShellIndex": 0,
           "KernelIndex": 0,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Default",
+            "zh-Hans": "默认"
           }
         },
         {
@@ -804,8 +804,8 @@
           "ShellIndex": 1,
           "KernelIndex": 1,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Break Loop",
+            "zh-Hans": "跳出循环"
           }
         },
         {
@@ -814,8 +814,8 @@
           "ShellIndex": 0,
           "KernelIndex": 0,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Loop Body",
+            "zh-Hans": "循环体"
           }
         },
         {
@@ -824,8 +824,8 @@
           "ShellIndex": 1,
           "KernelIndex": 1,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Loop Complete",
+            "zh-Hans": "循环完成"
           }
         }
       ],
@@ -52598,8 +52598,8 @@
           "Identifier": "True",
           "Direction": "Out",
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Yes",
+            "zh-Hans": "是"
           },
           "ShellIndex": 0,
           "KernelIndex": 0
@@ -52608,8 +52608,8 @@
           "Identifier": "False",
           "Direction": "Out",
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "No",
+            "zh-Hans": "否"
           },
           "ShellIndex": 1,
           "KernelIndex": 1
@@ -54664,8 +54664,8 @@
           "ShellIndex": 1,
           "KernelIndex": 1,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Break Loop",
+            "zh-Hans": "跳出循环"
           }
         },
         {
@@ -54674,8 +54674,8 @@
           "ShellIndex": 0,
           "KernelIndex": 0,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Loop Body",
+            "zh-Hans": "循环体"
           }
         },
         {
@@ -54684,8 +54684,8 @@
           "ShellIndex": 1,
           "KernelIndex": 1,
           "Label": {
-            "en": "",
-            "zh-Hans": ""
+            "en": "Loop Complete",
+            "zh-Hans": "循环完成"
           }
         }
       ],

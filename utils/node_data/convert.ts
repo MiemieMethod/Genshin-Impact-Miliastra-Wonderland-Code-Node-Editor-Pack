@@ -29,32 +29,32 @@ const TypeMap = {
 // TODO: 添加 index of type selector
 
 data.Nodes.forEach(node => {
-  node.FlowPins.forEach(p => {
-    p.Label ??= {};
-    p.Label["en"] ??= "";
-    p.Label["zh-Hans"] ??= "";
-  });
-  // 校验 flow-pin 数量一致:
-  const ref = REF.find(ref => ref.id === node.__ref_id);
-  if (!ref) return;
-  if (node.FlowPins.length !== ref.ports.filter(x => x.kind.startsWith("flow-")).length) {
-    // console.log(node.Identifier);
-    return;
-  }
-  let incnt = node.FlowPins.filter(x => x.Direction === "In").length;
-  node.FlowPins.forEach((pin, i) => {
-    const j = pin.Direction === "In" ? i : i - incnt;
-    const refp = ref.ports.filter(x => x.kind.startsWith("flow-"))[i];
-    assert(refp.kind.startsWith("flow-"));
-    assertEq(pin.Direction === "In", refp.kind.endsWith("-in"));
-    pin.ShellIndex ??= j;
-    pin.KernelIndex ??= j;
-    assertEq(pin.ShellIndex, pin.KernelIndex);
-    assertEq(pin.ShellIndex, j);
-    if (!["执行", "完成", "事件"].includes(refp.label)) {
-      console.log(node.Identifier, refp.label);
-    }
-  });
+  // node.FlowPins.forEach(p => {
+  //   p.Label ??= {};
+  //   p.Label["en"] ??= "";
+  //   p.Label["zh-Hans"] ??= "";
+  // });
+  // // 校验 flow-pin 数量一致:
+  // const ref = REF.find(ref => ref.id === node.__ref_id);
+  // if (!ref) return;
+  // if (node.FlowPins.length !== ref.ports.filter(x => x.kind.startsWith("flow-")).length) {
+  //   // console.log(node.Identifier);
+  //   return;
+  // }
+  // let incnt = node.FlowPins.filter(x => x.Direction === "In").length;
+  // node.FlowPins.forEach((pin, i) => {
+  //   const j = pin.Direction === "In" ? i : i - incnt;
+  //   const refp = ref.ports.filter(x => x.kind.startsWith("flow-"))[i];
+  //   assert(refp.kind.startsWith("flow-"));
+  //   assertEq(pin.Direction === "In", refp.kind.endsWith("-in"));
+  //   pin.ShellIndex ??= j;
+  //   pin.KernelIndex ??= j;
+  //   assertEq(pin.ShellIndex, pin.KernelIndex);
+  //   assertEq(pin.ShellIndex, j);
+  //   if (!["执行", "完成", "事件"].includes(refp.label)) {
+  //     console.log(node.Identifier, refp.label);
+  //   }
+  // });
 
   /** 手动编辑这些:
 Control.General.Branch 是
