@@ -22,7 +22,7 @@ import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
 import { exit } from "process";
 
 save("enum_lookup.yaml", stringify(data.Enums.filter(x => x.System === "Server").sort((a, b) => a.ID - b.ID).map(x => {
-  assert(x.ID === x.TypeID + 10000);
+  assert(x.ID + 10000 === x.TypeID);
   let res = {};
   res[x.Identifier] = x.ID;
   res["name"] = x.InGameName.en;

@@ -141994,6 +141994,7 @@
       "Identifier": "USAF",
       "System": "Server",
       "ID": 16,
+      "TypeID": 10016,
       "InGameName": {
         "en": "Unit Status Addition Failure Reason"
       },
@@ -142636,10 +142637,12 @@
           "Identifier": "all_ex_self",
           "ID": 2006,
           "InGameName": {
-            "en": "All Except Self"
+            "en": "Remove All of Self"
           },
           "Alias": [
-            "All_Except_Self"
+            "All_Except_Self",
+            "All Except Self",
+            "Remove_All_of_Self"
           ]
         },
         {
@@ -143331,7 +143334,7 @@
     {
       "Identifier": "STMT",
       "System": "Server",
-      "ID": 34,
+      "ID": 35,
       "InGameName": {
         "en": "Settlement Status"
       },
@@ -143380,8 +143383,7 @@
           ]
         }
       ],
-      "__old_id": 33,
-      "TypeID": 10034
+      "TypeID": 10035
     },
     {
       "Identifier": "ITMC",
@@ -145568,12 +145570,10 @@
           "Identifier": "all_of_self",
           "ID": 2006,
           "InGameName": {
-            "en": "Remove All of Self"
+            "en": "All Except Self"
           },
           "Alias": [
-            "All_Except_Self",
-            "All Except Self",
-            "Remove_All_of_Self"
+            "All Except Self"
           ]
         },
         {

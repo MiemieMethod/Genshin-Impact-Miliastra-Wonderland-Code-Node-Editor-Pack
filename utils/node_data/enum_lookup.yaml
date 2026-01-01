@@ -339,7 +339,7 @@
 - GMOD: 42
   name: Gameplay Mode
   items:
-    "5700": Play
+    "5700": Test Play
     "5701": Room Play
     "5702": Match Play
 - IDVT: 43
