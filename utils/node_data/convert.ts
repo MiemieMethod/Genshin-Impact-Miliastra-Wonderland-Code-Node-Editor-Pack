@@ -31,7 +31,7 @@ import { exit } from "process";
 //   return res;
 // })));
 
-// 重构, 汇总整理enumEntry
+// 重构, 汇总整理 EnumDef 与 EnumTypeDef
 import enums from "./enums.json" with {type: "json"};
 const EnumDef = enums.map(i => {
   const p: EnumDef = {
@@ -76,7 +76,10 @@ const EnumTypes = COLLECTION.map((entry: any) => {
   };
   return p;
 }).sort((a, b) => a.ID - b.ID);
-save('temp.json', EnumTypes);
+
+data.Enums = EnumDef;
+data.EnumTypes = EnumTypes;
+save("data.json", data);
 
 exit();
 data.Enums.map(e => {
