@@ -332,7 +332,8 @@ enum VarType {
   VectorList = 15;
   LocalVariable = 16;
   Faction = 17;
-
+  reserved 18; // EnumBase
+  reserved 19; // NoBase
   Configuration = 20;
   Prefab = 21;
   ConfigurationList = 22;
@@ -344,7 +345,8 @@ enum VarType {
   VariableSnapshot = 28;
 
   // EnumTypes 10001.....
-  reserved 10000 to 10099;
+  reserved 10000 to 10099;   // server enums
+  reserved 210000 to 210099; // client enums
 }
 enum ClientVarType {
   UnknownVar_ = 0;
@@ -385,6 +387,7 @@ message VarBase {
     Unknown = 0;
     IdBase = 1;
     IntBase = 2;
+    SelectorBase = 3; // (But how to set options?)
     FloatBase = 4;
     StringBase = 5;
     EnumBase = 6;

@@ -15,12 +15,12 @@ export class Document {
 
   /** Lazy-loaded Nodes collection */
   get Node(): Nodes {
-    return this.nodes ?? (this.nodes = new Nodes(this));
+    return this.nodes ?? (this.nodes = new Nodes(this.doc));
   }
 
   /** Lazy-loaded Enums collection */
   get Enum(): Enums {
-    return this.enums ?? (this.enums = new Enums(this));
+    return this.enums ?? (this.enums = new Enums(this.doc));
   }
 
   /**
