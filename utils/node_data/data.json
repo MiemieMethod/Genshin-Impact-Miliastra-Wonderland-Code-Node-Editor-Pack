@@ -45823,7 +45823,7 @@
           "InjectedContents": []
         },
         {
-          "Constraints": "S<T:E<CNVT>>",
+          "Constraints": "S<T:E<CONV>>",
           "KernelID": 10,
           "InjectedContents": []
         },
@@ -61230,7 +61230,7 @@
     {
       "Identifier": "CONV",
       "System": "Client",
-      "ID": 7,
+      "ID": 34,
       "InGameName": {
         "en": "Type Conversions"
       },

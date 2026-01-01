@@ -28,23 +28,30 @@ const TypeMap = {
 // TODO: VisiblePin8(10) of Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Loc's type conflicts with others
 
 data.Nodes.forEach(node => {
-  // const ref = REF.find(r => r.id === node.__ref_id);
-  // if (ref === undefined) return;
-  node.DataPins.forEach(pin => {
-    pin.Type = pin.Type.replaceAll(/E<(\d*)>/g, (match, p1) => {
-      const cc4 = data.Enums.find(e => e.System === node.System && e.ID === parseInt(p1));
-      assert(cc4 !== undefined);
-      return `E<${cc4.Identifier}>`;
+  // 验证每一个数据的关联项都是正确的.
+  data.Nodes.forEach(node => {
+    node.DataPins.filter(x => x.Direction === "In").forEach((pin, i) => {
+      if (pin.Identifier.startsWith("Input")) assertEq(pin.Identifier, "Input" + i);
+      assertEq(pin.ShellIndex, i);
     })
-  })
-  node.Variants?.forEach(v => {
-    v.Constraints = v.Constraints.replaceAll(/E<(\d*)>/g, (match, p1) => {
-      const cc4 = data.Enums.find(e => e.System === node.System && e.ID === parseInt(p1));
-      assert(cc4 !== undefined);
-      return `E<${cc4.Identifier}>`;
-    })
+    node.DataPins.filter(x => x.Direction === "Out").forEach((pin, i) => {
+      if (pin.Identifier.startsWith("Output")) assertEq(pin.Identifier, "Output" + i);
+      assertEq(pin.ShellIndex, i);
+    });
+    assertEq(node.DataPins.length, new Set(node.DataPins.map(v => v.Identifier)).size)
+    // pass
+
+    assertEq(node.Type === "Fixed", node.Variants === undefined);
+    node.Variants?.forEach(v => {
+      assert(v.Constraints.length > 0);
+      assert(v.KernelID > 0);// 似乎有一个不是
+    });
+    assertEq(node.Variants?.length ?? 0, new Set(node.Variants?.map(v => v.Constraints)).size);
+    // pass
   })
 })
+
+assertEq(data.Enums.length, new Set(data.Enums.map(v => v.Identifier)).size)
 
 
 save("data.json", data);

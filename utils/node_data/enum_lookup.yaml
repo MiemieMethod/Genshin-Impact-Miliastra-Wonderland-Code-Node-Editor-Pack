@@ -409,20 +409,6 @@ Client:
       f_to_s: 808
       v3_to_s: 809
       fact_to_s: 810
-  - CONV: 7
-    name: Type Conversions
-    items:
-      i_to_b: 800
-      i_to_f: 801
-      i_to_s: 802
-      e_to_s: 803
-      g_to_s: 804
-      b_to_i: 805
-      b_to_s: 806
-      f_to_i: 807
-      f_to_s: 808
-      v3_to_s: 809
-      fact_to_s: 810
   - MPPX: 8
     name: Motion Path Point Types
     items:
@@ -617,6 +603,20 @@ Client:
       inside_out: 450
       clockwise: 451
       counter_clockwise: 452
+  - CONV: 34
+    name: Type Conversions
+    items:
+      i_to_b: 800
+      i_to_f: 801
+      i_to_s: 802
+      e_to_s: 803
+      g_to_s: 804
+      b_to_i: 805
+      b_to_s: 806
+      f_to_i: 807
+      f_to_s: 808
+      v3_to_s: 809
+      fact_to_s: 810
   - RTRA: 35
     name: Retracing Type
     items:
