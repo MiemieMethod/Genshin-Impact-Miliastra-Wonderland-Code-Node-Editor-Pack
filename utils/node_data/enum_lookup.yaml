@@ -6,7 +6,7 @@
   items:
     "0": No
     "1": Yes
-- CMPR: 2
+- OCMP: 2
   name: Comparison Operators
   items:
     "100": Equal To
@@ -56,7 +56,7 @@
     "701": Round Down
     "702": Round to Nearest
     "703": Truncate
-- CAST: 9
+- TCOV: 9
   name: Type Conversions
   items:
     "800": Integer to Boolean
@@ -87,7 +87,7 @@
     "1100": Completely Follow
     "1101": Follow Location
     "1102": Follow Rotation
-- COOR: 13
+- SYSC: 13
   name: Coordinate System Type
   items:
     "1200": Relative Coordinate System
@@ -194,7 +194,7 @@
     "2005": All
     "2006": Remove All of Self
     "2007": Allied Faction Self Included
-- TRGR: 27
+- TRGR: 27 # TIGR
   name: Trigger Restriction
   items:
     "2101": Trigger Only Once
@@ -370,3 +370,454 @@
     "5400": No Pop-Up
     "5401": Regular Pop-Up
     "5402": CRIT Hit Pop-Up
+
+- GENE: -1 # CGEN
+  id: 200000
+  name: Generic
+  items: {}
+- XXXX: 1 # CBOL
+  id: 200001
+  name: Boolean
+  items:
+    "0": No
+    "1": Yes
+- CPRS: 0 # CCMP
+  id: 200002
+  name: Comparison Operators
+  items:
+    "100": Equal To
+    "101": Less Than
+    "102": Less Than or Equal To
+    "103": Greater Than
+    "104": Greater Than or Equal To
+- LOGI: 1 # CLOG
+  id: 200003
+  name: Logical Operators
+  items:
+    "200": AND
+    "201": OR
+    "202": XOR
+    "203": NOT
+- BMAT: 2 # CBMO
+  id: 200004
+  name: Basic Mathematical Operators
+  items:
+    "300": Addition
+    "301": Subtraction
+    "302": Multiplication
+    "303": Division
+- ASHX: 3 # CASH
+  id: 200005
+  name: Attack Shapes
+  items:
+    "400": Rectangle # Cuboid
+    "401": Sphere
+    "402": Sector
+- SURX: 4 # CSVL
+  id: 200006
+  name: Survival Status
+  items:
+    "500": Alive
+    "501": Down
+- SRTR: 5 # CSRT
+  id: 200007
+  name: Sorting Rules
+  items:
+    "600": Ascending
+    "601": Descending
+- ROUN: 6 # CRND
+  id: 200008
+  name: Rounding Logic
+  items:
+    "700": Round Up
+    "701": Round Down
+    "702": Round to Nearest
+- CNVT: 7 # CCOV
+  id: 200009
+  name: Type Conversions
+  items:
+    "800": Integer to Boolean
+    "801": Integer to Floating Point
+    "802": Integer to String
+    "803": Entity to String
+    "804": GUID to String
+    "805": Boolean to Integer
+    "806": Boolean to String
+    "807": Floating Point to Integer
+    "808": Floating Point to String
+    "809": 3D Vector to String
+    "810": Faction to String
+- MPPX: 8 # CMPP
+  id: 200010
+  name: Motion Path Point Types
+  items:
+    "900": Straight Line
+    "901": Curve
+- MTYP: 9 # CMOT
+  id: 200011
+  name: Motion Types
+  items:
+    "1000": One-Way
+    "1001": Back and Forth
+    "1002": Cyclic Movement
+- FLOC: 10 # CFLL
+  id: 200012
+  name: Follow Location Type
+  items:
+    "1100": Completely Follow # Full (Location + Orientation)
+    "1101": Follow Location # Location
+    "1102": Follow Rotation # Orientation
+- CSYS: 11 # CCOR
+  id: 200013
+  name: Coordinate System Type # Follow Location
+  items:
+    "1200": Relative Coordinate System # Relative Location
+    "1201": World Coordinate System # Absolute Location
+- ELEM: 12 # CELM
+  id: 200014
+  name: Elemental Type
+  items:
+    "1300": None
+    "1301": Pyro
+    "1302": Hydro
+    "1303": Anemo
+    "1304": Electro
+    "1305": Dendro
+    "1306": Cryo
+    "1307": Geo
+- ETIT: 13 # CETY
+  id: 200015
+  name: Entity Type
+  items:
+    "1401": Stage
+    "1402": Object
+    "1403": Player
+    "1404": Character
+    "1405": Creation
+- USAF: 14 # CUSF
+  id: 200016
+  name: Unit Status Addition Failure Reason
+  items:
+    "1500": "Failed: Unexpected error"
+    "1501": "Failed: Operation paused for another process"
+    "1502": "Failed: Maximum coexistence limit reached"
+    "1503": "Failed: Unable to add additional stack"
+- USAS: 15 # CUSS
+  id: 200017
+  name: Unit Status Addition Success Type
+  items:
+    "1504": "Success: New status applied"
+    "1505": "Success: Slot stacking"
+- USTR: 16 # CUSR
+  id: 200018
+  name: Unit Status Removal Reason
+  items:
+    "1506": Replaced by other unit status
+    "1507": Duration exceeded
+    "1508": Dispelled
+    "1509": Status expired
+    "1510": Class changed
+    "1511": Affix Expired
+    "1512": Shield Depleted to Zero
+- USTS: 17 # CUSX
+  id: 200019
+  name: Unit Status Removal Strategy
+  items:
+    "1540": All Coexisting Statuses With the Same Name
+    "1541": Status With Fastest Stack Loss
+- RVPS: 18 # CRPT
+  id: 200020
+  name: Revive Point Selection Strategy # Revive Point Selection
+  items:
+    "1601": Nearest
+    "1602": Most Recently Activated
+    "1603": Highest Priority
+    "1604": Random
+- DWNX: 19 # CDWN
+  id: 200021
+  name: Cause of Being Down
+  items:
+    "1605": Node Graph Triggered
+    "1606": Normal Defeat
+    "1607": Abnormal Defeat
+- TFNX: 20 # CTFX
+  id: 200022
+  name: Trigonometric Functions
+  items: 
+    "1700": cos
+    "1701": sin
+    "1702": tan
+    "1703": arccos
+    "1704": arcsin
+    "1705": arctan
+    "1706": Radians to Degrees
+    "1707": Degrees to Radians
+- DISD: 21 # CDDT
+  id: 200023
+  name: Disruptor Device Type
+  items:
+    "1801": Force Field Device
+    "1802": Ejector
+    "1803": Tractor Device
+- DORI: 22 # CDDO
+  id: 200024
+  name: Disruptor Device Orientation
+  items:
+    "1810": Associate Character Orientation
+    "1811": Fixed Unidirectional
+- UISG: 23 # CUIS
+  id: 200025
+  name: UI Control Group Status
+  items:
+    "1900": Off
+    "1901": On
+    "1902": Hidden
+- TARG: 24 # CTTP
+  id: 200026
+  name: Target Type
+  items:
+    "2000": None # Don't Find Target
+    "2001": Allied Faction
+    "2002": Hostile Faction
+    "2003": Self
+    "2004": Own Faction
+    "2005": All
+    "2006": All Except Self
+    "2007": Allied Faction Self Included
+- QMAT: 25 # CQMA
+  id: 200027
+  name: Quick Mathematical Operators
+  items:
+    "304": Modulo Operation
+    "305": Exponentiation
+    "306": Get Maximum Value
+    "307": Get Minimum Value
+    "308": Logarithm
+- HITX: 26 # CHIT
+  id: 200028
+  name: Hit Type
+  items:
+    "2200": None
+    "2201": Default
+    "2202": Slash
+    "2203": Smash
+    "2204": Projectile
+    "2205": Piercing Attack
+- ATKX: 27 # CATK
+  id: 200029
+  name: Attack Type
+  items:
+    "2300": None
+    "2301": Melee Attack
+    "2302": Ranged Attack
+    "2303": Default
+- HPRL: 28 # CHLV
+  id: 200030
+  name: Hit Performance Level
+  items:
+    "2400": Default
+    "2401": No Hit Performance
+    "2402": Hit by Normal Arrow Without Charging
+    "2403": Combo Hit
+    "2404": Normal Hit
+    "2405": Heavy Hit
+    "2406": Strong Impact
+    "2407": Ultimate Impact
+    "2408": Vertical Launch
+    "2409": Super Launch
+    "2410": Long-Range Throw
+- TGSR: 29 # CTST
+  id: 200031
+  name: Target Sorting Rules
+  items:
+    "1000001": Default Sorting
+    "1000002": Random Order
+    "1000003": Sort From Near to Far
+- ALCF: 30 # CALR
+  id: 200032
+  name: Attack Layer Config
+  items:
+    "2601": Only On-Hit Hurtbox
+    "2602": Only On-Hit Scene
+    "2604": Hit All
+- KBDT: 31 # CKBD
+  id: 200033
+  name: Knockback Direction Type
+  items:
+    "2501": Line Connecting Attacker and Hit Point
+    "2502": Hitbox On-Hit Direction
+    "2503": Line Connecting Attacker's Owner and Hit Point
+    "2504": Tangent Line Between Attacker and Hit Point
+    "2505": Opposite Direction to Hit
+    "2506": Attacker's Facing Orientation
+    "2507": Opposite Direction to Line Connecting Attacker and Hit Point
+- ROTT: 32 # CROT
+  id: 200034
+  name: Rotation Type
+  items:
+    "2900": Target First, Then Input
+    "2901": Input Orientation
+    "2902": Target Orientation
+    "2903": Target First, Then Camera
+    "2904": Camera Orientation
+    "2905": Input First, Then Target
+- SDIR: 33 # CSCT
+  id: 200035
+  name: Sector Detection Direction
+  items:
+    "450": From Inside Out
+    "451": Clockwise
+    "452": Counterclockwise
+- CONV: 34 # CCON
+  id: 200036
+  name: Type Conversions
+  items:
+    "800": Integer to Boolean
+    "801": Integer to Floating Point
+    "802": Integer to String
+    "803": Entity to String
+    "804": GUID to String
+    "805": Boolean to Integer
+    "806": Boolean to String
+    "807": Floating Point to Integer
+    "808": Floating Point to String
+    "809": 3D Vector to String
+    "810": Faction to String
+- RTRA: 35 # CRTR
+  id: 200037
+  name: Retracing Type
+  items:
+    "3200": Self
+    "3201": Self Owner
+    "3202": Top Layer Self Owner
+- HLVL: 36 # CHTS
+  id: 200038
+  name: Hit Level
+  items:
+    "3900": No Effect
+    "3901": Light Tremor
+    "3902": Light Hit
+    "3903": Knockback Hit
+    "3904": Launch
+- EREA: 37 # CERE
+  id: 200039
+  name: Elemental Reaction Type
+  items:
+# Explode 4701
+# Stream 4702
+# Burning 4703
+# Burned 4704
+# Wet 4705
+# Overgrow 4706
+# Melt 4707
+# Freeze 4708
+# AntiFire 4709
+# Rock 4710
+# SlowDown 4711
+# Shock 4712
+# Wind 4713
+# Electric 4714
+# Fire 4715
+# Superconductor 4716
+# SwirlFire 4717
+# SwirlWater 4718
+# SwirlElectric 4719
+# SwirlIce 4720
+# SwirlFireAccu 4721
+# SwirlWaterAccu 4722
+# SwirlElectricAccu 4723
+# SwirlIceAccu 4724
+# StickRock 4725
+# StickWater 4726
+# CrystallizeFire 4727
+# CrystallizeWater 4728
+# CrystallizeElectric 4729
+# CrystallizeIce 4730
+# FrozenBroken 4731
+# StickGrass 4732
+# Overdose 4733
+# OverdoseElectric 4734
+# OverdoseGrass 4735
+# OvergrowMushroomFire 4736
+# OvergrowMushroomElectric 4737
+# PhlogistonSolidification 4738
+# PhlogistonSolidificationEnd 4739
+    "4701": Overloaded 
+    "4702": Vaporize
+    "4703": Burning
+    "4705": Wet
+    "4706": Bloom
+    "4707": Melt
+    "4708": Frozen
+    "4712": Electro-Charged
+    "4716": Superconduct
+    "4717": "Swirl: Pyro"
+    "4718": "Swirl: Hydro"
+    "4719": "Swirl: Electro"
+    "4720": "Swirl: Cryo"
+    "4727": "Crystallize: Pyro"
+    "4728": "Crystallize: Hydro"
+    "4729": "Crystallize: Electro"
+    "4730": "Crystallize: Cryo"
+    "4733": Catalyze
+    "4734": Aggravate
+    "4735": Spread
+    "4736": Burgeon
+    "4737": Hyperbloom
+- FRTY: 38 # CFLT
+  id: 200040
+  name: Filter Return Type
+  items:
+    "1000010": Return Boolean
+    "10000011": Return Integer
+- TCON: 39 # CCAM
+  id: 200041
+  name: Target Type (For Camera Orientation Node)
+  items:
+    "2000": None # Don't Find Target
+    "2001": Allied Faction
+    "2002": Hostile Faction
+    "2004": Own Faction
+    "2006": All Except Self
+- ALCF: 30 # CATX
+  id: 200042
+  name: Attack Layer Config
+  items:
+    "2601": Only On-Hit Hurtbox
+    "2602": Only On-Hit Scene
+    "2605": Object Self-Collision
+- CITR: 200043
+  id: 200043
+  name: Interrupt Status
+  items:
+    "5200": Interrupt Resistance Status
+    "5201": Interrupt Vulnerability Status
+    "5202": Protected Status
+- SCAN: 40 # CSCN
+  id: 200044
+  name: Scan Status
+  items:
+    "5000": Unusable Target
+    "5001": Current Scan Target
+    "5002": Candidate Target
+    "5003": Condition Not Met
+- CDMG: 200045
+  id: 200045
+  name: Damage Pop-Up Type
+  items:
+    "5400": No Pop-Up
+    "5401": Regular Pop-Up
+    "5402": CRIT Hit Pop-Up
+- IDVC: 41 # CDEV
+  id: 200046
+  name: Input Device Type
+  items:
+    "5800": Keyboard and Mouse
+    "5801": Controller
+    "5802": Touchscreen
+- TIGR: 1042 # CTRG
+  id: 200047
+  name: Trigger Restriction
+  items:
+    "2101": Trigger Only Once
+    "2102": Trigger Only Once per Entity

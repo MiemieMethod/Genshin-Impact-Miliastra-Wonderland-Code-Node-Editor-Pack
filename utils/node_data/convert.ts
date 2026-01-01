@@ -21,8 +21,8 @@ const save = (path: string, data: {} | string) =>
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
 import { exit } from "process";
 
-save("enum_lookup.yaml", stringify(data.Enums.filter(x => x.System === "Server").sort((a, b) => a.ID - b.ID).map(x => {
-  assert(x.ID + 10000 === x.TypeID);
+save("enum_lookup.yaml", stringify(data.Enums.sort((a, b) => b.System.localeCompare(a.System) || a.ID - b.ID).map(x => {
+  // assert(x.ID + 10000 === x.TypeID);
   let res = {};
   res[x.Identifier] = x.ID;
   res["name"] = x.InGameName.en;
@@ -34,14 +34,16 @@ exit();
 // IMPORTANT 提取 ENUM id 信息的很新颖的方法: 导入composite节点时是不检查内外一致性的, 因此可以手动生成接口而不用找到内部实际对应的节点......
 const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/1.gia");
 const input = g.graph.compositeDef?.inner.def.inputs!;
-for (let k = 0; k < 50; k++) {
+for (let id = 0; id < 60; id++) {
+  // let k = (id % 2) + 10000 * (id >> 1);
+  let k = id + 200000;
   const i = structuredClone(input[0]);
   i.name = "Enum_id_" + k;
   i.type.type1 = 10000 + k;
   i.type.enumType.enumId = k;
-  i.index.index = k;
-  i.pinIndex = 50 + k;
-  input[k] = i;
+  i.index.index = id + 1;
+  i.pinIndex = 50 + id;
+  input[id] = i;
 }
 encode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/2.gia", g)
 

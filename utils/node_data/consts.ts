@@ -18,6 +18,7 @@ interface Document {
   Types: TypeDef[];             // 类型定义 (Key: SafeName)
   Nodes: NodeDef[];             // 节点定义列表
   Enums: EnumDef[];             // 枚举定义
+  EnumTypes: EnumTypeDef[];     // 枚举类型定义(枚举集合)
   // Protocol/System Consts Tables
   SystemConstants: SystemConstDef;   // 用于存放那些 Magic Numbers (如 Class=10001, RPC_Kernel=2000)
 }
@@ -31,21 +32,23 @@ interface TypeDef {
   Identifier: string;         // see node_types.ts
   ID: number;                 // Server ID
   ClientID: number | null;    // Client ID (if exists)
-  InGameName: Translations;   // In-game name
-  DSLName: string;            // Name of var class(type) in DSL
   BaseType: string;           // Base type of the entry in game runtime
   BaseTypeID: number;         // Id of the base type
+  DSLName: string;            // Name of var class(type) in DSL
+  InGameName: Translations;   // In-game name
 }
-interface EnumDef {
-  Identifier: string;                     // FourCC
-  System: "Server" | "Client";            // The applicable range of the node
-  ID: number;                             // 游戏内部类型系统中使用的 ID
+interface EnumTypeDef {
+  Identifier: string;                     // FourCC: /[ABD-Z][A-Z]{3}/ for Server, /C[A-Z]{3}/ for Client
+  ID: number;                             // 游戏内部类型系统中使用的 ID (Server: 0~100, Client: 200000~200100)
+  TypeID: number;                         // 游戏内部类型系统中使用的类型 ID (ID + 10000)
+  System: "Server" | "Client";            // The applicable range of the node, 尽管在Server中可以使用Client的类型, 反之亦然
+  Category: number;                       // 内部集合的<Category>, 不是强制区分的
   InGameName: Translations;               // In-game display name
   Alias?: string[];                       // 保证游戏中的名称发生变化后仍有历史记录, 增强抗干扰能力
-  Items: EnumEntryDef[];                  // List of Enum items of current enum
+  Collection: string[];                   // List of Enum items of current enum type
 }
-interface EnumEntryDef {
-  Identifier: string;                     // <FourCC>.<SafeName>
+interface EnumDef {
+  Identifier: string;                     // <Category>.<Type>
   ID: number;                             // 游戏内部类型系统中使用的 ID
   InGameName: Translations;               // In-game display name
   Alias?: string[];                       // 保证游戏中的名称发生变化后仍有历史记录, 增强抗干扰能力
@@ -57,11 +60,11 @@ interface NodeDef {
   Identifier: string;                     // <Domain>.<Category>.<Action>
   ID: number;                             // Node ID
   KernelID?: number;                      // Kernel ID (if exists)
-  InGameName: Translations;               // In-game name
-  Alias?: string[];                       // 保证游戏中的名称发生变化后仍有历史记录, 增强抗干扰能力
-  Type: "Fixed" | "Variant";              // Whether a node is fixed-defined or generic-defined 
   System: "Server" | "Client";            // The applicable range of the node
   Domain: "Execution" | "Trigger" | "Control" | "Query" | "Arithmetic" | "Others" | "Hidden";
+  Type: "Fixed" | "Variant";              // Whether a node is fixed-defined or generic-defined 
+  InGameName: Translations;               // In-game name
+  Alias?: string[];                       // 保证游戏中的名称发生变化后仍有历史记录, 增强抗干扰能力
   FlowPins: PinDef[];                     // List of control flow pins of the node
   DataPins: PinDef[];                     // List of data io pins of the node
   Variants?: VariantDef[]                 // Only for Variant Nodes
@@ -72,8 +75,6 @@ interface NodeDef {
 // ------------------------------------------------------------------
 interface PinDef {
   Identifier: string;                                 // 每个节点内部唯一标识 (e.g., "Arg1", "FlowIn")
-  Label: Translations;                                // UI 显示文本
-  Placeholder?: Translations;                         // Placeholder of the pin
   Direction: "In" | "Out";                            // Direction of the pin
   ShellIndex: number;                                 // Outer index of the pin
   KernelIndex: number;                                // Inner index of the pin
@@ -83,6 +84,8 @@ interface PinDef {
   Connectability?: boolean;                           // Whether the pin can be connected by another one
   Editability?: boolean;                              // Whether the pin can be edited by user manually
   Remarks?: string;                                   // Some additional information about the pin with special behavior
+  Label: Translations;                                // UI 显示文本
+  Placeholder?: Translations;                         // Placeholder of the pin
 }
 // ------------------------------------------------------------------
 // Implementation & Mapping (The Kernel)
@@ -96,13 +99,13 @@ interface VariantDef {
   InjectedContents: InjectedDef[]; // Key 是 Pin Identifier
 }
 interface InjectedDef {
-  PinIdentifier: string; // 引用 Inputs/Outputs 中的 Name
+  Identifier: string; // 引用 Inputs/Outputs 中的 Name
   TypeSelectorIndex?: number; // 可变引脚的 Selector Index (用于 UI 下拉菜单分组)
   ShellIndex?: number;   // Inner index of the pin
   KernelIndex?: number;  // Inner index of the pin
+  DefaultValue?: PinValue;
   Visibility?: "Display" | "Hidden" | "Conditional";
   Connectability?: boolean;
-  DefaultValue?: PinValue;
 }
 type ImplementationDef = {
   Kind: "RPC";
@@ -130,7 +133,7 @@ type GraphCategoryConstsDef = Record<string, {
   NodeKind: number;
 }>;
 // ====== End of Document Schema ====== //
-export type { Document, Translations, NodeDef, EnumDef, EnumEntryDef, SystemConstDef, PinDef, TypeDef };
+export type { Document, Translations, NodeDef, EnumDef, EnumTypeDef, SystemConstDef, PinDef, TypeDef };
 
 
 export const GRAPH_CATEGORY_CONSTS = {
