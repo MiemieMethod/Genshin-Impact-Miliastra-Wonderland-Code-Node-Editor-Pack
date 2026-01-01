@@ -1,5 +1,5 @@
 {
-  "commitMessage": "Refract Gia Gen Interface",
+  "commitMessage": "Refract Static Data and Now All functions relies on the universal data.json",
   "notSync": true,
   "include": [
     "*",
