@@ -30,6 +30,8 @@ import { exit } from "process";
 //   return res;
 // })));
 
+
+// 替换为新的 FourCC 值
 const sets = new Set(readFileSync("./utils/node_data/enum_lookup.yaml").toString().split("\n")
   .filter(l => /^- [A-Z]{4}: \d+$/.test(l.trim()))
   .map(l => l.trim().slice(2, 6)));
@@ -40,14 +42,32 @@ const maps = new Map(readFileSync("./utils/node_data/enum_lookup.yaml").toString
 
 data.Nodes.forEach(n => {
   n.DataPins.forEach(p => {
-    p.Type.replaceAll(/E<([A-Z]{4})>/g, (_, x) => {
+    p.Type = p.Type.replaceAll(/E<([A-Z]{4})>/g, (_, x) => {
       const mx = maps.get(x);
       const sx = sets.has(x);
       assertEq(!mx, sx);
       return `E<${mx ?? x}>`;
     })
-  })
+  });
+
+  n.Variants?.forEach(v => {
+    v.Constraints = v.Constraints.replaceAll(/E<([A-Z]{4})>/g, (_, x) => {
+      const mx = maps.get(x);
+      const sx = sets.has(x);
+      assertEq(!mx, sx);
+      return `E<${mx ?? x}>`;
+    })
+  });
 });
+
+data.Enums.forEach(x => {
+  const mx = maps.get(x.Identifier);
+  const sx = sets.has(x.Identifier);
+  assertEq(!mx, sx);
+  x.Identifier = mx ?? x.Identifier
+});
+
+save("data.json", data);
 
 exit();
 

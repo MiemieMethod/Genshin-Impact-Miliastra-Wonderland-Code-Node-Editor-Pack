@@ -126737,7 +126737,7 @@
           ]
         },
         {
-          "Constraints": "S<T:E<USAF>>",
+          "Constraints": "S<T:E<CUSF>>",
           "KernelID": 10,
           "InjectedContents": [
             {
@@ -145004,7 +145004,7 @@
       ]
     },
     {
-      "Identifier": "USAF",
+      "Identifier": "CUSF",
       "System": "Client",
       "ID": 14,
       "InGameName": {

@@ -483,7 +483,7 @@
     "1403": Player
     "1404": Character
     "1405": Creation
-- USAF: 14 # CUSF
+- CUSF: 14
   id: 200016
   name: Unit Status Addition Failure Reason
   items:
