@@ -141391,7 +141391,8 @@
             "en": "Rectangle"
           },
           "Alias": [
-            "Rectangle"
+            "Rectangle",
+            "Cuboid"
           ]
         },
         {
@@ -141768,7 +141769,8 @@
             "en": "Completely Follow"
           },
           "Alias": [
-            "Completely_Follow"
+            "Completely_Follow",
+            "Full (Location + Orientation)"
           ]
         },
         {
@@ -141778,7 +141780,8 @@
             "en": "Follow Location"
           },
           "Alias": [
-            "Follow_Location"
+            "Follow_Location",
+            "Location"
           ]
         },
         {
@@ -141788,7 +141791,8 @@
             "en": "Follow Rotation"
           },
           "Alias": [
-            "Follow_Rotation"
+            "Follow_Rotation",
+            "Orientation"
           ]
         }
       ],
@@ -141803,7 +141807,8 @@
         "en": "Coordinate System Type"
       },
       "Alias": [
-        "Coordinate_System_Type"
+        "Coordinate_System_Type",
+        "Follow Location"
       ],
       "Items": [
         {
@@ -141813,7 +141818,8 @@
             "en": "Relative Coordinate System"
           },
           "Alias": [
-            "Relative_Coordinate_System"
+            "Relative_Coordinate_System",
+            "Relative Location"
           ]
         },
         {
@@ -141823,7 +141829,8 @@
             "en": "World Coordinate System"
           },
           "Alias": [
-            "World_Coordinate_System"
+            "World_Coordinate_System",
+            "Absolute Location"
           ]
         }
       ],
@@ -145193,7 +145200,8 @@
         "en": "Revive Point Selection Strategy"
       },
       "Alias": [
-        "Revive_Point_Selection_Strategy"
+        "Revive_Point_Selection_Strategy",
+        "Revive Point Selection"
       ],
       "Items": [
         {
@@ -145961,7 +145969,8 @@
             "en": "Only On-Hit Hurtbox"
           },
           "Alias": [
-            "Only On-Hit Hurtbox"
+            "Only On-Hit Hurtbox",
+            "Hurtbox"
           ]
         },
         {
@@ -145971,7 +145980,8 @@
             "en": "Only On-Hit Scene"
           },
           "Alias": [
-            "Only On-Hit Scene"
+            "Only On-Hit Scene",
+            "Scene"
           ]
         },
         {
@@ -146319,7 +146329,8 @@
             "en": "Overloaded"
           },
           "Alias": [
-            "Overloaded"
+            "Overloaded",
+            "Explode"
           ]
         },
         {
@@ -146329,7 +146340,8 @@
             "en": "Vaporize"
           },
           "Alias": [
-            "Vaporize"
+            "Vaporize",
+            "Stream"
           ]
         },
         {
@@ -146340,6 +146352,16 @@
           },
           "Alias": [
             "Burning"
+          ]
+        },
+        {
+          "Identifier": "",
+          "ID": 4704,
+          "InGameName": {
+            "en": "Burned"
+          },
+          "Alias": [
+            "Burned"
           ]
         },
         {
@@ -146359,7 +146381,8 @@
             "en": "Bloom"
           },
           "Alias": [
-            "Bloom"
+            "Bloom",
+            "Overgrow"
           ]
         },
         {
@@ -146379,8 +146402,33 @@
             "en": "Frozen"
           },
           "Alias": [
-            "Frozen"
+            "Frozen",
+            "Freeze"
           ]
+        },
+        {
+          "Identifier": "",
+          "ID": 4709,
+          "InGameName": {
+            "en": "AntiFire"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4710,
+          "InGameName": {
+            "en": "Rock"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4711,
+          "InGameName": {
+            "en": "SlowDown"
+          },
+          "Alias": []
         },
         {
           "Identifier": "electro_charged",
@@ -146389,8 +146437,33 @@
             "en": "Electro-Charged"
           },
           "Alias": [
-            "Electro-Charged"
+            "Electro-Charged",
+            "Shock"
           ]
+        },
+        {
+          "Identifier": "",
+          "ID": 4713,
+          "InGameName": {
+            "en": "Wind"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4714,
+          "InGameName": {
+            "en": "Electric"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4715,
+          "InGameName": {
+            "en": "Fire"
+          },
+          "Alias": []
         },
         {
           "Identifier": "superconduct",
@@ -146399,7 +146472,8 @@
             "en": "Superconduct"
           },
           "Alias": [
-            "Superconduct"
+            "Superconduct",
+            "Superconductor"
           ]
         },
         {
@@ -146409,7 +146483,8 @@
             "en": "Swirl: Pyro"
           },
           "Alias": [
-            "Swirl: Pyro"
+            "Swirl: Pyro",
+            "SwirlFire"
           ]
         },
         {
@@ -146419,7 +146494,8 @@
             "en": "Swirl: Hydro"
           },
           "Alias": [
-            "Swirl: Hydro"
+            "Swirl: Hydro",
+            "SwirlWater"
           ]
         },
         {
@@ -146429,7 +146505,8 @@
             "en": "Swirl: Electro"
           },
           "Alias": [
-            "Swirl: Electro"
+            "Swirl: Electro",
+            "SwirlElectric"
           ]
         },
         {
@@ -146439,8 +146516,57 @@
             "en": "Swirl: Cryo"
           },
           "Alias": [
-            "Swirl: Cryo"
+            "Swirl: Cryo",
+            "SwirlIce"
           ]
+        },
+        {
+          "Identifier": "",
+          "ID": 4721,
+          "InGameName": {
+            "en": "SwirlFireAccu"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4722,
+          "InGameName": {
+            "en": "SwirlWaterAccu"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4723,
+          "InGameName": {
+            "en": "SwirlElectricAccu"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4724,
+          "InGameName": {
+            "en": "SwirlIceAccu"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4725,
+          "InGameName": {
+            "en": "StickRock"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4726,
+          "InGameName": {
+            "en": "StickWater"
+          },
+          "Alias": []
         },
         {
           "Identifier": "crystal_pyro",
@@ -146449,7 +146575,8 @@
             "en": "Crystallize: Pyro"
           },
           "Alias": [
-            "Crystallize: Pyro"
+            "Crystallize: Pyro",
+            "CrystallizeFire"
           ]
         },
         {
@@ -146459,7 +146586,8 @@
             "en": "Crystallize: Hydro"
           },
           "Alias": [
-            "Crystallize: Hydro"
+            "Crystallize: Hydro",
+            "CrystallizeWater"
           ]
         },
         {
@@ -146469,7 +146597,8 @@
             "en": "Crystallize: Electro"
           },
           "Alias": [
-            "Crystallize: Electro"
+            "Crystallize: Electro",
+            "CrystallizeElectric"
           ]
         },
         {
@@ -146479,8 +146608,25 @@
             "en": "Crystallize: Cryo"
           },
           "Alias": [
-            "Crystallize: Cryo"
+            "Crystallize: Cryo",
+            "CrystallizeIce"
           ]
+        },
+        {
+          "Identifier": "",
+          "ID": 4731,
+          "InGameName": {
+            "en": "FrozenBroken"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4732,
+          "InGameName": {
+            "en": "StickGrass"
+          },
+          "Alias": []
         },
         {
           "Identifier": "catalyze",
@@ -146489,7 +146635,8 @@
             "en": "Catalyze"
           },
           "Alias": [
-            "Catalyze"
+            "Catalyze",
+            "Overdose"
           ]
         },
         {
@@ -146499,7 +146646,8 @@
             "en": "Aggravate"
           },
           "Alias": [
-            "Aggravate"
+            "Aggravate",
+            "OverdoseElectric"
           ]
         },
         {
@@ -146509,7 +146657,8 @@
             "en": "Spread"
           },
           "Alias": [
-            "Spread"
+            "Spread",
+            "OverdoseGrass"
           ]
         },
         {
@@ -146519,7 +146668,8 @@
             "en": "Burgeon"
           },
           "Alias": [
-            "Burgeon"
+            "Burgeon",
+            "OvergrowMushroomFire"
           ]
         },
         {
@@ -146529,8 +146679,25 @@
             "en": "Hyperbloom"
           },
           "Alias": [
-            "Hyperbloom"
+            "Hyperbloom",
+            "OvergrowMushroomElectric"
           ]
+        },
+        {
+          "Identifier": "",
+          "ID": 4738,
+          "InGameName": {
+            "en": "PhlogistonSolidification"
+          },
+          "Alias": []
+        },
+        {
+          "Identifier": "",
+          "ID": 4739,
+          "InGameName": {
+            "en": "PhlogistonSolidificationEnd"
+          },
+          "Alias": []
         }
       ]
     },

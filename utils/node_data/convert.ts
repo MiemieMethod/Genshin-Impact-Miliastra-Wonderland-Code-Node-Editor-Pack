@@ -40,7 +40,7 @@ const ret = Object.entries(groups)
     items: Object.fromEntries(Object.entries(Object.groupBy(val!, x => x.ID % 100))
       .map(([k, y]) => [
         k,
-        [...new Set(y!.map(x => [x.InGameName.en, x.Alias.filter(y => y.includes(" "))]).flat(2))].join(", ")
+        [...new Set(y!.map(x => [x.InGameName.en, x.Alias.filter(y => !y.includes("_"))]).flat(2))].join(", ")
       ]))
   }));
 
