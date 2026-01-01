@@ -18,13 +18,8 @@ const save = (path: string, data: {} | string) =>
 // TODO: VisiblePin8(10) of Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Loc's type conflicts with others
 // TODO: get Enum Real Id
 
-// TODO: 添加 index of type selector
-
-
-save("data.json", data);
-exit();
+// 添加 index of type selector
 import { NodesList as old } from "./data.ts";
-import { exit } from "process";
 data.Nodes.forEach(node => {
   if (node.Variants === undefined) return;
   const ref = old.filter(x => x.ID === node.ID);
