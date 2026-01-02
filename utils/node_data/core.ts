@@ -556,3 +556,8 @@ export class Enums {
     return types1.some(t1 => types2.some(t2 => t1.Identifier === t2.Identifier));
   }
 }
+
+// Used to get type info from NodeType
+export class TypeEngine {
+
+}
