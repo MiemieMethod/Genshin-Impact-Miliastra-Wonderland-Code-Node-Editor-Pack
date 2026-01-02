@@ -36,13 +36,15 @@ const SystemTypeMap: Record<string, string> = {
 
 /**
  * Verifying parsed protobuf data against proto definitions.
+ * Returns an object containing validation errors and the reconstructed data structure (with field names).
  */
 export function verifyProto(
   data: ParsedResult,
   layer: TypeLayers,
   path: string = "root"
-): ValidationError[] {
+): { errors: ValidationError[], result: any } {
   const errors: ValidationError[] = [];
+  const result: any = {};
 
   // 1. Check for missing required fields (not optional)
   for (const [index, varDef] of layer.vars.entries()) {
@@ -66,17 +68,20 @@ export function verifyProto(
 
     // 2a. Extra field check
     if (!varDef) {
+      const fieldName = `field_${fieldIndex}`;
       errors.push({
         type: "EXTRA_FIELD",
-        path: `${path}.field_${fieldIndex}`,
+        path: `${path}.${fieldName}`,
         fieldIndex: fieldIndex,
         content: `Unknown field index ${fieldIndex}`,
         expected: values,
       });
+      result[fieldName] = values.length === 1 ? values[0] : values;
       continue;
     }
 
     const currentPath = `${path}.${varDef.name}`;
+    const fieldName = varDef.name;
 
     // 2b. Repeated field check
     if (!varDef.repeated && values.length > 1) {
@@ -88,14 +93,27 @@ export function verifyProto(
       });
     }
 
-    // 2c. Type check for each value
+    // 2c. Type check for each value and reconstruct
+    const reconstructedValues: any[] = [];
     for (const value of values) {
-      const typeErrors = checkType(value, varDef, layer, currentPath);
+      const { errors: typeErrors, value: processedValue } = checkType(value, varDef, layer, currentPath);
       errors.push(...typeErrors);
+      reconstructedValues.push(processedValue);
+    }
+
+    // Assign to result
+    if (varDef.repeated) {
+      result[fieldName] = reconstructedValues;
+    } else {
+      // If not repeated but has multiple values, we still take the last one or all? 
+      // Usually, the last one wins in protobuf if not repeated. 
+      // But here we might want to see the "wrong" ones too if there's a REPEATED_MISMATCH.
+      // However, for "reconstructed structure", we focus on the mapping.
+      result[fieldName] = reconstructedValues.length === 1 ? reconstructedValues[0] : reconstructedValues;
     }
   }
 
-  return errors;
+  return { errors, result };
 }
 
 function checkType(
@@ -103,7 +121,7 @@ function checkType(
   varDef: VarDef,
   currentLayer: TypeLayers,
   path: string
-): ValidationError[] {
+): { errors: ValidationError[], value: any } {
   const errors: ValidationError[] = [];
   const fieldIndex = varDef.index;
   const typeName = varDef.class[varDef.class.length - 1];
@@ -114,12 +132,11 @@ function checkType(
     const actualType = value instanceof Uint8Array ? "Uint8Array" : typeof value;
 
     if (expectedType === "number" && (actualType === "number" || actualType === "bigint")) {
-      // Numbers can be represented as bigints in raw decoder sometimes
-      return errors;
+      return { errors, value: Number(value) };
     }
 
     if (expectedType === "bigint" && (actualType === "number" || actualType === "bigint")) {
-      return errors;
+      return { errors, value: BigInt(value) };
     }
 
     if (actualType !== expectedType) {
@@ -130,15 +147,15 @@ function checkType(
         content: `Expected '${expectedType}', got '${actualType}'`,
         expected: value,
       });
+      // Keep original format on error
+      return { errors, value };
     }
-    return errors;
+    return { errors, value };
   }
 
   // Message or Enum
-  // Search for the type definition
   let typeLayer: TypeLayers | undefined = undefined;
 
-  // Navigate through the layers to find the type
   let search: TypeLayers | null = currentLayer;
   while (search) {
     let found = true;
@@ -160,14 +177,13 @@ function checkType(
   }
 
   if (!typeLayer) {
-    // This shouldn't happen if searchVars() was called correctly
     errors.push({
       type: "TYPE_MISMATCH",
       path: path,
       fieldIndex: fieldIndex,
       content: `Definition for ${varDef.class.join(".")} not found`,
     });
-    return errors;
+    return { errors, value };
   }
 
   // If it's an enum
@@ -183,14 +199,17 @@ function checkType(
         content: `Value ${val} is not a valid enum value for ${typeLayer.name}`,
         expected: enumValues.map(e => `${e[0]}=${e[1]}`).join(", "),
       });
+      // Keep original
+      return { errors, value };
     }
-    return errors;
+    return { errors, value: val };
   }
 
   // If it's a message
   if (typeof value === "object" && value !== null && !(value instanceof Uint8Array)) {
-    // Nested message
-    errors.push(...verifyProto(value as ParsedResult, typeLayer, path));
+    const { errors: subErrors, result: subResult } = verifyProto(value as ParsedResult, typeLayer, path);
+    errors.push(...subErrors);
+    return { errors, value: subResult };
   } else {
     errors.push({
       type: "TYPE_MISMATCH",
@@ -198,7 +217,6 @@ function checkType(
       fieldIndex: fieldIndex,
       content: `Expected message ${typeLayer.name}, but got ${typeof value}`,
     });
+    return { errors, value };
   }
-
-  return errors;
 }

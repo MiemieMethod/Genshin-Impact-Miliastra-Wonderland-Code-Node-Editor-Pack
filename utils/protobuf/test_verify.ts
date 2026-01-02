@@ -2,6 +2,8 @@ import { parse } from "./proto2ts.ts";
 import { verifyProto } from "./verify_proto.ts";
 import { type ParsedResult } from "./decode_raw.ts";
 
+const stringify = (obj: any) => JSON.stringify(obj, (k, v) => typeof v === "bigint" ? v.toString() : v, 2);
+
 const sampleProto = `
 // @version: 1.0.0
 // syntax = "proto3";
@@ -39,8 +41,9 @@ const data1: ParsedResult = {
 };
 
 console.log("--- Test 1: Perfect Match ---");
-const errors1 = verifyProto(data1, layers.message.get("TestMessage")!);
-console.log("Errors:", JSON.stringify(errors1, null, 2));
+const { errors: errors1, result: res1 } = verifyProto(data1, layers.message.get("TestMessage")!);
+console.log("Errors:", stringify(errors1));
+console.log("Result:", stringify(res1));
 
 // Case 2: Errors
 const data2: ParsedResult = {
@@ -52,8 +55,9 @@ const data2: ParsedResult = {
 };
 
 console.log("\n--- Test 2: Multiple Errors ---");
-const errors2 = verifyProto(data2, layers.message.get("TestMessage")!);
-console.log("Errors:", JSON.stringify(errors2, null, 2));
+const { errors: errors2, result: res2 } = verifyProto(data2, layers.message.get("TestMessage")!);
+console.log("Errors:", stringify(errors2));
+console.log("Result:", stringify(res2));
 
 // Case 3: Missing required field
 const data3: ParsedResult = {
@@ -61,8 +65,9 @@ const data3: ParsedResult = {
 };
 
 console.log("\n--- Test 3: Missing Required Fields ---");
-const errors3 = verifyProto(data3, layers.message.get("TestMessage")!);
-console.log("Errors:", JSON.stringify(errors3, null, 2));
+const { errors: errors3, result: res3 } = verifyProto(data3, layers.message.get("TestMessage")!);
+console.log("Errors:", stringify(errors3));
+console.log("Result:", stringify(res3));
 
 // Case 4: Repeated mismatch
 const data4: ParsedResult = {
@@ -74,5 +79,6 @@ const data4: ParsedResult = {
 };
 
 console.log("\n--- Test 4: Repeated Mismatch ---");
-const errors4 = verifyProto(data4, layers.message.get("TestMessage")!);
-console.log("Errors:", JSON.stringify(errors4, null, 2));
+const { errors: errors4, result: res4 } = verifyProto(data4, layers.message.get("TestMessage")!);
+console.log("Errors:", stringify(errors4));
+console.log("Result:", stringify(res4));
