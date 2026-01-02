@@ -1,81 +1,89 @@
 syntax = "proto3";
-// @version: 1.5.1
+// @version: 2.0.0
 // package gia;
 
 message Root {
-  GraphUnit graph = 1;                // graph info
-  repeated GraphUnit accessories = 2; // data_structure, input/output
-  string filePath = 3;    // {UID}-{TIME}-{LEVEL_ID}-\{FILE_NAME}.gia
-  string gameVersion = 5; // 6.2.0 by now
+  GraphUnit          graph        = 1; // graph info
+  repeated GraphUnit accessories  = 2; // data_structure, input/output
+  string             file_path    = 3; // {UID}-{TIME}-{LEVEL_ID}-\{FILE_NAME}.gia
+  string             game_version = 5; // 6.2.0 by now
 }
 
-// 通用资源标识符 (原 NodeGraph.Id, NodeProperty 等)
+// 通用资源标识符 (原 GlobalIdentifier, NodeProperty 等)
 // 这是整个系统中"资源的身份证"
 message GlobalIdentifier {
-  enum Metadata {
-    UNKNOWN_CLASS = 0;
-    USER_DEFINED = 10000;    // 用户资产
-    SYSTEM_DEFINED = 10001;  // 系统内置
+  enum Origin {
+    UNKNOWN_CLASS  = 0;
+    USER_DEFINED   = 10000; // 用户资产
+    SYSTEM_DEFINED = 10001; // 系统内置
   }
 
   enum Category {
     UNKNOWN_TYPE = 0;
 
-    Node = 1;            // Such as boolean filter
-    Basic = 5;           // Such as graph node
-    AffiliatedNode = 23; // Assembly/Split for Structure
+    // 资产类型
+    FILTER_NODE_GRAPH     = 1; // Such as boolean filter
+    BASIC_NODE_GRAPH      = 5; // Such as graph node
+    AFFILIATED_NODE_GRAPH = 23; // Assembly/Split for Structure
 
-    // Server Side Types
-    SERVER_BASIC = 20000;    
+    // Server Side Node Types
+    SERVER_BASIC  = 20000;
     SERVER_STATUS = 20003;
-    SERVER_CLASS = 20004;
-    SERVER_ITEM = 20005;
-    
-    // Client Side Types
-    CLIENT_FILTER = 20001;   // 本地运算
-    CLIENT_SKILL = 20002;    // RPC / 技能流程
-    CLIENT_INT_FILTER = 20006;
+    SERVER_CLASS  = 20004;
+    SERVER_ITEM   = 20005;
+
+    // Client Side Node Types
+    CLIENT_FILTER     = 20001; // 筛选器类型(默认 Bool)
+    CLIENT_SKILL      = 20002; // 技能节点图流程(客户端)
+    CLIENT_INT_FILTER = 20006; // 整数筛选器类型
   }
 
   enum AssetKind {
-    ServerGraph = 0;
-    ClientGraph = 3;
-    StructureDefinition = 15;
-    CUSTOM_GRAPH = 21001;      // NodeGraph
-    COMPOSITE_GRAPH = 21002;   // CompositeGraph
-    SYS_CALL_STUB = 22000;     // SysCall (Kernel 2000/2001 等)
-    GENERATED_STUB = 22001;    // SysGraph (Struct/Signal 定义生成的节点)
+    // 资产类型
+    SERVER_NODE_GRAPH     = 0;
+    CLIENT_NODE_GRAPH     = 3;
+    STRUCTURE_DECLARATION = 15;
+
+    // 节点图类型
+    CUSTOM_GRAPH    = 21001; // NodeGraph
+    COMPOSITE_GRAPH = 21002; // CompositeGraph
+
+    // 节点类型
+    SYS_CALL_STUB  = 22000; // SysCall (Kernel 2000/2001 等)
+    GENERATED_STUB = 22001; // SysGraph (Struct/Signal 定义生成的节点)
   }
 
-  Metadata class_id = 1;    // 原 class
-  Category type_id = 2;     // 原 type
-  AssetKind kind_id = 3;    // 原 kind
-  int64 graph_id = 4;       // Node Graph Id
-  int64 uid = 5;            // 原 id / nodeId
+  Origin    origin   = 1;
+  Category  category = 2;
+  AssetKind kind     = 3;
+
+  // ====== Optional ======
+  int64 graph_id = 4; // 资源所属图 ID
+  int64 uid      = 5; // 全局唯一 ID
 }
 
 message GraphUnit {
   enum Which {
-    Unknown = 0;
-    EntityNode = 9;
-    BooleanFilter = 10;
-    Skills = 11;
-    CompositeGraph = 12;
-    StatusNode = 22;
-    ClassNode = 23;
-    StructureDefinition = 29;
+    Unknown                  = 0;
+    EntityNode               = 9;
+    BooleanFilter            = 10;
+    Skills                   = 11;
+    CompositeGraph           = 12;
+    StatusNode               = 22;
+    ClassNode                = 23;
+    StructureDefinition      = 29;
     LevelStructureDefinition = 37;
-    ItemNode = 46;
-    IntegerFilter = 47;
+    ItemNode                 = 46;
+    IntegerFilter            = 47;
   };
 
-  GlobalIdentifier id = 1;                  // Self id
+  GlobalIdentifier          id         = 1; // Self id
   repeated GlobalIdentifier relatedIds = 2; // Some related accompanying units(If exist)
-  string name = 3;            // Node Graph Name
-  Which which = 5;            // Enumeration of Node Graph Type
+  string                    name       = 3; // Node Graph Name
+  Which                     which      = 5; // Enumeration of Node Graph Type
 
   oneof graphType {
-    NodeGraphWrapper graph = 13;           // Else
+    NodeGraphWrapper    graph        = 13; // Else
     CompositeDefWrapper compositeDef = 14; // When type is Composite Graphs
     StructureDefWrapper structureDef = 22; // When type is Structure Definitions
   }
@@ -85,6 +93,7 @@ message NodeGraphWrapper {
   message InnerWrapper { NodeGraph graph = 1; }
   InnerWrapper inner = 1;
 }
+
 message CompositeDefWrapper {
   message InnerWrapper { CompositeDef def = 1; }
   InnerWrapper inner = 1;
@@ -92,169 +101,139 @@ message CompositeDefWrapper {
 
 message CompositeDef {
   message Id {
-    NodeGraph.Id shellId = 1;
-    NodeGraph.Id kernelId = 2;
-    NodeGraph.Id graphId = 4;
-    int32 signalVersion = 5;
+    GlobalIdentifier shellId       = 1;
+    GlobalIdentifier kernelId      = 2;
+    GlobalIdentifier graphId       = 4;
+    optional int32   signalVersion = 5;
   }
   message ParameterFlow {
     message Type {
-      message MapType {
-        VarType key = 3;
-        VarType value = 4;
-      }
-      message ListType {
-        message Inner {
-          VarBase.Class class = 1;
-          VarType type1 = 3;
-          VarType type2 = 4;
-          oneof type {
-            EnumType enumType = 101; // only appears at boolean list
-          }
-        }
-        Inner inner = 1;
-      }
-      message EnumType { int32 enumId = 1; }
-      VarBase.Class class = 1;
-      VarType type1 = 3; // could be Client Var Type for Client Composite
-      VarType type2 = 4; // could be Server Var Type for Client Composite
-      optional DisplayState special_pin_state = 7; // Not Sure
-      oneof type {
-        EnumType enumType = 101;
-        ListType listType = 102;
-        ID valueId = 104;
-        MapType mapType = 105;
-      }
+      VarBase.Class class         = 1; // 决定了基础类型与对外显示形式(int输入框, boolean选择, vec3 输入, list 连线....)
+      int32         varTypeShell  = 3; // could be Client Var Type for Client Composite
+      int32         varTypeKernel = 4; // could be Client Var Type for Client Composite
 
-      message ID { int64 id = 2; }
+      optional DisplayState special_pin_state = 7; // 只有在信号节点的填入名称pin(Type5)的才有此字段和值, 作用不明
       message DisplayState {
         enum State {
-          Hide = 0;
-          ShowAndEditable = 4;
+          None       = 0;
+          SignalName = 4;
         }
         State state = 1;
       }
+
+      oneof type {
+        EnumType enumType = 101;
+        ListType listType = 102;
+        ID       valueId  = 104;
+        MapType  mapType  = 105;
+      }
+
+      message EnumType { int32 enumId = 1; }
+      message ListType {
+        Type item_type = 1;
+      }
+      message ID { int64 id = 2; }
+      message MapType {
+        VarType key   = 3;
+        VarType value = 4;
+      }
+
     }
 
-    string name = 1;
-    int32 xxxx_always_1 = 2; // Maybe. Always 1
-    PinIndex index = 3;
-    Type type = 4;
-    optional PinIndex specialPinType = 5; // for signals/structs
-    int32 pinIndex = 8;
+    string                name               = 1;
+    int32                 xxxx_always_1      = 2; // not sure wtf it is(or bool type maybe) // 修改后导入导出会自动恢复为1
+    PinSignature          index              = 3; // Index of this pin on the shell
+    Type                  type               = 4; // pin value type
+    optional PinSignature specialPinType     = 5; // for generated signals/structs
+    int32                 persistent_pin_uid = 8;
   }
   message ControlFlow {
-    string name = 1;
-    int32 xxxx_always_1 = 2; // Maybe. Always 1
-    PinIndex index = 3;
-    string description = 4;
-    int32 pinIndex = 8;
+    string       name               = 1;
+    int32        xxxx_always_1      = 2;
+    PinSignature index              = 3;
+    string       description        = 4;
+    int32        persistent_pin_uid = 8;
   }
   message Type {
-    enum Kind {
-      Unknown = 0;
-      Composite = 1000;
-      SendSignal = 1001;
+    enum Class {
+      Unknown   = 0;
+      Composite = 1000; // User-defined composite
+      // generate composite_def
+      SendSignal   = 1001;
       ListenSignal = 1002;
-      Assembly = 1003;
-      Split = 1004;
-      Modify = 1005;
-    }
-    message Id { int64 id = 1; }
-    message SignalDef {
-      // message Id {}
-      string signalName = 1;
-      NodeGraph.Id serverNodeId = 2;
-      NodeGraph.Id clientNodeId = 3;
+      Assembly     = 1003;
+      Split        = 1004;
+      Modify       = 1005;
     }
 
-    Kind kind = 1;
+    Class class = 1;
+
+    message Id { int64 id = 1; }
+    message SignalDef {
+      string           signalName   = 1;
+      GlobalIdentifier serverNodeId = 2;
+      GlobalIdentifier clientNodeId = 3;
+    }
     oneof parent {
-      SignalDef sendSignal = 101;
+      SignalDef sendSignal   = 101;
       SignalDef listenSignal = 102;
-      Id assemble = 104;
-      Id split = 105;
-      Id modify = 106;
+      Id        assemble     = 104;
+      Id        split        = 105;
+      Id        modify       = 106;
     }
   }
 
   Id id = 4;
 
-  repeated ControlFlow inflows = 100;
-  repeated ControlFlow outflows = 101;
-  repeated ParameterFlow inputs = 102;
-  repeated ParameterFlow outputs = 103;
-  repeated ParameterFlow signals = 106;
+  repeated ControlFlow   inflows  = 100;
+  repeated ControlFlow   outflows = 101;
+  repeated ParameterFlow inputs   = 102;
+  repeated ParameterFlow outputs  = 103;
+  repeated ParameterFlow signals  = 106;
+
   Type type = 107;
 
   enum WhichDef {
-    Unknown = 0;
-    SubWhich = 1;
-    ListenSignal = 2;
-    ModifyStruct = 3;
-    StructSub = 4;
-    Struct = 5;
+    Unknown       = 0;
+    SubWhich      = 1;
+    ListenSignal  = 2;
+    ModifyStruct  = 3;
+    StructSub     = 4;
+    Struct        = 5;
     UserComposite = 6;
-    SignalSub = 8;
+    SignalSub     = 8;
   }
-  string name = 200;
-  string description = 201;
-  WhichDef which = 203;
-  WhichDef subWhich = 204;
+  string   name        = 200;
+  string   description = 201;
+  WhichDef which       = 203;
+  WhichDef subWhich    = 204; // Why this complex?
 }
 
 message NodeGraph {
-  message Id {
-    enum Class {
-      Unknown1 = 0;
-      UserDefined = 10000;
-      SystemDefined = 10001;
-    }
-    enum Type {
-      Unknown2 = 0;
-      BasicNode = 20000;
-      BooleanFilter = 20001;
-      Skills = 20002;
-      StatusNode = 20003;
-      ClassNode = 20004;
-      ItemNode = 20005;
-      IntegerFilter = 20006;
-    };
-    enum Kind {
-      Unknown3 = 0;
-      NodeGraph = 21001;      // User-defined
-      CompositeGraph = 21002; // User-defined
-      SysCall = 22000;        // Pre-defined
-      SysGraph = 22001;       // Generated From UserStruct
-    }
-    Class class = 1;
-    Type type = 2;
-    Kind kind = 3;
-    int64 id = 5;
-  }
-  Id id = 1;       // graph id (types, id)
-  string name = 2; // Graph Name
-  repeated GraphNode nodes = 3;
-  repeated CompositePin compositePins = 4;
-  repeated Comments comments = 5;
-  repeated GraphVariable graphValues = 6;
-  repeated GraphAffiliation affiliations = 7;
+  GlobalIdentifier id   = 1; // graph id (types, id)
+  string           name = 2; // Graph Name
+
+  repeated NodeInstance     nodes         = 3;
+  repeated CompositePin     compositePins = 4;
+  repeated Comments         comments      = 5;
+  repeated GraphVariable    graphValues   = 6;
+  repeated GraphAffiliation affiliations  = 7;
 
   optional int32 xxx_exposed_pin_index = 100; // always 1, not sure what it is
-  optional float xxxx = 101; // 0.3 for Bool/Int Filter, or 0x3e99999a
+  optional float xxxx                  = 101; // 0.3 for Bool/Int Filter, or 0x3e99999a
 }
 
 message Comments {
-  string content = 1;
-  optional float x = 2;
-  optional float y = 3;
+  string         content = 1;
+  optional float x       = 2;
+  optional float y       = 3;
 }
 
 message GraphAffiliation {
   message Info {
-    NodeGraph.Id source = 1;
-    int32 typeXxx = 2;
-    int32 alwaysOneXxxx = 3;
+    GlobalIdentifier source        = 1;
+    int32            typeXxx       = 2;
+    int32            alwaysOneXxxx = 3;
     oneof extend { VarBase.ItemType.StructItem structId = 100; }
   }
   Info info = 1;
@@ -265,37 +244,37 @@ message GraphAffiliation {
 
 message StructureDefWrapper {
   message StructureDef {
-    Field genericField = 1;
+    Field genericField  = 1;
     Field concreteField = 2; // same as 1
     int32 structVersion = 3; // Version Updated as structure is modified and as
                              // other structures modified
-    int32 itemCount = 4;     // item count
+    int32 itemCount = 4; // item count
   }
   message Field {
-    int64 id = 1;
-    int64 xxx = 2; // 2 for level stru def
+    int64           id   = 1;
+    int64           xxx  = 2; // 2 for level stru def
     repeated VarDef vars = 3;
 
     string structName = 501;
-    int32 classBase = 502; // always 1
-    int32 index = 503;     // same as StructureDef
+    int32  classBase  = 502; // always 1
+    int32  index      = 503; // same as StructureDef
   }
   message VarDef {
     message SubType {
-      VarType type = 1;
-      string xxxx_desc = 2; // What are they?
-      VarType key = 502;
-      VarType value = 503;
-      int64 valueId = 504;
+      VarType type      = 1;
+      string  xxxx_desc = 2; // What are they?
+      VarType key       = 502;
+      VarType value     = 503;
+      int64   valueId   = 504;
     }
     message TypeDef {
-      VarType type = 1;
+      VarType type    = 1;
       SubType subType = 2;
 
       oneof val {
-        IntBaseValue intVal = 13;
-        EnumBaseValue boolVal = 14;
-        StringBaseValue strVal = 16;
+        IntBaseValue    intVal  = 13;
+        EnumBaseValue   boolVal = 14;
+        StringBaseValue strVal  = 16;
         // TODO: What A mess here! I can't bear anymore!!!!!
         // He who trust himself could take a try.
         // ESPECIALLY MAP/STRUCT BASE
@@ -303,108 +282,109 @@ message StructureDefWrapper {
     }
     TypeDef typedef1 = 1;
     TypeDef typedef3 = 3;
-    string name = 5;
+    string  name     = 5;
 
-    string varName = 501;
-    VarType varType = 502;
-    int32 varIndex = 503; // variable index
+    string  varName  = 501;
+    VarType varType  = 502;
+    int32   varIndex = 503; // variable index
   }
   StructureDef def = 1;
 }
 
 // ========== Begin of Variable Defs ========== //
 enum VarType {
-  UnknownVar = 0;
-  Entity = 1;
-  GUID = 2;
-  Integer = 3;
-  Boolean = 4;
-  Float = 5;
-  String = 6;
-  GUIDList = 7;
-  IntegerList = 8;
-  BooleanList = 9;
-  FloatList = 10;
-  StringList = 11;
-  Vector = 12;
-  EntityList = 13;
-  EnumItem = 14;
-  VectorList = 15;
-  LocalVariable = 16;
-  Faction = 17;
-  reserved 18; // EnumBase
-  reserved 19; // NoBase
-  Configuration = 20;
-  Prefab = 21;
-  ConfigurationList = 22;
-  PrefabList = 23;
-  FactionList = 24;
-  Struct = 25;
-  StructList = 26;
-  Dictionary = 27;
-  VariableSnapshot = 28;
+  UnknownVar       = 0;
+  Entity           = 1;
+  GUID             = 2;
+  Integer          = 3;
+  Boolean          = 4;
+  Float            = 5;
+  String           = 6;
+  GUIDList         = 7;
+  IntegerList      = 8;
+  BooleanList      = 9;
+  FloatList        = 10;
+  StringList       = 11;
+  Vector           = 12;
+  EntityList       = 13;
+  EnumItem         = 14;
+  VectorList       = 15;
+  LocalVariableRef = 16;
+  Faction          = 17;
+  EnumList         = 18;
+  reserved 19;
+  Configuration       = 20;
+  Prefab              = 21;
+  ConfigurationList   = 22;
+  PrefabList          = 23;
+  FactionList         = 24;
+  Struct              = 25;
+  StructList          = 26;
+  Dictionary          = 27;
+  VariableSnapshotRef = 28;
 
   // EnumTypes 10001.....
-  reserved 10000 to 10099;   // server enums
-  reserved 210000 to 210099; // client enums
+  reserved 10000 to 10099;   // server enum types
+  reserved 210000 to 210099; // client enum types
 }
+
 enum ClientVarType {
-  UnknownVar_ = 0;
-  Entity_ = 1;             // type: Ety, typeid: 1
-  EntityList_ = 2;         // type: L<Ety>, typeid: 2
-  Integer_ = 3;            // type: Int, typeid: 3
-  IntegerList_ = 4;        // type: L<Int>, typeid: 4
-  Boolean_ = 5;            // type: Bol, typeid: 5
-  BooleanList_ = 6;        // type: L<Bol>, typeid: 6
-  Float_ = 7;              // type: Flt, typeid: 7
-  FloatList_ = 8;          // type: L<Flt>, typeid: 8
-  String_ = 9;             // type: Str, typeid: 9
-  StringList_ = 10;        // type: L<Str>, typeid: 10
-  Vector_ = 11;            // type: Vec, typeid: 11
-  VectorList_ = 12;        // type: L<Vec>, typeid: 12
-  EnumItem_ = 13;          // type: E<-1>, typeid: 13
-  GUID_ = 14;              // type: Gid, typeid: 14
-  GUIDList_ = 15;          // type: L<Gid>, typeid: 15
-  Faction_ = 16;           // type: Fct, typeid: 16
-  EnumList_ = 17;          // type: L<E<-1>>, typeid: 17
-  Configuration_ = 18;     // type: Cfg, typeid: 18
-  Prefab_ = 19;            // type: Pfb, typeid: 19
+  UnknownVar_        = 0;
+  Entity_            = 1; // type: Ety, typeid: 1
+  EntityList_        = 2; // type: L<Ety>, typeid: 2
+  Integer_           = 3; // type: Int, typeid: 3
+  IntegerList_       = 4; // type: L<Int>, typeid: 4
+  Boolean_           = 5; // type: Bol, typeid: 5
+  BooleanList_       = 6; // type: L<Bol>, typeid: 6
+  Float_             = 7; // type: Flt, typeid: 7
+  FloatList_         = 8; // type: L<Flt>, typeid: 8
+  String_            = 9; // type: Str, typeid: 9
+  StringList_        = 10; // type: L<Str>, typeid: 10
+  Vector_            = 11; // type: Vec, typeid: 11
+  VectorList_        = 12; // type: L<Vec>, typeid: 12
+  EnumItem_          = 13; // type: E<Unk>, typeid: 13
+  GUID_              = 14; // type: Gid, typeid: 14
+  GUIDList_          = 15; // type: L<Gid>, typeid: 15
+  Faction_           = 16; // type: Fct, typeid: 16
+  EnumList_          = 17; // type: L<E<Unk>>, typeid: 17
+  Configuration_     = 18; // type: Cfg, typeid: 18
+  Prefab_            = 19; // type: Pfb, typeid: 19
   ConfigurationList_ = 20; // type: L<Cfg>, typeid: 20
-  PrefabList_ = 21;        // type
-  LocalVariable_ = 22;     // type
 }
+
 message GraphVariable {
-  string name = 2;
-  VarType type = 3;
-  VarBase values = 4;
-  bool exposed = 5;      // Expose vars out of node graph?
-  int64 structId = 6;    // Only in struct, otherwise 0
-  VarType keyType = 7;   // ? Simple type also have this field (=6)
+  string  name      = 2;
+  VarType type      = 3;
+  VarBase values    = 4;
+  bool    exposed   = 5; // Expose vars out of node graph?
+  int64   structId  = 6; // Only in struct, otherwise 0
+  VarType keyType   = 7; // ? Simple type also have this field (=6)
   VarType valueType = 8; // ? (=6)
 }
+
 message VarBase {
   enum Class {
-    Unknown = 0;
-    IdBase = 1;
-    IntBase = 2;
+    Unknown      = 0;
+    IdBase       = 1;
+    IntBase      = 2;
     SelectorBase = 3; // (But how to set options?)
-    FloatBase = 4;
-    StringBase = 5;
-    EnumBase = 6;
-    VectorBase = 7;
+    FloatBase    = 4;
+    StringBase   = 5;
+    EnumBase     = 6;
+    VectorBase   = 7;
 
     ConcreteBase = 10000; // reflective pins
-    StructBase = 10001;
-    ArrayBase = 10002;
-    MapBase = 10003;
+    StructBase   = 10001;
+    ArrayBase    = 10002;
+    MapBase      = 10003;
 
     MapPair = 10007;
   }
   message ItemType {
     message StructItem { int64 structId = 1; }
     message PairItems {
-      VarType key = 1;
-      VarType value = 2;
+      VarType        key      = 1;
+      VarType        value    = 2;
       optional int64 structId = 3; // only when value is struct
     }
     message ClientType {
@@ -414,19 +394,19 @@ message VarBase {
       enum Kind {
         Normal = 0;
         Struct = 1;
-        Pair = 2;
+        Pair   = 2;
       }
       VarType type = 1;
-      Kind kind = 2;
+      Kind    kind = 2;
       oneof id {
-        StructItem item = 100;
-        PairItems items = 101;
+        StructItem item  = 100;
+        PairItems  items = 101;
       }
     }
     enum ClassBase {
       Unknown = 0;
-      Server = 1;
-      Client = 2;
+      Server  = 1;
+      Client  = 2;
     }
     ClassBase classBase = 1;
     oneof class {
@@ -437,36 +417,42 @@ message VarBase {
   message StructInfo {
     // TODO: What is this
     message Inner { int32 xxx = 1; }
-    int32 xxx = 1;
+    int32 xxx   = 1;
     Inner inner = 100;
   }
 
-  Class class = 1;
-  bool alreadySetVal = 2;
-  optional ItemType itemType = 4;
+  Class             class         = 1;
+  bool              alreadySetVal = 2;
+  optional ItemType itemType      = 4;
   // Only Struct contains this field
   optional StructInfo structInfo = 5;
 
   // decided by class, id = class + 100, except Struct/Array/Map
   oneof baseValues {
-    IdBaseValue bId = 101;
-    IntBaseValue bInt = 102;
-    FloatBaseValue bFloat = 104;
-    StringBaseValue bString = 105;
-    EnumBaseValue bEnum = 106;
-    VectorBaseValue bVector = 107;
-    StructBaseValue bStruct = 108;
-    ArrayBaseValue bArray = 109;
+    IdBaseValue       bId            = 101;
+    IntBaseValue      bInt           = 102;
+    FloatBaseValue    bFloat         = 104;
+    StringBaseValue   bString        = 105;
+    EnumBaseValue     bEnum          = 106;
+    VectorBaseValue   bVector        = 107;
+    StructBaseValue   bStruct        = 108;
+    ArrayBaseValue    bArray         = 109;
     ConcreteBaseValue bConcreteValue = 110;
-    MapPairBaseValue bMapPair = 111;
-    MapBaseValue bMap = 112;
+    MapPairBaseValue  bMapPair       = 111;
+    MapBaseValue      bMap           = 112;
   }
 }
+
 message IdBaseValue { int32 val = 1; }
+
 message IntBaseValue { int32 val = 1; }
+
 message FloatBaseValue { float val = 1; }
+
 message StringBaseValue { string val = 1; }
+
 message EnumBaseValue { int32 val = 1; } // enum.ts/EnumNode_Value
+
 message VectorBaseValue {
   message Vec {
     float x = 1;
@@ -475,105 +461,147 @@ message VectorBaseValue {
   }
   Vec val = 1;
 }
+
 message StructBaseValue { repeated VarBase items = 1; }
+
 message ArrayBaseValue { repeated VarBase entries = 1; }
+
 message MapBaseValue {
   // map pairs should be of Class MapPair
   repeated VarBase mapPairs = 1;
 }
+
 message MapPairBaseValue {
-  VarBase key = 1;
+  VarBase key   = 1;
   VarBase value = 2;
 }
+
 message ConcreteBaseValue {
   // index of concrete node types
   // e.g. EnumNode.EnumEqualList
-  int32 indexOfConcrete = 1;
-  VarBase value = 2;
-  optional ComplexValueStruct structs = 5;
+  int32                       indexOfConcrete = 1;
+  VarBase                     value           = 2;
+  optional ComplexValueStruct structs         = 5;
 }
+
 message ComplexValueStruct { // Map KV, Array Item, Struct Item
   message Base { Wrapper wrapper = 1; }
   message Wrapper {
     VarBase.Class class = 1;
     oneof type {
-      VarBase.ItemType.StructItem item = 100;
-      VarBase.ItemType.PairItems mapPair = 102;
+      VarBase.ItemType.StructItem item    = 100;
+      VarBase.ItemType.PairItems  mapPair = 102;
     }
   }
   int32 class = 4;
-  Base inner = 100;
+  Base  inner = 100;
 }
 // ========== End of Variable Defs ========== //
 
-message GraphNode {
-  int32 nodeIndex = 1;                  // 1
-  NodeProperty shellId = 2;             // Node's Template's Id
-  optional NodeProperty kernelId = 3;   // Node's own Id(Null for generic nodes without types)
-  repeated NodePin pins = 4;            // connect to other nodes
-  float x = 5;                          // xpos
-  float y = 6;                          // ypos
-  optional Comments comments = 7;       // comments
-  optional PinIndex specialPin = 8;     // Only in client Nodes
-  optional int32 signalVersion = 9;     // Signals modified times
-  repeated GraphAffiliation.Info usingStruct = 10;
+message NodeInstance {
+  // 节点在图中的唯一索引 (运行时句柄)
+  int32 index = 1;
+
+  // 核心定义与实现分离
+
+  // 外壳定义(UI): shell_ref: 决定节点长什么样
+  GlobalIdentifier shell_ref = 2;
+
+  // 内核实现(Logic): kernel_ref : 决定节点怎么跑
+  // - 对于固定节点: 始终有值。
+  // - 对于可变节点:
+  //    - 若为 null: 表示"未决议" (Unresolved)。节点处于未配置类型的无效状态。
+  //    - 若有值: 表示已根据用户选择的类型，映射到了具体的内核函数 ID。
+  // - 对于 Client Skill 入口 (Start): 通常为 Kernel 2001。(Listen)
+  // - 对于 Client Skill 执行节点 (Execution): 通常为 Kernel 2000。(POST)
+  optional GlobalIdentifier kernel_ref = 3;
+
+  // 引脚与参数
+  repeated PinInstance pins = 4;
+
+  float x_pos = 5;
+  float y_pos = 6;
+
+  // 附加在节点上的用户备注
+  optional Comments attached_comment = 7;
+
+  // 特殊上下文标记 (Legacy / Context Provider)
+
+  // 仅出现在入口节点 (NodeGraphStarts, Kernel 2001)
+  // 标识该图被触发时的上下文类型 (如 Signal)。
+  // 实际是一个无索引的 PinSignature
+  optional PinSignature context_declaration = 8;
+
+  // 仅用于 Signal 相关节点，用于检测定义版本冲突
+  optional int32 signal_version = 9;
+
+  // 结构体依赖声明
+  repeated GlobalIdentifier using_structs = 10;
 }
 
-message NodeProperty {
-  enum Type {
-    Unknown = 0;
-    Server = 20000;
-    Filter = 20001;
-    Skill = 20002;
-  }
-
-  NodeGraph.Id.Class class = 1; // 10001
-  Type type = 2;                // 20000 / 20002
-  NodeGraph.Id.Kind kind = 3;   // 22000
-  int32 nodeId = 5;             // enum.ts/NodeId
-}
-
-message PinIndex {
+message PinSignature {
   enum Kind {
-    Unknown = 0;
-    InFlow = 1;
-    OutFlow = 2;
-    InParam = 3;
-    OutParam = 4;
+    UNKNOWN   = 0;
+    IN_FLOW   = 1;
+    OUT_FLOW  = 2;
+    IN_PARAM  = 3;
+    OUT_PARAM = 4;
 
-    SignalClient = 5;
-    Signal = 6;
-    Struct = 13;
-    ModifyStructKey = 14;
-    SetStructKey = 15;
-    SelectStructKeys = 16;
+    // 特殊用途
+    META_RPC_OPCODE = 5; // 原 SignalClient. 携带 RPC ID
+    META_TOPIC_NAME = 6; // 原 Signal (Entry Context). 携带信号名称/Context声明
+
+    // 结构体操作
+    STRUCT_REF        = 13;
+    STRUCT_KEY_MOD    = 14;
+    STRUCT_KEY_SET    = 15;
+    STRUCT_KEY_SELECT = 16;
   }
-  Kind kind = 1;
-  int32 index = 2; // index of the pin
+  Kind  kind  = 1;
+  int32 index = 2; // 第几个该类型的引脚
 
+  // 当 kind 为 META_RPC_OPCODE (5) 时存储 RPC ID
   message SignalId { int64 id = 1; }
-  optional SignalId signalSource = 100;
+  optional SignalId source_ref = 100;
 }
 
-message NodePin {
-  PinIndex i1 = 1;
-  PinIndex i2 = 2;
+message PinInstance {
+
+  // 双重索引系统
+  PinSignature shell_sig  = 1; // i1: 对应 Shell 定义的 UI 槽位
+  PinSignature kernel_sig = 2; // i2: 对应 Kernel 实现的 参数 槽位
+
+  // 值与类型
   VarBase value = 3;
-  int32 type = 4; // Be careful! VarType in Server and ClientVarType in Client
-  repeated NodeConnection connects = 5; // OutFlow or InParam
-  optional PinIndex signalPin = 6;
-  optional int32 compositePinUid = 7; // Only when calling composite node
+  int32   type  = 4; // Be careful! VarType in Server and ClientVarType in Client
+
+  // 连接关系
+  repeated NodeConnection connections = 5;
+
+  // 动态绑定信息
+
+  // 元数据绑定
+  // 用于 SendSignal 等节点，存储 RPC ID 或 Topic Name 的绑定关系
+  // 原 signalPin
+  optional PinSignature binding_meta = 6;
+
+  // 持久化引脚 ID
+  // 仅用于动态类型 (Struct/Signal/Composite)
+  // 当 Shell 定义发生变更(插队/重排)时，通过此 ID 找回连线关系
+  optional int32 persistent_pin_uid = 7; // 原 compositePinUid
 }
 
 message NodeConnection {
-  int32 id = 1;
-  PinIndex connect = 2;
-  PinIndex connect2 = 3;
+  int32        target_node_index = 1;
+  PinSignature target_pin_shell  = 2;
+  PinSignature target_pin_kernel = 3;
 }
 
 message CompositePin {
-  PinIndex outerPin = 1;
-  int32 innerNodeId = 2;
-  PinIndex innerPin = 3;
-  PinIndex innerPin2 = 4;
+  // 对外接口
+  PinSignature shell_sig = 1;
+  // 对内连线
+  int32        target_node_index = 2;
+  PinSignature target_pin_shell  = 3;
+  PinSignature target_pin_kernel = 4;
 }

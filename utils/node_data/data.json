@@ -312,7 +312,8 @@
     {
       "Identifier": "E<Unk>",
       "Alias": [
-        "EnumItem"
+        "EnumItem",
+        "Enumeration"
       ],
       "ID": 14,
       "ClientID": 13,
@@ -364,6 +365,21 @@
       "DSLName": "Faction",
       "BaseType": "IdBase",
       "BaseTypeID": 1
+    },
+    {
+      "Identifier": "L<E<Unk>>",
+      "Alias": [
+        "Enum List",
+        "Enumeration List"
+      ],
+      "ID": 18,
+      "ClientID": 17,
+      "InGameName": {
+        "en": "Enum List"
+      },
+      "DSLName": "List",
+      "BaseType": "ArrayBase",
+      "BaseTypeID": 10002
     },
     {
       "Identifier": "Cfg",
@@ -136625,7 +136641,7 @@
         {
           "Identifier": "Input6",
           "Direction": "In",
-          "Type": "L<E<CETY>>",
+          "Type": "L<E<CATX>>",
           "Label": null,
           "Placeholder": null,
           "ShellIndex": 6,
@@ -136799,7 +136815,7 @@
         {
           "Identifier": "list",
           "Direction": "Out",
-          "Type": "L<E<CETY>>",
+          "Type": "L<E<CATX>>",
           "Label": {
             "zh-Hans": "列表"
           },
