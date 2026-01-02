@@ -17,6 +17,7 @@ message Asset  {
     BooleanFilter            = 10;
     Skills                   = 11;
     CompositeGraph           = 12;
+    SendSignals              = 14;
     StatusNode               = 22;
     ClassNode                = 23;
     StructureDefinition      = 29;
@@ -239,9 +240,9 @@ message VarBase {
     Inner inner = 100;
   }
 
-  Class             class         = 1;
-  bool              alreadySetVal = 2;
-  optional ItemType itemType      = 4;
+  Class             class             = 1;
+  int32             xxx_alreadySetVal = 2;
+  optional ItemType itemType          = 4;
   // Only Struct contains this field
   optional StructInfo structInfo = 5;
 
@@ -458,16 +459,24 @@ message CompositeDef {
   }
 
   // 参数/数据引脚定义
-  message DataPinDef {
+  message PinDef {
     string       name            = 1;
     int32        visibility_mask = 2; // 原 xxxx_always_1 (位掩码)
     PinSignature sig             = 3; // 包含 Kind (IN_PARAM/OUT_PARAM) 和 Index
 
-    //
+    // 引脚类型定义
     message TypeInfo {
-      VarBase.Class ui_class        = 1; // UI表现形式 (IntBase, VecBase等)
-      VarType       var_type_shell  = 3; // VarType 枚举, 对于 Enum, 为 [100id](EnumCategoryId)
-      VarType       var_type_kernel = 4; // VarType 枚举, 对于 Enum, 为 14(EnumType)
+      // optional for flow pin
+      optional VarBase.Class ui_class        = 1; // UI表现形式 (IntBase, VecBase等)
+      optional VarType       var_type_shell  = 3; // VarType 枚举, 对于 Enum, 为 [100id](EnumCategoryId)
+      optional VarType       var_type_kernel = 4; // VarType 枚举, 对于 Enum, 为 14(EnumType)
+
+      // 参数框提示文本
+      message Placeholder {
+        int32  always_1 = 1;
+        string text     = 2;
+      }
+      optional Placeholder placeholder = 5;
 
       // 元数据引脚特有的显示状态 (如显示为信号名称输入框)
       message DisplayState {
@@ -491,6 +500,8 @@ message CompositeDef {
       message MapType {
         VarType key   = 3;
         VarType value = 4;
+        // if value is StructList
+        optional int64 struct_id = 5;
       }
     }
 
@@ -500,24 +511,16 @@ message CompositeDef {
     int32                 persistent_pin_uid = 8;
   }
 
-  // 流程引脚定义
-  message FlowPinDef {
-    string       name               = 1;
-    int32        visibility_mask    = 2;
-    PinSignature sig                = 3;
-    string       description        = 4;
-    int32        persistent_pin_uid = 8;
-  }
-
   // 实现模板定义
   message Implementation {
     enum Category {
-      UNKNOWN       = 0;
-      COMPOSITE     = 1000; // 用户子图
-      SEND_SIGNAL   = 1001; // 发送信号
-      LISTEN_SIGNAL = 1002; // 监听信号
-      STRUCT_SPLIT  = 1004; // 拆分结构体
-      STRUCT_MODIFY = 1005; // 修改结构体
+      UNKNOWN         = 0;
+      COMPOSITE       = 1000; // 用户子图
+      SEND_SIGNAL     = 1001; // 发送信号
+      LISTEN_SIGNAL   = 1002; // 监听信号
+      STRUCT_ASSEMBLY = 1003; // 拼装结构体
+      STRUCT_SPLIT    = 1004; // 拆分结构体
+      STRUCT_MODIFY   = 1005; // 修改结构体
     }
     Category category = 1;
 
@@ -541,11 +544,11 @@ message CompositeDef {
 
   Signature id = 4;
 
-  repeated FlowPinDef inflows   = 100;
-  repeated FlowPinDef outflows  = 101;
-  repeated DataPinDef inputs    = 102;
-  repeated DataPinDef outputs   = 103;
-  repeated DataPinDef meta_pins = 106; // 原 signals，存放 Type 5 引脚
+  repeated PinDef inflows   = 100;
+  repeated PinDef outflows  = 101;
+  repeated PinDef inputs    = 102;
+  repeated PinDef outputs   = 103;
+  repeated PinDef meta_pins = 106; // 原 signals，存放 Type 5 引脚
 
   Implementation impl = 107;
 

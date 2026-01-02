@@ -1,14 +1,17 @@
-import { decode_gia_file, encode_gia_file } from "./decode.ts";
+import { readFileSync } from "fs";
+import { parse } from "./proto2ts.ts";
+import { ProtobufParser } from "./decode_raw.ts";
+import { verifyProto } from "./verify_proto.ts";
+import { inspect } from "util";
+
+const PATH = "c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/2.gia";
 
 
+const layers = parse(readFileSync(import.meta.dirname + "/gia.proto").toString());
+const parser = new ProtobufParser(true)
+const { result, tags } = parser.parseMessage(new Uint8Array(readFileSync(PATH)).slice(20, -4));
 
-const PATH = "C:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/";
+// console.log(result);
 
-const n = decode_gia_file(PATH + "2.gia");
-n.graph.graph!.inner.graph.nodes[0].nodeIndex = 3;
-n.graph.graph!.inner.graph.nodes[0].pins[0].connects[0].id = 1;
-n.graph.graph!.inner.graph.ioNodeIndex = 3;
-n.graph.graph!.inner.graph.nodes[1].nodeIndex = 1;
-// n.graph.graph!.inner.graph.nodes[1].pins[0].value.bConcreteValue!.value = {} as any;
-// n.graph.graph!.inner.graph.affiliations = [];
-encode_gia_file(PATH + "2_.gia", n);
+const errors1 = verifyProto(result, layers.message.get("Root")!);
+console.log("Errors:", inspect(errors1.filter(x => x.type !== "MISSING_FIELD" && !x.path.startsWith("root.accessories.structureDef")), { depth: Infinity, colors: true }));

@@ -45,7 +45,7 @@ export class ProtobufParser {
       }
 
       shift += 7n;
-      if (shift > 70n) {
+      if (shift > 1000n) {
         throw new Error("Varint too long, likely corrupted");
       }
     }
@@ -103,11 +103,11 @@ export class ProtobufParser {
     while (pos < end) {
       // Read tag (field_number << 3 | wire_type)
       const tagInfo = this.readVarint(data, pos);
-      const tag = Number(tagInfo.value);
+      const tag = tagInfo.value;
       pos = tagInfo.pos;
 
-      const fieldNumber = tag >> 3;
-      const wireType = tag & 0b111;
+      const fieldNumber = Number(tag >> 3n);
+      const wireType = Number(tag & 0b111n);
 
       if (fieldNumber === 0) {
         throw new Error(`Invalid field_number=0 at pos=${pos}`);
@@ -205,14 +205,11 @@ if (import.meta.main || (typeof process !== "undefined" && process.argv[1]?.ends
     process.exit(1);
   }
 
-  try {
-    const data = readFileSync(filePath);
-    // Mimic the Python logic of skipping Gia header if needed (can be customized)
-    const rawData = new Uint8Array(data);
-    const parser = new ProtobufParser(true);
-    const { result } = parser.parseMessage(rawData.slice(20, -4));
-    console.log(JSON.stringify(result, (key, value) => typeof value === "bigint" ? value.toString() : value, 2));
-  } catch (err: any) {
-    console.error("Error:", err.message);
-  }
+  const data = readFileSync(filePath);
+  // Mimic the Python logic of skipping Gia header if needed (can be customized)
+  const rawData = new Uint8Array(data);
+  const parser = new ProtobufParser(true);
+  const { result } = parser.parseMessage(rawData.slice(20, -4));
+  console.log(JSON.stringify(result, (key, value) => typeof value === "bigint" ? value.toString() : value, 2));
+
 }
