@@ -65,10 +65,10 @@ export function assert(cond: boolean, msg?: string): asserts cond {
   if (cond) return;
   throw new Error(msg ?? "Assertion failed");
 }
-export function assertEq<T>(target: unknown, expect: T): asserts target is T {
+export function assertEq<T>(target: unknown, expect: T, msg?: string): asserts target is T {
   if (target === expect) return;
   console.error("[Assertion]", target, "!==", expect);
-  throw new Error("Assertion failed");
+  throw new Error(msg ?? "Assertion failed");
 }
 
 export function deepEqual<T>(
