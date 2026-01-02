@@ -833,6 +833,61 @@ export class TypeEngine {
     return this._typeByStructure!.get("D<Unk,Unk>");
   }
 
+  // --- Type Data Extraction ---
+
+  private _ensureNodeType(nodeType: NT.NodeType | string): NT.NodeType {
+    return typeof nodeType === "string" ? NT.parse(nodeType) : nodeType;
+  }
+
+  /**
+   * Get the primary ID of the type (ServerID or ClientID depending on System)
+   * Directly from NodeType or string representation.
+   */
+  get_type_id(nodeType: NT.NodeType | string): number | undefined {
+    const type = this.toTypeDef(this._ensureNodeType(nodeType));
+    if (!type) return undefined;
+    return (this.system === "Server" ? type.ID : type.ClientID) ?? undefined;
+  }
+
+  /**
+   * Get the BaseTypeID of the type
+   * Directly from NodeType or string representation.
+   */
+  get_type_base_id(nodeType: NT.NodeType | string): number | undefined {
+    const type = this.toTypeDef(this._ensureNodeType(nodeType));
+    return type?.BaseTypeID;
+  }
+
+  /**
+   * Get the ID of the EnumTypeDef
+   * Only applicable for Enum nodes (t: "e").
+   */
+  get_enum_type_id(nodeType: NT.NodeType | string): number | undefined {
+    const nt = this._ensureNodeType(nodeType);
+    if (nt.t !== "e") return undefined;
+    return this.getEnumTypeByIdentifier(nt.e)?.ID;
+  }
+
+  /**
+   * Get the ID of the item type for a list
+   * Only applicable for List nodes (t: "l").
+   */
+  get_item_id(nodeType: NT.NodeType | string): number | undefined {
+    const nt = this._ensureNodeType(nodeType);
+    if (nt.t !== "l") return undefined;
+    return this.get_type_id(nt.i);
+  }
+
+  /**
+   * Get the IDs of the key and value types for a dictionary
+   * Only applicable for Dict nodes (t: "d").
+   */
+  get_key_value_id(nodeType: NT.NodeType | string): [number | undefined, number | undefined] | undefined {
+    const nt = this._ensureNodeType(nodeType);
+    if (nt.t !== "d") return undefined;
+    return [this.get_type_id(nt.k), this.get_type_id(nt.v)];
+  }
+
   // --- Enum Conversions ---
 
   getEnumTypeByID(id: number): D.EnumTypeDef | undefined {

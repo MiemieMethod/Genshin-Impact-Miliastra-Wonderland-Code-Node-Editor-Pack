@@ -91,6 +91,30 @@ const runTests = () => {
     listType: fullList?.list_type?.Identifier
   });
 
+  // 7. Test New Helper Methods
+  console.log("--- Testing New Helper Methods ---");
+  const strNode: NT.NodeType = { t: "b", b: "Str" };
+  const strId = engine.get_type_id(strNode);
+  const strBaseId = engine.get_type_base_id("Str");
+  log("get_type_id (Str)", typeof strId === "number", strId);
+  log("get_type_base_id (Str)", typeof strBaseId === "number", strBaseId);
+
+  const enumId = engine.get_enum_type_id("E<CALC>");
+  log("get_enum_type_id (E<CALC>)", typeof enumId === "number", enumId);
+
+  const listStrNode: NT.NodeType = { t: "l", i: { t: "b", b: "Str" } };
+  const itemId = engine.get_item_id(listStrNode);
+  log("get_item_id (L<Str>)", itemId === strId, { itemId, strId });
+
+  const dictStrIntNode: NT.NodeType = {
+    t: "d",
+    k: { t: "b", b: "Str" },
+    v: { t: "b", b: "Int" }
+  };
+  const kvIds = engine.get_key_value_id(dictStrIntNode);
+  const intId = engine.get_type_id("Int");
+  log("get_key_value_id (D<Str,Int>)", Array.isArray(kvIds) && kvIds[0] === strId && kvIds[1] === intId, kvIds);
+
   console.log("--- Verification Complete ---");
 
   if (fail) exit(1);
