@@ -7,7 +7,7 @@
   "Schema": "Skip",
   "SystemConstants": {
     "GRAPH_CATEGORY_CONSTS": {
-      "server": {
+      "ENTITY_NODE_GRAPH": {
         "AssetsOrigin": 0,
         "AssetsCategory": 5,
         "AssetsKind": 0,
@@ -19,7 +19,7 @@
         "NodeCategory": 20000,
         "NodeKind": 22000
       },
-      "status": {
+      "STATUS_NODE_GRAPH": {
         "AssetsOrigin": 0,
         "AssetsCategory": 5,
         "AssetsKind": 0,
@@ -31,7 +31,7 @@
         "NodeCategory": 20000,
         "NodeKind": 22000
       },
-      "class": {
+      "CLASS_NODE_GRAPH": {
         "AssetsOrigin": 0,
         "AssetsCategory": 5,
         "AssetsKind": 0,
@@ -43,7 +43,7 @@
         "NodeCategory": 20000,
         "NodeKind": 22000
       },
-      "item": {
+      "ITEM_NODE_GRAPH": {
         "AssetsOrigin": 0,
         "AssetsCategory": 5,
         "AssetsKind": 0,
@@ -55,7 +55,7 @@
         "NodeCategory": 20000,
         "NodeKind": 22000
       },
-      "bool": {
+      "BOOLEAN_FILTER_GRAPH": {
         "AssetsOrigin": 0,
         "AssetsCategory": 1,
         "AssetsKind": 3,
@@ -67,7 +67,7 @@
         "NodeCategory": 20001,
         "NodeKind": 22000
       },
-      "int": {
+      "INTEGER_FILTER_GRAPH": {
         "AssetsOrigin": 0,
         "AssetsCategory": 1,
         "AssetsKind": 3,
@@ -79,7 +79,7 @@
         "NodeCategory": 20001,
         "NodeKind": 22000
       },
-      "skill": {
+      "SKILL_NODE_GRAPH": {
         "AssetsOrigin": 0,
         "AssetsCategory": 1,
         "AssetsKind": 3,
@@ -91,7 +91,7 @@
         "NodeCategory": 20002,
         "NodeKind": 22000
       },
-      "composite": {
+      "COMPOSITE_NODE_DECL": {
         "AssetsOrigin": 0,
         "AssetsCategory": 23,
         "AssetsKind": 0,
@@ -105,9 +105,9 @@
       }
     },
     "GRAPH_ID_RANGE": {
-      "server": 1073741824,
-      "client": 1082130432,
-      "composite": 1610612736
+      "Server": 1073741824,
+      "Client": 1082130432,
+      "Composite": 1610612736
     }
   },
   "Types": [

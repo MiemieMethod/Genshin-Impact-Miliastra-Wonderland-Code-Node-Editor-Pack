@@ -7,16 +7,36 @@ import {
   make_typed_value,
   make_connection
 } from "./core.ts";
-import { Node as NodeLib } from "../node_data/instances.ts";
-import type { NodeDef, PinDef } from "../node_data/types.ts";
+import { Doc, Node as NodeLib } from "../node_data/instances.ts";
+import type { NodeDef, PinDef, ResourceClass, ServerClient } from "../node_data/types.ts";
 import { type NodeType, stringify, parse } from "../node_data/node_type.ts";
 import { Counter, randomInt, randomName } from "./utils.ts";
+
+function get_system(resources_class: ResourceClass): ServerClient {
+  switch (resources_class) {
+    case "ENTITY_NODE_GRAPH":
+    case "STATUS_NODE_GRAPH":
+    case "CLASS_NODE_GRAPH":
+    case "ITEM_NODE_GRAPH":
+      return "Server";
+    case "BOOLEAN_FILTER_GRAPH":
+    case "INTEGER_FILTER_GRAPH":
+    case "SKILL_NODE_GRAPH":
+      return "Client";
+    case "COMPOSITE_NODE_DECL":
+      return "Server";
+    default:
+      console.error(`Unknown resource class: ${resources_class}`);
+      return "Server";
+  }
+}
 
 // Helper to determine system from common inputs if needed,
 // but usually we strictly use the system provided in constructor.
 
+
 export class Graph {
-  public readonly system: string;
+  public readonly system: ResourceClass;
   public graph_name: string;
   public uid: number;
   public readonly graph_id: number;
@@ -28,14 +48,11 @@ export class Graph {
   public readonly nodes: Set<Node>;
   public readonly connects: Set<Connection>;
   public readonly comments: Set<Comment>;
-  // For variables, use a simple map for now matching core.ts structure if needed
-  // public readonly vars: Map<string, GraphVar>; 
 
-  constructor(system: string = "Server", uid?: number, name?: string, graph_id?: number) {
-    this.system = system;
+  constructor(system_class: ResourceClass = "ENTITY_NODE_GRAPH", uid?: number, name?: string, graph_id?: number) {
+    this.system = system_class;
     this.uid = uid ?? randomInt(9, "201");
-    // Simple ID generation logic from old graph.ts, simplified
-    const ID_RANGE = system === "Server" ? 0x10000000 : 0x20000000;
+    const ID_RANGE = Doc.systemConstants.GRAPH_ID_RANGE[get_system(system_class)];
     this.graph_id = graph_id ?? randomInt(3) + ID_RANGE;
 
     this.graph_name = name ?? randomName(3);
@@ -51,9 +68,12 @@ export class Graph {
   /**
    * Add a node to the graph.
    * @param node Identifier (string) or ID (number) or existing Node object
-   * @param generic_id Optional ID override if creating from raw ID
+   * @param constraint Optional ID override if creating from raw ID
    */
-  add_node(node: string | number | Node, generic_id?: number): Node | null {
+  add_node(node: string | number | Node, constraints?: NodeType | string): Node | null {
+    if (constraints !== undefined) {
+      constraints = parse(constraints);
+    }
     if (node instanceof Node) {
       if (this.nodes.has(node)) {
         console.error("Node already already in graph!");
@@ -66,28 +86,24 @@ export class Graph {
 
     let def: NodeDef | undefined;
     if (typeof node === "string") {
+      // TODO: support <Domain>.<Category>.<Action>.<Constraints> format
       def = NodeLib.getByIdentifier(node);
-      if (!def) {
-        // Try precise lookup failed, check if it's a "Generic ID + Concrete ID" string from old code? 
-        // User said "Identifier (string) (New Feature)", so we assume standard Node Identifier.
-        console.error(`Node not found by Identifier: ${node}`);
-        return null;
-      }
     } else if (typeof node === "number") {
       def = NodeLib.getByID(node);
-      if (!def) {
-        console.error(`Node not found by ID: ${node}`);
-        return null;
-      }
     } else {
       console.error(`Invalid argument for add_node: ${node}`);
       return null;
     }
-
+    if (def === undefined) {
+      // Try precise lookup failed, check if it's a "Generic ID + Concrete ID" string from old code? 
+      // User said "Identifier (string) (New Feature)", so we assume standard Node Identifier.
+      console.error(`Node not found by Identifier: ${node}`);
+      return null;
+    }
     // Check system compatibility
-    if (def.System !== "Any" && def.System !== this.system) {
+    if (def.System !== get_system(this.system)) {
       // Warning but maybe allow if user knows what they are doing (e.g. specialized Universal nodes)
-      // console.warn(`Node ${def.Identifier} system (${def.System}) does not match Graph system (${this.system})`);
+      console.warn(`Node ${def.Identifier} system (${def.System}) does not match Graph system (${this.system})`);
     }
 
     const newNode = new Node(def, this.counter_idx.value, this.system);

@@ -62,8 +62,9 @@ export function stringify(node: NodeType | string): string {
  * 将字符串形式的类型表达式解析为 NodeType。
  * 更新：支持 C<...> 解析，以及字符串格式的 E<...>
  */
-export function parse(src: string): NodeType {
+export function parse(src: string | NodeType): NodeType {
   if (src === undefined) return UNK_TYPE;
+  if (typeof src === "object") return src;
   let p = 0;
   const tokens = src.split(/([ ]+|\<|\,|\:|\>)/g).filter((x) =>
     x.trim().length > 0

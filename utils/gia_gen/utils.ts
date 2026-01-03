@@ -52,5 +52,3 @@ export type TypedValue =
   | number
   | string
   | TypedValue[];
-
-export const AllowedSystem = ["Server", "Client"] as const;

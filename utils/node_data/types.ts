@@ -17,6 +17,21 @@ export interface Document {
   // Protocol/System Consts Tables
   SystemConstants: SystemConstDef;   // 用于存放那些 Magic Numbers (如 Class=10001, RPC_Kernel=2000)
 }
+export const ResourceClass = [
+  // server side
+  "ENTITY_NODE_GRAPH",
+  "STATUS_NODE_GRAPH",
+  "CLASS_NODE_GRAPH",
+  "ITEM_NODE_GRAPH",
+  // client side
+  "BOOLEAN_FILTER_GRAPH",
+  "INTEGER_FILTER_GRAPH",
+  "SKILL_NODE_GRAPH",
+  // composite declaration
+  "COMPOSITE_NODE_DECL",
+] as const;
+export type ServerClient = "Server" | "Client"
+export type ResourceClass = typeof ResourceClass[number];
 export const Languages = ["cs", "de", "es", "en", "fr", "it", "ja", "ko", "pl", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"] as const;
 export type Translations = Partial<{ [key in typeof Languages[number]]: string }>; // Display names of the entry in different languages
 export type PinValue = string | number | boolean | null; // number could be enum or int
@@ -114,7 +129,7 @@ export interface SystemConstDef {
   GRAPH_CATEGORY_CONSTS: GraphCategoryConstsDef;
   GRAPH_ID_RANGE: Record<string, number>;
 }
-export type GraphCategoryConstsDef = Record<string, {
+export type GraphCategoryConstsDef = Record<ResourceClass, {
   AssetsOrigin: number;
   AssetsCategory: number;
   AssetsKind: number;
