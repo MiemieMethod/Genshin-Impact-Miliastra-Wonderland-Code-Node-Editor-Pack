@@ -8,28 +8,10 @@ import {
   make_connection
 } from "./core.ts";
 import { Doc, Node as NodeLib } from "../node_data/instances.ts";
-import type { NodeDef, PinDef, ResourceClass, ServerClient } from "../node_data/types.ts";
+import type { NodeDef, PinDef, ResourceClass, ServerClient, TypedValue } from "../node_data/types.ts";
 import { type NodeType, stringify, parse } from "../node_data/node_type.ts";
 import { Counter, randomInt, randomName } from "./utils.ts";
 
-function get_system(resources_class: ResourceClass): ServerClient {
-  switch (resources_class) {
-    case "ENTITY_NODE_GRAPH":
-    case "STATUS_NODE_GRAPH":
-    case "CLASS_NODE_GRAPH":
-    case "ITEM_NODE_GRAPH":
-      return "Server";
-    case "BOOLEAN_FILTER_GRAPH":
-    case "INTEGER_FILTER_GRAPH":
-    case "SKILL_NODE_GRAPH":
-      return "Client";
-    case "COMPOSITE_NODE_DECL":
-      return "Server";
-    default:
-      console.error(`Unknown resource class: ${resources_class}`);
-      return "Server";
-  }
-}
 
 // Helper to determine system from common inputs if needed,
 // but usually we strictly use the system provided in constructor.
@@ -37,6 +19,7 @@ function get_system(resources_class: ResourceClass): ServerClient {
 
 export class Graph {
   public readonly system: ResourceClass;
+
   public graph_name: string;
   public uid: number;
   public readonly graph_id: number;
@@ -46,6 +29,8 @@ export class Graph {
   private counter_dyn_id: Counter;
 
   public readonly nodes: Set<Node>;
+  // Node -> Pin -> Connection[] (with order)
+  public readonly flows: Map<Node, Map<string, Connection[]>>;
   public readonly connects: Set<Connection>;
   public readonly comments: Set<Comment>;
 
@@ -178,7 +163,7 @@ export class Graph {
     // For now we pass "Server" or "Client" as string key to graph_body which handles lookup
 
     return graph_body({
-      graph_const: this.system,
+      system: this.system,
       uid: this.uid,
       graph_id: this.graph_id,
       file_id: this.file_id,
@@ -195,6 +180,7 @@ export class Node {
   public readonly node_index: number;
   public readonly system: string;
   public pins: Pin[];
+  public constraint: NodeType | undefined;
 
   public x: number = 0;
   public y: number = 0;
@@ -277,7 +263,6 @@ export class Node {
       console.error(`Node ${this.def.Identifier} is not a Variant node.`);
       return;
     }
-
     const constraintStr = stringify(type);
     const newDef = NodeLib.getVariant(this.def.Identifier, constraintStr);
 
@@ -334,21 +319,16 @@ export class Node {
 }
 
 export class Pin {
-  public node: Node;
-  public def: PinDef;
-  public kind: Gia.PinSignature_Kind;
-  public index: number; // Index within Kind
-  public system: string;
+  public readonly system: ResourceClass;
 
-  public value: any = undefined;
+  public def: PinDef;
+  public value: TypedValue;
   public connections: Connection[] = [];
 
-  constructor(node: Node, def: PinDef, kind: Gia.PinSignature_Kind, index: number, system: string) {
-    this.node = node;
+  constructor(system: ResourceClass, def: PinDef) {
     this.def = def;
-    this.kind = kind;
-    this.index = index;
     this.system = system;
+    this.value = this.def.DefaultValue ?? null;
   }
 
   addConnection(conn: Connection) {
@@ -360,8 +340,8 @@ export class Pin {
     if (idx !== -1) this.connections.splice(idx, 1);
   }
 
-  setVal(val: any) {
-    if (this.kind === Gia.PinSignature_Kind.IN_PARAM) {
+  setVal(val: TypedValue | null) {
+    if (this.def.Direction === "In") {
       this.value = val;
     } else {
       console.error("Cannot set value on output/flow pin");

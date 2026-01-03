@@ -6,7 +6,7 @@ async function test() {
   console.log("--- Testing Graph Interfaces ---");
 
   // 1. Create Graph
-  const graph = new Graph("Server", 12345, "TestGraph");
+  const graph = new Graph("ENTITY_NODE_GRAPH", 12345, "TestGraph");
   console.log(`Created Graph: ${graph.graph_name} (ID: ${graph.graph_id})`);
 
   // 2. Add Node by Identifier (assuming some standard nodes exist)
@@ -46,7 +46,7 @@ async function test() {
       console.log(`Connecting ${node1.def.Identifier}.${outPin.def.Identifier} -> ${node2.def.Identifier}.${inPin.def.Identifier}`);
 
       // Test index based connect
-      const conn1 = graph.connect(node1, node2, outPin.def.Index, inPin.def.Index);
+      const conn1 = graph.connect(node1, node2, 1, 1);
       if (conn1) console.log("Connected via Index!");
       else console.error("Failed to connect via Index");
 

@@ -1,65 +1,15 @@
-import { counter_dynamic_id, counter_index, randomInt, type TypedValue } from "./utils.ts";
+import { counter_dynamic_id, counter_index, get_system, is_empty, randomInt, tracker_index } from "./utils.ts";
 import { assert, assertEq, todo } from "../utils.ts";
 
 import * as Gia from "../protobuf/gia.proto.ts";
 
-import type { NodeDef, PinDef, GraphCategoryConstsDef } from "../node_data/types.ts";
-import { type NodeType, stringify } from "../node_data/node_type.ts";
-import { Doc, Node as NodeHelper } from "../node_data/instances.ts";
+import type { NodeDef, PinDef, GraphCategoryConstsDef, ResourceClass, TypedValue } from "../node_data/types.ts";
+import { DictType, ListType, type NodeType, stringify, StructType } from "../node_data/node_type.ts";
+import { Doc, Node, ServerType, ClientType } from "../node_data/instances.ts";
 
-// ------------------------------------------------------------------
-// Internal Helpers
-// ------------------------------------------------------------------
-
-function get_graph_const(key: keyof GraphCategoryConstsDef | string): Gia.ResourceLocator {
-  const consts = Doc.systemConstants.GRAPH_CATEGORY_CONSTS;
-  if (typeof key === "string" && key in consts) {
-    // Exact match for known category
-    const k = key as keyof GraphCategoryConstsDef;
-    return {
-      source_domain: consts[k].AssetsOrigin as Gia.ResourceLocator_Origin,
-      service_domain: consts[k].AssetsCategory as Gia.ResourceLocator_Category,
-      kind: consts[k].AssetsKind as Gia.ResourceLocator_AssetKind,
-      internal_logic_id: 0,
-      world_entity_guid: 0,
-    };
-  }
-
-  // Fallback or specific logic mapping
-  // Since we don't have the original get_graph_const to reference exact mapping logic, 
-  // we assume the key maps to one of the defined categories in SystemConstants.
-  // If key is "Server" -> "Server" group
-
-  // Common Defaults if not found directly
-  return {
-    source_domain: Gia.ResourceLocator_Origin.USER_DEFINED,
-    service_domain: Gia.ResourceLocator_Category.BASIC_NODE_GRAPH,
-    kind: Gia.ResourceLocator_AssetKind.BASIC,
-    internal_logic_id: 0,
-    world_entity_guid: 0,
-  };
-}
-
-function make_resource_locator(def: NodeDef): Gia.ResourceLocator {
-  // This logic mimics looking up how a NodeDef maps to a ResourceLocator
-  // Using simple defaults for now based on NodeDef properties
-  // Real mapping might need more lookup in SystemConstants based on NodeDef.Domain/System
-  return {
-    source_domain: Gia.ResourceLocator_Origin.SYSTEM_DEFINED,
-    // Map System/Domain to Category? 
-    service_domain: def.System === "Server" ? Gia.ResourceLocator_Category.SERVER_BASIC : Gia.ResourceLocator_Category.CLIENT_FILTER,
-    kind: Gia.ResourceLocator_AssetKind.BASIC,
-    internal_logic_id: def.ID,
-    world_entity_guid: 0,
-  }
-}
-
-// ------------------------------------------------------------------
-// Core Interfaces
-// ------------------------------------------------------------------
 
 export interface GraphBody_ {
-  graph_const: keyof GraphCategoryConstsDef | string;
+  system: ResourceClass;
   /** 唯一标识符 */
   uid: number;
   /** 图的 ID */
@@ -74,10 +24,6 @@ export interface GraphBody_ {
   graphValues?: Gia.GraphVariable[];
 }
 
-// ------------------------------------------------------------------
-// Graph Functions
-// ------------------------------------------------------------------
-
 /**
  * 根据提供的参数构建一个图对象 (Gia.AssetBundle)
  */
@@ -87,28 +33,40 @@ export function graph_body(body: GraphBody_): Gia.AssetBundle {
   const timestamp = Math.floor(Date.now() / 1000);
   const file_id = body.file_id ?? body.graph_id + counter_dynamic_id.value;
 
-  const locator = get_graph_const(body.graph_const);
-  locator.internal_logic_id = body.graph_id;
+  const Identifier = Doc.systemConstants.GRAPH_CATEGORY_CONSTS[body.system];
+  const asset_locator = make_resource_locator({
+    origin: Identifier.AssetsOrigin,
+    category: Identifier.AssetsCategory,
+    kind: Identifier.AssetsKind,
+    guid: body.graph_id
+  });
+  const graph_locator = make_resource_locator({
+    origin: Identifier.GraphOrigin,
+    category: Identifier.GraphCategory,
+    kind: Identifier.GraphKind,
+    id: body.graph_id
+  });
 
+  const system = get_system(body.system);
   const nodeGraph: Gia.NodeGraph = {
-    identity: locator,
+    identity: graph_locator,
     display_name: graph_name,
     nodes: body.nodes ?? [],
     comments: body.comments ?? [],
     blackboard: body.graphValues ?? [],
     port_mappings: [],
-    // entry_slot_index: ? 
-    // evaluation_interval: ?
-  };
 
-  const resource_class = Doc.systemConstants.GRAPH_CATEGORY_CONSTS[body.graph_const].AssetsWhich;
+    // Client only
+    entry_slot_index: system === "Client" ? 1 : undefined,
+    evaluation_interval: system === "Client" ? 0.3 : undefined,
+  };
 
   const assetBundle: Gia.AssetBundle = {
     primary_resource: {
-      identity: locator,
+      identity: asset_locator,
       reference_list: [],
       internal_name: graph_name,
-      resource_class: resource_class as Gia.ResourceEntry_ResourceClass, // Should match graph_const context
+      resource_class: Identifier.AssetsWhich as Gia.ResourceEntry_ResourceClass,
       graph_data: {
         inner: {
           graph: nodeGraph
@@ -117,27 +75,21 @@ export function graph_body(body: GraphBody_): Gia.AssetBundle {
     },
     dependencies: [],
     export_tag: `${body.uid}-${timestamp}-${file_id}-\\${file_name}`,
-    engine_version: "6.2.0" // Or from Const
+    engine_version: Doc.doc.GameVersion,
   };
 
   return assetBundle;
 }
 
 export interface NodeBody_ {
+  system: ResourceClass;
   def: NodeDef;
-  /** 具体 ID, 可选 - if Variant node */
-  concrete_id?: number;
-  /** X 坐标 */
   x: number;
-  /** Y 坐标 */
   y: number;
-  /** 是否抖动位置 */
-  pos_jitter?: boolean;
-  /** 节点的引脚列表 */
+  comment?: Gia.Annotation;
   pins: Gia.PinInstance[];
   /** ⚠️ Warning: This may cause ID collision. 节点唯一索引，不建议填入 */
   unique_index?: number;
-  comment?: Gia.Annotation;
 }
 
 /**
@@ -146,47 +98,41 @@ export interface NodeBody_ {
 export function node_body(body: NodeBody_): Gia.NodeInstance {
   const nodeIndex = body.unique_index ?? counter_index.value;
 
-  // Construct Shell Ref (UI Definition)
-  const shell_ref = make_resource_locator(body.def);
+  const Identifier = Doc.systemConstants.GRAPH_CATEGORY_CONSTS[body.system];
 
-  // Construct Kernel Ref (Logic Implementation)
-  let kernel_ref: Gia.ResourceLocator | undefined = undefined;
-  if (body.def.Type === "Fixed") {
-    kernel_ref = { ...shell_ref }; // Usually same for fixed
-    if (body.def.KernelID) kernel_ref.internal_logic_id = body.def.KernelID;
-  } else if (body.def.Type === "Variant") {
-    if (body.concrete_id) {
-      kernel_ref = { ...shell_ref, internal_logic_id: body.concrete_id };
-      // Assuming concrete_id points to the variant kernel ID
-      // In real logic, might need to lookup variant from def using constraints
-    }
-    // If no concrete_id, kernel_ref remains undefined (Unresolved)
-  }
+  // Construct Shell Ref (UI Definition)
+  const shell_ref = make_resource_locator({
+    origin: Identifier.NodeOrigin,
+    category: Identifier.NodeCategory,
+    kind: Identifier.NodeKind,
+    id: body.def.ID
+  });
+
+  const kernel_ref = body.def.KernelID === undefined ? undefined : make_resource_locator({
+    origin: Identifier.NodeOrigin,
+    category: Identifier.NodeCategory,
+    kind: Identifier.NodeKind,
+    id: body.def.KernelID
+  });
 
   return {
     index: nodeIndex,
     shell_ref,
     kernel_ref,
     pins: body.pins,
-    x_pos: body.x * 300 + (body.pos_jitter ?? true ? Math.random() * 20 : 0),
-    y_pos: body.y * 200 + (body.pos_jitter ?? true ? Math.random() * 20 : 0),
+    x_pos: body.x,
+    y_pos: body.y,
     attached_comment: body.comment,
     using_structs: [], // To be populated if needed
   };
 }
 
 export interface PinBody_ {
+  system: ResourceClass;
   def: PinDef; // Definition of the pin from NodeDef
-  index: number; // Index in the pin list (of that direction/kind)
-
-  kind: Gia.PinSignature_Kind;
-
+  is_flow?: boolean; // Is a control flow pin, otherwise use data pin.
   /** Pin Value (if input) */
   value?: Gia.TypedValue;
-  /** Pin Type (Runtime) */
-  type: NodeType;
-  is_server: boolean;
-
   connections?: Gia.NodeConnection[];
 }
 
@@ -194,173 +140,407 @@ export interface PinBody_ {
  * 构建引脚对象 (Gia.PinInstance)
  */
 export function pin_body(body: PinBody_): Gia.PinInstance {
-  // Map NodeType to ID (S_INT, etc.)
-  // This requires TypeEngine lookup, but for now we can rely on simple mapping or pass lookup
-  // Let's assume a helper or just use 0/Unknown if complex
-  const typeId = 0; // TODO: Implement mapping from NodeType to ServerTypeId/ClientTypeId
+  const shell_sig = make_pin_sig(body.def.ShellIndex, body.def.Direction === "Out", body.is_flow);
+  const kernel_sig = make_pin_sig(body.def.KernelIndex, body.def.Direction === "Out", body.is_flow);
 
-  const sig: Gia.PinSignature = {
-    kind: body.kind,
-    index: body.index // The index of this pin among pins of this Kind
-  };
-
-  return {
-    shell_sig: sig,
-    kernel_sig: sig, // Usually same
-    value: body.value ?? { widget: Gia.TypedValue_WidgetType.UNKNOWN, is_value_set: 0 },
-    type: typeId,
-    connections: body.connections ?? [],
-  };
-}
-
-// ------------------------------------------------------------------
-// Value Helpers
-// -----------------------------------------------------------------
-
-function isGiaTypedValue(v: any): v is Gia.TypedValue {
-  return v && typeof v === "object" && "widget" in v && "is_value_set" in v;
-}
-
-// ------------------------------------------------------------------
-// Value Helpers
-// ------------------------------------------------------------------
-
-export function make_typed_value(type: NodeType, val: any, is_server: boolean): Gia.TypedValue {
-  // Handle undefined/null -> Default zero/empty
-  if (val === undefined || val === null) {
-    return { widget: Gia.TypedValue_WidgetType.UNKNOWN, is_value_set: 0 };
+  if (body.is_flow === true) {
+    return {
+      shell_sig,
+      kernel_sig,
+      value: null as any, // Pin has no value
+      type: 0,
+      connections: body.connections ?? [],
+    };
+  } else {
+    let type = 0;
+    if (get_system(body.system) === "Server") {
+      type = ServerType.get_type_id(body.def.Type ?? ServerType.DEFAULT_TYPE.Identifier) ?? 0;
+    } else {
+      type = ClientType.get_type_id(body.def.Type ?? ClientType.DEFAULT_ENUM.Identifier) ?? 0;
+    }
+    return {
+      shell_sig,
+      kernel_sig,
+      value: body.value ?? (null as any),
+      type,
+      connections: body.connections ?? [],
+    }
   }
+}
 
+// ------------------------------------------------------------------
+// Helpers
+// ------------------------------------------------------------------
+
+function make_resource_locator(args: { origin: number, category: number, kind: number, guid?: number, id?: number }): Gia.ResourceLocator {
+  return {
+    source_domain: args.origin as 0,
+    service_domain: args.category as 0,
+    kind: args.kind as 0,
+    asset_guid: args.guid ?? 0,
+    runtime_id: args.id ?? 0
+  }
+}
+
+function get_type_s(type: NodeType): Gia.ServerTypeId {
+  return ServerType.get_type_id(type) ?? ServerType.DEFAULT_TYPE.ID as any;
+}
+function get_type_c(type: NodeType): Gia.ClientTypeId {
+  return ClientType.get_type_id(type) ?? ClientType.DEFAULT_TYPE.ID as any;
+}
+
+function make_type_definition(type: NodeType, is_server: boolean, is_pair = false): Gia.TypeDefinition {
+  if (is_server) {
+    const ret: Gia.TypeDefinition = {
+      backend: Gia.TypeDefinition_Backend.SERVER,
+      server_side: {
+        type_tag: get_type_s(type),
+        impl: Gia.TypeDefinition_ServerType_Implementation.PRIMITIVE,
+      }
+    };
+    if (type.t === "l" && type.i.t === "s") {
+      // Special Struct List
+      ret.server_side!.impl = Gia.TypeDefinition_ServerType_Implementation.STRUCT;
+      let id = type.i._;
+      if (id === undefined) {
+        id = 0;
+        console.warn("Struct ID is not set.");
+      }
+      ret.server_side!.struct_ref!.schema_id = id;
+    } else if (type.t === "d") {
+      if (is_pair) {
+        // Special Pair Item
+        ret.server_side!.impl = Gia.TypeDefinition_ServerType_Implementation.STRUCT;
+      } else {
+        ret.server_side!.impl = Gia.TypeDefinition_ServerType_Implementation.PAIR;
+      }
+      ret.server_side!.map_binding = {
+        key_type: get_type_s(type.k),
+        value_type: get_type_s(type.v),
+      }
+      let id = undefined;
+      if (type.v.t === "s") {
+        // Special Map<K, Struct>
+        id = type.v._;
+      } else if (type.v.t === "l" && type.v.i.t === "s") {
+        // Special Map<K, List<Struct>>
+        id = type.v.i._;
+      }
+      ret.server_side!.map_binding.value_struct_id = id;
+    } else if (type.t == "s") {
+      ret.server_side!.impl = Gia.TypeDefinition_ServerType_Implementation.STRUCT;
+      let id = type._;
+      if (id === undefined) {
+        console.warn("Struct ID is not set.");
+        id = 0;
+      }
+      ret.server_side!.struct_ref!.schema_id = id;
+    }
+    return ret;
+  } else {
+    return {
+      backend: Gia.TypeDefinition_Backend.CLIENT,
+      client_side: {
+        type_tag: get_type_c(type)
+      }
+    }
+  }
+}
+
+function make_tracker(): Gia.TypedValue_InstanceTracker {
+  return {
+    version_tag: 1,
+    identity: { local_index: tracker_index.value },
+  }
+}
+
+export function make_typed_value(type: NodeType, is_server: boolean, val?: TypedValue): Gia.TypedValue {
   // Helper to check basic types
   if (type.t === "b") {
     switch (type.b) {
-      case "Int": return make_int_value(val);
-      case "Flt": return make_float_value(val);
-      case "Bol": return make_bool_value(val);
-      case "Str": return make_string_value(val);
+      case "Int":
+        return make_int_value(val ?? null, make_type_definition(type, is_server));
+      case "Flt":
+        return make_float_value(val ?? null, make_type_definition(type, is_server));
+      case "Bol":
+        return make_enum_value(val ?? null, make_type_definition(type, is_server));
+      case "Str":
+        return make_string_value(val ?? null, make_type_definition(type, is_server));
       case "Vec":
-        if (Array.isArray(val) && val.length >= 3) return make_vector_value(val[0], val[1], val[2]);
-        if (typeof val === "object" && "x" in val && "y" in val && "z" in val) return make_vector_value(val.x, val.y, val.z);
-        return { widget: Gia.TypedValue_WidgetType.VECTOR_GROUP, is_value_set: 0 };
+        return make_vector_value(val ?? null, make_type_definition(type, is_server));
       case "Gid":
-      case "Ety":
       case "Pfb":
       case "Cfg":
       case "Fct":
-        return make_id_value(val);
+        return make_id_value(val ?? null, make_type_definition(type, is_server));
+      case "Vss":
+      case "Loc":
+      case "Ety":
+        if (!is_empty(val)) {
+          console.warn("Should not set val for " + type.b + ": " + typeof val, val);
+        }
+        return make_id_value(null, make_type_definition(type, is_server));
       default:
+        console.warn("Invalid type: " + type.t);
         return { widget: Gia.TypedValue_WidgetType.UNKNOWN, is_value_set: 0 };
     }
   } else if (type.t === "e") {
-    return make_enum_value(val);
+    return make_enum_value(val ?? null, make_type_definition(type, is_server));
   } else if (type.t === "l") {
-    return make_list_value(type.i, val, is_server);
+    return make_list_value(type, is_server, val ?? null);
   } else if (type.t === "d") {
-    return make_map_value(type.k, type.v, val, is_server);
+    return make_map_value(type, is_server, val ?? null);
+  } else if (type.t === "s") {
+    return make_struct_value(type, is_server, val ?? null);
+  } else {
+    console.warn("Invalid type: " + type.t);
+    return { widget: Gia.TypedValue_WidgetType.UNKNOWN, is_value_set: 0 };
   }
-
-  return { widget: Gia.TypedValue_WidgetType.UNKNOWN, is_value_set: 0 };
 }
 
-export function make_int_value(val: number): Gia.TypedValue {
+export function make_int_value(val: TypedValue, type_def: Gia.TypeDefinition): Gia.TypedValue {
+  if (typeof val === "number") {
+    const ret: Gia.TypedValue = {
+      widget: Gia.TypedValue_WidgetType.NUMBER_INPUT,
+      is_value_set: 1,
+      type_def: type_def,
+      // tracker: undefined, 
+      val_int: { int: val }
+    };
+    return ret;
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for Int: " + typeof val, val);
+  }
   return {
     widget: Gia.TypedValue_WidgetType.NUMBER_INPUT,
-    is_value_set: 1,
-    val_int: { x: val }
-  };
+    is_value_set: 0,
+    type_def: type_def,
+  }
 }
 
-export function make_float_value(val: number): Gia.TypedValue {
+export function make_float_value(val: TypedValue, type_def: Gia.TypeDefinition): Gia.TypedValue {
+  if (typeof val === "number") {
+    const ret: Gia.TypedValue = {
+      widget: Gia.TypedValue_WidgetType.DECIMAL_INPUT,
+      is_value_set: 1,
+      type_def: type_def,
+      // tracker: undefined, 
+      val_float: { float: val }
+    };
+    return ret;
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for Float: " + typeof val, val);
+  }
   return {
     widget: Gia.TypedValue_WidgetType.DECIMAL_INPUT,
-    is_value_set: 1,
-    val_float: { x: val }
+    is_value_set: 0,
+    type_def: type_def,
   };
 }
 
-export function make_bool_value(val: boolean | number): Gia.TypedValue {
-  return {
-    widget: Gia.TypedValue_WidgetType.ENUM_PICKER,
-    is_value_set: 1,
-    val_enum: { enum: val ? 1 : 0 }
-  };
-}
-
-export function make_string_value(val: string): Gia.TypedValue {
-  return {
-    widget: Gia.TypedValue_WidgetType.TEXT_INPUT,
-    is_value_set: 1,
-    val_string: { str: val }
-  };
-}
-
-export function make_vector_value(x: number, y: number, z: number): Gia.TypedValue {
-  return {
-    widget: Gia.TypedValue_WidgetType.VECTOR_GROUP,
-    is_value_set: 1,
-    val_vector: { vec: { x, y, z } }
-  };
-}
-
-export function make_id_value(val: number): Gia.TypedValue {
+export function make_id_value(val: TypedValue, type_def: Gia.TypeDefinition): Gia.TypedValue {
+  if (typeof val === "number") {
+    const ret: Gia.TypedValue = {
+      widget: Gia.TypedValue_WidgetType.ID_INPUT,
+      is_value_set: 1,
+      type_def: type_def,
+      // tracker: undefined, 
+      val_id: { id: val }
+    };
+    return ret;
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for ID: " + typeof val, val);
+  }
   return {
     widget: Gia.TypedValue_WidgetType.ID_INPUT,
-    is_value_set: 1,
-    val_id: { id: val }
-  };
+    is_value_set: 0,
+    type_def: type_def,
+  }
 }
 
-export function make_enum_value(val: number): Gia.TypedValue {
+export function make_enum_value(val: TypedValue, type_def: Gia.TypeDefinition): Gia.TypedValue {
+  if (typeof val === "number") {
+    const ret: Gia.TypedValue = {
+      widget: Gia.TypedValue_WidgetType.ENUM_PICKER,
+      is_value_set: 1,
+      type_def: type_def,
+      // tracker: undefined, 
+      val_enum: { enum: val }
+    };
+    return ret;
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for Enum: " + typeof val, val);
+  }
   return {
     widget: Gia.TypedValue_WidgetType.ENUM_PICKER,
-    is_value_set: 1,
-    val_enum: { enum: val }
-  };
+    is_value_set: 0,
+    type_def: type_def,
+  }
 }
 
-export function make_list_value(itemType: NodeType, val: any[], is_server: boolean): Gia.TypedValue {
-  if (!Array.isArray(val)) return { widget: Gia.TypedValue_WidgetType.LIST_GROUP, is_value_set: 0 };
+
+export function make_vector_value(val: TypedValue, type_def: Gia.TypeDefinition): Gia.TypedValue {
+  if (Array.isArray(val)) {
+    const x = val[0] ?? 0;
+    const y = val[1] ?? 0;
+    const z = val[2] ?? 0;
+    if (typeof x === "number" && typeof y === "number" && typeof z === "number") {
+      const ret: Gia.TypedValue = {
+        widget: Gia.TypedValue_WidgetType.VECTOR_GROUP,
+        is_value_set: 0,
+        type_def: type_def,
+        // tracker: undefined, 
+        val_vector: { vec: { x, y, z } },
+      };
+      return ret;
+    } else {
+      console.warn("Invalid item value type for Vector: " + typeof val, val);
+    }
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for Vector: " + typeof val, val);
+  }
   return {
+    widget: Gia.TypedValue_WidgetType.VECTOR_GROUP,
+    is_value_set: 0,
+    type_def: type_def,
+  }
+}
+
+export function make_string_value(val: TypedValue, type_def: Gia.TypeDefinition): Gia.TypedValue {
+  if (typeof val === "string") {
+    const ret: Gia.TypedValue = {
+      widget: Gia.TypedValue_WidgetType.TEXT_INPUT,
+      is_value_set: 1,
+      type_def: type_def,
+      // tracker: undefined, 
+      val_string: { str: val }
+    };
+    return ret;
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for String: " + typeof val, val);
+  }
+  return {
+    widget: Gia.TypedValue_WidgetType.TEXT_INPUT,
+    is_value_set: 0,
+    type_def: type_def,
+  }
+}
+
+export function make_pair_value(type: DictType, is_server: boolean, val: TypedValue): Gia.TypedValue {
+  if (Array.isArray(val)) {
+    const k = make_typed_value(type.k, is_server, val[0] ?? null);
+    const v = make_typed_value(type.v, is_server, val[1] ?? null);
+    return {
+      widget: Gia.TypedValue_WidgetType.MAP_PAIR_ITEM,
+      is_value_set: 1,
+      type_def: make_type_definition(type, is_server, true),
+      val_pair: {
+        key: k,
+        value: v
+      }
+    };
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for Pair: " + typeof val, val);
+  }
+  return {
+    widget: Gia.TypedValue_WidgetType.MAP_PAIR_ITEM,
+    is_value_set: 0,
+    type_def: make_type_definition(type, is_server),
+  }
+}
+
+
+// 
+
+export function make_list_value(type: ListType, is_server: boolean, val: TypedValue): Gia.TypedValue {
+  const ret: Gia.TypedValue = {
     widget: Gia.TypedValue_WidgetType.LIST_GROUP,
-    is_value_set: 1,
+    is_value_set: 0,
+    type_def: make_type_definition(type, is_server),
     val_list: {
-      elements: val.map(v => make_typed_value(itemType, v, is_server))
+      elements: [],
     }
   };
+  if (type.i.t === "s") {
+    ret.tracker = make_tracker();
+  }
+  if (Array.isArray(val)) {
+    for (const v of val) {
+      ret.val_list!.elements.push(make_typed_value(type.i, is_server, v));
+    }
+    ret.is_value_set = 1;
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for List: " + typeof val, val);
+  }
+  return ret;
 }
 
-export function make_map_value(keyType: NodeType, valType: NodeType, val: any, is_server: boolean): Gia.TypedValue {
-  if (!Array.isArray(val)) return { widget: Gia.TypedValue_WidgetType.MAP_GROUP, is_value_set: 0 };
-
-  const pairs: Gia.TypedValue[] = val.map(pair => {
-    if (!Array.isArray(pair) || pair.length !== 2) return undefined;
-    return {
-      val_pair: {
-        key: make_typed_value(keyType, pair[0], is_server),
-        value: make_typed_value(valType, pair[1], is_server)
-      }
-    } as Gia.TypedValue;
-  }).filter((v): v is Gia.TypedValue => v !== undefined);
-
-  return {
+export function make_map_value(type: DictType, is_server: boolean, val: TypedValue): Gia.TypedValue {
+  const ret: Gia.TypedValue = {
     widget: Gia.TypedValue_WidgetType.MAP_GROUP,
-    is_value_set: 1,
-    val_map: { pairs }
+    is_value_set: 0,
+    type_def: make_type_definition(type, is_server),
+    val_map: {
+      pairs: [],
+    }
   };
+  if (Array.isArray(val)) {
+    for (const v of val) {
+      ret.val_map!.pairs.push(make_pair_value(type, is_server, v));
+    }
+    ret.is_value_set = 1;
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for Map: " + typeof val, val);
+  }
+  return ret;
 }
+
+
+export function make_struct_value(type: StructType, is_server: boolean, val: TypedValue): Gia.TypedValue {
+  const ret: Gia.TypedValue = {
+    widget: Gia.TypedValue_WidgetType.STRUCT_BLOCK,
+    is_value_set: 0,
+    type_def: make_type_definition(type, is_server),
+    tracker: make_tracker(),
+    val_struct: {
+      fields: [],
+    }
+  };
+  if (Array.isArray(val)) {
+    if (val.length !== type.f.length) {
+      console.warn("Invalid value length for Struct: " + val.length, val);
+    }
+    for (let i = 0; i < type.f.length; i++) {
+      ret.val_struct?.fields.push(make_typed_value(type.f[i][1], is_server, val[i]));
+    }
+    ret.is_value_set = 1;
+  } else if (!is_empty(val)) {
+    console.warn("Invalid value type for Struct: " + typeof val, val);
+  }
+  return ret;
+}
+
 
 // ------------------------------------------------------------------
 // Connection Helpers
 // ------------------------------------------------------------------
 
-export function make_connection(target_node_index: number, target_pin_kind: Gia.PinSignature_Kind, target_pin_index: number): Gia.NodeConnection {
-  const sig: Gia.PinSignature = {
-    kind: target_pin_kind,
-    index: target_pin_index
-  };
+export function make_pin_sig(index = 0, is_out = false, is_flow = false): Gia.PinSignature {
+  const kind = is_flow ?
+    (is_out ? Gia.PinSignature_Kind.OUT_FLOW : Gia.PinSignature_Kind.IN_FLOW) :
+    (is_out ? Gia.PinSignature_Kind.OUT_PARAM : Gia.PinSignature_Kind.IN_PARAM);
   return {
-    target_node_index,
-    target_pin_shell: sig,
-    target_pin_kernel: sig
+    kind,
+    index
+  }
+}
+
+export function make_connection(target_index: number, target_pin: PinDef, is_flow: boolean = false): Gia.NodeConnection {
+  const shell = make_pin_sig(target_pin.ShellIndex, target_pin.Direction === "Out", is_flow);
+  const kernel = make_pin_sig(target_pin.KernelIndex, target_pin.Direction === "Out", is_flow);
+  return {
+    target_node_index: target_index,
+    target_pin_shell: shell,
+    target_pin_kernel: kernel
   };
 }

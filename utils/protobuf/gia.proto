@@ -156,15 +156,24 @@ message ResourceLocator {
 
   // ====== Optional ======
 
-  // world_entity_guid: EntityUid, 全局/世界空间, 有实体的对象。
-  //   - 如 Prefab、Character、Item。
-  //   - 它们在游戏的世界数据库（World DB）中有唯一的全球唯一标识符，可以通过 API 直接查询其实体属性。
-  int64 world_entity_guid = 4;
+  // [Field 4] 资产库 GUID (Asset Database GUID)
+  // 作用域：资源管理层 / 文件系统
+  // 含义：指向一个具体的、可序列化的用户资产文件。
+  // 场景：
+  //   - 出现在 AssetBundle 的依赖列表中 (dependencies)。
+  //   - 出现在 Entity/Prefab 引用中 (因为它们对应具体的资源文件)。
+  //   - 系统内置节点(SYSTEM_DEFINED)通常没有此字段。
+  int64 asset_guid = 4;
 
-  // internal_logic_id: LogicId, 逻辑/局部空间, 纯数据对象。
-  //   - 如 NodeGraph、NodeInterface、Signal。
-  //   - 它们不是世界中的“东西”，而是代码或配置。它们通过 ID 在逻辑引擎内部索引。
-  int64 internal_logic_id = 5;
+  // [Field 5] 运行时 ID (Runtime Definition ID)
+  // 作用域：逻辑执行层 / 内存
+  // 含义：指向一个逻辑定义、OpCode 或内存中的对象句柄。
+  // 场景：
+  //   - 出现在 NodeInstance 的 shell_ref/kernel_ref 中。
+  //   - 出现在 Graph 内部的 identity 定义中。
+  //   - 对于用户资产，此值通常等于 asset_guid。
+  //   - 对于系统内置节点，这是唯一的标识符 (如 1, 2000)。
+  int64 runtime_id = 5;
 
   // 简单判定法：如果这个东西在游戏场景里能被“生出来”（Spawn），它用 guid；如果这个东西只是一段逻辑或一个定义，它用 id。
 }
@@ -376,9 +385,9 @@ message TypedValue {
 
 message Id { int64 id = 1; }
 
-message Int { int32 x = 1; }
+message Int { int32 int = 1; }
 
-message Float { float x = 1; }
+message Float { float float = 1; }
 
 message String { string str = 1; }
 

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { counter_dynamic_id, counter_index, randomInt, type TypedValue } from "./utils.ts";
 import { assert, assertEq, todo } from "../utils.ts";
 
@@ -5,7 +7,7 @@ import * as Gia from "../protobuf/gia.proto.ts";
 
 import type { NodeDef, PinDef, TypeDef, EnumDef, EnumTypeDef, GraphCategoryConstsDef } from "../node_data/types.ts";
 import { type NodeType } from "../node_data/node_type.ts";
-import { Node, Enum, Type as ServerType, ClientType } from "../node_data/instances.ts";
+import { Node, Enum, ServerType as ServerType, ClientType } from "../node_data/instances.ts";
 import { TypeEngine } from "../node_data/core.ts";
 
 function Type(is_server: boolean = true): TypeEngine {

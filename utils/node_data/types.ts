@@ -34,7 +34,7 @@ export type ServerClient = "Server" | "Client"
 export type ResourceClass = typeof ResourceClass[number];
 export const Languages = ["cs", "de", "es", "en", "fr", "it", "ja", "ko", "pl", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"] as const;
 export type Translations = Partial<{ [key in typeof Languages[number]]: string }>; // Display names of the entry in different languages
-export type PinValue = string | number | boolean | null; // number could be enum or int
+export type TypedValue = string | number | null | TypedValue[]; // number could be enum or int or boolean
 // ------------------------------------------------------------------
 // Type System (Enhanced)
 // ------------------------------------------------------------------
@@ -90,7 +90,7 @@ export interface PinDef {
   ShellIndex: number;                                 // Outer index of the pin
   KernelIndex: number;                                // Inner index of the pin
   Type?: string;                                      // Type of the pin, could be generic type for reflective nodes
-  DefaultValue?: PinValue;                            // Fixed value of the pin (For part of the hidden pin)
+  DefaultValue?: TypedValue;                            // Fixed value of the pin (For part of the hidden pin)
   Visibility?: "Display" | "Hidden" | "Conditional";  // Whether the pin is displayed, hidden or conditional
   Connectability?: boolean;                           // Whether the pin can be connected by another one
   Editability?: boolean;                              // Whether the pin can be edited by user manually
@@ -114,7 +114,7 @@ export interface InjectedDef {
   TypeSelectorIndex?: number; // 可变引脚的 Selector Index (用于 UI 下拉菜单分组)
   ShellIndex?: number;   // Inner index of the pin
   KernelIndex?: number;  // Inner index of the pin
-  DefaultValue?: PinValue;
+  DefaultValue?: TypedValue;
   Visibility?: "Display" | "Hidden" | "Conditional";
   Connectability?: boolean;
 }

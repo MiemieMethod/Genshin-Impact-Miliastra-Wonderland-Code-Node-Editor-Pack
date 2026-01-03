@@ -1,3 +1,5 @@
+import type { ResourceClass, ServerClient } from "../node_data/types.ts";
+
 export class Counter {
   private count = 0;
   constructor(start_from: number = 0) {
@@ -16,6 +18,8 @@ export class Counter {
 export const counter_index = new Counter();
 /** 节点动态 id 计数器 */
 export const counter_dynamic_id = new Counter();
+/** 静态数据 tracker 计数器 */
+export const tracker_index = new Counter();
 
 export function randomInt(len: number, starting: string = ""): number {
   return Number(randomBigInt(len, starting));
@@ -48,7 +52,26 @@ export function randomName(words_count: number = 1): string {
   return res.join(" ");
 }
 
-export type TypedValue =
-  | number
-  | string
-  | TypedValue[];
+
+export function get_system(resources_class: ResourceClass): ServerClient {
+  switch (resources_class) {
+    case "ENTITY_NODE_GRAPH":
+    case "STATUS_NODE_GRAPH":
+    case "CLASS_NODE_GRAPH":
+    case "ITEM_NODE_GRAPH":
+      return "Server";
+    case "BOOLEAN_FILTER_GRAPH":
+    case "INTEGER_FILTER_GRAPH":
+    case "SKILL_NODE_GRAPH":
+      return "Client";
+    case "COMPOSITE_NODE_DECL":
+      return "Server";
+    default:
+      console.error(`Unknown resource class: ${resources_class}`);
+      return "Server";
+  }
+}
+
+export function is_empty<T>(v: T | null | undefined): v is null | undefined {
+  return v === null || v === undefined;
+}
