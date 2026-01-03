@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import proto from "protobufjs";
 
-import { type GraphNode, NodePin_Index_Kind, type Root } from "./gia.proto.ts";
+import { type AssetBundle } from "./gia.proto.ts";
 import { assert } from "../../utils/utils.ts";
 
 const VERSION = "1.1.0";
@@ -45,7 +45,7 @@ export function unwrap_gia(gia_path_or_data: string | Uint8Array<ArrayBufferLike
     return new Uint8Array(gia_path_or_data);
   }
 }
-export function wrap_gia(message: proto.Type, data: Root) {
+export function wrap_gia(message: proto.Type, data: AssetBundle) {
   const newBytes = message.encode(data).finish();
   const header = [newBytes.byteLength + 20, 1, 0x0326, 3, newBytes.byteLength];
   const tail = [0x0679];
@@ -60,21 +60,21 @@ export function wrap_gia(message: proto.Type, data: Root) {
   return buffer;
 }
 
-export function decode_gia_file(gia_path_or_data: string | Uint8Array<ArrayBufferLike> | ArrayBuffer, proto_path?: string, check_header: boolean = false): Root {
+export function decode_gia_file(gia_path_or_data: string | Uint8Array<ArrayBufferLike> | ArrayBuffer, proto_path?: string, check_header: boolean = false): AssetBundle {
   proto_path ??= import.meta.dirname + "/gia.proto";
   const root = new proto.Root().loadSync(proto_path, { keepCase: true });
-  const message = root.lookupType("Root");
+  const message = root.lookupType("BundleAsset");
 
   const msg = message.decode(unwrap_gia(gia_path_or_data, check_header));
   // return msg as Root;
-  return message.toObject(msg, { defaults: true, longs: Number }) as Root;
+  return message.toObject(msg, { defaults: true, longs: Number }) as AssetBundle;
 }
 
 
-export function encode_gia_file(out_path: string, gia_struct: Root, proto_path?: string) {
+export function encode_gia_file(out_path: string, gia_struct: AssetBundle, proto_path?: string) {
   proto_path ??= import.meta.dirname + "/gia.proto";
   const root = new proto.Root().loadSync(proto_path, { keepCase: true });
-  const message = root.lookupType("Root");
+  const message = root.lookupType("BundleAsset");
 
   writeFileSync(out_path, Buffer.from(wrap_gia(message, gia_struct)));
 }

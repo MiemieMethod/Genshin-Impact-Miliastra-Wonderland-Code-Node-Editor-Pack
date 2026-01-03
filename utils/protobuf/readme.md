@@ -33,10 +33,10 @@ encode_gia_file("./output.gia", data);
 
 | 函数 | 签名 | 说明 |
 | :--- | :--- | :--- |
-| `decode_gia_file` | `(path: string) => Root` | 读取并解码 GIA 文件 |
-| `encode_gia_file` | `(path: string, data: Root) => void` | 编码并写入 GIA 文件 |
+| `decode_gia_file` | `(path: string) => AssetBundle` | 读取并解码 GIA 文件 |
+| `encode_gia_file` | `(path: string, data: AssetBundle) => void` | 编码并写入 GIA 文件 |
 | `unwrap_gia` | `(path: string, check?: boolean) => Uint8Array` | 提取 Protobuf 数据 |
-| `wrap_gia` | `(message: Type, data: Root) => ArrayBuffer` | 包装为 GIA 格式 |
+| `wrap_gia` | `(message: Type, data: AssetBundle) => ArrayBuffer` | 包装为 GIA 格式 |
 
 ### Proto 类型转换 (`proto2ts.ts`)
 
@@ -73,10 +73,10 @@ import { decode_gia_file, encode_gia_file } from "./decode";
 
 // 读取
 const data = decode_gia_file("./input.gia");
-console.log(data.graph.graph?.inner.graph.nodes);
+console.log(data.primary_resource.graph_data?.inner.graph.nodes);
 
 // 修改节点位置
-data.graph.graph!.inner.graph.nodes[0].x = 100;
+data.primary_resource.graph_data!.inner.graph.nodes[0].x = 100;
 
 // 保存
 encode_gia_file("./output.gia", data);
@@ -114,6 +114,8 @@ python decode_raw.py ./test.gia --tags
 > 🟩 **推荐使用** [gia_gen](../gia_gen/readme.md) 中的 `Graph` 类快速创建。
 
 如需手动构建，步骤如下：
+
+// 注意, 类型和名称命名都变了(结构相同), 调整
 
 ### 1. 构建节点
 
