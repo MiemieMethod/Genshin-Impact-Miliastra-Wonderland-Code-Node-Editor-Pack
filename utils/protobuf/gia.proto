@@ -196,14 +196,14 @@ message StructureDefinitionContainer {
 
     message TypeDef {
       message SubType {
-        ValueType type    = 1;
-        int64     xxxx_id = 2; // What are they?
-        ValueType key     = 502;
-        ValueType value   = 503;
-        int64     valueId = 504;
+        ServerTypeId type    = 1;
+        int64        xxxx_id = 2; // What are they?
+        ServerTypeId key     = 502;
+        ServerTypeId value   = 503;
+        int64        valueId = 504;
       }
-      ValueType type    = 1;
-      SubType   subType = 2;
+      ServerTypeId type    = 1;
+      SubType      subType = 2;
 
       oneof val {
         Int    intVal  = 13;
@@ -216,15 +216,15 @@ message StructureDefinitionContainer {
     }
     message TypeDef3 {
       message SubType {
-        ValueType type = 1;
+        ServerTypeId type = 1;
         message Any {}
-        Any       xxxx_id = 2; // Why diff from TypeDef3
-        ValueType key     = 502;
-        ValueType value   = 503;
-        int64     valueId = 504;
+        Any          xxxx_id = 2; // Why diff from TypeDef3
+        ServerTypeId key     = 502;
+        ServerTypeId value   = 503;
+        int64        valueId = 504;
       }
-      ValueType type    = 1;
-      SubType   subType = 2;
+      ServerTypeId type    = 1;
+      SubType      subType = 2;
 
       oneof val {
         Int    intVal  = 13;
@@ -239,72 +239,117 @@ message StructureDefinitionContainer {
     TypeDef3 typedef3 = 3;
     string   name     = 5;
 
-    string    varName  = 501;
-    ValueType varType  = 502;
-    int32     varIndex = 503; // variable index
+    string       varName  = 501;
+    ServerTypeId varType  = 502;
+    int32        varIndex = 503; // variable index
   }
   StructureDef def = 1;
 }
 
-// ========== Begin of Variable Defs ========== //
-enum ValueType {
-  UnknownVar       = 0;
-  Entity           = 1;
-  GUID             = 2;
-  Integer          = 3;
-  Boolean          = 4;
-  Float            = 5;
-  String           = 6;
-  GUIDList         = 7;
-  IntegerList      = 8;
-  BooleanList      = 9;
-  FloatList        = 10;
-  StringList       = 11;
-  Vector           = 12;
-  EntityList       = 13;
-  EnumItem         = 14;
-  VectorList       = 15;
-  LocalVariableRef = 16;
-  Faction          = 17;
-  EnumList         = 18;
-  // reserved 19;
-  Configuration       = 20;
-  Prefab              = 21;
-  ConfigurationList   = 22;
-  PrefabList          = 23;
-  FactionList         = 24;
-  Struct              = 25;
-  StructList          = 26;
-  Dictionary          = 27;
-  VariableSnapshotRef = 28;
+// ### 为什么会有两套类型编号？
+// 这是一个非常典型的 “技术债” (Technical Debt) 与 “架构隔离” (Architectural Isolation) 共同作用的结果。
+// 服务器端 (ServerTypeId)：看编号的混乱程度（Int=3, IntList=8），可以推断服务器端代码是早期编写且不断迭代的。
+//   - 一开始可能只支持原子类型。
+//   - 后来需求增加了 EntityList，于是追加在 13。
+//   - 后来又增加了 Struct 和 Dictionary，追加在 25, 27。
+//   - 为了保证旧数据的兼容性（Protocol Buffers 的核心原则），旧的 ID 不能变，导致了 ID 分布的零散。
+// 客户端 (ClientTypeId)：看编号的规律程度（Int=3, IntList=4），这很可能是后期重构或独立开发的产物。
+//   - 客户端开发者在定义类型时，已经明确知道需要支持哪些类型，因此采用了更优雅的 Type, TypeList 配对方式。
 
-  // EnumTypes 10001.....
+// 服务器端逻辑类型 ID
+// 用于: 数据存储、后端逻辑运算、结构体定义、黑板变量
+// 特征: 包含复杂的引用类型(Ref)和容器类型(Map/Struct)
+enum ServerTypeId {
+  SERVER_UNKNOWN = 0;
+
+  // --- 基础原子类型 ---
+  S_ENTITY = 1; // 运行时实体对象 (指针/句柄)
+  S_GUID   = 2; // 全局唯一ID (通常用于查找静态配置或持久化对象)
+  S_INT    = 3; // 32位整数
+  S_BOOL   = 4; // 布尔值
+  S_FLOAT  = 5; // 浮点数
+  S_STRING = 6; // 字符串
+  S_VECTOR = 12; // 三维向量 (x,y,z)
+
+  // --- 基础列表类型 ---
+  // 注意: 服务器端的 List ID 比较分散，可能是历史迭代导致的
+  S_GUID_LIST   = 7;
+  S_INT_LIST    = 8;
+  S_BOOL_LIST   = 9;
+  S_FLOAT_LIST  = 10;
+  S_STRING_LIST = 11;
+  S_ENTITY_LIST = 13;
+  S_VECTOR_LIST = 15;
+
+  // --- 游戏业务类型 ---
+  S_ENUM_ITEM    = 14; // 通用枚举项
+  S_FACTION      = 17; // 阵营/势力
+  S_ENUM_LIST    = 18; // 枚举列表
+  S_CONFIG       = 20; // 配置表引用
+  S_PREFAB       = 21; // 预制体引用 (资源路径或Hash)
+  S_CONFIG_LIST  = 22;
+  S_PREFAB_LIST  = 23;
+  S_FACTION_LIST = 24;
+
+  // --- 复杂结构与高级特性 ---
+  S_STRUCT      = 25; // 用户定义结构体
+  S_STRUCT_LIST = 26; // 结构体列表
+  S_DICT        = 27; // 字典/哈希表
+
+  // --- 运行时引用 (仅服务器) ---
+  // 用于节点图执行时的栈内存引用或快照回滚
+  S_LOCAL_VAR_REF    = 16; // 引用当前图内的局部变量
+  S_VAR_SNAPSHOT_REF = 28; // 变量快照引用 (用于实体删除时访问原始数据)
+
+  // 预留区：用于UI中枚举连线时的匹配
+  // Starting From: 10001
   // reserved 10000 to 10099;   // server enum types
   // reserved 210000 to 210099; // client enum types
 }
 
-enum ClientValueType {
-  UnknownVar_        = 0;
-  Entity_            = 1; // type: Ety, typeid: 1
-  EntityList_        = 2; // type: L<Ety>, typeid: 2
-  Integer_           = 3; // type: Int, typeid: 3
-  IntegerList_       = 4; // type: L<Int>, typeid: 4
-  Boolean_           = 5; // type: Bol, typeid: 5
-  BooleanList_       = 6; // type: L<Bol>, typeid: 6
-  Float_             = 7; // type: Flt, typeid: 7
-  FloatList_         = 8; // type: L<Flt>, typeid: 8
-  String_            = 9; // type: Str, typeid: 9
-  StringList_        = 10; // type: L<Str>, typeid: 10
-  Vector_            = 11; // type: Vec, typeid: 11
-  VectorList_        = 12; // type: L<Vec>, typeid: 12
-  EnumItem_          = 13; // type: E<Unk>, typeid: 13
-  GUID_              = 14; // type: Gid, typeid: 14
-  GUIDList_          = 15; // type: L<Gid>, typeid: 15
-  Faction_           = 16; // type: Fct, typeid: 16
-  EnumList_          = 17; // type: L<E<Unk>>, typeid: 17
-  Configuration_     = 18; // type: Cfg, typeid: 18
-  Prefab_            = 19; // type: Pfb, typeid: 19
-  ConfigurationList_ = 20; // type: L<Cfg>, typeid: 20
+// ### 客户端表现类型 ID
+// 用于: UI 渲染、简单的本地预测、发包参数
+// 特征: 列表类型ID紧跟在基础类型之后，结构更紧凑，但不支持 Map/Struct
+enum ClientTypeId {
+  CLIENT_UNKNOWN = 0;
+
+  // --- 实体与列表 (配对出现) ---
+  C_ENTITY      = 1;
+  C_ENTITY_LIST = 2; // Client端 ID 排布更有规律: List = Base + 1
+
+  // --- 基础数值 ---
+  C_INT      = 3;
+  C_INT_LIST = 4;
+
+  C_BOOL      = 5;
+  C_BOOL_LIST = 6;
+
+  C_FLOAT      = 7;
+  C_FLOAT_LIST = 8;
+
+  C_STRING      = 9;
+  C_STRING_LIST = 10;
+
+  C_VECTOR      = 11;
+  C_VECTOR_LIST = 12;
+
+ // --- 业务类型 ---
+  C_ENUM_ITEM = 13;
+  C_ENUM_LIST = 17;
+
+  C_GUID      = 14;
+  C_GUID_LIST = 15;
+
+  C_FACTION = 16;
+
+  C_CONFIG      = 18;
+  C_PREFAB      = 19;
+  C_CONFIG_LIST = 20;
+
+  // 预留区：用于UI中枚举连线时的匹配
+  // Starting From: 10001
+  // reserved 10000 to 10099;   // server enum types
+  // reserved 210000 to 210099; // client enum types
 }
 
 // 统一定义的数值对象，对应原 TypedValue
@@ -336,10 +381,9 @@ message TypedValue {
       CLIENT  = 2;
     }
     message StructReference { int64 schema_id = 1; }
-    message ListReference { int64 schema_id = 1; }
     message MapKeyValueBinding {
-      ValueType      key_type        = 1;
-      ValueType      value_type      = 2;
+      ServerTypeId   key_type        = 1;
+      ServerTypeId   value_type      = 2;
       optional int64 value_struct_id = 3;
     }
 
@@ -349,7 +393,7 @@ message TypedValue {
         STRUCT    = 1;
         PAIR      = 2;
       }
-      ValueType      type_tag = 1;
+      ServerTypeId   type_tag = 1;
       Implementation impl     = 2;
       oneof schema {
         StructReference    struct_ref  = 100;
@@ -358,7 +402,7 @@ message TypedValue {
     }
 
     message ClientType {
-      ClientValueType type_tag = 2;
+      ClientTypeId type_tag = 2;
     }
 
     Backend backend = 1;
@@ -437,25 +481,30 @@ message MapPairStorage {
 
 // 多态数值：用于可变引脚
 message PolymorphicValue {
-  int32                        chosen_type_index = 1; // 选中的类型索引
-  TypedValue                   actual_value      = 2; // 实际的值对象
-  optional DynamicTypeMetadata extra_meta        = 5; // 针对结构体/Map/List的动态描述
+  int32      chosen_type_index = 1; // 选中的类型索引
+  TypedValue actual_value      = 2; // 实际的值对象
+
+  // 描述具体的结构体ID或泛型参数，指导实例化
+  optional DynamicTypeMetadata extra_meta = 5; // 是多态类型系统中的类型配置（Type Configuration）。
 }
 
+// 是为了保证在数据尚未生成时，系统依然拥有完整的类型知识。
+// 评价是没啥用, 不如没有
 message DynamicTypeMetadata {
-  message TypeWrapper {
+  message Config {
     message Inner {
-      TypedValue.WidgetType widget = 1;
-      oneof type_extra {
-        TypedValue.TypeDefinition.StructReference    struct_ref  = 100;
-        TypedValue.TypeDefinition.ListReference      list_ref    = 101;
-        TypedValue.TypeDefinition.MapKeyValueBinding map_binding = 102;
+      TypedValue.WidgetType          container_style = 1;
+      optional TypedValue.WidgetType item_style      = 2;
+      oneof schema_binding {
+        TypedValue.TypeDefinition.StructReference    target_struct_id    = 100;
+        TypedValue.TypeDefinition.StructReference    list_item_struct_id = 101;
+        TypedValue.TypeDefinition.MapKeyValueBinding map_config          = 102;
       }
     }
     Inner inner = 1;
   }
-  int32       widget_id = 4;
-  TypeWrapper wrapper   = 100;
+  int32  version = 4;
+  Config config  = 100;
 }
 
 // ========== Below are Messages that has been refracted ========== //
@@ -505,7 +554,7 @@ message GraphVariable {
   string var_name = 2;
 
   // 变量的数据类型定义
-  ValueType base_type = 3;
+  ServerTypeId base_type = 3;
 
   // 变量的初始值/当前值
   TypedValue storage_value = 4;
@@ -517,8 +566,8 @@ message GraphVariable {
   optional int64 schema_ref_id = 6;
 
   // 容器类型的子类型定义 (残留字段, 仅对 Map 有效)
-  ValueType container_key_type   = 7;
-  ValueType container_value_type = 8;
+  ServerTypeId container_key_type   = 7;
+  ServerTypeId container_value_type = 8;
 }
 
 // 接口映射：穿墙管线
@@ -556,8 +605,8 @@ message NodeInterface {
     message TypeInfo {
       // optional for flow pin
       optional TypedValue.WidgetType ui_class        = 1; // UI表现形式 (IntBase, VecBase等)
-      optional ValueType             var_type_shell  = 3; // ValueType 枚举, 对于 Enum, 为 [100id](EnumCategoryId)
-      optional ValueType             var_type_kernel = 4; // ValueType 枚举, 对于 Enum, 为 14(EnumType)
+      optional ServerTypeId          var_type_shell  = 3; // ServerTypeId 枚举, 对于 Enum, 为 [100id](EnumCategoryId)
+      optional ServerTypeId          var_type_kernel = 4; // ServerTypeId 枚举, 对于 Enum, 为 14(EnumType)
 
       // 参数框提示文本
       message Placeholder {
@@ -586,8 +635,8 @@ message NodeInterface {
       }
       message StructId { int64 val = 2; }
       message MapType {
-        ValueType key   = 3;
-        ValueType value = 4;
+        ServerTypeId key   = 3;
+        ServerTypeId value = 4;
         // if value is StructList
         optional int64 struct_id = 5;
       }
@@ -699,8 +748,13 @@ message NodeInstance {
   // 仅用于 Signal 相关节点，用于检测定义版本冲突
   optional int32 signal_version = 9;
 
+  message StructInfo {
+    ResourceLocator identity = 1;
+    // int32           type1    = 2;
+  }
   // 结构体依赖声明
-  repeated ResourceLocator using_structs = 10;
+  // TODO: ???
+  repeated StructInfo using_structs = 10;
 }
 
 message PinSignature {
@@ -737,7 +791,7 @@ message PinInstance {
 
   // 值与类型
   TypedValue value = 3;
-  int32      type  = 4; // Be careful! ValueType in Server and ClientVarType in Client
+  int32      type  = 4; // Be careful! ServerTypeId in Server and ClientVarType in Client
 
   // 连接关系
   repeated NodeConnection connections = 5;
