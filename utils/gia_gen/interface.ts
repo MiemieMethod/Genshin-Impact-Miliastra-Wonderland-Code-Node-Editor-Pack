@@ -11,7 +11,7 @@ import {
 import { Doc, Node as NodeLib } from "../node_data/instances.ts";
 import type { NodeDef, PinDef, ResourceClass, ServerClient, TypedValue } from "../node_data/types.ts";
 import { type NodeType, stringify, parse } from "../node_data/node_type.ts";
-import { Counter, randomInt, randomName } from "./utils.ts";
+import { Counter, get_system, randomInt, randomName } from "./utils.ts";
 
 
 // Helper to determine system from common inputs if needed,
@@ -30,9 +30,6 @@ export class Graph {
   private counter_dyn_id: Counter;
 
   public readonly nodes: Set<Node>;
-  // Node -> Pin -> Connection[] (with order)
-  public readonly flows: Map<Node, Map<string, Connection[]>>;
-  public readonly connects: Set<Connection>;
   public readonly comments: Set<Comment>;
 
   constructor(system_class: ResourceClass = "ENTITY_NODE_GRAPH", uid?: number, name?: string, graph_id?: number) {
@@ -180,11 +177,18 @@ export class Node {
   public readonly system: ResourceClass;
   public readonly node_index: number;
   public readonly def: NodeDef;
+  public variant_def: NodeDef | null = null;
 
   // for variant nodes
   public constraint: NodeType | undefined;
 
+  // only for param-In pins
   public readonly pin_values: Map<string, TypedValue>;
+  // connections: PinIdentifier -> Connections
+  public readonly data_from: Map<string, Connection>;
+  public readonly data_to: Map<string, Set<Connection>>;
+  public readonly flow_from: Map<string, Set<Connection>>;
+  public readonly flow_to: Map<string, Connection[]>; // with order
 
   public x: number = 0;
   public y: number = 0;
@@ -195,46 +199,19 @@ export class Node {
     this.node_index = index;
     this.system = system;
     this.pin_values = new Map();
-    this.initPins();
+    this.data_from = new Map();
+    this.data_to = new Map();
+    this.flow_from = new Map();
+    this.flow_to = new Map();
   }
 
-  private initPins() {
-    this.pins = [];
-    // Data Pins
-    if (this.def.DataPins) {
-      for (const p of this.def.DataPins) {
-        const kind = p.Direction === "In" ? Gia.PinSignature_Kind.IN_PARAM : Gia.PinSignature_Kind.OUT_PARAM;
-        this.pins.push(new Pin(this, p, kind, this.calculatePinIndex(p.Direction, "Data", p.Index), this.system));
-      }
-    }
-    // Flow Pins
-    if (this.def.FlowPins) {
-      for (const p of this.def.FlowPins) {
-        const kind = p.Direction === "In" ? Gia.PinSignature_Kind.IN_FLOW : Gia.PinSignature_Kind.OUT_FLOW;
-        this.pins.push(new Pin(this, p, kind, this.calculatePinIndex(p.Direction, "Flow", p.Index), this.system));
-      }
-    }
-  }
-
-  // Calculate generic index for that kind
-  // Actually PinDef.Index might be absolute or relative? 
-  // Usually in NodeDef, DataPins are listed 0..N, FlowPins 0..M separately.
-  // The Gia protocol expects index per Kind.
-  private calculatePinIndex(dir: "In" | "Out", type: "Data" | "Flow", defIndex: number): number {
-    // If defIndex is reliable we use it. 
-    // But NodeDef might be sparse? The core.ts pin_body uses index passed to it.
-    // Let's assume defIndex is correct for that specific array in NodeDef.
-    // However, we need to ensure it matches the order in the array if we rely on array order.
-    // PinDef has an Index field, let's use it.
-    return defIndex;
-  }
 
   findPin(identifier: string): {
     success: boolean;
     kind?: "Flow" | "Data" | "Meta"
     pin?: PinDef;
   } {
-    const pin = this.def.DataPins.find(p => p.Identifier === identifier);
+    const pin = this.findDataPin(identifier);
     if (pin) {
       return {
         success: true,
@@ -242,7 +219,7 @@ export class Node {
         pin: pin
       };
     }
-    const flow = this.def.FlowPins.find(p => p.Identifier === identifier);
+    const flow = this.findFlowPin(identifier);
     if (flow) {
       return {
         success: true,
@@ -255,13 +232,153 @@ export class Node {
     };
   }
 
+  printPins(): void {
+    const flowIn = this.def.FlowPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
+    const flowOut = this.def.FlowPins.filter(x => x.Direction === "Out" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
+    const dataIn = this.def.DataPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
+    const dataOut = this.def.DataPins.filter(x => x.Direction === "Out" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
+
+    console.log(`Pins for Node ${this.def.Identifier} (Index: ${this.node_index}):`);
+    for (let i = 0; i < flowIn.length; i++) {
+      console.log(`  [Flow-In-${flowIn[i].ShellIndex}] ${flowIn[i].Identifier} (Index: ${i})`);
+    }
+    for (let i = 0; i < flowOut.length; i++) {
+      console.log(`  [Flow-Out-${flowOut[i].ShellIndex}] ${flowOut[i].Identifier} (Index: ${i})`);
+    }
+    for (let i = 0; i < dataIn.length; i++) {
+      console.log(`  [Data-In-${dataIn[i].ShellIndex}] ${dataIn[i].Identifier} (Index: ${i})`);
+    }
+    for (let i = 0; i < dataOut.length; i++) {
+      console.log(`  [Data-Out-${dataOut[i].ShellIndex}] ${dataOut[i].Identifier} (Index: ${i})`);
+    }
+  }
+
+  findDataPin(identifier: string): PinDef | null {
+    const pin = (this.variant_def ?? this.def).DataPins.find(p => p.Identifier === identifier);
+    return pin ?? null;
+  }
+
+  findFlowPin(identifier: string): PinDef | null {
+    const pin = this.def.FlowPins.find(p => p.Identifier === identifier);
+    return pin ?? null;
+  }
+
+  getAllConnections(): Connection[] {
+    return [
+      ...this.data_from.values(),
+      [...this.data_to.values()].map(set => Array.from(set)),
+      [...this.flow_from.values()].map(set => Array.from(set)),
+      ...this.flow_to.values(),
+    ].flat(2);
+  }
+
+  /**
+   * Connect this node's pin to another node's pin.
+   * Automatically handles direction and type checks.
+   * 
+   * @param pin identifier of pin in this node
+   * @param with_node pin in another side of connection
+   * @param with_pin identifier of pin in that node
+   * @param insert_pos (optional) position to insert the connection
+   * @returns Connection object if successful, null otherwise
+   */
+  connectWith(pin: string, with_node: Node, with_pin: string, insert_pos?: number): Connection | null {
+    const thisPin = this.findPin(pin);
+    const thatPin = with_node.findPin(with_pin);
+    if (!thisPin.success) {
+      console.warn(`Pin ${pin} not found on node ${this.def.Identifier}`);
+      return null;
+    }
+    if (!thatPin.success) {
+      console.warn(`With Pin ${with_pin} not found on node ${with_node.def.Identifier}`);
+      return null;
+    }
+    if (thisPin.kind !== thatPin.kind || thisPin.kind === "Meta") {
+      console.warn(`Pin kinds do not match: ${thisPin.kind} vs ${thatPin.kind}`);
+      return null;
+    }
+    if (thatPin.pin!.Connectability === false || thisPin.pin!.Connectability === false) {
+      console.warn(`One of the pins is not connectable: ${thisPin.pin!.Identifier} or ${thatPin.pin!.Identifier}`);
+      return null;
+    }
+    if (thisPin.pin!.Direction === thatPin.pin!.Direction) {
+      console.warn(`Cannot connect pins with same direction: ${thisPin.pin!.Direction}`);
+      return null;
+    }
+    if (thatPin.kind === "Data" && thisPin.pin!.Type !== thatPin.pin!.Type) {
+      console.info(`Data pin types do not match (Force Connect): ${thisPin.pin!.Type} vs ${thatPin.pin!.Type}`);
+    }
+    if (thatPin.pin!.Direction === "In" && thatPin.kind === "Data" && with_node.data_from.has(with_pin)) {
+      // disconnect old connection if any
+      with_node.disconnectDataInAt(with_pin);
+    }
+    if (thisPin.pin!.Direction === "In" && thisPin.kind === "Data" && this.data_from.has(pin)) {
+      // disconnect old connection if any
+      this.disconnectDataInAt(pin);
+    }
+
+    let con: Connection;
+    if (thisPin.pin!.Direction === "In") {
+      // that to this
+      con = {
+        from: with_node,
+        to: this,
+        from_pin: thatPin.pin!,
+        to_pin: thisPin.pin!
+      };
+    } else {
+      // this to that
+      con = {
+        from: this,
+        to: with_node,
+        from_pin: thisPin.pin!,
+        to_pin: thatPin.pin!
+      };
+    }
+    make_connection_unsafe(con, thisPin.kind!, insert_pos);
+    return con;
+  }
+
+  disconnectDataInAt(pinIdentifier: string): boolean {
+    const con = this.data_from.get(pinIdentifier);
+    if (con === undefined) {
+      console.warn(`No data connection found at pin ${pinIdentifier}.`);
+      return false;
+    }
+    this.data_from.delete(pinIdentifier);
+    con.from.data_to.get(con.to.def.Identifier)?.delete(con);
+    return true;
+  }
+
+  disconnectFlowOutAt(pinIdentifier: string, index: number): boolean {
+    const conns = this.flow_to.get(pinIdentifier);
+    if (conns === undefined || index < 0 || index >= conns.length) {
+      console.warn(`No flow connections found at pin ${pinIdentifier}.`);
+      return false;
+    }
+    const con = conns[index];
+    if (con === undefined) {
+      console.warn(`No flow connection found at index ${index} for pin ${pinIdentifier}.`);
+      return false;
+    }
+    conns.splice(index, 1);
+    con.from.flow_from.get(con.to.def.Identifier)?.delete(con);
+    return true;
+  }
+
   /**
    * Set constraints for Variant nodes.
-   * @param type The type constraint (e.g. Bool, Int)
+   * @param type The type constraint (e.g. C<T:Bool>, C<K:L<Int>>), set to null to reset
    */
-  setConstraints(type: NodeType) {
+  setConstraints(type: NodeType | null) {
     if (this.def.Type !== "Variant") {
       console.error(`Node ${this.def.Identifier} is not a Variant node.`);
+      return;
+    }
+    if (type === null) {
+      // Reset to base definition
+      this.variant_def = null;
+      this.constraint = undefined;
       return;
     }
     const constraintStr = stringify(type);
@@ -275,28 +392,7 @@ export class Node {
     }
 
     // Update definition and re-init pins
-    this.def = newDef;
-    // Determine concreteId (KernelID) from the variant def
-    this.concreteId = newDef.KernelID;
-
-    // Re-initialize pins to match new definition structure (types might change)
-    // We should try to preserve connections/values if possible?
-    const oldPins = this.pins;
-    this.initPins();
-
-    // Restore values/connections if compatible
-    for (const oldPin of oldPins) {
-      const newPin = this.pins.find(p => p.def.Identifier === oldPin.def.Identifier);
-      if (newPin) {
-        newPin.value = oldPin.value;
-        // Connections need to be updated to point to new Pin instance
-        for (const conn of oldPin.connections) {
-          if (conn.from === this && conn.fromPin === oldPin) conn.fromPin = newPin;
-          if (conn.to === this && conn.toPin === oldPin) conn.toPin = newPin;
-          newPin.connections.push(conn);
-        }
-      }
-    }
+    this.variant_def = newDef;
   }
 
   setPosition(x: number, y: number) {
@@ -342,12 +438,62 @@ export class Node {
   }
 }
 
-export interface Connect {
+export interface Connection {
   from: Node;
   to: Node;
   from_pin: PinDef;
   to_pin: PinDef;
 }
+
+/** **Warning**: No verify for consistency of kind and connection */
+function make_connection_unsafe(con: Connection, kind: "Data" | "Flow", insert_pos?: number): void {
+  if (insert_pos !== undefined && kind !== "Data") {
+    console.warn("Insert position is only applicable for Flow pins. Connect will ignore it.");
+  }
+  if (kind === "Data") {
+    con.to.data_from.set(con.to_pin.Identifier, con);
+    if (!con.from.data_to.has(con.to_pin.Identifier)) {
+      con.from.data_to.set(con.to_pin.Identifier, new Set());
+    }
+    con.from.data_to.get(con.to_pin.Identifier)!.add(con);
+  } else {
+    if (!con.to.flow_from.has(con.to_pin.Identifier)) {
+      con.to.flow_from.set(con.to_pin.Identifier, new Set());
+    }
+    con.to.flow_from.get(con.to_pin.Identifier)!.add(con);
+    if (!con.from.flow_to.has(con.to_pin.Identifier)) {
+      con.from.flow_to.set(con.to_pin.Identifier, []);
+    }
+    if (insert_pos !== undefined) {
+      if (insert_pos < 0 || insert_pos > con.from.flow_to.get(con.to_pin.Identifier)!.length) {
+        console.warn(`Insert position ${insert_pos} is out of bounds for flow connections at pin ${con.to_pin.Identifier}. Appending instead.`);
+        con.from.flow_to.get(con.to_pin.Identifier)!.push(con);
+      } else {
+        con.from.flow_to.get(con.to_pin.Identifier)!.splice(insert_pos, 0, con);
+      }
+    } else {
+      con.from.flow_to.get(con.to_pin.Identifier)!.push(con);
+    }
+  }
+}
+
+/** **Warning**: No verify for consistency of kind and connection */
+function make_disconnection_unsafe(con: Connection, kind: "Data" | "Flow"): void {
+  if (kind === "Data") {
+    con.to.data_from.delete(con.to_pin.Identifier);
+    con.from.data_to.get(con.from.def.Identifier)?.delete(con);
+  } else {
+    con.to.flow_from.get(con.to_pin.Identifier)?.delete(con);
+    const conns = con.from.flow_to.get(con.from.def.Identifier);
+    if (conns) {
+      const index = conns.indexOf(con);
+      if (index >= 0) {
+        conns.splice(index, 1);
+      }
+    }
+  }
+}
+
 
 export interface Comment {
   content: string;

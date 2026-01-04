@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { assert, empty } from "../utils.ts";
 import * as Gia from "../protobuf/gia.proto.ts";
 import {
