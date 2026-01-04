@@ -1,4 +1,4 @@
-import { assert, empty } from "../utils.ts";
+import { assert, assertDeepEq, empty } from "../utils.ts";
 import * as Gia from "../protobuf/gia.proto.ts";
 import {
   graph_body,
@@ -7,14 +7,15 @@ import {
   make_typed_value,
   make_connection,
   make_annotation,
-  make_variant_value
+  make_variant_value,
+  get_resource_class,
+  read_typed_value
 } from "./core.ts";
-import { Doc, Node as NodeLib } from "../node_data/instances.ts";
+import { ClientType, Doc, Node as NodeLib, ServerType } from "../node_data/instances.ts";
 import type { NodeDef, ResourceClass, ServerClient, TypedValue } from "../node_data/types.ts";
 import { type NodeType, stringify, parse, is_reflect, type ConstraintType, type StructType, type_equal } from "../node_data/node_type.ts";
-import { Counter, get_system, is_empty, randomInt, randomName } from "./utils.ts";
+import { Counter, fuseSuggest, get_system, is_empty, randomInt, randomName } from "./utils.ts";
 import { type TypedPinDef, type TypedNodeDef } from "../node_data/core.ts";
-import Fuse from "fuse.js";
 
 
 // Helper to determine system from common inputs if needed,
@@ -73,12 +74,12 @@ export class Graph {
     if (typeof node === "string") {
       // TODO: support <Domain>.<Category>.<Action>.<Constraints> format
       def = NodeLib.getByIdentifier(node);
-      if(def === undefined){
+      if (def === undefined) {
         // Print suggestions
         console.error(`[Error] Node not found by Identifier: ${node}`);
         const similars = NodeLib.findSimilar(node);
-        if(similars.length > 0){
-          console.info(`  -> Did you mean: '${similars.slice(0,5).map(n=>n.Identifier).join("' or '")}' ?`);
+        if (similars.length > 0) {
+          console.info(`  -> Did you mean: '${similars.slice(0, 5).map(n => n.Identifier).join("' or '")}' ?`);
         }
         return null;
       }
@@ -104,7 +105,7 @@ export class Graph {
   }
 
   flow(from: Node, to: Node, fromArg?: string, toArg?: string, insert_pos?: number): Connection | null {
-    if(is_empty(from)|| is_empty(to)){
+    if (is_empty(from) || is_empty(to)) {
       console.error("[Error] Source or Target node is empty.");
       return null;
     }
@@ -153,7 +154,7 @@ export class Graph {
    * @param toArg Target Pin: Index (number) or Identifier (string)
    */
   connect(from: Node, to: Node, fromArg: number | string, toArg: number | string): Connection | null {
-    if(is_empty(from)|| is_empty(to)|| is_empty(fromArg)|| is_empty(toArg)){
+    if (is_empty(from) || is_empty(to) || is_empty(fromArg) || is_empty(toArg)) {
       console.error("[Error] Source or Target node/pin is empty.");
       return null;
     }
@@ -161,10 +162,12 @@ export class Graph {
     const toPin = typeof toArg === "number" ? to.getVisibleDataPin(toArg) : to.findPin(toArg).pin;
     if (!fromPin) {
       console.error(`[Error] Source pin not found on node ${from.def.Identifier}: ${fromArg}`);
+      fuseSuggest(from.def.DataPins.filter(x => x.Direction === 'Out').map(x => x.Identifier), String(fromArg));
       return null;
     }
     if (!toPin) {
       console.error(`[Error] Target pin not found on node ${to.def.Identifier}: ${toArg}`);
+      fuseSuggest(to.def.DataPins.filter(x => x.Direction === 'In').map(x => x.Identifier), String(toArg));
       return null;
     }
     if (fromPin.Direction === "In" || toPin.Direction === "Out") {
@@ -208,6 +211,56 @@ export class Graph {
       nodes: nodes,
       comments: comments,
       graphValues: [] // TODO: Implement variables if needed
+    });
+  }
+
+  static from(data: Gia.AssetBundle): Graph {
+    return this.decode(data);
+  }
+  static decode(proto: Gia.AssetBundle): Graph {
+    const system = get_resource_class(proto.primary_resource.resource_class);
+    if (system === null) {
+      console.error(`[Fatal Error] Unknown resource class: ${proto.primary_resource.resource_class}`);
+      throw new Error("Decoding failed due to unknown resource class.");
+    }
+    const [uid, time, file_id, file_name] = proto.export_tag.split("-");
+    const name = proto.primary_resource.internal_name;
+    const graph_id = proto.primary_resource.identity.runtime_id;
+    const graph = new Graph(system, parseInt(uid), name, graph_id);
+
+    // // TODO
+    // const graph_vars = get_graph_vars(root.graph.graph?.inner.graph!);
+    // graph_vars.forEach((v) => graph.graph_var.set(v.name, v));
+
+    proto.primary_resource.graph_data?.inner.graph.nodes.forEach(node => {
+      // node itself
+      const n = Node.decode(system, node);
+      if (n === null) {
+        console.error(`[Error] Failed to decode node at index ${node.index}`);
+        return;
+      }
+      graph.add_node(n);
+      // comments
+      // if (!empty(node.comments)) {
+      //   graph.add_comment(Comment.decode(node.comments, n));
+      // }
+    });
+
+    // proto.primary_resource.graph_data?.inner.graph.nodes.forEach(node => {
+    //   // decode connects
+    //   const { flows, connects } = Node.decode_connects(node, graph);
+    //   connects.forEach(c => graph.add_connect(c));
+    //   flows.forEach(f => graph.add_flow(f));
+    // });
+    return graph;
+  }
+
+  debugPrint(indent = 0): void {
+    console.log(`${" ".repeat(indent)}Graph: ${this.graph_name} (ID: ${this.graph_id}, System: ${this.system})`);
+    console.log(`${" ".repeat(indent)}UID: ${this.uid}, File ID: ${this.file_id}`);
+    console.log(`${" ".repeat(indent)}Nodes:`);
+    this.nodes.forEach(node => {
+      node.debugPrint(indent + 2);
     });
   }
 }
@@ -282,27 +335,6 @@ export class Node {
     return null;
   }
 
-  printPins(): void {
-    const flowIn = this.def.FlowPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
-    const flowOut = this.def.FlowPins.filter(x => x.Direction === "Out" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
-    const dataIn = this.def.DataPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
-    const dataOut = this.def.DataPins.filter(x => x.Direction === "Out" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
-
-    console.log(`Pins for Node ${this.def.Identifier} (Index: ${this.node_index}):`);
-    for (let i = 0; i < flowIn.length; i++) {
-      console.log(`  [Flow-In-${flowIn[i].ShellIndex}] ${flowIn[i].Identifier} (Index: ${i})`);
-    }
-    for (let i = 0; i < flowOut.length; i++) {
-      console.log(`  [Flow-Out-${flowOut[i].ShellIndex}] ${flowOut[i].Identifier} (Index: ${i})`);
-    }
-    for (let i = 0; i < dataIn.length; i++) {
-      console.log(`  [Data-In-${dataIn[i].ShellIndex}] ${dataIn[i].Identifier} (Index: ${i})`);
-    }
-    for (let i = 0; i < dataOut.length; i++) {
-      console.log(`  [Data-Out-${dataOut[i].ShellIndex}] ${dataOut[i].Identifier} (Index: ${i})`);
-    }
-  }
-
   findDataPin(identifier: string): TypedPinDef | null {
     const pin = (this.variant_def ?? this.def).DataPins.find(p => p.Identifier === identifier);
     return pin ?? null;
@@ -356,7 +388,7 @@ export class Node {
       return null;
     }
     if (thatPin.kind === "Data" && !type_equal(thisPin.pin!.Type!, thatPin.pin!.Type!)) {
-      console.info(`Data pin types do not match (Force Connect): ${stringify(thisPin.pin!.Type!)} vs ${stringify(thatPin.pin!.Type!)}`);
+      console.warn(`[Warning] Data pin types do not match (Force Connect): ${stringify(thisPin.pin!.Type!)} vs ${stringify(thatPin.pin!.Type!)}`);
     }
     if (thatPin.pin!.Direction === "In" && thatPin.kind === "Data" && with_node.data_from.has(with_pin)) {
       // disconnect old connection if any
@@ -436,29 +468,63 @@ export class Node {
     }
     if (constraint?.t !== "c") {
       console.error(`[Error] Node ${this.def.Identifier}: current constraint is not of ConstraintType.`);
+      fuseSuggest(this.def.Variants!.map(x => x.Constraints), stringify(constraint));
       return;
     }
     const newDef = NodeLib.getVariant(this.def.Identifier, constraint);
     if (!newDef) {
-      console.error(`[Error] Constraint ${stringify(constraint)} not found for node ${this.def.Identifier}`);
-      const fuse = new Fuse(this.def.Variants!.map(x => x.Constraints), { includeScore: true });
-      const results = fuse.search(stringify(constraint));
-      if (results.length > 0) {
-        const trimmed = results.filter(r => r.score! < 0.5).slice(0, 5);
-        if (trimmed.length === 0) trimmed.push(results[0]);
-        console.info(`  -> Did you mean: '${trimmed.map(r => r.item).join("' or '")}' ?`);
-      }
+      console.error(`[Error] Constraint '${stringify(constraint)}' not found for node ${this.def.Identifier}`);
+      fuseSuggest(this.def.Variants!.map(x => x.Constraints), stringify(constraint));
       return;
     }
-
     // Update definition and re-init pins
     this.variant_def = newDef;
     this.constraint = constraint;
   }
 
+  solveConstraints(constraints: [string, NodeType][]): void {
+    if (constraints.length === 0) {
+      console.info(`[Info] No constraints provided to solve for node ${this.def.Identifier}, use generic variant.`);
+      return;
+    }
+    const c = NodeLib.filterVariantConstraints(this.def, constraints);
+    if (c.length === 0) {
+      console.error(`[Error] No matching constraints found for node ${this.def.Identifier}`);
+      return;
+    }
+    if (c.length > 1) {
+      console.warn(`[Warning] ${c.length} Multiple matching constraints found for node ${this.def.Identifier}, using the first one.`);
+      console.warn(`  -> Matches: ${c.map(x => stringify(x)).slice(0, 3).join(", ")}`);
+    }
+    this.setConstraints(c[0]);
+  }
+
   setPosition(x: number, y: number, scale_x = 300, scale_y = 200) {
     this.x = x * scale_x;
     this.y = y * scale_y;
+  }
+
+  setVal(pin: number | string, value: TypedValue) {
+    let pinDef: TypedPinDef | null;
+    if (typeof pin === "number") {
+      pinDef = this.getVisibleDataPin(pin);
+      if (!pinDef) {
+        console.error(`[Error] Pin index ${pin} not found on node ${this.def.Identifier}`);
+        return;
+      }
+    } else {
+      pinDef = this.findDataPin(pin);
+      if (!pinDef) {
+        console.error(`[Error] Pin '${pin}' not found on node ${this.def.Identifier}`);
+        fuseSuggest(this.def.DataPins.filter(x => x.Direction === 'In').map(x => x.Identifier), pin);
+        return;
+      }
+    }
+    if (pinDef.Direction !== "In") {
+      console.error(`[Error] Pin ${pinDef.Identifier} is not an input pin on node ${this.def.Identifier}`);
+      return;
+    }
+    this.pin_values.set(pinDef.Identifier, value);
   }
 
   encode_pins(): Gia.PinInstance[] {
@@ -511,6 +577,154 @@ export class Node {
       unique_index: this.node_index,
     });
   }
+
+  static decode(system: ResourceClass, proto: Gia.NodeInstance): Node | null {
+    const def = NodeLib.getByID(proto.shell_ref.runtime_id);
+    if (def === undefined) {
+      console.error(`[Error] Node definition not found for ID: ${proto.shell_ref.runtime_id}`);
+      return null;
+    }
+    const is_server = get_system(system) === "Server";
+    const node = new Node(system, def, proto.index);
+    const constraints: [string, NodeType][] = [];
+    for (const pin of proto.pins) {
+      const pin_info = Node.decode_pin(pin, is_server);
+      if (!pin_info.success) {
+        console.warn(`[Warning] Failed to decode pin at index ${pin.shell_sig.index} for node ${def.Identifier}`);
+        continue;
+      }
+      if (pin_info.kind === "Data") {
+        const def = node.def.DataPins.find(p => p.ShellIndex === pin_info.index && p.Direction === pin_info.direction);
+        if (!def) {
+          console.warn(`[Warning] Data pin definition not found at index ${pin_info.index} for node ${node.def.Identifier}`);
+          continue;
+        }
+        if (!type_equal(def.Type, pin_info.type!) && !is_reflect(def.Type)) {
+          console.warn(`[Warning] Data pin type contradiction at pin ${def.Identifier} for node ${def.Identifier}: definition type ${stringify(def.Type)} vs encoded type ${stringify(pin_info.type!)}`);
+        }
+        if (!is_empty(pin_info.value)) {
+          node.pin_values.set(def.Identifier, pin_info.value);
+        }
+        if (pin_info.poly_value) {
+          if (!is_reflect(def.Type)) {
+            console.warn(`[Warning] Pin ${def.Identifier} in node ${node.def.Identifier} is marked as polymorphic value but its type is not reflective.`);
+          } else if (pin_info.type) {
+            constraints.push([def.Identifier, pin_info.type]);
+          }
+        }
+      }
+    }
+    if (node.def.Type === "Variant") {
+      node.solveConstraints(constraints);
+    }
+    return node;
+  }
+
+  static decode_pin(proto: Gia.PinInstance, is_server: boolean): {
+    success: boolean;
+    kind?: "Flow" | "Data" | "Meta";
+    direction?: "In" | "Out";
+    index?: number;
+    op_code?: number;
+    type?: NodeType;
+    value?: TypedValue;
+    poly_value?: boolean;
+  } {
+    let direction: "In" | "Out";
+    switch (proto.shell_sig.kind) {
+      case Gia.PinSignature_Kind.IN_FLOW:
+        return { success: true, kind: "Flow", direction: "In", index: proto.shell_sig.index };
+      case Gia.PinSignature_Kind.OUT_FLOW:
+        return { success: true, kind: "Flow", direction: "Out", index: proto.shell_sig.index };
+      case Gia.PinSignature_Kind.IN_PARAM:
+        direction = "In";
+        break;
+      case Gia.PinSignature_Kind.OUT_PARAM:
+        direction = "Out";
+        break;
+      case Gia.PinSignature_Kind.META_RPC_OPCODE:
+        return { success: true, kind: "Meta", index: proto.shell_sig.index, op_code: proto.binding_meta?.source_ref?.id };
+      default:
+        console.warn(`[Warning] Unknown pin kind: ${proto.shell_sig.kind}`);
+        return { success: false };
+    }
+    const type = is_server ? ServerType.toNodeType(proto.type) : ClientType.toNodeType(proto.type);
+    const value = read_typed_value(proto.value);
+    return {
+      success: true,
+      kind: "Data",
+      index: proto.shell_sig.index,
+      direction,
+      type,
+      value,
+      poly_value: proto.value?.val_poly !== undefined
+    };
+  }
+
+  debugPrint(indent = 0): void {
+    console.log(`${" ".repeat(indent)}Node: ${this.def.Identifier} (Index: ${this.node_index})`);
+    if (this.variant_def) {
+      console.log(`${" ".repeat(indent + 2)}Variant Constraints: ${stringify(this.constraint!)}`);
+    }
+    console.log(`${" ".repeat(indent + 2)}Pins:`);
+    this.debugPrintPins(indent + 4);
+    console.log(`${" ".repeat(indent + 2)}Connections:`);
+    const conns = this.getAllConnections();
+    if (conns.length === 0) {
+      console.log(`${" ".repeat(indent + 4)}(none)`);
+    } else {
+      conns.forEach(c => {
+        const from_name = c.from === this ? "*this" : `${c.from.def.Identifier.split(":").pop()}(${c.from.node_index})`;
+        const to_name = c.to === this ? "*this" : `${c.to.def.Identifier.split(":").pop()}(${c.to.node_index})`;
+        console.log(`${" ".repeat(indent + 4)}[${from_name}::${c.from_pin.Identifier}] --> [${to_name}::${c.to_pin.Identifier}]`);
+      });
+    }
+  }
+
+  debugPrintPins(indent: number = 0): void {
+    const flowIn = (this.variant_def ?? this.def).FlowPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
+    const flowOut = (this.variant_def ?? this.def).FlowPins.filter(x => x.Direction === "Out" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
+    const dataIn = (this.variant_def ?? this.def).DataPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
+    const dataOut = (this.variant_def ?? this.def).DataPins.filter(x => x.Direction === "Out" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
+
+    const indentStr = " ".repeat(indent);
+    console.log(`${indentStr}Pins for Node ${this.def.Identifier} (Index: ${this.node_index}):`);
+    for (let i = 0; i < flowIn.length; i++) {
+      console.log(`${indentStr}  [Flow-In-${flowIn[i].ShellIndex}] (Index: ${i}) ${flowIn[i].Identifier}`);
+    }
+    for (let i = 0; i < flowOut.length; i++) {
+      console.log(`${indentStr}  [Flow-Out-${flowOut[i].ShellIndex}] (Index: ${i}) ${flowOut[i].Identifier}`);
+    }
+    for (let i = 0; i < dataIn.length; i++) {
+      let val = this.pin_values.get(dataIn[i].Identifier);
+      if (is_empty(val)) {
+        val = this.def.DataPins.find(p => p.Identifier === dataIn[i].Identifier)?.DefaultValue;
+        if (is_empty(val)) {
+          val = "(unset)";
+        } else {
+          val = `(default) ${JSON.stringify(val)}`;
+        }
+      } else {
+        val = JSON.stringify(val);
+      }
+      console.log(`${indentStr}  [Data-In-${dataIn[i].ShellIndex}] (Index: ${i}) ${dataIn[i].Identifier}: ${val} as ${stringify(dataIn[i].Type)}`);
+    }
+    for (let i = 0; i < dataOut.length; i++) {
+      let val = this.pin_values.get(dataOut[i].Identifier);
+      if (is_empty(val)) {
+        val = this.def.DataPins.find(p => p.Identifier === dataOut[i].Identifier)?.DefaultValue;
+        if (is_empty(val)) {
+          val = "(unset)";
+        } else {
+          val = `(default) ${JSON.stringify(val)}`;
+        }
+      } else {
+        val = JSON.stringify(val);
+      }
+      console.log(`${indentStr}  [Data-Out-${dataOut[i].ShellIndex}] (Index: ${i}) ${dataOut[i].Identifier}: ${val} as ${stringify(dataOut[i].Type)}`);
+    }
+  }
+
 }
 
 export interface Connection {

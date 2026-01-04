@@ -42,7 +42,6 @@ function createGraph(system: ResourceClass) {
   graph.flow(Trig, Branch1);
   graph.connect(Trig, Branch1, 2, 0);
   graph.connect(Trig, get_val, 0, 0);
-  return;
   Branch1.setVal(1, [1, 2, 3]);
   get_val.setVal(1, "Plant Level");
   // column 3

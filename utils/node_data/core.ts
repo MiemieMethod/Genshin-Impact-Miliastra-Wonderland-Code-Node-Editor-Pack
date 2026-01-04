@@ -142,16 +142,16 @@ export class Nodes {
     return this.ensureIdentifierMap().get(identifier);
   }
 
-  findSimilar(identifier: string): D.NodeDef[] {
+  findSimilar(identifier: string, limit = 3): D.NodeDef[] {
     if (!this.fuse) {
       this.fuse = new Fuse(this.nodes, {
         includeScore: true,
         keys: ["Identifier", "Alias"],
       });
     }
-    const results = this.fuse.search(identifier);
+    const results = this.fuse.search(identifier, { limit });
     const trimmed = results.filter(r => r.score !== undefined && r.score < 0.5);
-    if(trimmed.length === 0 ) trimmed.push(results[0]);
+    if (trimmed.length === 0) trimmed.push(results[0]);
     return trimmed.map(r => r.item);
   }
 
@@ -166,7 +166,7 @@ export class Nodes {
 
   toTypedNodeDef(node: D.NodeDef): TypedNodeDef {
     return {
-      ...node, 
+      ...node,
       DataPins: node.DataPins.map(dp => ({
         ...dp,
         Type: dp.Type ? NT.parse(dp.Type) : NT.UNK_TYPE
@@ -233,6 +233,45 @@ export class Nodes {
     });
 
     return injectedNode;
+  }
+
+  /** 
+   * filter variant constraints that match the given pin types
+   * 
+   * @param def Node definition
+   * @param constraints Array of tuples containing pin identifier and node type
+   * @returns Array of ConstraintType that match the given pin types
+   */
+  filterVariantConstraints(def: D.NodeDef | TypedNodeDef, constraints: [string, NT.NodeType][]): NT.ConstraintType[] {
+    if (def.Type !== "Variant" || !def.Variants) {
+      return [];
+    }
+    const d = constraints.map(c => {
+      const p = def.DataPins.find(p => p.Identifier === c[0]);
+      if (!p) {
+        console.error(`[Error] Pin ${c[0]} not found in node ${def.Identifier}`);
+        return NT.UNK_TYPE;
+      }
+      return p.Type ? NT.parse(p.Type) : NT.UNK_TYPE;
+    });
+    const ret: NT.ConstraintType[] = [];
+    def.Variants.forEach(v => {
+      const cts = NT.parse(v.Constraints);
+      if (cts.t !== "c") {
+        console.error(`[Error] Unsupported constraint type '${cts.t}' in variant constraints '${v.Constraints}'`);
+        return;
+      }
+      let pass = true;
+      for (let i = 0; i < d.length; i++) {
+        if (d[i] === NT.UNK_TYPE) continue;  // Skip unknown types
+        if (!NT.type_equal(NT.reflects(d[i], cts), constraints[i][1])) {
+          pass = false;
+          break;
+        }
+      }
+      if (pass) ret.push(cts);
+    });
+    return ret;
   }
 
   /**

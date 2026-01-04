@@ -1,3 +1,4 @@
+import Fuse from "fuse.js";
 import type { ResourceClass, ServerClient } from "../node_data/types.ts";
 
 export class Counter {
@@ -74,4 +75,12 @@ export function get_system(resources_class: ResourceClass): ServerClient {
 
 export function is_empty<T>(v: T | null | undefined): v is null | undefined {
   return v === null || v === undefined;
+}
+
+export function fuseSuggest(list: string[], keyword: string, limit: number = 3) {
+  const fuse = new Fuse(list, { includeScore: true });
+  const results = fuse.search(keyword, { limit });
+  if (results.length > 0) {
+    console.info(`  -> Did you mean: '${results.map(r => r.item).join("' or '")}' ?`);
+  }
 }

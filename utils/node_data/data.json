@@ -615,7 +615,7 @@
       ],
       "DataPins": [
         {
-          "Identifier": "Condition",
+          "Identifier": "cond",
           "Direction": "In",
           "Type": "Bol",
           "Label": null,
@@ -785,7 +785,7 @@
       ],
       "DataPins": [
         {
-          "Identifier": "Statement",
+          "Identifier": "key",
           "Direction": "In",
           "Type": "R<T>",
           "Label": null,
@@ -797,7 +797,7 @@
           "Description": {}
         },
         {
-          "Identifier": "CasesList",
+          "Identifier": "cases",
           "Direction": "In",
           "Type": "L<R<T>>",
           "Label": null,
@@ -816,11 +816,11 @@
           "KernelID": 3,
           "InjectedContents": [
             {
-              "Identifier": "Statement",
+              "Identifier": "key",
               "TypeSelectorIndex": 0
             },
             {
-              "Identifier": "CasesList",
+              "Identifier": "cases",
               "TypeSelectorIndex": 0
             }
           ]
@@ -830,11 +830,11 @@
           "KernelID": 4,
           "InjectedContents": [
             {
-              "Identifier": "Statement",
+              "Identifier": "key",
               "TypeSelectorIndex": 1
             },
             {
-              "Identifier": "CasesList",
+              "Identifier": "cases",
               "TypeSelectorIndex": 1
             }
           ]
@@ -134630,7 +134630,7 @@
       ],
       "DataPins": [
         {
-          "Identifier": "Condition",
+          "Identifier": "cond",
           "Direction": "In",
           "Type": "Bol",
           "Label": null,
