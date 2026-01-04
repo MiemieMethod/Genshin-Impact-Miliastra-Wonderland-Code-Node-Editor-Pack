@@ -46,7 +46,6 @@ export class Graph {
     this.file_id = this.counter_dyn_id.value;
 
     this.nodes = new Set();
-    this.connects = new Set();
     this.comments = new Set();
   }
 
@@ -91,7 +90,7 @@ export class Graph {
       console.warn(`Node ${def.Identifier} system (${def.System}) does not match Graph system (${this.system})`);
     }
 
-    const newNode = new Node(def, this.counter_idx.value, this.system);
+    const newNode = new Node(this.system, def, this.counter_idx.value);
     this.nodes.add(newNode);
     return newNode;
   }
@@ -104,9 +103,8 @@ export class Graph {
    * @param toArg Target Pin: Index (number) or Identifier (string)
    */
   connect(from: Node, to: Node, fromArg: number | string, toArg: number | string): Connection | null {
-    const fromPin = from.getPin(fromArg, "Out");
-    const toPin = to.getPin(toArg, "In");
-
+    const fromPin = typeof fromArg === "number" ? from.getVisibleDataPin(fromArg) : from.findPin(fromArg).pin;
+    const toPin = typeof toArg === "number" ? to.getVisibleDataPin(toArg) : to.findPin(toArg).pin;
     if (!fromPin) {
       console.error(`Source pin not found on node ${from.def.Identifier}: ${fromArg}`);
       return null;
@@ -115,35 +113,24 @@ export class Graph {
       console.error(`Target pin not found on node ${to.def.Identifier}: ${toArg}`);
       return null;
     }
-
-    // Check pre-existing connection to avoid duplicates
-    // Also logic to disconnect old connections if single-link constraint (usually inputs)
-
-    // For "In" pins (Data or Flow), usually only one connection allowed? 
-    // Flow In: Can have multiple sources calling it? Yes.
-    // Data In: Can only have ONE source.
-    if (toPin.kind === Gia.PinSignature_Kind.IN_PARAM) {
-      const existing = this.get_connection_to(to, toPin.index);
-      if (existing) {
-        console.warn(`Disconnecting existing input on ${to.def.Identifier} pin ${toPin.toString()}`);
-        this.disconnect(existing);
-      }
+    if(fromPin.Direction === "In" || toPin.Direction === "Out") {
+      console.error(`Invalid connection direction: from ${fromPin.Direction} to ${toPin.Direction}`);
+      return null;
     }
-
-    const conn = new Connection(from, fromPin, to, toPin);
-    this.connects.add(conn);
-
-    // Also add to pin's internal list if we want to track it there
-    fromPin.addConnection(conn);
-    toPin.addConnection(conn);
-
-    return conn;
+    return from.connectWith(fromPin.Identifier, to, toPin.Identifier);
   }
 
   disconnect(conn: Connection) {
-    if (this.connects.delete(conn)) {
-      conn.fromPin.removeConnection(conn);
-      conn.toPin.removeConnection(conn);
+    if(conn.from.findPin(conn.from_pin.Identifier).kind === "Data") {
+      conn.from.disconnectDataInAt(conn.from_pin.Identifier);
+    } else {
+      const conns = conn.from.flow_to.get(conn.from_pin.Identifier);
+      if(conns) {
+        const index = conns.indexOf(conn);
+        if(index >= 0) {
+          conn.from.disconnectFlowOutAt(conn.from_pin.Identifier, index);
+        }
+      }
     }
   }
 
@@ -232,6 +219,17 @@ export class Node {
     return {
       success: false
     };
+  }
+
+  getVisibleDataPin(index: number): PinDef | null {
+    for (let i = 0, count = 0; i < this.def.DataPins.length; i++, count++) {
+      const pin = this.def.DataPins[i];
+      if (pin.Visibility === "Hidden") continue;
+      if (count === index) {
+        return pin;
+      }
+    }
+    return null;
   }
 
   printPins(): void {
@@ -417,14 +415,14 @@ export class Node {
       const is_ref = def.Type === "Variant" && pin0.Type !== undefined && is_reflect(pin0.Type);
       const v = this.pin_values.get(pin.Identifier);
       let value: Gia.TypedValue | undefined;
-      if(v!==undefined){
-        if(is_ref){
+      if (v !== undefined) {
+        if (is_ref) {
           value = make_variant_value(parse(pin.Type ?? "Unk"), is_server, v);
-        }else{
+        } else {
           value = make_typed_value(parse(pin.Type ?? "Unk"), is_server, v);
         }
       }
-      
+
       const con = this.data_from.get(pin.Identifier);
       const connections = con === undefined ? undefined : [make_connection(con.to.node_index, con.to_pin, false)];
 
