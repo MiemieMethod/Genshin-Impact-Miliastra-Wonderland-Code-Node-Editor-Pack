@@ -80,15 +80,15 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `DefaultBranch` || Default |
- * | - || ⏩ || - || `Case1` ||  : Visibility Depends on the length of CasesList |
- * | - || ⏩ || - || `Case2` ||  : Visibility Depends on the length of CasesList |
- * | - || ⏩ || - || `Case3` ||  : Visibility Depends on the length of CasesList |
- * | - || ⏩ || - || `Case4` ||  : Visibility Depends on the length of CasesList |
- * | - || ⏩ || - || `Case5` ||  : Visibility Depends on the length of CasesList |
- * | - || ⏩ || - || `Case6` ||  : Visibility Depends on the length of CasesList |
- * | - || ⏩ || - || `Case7` ||  : Visibility Depends on the length of CasesList |
- * | - || ⏩ || - || `Case8` ||  : Visibility Depends on the length of CasesList |
- * | - || ⏩ || - || `Case9` ||  : Visibility Depends on the length of CasesList |
+ * | - || ⏩ || - || `Case1` ||  |
+ * | - || ⏩ || - || `Case2` ||  |
+ * | - || ⏩ || - || `Case3` ||  |
+ * | - || ⏩ || - || `Case4` ||  |
+ * | - || ⏩ || - || `Case5` ||  |
+ * | - || ⏩ || - || `Case6` ||  |
+ * | - || ⏩ || - || `Case7` ||  |
+ * | - || ⏩ || - || `Case8` ||  |
+ * | - || ⏩ || - || `Case9` ||  |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Int>`
