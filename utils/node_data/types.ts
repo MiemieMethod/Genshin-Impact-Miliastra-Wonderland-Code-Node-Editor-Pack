@@ -76,6 +76,7 @@ export interface NodeDef {
   Type: "Fixed" | "Variant";              // Whether a node is fixed-defined or generic-defined 
   InGameName: Translations;               // In-game name
   Alias?: string[];                       // 保证游戏中的名称发生变化后仍有历史记录, 增强抗干扰能力
+  Description: Translations;              // Description
   FlowPins: PinDef[];                     // List of control flow pins of the node
   DataPins: PinDef[];                     // List of data io pins of the node
   Variants?: VariantDef[]                 // Only for Variant Nodes
@@ -96,6 +97,7 @@ export interface PinDef {
   Editability?: boolean;                              // Whether the pin can be edited by user manually
   Remarks?: string;                                   // Some additional information about the pin with special behavior
   Label: Translations;                                // UI 显示文本
+  Description: Translations;                          // 文档描述
   Placeholder?: Translations;                         // Placeholder of the pin
 }
 // ------------------------------------------------------------------

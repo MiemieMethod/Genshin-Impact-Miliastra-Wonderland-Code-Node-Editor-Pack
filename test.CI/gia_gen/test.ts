@@ -1,8 +1,8 @@
 import { writeFileSync } from "fs";
-import type { AllModes, ClientModes, ServerModes } from "../../utils/gia_gen/graph.ts";
-import { Graph, NODE_ID, CLIENT_NODE_ID, encode_gia_file } from "../../utils/index.ts";
-import { assertDeepEq, assertEq, deepEqual, exclude_keys } from "../../utils/utils.ts";
 import { inspect } from "util";
+import { ResourceClass } from "../../utils/node_data/types";
+import { Graph } from "../../utils/gia_gen/interface";
+import { NODES } from "../../utils/node_data/game_nodes";
 
 const DSL = `
 [OnTab()[source=src, tab_id=id]].Switch(tab_id)(
@@ -30,18 +30,19 @@ const DSL2 = `
 `;
 
 
-function createGraph(mode: ServerModes) {
-  console.log("Creating Graph......", mode);
-  const graph = new Graph(mode, undefined, "Github Actions CI Test Generated Graph");
+function createGraph(system: ResourceClass) {
+  console.log("Creating Graph......", system);
+  const graph = new Graph(system, undefined, "Github Actions CI Test Generated Graph");
 
   // column 1
-  const Trig = graph.add_node(NODE_ID.When_Tab_Is_Selected);
+  const Trig = graph.add_node(NODES.Trigger_Tab_OnTabSelect)!;
   // column 2
-  const Branch1 = graph.add_node(NODE_ID.Multiple_Branches__Int);
-  const get_val = graph.add_node(NODE_ID.Get_Custom_Variable__Int);
+  const Branch1 = graph.add_node(NODES.Control_General_Branch)!;
+  const get_val = graph.add_node(NODES.Query_CustomVariable_GetVariable)!;
   graph.flow(Trig, Branch1);
   graph.connect(Trig, Branch1, 2, 0);
   graph.connect(Trig, get_val, 0, 0);
+  return;
   Branch1.setVal(1, [1, 2, 3]);
   get_val.setVal(1, "Plant Level");
   // column 3
@@ -187,7 +188,7 @@ function createGraphClient(mode: ClientModes) {
   return graph;
 }
 
-function test<T extends AllModes>(fun: (type: T) => Graph<T>, type: T) {
+function test(fun: (type: T) => Graph, type: T) {
   const graph = fun(type);
 
   const encoded = graph.encode({ pos_jitter: false, fill_undefined: false });

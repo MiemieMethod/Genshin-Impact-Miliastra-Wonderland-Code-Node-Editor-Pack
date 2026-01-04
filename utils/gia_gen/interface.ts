@@ -11,9 +11,9 @@ import {
 } from "./core.ts";
 import { Doc, Node as NodeLib } from "../node_data/instances.ts";
 import type { InjectedDef, NodeDef, PinDef, ResourceClass, ServerClient, TypedValue } from "../node_data/types.ts";
-import { type NodeType, stringify, parse, is_reflect, ConstraintType, StructType } from "../node_data/node_type.ts";
+import { type NodeType, stringify, parse, is_reflect,type ConstraintType,type StructType } from "../node_data/node_type.ts";
 import { Counter, get_system, randomInt, randomName } from "./utils.ts";
-import { TypedNodeDef } from "../node_data/core.ts";
+import { type TypedNodeDef } from "../node_data/core.ts";
 
 
 // Helper to determine system from common inputs if needed,
@@ -95,8 +95,46 @@ export class Graph {
     return newNode;
   }
 
+  flow(from: Node, to: Node, fromArg?:  string, toArg?: string, insert_pos?: number): Connection | null {
+    let from_pin: PinDef|undefined;
+    let to_pin: PinDef|undefined;
+    if(fromArg!==undefined){
+      const f = from.findPin(fromArg);
+      if(!f.success || f.kind !== "Flow"){
+        console.error(`Source flow pin not found on node ${from.def.Identifier}: ${fromArg}`);
+        return null;
+      }
+      from_pin = f.pin;
+    }else{
+       from_pin = from.def.FlowPins.find(p => p.Direction === "Out" && p.Visibility !== "Hidden");
+    }
+    if(toArg!==undefined){
+      const t = to.findPin(toArg);
+      if(!t.success || t.kind !== "Flow"){
+        console.error(`Target flow pin not found on node ${to.def.Identifier}: ${toArg}`);
+        return null;
+      }
+      to_pin = t.pin;
+    }else{
+       to_pin = to.def.FlowPins.find(p => p.Direction === "In" && p.Visibility !== "Hidden");
+    }
+    if (!from_pin) {
+      console.error(`Source flow pin not found on node ${from.def.Identifier}: ${fromArg ?? "(default)"}`);
+      return null;
+    }
+    if (!to_pin) {
+      console.error(`Target flow pin not found on node ${to.def.Identifier}: ${toArg ?? "(default)"}`);
+      return null;
+    }
+    if (from_pin.Direction === "In" || to_pin.Direction === "Out") {
+      console.error(`Invalid flow connection direction: from ${from_pin.Direction} to ${to_pin.Direction}`);
+      return null;
+    }
+    return from.connectWith(from_pin.Identifier, to, to_pin.Identifier, insert_pos);
+  }
+
   /**
-   * Connect two nodes.
+   * Connect data flow between nodes.
    * @param from Source Node
    * @param to Target Node
    * @param fromArg Source Pin: Index (number) or Identifier (string)

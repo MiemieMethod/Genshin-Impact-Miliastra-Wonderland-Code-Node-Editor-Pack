@@ -4,6 +4,7 @@ import type { EnumDef, EnumTypeDef } from "./types.ts";
 import { assert, assertDeepEq, assertEq, assertEqs, exclude_keys } from "../utils.ts";
 import { nodeDefinitions as REF } from "../../ref/Columbina-Dev/WebMiliastraNodesEditor/src/data/nodeDefinitions.ts"
 import { parse, stringify } from "yaml";
+import * as NT from "./node_type.ts";
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
 const read = (path: string) => readFileSync(import.meta.dirname + "/" + path).toString();
 const save = (path: string, data: {} | string) =>
@@ -16,10 +17,23 @@ const save = (path: string, data: {} | string) =>
 
 // TODO: VisiblePin8(10) of Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Loc's type conflicts with others
 
+data.Nodes.forEach((node) => {
+  node.FlowPins.forEach((pin) => pin.Description ??= {});
+  node.DataPins.forEach((pin) => pin.Description ??= {});
+  node.Variants?.forEach((variant) => {
+    const t = NT.parse(variant.Constraints);
+    assertEq(t.t, "s");
+    assertEq(variant.Constraints, NT.stringify({ t: "s", f: t.f }));
+    variant.Constraints = NT.stringify({ t: "c", c: t.f });
+  });
+})
+
+// save("data.json", data);
+
 
 // IMPORTANT 提取 ENUM id 信息的很新颖的方法: 导入composite节点时是不检查内外一致性的, 因此可以手动生成接口而不用找到内部实际对应的节点......
-const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/2.gia");
-console.log(g.asset.graph.inner.graph.nodes)
+// const g = decode_gia_file("c:/Users/admin/AppData/LocalLow/miHoYo/原神/BeyondLocal/Beyond_Local_Export/2.gia");
+// console.log(g.asset.graph.inner.graph.nodes)
 // g.graph.graph!.inner.graph.repeat_interval = 0.1;
 // g.graph.graph!.inner.graph.xxx_exposed_pin_index = 2;
 

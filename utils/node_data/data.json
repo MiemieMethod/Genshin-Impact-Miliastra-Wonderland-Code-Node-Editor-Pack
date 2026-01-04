@@ -22317,7 +22317,7 @@
       "__ref_id": "query.entities.byTypeOnField"
     },
     {
-      "Identifier": "Query.Entity_Related.Get_By_Prefab",
+      "Identifier": "Query.Entity_Related.Get_With_Prefab",
       "ID": 320,
       "InGameName": {
         "en": "Get Entities With Specified Prefab on the Field",
@@ -126559,7 +126559,7 @@
       ],
       "Variants": [
         {
-          "Constraints": "S<T:E<-1>>",
+          "Constraints": "S<T:E<CGEN>>",
           "KernelID": 10,
           "InjectedContents": [
             {

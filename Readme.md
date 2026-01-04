@@ -5,8 +5,9 @@
 # ⚠️ 警告 ⚠️ 
 # 数据重构中(2025.12.30), 请暂时不要引用此数据
 ## ✅ 已完成: `utils/node_data/` 数据
-## ✅ 进行中: `utils/proto/` 字段名称
-## ⏳ 未开始: `utils/gia_gen/` 接口
+## ✅ 已完成: `utils/proto/` 字段名称
+## ⏳✅ 即将完成: `utils/gia_gen/` 接口
+## ⏳ 更新文档
 
 [中文文档](Readme.md) | [English Documentation](Readme.en.md)
 
