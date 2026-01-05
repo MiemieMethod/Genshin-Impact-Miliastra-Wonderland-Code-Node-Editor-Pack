@@ -7,10 +7,20 @@ import argparse
 import subprocess
 import sys
 import os
+import re
 
 PYTHON_FILE_PATH = sys.argv[0]
 PYTHON_DIR_PATH = os.path.dirname(os.path.abspath(PYTHON_FILE_PATH))
 PYTHON_REL_PATH = os.path.relpath(PYTHON_DIR_PATH, os.getcwd())
+
+def unescape_protoc_output(text):
+    # protoc 输出的格式通常是 \344\277\241，Python 的 bytes 解码可以处理这种格式
+    # 我们匹配所有的反斜杠八进制序列，并将其转换为对应的字符
+    return re.sub(
+        r'(\\([0-7]{3}))+',
+        lambda m: m.group(0).encode('ascii').decode('unicode_escape').encode('latin1').decode('utf-8'),
+        text
+    )
 
 def read_arg():
   parser = argparse.ArgumentParser(description="Parse protobuf file")
@@ -43,7 +53,10 @@ def decode(path, no_print=False, output=None):
   if p.returncode != 0:
     print("protoc error:", stderr.decode())
   else:
-    text = stdout.decode()
+    # 1. 先进行标准解码
+    raw_text = stdout.decode('utf-8')
+    # 2. 修复八进制转义的中文字符
+    text = unescape_protoc_output(raw_text)
     if not no_print:
       print("decoded message:")
       print(text)

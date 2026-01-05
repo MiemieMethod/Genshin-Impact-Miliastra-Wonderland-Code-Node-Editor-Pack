@@ -1,6 +1,6 @@
 {
-  "name": "convertor",
-  "version": "1.0.0",
+  "name": "miliastra-wonderland-code-node-editor-pack",
+  "version": "2.0.2",
   "description": "千星奇域节点图本地编辑器, 网页节点编辑器, 转换器",
   "homepage": "https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack#readme",
   "bugs": {
@@ -18,8 +18,6 @@
     "doc": "docs"
   },
   "scripts": {
-    "test_parser": "node ./src/test/parser.ts",
-    "fmt": "deno fmt ./src/*/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -33,6 +31,7 @@
   "dependencies": {
     "@dagrejs/dagre": "^2.0.0",
     "@types/dagre": "^0.7.53",
+    "fuse.js": "^7.1.0",
     "protobufjs": "^7.5.4",
     "yaml": "^2.8.1"
   }

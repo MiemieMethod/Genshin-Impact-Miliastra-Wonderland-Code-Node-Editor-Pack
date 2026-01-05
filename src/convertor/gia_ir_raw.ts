@@ -1,6 +1,6 @@
 
 import { assert } from "../../utils/utils.ts";
-import { helper, Graph, Node, Connect, gia_node } from "../../utils/index.ts";
+import { helper, Graph, NodeHelper, Connect, gia_node } from "../../utils/index.ts";
 import type { ComponentDecl, IR_AnchorNode, IR_BranchNode, IR_CallNode, IR_ExecutionBlock, IR_FunctionArg, IR_GraphModule, IR_InOutNode, IR_JumpNode, IR_Node, IR_NodeChain, IR_Trigger, SharedFuncDecl } from "../types/IR.ts";
 import { IR_Id_Counter } from "../types/consts.ts";
 import { analyzeGraph, ChainResult } from "./graph_chain_split.ts";
@@ -11,9 +11,9 @@ const _srcRange = { start: 0, end: 0 } as const;
 class RawIRModuleBuilder {
   graph: Graph;
   /** Node to IR node id */
-  node2id: Map<Node<any>, IR_Node> = new Map();
+  node2id: Map<NodeHelper<any>, IR_Node> = new Map();
   /** IR node id to Node */
-  id2node: Map<number, Node<any>> = new Map();
+  id2node: Map<number, NodeHelper<any>> = new Map();
   /** [from ir id , to ir id] */
   flows: [number, number][] = []
   /** Map of node pin id, to [node id, branch index] */
@@ -406,7 +406,7 @@ function ir_call_shared(node: SharedFuncDecl, port: BranchId): IR_CallNode {
 }
 
 
-function ir_node(n: Node<any>): IR_Node {
+function ir_node(n: NodeHelper<any>): IR_Node {
   const gid = n.GenericId;
   const cid: number | string | null = n.ConcreteId;
   if (cid === null) {
@@ -456,6 +456,6 @@ function nodes_to_execution_block(chains: IR_Node[]): IR_ExecutionBlock {
 }
 
 
-if(import.meta.main) {
+if (import.meta.main) {
   // For test
 }

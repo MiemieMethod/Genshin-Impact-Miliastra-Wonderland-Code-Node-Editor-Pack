@@ -1,0 +1,226 @@
+/* 视口：固定窗口大小，隐藏溢出，禁止滚动条 */
+.graph-viewport {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #222222;
+    overflow: hidden;
+    /* 关键：禁止原生滚动条 */
+    cursor: grab;
+    user-select: none;
+}
+
+.graph-viewport:active {
+    cursor: grabbing;
+}
+
+/* 世界层：包含所有内容的容器，负责平移变换 */
+.transform-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    /* 所有的子元素以 (0,0) 为原点绝对定位 */
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+/* 背景网格 (可选：为了让移动感更强) */
+.graph-viewport::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.6;
+}
+
+/* 连线层 (SVG) */
+.graph-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 关键：尺寸设为0，但允许溢出显示，这样坐标直接对应 px */
+    /* width: 0px;
+    height: 0px; */
+    overflow: visible;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 节点通用样式 */
+.ue-node {
+    position: absolute;
+    min-width: 120px;
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid #000;
+    border-radius: 8px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+    font-size: 12px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    cursor: help;
+}
+
+/* 节点自带的注释 (Attached Comment) */
+.ue-node-comment-bubble {
+    position: absolute;
+    bottom: 100%;
+    /* 位于节点上方 */
+    left: 0;
+    margin-bottom: 8px;
+    /* 间距 */
+    background: rgba(255, 255, 200, 0.8);
+    /* 常见的便利贴黄，或者改为透明白 */
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    max-width: 200px;
+    pointer-events: none;
+    position: relative;
+    /* 为了画小三角 */
+}
+
+/* 注释的小三角 */
+.ue-node-comment-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(255, 255, 200, 0.8) transparent transparent transparent;
+}
+
+/* 独立的 Graph 注释 */
+.ue-comment-box {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    font-size: 16px;
+    z-index: 5;
+    pointer-events: none;
+    white-space: pre-wrap;
+    min-width: 100px;
+}
+
+/* ... (保留之前的 Header, Pin, Socket 样式) ... */
+.ue-node-header {
+    padding: 4px 8px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.ue-node-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ue-node-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.ue-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 8px;
+}
+
+.pin-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 20px;
+}
+
+.pin-label {
+    color: #ccc;
+}
+
+.pin-socket {
+    width: 10px;
+    height: 10px;
+    box-sizing: border-box;
+}
+
+.pin-socket.data {
+    border-radius: 50%;
+    background-color: var(--pin-color);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.pin-socket.flow {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    clip-path: polygon(0% 0%, 60% 0%, 100% 50%, 60% 100%, 0% 100%);
+}
+
+.pin-value-static {
+    font-family: monospace;
+    font-size: 10px;
+    color: #88ff88;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0 4px;
+    border-radius: 2px;
+}
+
+/* 新增: 悬浮提示框样式 */
+.graph-tooltip {
+    position: fixed;
+    /* 固定在屏幕上，不跟随画布平移 */
+    display: none;
+    /* 默认隐藏 */
+    background-color: rgba(10, 10, 10, 0.95);
+    border: 1px solid #444;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    color: #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+    z-index: 1000;
+    /* 最顶层 */
+    pointer-events: none;
+    /* 关键：让鼠标事件穿透，防止闪烁 */
+    white-space: pre;
+    /* 保留格式化排版 */
+    max-width: 400px;
+}
+
+.graph-tooltip .key {
+    color: #88ccff;
+}
+
+.graph-tooltip .val {
+    color: #ce9178;
+}
+
+.graph-tooltip .title {
+    font-weight: bold;
+    border-bottom: 1px solid #555;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    color: #fff;
+    display: block;
+}

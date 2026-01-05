@@ -1,13 +1,5 @@
-
-
-import * as gia from "./basic.ts";
-import type * as Gia from "./basic.ts";
-
-export { gia, type Gia };
-
-export { Graph, Node, Pin, Connect, Comment } from "./graph.ts";
-
-export * as gia_node from "./nodes.ts";
-export type { NodeType } from "./nodes.ts";
+export { Graph, Node, type Connection, type Comment, type GraphVar } from "./interface.ts";
 
 export { Counter, randomInt, randomBigInt, randomName } from "./utils.ts";
+
+export * as core from "./core.ts";

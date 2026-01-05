@@ -1,514 +1,449 @@
-# Node Data and Definitions (`node_data`)
+# Node Data System (`node_data`)
 
-This directory contains all the **static definitions** and resource data required by the converter. This data is mainly used for node graph parsing, type inference, and reflection mechanisms.
+The node data system is the **static data core** of the entire project, providing complete definitions for all nodes, types, and enums. After a thorough refactoring, all data has been centralized into `data.json`, offering a comprehensive type system and convenient access interfaces.
 
-**✅ Completed complete parsing and integration of server-side and client-side node graph data**
+## ✨ Features
 
-Resources are uniformly exported through `index.ts`, and some original definition files might be excluded during publishing.
+- 📊 **Centralized Data**: All node definitions are concentrated in `data.json`, easy to maintain and distribute.
+- 🎯 **Type Safety**: Complete TypeScript type definitions, intelligent code completion.
+- 🔍 **Efficient Query**: Map-based O(1) query performance.
+- 🧬 **Variant Type Support**: Full support for the type constraint system of Variant nodes.
+- 🌐 **Multilingual**: Supports localization in 14 languages.
+- 📝 **Detailed Documentation**: Automatically generated node documentation, including complete pin information.
 
 ---
 
-## File Description
+## 📦 File Structure
 
 | File | Description | Size |
-| :--- | :--- | :--- |
-| [`index.yaml`](./index.yaml) / [`index.json`](./index.json) | Complete Data Summary | ~1MB |
-| [`data.ts`](./data.ts) | Complete Data Summary (with type definitions) | ~1MB |
-| [`node_id.ts`](./node_id.ts) | Node ID Mapping Table | ~220KB |
-| [`node_pin_records.ts`](./node_pin_records.ts) | Node Pin Definition Records | ~190KB |
-| [`enum_id.ts`](./enum_id.ts) | Enum ID and Value Definitions | ~15KB |
-| [`types_list.ts`](./types_list.ts) | Variable Type Definition List | ~8KB |
-| [`concrete_map.ts`](./concrete_map.ts) | Generic Node Type Mapping Table | ~11KB |
-| [`helpers.ts`](./helpers.ts) | Helper Function Library | ~6KB |
-| [`index.ts`](./index.ts) | Unified Export | ~1KB |
+|:-----|:------------|:-----|
+| **Core Data** |||
+| `data.json` | Complete node data (JSON format) | ~3.8MB |
+| [types.ts](./types.ts) | Data structure type definitions | - |
+| [node_type.ts](./node_type.ts) | Type system core (type parsing/conversion) | - |
+| **Generated Convenience Interfaces** |||
+| [game_nodes.ts](./game_nodes.ts) | Node constants (with complete documentation comments) | ~700KB |
+| [game_nodes.zh.ts](./game_nodes.zh.ts) | Node constants (with complete documentation comments) (Chinese) | ~700KB |
+| **Access Interfaces** |||
+| [core.ts](./core.ts) | Type conversion and query helper functions | ~25KB |
+| [instances.ts](./instances.ts) | Data access classes (Doc, NodeLib, ServerType, ClientType) | - |
+| **Tools** |||
+| [gen_game_nodes.ts](./gen_game_nodes.ts) | Documentation-Convenience Interface Generator (used during development, not included in release) | - |
+| [UGC-Guide-Markdown](./UGC-Guide-Markdown/readme.en.md) | Official UGC guide documentation and extraction results after simple processing | ~1.2MB |
 
 ---
 
-## Core Resources
+## 🚀 Quick Start
 
-### [index.yaml](./index.yaml) / [index.json](./index.json) / [data.ts](./data.ts)
+### 1. Using Node Constants
 
-**Complete Data Summary**
+The simplest way is to use the automatically generated `NODES` constant:
 
-These three files contain identical data content, provided in different formats:
-- `index.yaml` - YAML format, suitable for human readability and external tool processing
-- `index.json` - JSON format, suitable for direct program parsing
-- `data.ts` - TypeScript format, with complete type definitions, suitable for internal project use
+```typescript
+import { NODES } from "./utils/node_data/game_nodes.ts";
 
-#### Document Structure
+// Directly use node identifier
+const branchNode = NODES.Control_General_Branch;
+// Result: "Control.General.Branch"
+
+// Variant type node
+const equalNode = NODES.Arithmetic_General_Equal;
+// Result: "Arithmetic.General.Equal"
+```
+
+### 2. Querying Node Definitions
+
+```typescript
+import { NodeLib } from "./utils/node_data/instances.ts";
+
+// Query by identifier
+const nodeDef = NodeLib.getByIdentifier("Control.General.Branch");
+
+// Query by ID
+const nodeDef2 = NodeLib.getByID(2);
+
+// Query specific variant of a variant type node
+const intEqual = NodeLib.getVariant(
+  "Arithmetic.General.Equal",
+  "C<T:Int>"
+);
+```
+
+### 3. Using the Type System
+
+```typescript
+import { parse, stringify, reflect } from "./utils/node_data/node_type.ts";
+
+// Parse type string
+const listType = parse("L<Int>");
+// Result: { t: "l", i: { t: "b", b: "Int" } }
+
+// Convert to string
+stringify(listType);
+// Result: "L<Int>"
+
+// Reflect replacement (for variant types)
+const result = reflect("R<T>", "T", "Int");
+// Result: { t: "b", b: "Int" }
+```
+
+---
+
+## 📚 Core Concepts
+
+### Data Structure ([types.ts](./types.ts))
+
+#### Document - Root Container
+
+The root object containing all node data:
 
 ```typescript
 interface Document {
-  Version: string;              // Data version number
-  GameVersion: string;          // Game version number
-  Author: string;               // Author
-  Date: string;                 // Generation date
-  Description: string;          // Document description
-  Schema: string;               // TypeScript type definition source code
-  TypesList: TypeEntry[];       // Type list
-  NodesList: NodeEntry[];       // Node list
-  EnumList: EnumEntry[];        // Server-side enum list
-  ClientEnumList: EnumEntry[];  // Client-side enum list
-  GraphConstList: GraphConst[]; // Fixed field value information for different node graphs
+  Version: string;              // Data Version
+  GameVersion: string;          // Game Version
+  Types: TypeDef[];             // Type Definitions
+  Nodes: NodeDef[];             // Node Definitions
+  Enums: EnumDef[];             // Enum Values
+  EnumTypes: EnumTypeDef[];     // Enum Types
+  SystemConstants: SystemConstDef; // System Constants
 }
 ```
 
-#### 1. TypesList - Type List
+#### NodeDef - Node Definition
 
-Contains complete definitions for all variable types (28 types):
+Defines the complete information for a single node:
 
 ```typescript
-interface TypeEntry {
-  Name: string;               // Safe name (e.g., "Print_String", "_3D_Vector_Addition")
-  Translations: {             // Multi-language display name
-    en: string;               // English name
-    // ... Other languages
-  };
-  ID: number;                 // Server-side type ID (VarType enum value)
-  ClientID: number | null;    // Client-side type ID (null means server-only, client has no such type)
-  Expression: string;         // Type expression (e.g., "Int", "L<Ety>", "D<Key,Value>")
-  DSLName: string;            // Type name in DSL
-  BaseType: string;           // Runtime base type
-  BaseTypeID: number;         // Base type ID
+interface NodeDef {
+  Identifier: string;           // e.g., "Control.General.Branch"
+  ID: number;                   // Node ID
+  System: "Server" | "Client";  // Applicability
+  Domain: "Execution" | "Trigger" | "Control" | "Query" | "Arithmetic" | ...;
+  Type: "Fixed" | "Variant";    // Fixed Type or Variant Type
+  FlowPins: PinDef[];           // Flow Pins
+  DataPins: PinDef[];           // Data Pins
+  Variants?: VariantDef[];      // List of variants for variant types
 }
 ```
 
-**Example**:
-```yaml
-- Name: Integer
-  Translations:
-    en: Integer
-  ID: 3
-  ClientID: 3
-  Expression: Int
-  DSLName: Int
-  BaseType: IntBase
-  BaseTypeID: 2
-```
+#### PinDef - Pin Definition
 
-#### 2. NodesList - Node List
-
-Contains complete definitions for all nodes (server-side 434(3077) + client-side 124(175)):
+Defines a single pin of a node:
 
 ```typescript
-interface NodeEntry {
-  Name: string;                       // Safe name (e.g., "Print_String")
-  Translations: { en: string };       // Multi-language display name
-  ID: number;                         // Generic node ID
-  Type: "Simple" | "Generic";         // Node type
-  Range: "Server" | "Client";         // Applicable scope
-  Class: "Execution" | "Trigger" | "Control" | "Query" | "Arithmetic" | "Others" | "Hidden";
-  Family: string;                     // Node family (sub-category)
-  Inputs: string[];                   // Input pin type list
-  Outputs: string[];                  // Output pin type list
-  ConcreteID?: number;                // Concrete ID for client non-reflective nodes
-  TypeMappings?: TypeMapping[];       // Type mappings for generic nodes
-}
-
-interface TypeMapping {
-  ConcreteId: number;                       // Concrete type ID
-  Type: string;                             // Type mapping rule (e.g., "S<T:Int>")
-  InputsIndexOfConcrete: (number | null)[]; // Type index of input pins, null for non-reflective pins
-  OutputsIndexOfConcrete: (number | null)[]; // Type index of output pins, null for non-reflective pins
+interface PinDef {
+  Identifier: string;           // Pin Identifier
+  Direction: "In" | "Out";      // Direction
+  Type?: string;                // Type (e.g., "Int", "R<T>")
+  Visibility?: "Display" | "Hidden" | "Conditional";
+  Label: Translations;          // Display Name (multilingual)
+  Description: Translations;    // Description (multilingual)
 }
 ```
 
-**Simple Node Example**:
-```yaml
-- Name: Print_String
-  ID: 1
-  Type: Simple
-  Range: Server
-  Class: Execution
-  Family: I. Common Nodes
-  Inputs: ["Str"]
-  Outputs: []
-```
+### Type System ([node_type.ts](./node_type.ts))
 
-**Generic Node Example**:
-```yaml
-- Name: Equal
-  ID: 14
-  Type: Generic
-  Range: Server
-  Class: Arithmetic
-  Family: General
-  Inputs: ["R<T>", "R<T>"]  # R<T> indicates reflective type
-  Outputs: ["Bol"]
-  TypeMappings:
-    - ConcreteId: 14
-      Type: S<T:Str>
-      InputsIndexOfConcrete: [0, 0]  # Both inputs use type at index 0
-      OutputsIndexOfConcrete: [null] # Output is not a reflective type
-    - ConcreteId: 370
-      Type: S<T:Int>
-      InputsIndexOfConcrete: [5, 5]
-      OutputsIndexOfConcrete: [null]
-```
+The type system provides a complete set of methods for type representation and manipulation.
 
-#### 3. EnumList - Server-side Enum List
+#### Type Representation
 
-Contains all server-side enum types and their values:
+All types are represented using [NodeType](../node_data/node_type.ts):
+
+| Type | String Representation | Object Representation |
+|:-----|:--------------------|:--------------------|
+| Basic Type | `Int`, [Str](../node_data/node_type.ts), `Bool` | `{ t: "b", b: "Int" }` |
+| Enum Type | `E<ABCD>` | `{ t: "e", e: "ABCD" }` |
+| List Type | `L<Int>` | `{ t: "l", i: { t: "b", b: "Int" } }` |
+| Dictionary Type | `D<Int,Str>` | `{ t: "d", k: ..., v: ... }` |
+| Struct Type | `S<x:Int,y:Flt>` | `{ t: "s", f: [["x", ...], ["y", ...]] }` |
+| Reflection Type | `R<T>` | `{ t: "r", r: "T" }` |
+| Constraint Type | `C<T:Int>` | `{ t: "c", c: [["T", ...]] }` |
+
+#### Core Functions
 
 ```typescript
-interface EnumEntry {
-  Name: string;                 // Enum name
-  Translations: { en: string }; // Multi-language display name
-  ID: number;                   // Enum ID
-  Items: EnumItem[];            // Enum item list
-}
+// String ↔ Object Conversion
+parse("L<Int>")      // Parse to object
+stringify(typeObj)   // Convert to string
 
-interface EnumItem {
-  Name: string;                 // Enum item name
-  Translations: { en: string }; // Multi-language display name
-  ID: number;                   // Enum item value
-}
-```
+// Reflection operations (for variant types)
+reflect("R<T>", "T", "Int")           // Single replacement
+reflects("S<a:R<T>,b:R<K>>", "C<T:Int,K:Str>") // Multiple replacements
 
-**Example**:
-```yaml
-- Name: Comparison_Operators
-  ID: 1
-  Items:
-    - Name: Equal_To
-      Translations:
-        en: Equal To
-      ID: 100
-    - Name: Less_Than
-      Translations:
-        en: Less Than
-      ID: 101
-```
+// Type Checking
+is_reflect(type)                      // Contains reflection type
+type_equal(type1, type2)              // Types are equal
 
-#### 4. ClientEnumList - Client-side Enum List
-
-The structure is the same as `EnumList`, but it contains client-specific enum definitions. The `ID` field of client-side enums represents `indexOfConcrete`, used for type mapping.
-
-#### Pin Type Expression Description
-
-Type expressions used in `Inputs` and `Outputs`:
-
-| Expression | Meaning | Example |
-| :--- | :--- | :--- |
-| `Int`, `Str`, `Bol` etc. | Concrete type | `Int` = Integer |
-| `L<T>` | List type | `L<Int>` = List of Integers |
-| `D<K,V>` | Dictionary type | `D<Int,Str>` = Dictionary of Integer to String |
-| `E<N>` | Enum type | `E<1>` = Enum with ID 1 |
-| `S<T:Type>` | Struct type | `S<T:Int>` = Struct containing an Integer |
-| `R<T>` | Reflective type | Indicates that the pin type is determined by generic parameters |
-
-#### Data Usage
-
-- **External Tools**: Use `index.yaml` or `index.json` for node graph analysis, documentation generation, etc.
-- **Internal Projects**: Use `data.ts` for type-safe data access
-- **Completeness**: Contains complete information for all nodes, types, and enums, eliminating the need to query multiple files
-
-### [node_pin_records.ts](./node_pin_records.ts)
-
-**Node Pin Definition Records**
-
-Contains detailed definitions for all **Reflective Nodes** and normal nodes.
-
-```typescript
-interface SingleNodeData {
-  id: number;           // Generic node ID
-  name: string;         // Node name
-  inputs: NodePin[];    // Input pin list
-  outputs: NodePin[];   // Output pin list
-  reflectMap?: [number, number[]][]; // Mapping from concrete ID to type
-}
-```
-
-### [node_id.ts](./node_id.ts)
-
-**Node ID Mapping Table (Server-side + Client-side)**
-
-Provides a complete mapping from node names to node IDs, including two complete sets of data for **server-side nodes** and **client-side nodes**.
-
-#### Server-side Node ID (`NODE_ID`)
-
-Server-side nodes use **numeric IDs**, ranging from `1` to `3877`.
-
-```typescript
-export const NODE_ID = {
-  When_Entity_Is_Created: 1,
-  Log_Message: 2,
-  Add_Int: 100,
-  Add_Float: 101,
-  Add__Generic: 99, // Generic node
-  // ... Total 3877 nodes
-} as const satisfies { [key: string]: number };
-```
-
-#### Client-side Node ID (`CLIENT_NODE_ID`)
-
-Client-side nodes use **string IDs**, starting from `200000`. Client-side node IDs have **three structures**:
-
-##### 1. Ordinary Nodes (Non-Generic)
-
-Format: `"{GenericId}"`
-
-```typescript
-Logical_AND_Operation: '200001',
-Logical_OR_Operation: '200002',
-Node_Graph_Begins: '200042',
-```
-
-##### 2. Generic Nodes (Generic)
-
-- **Non-reflective nodes**: `"{GenericId} {ConcreteId}"`
-- **Reflective nodes**: `"{GenericId}"`
-
-```typescript
-// Non-reflective generic nodes
-Logical_AND_Operation__Generic: '200001 1',
-Equal__Generic: '200006',
-
-// Reflective generic nodes
-Node_Graph_End_Boolean__Generic: '200000 0',
-Query_Entity_by_GUID__Generic: '200023 1001',
-```
-
-##### 3. Concrete Type Nodes (Concrete with Type)
-
-Format: `"{GenericId} {ConcreteId} {TypeName}"`
-
-Type names use simplified expressions, for example:
-- `S<T:Int>` - Single type Int
-- `S<T:Flt>` - Single type Float
-- `S<T:L<Int>>` - List type List<Int>
-- `S<K:Int,V:Flt>` - Key-value pair type
-- `S<T:E<0>>` - Enum type, index is 0
-
-```typescript
-Equal__Bool: '200006 11 S<T:Bol>',
-Equal__Int: '200006 12 S<T:Int>',
-Equal__Float: '200006 13 S<T:Flt>',
-Get_Custom_Variable__List_Int: '200016 47 S<T:L<Int>>',
-Data_Type_Conversion__Int_Bool: '200022 130 S<K:Int,V:Bol>',
-Enumeration_Match__Comparison_Operators: '200005 10 S<T:E<0>>',
-```
-
-#### Key Differences Between Server-side and Client-side IDs
-
-| Feature | Server-side (`NODE_ID`) | Client-side (`CLIENT_NODE_ID`) |
-| :--- | :--- | :--- |
-| **ID Type** | `number` | `string` |
-| **ID Range** | `1` ~ `3877` | `200000` ~ `200124+` |
-| **Total Nodes** | 3877 | 407 |
-| **ID Structure** | Single number | 1-3 part string |
-| **Type Information** | Not included | Includes type expression |
-| **Purpose** | Server-side node graph | Client-side node graph |
-
-### [enum_id.ts](./enum_id.ts)
-
-**Enum ID and Value Definitions**
-
-```typescript
-export const ENUM_ID = {
-  Comparison_Operators: 1,
-  Rounding_Mode: 2,
-  // ...
-} as const;
-
-export const ENUM_VALUE = {
-  ComparisonOperators_EqualTo: 0,
-  ComparisonOperators_NotEqualTo: 1,
-  // ...
-} as const;
-```
-
-### [types_list.ts](./types_list.ts)
-
-**Variable Type Definition List**
-
-Defines all available variable types and their properties in the system.
-
-```typescript
-interface TypeDef {
-  id: number;      // VarType enum value
-  name: string;    // Internal name
-  display: string; // Display name
-  expr: string;    // Expression (e.g., "L<Int>")
-  dsl: string;     // DSL name
-}
-```
-
-### [concrete_map.ts](./concrete_map.ts)
-
-**Generic Node Type Mapping Table**
-
-Defines the index order of generic node pins under different type selections.
-
-```typescript
-interface ConcreteMap {
-  maps: number[][];  // Type ID list
-  pins: Map<string, number>; // "nodeId:pinType:pinIndex" → mapIndex
-}
+// Reflection Analysis
+extract_reflect_names(type)           // Extract reflection parameter names
+extract_reflect_fields(concrete, ref) // Extract reflection field mapping
 ```
 
 ---
 
-## Helper Functions (`helpers.ts`)
+## 🎯 Usage Examples
 
-### Type Mapping Functions
-
-| Function | Description |
-| :--- | :--- |
-| `get_index_of_concrete(generic_id, is_input, pin_index, type)` | Get the concrete type index of a generic pin |
-| `get_concrete_type(generic_id, is_input, pin_index, index)` | Get the concrete type by index |
-| `get_concrete_map(generic_id, is_input, pin_index)` | Get the type mapping table for a pin |
-| `is_concrete_pin(generic_id, is_input, pin_index)` | Determine if it is a reflective pin |
-
-### Node Record Functions
-
-| Function | Description |
-| :--- | :--- |
-| `get_node_record(concrete_id)` | Get node record by concrete ID |
-| `get_node_record_generic(generic_id)` | Get node record by generic ID |
-| `get_generic_id(concrete_id)` | Convert concrete ID to generic ID |
-| `is_generic_id(id)` | Check if it is a valid generic ID |
-
-### Node Name Query Functions
-
-#### Server-side Nodes
-
-| Function | Description |
-| :--- | :--- |
-| `get_server_node_name_from_cid(cid: number)` | Get node name from server-side concrete ID |
-| `get_server_node_name_from_gid(gid: number)` | Get node name from server-side generic ID |
-
-#### Client-side Nodes
-
-| Function | Description |
-| :--- | :--- |
-| `get_client_node_name_from_cid(cid: string)` | Get node name from client-side concrete ID |
-| `get_client_node_name_from_gid(gid: number)` | Get node name from client-side generic ID |
-
-#### Common Functions
-
-| Function | Description |
-| :--- | :--- |
-| `get_node_name_from_cid(id: number \| string)` | Automatically identify server-side/client-side, get node name by concrete ID |
-| `get_node_name_from_gid(id: number)` | Automatically identify server-side/client-side, get node name by generic ID |
-
----
-
-## Usage Examples
-
-### Query Server-side Node Information
+### Example 1: Querying Node Information
 
 ```typescript
-import { NODE_ID, get_node_record } from "./node_data";
+import { NodeLib } from "./utils/node_data/instances.ts";
+import { NODES } from "./utils/node_data/game_nodes.ts";
 
-const id = NODE_ID.Log_Message;
-const record = get_node_record(id);
+// Get node definition
+const branchDef = NodeLib.getByIdentifier(NODES.Control_General_Branch);
 
-console.log(record?.name);    // "Log_Message"
-console.log(record?.inputs);  // Input pin list
-console.log(record?.outputs); // Output pin list
+console.log(branchDef.InGameName.en);  // "Double Branch"
+console.log(branchDef.DataPins.length); // Number of data pins
+console.log(branchDef.FlowPins.length); // Number of flow pins
+
+// Iterate over pins
+branchDef.DataPins.forEach(pin => {
+  console.log(`${pin.Identifier}: ${pin.Type}`);
+});
 ```
 
-### Query Client-side Node Information
+### Example 2: Handling Variant Type Nodes
 
 ```typescript
-import { CLIENT_NODE_ID, get_node_record } from "./node_data";
+import { NodeLib } from "./utils/node_data/instances.ts";
+import { NODES } from "./utils/node_data/game_nodes.ts";
 
-// Ordinary node
-const id1 = CLIENT_NODE_ID.Logical_AND_Operation; // '200001'
-const record1 = get_node_record(id1);
+// Get generic node
+const equalDef = NodeLib.getByIdentifier(NODES.Arithmetic_General_Equal);
 
-// Generic node
-const id2 = CLIENT_NODE_ID.Equal__Generic; // '200006'
-const record2 = get_node_record(id2);
+console.log(equalDef.Type);  // "Variant"
+console.log(equalDef.Variants.length); // Number of available variants
 
-// Concrete type node
-const id3 = CLIENT_NODE_ID.Equal__Int; // '200006 12 S<T:Int>'
-const record3 = get_node_record(id3);
+// Get specific type variant
+const intEqualDef = NodeLib.getVariant(
+  NODES.Arithmetic_General_Equal,
+  "C<T:Int>"
+);
+
+// Now pin types are concretized
+console.log(intEqualDef.DataPins[0].Type); // "Int" (instead of "R<T>")
 ```
 
-### Query Node Name
+### Example 3: Type Conversion and Manipulation
 
 ```typescript
-import { 
-  get_node_name_from_cid, 
-  get_node_name_from_gid,
-  get_server_node_name_from_cid,
-  get_client_node_name_from_cid
-} from "./node_data/helpers";
+import { parse, stringify, reflects } from "./utils/node_data/node_type.ts";
 
-// Automatically identify server-side/client-side
-const name1 = get_node_name_from_cid(100);        // "Add_Int" (Server-side)
-const name2 = get_node_name_from_cid('200001 1'); // "Logical_AND_Operation__Generic" (Client-side)
+// Parse complex type
+const dictType = parse("D<Int,L<Str>>");
+console.log(dictType);
+// { t: "d", k: { t: "b", b: "Int" }, v: { t: "l", i: { t: "b", b: "Str" } } }
 
-// Query by generic ID
-const name3 = get_node_name_from_gid(99);  // "Add__Generic" (Server-side)
-const name4 = get_node_name_from_gid(200001); // "Logical_AND_Operation" (Client-side)
-
-// Explicitly specify server-side/client-side
-const serverName = get_server_node_name_from_cid(100);
-const clientName = get_client_node_name_from_cid('200001');
+// Handle variant types
+const genericType = parse("S<a:R<T>,b:R<K>>");
+const concreteType = reflects(genericType, "C<T:Int,K:Str>");
+console.log(stringify(concreteType));
+// "S<a:Int,b:Str>"
 ```
 
-### Query Enum Value
+### Example 4: Querying Type Definitions
 
 ```typescript
-import { ENUM_ID, ENUM_VALUE } from "./node_data";
+import { Doc, ServerType, ClientType } from "./utils/node_data/instances.ts";
 
-const enumType = ENUM_ID.Comparison_Operators;
-const equalTo = ENUM_VALUE.ComparisonOperators_EqualTo;
+// Get type definition
+const intType = Doc.types.get("Primitive.Integer");
+console.log(intType.DSLName);      // "Int"
+console.log(intType.ID);           // Server type ID
+console.log(intType.ClientID);     // Client type ID
+
+// Type ID conversion
+const typeId = ServerType.get_type_id({ t: "b", b: "Int" });
+const nodeType = ServerType.toNodeType(typeId);
 ```
 
-### Handling Generic Nodes
+### Example 5: Querying Enums
 
 ```typescript
-import { get_index_of_concrete, get_generic_id } from "./node_data/helpers";
-import { VarType } from "./types_list";
+import { Doc } from "./utils/node_data/instances.ts";
 
-// Get the generic ID of Add_Int
-const genericId = get_generic_id(NODE_ID.Add_Int);
+// Get enum type
+const enumType = Doc.enumTypes.get("ABCD");
+console.log(enumType.InGameName.en);
+console.log(enumType.Collection); // List of contained enum values
 
-// Get type index
-const typeIndex = get_index_of_concrete(genericId, true, 0, VarType.Int, true);
+// Get enum value
+const enumValue = Doc.enums.get("Category.Value");
+console.log(enumValue.InGameName.en);
+console.log(enumValue.ID);
 ```
 
 ---
 
-## Data Source and Generation Process
+## 🔧 Generated Convenience Interfaces
 
-### Data Extraction
+### [game_nodes.ts](./game_nodes.ts) - Node Constants
 
-All node data is extracted from game assemblies using scripts in the `extracting_nodes` directory:
+Automatically generated file, containing identifier constants and complete documentation for all nodes:
 
-- **Server-side node data**: Extracted from server-side assemblies, containing 3877 nodes
-- **Client-side node data**: Extracted from client-side assemblies, containing 407 nodes
+```typescript
+export const NODES = {
+  /**
+   * **Double Branch** `(Control.General.Branch)`
+   *
+   * | ID | │ | System | │ | Domain | │ | Type |
+   * | :-:|:-:| :----: |:-:| :----: |:-:| :--: |
+   * | **2** || 🖥️ Server || 🔀 Control || 📌Fixed |
+   *
+   * #### 📥 Inputs
+   * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
+   * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
+   * | - || ▶️ || - || `FlowIn` ||  |
+   * | 0 || 🔹 || `Bol` || `cond` ||  |
+   *
+   * #### 📤 Outputs
+   * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
+   * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
+   * | - || ⏩ || - || `True` || Yes |
+   * | - || ⏩ || - || `False` || No |
+   */
+  Control_General_Branch: "Control.General.Branch",
+  
+  // ... More nodes
+};
+```
 
-### Data Processing
+**Advantages**:
+- ✅ Intelligent Code Completion: Hover to view full node documentation.
+- ✅ Type Safety: Avoid typos.
+- ✅ Easy to Use: Directly use `NODES.xxx`.
 
-The extracted raw data undergoes the following processing steps:
+### Generator [gen_game_nodes.ts](./gen_game_nodes.ts)
 
-1. **Manual Cleanup and Validation**: Correct errors and inconsistencies during extraction
-2. **Structured Integration**: Unify data formats and establish relationships between nodes
-3. **Type Mapping Generation**: Generate complete type mapping tables for generic nodes
-4. **Index Building**: Generate efficient query indexes and auxiliary data structures
+Used to generate [game_nodes.ts](./game_nodes.ts) and `game_nodes.zh.ts` from `data.json`:
 
-### Integrated Generation
+```bash
+# Run generator (during development)
+node gen_game_nodes.ts
+```
 
-The `gen_index.ts` script is used to centralize and generate all processed data into the final export files:
-
-- `node_id.ts` - Server-side and client-side node ID mapping
-- `node_pin_records.ts` - Node pin definitions
-- `concrete_map.ts` - Generic type mapping
-- `enum_id.ts` - Enum definitions
-- `types_list.ts` - Type list
-- `index.yaml` / `index.json` - Complete data summary
-
-> **Note**: Other files in this directory (in the dev version) are intermediate products or source files from the generation process and are not included in the published version.
+**Note**: The release version does not include the generator, only the generated files.
 
 ---
 
-## Related Modules
+## 📖 API Reference
 
-- [GIA Generator](../gia_gen/readme.en.md) — Builds graphs using node data
-- [Protobuf Tools](../protobuf/readme.en.md) — GIA file encoding and decoding
-- [Main README](../readme.en.md) — Overview of the tool library
+### NodeLib Class
+
+```typescript
+// Query nodes
+NodeLib.getByIdentifier(identifier: string): NodeDef | undefined
+NodeLib.getByID(id: number): NodeDef | undefined
+NodeLib.findSimilar(query: string): NodeDef[]
+
+// Variant type nodes
+NodeLib.getVariant(identifier: string, constraints: string | NodeType): TypedNodeDef | null
+NodeLib.filterVariantConstraints(nodeDef: NodeDef, constraints: [string, NodeType][]): ConstraintType[]
+```
+
+### Type Conversion (node_type.ts)
+
+```typescript
+// Basic Conversions
+parse(src: string | NodeType): NodeType
+stringify(node: NodeType | string, options?: StringifyOptions): string
+
+// Reflection Operations
+reflect(srcType: NodeType | string, name: string, type: NodeType | string): NodeType
+reflects(type: NodeType | string, constraints: ConstraintType | string): NodeType
+
+// Type Checking
+is_reflect(type: NodeType | string | undefined): boolean
+type_equal(a: NodeType, b: NodeType): boolean
+
+// Reflection Analysis
+extract_reflect_names(type: NodeType): string[]
+extract_reflect_fields(type: NodeType, ref: NodeType): [string, NodeType][]
+```
+
+### ServerType / ClientType Class
+
+```typescript
+// Type ID Conversion
+ServerType.get_type_id(type: NodeType): number | null
+ServerType.toNodeType(id: number): NodeType
+
+ClientType.get_type_id(type: NodeType): number | null
+ClientType.toNodeType(id: number): NodeType
+```
+
+---
+
+## 💡 Best Practices
+
+### 1. Use NODES Constants
+
+```typescript
+// ✅ Recommended: Use NODES constants
+import { NODES } from "./utils/node_data/game_nodes.ts";
+const node = NODES.Control_General_Branch;
+
+// ❌ Not Recommended: Hardcoding strings
+const node = "Control.General.Branch";
+```
+
+### 2. Type-Safe Type Operations
+
+```typescript
+// ✅ Recommended: Use parse/stringify
+import { parse, stringify } from "./utils/node_data/node_type.ts";
+const type = parse("L<Int>");
+const str = stringify(type);
+
+// ❌ Not Recommended: Directly manipulating strings
+const type = "L<Int>";
+```
+
+### 3. Handling Variant Type Nodes
+
+```typescript
+// ✅ Recommended: Use getVariant
+const intEqual = NodeLib.getVariant(
+  NODES.Arithmetic_General_Equal,
+  "C<T:Int>"
+);
+
+// ✅ Also: Use setConstraints (in gia_gen)
+const node = graph.add_node(NODES.Arithmetic_General_Equal);
+node.setConstraints("C<T:Int>");
+```
+
+---
+
+## 🔄 Data Update Process
+
+1. **Extract Data**: Extract raw data from game assembly.
+2. **Process Data**: Clean, validate, and structure data.
+3. **Generate data.json**: Centralize all data.
+4. **Generate Convenience Interfaces**: Run [gen_game_nodes.ts](./gen_game_nodes.ts) to generate [game_nodes.ts](./game_nodes.ts).
+5. **Publish**: `data.json` and [game_nodes.ts](./game_nodes.ts) are included in the release version.
+
+---
+
+## 📊 Data Statistics
+
+- **Total Nodes**: ~500+ (Server + Client, 3000+ with variants).
+- **Type Definitions**: 28 basic types.
+- **Enum Types**: 100+ types.
+- **Supported Languages**: 14 (currently not supported).
+- **Data Size**: ~3MB (smaller when compressed).
+
+---
+
+## 🔗 Related Modules
+
+- [GIA Generator](../gia_gen/readme.en.md) - Builds node graphs using node data.
+- [Protobuf Tools](../protobuf/readme.en.md) - GIA file encoding and decoding.
+- [Type System Documentation](./node_type.ts) - Detailed explanation of the type system.
+- [Data Structure Documentation](./types.ts) - Detailed explanation of data structures.
+
+---
+
+## 📝 License
+
+MIT License

@@ -9,3 +9,7 @@ temp/
 /utils/ref/
 /ref/
 /del/
+
+/*.cs
+/temp*.js
+/*.log

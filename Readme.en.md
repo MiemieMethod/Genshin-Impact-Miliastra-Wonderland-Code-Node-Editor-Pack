@@ -1,4 +1,9 @@
-# Genshin Impact Miliastra Wonderland Node Graph Toolset
+# Genshin Impact: Miliastra Wonderland Node Graph Toolkit
+
+> [!IMPORTANT]  
+> Note: The current underlying data and interface framework have undergone a refactor v2. While the main interfaces largely remain unchanged, the internal structure has been almost entirely adjusted. If you are using code from 2025, please upgrade as soon as possible, as subsequent interfaces and data may not stably support past usage.
+
+*Test cases and documentation are being updated synchronously*
 
 <div align="center">
 
@@ -8,9 +13,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-24+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
-**A comprehensive toolset for Genshin Impact Miliastra Wonderland node graph development**
+**A comprehensive toolkit for Genshin Impact: Miliastra Wonderland node graph development**
 
-*A complete solution from low-level file parsing to high-level code generation*
+*A complete solution from underlying file parsing to upper-level code authoring*
 
 [Quick Start](#quick-start) · [Core Features](#core-features) · [Documentation](#module-documentation) · [Development Progress](#development-progress)
 
@@ -20,12 +25,13 @@
 
 ## ✨ Feature Highlights
 
-- 🔧 **GIA File Read/Write** — Programmatically read and write `.gia` node graph files using TypeScript
-- 📝 **DSL Code Language** — Describe node graphs as code, enjoying IDE intelligent auto-completion and syntax highlighting
-- 🔄 **Bidirectional Converter** — Complete compile/decompile toolchain for DSL ⇔ IR ⇔ GIA
-- 📊 **Comprehensive Node Data** — Programmatically organized node IDs, enum values, and pin definitions
-- 🧩 **High-level API** — `Graph` class encapsulation, easily build and modify node graphs
-- 🎯 **Type Safety** — Comprehensive TypeScript type definitions and compile-time checking
+- 🔧 **GIA File Read/Write** — Programmatically read and write `gia` node graph files using TypeScript
+- 📝 **DSL Code Language** — Describe node graphs as code, enjoying IDE intelligent completion and syntax highlighting
+- 🔄 **Bidirectional Converter** — Complete DSL ⇔ IR ⇔ GIA compilation/decompilation toolchain
+- 📊 **Comprehensive Node Data** — Centralized data management, 500+ node definitions, complete type system
+- 🧩 **High-Level API** — `Graph` class encapsulation for easy node graph construction and modification
+- 🎯 **Type Safety** — Comprehensive TypeScript type definitions and compile-time checks
+- 🔍 **Reverse Engineering Tools** — Complete Protobuf validation and analysis toolchain
 
 ---
 
@@ -33,34 +39,36 @@
 
 ### 1. GIA File Read/Write
 
-Programmatically read and write `.gia` files using TypeScript, supporting full encoding/decoding and graph operations.
+Programmatically read and write `.gia` files using TypeScript, supporting complete encoding/decoding and graph operations.
 
 ```typescript
-import { decode_gia_file, encode_gia_file, Graph, NODE_ID } from "./utils";
+import { Graph, NODES } from "./utils/index.ts";
+import { decode_gia_file, encode_gia_file } from "./utils/protobuf/decode.ts";
 
-// Read an existing file
-const data = decode_gia_file("./input.gia");
-const graph = Graph.decode(data);
+// Read existing file
+const bundle = decode_gia_file("input.gia");
+const graph = Graph.decode(bundle);
 
 // Or create a new graph
-const newGraph = new Graph("server");
-const trigger = newGraph.add_node(NODE_ID.When_Entity_Is_Created);
-const log = newGraph.add_node(NODE_ID.Log_Message);
+const newGraph = new Graph("ENTITY_NODE_GRAPH");
+const trigger = newGraph.add_node(NODES.Trigger_Tab_OnTabSelect);
+const branch = newGraph.add_node(NODES.Control_General_Branch);
 
 // Connect nodes
-newGraph.flow(trigger, log);
-log.setVal(0, "Hello World!");
+newGraph.flow(trigger, branch);
+newGraph.connect(trigger, branch, "Output0", "cond");
+branch.setVal("cond", true);
 
 // Auto-layout and save
 newGraph.autoLayout();
-encode_gia_file("./output.gia", newGraph.encode());
+encode_gia_file("output.gia", newGraph.encode());
 ```
 
-📖 Details: [GIA Generator](./utils/gia_gen/readme.en.md) | [Protobuf Tools](./utils/protobuf/readme.en.md)
+📖 Details: [GIA Generator](./utils/gia_gen/readme.en.md) | [Protobuf Tools](./utils/protobuf/README.en.md) | [Node Data](./utils/node_data/readme.en.md)
 
-### 2. DSL Code Writing
+### 2. DSL Code Authoring
 
-Use a TypeScript-based Domain-Specific Language (DSL) to describe node graph logic as code, enjoying IDE intelligent auto-completion, syntax highlighting, and version control advantages.
+Use a TypeScript-based Domain Specific Language (DSL) to describe node graph logic in code, enjoying IDE intelligent completion, syntax highlighting, and version control advantages.
 
 ```typescript
 // Triggered when game object is created
@@ -77,7 +85,7 @@ Use a TypeScript-based Domain-Specific Language (DSL) to describe node graph log
     false = Log("Ouch!")
   );
 
-// Loops and branches
+// Loop and branch
 [Timer(Timer.countdown)]
   .Loop(0n, 9n, "spawn")[i](
     true = SpawnEnemy(i),
@@ -85,11 +93,11 @@ Use a TypeScript-based Domain-Specific Language (DSL) to describe node graph log
   ).Log("Loop complete");
 ```
 
-📖 Details: [DSL User Guide](./docs/UserGuide.en.md) | [Language Design](./docs/SystemDesign.en.md) | [Function Definitions](./utils/functions/readme.en.md)
+📖 Details: [DSL User Guide](./docs/UserGuide.en.md) | [Language Design](./docs/SystemDesign.en.md)
 
 ### 3. Parser and Converter
 
-A complete compile/decompile toolchain, supporting mutual conversion between DSL text, Intermediate Representation (IR), and GIA node graphs.
+A complete compilation/decompilation toolchain, supporting mutual conversion between DSL text, Intermediate Representation (IR), and GIA node graphs.
 
 ```typescript
 import { createParserState, parse, decompile } from "./src/parser";
@@ -110,36 +118,41 @@ const irModule = giaIrConvertor(giaGraph, true);
 ┌─────────┐      parse       ┌──────┐     giaIrConvertor    ┌─────────┐
 │   DSL   │ ───────────────► │  IR  │ ◄──────────────────── │   GIA   │
 │  Code   │ ◄─────────────── │  AST │ ────────────────────► │  Graph  │
-└─────────┘     decompile    └──────┘     (in progress)     └─────────┘
+└─────────┘     decompile    └──────┘     (In Progress)     └─────────┘
 ```
 
 📖 Details: [Parser](./src/parser/readme.en.md) | [Converter](./src/convertor/readme.en.md) | [IR Types](./src/types/readme.en.md)
 
 ### 4. Comprehensive Node Data
 
-Programmatically organized server and client node data, including complete ID mappings, enum definitions, and pin information.
+A thoroughly refactored centralized data system, where all node definitions, type systems, and enum values are uniformly managed in [data.json](cci:7://file:///d:/Program/GenshinImpact/projs/Convertor/utils/node_data/data.json:0:0-0:0).
 
 ```typescript
-import { NODE_ID, ENUM_ID, ENUM_VALUE, get_node_record } from "./utils/node_data";
+import { NodeLib, NODES } from "./utils/node_data/index.ts";
 
-// Query node information
-const id = NODE_ID.Add_Float;
-const record = get_node_record(id);
-console.log(record?.name, record?.inputs, record?.outputs);
+// Use node constants (with complete documentation comments)
+const branchNode = NODES.Control_General_Branch;
 
-// Use enums
-const compOp = ENUM_VALUE.ComparisonOperators_EqualTo;
+// Query node definition
+const nodeDef = NodeLib.getByIdentifier(branchNode);
+console.log(nodeDef.InGameName.en);    // "Double Branch"
+console.log(nodeDef.DataPins.length);  // Number of data pins
+
+// Handle variant type nodes
+const intEqual = NodeLib.getVariant(
+  NODES.Arithmetic_General_Equal,
+  "C<T:Int>"
+);
+console.log(intEqual.DataPins[0].Type); // "Int" (specialized)
 ```
 
-| Data Type | Description | Format |
-| :--- | :--- | :--- |
-| Node ID | IDs and type extensions for 558(3730) nodes | TypeScript |
-| Enum Definitions | 85(264) enum types and enum values | TypeScript |
-| Pin Records | Input/output pin definitions for all nodes | TypeScript |
-| Type Mapping | Type index table for generic nodes | TypeScript |
-| Comprehensive Data | Structured summary of the above data | YAML / JSON / TypeScript |
+**Core Data:**
+- [data.json](cci:7://file:///d:/Program/GenshinImpact/projs/Convertor/utils/node_data/data.json:0:0-0:0) - Complete node data (~3.8MB, 500+ node definitions)
+- [game_nodes.ts](cci:7://file:///d:/Program/GenshinImpact/projs/Convertor/utils/node_data/game_nodes.ts:0:0-0:0) - Automatically generated node constants (with complete documentation comments)
+- Complete type system (type parsing, conversion, reflection)
+- Multilingual support (14 languages localized)
 
-📖 Details: [Node Data](./utils/node_data/readme.en.md)
+📖 Details: [Node Data System](./utils/node_data/readme.en.md)
 
 ---
 
@@ -147,51 +160,57 @@ const compOp = ENUM_VALUE.ComparisonOperators_EqualTo;
 
 ```
 .
-├── src/                          # Core source code
+├── src/                          # Core Source Code
 │   ├── convertor/                # GIA ⇔ IR Converter
-│   │   ├── gia_ir.ts             #     Conversion entry point
-│   │   ├── gia_ir_raw.ts         #     Raw IR builder
-│   │   └── graph_chain_split.ts  #  Graph structure analysis algorithms
-│   ├── parser/                 # DSL Parser
-│   │   ├── tokenizer.ts        #     Lexical analysis
-│   │   ├── parser.ts           #     Syntax analysis
-│   │   ├── decompiler.ts       #     IR → DSL Decompilation
-│   │   └── parse_*.ts          #     Sub-parsers
-│   └── types/                  # IR Type Definitions
-│       ├── IR*.ts              #     IR Node Types
-│       ├── types.ts            #     Base types
-│       └── consts.ts           #     Constant definitions
+│   │   ├── gia_ir.ts             #     GIA → IR Conversion Entry Point
+│   │   ├── gia_ir_raw.ts         #     Raw IR Builder
+│   │   └── graph_chain_split.ts  #     Graph Structure Analysis Algorithm
+│   ├── parser/                   # DSL Parser
+│   │   ├── tokenizer.ts          #     Lexical Analysis
+│   │   ├── parser.ts             #     Syntax Analysis
+│   │   ├── decompiler.ts         #     IR → DSL Decompilation
+│   │   └── parse_*.ts            #     Sub-parsers
+│   └── types/                    # IR Type Definitions
+│       ├── IR*.ts                #     IR Node Types
+│       ├── types.ts              #     Base Types
+│       └── consts.ts             #     Constant Definitions
 │ 
-├── utils/                      # Utility Library
-│   ├── gia_gen/                # GIA Graph Generator
-│   │   ├── graph.ts            #     Graph class (Recommended)
-│   │   ├── basic.ts            #     Basic component generation
-│   │   ├── nodes.ts            #     Node generator
-│   │   ├── auto_layout.ts      #     Automatic layout algorithm
-│   │   └── ......              #     Other components
-│   ├── node_data/              # Node Static Data
-│   │   ├── node_id.ts          #     Node ID mapping
-│   │   ├── enum_id.ts          #     Enum definitions
-│   │   ├── data.ts             #     All data information
-│   │   ├── helpers.ts          #     Query helper functions
-│   │   └── ......              #     Other static definitions
-│   ├── protobuf/               # Protobuf Tools
-│   │   ├── gia.proto           #     Protobuf structure definition
-│   │   ├── decode.ts           #     TypeScript Encoding/Decoding (Standard structure)
-│   │   ├── decode.py           #     Python Encoding/Decoding (Displays unknown fields)
-│   │   └── gia.proto.ts        #     Automatically generated types
-│   ├── functions/              # DSL Function Definitions
-│   │   ├── math.ts             #     Function definition list
-│   │   └── function_defs.ts    #     Type system and parser
-│   └── gen_def.ts              # DSL Type Definition Generator
+├── utils/                        # Utility Library (Refactored)
+│   ├── gia_gen/                  # GIA Graph Generator
+│   │   ├── interface.ts          #     Core API (Graph/Node Classes)
+│   │   ├── core.ts               #     Low-level Encoding/Decoding Functions
+│   │   ├── auto_layout.ts        #     Automatic Layout Algorithm
+│   │   ├── example.ts            #     Full Usage Example
+│   │   └── display/              #     Visualization Tools
+│   ├── node_data/                # Static Node Data (Centralized)
+│   │   ├── data.json             #     Complete Node Data (~3.8MB)
+│   │   ├── types.ts              #     Data Structure Type Definitions
+│   │   ├── node_type.ts          #     Type System Core
+│   │   ├── core.ts               #     Type Conversion and Query
+│   │   ├── instances.ts          #     Data Access Classes
+│   │   ├── game_nodes.ts         #     Node Constants (Auto-generated)
+│   │   ├── gen_game_nodes.ts     #     Convenience Interface Generator
+│   │   └── UGC-Guide-Markdown/   #     Official Documentation Extraction Results
+│   ├── protobuf/                 # Protobuf Toolkit
+│   │   ├── gia.proto             #     Core Protobuf Definition
+│   │   ├── gia.proto.ts          #     Auto-generated TS Types
+│   │   ├── decode.ts             #     Production Environment Encoding/Decoding
+│   │   ├── decode-cli.ts         #     Debugging/Reverse Engineering Tools
+│   │   ├── decode_raw.ts         #     Raw Protobuf Parsing
+│   │   ├── proto2ts.ts           #     Proto → TS Generator
+│   │   └── verify_proto.ts       #     Structure Validator
+│   ├── functions/                # DSL Function Definitions (Low Priority)
+│   ├── index.ts                  # Unified Export Interface
+│   ├── utils.ts                  # General Utility Functions
+│   └── gen_def.ts                # DSL Type Generator (Low Priority)
 │
-├── docs/                       # User Documentation
-│   ├── UserGuide.md            # DSL User Guide
-│   ├── SystemDesign.md         # Language Design Document
-│   └── dsl.enbf                # DSL Syntax Specification
+├── docs/                         # User Documentation
+│   ├── UserGuide.md              # DSL User Guide
+│   ├── SystemDesign.md           # Language Design Document
+│   └── dsl.enbf                  # DSL Grammar Specification
 │
-├── test.CI/                    # CI Test Cases (run by GitHub Actions)
-└── static/                     # Image Resources (displayed in Readme.md)
+├── test.CI/                      # CI Test Cases
+└── static/                       # Image Resources
 ```
 
 ---
@@ -209,57 +228,71 @@ const compOp = ENUM_VALUE.ComparisonOperators_EqualTo;
 npm install
 ```
 
-### Run Examples
-
-```bash
-// In progress, no full example yet
-```
-
 ### Quick Usage
 
-**1. Read and Modify Existing GIA Files**
+**1. Read and Modify Existing GIA File**
 
 ```typescript
-import { decode_gia_file, encode_gia_file, Graph } from "./utils";
+import { decode_gia_file, encode_gia_file, Graph } from "./utils/index.ts";
 
-const data = decode_gia_file("./myGraph.gia");
-const graph = Graph.decode(data);
+const bundle = decode_gia_file("myGraph.gia");
+const graph = Graph.decode(bundle);
 
-// Modify node position
-graph.get_nodes()[0].setPos(100, 200);
+// Modify nodes
+graph.nodes.forEach(node => {
+  console.log(`Node: ${node.def.Identifier}`);
+});
 
-// Add comment
-graph.add_comment("这是一个测试节点", 100, 150);
+// Add new node
+const newNode = graph.add_node(NODES.Control_General_Branch);
 
 // Save
-encode_gia_file("./myGraph_modified.gia", graph.encode());
+encode_gia_file("myGraph_modified.gia", graph.encode());
 ```
 
 **2. Create Node Graph from Scratch**
 
 ```typescript
-import { Graph, NODE_ID, encode_gia_file } from "./utils";
+import { Graph, NODES, encode_gia_file } from "./utils/index.ts";
 
-const graph = new Graph("server");
+const graph = new Graph("ENTITY_NODE_GRAPH");
 
-// Add trigger and functional nodes
-const onCreate = graph.add_node(NODE_ID.When_Entity_Is_Created);
-const getPlayer = graph.add_node(NODE_ID.Get_Player_Entity);
-const teleport = graph.add_node(NODE_ID.Teleport_Player);
+// Add triggers and function nodes
+const trigger = graph.add_node(NODES.Trigger_Tab_OnTabSelect);
+const getVar = graph.add_node(NODES.Query_CustomVariable_GetVariable);
+const branch = graph.add_node(NODES.Control_General_Branch);
 
 // Connect execution flow
-graph.flow(onCreate, getPlayer);
-graph.flow(getPlayer, teleport);
+graph.flow(trigger, branch);
 
 // Connect data flow
-graph.connect(getPlayer, teleport, 0, 0); // Entity output → Teleport target
+graph.connect(trigger, getVar, 0, 0);
+graph.connect(getVar, branch, 0, "cond");
 
 // Set parameters
-teleport.setVal(1, [100, 0, 50]); // Target coordinates
+getVar.setVal("var_name", "Player Level");
 
 // Layout and save
 graph.autoLayout();
-encode_gia_file("./newGraph.gia", graph.encode());
+encode_gia_file("newGraph.gia", graph.encode());
+```
+
+**3. Query Node Data**
+
+```typescript
+import { NodeLib, NODES } from "./utils/node_data/index.ts";
+
+// Query node definition
+const nodeDef = NodeLib.getByIdentifier(NODES.Control_General_Branch);
+
+console.log(nodeDef.InGameName.en);  // "Double Branch"
+console.log(nodeDef.System);         // "Server"
+console.log(nodeDef.Domain);         // "Control"
+
+// Iterate through pins
+nodeDef.DataPins.forEach(pin => {
+  console.log(`${pin.Identifier}: ${pin.Type}`);
+});
 ```
 
 ---
@@ -270,45 +303,112 @@ encode_gia_file("./newGraph.gia", graph.encode());
 
 | Module | Description | Documentation |
 | :--- | :--- | :--- |
-| **Source Code** | Parser, Converter, Type Definitions | [src/readme.en.md](./src/readme.en.md) |
-| **Utility Library** | GIA Generation, Node Data, Protobuf | [utils/readme.en.md](./utils/readme.en.md) |
+| **Source Code** | Parser, converter, IR type definitions | [src/readme.md](./src/readme.en.md) |
+| **Utility Library** | GIA generation, node data, Protobuf | [utils/readme.md](./utils/readme.en.md) |
 
-### Utility Modules
+### Utility Modules (Refactored)
 
 | Module | Description | Documentation |
 | :--- | :--- | :--- |
-| **DSL Functions** | Math/Query Node Definitions and Type Generation | [functions/readme.en.md](./utils/functions/readme.en.md) |
-| **GIA Generator** | Programmatic Building and Manipulation of Node Graphs | [gia_gen/readme.en.md](./utils/gia_gen/readme.en.md) |
-| **Node Data** | ID, Enum, Pin Reflection Data | [node_data/readme.en.md](./utils/node_data/readme.en.md) |
-| **Protobuf** | GIA File Encoding/Decoding | [protobuf/readme.en.md](./utils/protobuf/readme.en.md) |
+| **GIA Generator** | Programmatic construction and manipulation of node graphs | [gia_gen/readme.md](./utils/gia_gen/readme.en.md) |
+| **Node Data System** | Centralized data management, complete type system | [node_data/readme.md](./utils/node_data/readme.en.md) |
+| **Protobuf Toolkit** | Dual-path encoding/decoding, reverse engineering toolchain | [protobuf/README.md](./utils/protobuf/README.en.md) |
+| **DSL Functions** | Math/Query node definitions (low priority) | [functions/readme.md](./utils/functions/readme.en.md) |
+
+### Source Code Modules
+
+| Module | Description | Documentation |
+| :--- | :--- | :--- |
+| **Parser** | DSL lexical analysis, syntax analysis, decompilation | [parser/readme.md](./src/parser/readme.en.md) |
+| **Converter** | GIA ⇔ IR format conversion, graph analysis algorithms | [convertor/readme.md](./src/convertor/readme.en.md) |
+| **Type Definitions** | IR node types, Token, constants | [types/readme.md](./src/types/readme.en.md) |
 
 ### User Documentation
 
 | Document | Description |
 | :--- | :--- |
-| [DSL User Guide](./docs/UserGuide.en.md) | Complete Guide to DSL Syntax |
-| [Language Design](./docs/SystemDesign.en.md) | Language Design Philosophy and Implementation Details |
-| [TODO.md](./TODO.en.md) | Development Plan and Progress Tracking |
+| [DSL User Guide](./docs/UserGuide.en.md) | Complete guide to DSL syntax |
+| [Language Design](./docs/SystemDesign.en.md) | Language design philosophy and implementation details |
+| [TODO.md](./TODO.en.md) | Development plan and progress tracking |
+
+---
+
+## Toolchain Workflow
+
+### Complete Data Flow
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        Utility Library (utils)              │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
+│  │  node_data   │───►│   gia_gen    │───►│  protobuf    │  │
+│  │  (Data Core) │    │  (Graph Builder) │    │  (Encoding/Decoding)│  │
+│  └──────────────┘    └──────────────┘    └──────────────┘  │
+│        │                    │                    │           │
+│        │ Node Definitions    │ Graph API         │ GIA File  │
+│        ▼                    ▼                    ▼           │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                        Source Code (src)                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
+│  │    types     │───►│   parser     │───►│  convertor   │  │
+│  │  (IR Definitions)│    │  (DSL Parsing)  │    │ (GIA⇔IR)     │  │
+│  └──────────────┘    └──────────────┘    └──────────────┘  │
+│                            │                    │           │
+│                            │ IR AST            │ IR Module │
+│                            ▼                    ▼           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Typical Usage Scenarios
+
+**Scenario 1: Read and Modify GIA File**
+```
+GIA File → decode_gia_file() → Graph.decode() → Modify nodes 
+→ graph.encode() → encode_gia_file() → GIA File
+```
+
+**Scenario 2: Create Node Graph from Scratch**
+```
+new Graph() → add_node(NODES.xxx) → connect() → setVal() 
+→ autoLayout() → encode() → encode_gia_file() → GIA File
+```
+
+**Scenario 3: DSL Code Compilation (In Progress)**
+```
+DSL Code → parse() → IR AST → (Converter) → Graph → encode() → GIA File
+```
+
+**Scenario 4: Decompile GIA to DSL (In Progress)**
+```
+GIA File → decode() → Graph → giaIrConvertor() → IR → decompile() → DSL Code
+```
 
 ---
 
 ## GIA File Format
 
-The `.gia` file is the binary storage format for Genshin Impact Miliastra Wonderland node graphs, serialized using Protobuf.
+`.gia` files are the binary storage format for Genshin Impact: Miliastra Wonderland node graphs, serialized using Protobuf.
 
 ![GIA File Structure](./static/image.png)
 
 | Field | Offset | Value | Description |
 | :--- | :--- | :--- | :--- |
 | File Size | 0x00 | `size - 4` | Total file size minus 4 bytes |
-| Version Number | 0x04 | `0x01` | Fixed value |
-| Header Marker | 0x08 | `0x0326` | **Strict Check** |
+| Version Number | 0x04 | `0x01` | Fixed Value |
+| Header Marker | 0x08 | `0x0326` | **Strict Validation** |
 | File Type | 0x0C | `0x03` | GIA = 3 |
 | Content Length | 0x10 | `size - 24` | Protobuf data length |
 | Protobuf | 0x14 | ... | Serialized node graph data |
-| Footer Marker | End | `0x0679` | **Strict Check** |
+| Footer Marker | End | `0x0679` | **Strict Validation** |
 
-📖 Protobuf detailed structure: [gia.proto](./utils/protobuf/gia.proto)
+📖 Protobuf Detailed Structure: [gia.proto](./utils/protobuf/gia.proto) | [Reverse Engineering Tools Documentation](./utils/protobuf/README.en.md)
 
 ---
 
@@ -318,47 +418,36 @@ The `.gia` file is the binary storage format for Genshin Impact Miliastra Wonder
 
 | Feature | Status | Description |
 | :--- | :--- | :--- |
+| **Data System Refactoring** | ✅ Completed | Centralized data.json, complete type system |
 | GIA File Reverse Engineering | ✅ Completed | Complete file format parsing |
-| GIA File Read/Write Interface | ✅ Completed | TypeScript + Python tools |
-| Graph High-level API | ✅ Completed | Node, connection, comment, variable management |
-| DSL Syntax Design | ✅ Completed | Complete syntax specification |
+| GIA File Read/Write API | ✅ Completed | TypeScript dual-path encoding/decoding |
+| Graph High-Level API | ✅ Completed | Node, connection, comment, variable management |
+| Protobuf Reverse Engineering Toolchain | ✅ Completed | decode_raw, proto2ts, verify_proto |
+| DSL Syntax Design | ✅ Completed | Complete grammar specification |
 | DSL → IR Parser | ✅ Completed | Lexical analysis + Syntax analysis |
 | IR → DSL Decompiler | ✅ Completed | Complete decompilation support |
 | Automatic Layout Algorithm | ✅ Completed | Dagre-based automatic layout |
-| Node Data Organization | ✅ Completed | 770+ nodes, 40+ enums |
-| CI Automated Testing | ✅ Completed | Parser consistency testing |
+| Node Data Organization | ✅ Completed | 500+ nodes, 100+ enums |
+| CI Automation Testing | ✅ Completed | Parser consistency testing |
 
 ### In Progress ⏳
 
 | Feature | Status | Description |
 | :--- | :--- | :--- |
-| GIA → IR Converter | ⏳ In Progress | Raw mode supported, optimization in progress |
+| GIA → IR Converter | ⏳ In Progress | Raw mode supported, optimizing |
 | IR → GIA Converter | ⏳ In Progress | Construct Graph from IR |
 | Client Node Support | ⏳ In Progress | ID and enum difference handling |
+| Documentation Update | ⏳ In Progress | Adapt to refactored new interfaces |
 
 ### Planned 📋
 
 | Feature | Description |
 | :--- | :--- |
-| VSCode Language Extension | Syntax highlighting and intelligent auto-completion for `.dsl.ts` files |
+| VSCode Language Extension | Syntax highlighting and intelligent completion for `.dsl.ts` files |
 | Compiler Type Inference | Automatically infer DSL expression types |
-| Execution Simulation | Locally simulate node graph logic execution |
+| Runtime Simulation | Locally simulate node graph logic execution |
 
 For more plans, see [TODO.md](./TODO.en.md)
-
----
-
-## File Visibility
-
-According to [sync-list.json](./sync-list.json), the following content is only visible in the development branch (`dev`):
-
-| Path | Reason |
-| :--- | :--- |
-| `utils/extracting_nodes/` | Internal node extraction tool |
-| `utils/**/ref/**` | Reference files |
-| `utils/node_data/yaml/**` | Intermediate data |
-| `**/test/**`, `**/temp/**` | Test and temporary files |
-| `utils/functions/tools.ts` | Internal tool |
 
 ---
 
@@ -367,7 +456,10 @@ According to [sync-list.json](./sync-list.json), the following content is only v
 | Project | Description |
 | :--- | :--- |
 | [WebMiliastraNodesEditor](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) | Web-based Node Editor |
-| [genshin-miliastra-file-format](https://github.com/script-1024/genshin-miliastra-file-format) | Introduction to `gil` and other file formats |
+| [genshin-miliastra-file-format](https://github.com/script-1024/genshin-miliastra-file-format) | Introduction to `.gil` and other file formats |
+| [GIScriptEditor](https://github.com/hackermdch/GIScriptEditor) | Another DSL language design, which has implemented **non-equivalent** overwriting of DSL into GIL files and provides a self-designed UgcUtil interface, but GIL parsing needs further improvement |
+
+*Simulation automation tools using visual solutions are not listed for now*
 
 ---
 
@@ -375,10 +467,10 @@ According to [sync-list.json](./sync-list.json), the following content is only v
 
 Contributions, bug reports, and suggestions are welcome!
 
-- 🐛 **Bug Reports**：[Submit an Issue](https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/issues)
-- 💡 **Feature Suggestions**：[Submit an Issue](https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/issues)
-- 📧 **Contact Author**：[wuyijun21@mails.ucas.ac.cn](mailto:wuyijun21@mails.ucas.ac.cn)
+- 🐛 **Bug Reports**: [Submit an Issue](https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/issues)
+- 💡 **Feature Suggestions**: [Submit an Issue](https://github.com/Wu-Yijun/Genshin-Impact-Miliastra-Wonderland-Code-Node-Editor-Pack/issues)
+- 📧 **Contact Author**: [wuyijun21@mails.ucas.ac.cn](mailto:wuyijun21@mails.ucas.ac.cn)
 
 ## License
 
-[MIT License](./LICENSE) © 2025 Wu-Yijun
+[MIT License](./LICENSE) © 2025-2026 Wu-Yijun

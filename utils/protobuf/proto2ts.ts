@@ -4,7 +4,7 @@ import { argv } from "process";
 
 
 
-type Root = {
+export type Root = {
   type: "message"; // message
   name: string[]; // Name { ... }
   inner: Root[]; // message | enum | oneof | var
@@ -18,7 +18,7 @@ type Root = {
   inner: VarDef[]; // x = 1
 } | VarDef;
 
-type VarDef = {
+export type VarDef = {
   type: "var";
   class: string[];
   name: string;
@@ -291,7 +291,7 @@ const SystemVar = new Map([
   ["float", "number"],
   ["string", "string"]
 ]);
-class TypeLayers {
+export class TypeLayers {
   parent: TypeLayers | null;
   name: string;
   message: Map<string, TypeLayers>;
@@ -442,15 +442,18 @@ class TypeLayers {
   }
 }
 
-
-
-if (import.meta.main) {
-  if (argv[2] === "-h" || argv[2] === "--help") {
-    console.log("Usage: node ./utils/protobuf/proto2ts.ts [output_path] [input_path]");
-  } else {
-    const path = argv[3] ?? import.meta.dirname + '/gia.proto';
-    main(path);
-  }
+export function parse(proto_raw: string): TypeLayers {
+  const proto = proto_raw
+    .split("\n")
+    .map(s => s.replace(/\/\/.*$/m, ""))
+    .join(" ")
+    .replaceAll(/(\s|\n|\r)+/g, " ")
+    .replace(/^syntax\s*=.+?;/, "");
+  const t = tokenize(proto);
+  const doc = parseDoc(t);
+  const layers = new TypeLayers("root", doc);
+  layers.searchVars();
+  return layers;
 }
 
 function main(input_path: string) {
@@ -476,5 +479,13 @@ function main(input_path: string) {
     src_path: input_path,
     separator: "_",
   });
+}
 
+if (import.meta.main) {
+  if (argv[2] === "-h" || argv[2] === "--help") {
+    console.log("Usage: node ./utils/protobuf/proto2ts.ts [output_path] [input_path]");
+  } else {
+    const path = argv[3] ?? import.meta.dirname + '/gia.proto';
+    main(path);
+  }
 }
