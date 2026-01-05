@@ -19,6 +19,7 @@ import type { NodeDef, ResourceClass, ServerClient, TypedValue } from "../node_d
 import { type NodeType, stringify, parse, is_reflect, type ConstraintType, type StructType, type_equal } from "../node_data/node_type.ts";
 import { Counter, fuseSuggest, get_system, is_empty, randomInt, randomName } from "./utils.ts";
 import { type TypedPinDef, type TypedNodeDef } from "../node_data/core.ts";
+import { auto_layout, type LayoutOption } from "./auto_layout.ts";
 
 
 // Helper to determine system from common inputs if needed,
@@ -328,6 +329,10 @@ export class Graph {
     this.nodes.forEach(node => {
       node.debugPrint({ indent: indent + 2, log });
     });
+  }
+
+  autoLayout(options?: Partial<LayoutOption>) {
+    auto_layout(this, options ?? {});
   }
 }
 

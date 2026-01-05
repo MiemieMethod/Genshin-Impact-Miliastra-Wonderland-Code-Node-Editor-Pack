@@ -2,11 +2,11 @@
 // 为你的 Node 代码提供一套空的 fs 实现，防止 Vite 运行时报错
 export const readFileSync = () => '';
 export const readFile = (path, cb) => cb(null, '');
-export const writeFileSync = () => {};
+export const writeFileSync = () => { };
 export const existsSync = () => true;
 export const promises = {
   readFile: async () => '',
-  writeFile: async () => {},
+  writeFile: async () => { },
 };
 export const statSync = () => ({ isFile: () => false, isDirectory: () => false });
 

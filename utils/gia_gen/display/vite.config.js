@@ -14,6 +14,7 @@ export default defineConfig({
       // 使用 path.resolve 确保路径是绝对路径，防止递归解析错误
       'fs': path.resolve(__dirname, './mock-fs.js'),
       'path': path.resolve(__dirname, './mock-path.js'),
+      'module': path.resolve(__dirname, './mock-module.js'),
       // 也可以使用 node: 前缀的模块名
       'node:fs': path.resolve(__dirname, './mock-fs.js'),
       'node:path': path.resolve(__dirname, './mock-path.js'),

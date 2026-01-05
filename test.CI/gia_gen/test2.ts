@@ -78,6 +78,8 @@ graph.add_graph_var("var1", "L<Int>", [1, 24, 5], true);
 graph.add_graph_var("var1", "Int", 3, false); // skip redefine
 graph.add_graph_var("var2", "Int", 3, false);
 
+graph.autoLayout();
+
 const g = graph.encode();
 
 encode_gia_file("test.gia", g);

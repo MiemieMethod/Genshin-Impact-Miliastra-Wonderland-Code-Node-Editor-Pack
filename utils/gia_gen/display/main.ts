@@ -21,8 +21,9 @@ if (app) {
 
     console.log("Change Data");
 
-    Branch1.setPosition(5, 5);
+    Branch1.setPosition(7, 2);
     Branch1.setVal("cases", [112, 2314]);
+    graph.comments.keys().next().value!.content = "Graph can be updated and re-rendered."
 
     renderer.render(graph);
 } else {

@@ -8,12 +8,14 @@ import type { Graph, Node, Connection, Comment } from "../interface";
 
 // 节点 Domain 对应的标题栏颜色 (6种)
 const DomainColors: Record<string, string> = {
-    "Combat": "rgba(180, 50, 50, 0.8)",  // 红
-    "Logic": "rgba(255, 255, 255, 0.8)", // 白/灰
-    "Math": "rgba(50, 180, 150, 0.8)",  // 青绿
-    "Variable": "rgba(150, 50, 180, 0.8)",// 紫
-    "Event": "rgba(180, 50, 50, 0.8)",   // 红 (事件)
-    "Default": "rgba(50, 100, 200, 0.8)", // 蓝
+    "Execution": "rgba(178, 161, 6, 0.8)", // 黄
+    "Arithmetic": "rgba(50, 180, 150, 0.8)",  // 青绿
+    "Trigger": "rgba(150, 50, 180, 0.8)",// 紫
+    "Query": "rgba(50, 100, 200, 0.8)", // 蓝
+    "Control": "rgba(209, 110, 18, 0.8)",  // 橙
+    "Others": "rgba(180, 50, 50, 0.8)",  // 红
+    "Hidden": "rgba(180, 50, 50, 0.8)",  // 红
+    "Default": "gray",  // 灰
 };
 
 // 基础颜色表 (14种基础色)
@@ -36,6 +38,8 @@ const BaseColors = {
     Dict: "#ccaa00", // 金色
     Unk: "#ff3333", // 红色
 };
+
+const SCALE = 0.5;
 
 /**
  * 根据 NodeType 获取颜色
@@ -261,8 +265,8 @@ export class GraphRenderer {
         const el = document.createElement("div");
         el.classList.add("ue-node");
         // 直接使用 raw px，不进行缩放
-        el.style.left = `${node.x}px`;
-        el.style.top = `${node.y}px`;
+        el.style.left = `${node.x * SCALE}px`;
+        el.style.top = `${node.y * SCALE}px`;
         el.dataset.nodeIndex = node.node_index.toString();
 
         // 绑定鼠标悬浮事件
@@ -369,8 +373,8 @@ export class GraphRenderer {
         const x = comment.x || 0;
         const y = comment.y || 0;
 
-        el.style.left = `${x}px`;
-        el.style.top = `${y}px`;
+        el.style.left = `${x * SCALE}px`;
+        el.style.top = `${y * SCALE}px`;
         this.commentsLayer.appendChild(el);
     }
 
