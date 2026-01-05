@@ -63,66 +63,122 @@ function getPinColor(t: NodeType): string {
     return BaseColors.Unk;
 }
 
-// ==========================================
-// 2. 渲染器类
-// ==========================================
+// ================= 渲染器 =================
 
 export class GraphRenderer {
-    private container: HTMLElement;
+    private viewport: HTMLElement;
+    private world: HTMLElement; // 变换层
     private svgLayer: SVGSVGElement;
-    private nodeLayer: HTMLDivElement;
-    private commentLayer: HTMLDivElement;
+    private commentsLayer: HTMLElement; // 用于 Graph.comments
+
+    // Panning State
+    private translateX = 0;
+    private translateY = 0;
+    private isDragging = false;
+    private lastMouseX = 0;
+    private lastMouseY = 0;
 
     constructor(containerElement: HTMLElement) {
-        this.container = containerElement;
-        this.container.classList.add("graph-container");
-        this.container.innerHTML = ""; // 清空
+        this.viewport = containerElement;
+        this.viewport.classList.add("graph-viewport");
+        this.viewport.innerHTML = "";
 
-        // 初始化层级
+        // 1. 创建世界层 (Transform Layer)
+        this.world = document.createElement("div");
+        this.world.classList.add("transform-layer");
+        this.updateTransform();
+
+        // 2. SVG 层 (z-index 0)
         this.svgLayer = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         this.svgLayer.classList.add("graph-connections");
 
-        this.commentLayer = document.createElement("div");
+        // 3. 独立注释层 (z-index 5, 虽然同在 World 里, 但逻辑上分开)
+        this.commentsLayer = document.createElement("div");
 
-        this.nodeLayer = document.createElement("div");
+        // 组装 DOM
+        this.world.appendChild(this.svgLayer);
+        this.world.appendChild(this.commentsLayer);
+        // Node 将直接 append 到 this.world (z-index 10)
 
-        this.container.appendChild(this.svgLayer);
-        this.container.appendChild(this.commentLayer);
-        this.container.appendChild(this.nodeLayer);
+        this.viewport.appendChild(this.world);
+
+        // 绑定拖拽事件
+        this.setupInteraction();
     }
 
-    /**
-     * 主入口：渲染图表
-     */
+    private setupInteraction() {
+        this.viewport.addEventListener("mousedown", (e) => {
+            // 只有左键或中键点击背景才拖拽 (简单判断：点击的是 viewport 或 world)
+            if (e.target === this.viewport || e.target === this.world || e.target === this.svgLayer) {
+                this.isDragging = true;
+                this.lastMouseX = e.clientX;
+                this.lastMouseY = e.clientY;
+            }
+        });
+
+        window.addEventListener("mousemove", (e) => {
+            if (!this.isDragging) return;
+            const dx = e.clientX - this.lastMouseX;
+            const dy = e.clientY - this.lastMouseY;
+            this.translateX += dx;
+            this.translateY += dy;
+            this.lastMouseX = e.clientX;
+            this.lastMouseY = e.clientY;
+            this.updateTransform();
+        });
+
+        window.addEventListener("mouseup", () => {
+            this.isDragging = false;
+        });
+    }
+
+    private updateTransform() {
+        // 使用 translate3d 开启硬件加速
+        this.world.style.transform = `translate3d(${this.translateX}px, ${this.translateY}px, 0)`;
+    }
+
     public render(graph: Graph) {
-        // 1. 渲染所有节点 (HTML)
+        // 清理旧内容 (保留 SVG 和 Comments 容器本身，清理内部)
+        this.svgLayer.innerHTML = "";
+        this.commentsLayer.innerHTML = "";
+        // 清理旧节点: 移除 world 中所有 class 为 ue-node 的元素
+        const oldNodes = this.world.querySelectorAll(".ue-node");
+        oldNodes.forEach(n => n.remove());
+
+        // 1. 渲染节点
         graph.nodes.forEach((node) => {
             this.renderNode(node);
         });
 
-        // 2. 渲染注释 (HTML)
+        // 2. 渲染 Graph 级注释 (独立浮动)
         if (graph.comments) {
-            graph.comments.forEach(comment => this.renderComment(comment));
+            graph.comments.forEach(comment => this.renderGraphComment(comment));
         }
 
-        // 3. 渲染连线 (SVG)
-        // 必须等 DOM 渲染完成后再计算位置，这里使用 setTimeout 0 这里的技巧
-        // 或者因为是同步操作，appendChild 后通常可以直接获取布局，除非有异步加载资源
-        // 这里假设是同步的，直接计算
-        this.updateConnections(graph);
+        // 3. 渲染连线 (需要等待 DOM 布局)
+        // 这里的坐标计算现在变得简单了，因为 SVG 和 Node 都在同一个 World 坐标系下
+        requestAnimationFrame(() => {
+            this.updateConnections(graph);
+        });
     }
-
-    // --- Node Rendering ---
 
     private renderNode(node: Node) {
         const el = document.createElement("div");
         el.classList.add("ue-node");
+        // 直接使用 raw px，不进行缩放
         el.style.left = `${node.x}px`;
         el.style.top = `${node.y}px`;
-        // 设置 ID 方便连线查找
         el.dataset.nodeIndex = node.node_index.toString();
 
-        // Header
+        // --- Attached Comment (Node 上方的气泡) ---
+        if (node.comment) {
+            const commentEl = document.createElement("div");
+            commentEl.classList.add("ue-node-comment-bubble");
+            commentEl.innerText = node.comment.content;
+            el.appendChild(commentEl);
+        }
+
+        // --- Header ---
         const header = document.createElement("div");
         header.classList.add("ue-node-header");
         const domainColor = DomainColors[node.def.Domain] || DomainColors["Default"];
@@ -130,54 +186,41 @@ export class GraphRenderer {
 
         const title = document.createElement("span");
         title.classList.add("ue-node-title");
-        // 优先显示 InGameName，否则 fallback
-        title.innerText = node.def.InGameName?.en || node.def.Identifier || `Node ${node.node_index}`;
+        title.innerText = node.def.InGameName?.en || node.def.Identifier;
         header.appendChild(title);
         el.appendChild(header);
 
-        // Body
+        // --- Body ---
         const body = document.createElement("div");
         body.classList.add("ue-node-body");
 
         const leftCol = document.createElement("div");
         leftCol.classList.add("ue-column", "inputs");
-
         const rightCol = document.createElement("div");
         rightCol.classList.add("ue-column", "outputs");
 
-        // Pins Generation
-        // Order: Flow Inputs -> Data Inputs -> Flow Outputs -> Data Outputs
+        // Helper to create pins
+        const appendPin = (pin: TypedPinDef, isFlow: boolean, container: HTMLElement) => {
+            container.appendChild(this.createPinElement(node, pin, isFlow));
+        };
 
-        // 1. Flow In
-        node.def.FlowPins.filter(p => p.Direction === "In").forEach(p =>
-            leftCol.appendChild(this.createPinElement(node, p, true))
-        );
-        // 2. Data In
-        node.def.DataPins.filter(p => p.Direction === "In").forEach(p =>
-            leftCol.appendChild(this.createPinElement(node, p, false))
-        );
+        // Render Pins
+        (node.variant_def ?? node.def).FlowPins.filter(p => p.Direction === "In").forEach(p => appendPin(p, true, leftCol));
+        (node.variant_def ?? node.def).DataPins.filter(p => p.Direction === "In").forEach(p => appendPin(p, false, leftCol));
 
-        // 3. Flow Out
-        node.def.FlowPins.filter(p => p.Direction === "Out").forEach(p =>
-            rightCol.appendChild(this.createPinElement(node, p, true))
-        );
-        // 4. Data Out
-        node.def.DataPins.filter(p => p.Direction === "Out").forEach(p =>
-            rightCol.appendChild(this.createPinElement(node, p, false))
-        );
+        (node.variant_def ?? node.def).FlowPins.filter(p => p.Direction === "Out").forEach(p => appendPin(p, true, rightCol));
+        (node.variant_def ?? node.def).DataPins.filter(p => p.Direction === "Out").forEach(p => appendPin(p, false, rightCol));
 
         body.appendChild(leftCol);
         body.appendChild(rightCol);
         el.appendChild(body);
 
-        this.nodeLayer.appendChild(el);
+        this.world.appendChild(el);
     }
 
     private createPinElement(node: Node, pinDef: TypedPinDef, isFlow: boolean): HTMLElement {
         const row = document.createElement("div");
         row.classList.add("pin-row");
-        // 标记 Socket 元素 ID 用于连线坐标计算
-        // 格式: socket-{nodeIndex}-{pinName}
         const socketId = `socket-${node.node_index}-${pinDef.Identifier}`;
 
         const socket = document.createElement("div");
@@ -185,7 +228,6 @@ export class GraphRenderer {
         socket.classList.add("pin-socket");
         socket.classList.add(isFlow ? "flow" : "data");
 
-        // 颜色处理
         if (!isFlow) {
             socket.style.setProperty("--pin-color", getPinColor(pinDef.Type));
         }
@@ -194,9 +236,7 @@ export class GraphRenderer {
         label.classList.add("pin-label");
         label.innerText = pinDef.Label?.en || pinDef.Identifier;
 
-        // 静态值展示逻辑:
-        // 如果是输入引脚(In) 且 Data引脚 且 没有连线(data_from中找不到该key)
-        // 且 pin_values 中有值，则显示值
+        // Static Value Display
         let valueDisplay: HTMLElement | null = null;
         if (pinDef.Direction === "In" && !isFlow) {
             const isConnected = node.data_from.has(pinDef.Identifier);
@@ -204,12 +244,10 @@ export class GraphRenderer {
                 const val = node.pin_values.get(pinDef.Identifier);
                 valueDisplay = document.createElement("span");
                 valueDisplay.classList.add("pin-value-static");
-                // 简单转字符串展示
                 valueDisplay.innerText = String(val);
             }
         }
 
-        // 布局顺序：Input [Socket Label Value], Output [Label Socket]
         if (pinDef.Direction === "In") {
             row.appendChild(socket);
             row.appendChild(label);
@@ -218,113 +256,83 @@ export class GraphRenderer {
             row.appendChild(label);
             row.appendChild(socket);
         }
-
         return row;
     }
 
-    // --- Comment Rendering ---
-
-    private renderComment(comment: Comment) {
+    // --- Graph-level Comments ---
+    private renderGraphComment(comment: Comment) {
         const el = document.createElement("div");
-        el.classList.add("ue-comment");
+        el.classList.add("ue-comment-box");
         el.innerText = comment.content;
 
-        let x = comment.x || 0;
-        let y = comment.y || 0;
-
-        // 如果依附于节点，叠加坐标
-        if (comment.attached_node) {
-            x += comment.attached_node.x;
-            y += comment.attached_node.y - 30; // 简单地放在节点上方
-        }
+        // 直接使用 x, y (px)
+        const x = comment.x || 0;
+        const y = comment.y || 0;
 
         el.style.left = `${x}px`;
         el.style.top = `${y}px`;
-        this.commentLayer.appendChild(el);
+        this.commentsLayer.appendChild(el);
     }
 
-    // --- Connection Rendering ---
-
+    // --- Connections ---
     private updateConnections(graph: Graph) {
-        // 必须清空旧连线如果重绘
-        this.svgLayer.innerHTML = "";
+        this.svgLayer.innerHTML = ""; // Clear
 
-        // 我们需要 SVG 容器的 offset，以便将页面绝对坐标转换为 SVG 内部坐标
-        // 但由于 .graph-container 是 relative 且 svg 是 absolute(0,0)，
-        // getBoundingClientRect 应该可以直接做减法。
-        const containerRect = this.container.getBoundingClientRect();
+        // 关键修正：获取坐标时，需要减去 World 层的偏移，或者更简单：
+        // 因为 SVG 是 World 的子元素，且 SVG overflow visible, width 0, height 0
+        // 所以 SVG 内部的坐标 (100, 100) 就在 World 的 (100, 100) 位置。
+        // 我们只需要算出 Socket 元素相对于 World 原点的位置。
 
-        // 辅助函数：获取 Socket 中心坐标 relative to container
+        const worldRect = this.world.getBoundingClientRect();
+
         const getSocketPos = (nodeIndex: number, pinName: string) => {
             const id = `socket-${nodeIndex}-${pinName}`;
             const el = document.getElementById(id);
             if (!el) return null;
             const rect = el.getBoundingClientRect();
+            // 相对 World 左上角的坐标 = Socket屏幕坐标 - World屏幕坐标
             return {
-                x: rect.left + rect.width / 2 - containerRect.left + this.container.scrollLeft,
-                y: rect.top + rect.height / 2 - containerRect.top + this.container.scrollTop
+                x: rect.left + rect.width / 2 - worldRect.left,
+                y: rect.top + rect.height / 2 - worldRect.top
             };
         };
 
-        // 绘制连线的函数
         const drawLine = (fromNode: Node, fromPin: string, toNode: Node, toPin: string, isFlow: boolean) => {
             const p1 = getSocketPos(fromNode.node_index, fromPin);
             const p2 = getSocketPos(toNode.node_index, toPin);
 
-            if (!p1 || !p2) {
-                console.warn(`Missing socket element for connection: ${fromNode.node_index}:${fromPin} -> ${toNode.node_index}:${toPin}`);
-                return;
-            }
+            if (!p1 || !p2) return;
 
-            // 颜色
-            let color = "#fff"; // Flow default
+            // 颜色逻辑
+            let color = "#fff";
             if (!isFlow) {
-                // 查找 output pin 的类型定义来决定颜色
-                const pinDef = fromNode.def.DataPins.find(p => p.Identifier === fromPin);
-                if (pinDef) {
-                    color = getPinColor(pinDef.Type);
-                }
+                const pinDef = (fromNode.variant_def ?? fromNode.def).DataPins.find(p => p.Identifier === fromPin);
+                if (pinDef) color = getPinColor(pinDef.Type);
             }
 
-            // 创建 SVG Path
             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-            // 贝塞尔曲线逻辑 (Unreal 风格)
-            // 控制点通常水平延伸
-            const curvature = 0.5; // 弯曲力度
+            // 贝塞尔曲线
             const dist = Math.abs(p2.x - p1.x);
-            // 最小控制点距离，避免太近时线扭曲
-            const controlDist = Math.max(dist * curvature, 30);
+            const controlDist = Math.max(dist * 0.5, 50); // 稍微调整了平滑度
 
-            const cp1 = { x: p1.x + controlDist, y: p1.y };
-            const cp2 = { x: p2.x - controlDist, y: p2.y };
-
-            const d = `M ${p1.x} ${p1.y} C ${cp1.x} ${cp1.y}, ${cp2.x} ${cp2.y}, ${p2.x} ${p2.y}`;
+            const d = `M ${p1.x} ${p1.y} C ${p1.x + controlDist} ${p1.y}, ${p2.x - controlDist} ${p2.y}, ${p2.x} ${p2.y}`;
 
             path.setAttribute("d", d);
             path.setAttribute("stroke", color);
-            path.setAttribute("stroke-width", isFlow ? "3" : "2"); // Flow 线粗一点
+            path.setAttribute("stroke-width", isFlow ? "3" : "2");
             path.setAttribute("fill", "none");
-
-            // 如果是 Flow 线，可能需要虚线效果或者特定的样式，这里保持实线
 
             this.svgLayer.appendChild(path);
         };
 
-        // 遍历所有节点，绘制所有 Out 连线
+        // 遍历绘制
         graph.nodes.forEach(node => {
-            // 1. Flow Connections (Map<string, Connection[]>)
             node.flow_to.forEach((conns, pinName) => {
-                conns.forEach(conn => {
-                    drawLine(node, pinName, conn.to, conn.to_pin.Identifier, true);
-                });
+                conns.forEach(conn => drawLine(node, pinName, conn.to, conn.to_pin.Identifier, true));
             });
-
-            // 2. Data Connections (Map<string, Set<Connection>>)
             node.data_to.forEach((connSet, pinName) => {
-                connSet.forEach(conn => {
-                    drawLine(node, pinName, conn.to, conn.to_pin.Identifier, false);
-                });
+                connSet.forEach(conn => drawLine(node, pinName, conn.to, conn.to_pin.Identifier, false));
             });
         });
     }
