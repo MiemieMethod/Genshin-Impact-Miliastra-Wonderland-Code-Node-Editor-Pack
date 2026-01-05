@@ -110,6 +110,24 @@ export class Graph {
     return newNode;
   }
 
+  add_comment(content: string, target_node: Node): Comment | null;
+  add_comment(content: string, x: number, y: number): Comment;
+  add_comment(content: string, x?: number | Node, y?: number): Comment | null {
+    if (typeof x === "number") {
+      const cmt = { content, x, y };
+      this.comments.add(cmt);
+      return cmt;
+    } else if (x instanceof Node) {
+      const n = this.nodes.get(x.node_index);
+      if (n === undefined || n !== x) {
+        console.error("[Error] Node not found in graph.");
+        return null;
+      }
+      return n.add_comment(content);
+    }
+    return null;
+  }
+
   flow(from: Node, to: Node, fromArg?: string, toArg?: string, insert_pos?: number): Connection | null {
     if (is_empty(from) || is_empty(to)) {
       console.error("[Error] Source or Target node is empty.");
@@ -240,6 +258,7 @@ export class Graph {
     // const graph_vars = get_graph_vars(root.graph.graph?.inner.graph!);
     // graph_vars.forEach((v) => graph.graph_var.set(v.name, v));
 
+    // nodes & values
     proto.primary_resource.graph_data?.inner.graph.nodes.forEach(node => {
       // node itself
       const n = Node.decode(system, node);
@@ -248,15 +267,15 @@ export class Graph {
         return;
       }
       graph.add_node(n);
-      // comments
-      // if (!empty(node.comments)) {
-      //   graph.add_comment(Comment.decode(node.comments, n));
-      // }
     });
-
+    // connects & flows
     proto.primary_resource.graph_data?.inner.graph.nodes.forEach(node => {
       // decode connects
       Node.decode_connections(node, graph);
+    });
+    // comments
+    proto.primary_resource.graph_data?.inner.graph.comments?.forEach(c => {
+      graph.add_comment(c.text, c.x_pos ?? 0, c.y_pos ?? 0);
     });
     return graph;
   }
@@ -303,6 +322,11 @@ export class Node {
     this.flow_to = new Map();
   }
 
+  add_comment(content: string): Comment {
+    const cmt = { content };
+    this.comment = cmt;
+    return cmt;
+  }
 
   findPin(identifier: string): {
     success: boolean;
@@ -423,6 +447,33 @@ export class Node {
         to_pin: thatPin.pin!
       };
     }
+
+    // if (thatPin.kind === "Data") {
+    //   let old_con = con.to.data_from.get(con.to_pin.Identifier);
+    //   if (old_con !== undefined) {
+    //     if (old_con.from === con.from) {
+    //       console.warn(`[Warning] Data pin ${con.to_pin.Identifier} is already connected to ${con.from.def.Identifier}.`);
+    //       return null;
+    //     } else {
+    //       console.info(`[Info] Disconnecting old connection ${old_con.from.def.Identifier} from ${con.to.def.Identifier} before connecting ${con.from.def.Identifier}.`);
+    //       make_disconnection_unsafe(old_con, "Data");
+    //     }
+    //   }
+    // } else {
+    //   let old_con = con.from.flow_to.get(con.from_pin.Identifier);
+    //   if (old_con !== undefined) {
+    //     const idx = old_con.findIndex(c => c.to === con.to);
+    //     if (idx >= 0) {
+    //       if (idx === insert_pos) {
+    //         console.info(`[Info] Flow pin ${con.from_pin.Identifier} is already connected to ${con.to.def.Identifier}.`);
+    //       } else {
+    //         console.warn(`[Warning] Flow pin ${con.from_pin.Identifier} is already connected to ${con.to.def.Identifier} at different index ${idx}. Will not override it.`);
+    //       }
+    //       return null;
+    //     }
+    //   }
+    // }
+
     make_connection_unsafe(con, thisPin.kind!, insert_pos);
     return con;
   }
@@ -434,7 +485,7 @@ export class Node {
       return false;
     }
     this.data_from.delete(pinIdentifier);
-    con.from.data_to.get(con.to.def.Identifier)?.delete(con);
+    con.from.data_to.get(con.from_pin.Identifier)?.delete(con);
     return true;
   }
 
@@ -450,7 +501,7 @@ export class Node {
       return false;
     }
     conns.splice(index, 1);
-    con.from.flow_from.get(con.to.def.Identifier)?.delete(con);
+    con.from.flow_from.get(con.to_pin.Identifier)?.delete(con);
     return true;
   }
 
@@ -641,6 +692,14 @@ export class Node {
     if (node.def.Type === "Variant") {
       node.solveConstraints(constraints);
     }
+
+    // comments
+    if (!is_empty(proto.attached_comment)) {
+      node.add_comment(proto.attached_comment.text);
+    }
+    // pos
+    node.x = proto.x_pos ?? 0;
+    node.y = proto.y_pos ?? 0;
     return node;
   }
 
@@ -861,5 +920,4 @@ export interface Comment {
   content: string;
   x?: number;
   y?: number;
-  attached_node?: Node;
 }
