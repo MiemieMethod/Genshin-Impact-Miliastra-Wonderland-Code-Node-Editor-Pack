@@ -9,7 +9,8 @@ import {
   make_annotation,
   make_variant_value,
   get_resource_class,
-  read_typed_value
+  read_typed_value,
+  read_connections
 } from "./core.ts";
 import { ClientType, Doc, Node as NodeLib, ServerType } from "../node_data/instances.ts";
 import type { NodeDef, ResourceClass, ServerClient, TypedValue } from "../node_data/types.ts";
@@ -33,7 +34,8 @@ export class Graph {
   private counter_idx: Counter;
   private counter_dyn_id: Counter;
 
-  public readonly nodes: Set<Node>;
+  /** node_index --> Node */
+  public readonly nodes: Map<number, Node>;
   public readonly comments: Set<Comment>;
 
   constructor(system_class: ResourceClass = "ENTITY_NODE_GRAPH", uid?: number, name?: string, graph_id?: number) {
@@ -47,7 +49,7 @@ export class Graph {
     this.counter_dyn_id = new Counter(Number(this.graph_id));
     this.file_id = this.counter_dyn_id.value;
 
-    this.nodes = new Set();
+    this.nodes = new Map<number, Node>();
     this.comments = new Set();
   }
 
@@ -61,11 +63,11 @@ export class Graph {
       constraints = parse(constraints);
     }
     if (node instanceof Node) {
-      if (this.nodes.has(node)) {
-        console.error("[Error] Node already already in graph!");
+      if (this.nodes.has(node.node_index)) {
+        console.error(`[Error] Node index ${node.node_index} already already in graph!`);
         return node;
       }
-      this.nodes.add(node);
+      this.nodes.set(node.node_index, node);
       this.counter_idx.lower_bound = node.node_index;
       return node;
     }
@@ -99,8 +101,12 @@ export class Graph {
       console.warn(`[Warning] Node ${def.Identifier} system (${def.System}) does not match Graph system (${this.system})`);
     }
 
-    const newNode = new Node(this.system, def, this.counter_idx.value);
-    this.nodes.add(newNode);
+    let index = this.counter_idx.value;
+    while (this.nodes.has(index)) {
+      this.counter_idx.lower_bound = index;
+    }
+    const newNode = new Node(this.system, def, index);
+    this.nodes.set(newNode.node_index, newNode);
     return newNode;
   }
 
@@ -192,14 +198,14 @@ export class Graph {
   }
 
   get connects(): Connection[] {
-    return Array.from(this.nodes).map(n => Array.from(n.data_from.values())).flat();
+    return Array.from(this.nodes.values()).map(n => Array.from(n.data_from.values())).flat();
   }
   get flows(): Connection[] {
-    return Array.from(this.nodes).map(n => Array.from(n.flow_to.values())).flat(2);
+    return Array.from(this.nodes.values()).map(n => Array.from(n.flow_to.values())).flat(2);
   }
 
   encode(opt?: any): Gia.AssetBundle {
-    const nodes = Array.from(this.nodes).map(n => n.encode());
+    const nodes = Array.from(this.nodes.values()).map(n => n.encode());
     const comments = Array.from(this.comments).map(c => make_annotation(c.content, c.x, c.y));
 
     return graph_body({
@@ -246,12 +252,10 @@ export class Graph {
       // }
     });
 
-    // proto.primary_resource.graph_data?.inner.graph.nodes.forEach(node => {
-    //   // decode connects
-    //   const { flows, connects } = Node.decode_connects(node, graph);
-    //   connects.forEach(c => graph.add_connect(c));
-    //   flows.forEach(f => graph.add_flow(f));
-    // });
+    proto.primary_resource.graph_data?.inner.graph.nodes.forEach(node => {
+      // decode connects
+      Node.decode_connections(node, graph);
+    });
     return graph;
   }
 
@@ -548,7 +552,7 @@ export class Node {
       }
 
       const con = this.data_from.get(pin.Identifier);
-      const connections = con === undefined ? undefined : [make_connection(con.to.node_index, con.to_pin, false)];
+      const connections = con === undefined ? undefined : [make_connection(con.from.node_index, con.from_pin, false)];
 
       ret.push(pin_body({
         system: this.system,
@@ -659,6 +663,43 @@ export class Node {
       value,
       poly_value: proto.value?.val_poly !== undefined
     };
+  }
+
+  static decode_connections(proto: Gia.NodeInstance, graph: Graph) {
+    const this_node = graph.nodes.get(proto.index);
+    if (!this_node) {
+      console.warn(`[Warning] Node at index ${proto.index} not found in graph for decoding connections.`);
+      return { flows: [], connects: [] };
+    }
+    for (const pin of proto.pins) {
+      const this_pin = this_node.def.DataPins.find(p => p.ShellIndex === pin.shell_sig.index) ??
+        this_node.def.FlowPins.find(p => p.ShellIndex === pin.shell_sig.index);
+      if (!this_pin) {
+        console.warn(`[Warning] Pin definition not found at index ${pin.shell_sig.index} for node ${this_node.def.Identifier}`);
+        continue;
+      }
+      if (is_empty(pin.connections)) continue;
+      for (const conn_proto of pin.connections!) {
+        const conn = read_connections(conn_proto);
+        if (conn === null) {
+          console.warn(`[Warning] Failed to read connection for pin at index ${pin.shell_sig.index} in node ${this_node.def.Identifier}`);
+          continue;
+        }
+        const that_node = graph.nodes.get(conn.node_index);
+        if (!that_node) {
+          console.warn(`[Warning] Connected node at index ${conn.node_index} not found in graph for pin at index ${pin.shell_sig.index} in node ${this_node.def.Identifier}`);
+          continue;
+        }
+        const that_pin = conn.kind === "Data" ?
+          that_node.def.DataPins.find(p => p.ShellIndex === conn.shell_index) :
+          that_node.def.FlowPins.find(p => p.ShellIndex === conn.shell_index);
+        if (!that_pin) {
+          console.warn(`[Warning] Connected ${conn.kind} pin ${conn.shell_index} not found in node ${that_node.def.Identifier} for pin at index ${pin.shell_sig.index} in node ${this_node.def.Identifier}`);
+          continue;
+        }
+        this_node.connectWith(this_pin.Identifier, that_node, that_pin.Identifier);
+      }
+    }
   }
 
   debugPrint(indent = 0): void {

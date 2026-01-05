@@ -679,3 +679,22 @@ export function read_typed_value(tv: Gia.TypedValue): TypedValue {
   }
   return null;
 }
+
+export function read_connections(nc: Gia.NodeConnection): { node_index: number, kind: "Flow" | "Data", shell_index: number } | null {
+  switch (nc.target_pin_kernel.kind) {
+    case Gia.PinSignature_Kind.IN_FLOW:
+      return {
+        node_index: nc.target_node_index,
+        kind: "Flow",
+        shell_index: nc.target_pin_shell.index,
+      }
+    case Gia.PinSignature_Kind.OUT_PARAM:
+      return {
+        node_index: nc.target_node_index,
+        kind: "Data",
+        shell_index: nc.target_pin_shell.index,
+      }
+    default:
+      return null;
+  }
+}
