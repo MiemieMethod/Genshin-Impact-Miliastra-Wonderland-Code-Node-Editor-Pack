@@ -259,12 +259,12 @@ export class Graph {
     return graph;
   }
 
-  debugPrint(indent = 0): void {
-    console.log(`${" ".repeat(indent)}Graph: ${this.graph_name} (ID: ${this.graph_id}, System: ${this.system})`);
-    console.log(`${" ".repeat(indent)}UID: ${this.uid}, File ID: ${this.file_id}`);
-    console.log(`${" ".repeat(indent)}Nodes:`);
+  debugPrint({indent = 0, log = console.log}): void {
+    log(`${" ".repeat(indent)}Graph: ${this.graph_name} (ID: ${this.graph_id}, System: ${this.system})`);
+    log(`${" ".repeat(indent)}UID: ${this.uid}, File ID: ${this.file_id}`);
+    log(`${" ".repeat(indent)}Nodes:`);
     this.nodes.forEach(node => {
-      node.debugPrint(indent + 2);
+      node.debugPrint({indent: indent + 2, log});
     });
   }
 }
@@ -563,6 +563,24 @@ export class Node {
       }));
     }
 
+    for (const [id, conns] of this.flow_to) {
+      if (conns === undefined || conns.length === 0) {
+        continue;
+      }
+      const connections = conns.map(c => make_connection(c.to.node_index, c.to_pin, true));
+      const def = this.findFlowPin(id)!;
+      if (!def) {
+        console.warn(`[Warning] Flow pin ${id} not found on node ${this.def.Identifier} during encoding.`);
+        continue;
+      }
+      ret.push(pin_body({
+        system: this.system,
+        def: def,
+        is_flow: true,
+        connections: connections
+      }));
+    }
+
     return ret;
   }
 
@@ -691,8 +709,8 @@ export class Node {
           continue;
         }
         const that_pin = conn.kind === "Data" ?
-          that_node.def.DataPins.find(p => p.ShellIndex === conn.shell_index) :
-          that_node.def.FlowPins.find(p => p.ShellIndex === conn.shell_index);
+          that_node.def.DataPins.find(p => p.Direction==="Out"&& p.ShellIndex === conn.shell_index) :
+          that_node.def.FlowPins.find(p => p.Direction==="In"&&p.ShellIndex === conn.shell_index);
         if (!that_pin) {
           console.warn(`[Warning] Connected ${conn.kind} pin ${conn.shell_index} not found in node ${that_node.def.Identifier} for pin at index ${pin.shell_sig.index} in node ${this_node.def.Identifier}`);
           continue;
@@ -702,39 +720,39 @@ export class Node {
     }
   }
 
-  debugPrint(indent = 0): void {
-    console.log(`${" ".repeat(indent)}Node: ${this.def.Identifier} (Index: ${this.node_index})`);
+  debugPrint({indent = 0, log = console.log}): void {
+    log(`${" ".repeat(indent)}Node: ${this.def.Identifier} (Index: ${this.node_index})`);
     if (this.variant_def) {
-      console.log(`${" ".repeat(indent + 2)}Variant Constraints: ${stringify(this.constraint!)}`);
+      log(`${" ".repeat(indent + 2)}Variant Constraints: ${stringify(this.constraint!)}`);
     }
-    console.log(`${" ".repeat(indent + 2)}Pins:`);
-    this.debugPrintPins(indent + 4);
-    console.log(`${" ".repeat(indent + 2)}Connections:`);
+    log(`${" ".repeat(indent + 2)}Pins:`);
+    this.debugPrintPins({indent: indent + 4, log});
+    log(`${" ".repeat(indent + 2)}Connections:`);
     const conns = this.getAllConnections();
     if (conns.length === 0) {
-      console.log(`${" ".repeat(indent + 4)}(none)`);
+      log(`${" ".repeat(indent + 4)}(none)`);
     } else {
       conns.forEach(c => {
         const from_name = c.from === this ? "*this" : `${c.from.def.Identifier.split(":").pop()}(${c.from.node_index})`;
         const to_name = c.to === this ? "*this" : `${c.to.def.Identifier.split(":").pop()}(${c.to.node_index})`;
-        console.log(`${" ".repeat(indent + 4)}[${from_name}::${c.from_pin.Identifier}] --> [${to_name}::${c.to_pin.Identifier}]`);
+        log(`${" ".repeat(indent + 4)}[${from_name}::${c.from_pin.Identifier}] --> [${to_name}::${c.to_pin.Identifier}]`);
       });
     }
   }
 
-  debugPrintPins(indent: number = 0): void {
+  debugPrintPins({indent = 0, log = console.log}): void {
     const flowIn = (this.variant_def ?? this.def).FlowPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
     const flowOut = (this.variant_def ?? this.def).FlowPins.filter(x => x.Direction === "Out" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
     const dataIn = (this.variant_def ?? this.def).DataPins.filter(x => x.Direction === "In" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
     const dataOut = (this.variant_def ?? this.def).DataPins.filter(x => x.Direction === "Out" && x.Visibility !== "Hidden").sort((a, b) => a.ShellIndex - b.ShellIndex);
 
     const indentStr = " ".repeat(indent);
-    console.log(`${indentStr}Pins for Node ${this.def.Identifier} (Index: ${this.node_index}):`);
+    log(`${indentStr}Pins for Node ${this.def.Identifier} (Index: ${this.node_index}):`);
     for (let i = 0; i < flowIn.length; i++) {
-      console.log(`${indentStr}  [Flow-In-${flowIn[i].ShellIndex}] (Index: ${i}) ${flowIn[i].Identifier}`);
+      log(`${indentStr}  [Flow-In-${flowIn[i].ShellIndex}] (Index: ${i}) ${flowIn[i].Identifier}`);
     }
     for (let i = 0; i < flowOut.length; i++) {
-      console.log(`${indentStr}  [Flow-Out-${flowOut[i].ShellIndex}] (Index: ${i}) ${flowOut[i].Identifier}`);
+      log(`${indentStr}  [Flow-Out-${flowOut[i].ShellIndex}] (Index: ${i}) ${flowOut[i].Identifier}`);
     }
     for (let i = 0; i < dataIn.length; i++) {
       let val = this.pin_values.get(dataIn[i].Identifier);
@@ -748,7 +766,7 @@ export class Node {
       } else {
         val = JSON.stringify(val);
       }
-      console.log(`${indentStr}  [Data-In-${dataIn[i].ShellIndex}] (Index: ${i}) ${dataIn[i].Identifier}: ${val} as ${stringify(dataIn[i].Type)}`);
+      log(`${indentStr}  [Data-In-${dataIn[i].ShellIndex}] (Index: ${i}) ${dataIn[i].Identifier}: ${val} as ${stringify(dataIn[i].Type)}`);
     }
     for (let i = 0; i < dataOut.length; i++) {
       let val = this.pin_values.get(dataOut[i].Identifier);
@@ -762,7 +780,7 @@ export class Node {
       } else {
         val = JSON.stringify(val);
       }
-      console.log(`${indentStr}  [Data-Out-${dataOut[i].ShellIndex}] (Index: ${i}) ${dataOut[i].Identifier}: ${val} as ${stringify(dataOut[i].Type)}`);
+      log(`${indentStr}  [Data-Out-${dataOut[i].ShellIndex}] (Index: ${i}) ${dataOut[i].Identifier}: ${val} as ${stringify(dataOut[i].Type)}`);
     }
   }
 
@@ -791,18 +809,18 @@ function make_connection_unsafe(con: Connection, kind: "Data" | "Flow", insert_p
       con.to.flow_from.set(con.to_pin.Identifier, new Set());
     }
     con.to.flow_from.get(con.to_pin.Identifier)!.add(con);
-    if (!con.from.flow_to.has(con.to_pin.Identifier)) {
-      con.from.flow_to.set(con.to_pin.Identifier, []);
+    if (!con.from.flow_to.has(con.from_pin.Identifier)) {
+      con.from.flow_to.set(con.from_pin.Identifier, []);
     }
     if (insert_pos !== undefined) {
-      if (insert_pos < 0 || insert_pos > con.from.flow_to.get(con.to_pin.Identifier)!.length) {
-        console.warn(`[Warning] Insert position ${insert_pos} is out of bounds for flow connections at pin ${con.to_pin.Identifier}. Appending instead.`);
-        con.from.flow_to.get(con.to_pin.Identifier)!.push(con);
+      if (insert_pos < 0 || insert_pos > con.from.flow_to.get(con.from_pin.Identifier)!.length) {
+        console.warn(`[Warning] Insert position ${insert_pos} is out of bounds for flow connections at pin ${con.from_pin.Identifier}. Appending instead.`);
+        con.from.flow_to.get(con.from_pin.Identifier)!.push(con);
       } else {
-        con.from.flow_to.get(con.to_pin.Identifier)!.splice(insert_pos, 0, con);
+        con.from.flow_to.get(con.from_pin.Identifier)!.splice(insert_pos, 0, con);
       }
     } else {
-      con.from.flow_to.get(con.to_pin.Identifier)!.push(con);
+      con.from.flow_to.get(con.from_pin.Identifier)!.push(con);
     }
   }
 }
