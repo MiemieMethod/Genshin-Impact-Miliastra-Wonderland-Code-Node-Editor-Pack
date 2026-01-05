@@ -63,7 +63,7 @@ export function wrap_gia(message: proto.Type, data: AssetBundle) {
 export function decode_gia_file(gia_path_or_data: string | Uint8Array<ArrayBufferLike> | ArrayBuffer, proto_path?: string, check_header: boolean = false): AssetBundle {
   proto_path ??= import.meta.dirname + "/gia.proto";
   const root = new proto.Root().loadSync(proto_path, { keepCase: true });
-  const message = root.lookupType("BundleAsset");
+  const message = root.lookupType("AssetBundle");
 
   const msg = message.decode(unwrap_gia(gia_path_or_data, check_header));
   // return msg as Root;
@@ -74,7 +74,7 @@ export function decode_gia_file(gia_path_or_data: string | Uint8Array<ArrayBuffe
 export function encode_gia_file(out_path: string, gia_struct: AssetBundle, proto_path?: string) {
   proto_path ??= import.meta.dirname + "/gia.proto";
   const root = new proto.Root().loadSync(proto_path, { keepCase: true });
-  const message = root.lookupType("BundleAsset");
+  const message = root.lookupType("AssetBundle");
 
   writeFileSync(out_path, Buffer.from(wrap_gia(message, gia_struct)));
 }

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { writeFileSync } from "fs";
 import { inspect } from "util";
 import { ResourceClass } from "../../utils/node_data/types";

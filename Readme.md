@@ -1,13 +1,11 @@
 # 千星奇域节点图工具集
 
-<div align="center">
+> [!IMPORTANT]  
+> 注意：当前的底层数据与接口框架经过了重构v2, 主要接口基本没变, 但是内部结构几乎全部被调整了, 如果你使用了 2025 年的代码, 请尽早升级, 否则后续的支持将无法保证.
 
-# ⚠️ 警告 ⚠️ 
-# 数据重构中(2025.12.30), 请暂时不要引用此数据
-## ✅ 已完成: `utils/node_data/` 数据
-## ✅ 已完成: `utils/proto/` 字段名称
-## ⏳✅ 即将完成: `utils/gia_gen/` 接口
-## ⏳ 更新文档
+*测试用例与文档的升级在同步中*
+
+<div align="center">
 
 [中文文档](Readme.md) | [English Documentation](Readme.en.md)
 
@@ -388,4 +386,4 @@ encode_gia_file("./newGraph.gia", graph.encode());
 
 ## License
 
-[MIT License](./LICENSE) © 2025 Wu-Yijun
+[MIT License](./LICENSE) © 2025-2026 Wu-Yijun

@@ -73,6 +73,9 @@ export class Graph {
       }
       this.nodes.set(node.node_index, node);
       this.counter_idx.lower_bound = node.node_index;
+      if (constraints !== undefined) {
+        node.setConstraints(constraints);
+      }
       return node;
     }
 
@@ -80,6 +83,13 @@ export class Graph {
     if (typeof node === "string") {
       // TODO: support <Domain>.<Category>.<Action>.<Constraints> format
       def = NodeLib.getByIdentifier(node);
+      if (def === undefined) {
+        const [d, c, a, cstr] = node.split(".");
+        def = NodeLib.getByIdentifier([d, c, a].join("."));
+        if (def !== undefined && cstr?.length > 0) {
+          constraints = parse(cstr);
+        }
+      }
       if (def === undefined) {
         // Print suggestions
         console.error(`[Error] Node not found by Identifier: ${node}`);
@@ -111,6 +121,10 @@ export class Graph {
     }
     const newNode = new Node(this.system, def, index);
     this.nodes.set(newNode.node_index, newNode);
+
+    if (constraints !== undefined) {
+      newNode.setConstraints(constraints);
+    }
     return newNode;
   }
 
@@ -196,8 +210,8 @@ export class Graph {
       console.error("[Error] Source or Target node/pin is empty.");
       return null;
     }
-    const fromPin = typeof fromArg === "number" ? from.getVisibleDataPin(fromArg) : from.findPin(fromArg).pin;
-    const toPin = typeof toArg === "number" ? to.getVisibleDataPin(toArg) : to.findPin(toArg).pin;
+    const fromPin = typeof fromArg === "number" ? from.getVisibleDataOutPin(fromArg) : from.findPin(fromArg).pin;
+    const toPin = typeof toArg === "number" ? to.getVisibleDataInPin(toArg) : to.findPin(toArg).pin;
     if (!fromPin) {
       console.error(`[Error] Source pin not found on node ${from.def.Identifier}: ${fromArg}`);
       fuseSuggest(from.def.DataPins.filter(x => x.Direction === 'Out').map(x => x.Identifier), String(fromArg));
@@ -381,13 +395,27 @@ export class Node {
     };
   }
 
-  getVisibleDataPin(index: number): TypedPinDef | null {
-    for (let i = 0, count = 0; i < this.def.DataPins.length; i++, count++) {
+  getVisibleDataInPin(index: number): TypedPinDef | null {
+    for (let i = 0, count = 0; i < this.def.DataPins.length; i++) {
       const pin = this.def.DataPins[i];
+      if (pin.Direction !== "In") continue;
       if (pin.Visibility === "Hidden") continue;
       if (count === index) {
         return pin;
       }
+      count++;
+    }
+    return null;
+  }
+  getVisibleDataOutPin(index: number): TypedPinDef | null {
+    for (let i = 0, count = 0; i < this.def.DataPins.length; i++) {
+      const pin = this.def.DataPins[i];
+      if (pin.Direction !== "Out") continue;
+      if (pin.Visibility === "Hidden") continue;
+      if (count === index) {
+        return pin;
+      }
+      count++;
     }
     return null;
   }
@@ -535,17 +563,18 @@ export class Node {
   /**
    * Set constraints for Variant nodes.
    * @param type The type constraint (e.g. C<T:Bool>, C<K:L<Int>>), set to null to reset
+   * @returns The node itself for method chaining
    */
-  setConstraints(constraint: NodeType | string | null) {
+  setConstraints(constraint: NodeType | string | null): Node {
     if (this.def.Type !== "Variant") {
       console.error(`[Error] Node ${this.def.Identifier} is not a Variant node.`);
-      return;
+      return this;
     }
     if (constraint === null) {
       // Reset to base definition
       this.variant_def = null;
       this.constraint = undefined;
-      return;
+      return this;
     }
     if (typeof constraint === "string") {
       constraint = parse(constraint);
@@ -553,17 +582,18 @@ export class Node {
     if (constraint?.t !== "c") {
       console.error(`[Error] Node ${this.def.Identifier}: current constraint is not of ConstraintType.`);
       fuseSuggest(this.def.Variants!.map(x => x.Constraints), stringify(constraint));
-      return;
+      return this;
     }
     const newDef = NodeLib.getVariant(this.def.Identifier, constraint);
     if (!newDef) {
       console.error(`[Error] Constraint '${stringify(constraint)}' not found for node ${this.def.Identifier}`);
       fuseSuggest(this.def.Variants!.map(x => x.Constraints), stringify(constraint));
-      return;
+      return this;
     }
     // Update definition and re-init pins
     this.variant_def = newDef;
     this.constraint = constraint;
+    return this;
   }
 
   solveConstraints(constraints: [string, NodeType][]): void {
@@ -591,7 +621,7 @@ export class Node {
   setVal(pin: number | string, value: TypedValue) {
     let pinDef: TypedPinDef | null;
     if (typeof pin === "number") {
-      pinDef = this.getVisibleDataPin(pin);
+      pinDef = this.getVisibleDataInPin(pin);
       if (!pinDef) {
         console.error(`[Error] Pin index ${pin} not found on node ${this.def.Identifier}`);
         return;
