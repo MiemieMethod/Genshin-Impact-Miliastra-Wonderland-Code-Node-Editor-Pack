@@ -82,6 +82,7 @@ export function deepEqual<T>(
       info: "",
     },
     pointers = new Set(),
+    assumptions = new Map(),
     max_depth = 100,
   }: {
     breakpoint?: boolean,
@@ -90,10 +91,21 @@ export function deepEqual<T>(
       stack: string[],
       info: string,
     },
-    pointers?: Set<any>,
+    pointers?: Set<object>,
+    assumptions?:Map<object, Set<object>>,
     max_depth?: number,
   } = {}
 ): boolean {
+  const add_assumption = (a: object, b: object) => {
+    if (!assumptions.has(a)) {
+      assumptions.set(a, new Set());
+    }
+    assumptions.get(a)!.add(b);
+    if (!assumptions.has(b)) {
+      assumptions.set(b, new Set());
+    }
+    assumptions.get(b)!.add(a);
+  }
   const deep_equal = (a: any, b: any, depth: number): boolean => {
     if (depth <= 0) {
       reason.info = "Recursion depth exceeded";
@@ -119,12 +131,19 @@ export function deepEqual<T>(
         if (a === b) {
           return true;
         }
-        // todo: second
+        if (assumptions.has(a) && assumptions.get(a)!.has(b)) {
+          return true;
+        }
+        add_assumption(a, b);
+        const new_pts = new Set(pointers);
+        new_pts.delete(a);
+        new_pts.delete(b);
         const ret = deepEqual(a, b, {
           breakpoint,
           ignore_rules,
           reason,
-          pointers: new Set(),
+          pointers: new_pts,
+          assumptions,
           max_depth: depth - 1,
         });
         if (!ret) {

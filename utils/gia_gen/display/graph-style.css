@@ -1,0 +1,138 @@
+/* 容器设置 */
+.graph-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a; /* 深色背景 */
+    /* 简单的网格背景模拟 */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    overflow: auto; /* 允许滚动查看大图 */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+/* 连线层 (SVG) */
+.graph-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 穿透点击 */
+    z-index: 0;
+}
+
+/* 节点通用样式 */
+.ue-node {
+    position: absolute;
+    min-width: 150px;
+    background: rgba(15, 15, 15, 0.8); /* 节点本体背景 */
+    border: 1px solid #000;
+    border-radius: 8px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+    font-size: 12px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(4px);
+}
+
+/* 节点标题栏 */
+.ue-node-header {
+    padding: 4px 8px;
+    border-radius: 8px 8px 0 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ue-node-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* 节点内容区 */
+.ue-node-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.ue-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 8px;
+    min-width: 20px;
+}
+
+.ue-column.inputs { align-items: flex-start; }
+.ue-column.outputs { align-items: flex-end; text-align: right; }
+
+/* 引脚行 */
+.pin-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 20px;
+}
+
+.pin-label {
+    color: #ccc;
+}
+
+/* 引脚图标 (Socket) */
+.pin-socket {
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+/* 数据引脚: 圆形 */
+.pin-socket.data { border-radius: 50%; background-color: var(--pin-color); }
+/* 只有边框的空心样式 (未连接时) 可以通过类名控制，这里简化为实心 */
+
+/* 流程引脚: 箭头/五边形模拟 */
+.pin-socket.flow {
+    width: 10px;
+    height: 12px;
+    background-color: #fff; /* Flow 默认白色 */
+    clip-path: polygon(0% 0%, 60% 0%, 100% 50%, 60% 100%, 0% 100%);
+    border: none;
+}
+
+/* 参数值直接显示 (Param-In with no connection) */
+.pin-value-static {
+    font-family: monospace;
+    font-size: 10px;
+    color: #88ff88;
+    background: rgba(0,0,0,0.3);
+    padding: 0 4px;
+    border-radius: 2px;
+    max-width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 注释块 */
+.ue-comment {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 5px;
+    font-size: 14px;
+    z-index: 5;
+    pointer-events: none;
+    white-space: pre-wrap;
+}

@@ -149,7 +149,7 @@ export class Graph {
       console.error(`[Error] Invalid flow connection direction: from ${from_pin.Direction} to ${to_pin.Direction}`);
       return null;
     }
-    return from.connectWith(from_pin.Identifier, to, to_pin.Identifier, insert_pos);
+    return from.connectPinWith(from_pin.Identifier, to, to_pin.Identifier, insert_pos);
   }
 
   /**
@@ -180,7 +180,7 @@ export class Graph {
       console.error(`[Error] Invalid connection direction: from ${fromPin.Direction} to ${toPin.Direction}`);
       return null;
     }
-    return from.connectWith(fromPin.Identifier, to, toPin.Identifier);
+    return from.connectPinWith(fromPin.Identifier, to, toPin.Identifier);
   }
 
   disconnect(conn: Connection) {
@@ -231,8 +231,10 @@ export class Graph {
     }
     const [uid, time, file_id, file_name] = proto.export_tag.split("-");
     const name = proto.primary_resource.internal_name;
-    const graph_id = proto.primary_resource.identity.runtime_id;
+    const graph_id = proto.primary_resource.identity.asset_guid;
     const graph = new Graph(system, parseInt(uid), name, graph_id);
+    graph.counter_dyn_id.lower_bound = graph.file_id;
+    graph.counter_dyn_id.lower_bound = graph_id;
 
     // // TODO
     // const graph_vars = get_graph_vars(root.graph.graph?.inner.graph!);
@@ -368,7 +370,7 @@ export class Node {
    * @param insert_pos (optional) position to insert the connection
    * @returns Connection object if successful, null otherwise
    */
-  connectWith(pin: string, with_node: Node, with_pin: string, insert_pos?: number): Connection | null {
+  connectPinWith(pin: string, with_node: Node, with_pin: string, insert_pos?: number): Connection | null {
     const thisPin = this.findPin(pin);
     const thatPin = with_node.findPin(with_pin);
     if (!thisPin.success) {
@@ -543,7 +545,7 @@ export class Node {
       const is_ref = def.Type === "Variant" && is_reflect(pin0.Type);
       const v = this.pin_values.get(pin.Identifier);
       let value: Gia.TypedValue | undefined;
-      if (v !== undefined) {
+      if (v !== undefined || is_ref) {
         if (is_ref) {
           value = make_variant_value(pin.Type, is_server, this.variant_def?.DataPins[i].TypeSelectorIndex ?? 0, v);
         } else {
@@ -690,13 +692,25 @@ export class Node {
       return { flows: [], connects: [] };
     }
     for (const pin of proto.pins) {
-      const this_pin = this_node.def.DataPins.find(p => p.ShellIndex === pin.shell_sig.index) ??
-        this_node.def.FlowPins.find(p => p.ShellIndex === pin.shell_sig.index);
+      if (is_empty(pin.connections)) continue;
+      let this_pin: TypedPinDef;
+      switch (pin.shell_sig.kind) {
+        case Gia.PinSignature_Kind.IN_FLOW:
+        case Gia.PinSignature_Kind.OUT_FLOW:
+          this_pin = this_node.def.FlowPins.find(p => p.ShellIndex === pin.shell_sig.index)!;
+          break;
+        case Gia.PinSignature_Kind.IN_PARAM:
+        case Gia.PinSignature_Kind.OUT_PARAM:
+          this_pin = this_node.def.DataPins.find(p => p.ShellIndex === pin.shell_sig.index)!;
+          break;
+        default:
+          console.warn(`[Warning] Unknown pin kind for connections: ${pin.shell_sig.kind}`);
+          continue;
+      }
       if (!this_pin) {
         console.warn(`[Warning] Pin definition not found at index ${pin.shell_sig.index} for node ${this_node.def.Identifier}`);
         continue;
       }
-      if (is_empty(pin.connections)) continue;
       for (const conn_proto of pin.connections!) {
         const conn = read_connections(conn_proto);
         if (conn === null) {
@@ -715,7 +729,7 @@ export class Node {
           console.warn(`[Warning] Connected ${conn.kind} pin ${conn.shell_index} not found in node ${that_node.def.Identifier} for pin at index ${pin.shell_sig.index} in node ${this_node.def.Identifier}`);
           continue;
         }
-        this_node.connectWith(this_pin.Identifier, that_node, that_pin.Identifier);
+        this_node.connectPinWith(this_pin.Identifier, that_node, that_pin.Identifier);
       }
     }
   }
