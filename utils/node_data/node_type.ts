@@ -1,47 +1,227 @@
 import { assert, assertEq } from "../utils.ts";
 
+/**
+ * AtomTypes - 原子类型常量
+ * 
+ * 定义所有基础原子类型的标识符。这些是类型系统中最基本的类型。
+ */
 export const AtomTypes = [
-  "Int",  // Integer
-  "Flt",  // Float
-  "Bol",  // Boolean
-  "Str",  // String
-  "Vec",  // Vector
-  "Gid",  // GUID
-  "Ety",  // Entity
-  "Pfb",  // Prefab ID
-  "Fct",  // Faction
-  "Cfg",  // Configuration ID
-  "Vss",  // Variable Snapshot
-  "Loc",  // Local Variable
-  "Unk",  // Unknown
+  "Int",  // 整数 (Integer)
+  "Flt",  // 浮点数 (Float)
+  "Bol",  // 布尔值 (Boolean)
+  "Str",  // 字符串 (String)
+  "Vec",  // 向量 (Vector)
+  "Gid",  // 全局唯一标识符 (GUID)
+  "Ety",  // 实体 (Entity)
+  "Pfb",  // 预制体 ID (Prefab ID)
+  "Fct",  // 阵营 (Faction)
+  "Cfg",  // 配置 ID (Configuration ID)
+  "Vss",  // 变量快照 (Variable Snapshot)
+  "Loc",  // 本地变量 (Local Variable)
+  "Unk",  // 未知类型 (Unknown)
 ] as const;
+
+/**
+ * AtomTypes type - 原子类型
+ * 
+ * 从 AtomTypes 常量数组派生的联合类型。
+ */
 export type AtomTypes = typeof AtomTypes[number];
 
-export type EnumId = string; // length 4, EnumIdentifier
 
-export type BasicType = { t: "b", b: AtomTypes }; // 'Abc'
-export type EnumType = { t: "e", e: EnumId };  // E<ABCD>
-export type ListType = { t: "l", i: NodeType }; // L<Abc>
-export type StructType = { t: "s", f: [string, NodeType][], _?: number }; // S<X:Abc,Y:L<Str>>, _ for id
-export type DictType = { t: "d", k: NodeType, v: NodeType }; // D<K:Abc,V:L<Str>>
-export type ReflectType = { t: "r", r: string }; // R<Z>
-export type ConstraintType = { t: "c", c: [string, NodeType][] }; // C<X:Abc,Y:L<Str>>
+/**
+ * EnumId type - 枚举标识符
+ * 
+ * 四字符枚举标识符（FourCC），如 "ABCD"。
+ */
+export type EnumId = string;
+
+/**
+ * BasicType - 基础类型
+ * 
+ * 表示原子类型，如 Int, Str, Bool 等。
+ * 
+ * @example
+ * ```typescript
+ * const intType: BasicType = { t: "b", b: "Int" };
+ * const strType: BasicType = { t: "b", b: "Str" };
+ * ```
+ */
+export type BasicType = { t: "b", b: AtomTypes };
+
+/**
+ * EnumType - 枚举类型
+ * 
+ * 表示枚举类型，格式为 E<EnumId>。
+ * 
+ * @example
+ * ```typescript
+ * const enumType: EnumType = { t: "e", e: "ABCD" };
+ * // 对应字符串表示：E<ABCD>
+ * ```
+ */
+export type EnumType = { t: "e", e: EnumId };
+
+/**
+ * ListType - 列表类型
+ * 
+ * 表示列表类型，格式为 L<ItemType>。
+ * 
+ * @example
+ * ```typescript
+ * const intList: ListType = { 
+ *   t: "l", 
+ *   i: { t: "b", b: "Int" } 
+ * };
+ * // 对应字符串表示：L<Int>
+ * ```
+ */
+export type ListType = { t: "l", i: NodeType };
+
+/**
+ * StructType - 结构体类型
+ * 
+ * 表示结构体类型，格式为 S<Field1:Type1,Field2:Type2>。
+ * 
+ * @property f - 字段列表，每个字段为 [字段名, 字段类型]
+ * @property _ - 可选的结构体 ID
+ * 
+ * @example
+ * ```typescript
+ * const structType: StructType = { 
+ *   t: "s", 
+ *   f: [
+ *     ["x", { t: "b", b: "Int" }],
+ *     ["y", { t: "b", b: "Flt" }]
+ *   ],
+ *   _: 123
+ * };
+ * // 对应字符串表示：S<x:Int,y:Flt>
+ * ```
+ */
+export type StructType = { t: "s", f: [string, NodeType][], _?: number };
+
+/**
+ * DictType - 字典类型
+ * 
+ * 表示字典类型，格式为 D<KeyType,ValueType>。
+ * 
+ * @example
+ * ```typescript
+ * const dictType: DictType = { 
+ *   t: "d", 
+ *   k: { t: "b", b: "Int" },
+ *   v: { t: "b", b: "Str" }
+ * };
+ * // 对应字符串表示：D<Int,Str>
+ * ```
+ */
+export type DictType = { t: "d", k: NodeType, v: NodeType };
+
+/**
+ * ReflectType - 反射类型
+ * 
+ * 表示泛型参数类型，格式为 R<ParamName>。
+ * 用于可变类型节点的泛型引脚。
+ * 
+ * @example
+ * ```typescript
+ * const reflectType: ReflectType = { t: "r", r: "T" };
+ * // 对应字符串表示：R<T>
+ * ```
+ */
+export type ReflectType = { t: "r", r: string };
+
+/**
+ * ConstraintType - 约束类型
+ * 
+ * 表示类型约束，格式为 C<Param1:Type1,Param2:Type2>。
+ * 用于可变类型节点的具体类型实例化。
+ * 
+ * @example
+ * ```typescript
+ * const constraint: ConstraintType = { 
+ *   t: "c", 
+ *   c: [
+ *     ["T", { t: "b", b: "Int" }],
+ *     ["K", { t: "b", b: "Str" }]
+ *   ]
+ * };
+ * // 对应字符串表示：C<T:Int,K:Str>
+ * ```
+ */
+export type ConstraintType = { t: "c", c: [string, NodeType][] };
+
+/**
+ * NodeType - 节点类型
+ * 
+ * 类型系统的核心联合类型，包含所有可能的类型。
+ * 
+ * @example
+ * ```typescript
+ * const types: NodeType[] = [
+ *   { t: "b", b: "Int" },              // 基础类型
+ *   { t: "e", e: "ABCD" },             // 枚举类型
+ *   { t: "l", i: { t: "b", b: "Int" } }, // 列表类型
+ *   { t: "s", f: [["x", { t: "b", b: "Int" }]] }, // 结构体类型
+ *   { t: "d", k: { t: "b", b: "Int" }, v: { t: "b", b: "Str" } }, // 字典类型
+ *   { t: "r", r: "T" },                // 反射类型
+ *   { t: "c", c: [["T", { t: "b", b: "Int" }]] } // 约束类型
+ * ];
+ * ```
+ */
 export type NodeType = BasicType | EnumType | ListType | StructType | DictType | ReflectType | ConstraintType;
 
+/**
+ * UNK_TYPE - 未知类型常量
+ * 
+ * 表示未知或未定义的类型。
+ */
 export const UNK_TYPE: NodeType = { t: "b", b: "Unk" };
 
+/**
+ * StringifyOptions interface - 字符串化选项
+ * 
+ * 控制 stringify 函数的输出格式。
+ */
 interface StringifyOptions {
-  unknown_list?: boolean; // Whether to output L<Unk> for unknown list
-  unknown_enum?: boolean; // Whether to output E<Unk> for unknown enum
-  unknown_dict_key?: boolean; // Whether to output D<Unk,val> for unknown dict key
-  unknown_dict_val?: boolean; // Whether to output D<key,Unk> for unknown dict value
-  unknown_dict?: boolean; // Whether to output D<Unk,Unk> for unknown dict
-  empty_struct?: boolean; // Whether to output S<> for empty struct
+  /** 是否为未知列表输出 L<Unk> */
+  unknown_list?: boolean;
+
+  /** 是否为未知枚举输出 E<Unk> */
+  unknown_enum?: boolean;
+
+  /** 是否为未知字典键输出 D<Unk,val> */
+  unknown_dict_key?: boolean;
+
+  /** 是否为未知字典值输出 D<key,Unk> */
+  unknown_dict_val?: boolean;
+
+  /** 是否为未知字典输出 D<Unk,Unk> */
+  unknown_dict?: boolean;
+
+  /** 是否为空结构体输出 S<> */
+  empty_struct?: boolean;
 }
 
 /**
- * 将 NodeType（或字符串形式的类型表达式）转为可读字符串。
- * 更新：支持 ConstraintTypes (C<...>) 和 String EnumId
+ * stringify - 将 NodeType 转换为可读字符串
+ * 
+ * 将 NodeType 对象或字符串形式的类型表达式转换为标准字符串表示。
+ * 支持所有类型，包括约束类型 (C<...>) 和字符串枚举 ID。
+ * 
+ * @param node - 要转换的类型（NodeType 对象或字符串）
+ * @param options - 字符串化选项
+ * @returns 类型的字符串表示
+ * 
+ * @example
+ * ```typescript
+ * stringify({ t: "b", b: "Int" });                    // "Int"
+ * stringify({ t: "l", i: { t: "b", b: "Int" } });     // "L<Int>"
+ * stringify({ t: "e", e: "ABCD" });                   // "E<ABCD>"
+ * stringify({ t: "s", f: [["x", { t: "b", b: "Int" }]] }); // "S<x:Int>"
+ * stringify({ t: "c", c: [["T", { t: "b", b: "Int" }]] }); // "C<T:Int>"
+ * ```
  */
 export function stringify(node: NodeType | string, options: StringifyOptions = {}): string {
   if (typeof node === "string") return node;
@@ -65,7 +245,7 @@ export function stringify(node: NodeType | string, options: StringifyOptions = {
       const f = node.f.map(([name, t]) => (`${name}:${stringify(t, options)}`));
       return `S<${f.join(",")}>`;
     }
-    case "d":{
+    case "d": {
       const key = (options.unknown_dict || options.unknown_dict_key) ? "Unk" : stringify(node.k, options);
       const val = (options.unknown_dict || options.unknown_dict_val) ? "Unk" : stringify(node.v, options);
       return `D<${key},${val}>`;
@@ -80,8 +260,25 @@ export function stringify(node: NodeType | string, options: StringifyOptions = {
 }
 
 /**
- * 将字符串形式的类型表达式解析为 NodeType。
- * 更新：支持 C<...> 解析，以及字符串格式的 E<...>
+ * parse - 解析类型表达式字符串
+ * 
+ * 将字符串形式的类型表达式解析为 NodeType 对象。
+ * 支持所有类型语法，包括 C<...> 约束类型和字符串格式的 E<...> 枚举。
+ * 
+ * @param src - 类型表达式字符串或 NodeType 对象
+ * @returns 解析后的 NodeType 对象
+ * 
+ * @example
+ * ```typescript
+ * parse("Int");                    // { t: "b", b: "Int" }
+ * parse("L<Int>");                 // { t: "l", i: { t: "b", b: "Int" } }
+ * parse("E<ABCD>");                // { t: "e", e: "ABCD" }
+ * parse("S<x:Int,y:Flt>");         // { t: "s", f: [["x", ...], ["y", ...]] }
+ * parse("D<Int,Str>");             // { t: "d", k: ..., v: ... }
+ * parse("R<T>");                   // { t: "r", r: "T" }
+ * parse("C<T:Int>");               // { t: "c", c: [["T", ...]] }
+ * parse("C<T:Int,K:Str>");         // { t: "c", c: [["T", ...], ["K", ...]] }
+ * ```
  */
 export function parse(src: string | NodeType): NodeType {
   if (src === undefined) return UNK_TYPE;
@@ -161,8 +358,30 @@ export function parse(src: string | NodeType): NodeType {
 }
 
 /**
- * 在给定类型中执行一次单一反射替换。
- * 更新：支持 ConstraintTypes 的递归替换
+ * reflect - 执行单次反射替换
+ * 
+ * 在给定类型中将所有 R<name> 替换为指定的具体类型。
+ * 支持所有类型的递归替换，包括约束类型。
+ * 
+ * @param src_type - 源类型（可能包含反射类型）
+ * @param injected_name - 要替换的反射参数名
+ * @param injected_type - 替换后的具体类型
+ * @returns 替换后的类型
+ * 
+ * @example
+ * ```typescript
+ * // 将 R<T> 替换为 Int
+ * reflect({ t: "r", r: "T" }, "T", { t: "b", b: "Int" });
+ * // 结果：{ t: "b", b: "Int" }
+ * 
+ * // 将 L<R<T>> 中的 R<T> 替换为 Str
+ * reflect(
+ *   { t: "l", i: { t: "r", r: "T" } }, 
+ *   "T", 
+ *   { t: "b", b: "Str" }
+ * );
+ * // 结果：{ t: "l", i: { t: "b", b: "Str" } }
+ * ```
  */
 export function reflect(src_type: NodeType | string, injected_name: string, injected_type: NodeType | string): NodeType {
   const src_type_ = typeof src_type === "string" ? parse(src_type) : src_type;
@@ -195,7 +414,26 @@ export function reflect(src_type: NodeType | string, injected_name: string, inje
 }
 
 /**
- * 对类型执行一次或多次 reflect() 替换。
+ * reflects - 执行多次反射替换
+ * 
+ * 对类型执行一次或多次 reflect() 替换，通常用于实例化可变类型节点。
+ * 
+ * @param type - 源类型（可能包含多个反射类型）
+ * @param injected_types - 约束类型，包含所有要替换的参数
+ * @returns 完全替换后的类型
+ * 
+ * @example
+ * ```typescript
+ * // 将 S<a:R<T>,b:R<K>> 替换为 S<a:Int,b:Str>
+ * reflects(
+ *   { t: "s", f: [["a", { t: "r", r: "T" }], ["b", { t: "r", r: "K" }]] },
+ *   { t: "c", c: [["T", { t: "b", b: "Int" }], ["K", { t: "b", b: "Str" }]] }
+ * );
+ * // 结果：{ t: "s", f: [["a", { t: "b", b: "Int" }], ["b", { t: "b", b: "Str" }]] }
+ * 
+ * // 也可以使用字符串
+ * reflects("S<a:R<T>,b:R<K>>", "C<T:Int,K:Str>");
+ * ```
  */
 export function reflects(
   type: NodeType | string,
@@ -209,7 +447,23 @@ export function reflects(
 }
 
 /**
- * 判断某个 NodeType 是否包含反射节点（R<...>）。
+ * is_reflect - 判断类型是否包含反射类型
+ * 
+ * 递归检查 NodeType 是否包含任何 R<...> 反射类型。
+ * 
+ * @param type - 要检查的类型
+ * @returns 是否包含反射类型
+ * 
+ * @example
+ * ```typescript
+ * is_reflect({ t: "b", b: "Int" });                    // false
+ * is_reflect({ t: "r", r: "T" });                      // true
+ * is_reflect({ t: "l", i: { t: "r", r: "T" } });       // true
+ * is_reflect({ t: "s", f: [["x", { t: "r", r: "T" }]] }); // true
+ * is_reflect("Int");                                   // false
+ * is_reflect("R<T>");                                  // true
+ * is_reflect("L<R<T>>");                               // true
+ * ```
  */
 export function is_reflect(type: NodeType | string | undefined): boolean {
   if (type === undefined) return false;
@@ -233,8 +487,24 @@ export function is_reflect(type: NodeType | string | undefined): boolean {
 }
 
 /**
- * 获取 NodeType 中出现过的所有 reflect 名字。
- * 例如 R<A>, S<a:R<B>, b:L<R<C>>> => ["A","B","C"]
+ * extract_reflect_names - 提取所有反射参数名
+ * 
+ * 获取 NodeType 中出现过的所有反射参数名称。
+ * 
+ * @param type - 要分析的类型
+ * @returns 反射参数名称数组
+ * 
+ * @example
+ * ```typescript
+ * extract_reflect_names({ t: "r", r: "A" });
+ * // 结果：["A"]
+ * 
+ * extract_reflect_names(parse("S<a:R<B>,b:L<R<C>>>"));
+ * // 结果：["B", "C"]
+ * 
+ * extract_reflect_names(parse("D<R<K>,R<V>>"));
+ * // 结果：["K", "V"]
+ * ```
  */
 export function extract_reflect_names(type: NodeType): string[] {
   const set = new Set<string>();
@@ -263,8 +533,31 @@ export function extract_reflect_names(type: NodeType): string[] {
 }
 
 /**
+ * extract_reflect_fields - 提取反射字段映射
+ * 
  * 将类型中所有 R<name> 的位置映射为实际的字段类型。
- * 更新：支持 ConstraintTypes 递归，并修复 Struct 字段访问的逻辑错误。
+ * 用于从具体类型实例中提取泛型参数的实际类型。
+ * 
+ * @param type - 具体类型（已实例化的类型）
+ * @param ref - 引用类型（包含反射类型的模板）
+ * @returns 反射参数到具体类型的映射数组
+ * 
+ * @example
+ * ```typescript
+ * // 从 L<Int> 中提取 L<R<T>> 的 T 类型
+ * extract_reflect_fields(
+ *   { t: "l", i: { t: "b", b: "Int" } },
+ *   { t: "l", i: { t: "r", r: "T" } }
+ * );
+ * // 结果：[["T", { t: "b", b: "Int" }]]
+ * 
+ * // 从 S<x:Int,y:Str> 中提取 S<x:R<A>,y:R<B>> 的类型
+ * extract_reflect_fields(
+ *   parse("S<x:Int,y:Str>"),
+ *   parse("S<x:R<A>,y:R<B>>")
+ * );
+ * // 结果：[["A", { t: "b", b: "Int" }], ["B", { t: "b", b: "Str" }]]
+ * ```
  */
 export function extract_reflect_fields(
   type: NodeType,
@@ -322,8 +615,42 @@ export function extract_reflect_fields(
 }
 
 /**
- * 判断两个 NodeType 是否结构完全相同。
- * 更新：支持 ConstraintTypes 比较
+ * type_equal - 判断两个类型是否相等
+ * 
+ * 递归比较两个 NodeType 是否结构完全相同。
+ * 支持所有类型，包括约束类型。
+ * 
+ * @param a - 第一个类型
+ * @param b - 第二个类型
+ * @returns 两个类型是否相等
+ * 
+ * @example
+ * ```typescript
+ * type_equal(
+ *   { t: "b", b: "Int" },
+ *   { t: "b", b: "Int" }
+ * ); // true
+ * 
+ * type_equal(
+ *   { t: "b", b: "Int" },
+ *   { t: "b", b: "Str" }
+ * ); // false
+ * 
+ * type_equal(
+ *   { t: "l", i: { t: "b", b: "Int" } },
+ *   { t: "l", i: { t: "b", b: "Int" } }
+ * ); // true
+ * 
+ * type_equal(
+ *   parse("S<x:Int,y:Str>"),
+ *   parse("S<x:Int,y:Str>")
+ * ); // true
+ * 
+ * type_equal(
+ *   parse("C<T:Int>"),
+ *   parse("C<T:Int>")
+ * ); // true
+ * ```
  */
 export function type_equal(a: NodeType, b: NodeType): boolean {
   if (a.t !== b.t) return false;

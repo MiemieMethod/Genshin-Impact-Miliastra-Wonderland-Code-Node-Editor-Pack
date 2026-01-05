@@ -2,6 +2,8 @@
 
 本目录包含了一套用于处理、逆向工程和验证 Protobuf 数据（特别是 `.gia` 文件）的完整工具链。该工具集在设计上兼顾了**生产环境的高效性**与**测试环境的透明度**。
 
+对于 [gia.proto](./gia.proto) 的描述, 详情见注释内容以及 docs 中 [《遗留节点图系统架构参考文档》](../../docs/utils/LegacyNodeGraphSystemArchitectureReference.md) 透过表面数据结构，解析真实内核与机制的真相。
+
 ---
 
 ## 核心组件概述
