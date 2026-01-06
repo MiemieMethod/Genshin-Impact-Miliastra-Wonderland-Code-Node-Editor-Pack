@@ -20,6 +20,7 @@ import { type NodeType, stringify, parse, is_reflect, type ConstraintType, type 
 import { Counter, fuseSuggest, get_system, is_empty, randomInt, randomName } from "./utils.ts";
 import { type TypedPinDef, type TypedNodeDef } from "../node_data/core.ts";
 import { auto_layout, type LayoutOption } from "./auto_layout.ts";
+import { EnumHelper } from "../node_data/index.ts";
 
 
 /**
@@ -1228,6 +1229,18 @@ export class Node {
     }
     const type = is_server ? ServerType.toNodeType(proto.type) : ClientType.toNodeType(proto.type);
     const value = read_typed_value(proto.value);
+    if (type?.t === "e" && value !== undefined && value !== null) {
+      if (typeof value !== "number") {
+        console.warn(`[Warning] Enum pin value is not a number: ${JSON.stringify(value)}`);
+      } else {
+        const cat = EnumHelper.getEnumByID(value)?.Category;
+        if (cat === undefined) {
+          console.warn(`[Warning] Enum category not found for enum ID: ${value}`);
+        } else{
+          type.e = cat;
+        }
+      }
+    }
     return {
       success: true,
       kind: "Data",

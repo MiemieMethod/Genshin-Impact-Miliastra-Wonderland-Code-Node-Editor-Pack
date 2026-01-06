@@ -1,6 +1,7 @@
+import { get_graph_client } from "../../../test.CI/gia_gen/graph_client";
+import { get_graph_server } from "../../../test.CI/gia_gen/graph_server";
 import { Graph } from "../interface";
 import { GraphRenderer } from "./GraphRender";
-import { get_graph_server } from "./gen";
 import "./graph-style.css"; // 引入 CSS
 
 const sleep = async (sec: number) => new Promise(resolve => setTimeout(resolve, sec * 1000));
@@ -11,7 +12,8 @@ const app = document.getElementById("app");
 if (app) {
     // 初始化渲染器
     const renderer = new GraphRenderer(app);
-    const graph = get_graph_server();
+    const graph = get_graph_server("ENTITY_NODE_GRAPH");
+
     
     graph.autoLayout();
 
@@ -20,9 +22,18 @@ if (app) {
     console.log("Graph rendered!");
 
 
-    await sleep(5);
+    await sleep(3);
 
     console.log("Change Data");
+    
+    const graph2 = get_graph_client("SKILL_NODE_GRAPH");
+    graph2.autoLayout();
+    graph2.add_comment("This is a different graph from client.", 100,100);
+    
+    renderer.render(graph2);
+
+    await sleep(5);
+
 
     graph.autoLayout({
         node_sep: 200,

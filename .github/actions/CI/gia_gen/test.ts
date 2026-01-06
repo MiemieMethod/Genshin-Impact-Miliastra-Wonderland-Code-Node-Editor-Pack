@@ -1,8 +1,18 @@
+
+// 节点图接口
+import { Graph } from "../../utils/gia_gen/interface.ts";
+// 节点定义(调取标识符)(你也可以直接用字符串/id)
+import { NODE_NAMES, NODES } from "../../utils/node_data/game_nodes.ts";
+// 另存为 gia 文件
+import { decode_gia_file, encode_gia_file } from "../../utils/protobuf/decode.ts"
+
+// 测试: 验证数据转换一致性
+import { assert, assertDeepEq, deepEqual } from "../../utils/utils.ts";
 import { writeFileSync } from "fs";
-import type { AllModes, ClientModes, ServerModes } from "../../utils/gia_gen/graph.ts";
-import { Graph, NODE_ID, CLIENT_NODE_ID, encode_gia_file } from "../../utils/index.ts";
-import { assertDeepEq, assertEq, deepEqual, exclude_keys } from "../../utils/utils.ts";
-import { inspect } from "util";
+import { get_graph_server } from "./graph_server.ts";
+import { get_graph_client } from "./graph_client.ts";
+import { ResourceClass } from "../../utils/node_data/types.ts";
+
 
 const DSL = `
 [OnTab()[source=src, tab_id=id]].Switch(tab_id)(
@@ -30,238 +40,105 @@ const DSL2 = `
 `;
 
 
-function createGraph(mode: ServerModes) {
-  console.log("Creating Graph......", mode);
-  const graph = new Graph(mode, undefined, "Github Actions CI Test Generated Graph");
+function test(system: ResourceClass) {
 
-  // column 1
-  const Trig = graph.add_node(NODE_ID.When_Tab_Is_Selected);
-  // column 2
-  const Branch1 = graph.add_node(NODE_ID.Multiple_Branches__Int);
-  const get_val = graph.add_node(NODE_ID.Get_Custom_Variable__Int);
-  graph.flow(Trig, Branch1);
-  graph.connect(Trig, Branch1, 2, 0);
-  graph.connect(Trig, get_val, 0, 0);
-  Branch1.setVal(1, [1, 2, 3]);
-  get_val.setVal(1, "Plant Level");
-  // column 3
-  const Branch2 = graph.add_node(NODE_ID.Double_Branch);
-  const eq1 = graph.add_node(NODE_ID.Equal__Int);
-  const Branch3 = graph.add_node(NODE_ID.Double_Branch);
-  const eq2 = graph.add_node(NODE_ID.Equal__Int);
-  const Branch4 = graph.add_node(NODE_ID.Double_Branch);
-  const eq3 = graph.add_node(NODE_ID.Equal__Int);
-  graph.flow(Branch1, Branch2, 1, 0);
-  graph.flow(Branch1, Branch3, 2);
-  graph.flow(Branch1, Branch4, 3);
-  graph.connect(get_val, eq1, 0, 0);
-  graph.connect(get_val, eq2, 0, 0);
-  graph.connect(get_val, eq3, 0, 0);
-  graph.connect(eq1, Branch2, 0, 0);
-  graph.connect(eq2, Branch3, 0, 0);
-  graph.connect(eq3, Branch4, 0, 0);
-  eq1.setVal(1, 0);
-  eq2.setVal(1, 1);
-  eq3.setVal(1, 2);
-  // column 4
-  const slf1 = graph.add_node(NODE_ID.Get_Self_Entity);
-  const loc1 = graph.add_node(NODE_ID.Get_Entity_Location_and_Rotation);
-  const Pfb1 = graph.add_node(NODE_ID.Create_Prefab);
-  const loc2 = graph.add_node(NODE_ID.Get_Entity_Location_and_Rotation);
-  const Pfb2 = graph.add_node(NODE_ID.Create_Prefab);
-  const slf2 = graph.add_node(NODE_ID.Get_Self_Entity);
-  const Eff1 = graph.add_node(NODE_ID.Mount_Looping_Special_Effect);
-  graph.flow(Branch2, Pfb1);
-  graph.flow(Branch3, Pfb2);
-  graph.flow(Branch4, Eff1);
-  graph.connect(slf1, loc1, 0, 0);
-  graph.connect(loc1, Pfb1, 0, 1);
-  graph.connect(loc1, Pfb1, 1, 2);
-  graph.connect(slf1, Pfb1, 0, 3);
-  graph.connect(slf1, loc2, 0, 0);
-  graph.connect(loc2, Pfb2, 0, 1);
-  graph.connect(loc2, Pfb2, 1, 2);
-  graph.connect(slf1, Pfb2, 0, 3);
-  graph.connect(slf2, Eff1, 0, 1);
-  Pfb1.setVal(0, 1077236130);
-  Pfb1.setVal(6, 1);
-  Pfb2.setVal(0, 1077236131);
-  Pfb2.setVal(6, 1);
-  Eff1.setVal(0, 10002107);
-  Eff1.setVal(2, "RootNode");
-  Eff1.setVal(3, true);
-  Eff1.setVal(4, true);
-  Eff1.setVal(7, 0.1);
-  // column 5
-  const set_val1 = graph.add_node(NODE_ID.Set_Custom_Variable__Int);
-  const set_val2 = graph.add_node(NODE_ID.Set_Custom_Variable__Int);
-  graph.flow(Pfb1, set_val1);
-  graph.flow(Pfb2, set_val2);
-  graph.connect(slf1, set_val1, 0, 0);
-  graph.connect(slf1, set_val2, 0, 0);
-  set_val1.setVal(1, "Plant Level");
-  set_val1.setVal(2, 1);
-  set_val1.setVal(4, true);
-  set_val2.setVal(1, "Plant Level");
-  set_val2.setVal(2, 2);
-  set_val2.setVal(4, true);
+  console.log(`\n--- Testing System: ${system} ---`);
+  console.time(`Total Test Time for ${system}`);
 
-  // auto analysis layout
-  graph.autoLayout(1, 2);
+  console.time("Make Graph");
+  let graph: Graph;
+  switch (system) {
+    case "ENTITY_NODE_GRAPH":
+    case "STATUS_NODE_GRAPH":
+    case "CLASS_NODE_GRAPH":
+    case "ITEM_NODE_GRAPH":
+      graph = get_graph_server(system);
+      break;
+    case "COMPOSITE_NODE_DECL":
+      graph = get_graph_server(system);
+      break;
+    case "BOOLEAN_FILTER_GRAPH":
+    case "INTEGER_FILTER_GRAPH":
+    case "SKILL_NODE_GRAPH":
+      graph = get_graph_client(system);
+      break;
+    default:
+      throw new Error(`Unknown system: ${system}`);
+  }
+  // const graph = get_graph_server("ENTITY_NODE_GRAPH");
+  // const graph = get_graph_client("SKILL_NODE_GRAPH");
+  console.timeEnd("Make Graph");
 
-  return graph;
+  console.time("AutoLayout");
+  graph.autoLayout();
+  console.timeEnd("AutoLayout");
 
+  console.time("Encode");
+  const encoded = graph.encode();
+  console.timeEnd("Encode");
+
+  const path = `./dist/gia_gen.${system}.gia`;
+  console.time("Dump to GIA File");
+  encode_gia_file(path, encoded);
+  console.timeEnd("Dump to GIA File");
+
+  // 解码回图对象
+  console.time("Decode from GIA File");
+  const decoded = decode_gia_file(path);
+  console.timeEnd("Decode from GIA File");
+
+
+  console.time("Decode gia to graph");
+  const graph_2 = Graph.decode(decoded);
+  console.timeEnd("Decode gia to graph");
+
+  console.time("Decode gia obj");
+  const graph_3 = Graph.decode(encoded);
+  console.timeEnd("Decode gia obj");
+
+
+  const msg: string[] = [];
+  console.time("Debug Print (x3)");
+  msg.push("---- Original Graph ----");
+  graph.debugPrint({ log: (...m: string[]) => msg.push(...m) });
+  msg.push("---- Decoded Graph from Object ----");
+  graph_3.debugPrint({ log: (...m: string[]) => msg.push(...m) });
+  msg.push("---- Decoded Graph from File ----");
+  graph_2.debugPrint({ log: (...m: string[]) => msg.push(...m) });
+  console.timeEnd("Debug Print (x3)");
+
+  writeFileSync(`./dist/gia_gen.${system}.log`, msg.join("\n"), { encoding: "utf-8" });
+
+  console.time("Deep Equal Asserts (x3)");
+  const options = { breakpoint: true, max_depth: 1000, precision: 1e-5 };
+  assert(deepEqual(graph, graph_2, options), "Graphs are not equal");
+  assert(deepEqual(graph, graph_3, options), "Graphs are not equal");
+  assert(deepEqual(graph_2, graph_3, options), "Graphs are not equal");
+  console.timeEnd("Deep Equal Asserts (x3)");
+
+  console.timeEnd(`Total Test Time for ${system}`);
 }
 
-function createGraphClient(mode: ClientModes) {
-  console.log("Creating Client Graph......", mode);
-  const graph = new Graph(mode, undefined, "Github Actions CI Test Generated Graph");
+console.log("All tests passed!");
 
-  const Begin = graph.add_node(CLIENT_NODE_ID.Node_Graph_Begins);
-  const Signal = graph.add_node(CLIENT_NODE_ID.Send_Signal_to_Server_Node_Graph);
-  const Eff1 = graph.add_node(CLIENT_NODE_ID.Play_Timed_Effects);
-  const Eff2 = graph.add_node(CLIENT_NODE_ID.Play_Timed_Effects);
-  const Eff3 = graph.add_node(CLIENT_NODE_ID.Play_Timed_Effects);
-  // Inputs: [ 'Cfg', 'Vec', 'Vec', 'Flt', HIDDEN:'Int', 'Bol' ],
-
-  graph.add_comment("Wind vortex", Eff1);
-  graph.add_comment("sound effect", Eff2);
-  graph.add_comment("Wind column", Eff3);
-
-  graph.flow(Begin, Eff1);
-  graph.flow(Begin, Signal);
-  graph.flow(Begin, Eff2);
-  graph.flow(Begin, Eff3);
-
-  const get_att_pt = graph.add_node(CLIENT_NODE_ID.Get_Target_Attachment_Point_Location);
-  const get_rot = graph.add_node(CLIENT_NODE_ID.Get_Entity_Rotation);
-  const get_slf = graph.add_node(CLIENT_NODE_ID.Get_Self_Entity);
-  const rot_v1 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Rotation);
-  const rot_v2 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Rotation);
-  const rot_v3 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Rotation);
-  const add_v1 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Addition);
-  const add_v2 = graph.add_node(CLIENT_NODE_ID._3D_Vector_Addition);
-  // Inputs: [ HIDDEN:'E<2>', 'Vec', 'Vec' ],
-
-  graph.connect(get_slf, get_rot, 0, 0);
-  graph.connect(get_slf, get_att_pt, 0, 0);
-
-  graph.connect(get_att_pt, add_v2, 0, 2);
-  // graph.connect(get_att_pt, Signal, 0, 1); // TODO: Signal uses Complex Definition
-  graph.connect(get_att_pt, Eff2, 0, 1);
-  graph.connect(get_att_pt, add_v1, 0, 1);
-
-  graph.connect(get_rot, rot_v1, 0, 1);
-  graph.connect(get_rot, rot_v2, 0, 1);
-  // graph.connect(get_rot, Signal, 0, 2);
-  graph.connect(get_rot, rot_v3, 0, 1);
-
-  graph.connect(rot_v1, add_v1, 0, 2);
-  graph.connect(rot_v2, Eff1, 0, 2);
-  graph.connect(add_v1, Eff3, 0, 1);
-  graph.connect(rot_v3, Eff3, 0, 2);
-  graph.connect(add_v2, Eff1, 0, 1);
-
-  get_att_pt.setVal(1, "GI_AvatarRoot");
-  rot_v1.setVal(0, [0, 2, 6]);
-  rot_v2.setVal(0, [90, 0, 0]);
-  // Signal.setVal(0, "Dash");
-  add_v2.setVal(1, [0, 1, 0]);
-  rot_v3.setVal(0, [80, 4, 0]);
-
-  Eff1.setVal(0, 10006238);
-  Eff1.setVal(3, 1);
-  Eff1.setVal(5, true);
-
-  Eff2.setVal(0, 10011063);
-  Eff2.setVal(2, [0, 0, 0]);
-  Eff2.setVal(3, 0);
-  Eff2.setVal(5, true);
-
-  Eff3.setVal(0, 208);
-  Eff3.setVal(3, 1.3);
-  Eff3.setVal(5, false);
-
-  // auto analysis layout
-  graph.autoLayout(2, 2);
-  return graph;
-}
-
-function test<T extends AllModes>(fun: (type: T) => Graph<T>, type: T) {
-  const graph = fun(type);
-
-  const encoded = graph.encode({ pos_jitter: false, fill_undefined: false });
-  const decode = Graph.decode(encoded);
-  const encoded2 = decode.encode({ pos_jitter: false });
-  const decode2 = Graph.decode(encoded2);
-
-  const encoded3 = decode2.encode({ pos_jitter: false, fill_undefined: true });
-  const encoded3p = decode2.encode({ pos_jitter: false, fill_undefined: 123 });
-  const decode3 = Graph.decode(encoded3);
-  const decode3p = Graph.decode(encoded3p);
-
-
-  assertDeepEq(encoded, encoded2);
-  assertDeepEq(decode, decode2);
-
-  (graph as any).connects = new Set([...graph.connects].sort((a, b) => a.from.node_index - b.from.node_index || a.to.node_index - b.to.node_index));
-  (decode as any).connects = new Set([...decode.connects].sort((a, b) => a.from.node_index - b.from.node_index || a.to.node_index - b.to.node_index));
-
-  // console.log([...graph.connects].map(c => `${c.from}${c.from_index} -> ${c.to}${c.to_index}`).join("\n"));
-  // console.log([...decode.connects].map(c => `${c.from}${c.from_index} -> ${c.to}${c.to_index}`).join("\n"));
-  // return;
-  // console.log(inspect(graph.connects));
-  // console.log(inspect(decode.connects));
-
-  assertDeepEq(graph, decode, {
-    enable_debugger: true,
-    ignore_rules: (a, b) =>
-      a === null && (b instanceof Array && b.length === 0)
-      || a === true && b === 1
-      || a === false && b === 0
-      || deepEqual(a, { t: "e", e: 2 }) && deepEqual(b, { t: "e", e: -1 }) // TODO: DEFAULT VAL/ENUM IS NOT LOADED AUTOMATICALLY
-  });
-
-  assertDeepEq(decode2, decode3, {
-    ignore_rules: (a, b) =>
-      a === null && (b === 0 || b instanceof Array && b.toString() === '0,0,0')
-  });
-  assertDeepEq(decode2, decode3p, {
-    ignore_rules: (a, b) =>
-      a === null && (b === 123 || b === 1 || b instanceof Array && b.toString() === '123,123,123')
-  });
-
-  /** graph --> encoded --> decode --> encoded2 --> decode2
-   * 
-   * Encode and Decode is Stable:
-   * - encoded === encoded2
-   * - decode === decode2
-   * Encode and Decode is lossless:
-   * - graph.sort() === decode.sort()
-   * 
-  */
-}
 
 if (import.meta.main) {
   console.log("The equivalent DSL is:", DSL);
-  encode_gia_file("./dist/GeneratedGraph.gia", createGraph("class").encode());
-  console.log("Saved to `./dist/GeneratedGraph.gia`");
 
   console.log("\n====== Test Server Graph ======");
-  test(createGraph, "server");
-  test(createGraph, "class");
-  test(createGraph, "item");
-  test(createGraph, "status");
+  test("ENTITY_NODE_GRAPH");
+  test("COMPOSITE_NODE_DECL");
+  test("CLASS_NODE_GRAPH");
+  test("ITEM_NODE_GRAPH");
+  test("STATUS_NODE_GRAPH");
   console.log("======== Test Complete ========\n");
 
   console.log("The equivalent DSL is:", DSL2);
-  encode_gia_file("./dist/GeneratedGraphClient.gia", createGraphClient("bool").encode());
-
 
   console.log("\n====== Test Client Graph ======");
-  test(createGraphClient, "bool");
-  test(createGraphClient, "int");
-  test(createGraphClient, "skill");
+  test("SKILL_NODE_GRAPH");
+  test("INTEGER_FILTER_GRAPH");
+  test("BOOLEAN_FILTER_GRAPH");
   console.log("======== Test Complete ========\n");
 
   // test(createGraphClient, "skill");
