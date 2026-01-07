@@ -129,9 +129,18 @@ const unused = new Set(doc);
   pins.forEach((p, i) => {
     const rp = ref_node.parameters[i];
     const rp_zh = ref_node_zh.parameters[i];
-    assertDeepEq(p.Description, {});
-    if(rp.description.trim() !== "") p.Description["en"] = rp.description.trim();
-    if(rp_zh.description.trim() !== "") p.Description["zh-Hans"] = rp_zh.description.trim();
+    // assertDeepEq(p.Description, {});
+    // if(rp.description.trim() !== "") p.Description["en"] = rp.description.trim();
+    // if(rp_zh.description.trim() !== "") p.Description["zh-Hans"] = rp_zh.description.trim();
+
+    let zh_eq = (p.Label?.["zh-Hans"]?.length ?? 0) === 0 || p.Label?.["zh-Hans"] === rp_zh.name;
+    if(!zh_eq){
+      console.log(`[Label Mismatch] in node ${ref_node_zh.name}(${node.Identifier}) with parameter ${p.Identifier}(${NT.stringify(p.Type)}): "${p.Label?.["zh-Hans"]}" (DATA) vs "${rp_zh.name}" (MD)`);
+      // manually checked, all good
+      // overwrite
+      p.Label ??= {};
+      p.Label["zh-Hans"] = rp_zh.name;
+    }
   });
 });
 
@@ -141,5 +150,5 @@ for (const n of unused) {
 }
 
 // save("nodes.json", nodes);
-// save("data.json", data);
+save("data.json", data);
 

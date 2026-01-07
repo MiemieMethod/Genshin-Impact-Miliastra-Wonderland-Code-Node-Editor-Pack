@@ -9741,7 +9741,7 @@
           "Direction": "In",
           "Type": "Ety",
           "Label": {
-            "zh-Hans": "碰撞触发器GUID"
+            "zh-Hans": "目标实体"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -9758,7 +9758,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "碰撞单位索引"
+            "zh-Hans": "触发器序号"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -9775,7 +9775,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否注册"
+            "zh-Hans": "是否激活"
           },
           "Placeholder": null,
           "ShellIndex": 2,
@@ -16284,7 +16284,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -16298,7 +16298,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -16387,7 +16387,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -16401,7 +16401,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -16490,7 +16490,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -16504,7 +16504,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -16593,7 +16593,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -16607,7 +16607,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -16696,7 +16696,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入整数"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -16710,7 +16710,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入整数"
+            "zh-Hans": ""
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -16761,7 +16761,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "底数"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -17927,7 +17927,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "左值"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -17941,7 +17941,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": "右值"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -18022,7 +18022,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "左值"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -18036,7 +18036,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": "右值"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -18117,7 +18117,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "左值"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -18131,7 +18131,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": "右值"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -18212,7 +18212,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "左值"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -18226,7 +18226,7 @@
           "Direction": "In",
           "Type": "R<T>",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": "右值"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -19318,7 +19318,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否覆盖等级"
+            "zh-Hans": "是否覆写等级"
           },
           "Placeholder": null,
           "ShellIndex": 5,
@@ -19629,7 +19629,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否覆盖等级"
+            "zh-Hans": "是否覆写等级"
           },
           "Placeholder": null,
           "ShellIndex": 5,
@@ -22932,7 +22932,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否覆盖能力单元配置"
+            "zh-Hans": "是否覆写能力单元配置"
           },
           "Placeholder": null,
           "ShellIndex": 6,
@@ -24394,7 +24394,7 @@
           "Direction": "In",
           "Type": "Flt",
           "Label": {
-            "zh-Hans": "弧度"
+            "zh-Hans": "弧度值"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -24408,7 +24408,7 @@
           "Direction": "Out",
           "Type": "Flt",
           "Label": {
-            "zh-Hans": "角度"
+            "zh-Hans": "角度值"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -39453,7 +39453,7 @@
           "Direction": "In",
           "Type": "Vec",
           "Label": {
-            "zh-Hans": "旋转"
+            "zh-Hans": "向前向量"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -39470,7 +39470,7 @@
           "Direction": "In",
           "Type": "Vec",
           "Label": {
-            "zh-Hans": "方向向量"
+            "zh-Hans": "向上向量"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -39487,7 +39487,7 @@
           "Direction": "Out",
           "Type": "Vec",
           "Label": {
-            "zh-Hans": "结果"
+            "zh-Hans": "旋转"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -39927,7 +39927,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否覆盖能力单元配置"
+            "zh-Hans": "是否覆写能力单元配置"
           },
           "Placeholder": null,
           "ShellIndex": 3,
@@ -41280,7 +41280,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否允许新入/新出"
+            "zh-Hans": "是否允许渐入渐出"
           },
           "Placeholder": null,
           "ShellIndex": 8,
@@ -46721,7 +46721,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否覆盖词条值"
+            "zh-Hans": "是否覆写词条值"
           },
           "Placeholder": null,
           "ShellIndex": 2,
@@ -49377,7 +49377,7 @@
           "Direction": "In",
           "Type": "D<Cfg,Int>",
           "Label": {
-            "zh-Hans": "出售价币字典"
+            "zh-Hans": "出售货币字典"
           },
           "Placeholder": null,
           "ShellIndex": 4,
@@ -49660,7 +49660,7 @@
           "Direction": "In",
           "Type": "D<Cfg,Int>",
           "Label": {
-            "zh-Hans": "出售价币字典"
+            "zh-Hans": "出售货币字典"
           },
           "Placeholder": null,
           "ShellIndex": 3,
@@ -49926,7 +49926,7 @@
           "Direction": "In",
           "Type": "D<Cfg,Int>",
           "Label": {
-            "zh-Hans": "出售价币字典"
+            "zh-Hans": "出售货币字典"
           },
           "Placeholder": null,
           "ShellIndex": 3,
@@ -50118,7 +50118,7 @@
           "Direction": "In",
           "Type": "D<Cfg,Int>",
           "Label": {
-            "zh-Hans": "出售价币字典"
+            "zh-Hans": "出售货币字典"
           },
           "Placeholder": null,
           "ShellIndex": 3,
@@ -51598,7 +51598,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "道具数量"
+            "zh-Hans": "变更值"
           },
           "Placeholder": null,
           "ShellIndex": 2,
@@ -51689,7 +51689,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "货币数量"
+            "zh-Hans": "变更值"
           },
           "Placeholder": null,
           "ShellIndex": 2,
@@ -52950,7 +52950,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否覆盖词条值"
+            "zh-Hans": "是否覆写词条值"
           },
           "Placeholder": null,
           "ShellIndex": 3,
@@ -53027,7 +53027,7 @@
           "Direction": "In",
           "Type": "L<Int>",
           "Label": {
-            "zh-Hans": "选择列表"
+            "zh-Hans": "列表"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -53800,7 +53800,7 @@
           "Direction": "Out",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "星期几"
+            "zh-Hans": "星期"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -54048,7 +54048,7 @@
           "Direction": "In",
           "Type": "Bol",
           "Label": {
-            "zh-Hans": "是否覆盖等级"
+            "zh-Hans": "是否覆写等级"
           },
           "Placeholder": null,
           "ShellIndex": 7,
@@ -55443,7 +55443,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "值"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -55457,7 +55457,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "偏移位数"
+            "zh-Hans": "左移位数"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -55508,7 +55508,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "值"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -55522,7 +55522,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "偏移位数"
+            "zh-Hans": "右移位数"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -55573,7 +55573,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "值1"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -55587,7 +55587,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": "值2"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -55638,7 +55638,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "值1"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -55652,7 +55652,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": "值2"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -55703,7 +55703,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入1"
+            "zh-Hans": "值1"
           },
           "Placeholder": null,
           "ShellIndex": 0,
@@ -55717,7 +55717,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入2"
+            "zh-Hans": "值2"
           },
           "Placeholder": null,
           "ShellIndex": 1,
@@ -55768,7 +55768,7 @@
           "Direction": "In",
           "Type": "Int",
           "Label": {
-            "zh-Hans": "输入"
+            "zh-Hans": "值"
           },
           "Placeholder": null,
           "ShellIndex": 0,

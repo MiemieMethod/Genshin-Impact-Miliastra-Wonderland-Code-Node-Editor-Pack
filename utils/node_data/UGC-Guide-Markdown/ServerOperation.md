@@ -43,8 +43,8 @@ Floating Point Numbers: Floating Point Numbers are compared using approximate eq
 
 | Parameter Type | Parameter Name | Type | Description |
 |------------------|----------------|---------|------------------------------------------|
-| Input Parameter | Enumeration 1 | Generic |  |
-| Input Parameter | Enumeration 2 | Generic |  |
+| Input Parameter | Input 1 | Generic |  |
+| Input Parameter | Input 2 | Generic |  |
 | Output Parameter | Result | Boolean | Output True if equal, False if not equal |
 
 ### **4. Data Type Conversion**

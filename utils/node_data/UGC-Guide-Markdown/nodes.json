@@ -9493,13 +9493,13 @@
     "parameters": [
       {
         "type": "Input Parameter",
-        "name": "Enumeration 1",
+        "name": "Input 1",
         "dataType": "Generic",
         "description": ""
       },
       {
         "type": "Input Parameter",
-        "name": "Enumeration 2",
+        "name": "Input 2",
         "dataType": "Generic",
         "description": ""
       },
