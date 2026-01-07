@@ -1,10 +1,9 @@
 import * as fs from 'fs';
 
-const dataPath = 'data.json';
-// https://github.com/DimbreathBot/AnimeGameData
-const manualTextMapPath = 'E:\\AnimeGameData\\ExcelBinOutput\\ManualTextMapConfigData.json';
-const textMapENPath = 'E:\\AnimeGameData\\TextMap\\TextMapEN.json';
-const textMapCHSPath = 'E:\\AnimeGameData\\TextMap\\TextMapCHS.json';
+const dataPath = import.meta.dirname + '/data.json';
+const manualTextMapPath = './ref/DimbreathBot/AnimeGameData/ExcelBinOutput/ManualTextMapConfigData.json';
+const textMapENPath = './ref/DimbreathBot/AnimeGameData/TextMap/TextMapEN.json';
+const textMapCHSPath = './ref/DimbreathBot/AnimeGameData/TextMap/TextMapCHS.json';
 
 function readJsonSync<T>(filepath: string): T {
   return JSON.parse(fs.readFileSync(filepath, 'utf-8'));
@@ -25,7 +24,10 @@ function main() {
   }
 
   for (const node of data.Nodes) {
-    if (typeof node.ID !== 'number') continue;
+    if (typeof node.ID !== 'number') {
+      console.log(node.Identifier, 'Not number');
+      continue;
+    }
     const id = node.ID;
     const key = `BeyondEditorInstructionNodeConfig_name_${id}`;
 
@@ -36,15 +38,26 @@ function main() {
       const en = textMapEN[hashStr];
       if (en) {
         if (!node.InGameName) node.InGameName = {};
+        if (node.InGameName['en'] !== en && node.InGameName['en']?.trim().length > 0) {
+          node.Alias.push(node.InGameName['en']);
+        }
         node.InGameName['en'] = en;
       }
       const zhHans = textMapCHS[hashStr];
       if (zhHans) {
         if (!node.InGameName) node.InGameName = {};
+        if (node.InGameName['zh-Hans'] !== zhHans && node.InGameName['zh-Hans']?.trim().length > 0) {
+          node.Alias.push(node.InGameName['zh-Hans']);
+        }
         node.InGameName['zh-Hans'] = zhHans;
+      } else {
+        console.log(node.Identifier, 'No chs name');
       }
+    } else {
+      console.log(node.Identifier, 'Not found');
     }
 
+    let success = 0;
     if (Array.isArray(node.DataPins)) {
       for (const pin of node.DataPins) {
         if (!pin || typeof pin !== 'object') continue;
@@ -58,6 +71,7 @@ function main() {
         } else {
           continue;
         }
+        if (node.Identifier === "Query.Math.Pi") debugger;
 
         const pinKey = `BeyondEditorInstructionNodeConfig_${paramType}_${pin.KernelIndex}_name_${id}`;
         const pinMatched = manualTextMapArray.find(obj => obj.textMapId === pinKey);
@@ -68,19 +82,27 @@ function main() {
           if (pinEn) {
             if (!pin.Label) pin.Label = {};
             pin.Label['en'] = pinEn;
+            success++;
+          } else {
+            console.log("cannot find:", pinKey, "of", node.Identifier)
           }
           const pinZhHans = textMapCHS[pinHashStr];
           if (pinZhHans) {
             if (!pin.Label) pin.Label = {};
             pin.Label['zh-Hans'] = pinZhHans;
+            success++;
+          } else {
+            console.log("cannot find:", pinKey, "of", node.Identifier)
           }
         }
       }
     }
+    if (success !== node.DataPins.length * 2) {
+      console.log("success num not matched", success, node.DataPins.length, node.Identifier)
+    }
   }
 
   writeJsonSync(dataPath, data);
-
   console.log('处理完成并保存。');
 }
 

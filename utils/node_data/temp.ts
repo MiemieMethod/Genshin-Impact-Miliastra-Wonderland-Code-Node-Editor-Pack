@@ -23,16 +23,4 @@ const save = (path: string, data: {} | string) =>
 
 // console.log(data.Nodes.filter(n => n.DataPins.find(p => p.Identifier.startsWith('Input')) !== undefined).length);
 
-
-const dict = data.Nodes.find(x => x.Identifier === "Arithmetic.Dictionary.Assemble_Dictionary")!;
-
-dict.Variants?.forEach(v => {
-  v.InjectedContents.forEach(i => {
-    if (i.Identifier.startsWith("Input")) {
-      const idx = parseInt(i.Identifier.slice(5));
-      i.Identifier = idx % 2 === 1 ? "key" + (idx - 1) / 2 : "val" + (idx - 2) / 2;
-    }
-  })
-})
-
 save("data.json", data);

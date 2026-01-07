@@ -78,7 +78,7 @@ export const NODES = {
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
  * | 0 || 🔷 || **`R<T>`** || `key` || 控制表达式: 仅支持整数或字符串 |
- * | 1 || 🔷 || **`L<R<T>>`** || `cases` || 判断参数 |
+ * | 1 || 🔷 || **`L<R<T>>`** || `cases` || valid_pin_list |
  *
  * -----------
  *
@@ -4075,7 +4075,7 @@ export const NODES = {
   Execution_Camera_SwitchTemplate: "Execution.Camera.Switch_Template",
 
   /**
- * **Activate Entity Camera** `(Hidden.Execution.Activate_Entity_Camera)`
+ * **激活实体镜头** `(Hidden.Execution.Activate_Entity_Camera)`
  *
  * -----------
  *
@@ -4089,8 +4089,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
- * | 1 || 🔹 || `Ety` || `Input1` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || 玩家实体列表 |
+ * | 1 || 🔹 || `Ety` || `Input1` || 目标实体 |
  *
  * -----------
  *
@@ -4102,7 +4102,7 @@ export const NODES = {
   Hidden_Execution_ActivateEntityCamera: "Hidden.Execution.Activate_Entity_Camera",
 
   /**
- * **Disable Entity Camera** `(Hidden.Execution.Disable_Entity_Camera)`
+ * **停用实体镜头** `(Hidden.Execution.Disable_Entity_Camera)`
  *
  * -----------
  *
@@ -4116,7 +4116,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || 玩家实体列表 |
  *
  * -----------
  *
@@ -4128,7 +4128,7 @@ export const NODES = {
   Hidden_Execution_DisableEntityCamera: "Hidden.Execution.Disable_Entity_Camera",
 
   /**
- * **Activate Focus Camera** `(Hidden.Execution.Activate_Focus_Camera)`
+ * **激活注目镜头** `(Hidden.Execution.Activate_Focus_Camera)`
  *
  * -----------
  *
@@ -4142,8 +4142,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
- * | 1 || 🔹 || `Ety` || `Input1` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || 玩家实体列表 |
+ * | 1 || 🔹 || `Ety` || `Input1` || 目标实体 |
  *
  * -----------
  *
@@ -4155,7 +4155,7 @@ export const NODES = {
   Hidden_Execution_ActivateFocusCamera: "Hidden.Execution.Activate_Focus_Camera",
 
   /**
- * **Disable Focus Camera** `(Hidden.Execution.Disable_Focus_Camera)`
+ * **停止注目镜头** `(Hidden.Execution.Disable_Focus_Camera)`
  *
  * -----------
  *
@@ -4169,7 +4169,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || 玩家实体列表 |
  *
  * -----------
  *
@@ -4181,7 +4181,7 @@ export const NODES = {
   Hidden_Execution_DisableFocusCamera: "Hidden.Execution.Disable_Focus_Camera",
 
   /**
- * **Activate Screen Shake** `(Hidden.Execution.Play_Screen_Shake)`
+ * **激活屏幕震动** `(Hidden.Execution.Play_Screen_Shake)`
  *
  * -----------
  *
@@ -4195,10 +4195,10 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
- * | 1 || 🔹 || `Flt` || `Input1` ||  |
- * | 2 || 🔹 || `Flt` || `Input2` ||  |
- * | 3 || 🔹 || `Flt` || `Input3` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || 玩家实体列表 |
+ * | 1 || 🔹 || `Flt` || `Input1` || 震幅 |
+ * | 2 || 🔹 || `Flt` || `Input2` || 震动时长 |
+ * | 3 || 🔹 || `Flt` || `Input3` || 震源距离 |
  *
  * -----------
  *
@@ -6238,7 +6238,7 @@ export const NODES = {
   Execution_FollowMotion_SetDeviceState: "Execution.Follow_Motion.Set_Device_State",
 
   /**
- * **Activate/Disable Character Disruptor Device** `(Hidden.Execution.Set_Disruptor_State)`
+ * **激活/关闭角色扰动装置** `(Hidden.Execution.Set_Disruptor_State)`
  *
  * -----------
  *
@@ -6252,9 +6252,9 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Unk` || `Input1` ||  |
- * | 2 || 🔹 || `Bol` || `Input2` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || 目标实体 |
+ * | 1 || 🔹 || `Unk` || `Input1` || 组件类型 |
+ * | 2 || 🔹 || `Bol` || `Input2` || 是否激活 |
  *
  * -----------
  *
@@ -7083,7 +7083,7 @@ export const NODES = {
   Execution_Skill_RemoveBySlot: "Execution.Skill.Remove_By_Slot",
 
   /**
- * **When Native Custom Value Changes** `(Hidden.Trigger.On_Native_Value_Change)`
+ * **原生CustomValue变化时** `(Hidden.Trigger.On_Native_Value_Change)`
  *
  * -----------
  *
@@ -7097,12 +7097,12 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Ety` || `Output0` ||  |
- * | 1 || 🔸 || `Gid` || `Output1` ||  |
- * | 2 || 🔸 || `Str` || `Output2` ||  |
- * | 3 || 🔶 || **`R<T>`** || `Output3` ||  |
- * | 4 || 🔶 || **`R<T>`** || `Output4` ||  |
- * | 5 || 🔸 || `Bol` || `Output5` ||  |
+ * | 0 || 🔸 || `Ety` || `Output0` || owner |
+ * | 1 || 🔸 || `Gid` || `Output1` || ownerGuid |
+ * | 2 || 🔸 || `Str` || `Output2` || name |
+ * | 3 || 🔶 || **`R<T>`** || `Output3` || before_value |
+ * | 4 || 🔶 || **`R<T>`** || `Output4` || after_value |
+ * | 5 || 🔸 || `Bol` || `Output5` || is_bp_var |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Int>`
@@ -7262,7 +7262,7 @@ export const NODES = {
   Hidden_Trigger_OnNativeValueChange: "Hidden.Trigger.On_Native_Value_Change",
 
   /**
- * **Native Setting Custom Value** `(Hidden.Execution.Set_Native_Value)`
+ * **原生设置CustomValue** `(Hidden.Execution.Set_Native_Value)`
  *
  * -----------
  *
@@ -7276,11 +7276,11 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔷 || **`R<T>`** || `Input2` ||  |
- * | 3 || 🔹 || `Bol` || `Input3` ||  |
- * | 4 || 🔹 || `Bol` || `Input4` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || target |
+ * | 1 || 🔹 || `Str` || `Input1` || name |
+ * | 2 || 🔷 || **`R<T>`** || `Input2` || value |
+ * | 3 || 🔹 || `Bol` || `Input3` || is_bp_var |
+ * | 4 || 🔹 || `Bol` || `Input4` || canTriggerEvent |
  *
  * -----------
  *
@@ -7447,7 +7447,7 @@ export const NODES = {
   Hidden_Execution_SetNativeValue: "Hidden.Execution.Set_Native_Value",
 
   /**
- * **Native Query Custom Value** `(Hidden.Query.Get_Native_Value)`
+ * **原生查询CustomValue** `(Hidden.Query.Get_Native_Value)`
  *
  * -----------
  *
@@ -7460,16 +7460,16 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Unk` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Bol` || `Input2` ||  |
+ * | 0 || 🔹 || `Unk` || `Input0` || target |
+ * | 1 || 🔹 || `Str` || `Input1` || name |
+ * | 2 || 🔹 || `Bol` || `Input2` || is_bp_var |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔶 || **`R<T>`** || `Output0` ||  |
+ * | 0 || 🔶 || **`R<T>`** || `Output0` || value |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Int>`
@@ -9018,7 +9018,7 @@ export const NODES = {
   Query_FactionRelated_IsHostile: "Query.Faction_Related.Is_Hostile",
 
   /**
- * **Add Entity Active Nameplate** `(Hidden.Execution.Add_Nameplate)`
+ * **添加实体生效铭牌** `(Hidden.Execution.Add_Nameplate)`
  *
  * -----------
  *
@@ -9032,8 +9032,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Cfg` || `Input1` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || 目标实体 |
+ * | 1 || 🔹 || `Cfg` || `Input1` || 铭牌配置ID |
  *
  * -----------
  *
@@ -9045,7 +9045,7 @@ export const NODES = {
   Hidden_Execution_AddNameplate: "Hidden.Execution.Add_Nameplate",
 
   /**
- * **Delete Entity Active Nameplate** `(Hidden.Execution.Remove_Nameplate)`
+ * **删除实体生效铭牌** `(Hidden.Execution.Remove_Nameplate)`
  *
  * -----------
  *
@@ -9059,8 +9059,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Cfg` || `Input1` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || 目标实体 |
+ * | 1 || 🔹 || `Cfg` || `Input1` || 铭牌配置ID |
  *
  * -----------
  *
@@ -10531,12 +10531,12 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Flt` || `entry_value` || 装备数值 |
+ * | 0 || 🔸 || `Flt` || `entry_value` || 词条数值 |
  */
   Query_Equipment_GetAffixValue: "Query.Equipment.Get_Affix_Value",
 
   /**
- * **Update Player Leaderboard Score** `(Hidden.Execution.Update_Leaderboard)`
+ * **更新玩家排行榜分数** `(Hidden.Execution.Update_Leaderboard)`
  *
  * -----------
  *
@@ -10550,9 +10550,9 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Int>` || `Input0` ||  |
- * | 1 || 🔹 || `Int` || `Input1` ||  |
- * | 2 || 🔹 || `Int` || `Input2` ||  |
+ * | 0 || 🔹 || `L<Int>` || `Input0` || 玩家索引列表 |
+ * | 1 || 🔹 || `Int` || `Input1` || 排行榜分数 |
+ * | 2 || 🔹 || `Int` || `Input2` || 排行榜ID |
  *
  * -----------
  *
@@ -12342,7 +12342,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Int>` || `selection_list` || 列表 |
+ * | 0 || 🔹 || `L<Int>` || `selection_list` || 选择列表 |
  *
  * -----------
  *
@@ -15449,7 +15449,7 @@ export const NODES = {
   Query_CustomVariable_GetSnapshot: "Query.Custom_Variable.Get_Snapshot",
 
   /**
- * **When Calling GM (This Node is Hidden Externally)** `(Hidden.Trigger.On_GM_Call)`
+ * **调用GM时（此节点不外放）** `(Hidden.Trigger.On_GM_Call)`
  *
  * -----------
  *
@@ -15463,12 +15463,12 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Ety` || `Output0` ||  |
- * | 1 || 🔸 || `Gid` || `Output1` ||  |
- * | 2 || 🔸 || `Int` || `Output2` ||  |
- * | 3 || 🔸 || `Int` || `Output3` ||  |
- * | 4 || 🔸 || `Str` || `Output4` ||  |
- * | 5 || 🔸 || `Str` || `Output5` ||  |
+ * | 0 || 🔸 || `Ety` || `Output0` || 实体 |
+ * | 1 || 🔸 || `Gid` || `Output1` || guid |
+ * | 2 || 🔸 || `Int` || `Output2` || param0 |
+ * | 3 || 🔸 || `Int` || `Output3` || param1 |
+ * | 4 || 🔸 || `Str` || `Output4` || param2 |
+ * | 5 || 🔸 || `Str` || `Output5` || param3 |
  */
   Hidden_Trigger_OnGMCall: "Hidden.Trigger.On_GM_Call",
 
@@ -16611,7 +16611,7 @@ export const NODES = {
   Query_EntityRelatedClient_GetAttackTarget: "Query.Entity_Related_Client.Get_Attack_Target",
 
   /**
- * **Get Current Camera Template** `(Hidden.Query_Client.Get_Camera_Template)`
+ * **获取当前镜头模板** `(Hidden.Query_Client.Get_Camera_Template)`
  *
  * -----------
  *
@@ -16624,7 +16624,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Int` || `Output0` ||  |
+ * | 0 || 🔸 || `Int` || `Output0` || 镜头模板 |
  */
   Hidden_QueryClient_GetCameraTemplate: "Hidden.Query_Client.Get_Camera_Template",
 
@@ -16879,7 +16879,7 @@ export const NODES = {
   Query_EntityRelatedClient_GetType: "Query.Entity_Related_Client.Get_Type",
 
   /**
- * **Get Camera Orientation** `(Hidden.Query_Client.Get_Camera_Rotation)`
+ * **获取镜头朝向** `(Hidden.Query_Client.Get_Camera_Rotation)`
  *
  * -----------
  *
@@ -16892,7 +16892,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `Output0` ||  |
+ * | 0 || 🔸 || `Vec` || `Output0` || 镜头朝向 |
  */
   Hidden_QueryClient_GetCameraRotation: "Hidden.Query_Client.Get_Camera_Rotation",
 
@@ -17046,44 +17046,44 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Vec` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Flt` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `L<E<CETY>>` || `Input5` ||  |
- * | 6 || 🔹 || `E<CTRG>` || `Input6` ||  |
- * | 7 || 🔹 || `Int` || `Input7` ||  |
- * | 8 || 🔹 || `E<CASH>` || `Input8` ||  |
- * | 9 || 🔹 || `Vec` || `Input9` ||  |
- * | 10 || 🔹 || `Flt` || `Input10` ||  |
- * | 11 || 🔹 || `Flt` || `Input11` ||  |
- * | 12 || 🔹 || `Flt` || `Input12` ||  |
- * | 13 || 🔹 || `Flt` || `Input13` ||  |
- * | 14 || 🔹 || `Flt` || `Input14` ||  |
- * | 15 || 🔹 || `E<CSCT>` || `Input15` ||  |
- * | 16 || 🔹 || `E<CALC>` || `Input16` ||  |
- * | 17 || 🔹 || `L<Str>` || `Input17` ||  |
- * | 18 || 🔹 || `E<CELM>` || `Input18` ||  |
- * | 19 || 🔹 || `Flt` || `Input19` ||  |
- * | 20 || 🔹 || `E<CHIT>` || `Input20` ||  |
- * | 21 || 🔹 || `E<CATK>` || `Input21` ||  |
- * | 22 || 🔹 || `Flt` || `Input22` ||  |
- * | 23 || 🔹 || `Bol` || `Input24` ||  |
- * | 24 || 🔹 || `Int` || `Input25` ||  |
- * | 25 || 🔹 || `E<CKBD>` || `Input27` ||  |
- * | 26 || 🔹 || `Bol` || `Input28` ||  |
- * | 27 || 🔹 || `Vec` || `Input32` ||  |
- * | 28 || 🔹 || `Vec` || `Input33` ||  |
- * | 29 || 🔹 || `Flt` || `Input34` ||  |
- * | 30 || 🔹 || `Vec` || `Input38` ||  |
- * | 31 || 🔹 || `Vec` || `Input39` ||  |
- * | 32 || 🔹 || `Flt` || `Input40` ||  |
- * | 33 || 🔹 || `Flt` || `Input41` ||  |
- * | 34 || 🔹 || `Int` || `Input42` ||  |
- * | 35 || 🔹 || `E<CHTS>` || `Input44` ||  |
- * | 36 || 🔹 || `Flt` || `Input45` ||  |
- * | 37 || 🔹 || `Flt` || `Input46` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || 目标阵营筛选 |
+ * | 1 || 🔹 || `Vec` || `Input1` || 位置 |
+ * | 2 || 🔹 || `Vec` || `Input2` || 旋转 |
+ * | 3 || 🔹 || `Flt` || `Input3` || 伤害系数 |
+ * | 4 || 🔹 || `Flt` || `Input4` || 伤害增量 |
+ * | 5 || 🔹 || `L<E<CETY>>` || `Input5` || 攻击盒实体类型筛选列表 |
+ * | 6 || 🔹 || `E<CTRG>` || `Input6` || 触发类型 |
+ * | 7 || 🔹 || `Int` || `Input7` || 命中场景特效 |
+ * | 8 || 🔹 || `E<CASH>` || `Input8` || 攻击盒类型 |
+ * | 9 || 🔹 || `Vec` || `Input9` || 攻击盒为长方体时的缩放 |
+ * | 10 || 🔹 || `Flt` || `Input10` || 攻击盒为球体时的半径 |
+ * | 11 || 🔹 || `Flt` || `Input11` || 攻击盒为扇形时的高度 |
+ * | 12 || 🔹 || `Flt` || `Input12` || 攻击盒为扇形时的扇角度 |
+ * | 13 || 🔹 || `Flt` || `Input13` || 攻击盒为扇形时的扇半径 |
+ * | 14 || 🔹 || `Flt` || `Input14` || 攻击盒为扇形时的内半径 |
+ * | 15 || 🔹 || `E<CSCT>` || `Input15` || 攻击盒为扇形时的检测方向 |
+ * | 16 || 🔹 || `E<CALC>` || `Input16` || 攻击层筛选 |
+ * | 17 || 🔹 || `L<Str>` || `Input17` || 攻击标签列表 |
+ * | 18 || 🔹 || `E<CELM>` || `Input18` || 元素类型 |
+ * | 19 || 🔹 || `Flt` || `Input19` || 元素攻击强效 |
+ * | 20 || 🔹 || `E<CHIT>` || `Input20` || 打击类型 |
+ * | 21 || 🔹 || `E<CATK>` || `Input21` || 攻击类型 |
+ * | 22 || 🔹 || `Flt` || `Input22` || 打断值 |
+ * | 23 || 🔹 || `Bol` || `Input24` || 是否是绝对伤害 |
+ * | 24 || 🔹 || `Int` || `Input25` || 命中特效 |
+ * | 25 || 🔹 || `E<CKBD>` || `Input27` || 受击击退朝向 |
+ * | 26 || 🔹 || `Bol` || `Input28` || 是否屏蔽伤害跳字 |
+ * | 27 || 🔹 || `Vec` || `Input32` || 命中场景特效偏移 |
+ * | 28 || 🔹 || `Vec` || `Input33` || 命中场景特效旋转 |
+ * | 29 || 🔹 || `Flt` || `Input34` || 命中场景特效缩放 |
+ * | 30 || 🔹 || `Vec` || `Input38` || 命中特效偏移 |
+ * | 31 || 🔹 || `Vec` || `Input39` || 命中特效旋转 |
+ * | 32 || 🔹 || `Flt` || `Input40` || 命中特效缩放 |
+ * | 33 || 🔹 || `Flt` || `Input41` || 本次攻击的仇恨倍率 |
+ * | 34 || 🔹 || `Int` || `Input42` || 本次攻击的仇恨增量 |
+ * | 35 || 🔹 || `E<CHTS>` || `Input44` || 受击等级 |
+ * | 36 || 🔹 || `Flt` || `Input45` || 命中水平冲量 |
+ * | 37 || 🔹 || `Flt` || `Input46` || 命中垂直冲量 |
  *
  * -----------
  *
@@ -17279,7 +17279,7 @@ export const NODES = {
   Execution_CharacterSkillClient_RemoveStatus: "Execution.Character_Skill_Client.Remove_Status",
 
   /**
- * **Trigger Hitbox at Specified Attachment Point** `(Execution.Character_Skill_Client.Trigger_Hitbox_Socket)`
+ * **指定挂接点打攻击盒** `(Execution.Character_Skill_Client.Trigger_Hitbox_Socket)`
  *
  * -----------
  *
@@ -17293,45 +17293,45 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Vec` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `Flt` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CETY>>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CTRG>` || `Input7` ||  |
- * | 8 || 🔹 || `Int` || `Input8` ||  |
- * | 9 || 🔹 || `E<CASH>` || `Input9` ||  |
- * | 10 || 🔹 || `Vec` || `Input10` ||  |
- * | 11 || 🔹 || `Flt` || `Input11` ||  |
- * | 12 || 🔹 || `Flt` || `Input12` ||  |
- * | 13 || 🔹 || `Flt` || `Input13` ||  |
- * | 14 || 🔹 || `Flt` || `Input14` ||  |
- * | 15 || 🔹 || `Flt` || `Input15` ||  |
- * | 16 || 🔹 || `E<CSCT>` || `Input16` ||  |
- * | 17 || 🔹 || `E<CALC>` || `Input17` ||  |
- * | 18 || 🔹 || `L<Str>` || `Input18` ||  |
- * | 19 || 🔹 || `E<CELM>` || `Input19` ||  |
- * | 20 || 🔹 || `Flt` || `Input20` ||  |
- * | 21 || 🔹 || `E<CHIT>` || `Input21` ||  |
- * | 22 || 🔹 || `E<CATK>` || `Input22` ||  |
- * | 23 || 🔹 || `Flt` || `Input23` ||  |
- * | 24 || 🔹 || `Bol` || `Input25` ||  |
- * | 25 || 🔹 || `Int` || `Input26` ||  |
- * | 26 || 🔹 || `E<CKBD>` || `Input28` ||  |
- * | 27 || 🔹 || `Bol` || `Input29` ||  |
- * | 28 || 🔹 || `Vec` || `Input33` ||  |
- * | 29 || 🔹 || `Vec` || `Input34` ||  |
- * | 30 || 🔹 || `Flt` || `Input35` ||  |
- * | 31 || 🔹 || `Vec` || `Input39` ||  |
- * | 32 || 🔹 || `Vec` || `Input40` ||  |
- * | 33 || 🔹 || `Flt` || `Input41` ||  |
- * | 34 || 🔹 || `Flt` || `Input42` ||  |
- * | 35 || 🔹 || `Int` || `Input43` ||  |
- * | 36 || 🔹 || `E<CHTS>` || `Input45` ||  |
- * | 37 || 🔹 || `Flt` || `Input46` ||  |
- * | 38 || 🔹 || `Flt` || `Input47` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || 目标阵营筛选 |
+ * | 1 || 🔹 || `Str` || `Input1` || 挂接点名称 |
+ * | 2 || 🔹 || `Vec` || `Input2` || 挂接点偏移 |
+ * | 3 || 🔹 || `Vec` || `Input3` || 挂接点旋转 |
+ * | 4 || 🔹 || `Flt` || `Input4` || 伤害系数 |
+ * | 5 || 🔹 || `Flt` || `Input5` || 伤害增量 |
+ * | 6 || 🔹 || `L<E<CETY>>` || `Input6` || 攻击盒实体类型筛选列表 |
+ * | 7 || 🔹 || `E<CTRG>` || `Input7` || 触发类型 |
+ * | 8 || 🔹 || `Int` || `Input8` || 命中场景特效 |
+ * | 9 || 🔹 || `E<CASH>` || `Input9` || 攻击盒类型 |
+ * | 10 || 🔹 || `Vec` || `Input10` || 攻击盒为长方体时的缩放 |
+ * | 11 || 🔹 || `Flt` || `Input11` || 攻击盒为球体时的半径 |
+ * | 12 || 🔹 || `Flt` || `Input12` || 攻击盒为扇形时的高度 |
+ * | 13 || 🔹 || `Flt` || `Input13` || 攻击盒为扇形时的扇角度 |
+ * | 14 || 🔹 || `Flt` || `Input14` || 攻击盒为扇形时的扇半径 |
+ * | 15 || 🔹 || `Flt` || `Input15` || 攻击盒为扇形时的内半径 |
+ * | 16 || 🔹 || `E<CSCT>` || `Input16` || 攻击盒为扇形时的检测方向 |
+ * | 17 || 🔹 || `E<CALC>` || `Input17` || 攻击层筛选 |
+ * | 18 || 🔹 || `L<Str>` || `Input18` || 攻击标签列表 |
+ * | 19 || 🔹 || `E<CELM>` || `Input19` || 元素类型 |
+ * | 20 || 🔹 || `Flt` || `Input20` || 元素攻击强效 |
+ * | 21 || 🔹 || `E<CHIT>` || `Input21` || 打击类型 |
+ * | 22 || 🔹 || `E<CATK>` || `Input22` || 攻击类型 |
+ * | 23 || 🔹 || `Flt` || `Input23` || 打断值 |
+ * | 24 || 🔹 || `Bol` || `Input25` || 是否是绝对伤害 |
+ * | 25 || 🔹 || `Int` || `Input26` || 命中特效 |
+ * | 26 || 🔹 || `E<CKBD>` || `Input28` || 受击击退朝向 |
+ * | 27 || 🔹 || `Bol` || `Input29` || 是否屏蔽伤害跳字 |
+ * | 28 || 🔹 || `Vec` || `Input33` || 命中场景特效偏移 |
+ * | 29 || 🔹 || `Vec` || `Input34` || 命中场景特效旋转 |
+ * | 30 || 🔹 || `Flt` || `Input35` || 命中场景特效缩放 |
+ * | 31 || 🔹 || `Vec` || `Input39` || 命中特效偏移 |
+ * | 32 || 🔹 || `Vec` || `Input40` || 命中特效旋转 |
+ * | 33 || 🔹 || `Flt` || `Input41` || 命中特效缩放 |
+ * | 34 || 🔹 || `Flt` || `Input42` || 本次攻击的仇恨倍率 |
+ * | 35 || 🔹 || `Int` || `Input43` || 本次攻击的仇恨增量 |
+ * | 36 || 🔹 || `E<CHTS>` || `Input45` || 受击等级 |
+ * | 37 || 🔹 || `Flt` || `Input46` || 命中水平冲量 |
+ * | 38 || 🔹 || `Flt` || `Input47` || 命中垂直冲量 |
  *
  * -----------
  *
@@ -17569,7 +17569,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Flt` || `angle_degrees` || 夹角角度 |
+ * | 0 || 🔸 || `Flt` || `angle_degrees` || 夹角(角度) |
  */
   Arithmetic_MathClient_VectorAngle: "Arithmetic.Math_Client.Vector_Angle",
 
@@ -18621,7 +18621,7 @@ export const NODES = {
   Query_EntityRelatedClient_IsActive: "Query.Entity_Related_Client.Is_Active",
 
   /**
- * **Node Graph Ends** `(Hidden.Other_Client.Graph_End)`
+ * **节点图结束** `(Hidden.Other_Client.Graph_End)`
  *
  * -----------
  *
@@ -18634,8 +18634,8 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` ||  |
- * | 1 || 🔹 || `E<CFLT>` || `Input1` ||  |
+ * | 0 || 🔹 || `Int` || `Input0` || 输出结果（整数） |
+ * | 1 || 🔹 || `E<CFLT>` || `Input1` || filter返回类型 |
  */
   Hidden_OtherClient_GraphEnd: "Hidden.Other_Client.Graph_End",
 
@@ -18763,21 +18763,21 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Vec` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Flt` || `Input3` ||  |
- * | 4 || 🔹 || `E<CCAM>` || `Input4` ||  |
- * | 5 || 🔹 || `L<E<CETY>>` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CATX>>` || `Input6` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || 检测发起者实体 |
+ * | 1 || 🔹 || `Vec` || `Input1` || 出射位置 |
+ * | 2 || 🔹 || `Vec` || `Input2` || 出射方向 |
+ * | 3 || 🔹 || `Flt` || `Input3` || 射线最大长度 |
+ * | 4 || 🔹 || `E<CCAM>` || `Input4` || 阵营筛选 |
+ * | 5 || 🔹 || `L<E<CETY>>` || `Input5` || 实体类型筛选 |
+ * | 6 || 🔹 || `L<E<CATX>>` || `Input6` || 命中层筛选 |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `Output0` ||  |
- * | 1 || 🔸 || `Ety` || `Output1` ||  |
+ * | 0 || 🔸 || `Vec` || `Output0` || 命中位置 |
+ * | 1 || 🔸 || `Ety` || `Output1` || 命中实体 |
  */
   Query_RayClient_GetRayResult: "Query.Ray_Client.Get_Ray_Result",
 
@@ -18838,7 +18838,7 @@ export const NODES = {
  * | 5 || 🔹 || `L<E<CETY>>` || `entity_type_filter_list` || 攻击盒实体类型筛选列表 |
  * | 6 || 🔹 || `E<CTRG>` || `trigger_type` || 触发类型 |
  * | 7 || 🔹 || `Int` || `hit_scene_fx` || 命中场景特效 |
- * | 8 || 🔹 || `Vec` || `sphere_radius` || 攻击盒为球体时的半径 |
+ * | 8 || 🔹 || `Vec` || `sphere_radius` || 攻击盒为长方体时的缩放 |
  * | 9 || 🔹 || `E<CALC>` || `hit_layer_filter` || 攻击层筛选 |
  * | 10 || 🔹 || `L<Str>` || `attack_tags` || 攻击标签列表 |
  * | 11 || 🔹 || `E<CELM>` || `element_type` || 元素类型 |
@@ -18988,7 +18988,7 @@ export const NODES = {
   Execution_CharacterSkillClient_TriggerSectorHitboxLoc: "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Loc",
 
   /**
- * **Trigger Spherical Hitbox at Specified Attachment Point** `(Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Socket)`
+ * **指定挂接点打球形攻击盒** `(Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Socket)`
  *
  * -----------
  *
@@ -19002,42 +19002,42 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Vec` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `Flt` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CETY>>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CTRG>` || `Input7` ||  |
- * | 8 || 🔹 || `Int` || `Input8` ||  |
- * | 9 || 🔹 || `Flt` || `Input12` ||  |
- * | 10 || 🔹 || `Flt` || `Input13` ||  |
- * | 11 || 🔹 || `Flt` || `Input14` ||  |
- * | 12 || 🔹 || `Flt` || `Input15` ||  |
- * | 13 || 🔹 || `E<CSCT>` || `Input16` ||  |
- * | 14 || 🔹 || `E<CALC>` || `Input17` ||  |
- * | 15 || 🔹 || `L<Str>` || `Input18` ||  |
- * | 16 || 🔹 || `E<CELM>` || `Input19` ||  |
- * | 17 || 🔹 || `Flt` || `Input20` ||  |
- * | 18 || 🔹 || `E<CHIT>` || `Input21` ||  |
- * | 19 || 🔹 || `E<CATK>` || `Input22` ||  |
- * | 20 || 🔹 || `Flt` || `Input23` ||  |
- * | 21 || 🔹 || `Bol` || `Input25` ||  |
- * | 22 || 🔹 || `Int` || `Input26` ||  |
- * | 23 || 🔹 || `E<CKBD>` || `Input28` ||  |
- * | 24 || 🔹 || `Bol` || `Input29` ||  |
- * | 25 || 🔹 || `Vec` || `Input33` ||  |
- * | 26 || 🔹 || `Vec` || `Input34` ||  |
- * | 27 || 🔹 || `Flt` || `Input35` ||  |
- * | 28 || 🔹 || `Vec` || `Input39` ||  |
- * | 29 || 🔹 || `Vec` || `Input40` ||  |
- * | 30 || 🔹 || `Flt` || `Input41` ||  |
- * | 31 || 🔹 || `Flt` || `Input42` ||  |
- * | 32 || 🔹 || `Int` || `Input43` ||  |
- * | 33 || 🔹 || `E<CHTS>` || `Input45` ||  |
- * | 34 || 🔹 || `Flt` || `Input46` ||  |
- * | 35 || 🔹 || `Flt` || `Input47` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || 目标阵营筛选 |
+ * | 1 || 🔹 || `Str` || `Input1` || 挂接点名称 |
+ * | 2 || 🔹 || `Vec` || `Input2` || 挂接点偏移 |
+ * | 3 || 🔹 || `Vec` || `Input3` || 挂接点旋转 |
+ * | 4 || 🔹 || `Flt` || `Input4` || 伤害系数 |
+ * | 5 || 🔹 || `Flt` || `Input5` || 伤害增量 |
+ * | 6 || 🔹 || `L<E<CETY>>` || `Input6` || 攻击盒实体类型筛选列表 |
+ * | 7 || 🔹 || `E<CTRG>` || `Input7` || 触发类型 |
+ * | 8 || 🔹 || `Int` || `Input8` || 命中场景特效 |
+ * | 9 || 🔹 || `Flt` || `Input12` || 攻击盒为扇形时的高度 |
+ * | 10 || 🔹 || `Flt` || `Input13` || 攻击盒为扇形时的扇角度 |
+ * | 11 || 🔹 || `Flt` || `Input14` || 攻击盒为扇形时的扇半径 |
+ * | 12 || 🔹 || `Flt` || `Input15` || 攻击盒为扇形时的内半径 |
+ * | 13 || 🔹 || `E<CSCT>` || `Input16` || 攻击盒为扇形时的检测方向 |
+ * | 14 || 🔹 || `E<CALC>` || `Input17` || 攻击层筛选 |
+ * | 15 || 🔹 || `L<Str>` || `Input18` || 攻击标签列表 |
+ * | 16 || 🔹 || `E<CELM>` || `Input19` || 元素类型 |
+ * | 17 || 🔹 || `Flt` || `Input20` || 元素攻击强效 |
+ * | 18 || 🔹 || `E<CHIT>` || `Input21` || 打击类型 |
+ * | 19 || 🔹 || `E<CATK>` || `Input22` || 攻击类型 |
+ * | 20 || 🔹 || `Flt` || `Input23` || 打断值 |
+ * | 21 || 🔹 || `Bol` || `Input25` || 是否是绝对伤害 |
+ * | 22 || 🔹 || `Int` || `Input26` || 命中特效 |
+ * | 23 || 🔹 || `E<CKBD>` || `Input28` || 受击击退朝向 |
+ * | 24 || 🔹 || `Bol` || `Input29` || 是否屏蔽伤害跳字 |
+ * | 25 || 🔹 || `Vec` || `Input33` || 命中场景特效偏移 |
+ * | 26 || 🔹 || `Vec` || `Input34` || 命中场景特效旋转 |
+ * | 27 || 🔹 || `Flt` || `Input35` || 命中场景特效缩放 |
+ * | 28 || 🔹 || `Vec` || `Input39` || 命中特效偏移 |
+ * | 29 || 🔹 || `Vec` || `Input40` || 命中特效旋转 |
+ * | 30 || 🔹 || `Flt` || `Input41` || 命中特效缩放 |
+ * | 31 || 🔹 || `Flt` || `Input42` || 本次攻击的仇恨倍率 |
+ * | 32 || 🔹 || `Int` || `Input43` || 本次攻击的仇恨增量 |
+ * | 33 || 🔹 || `E<CHTS>` || `Input45` || 受击等级 |
+ * | 34 || 🔹 || `Flt` || `Input46` || 命中水平冲量 |
+ * | 35 || 🔹 || `Flt` || `Input47` || 命中垂直冲量 |
  *
  * -----------
  *
@@ -19049,7 +19049,7 @@ export const NODES = {
   Execution_CharacterSkillClient_TriggerSphereHitboxSocket: "Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Socket",
 
   /**
- * **Trigger Rectangular Hitbox at Specified Attachment Point** `(Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Socket)`
+ * **指定挂接点打矩形攻击盒** `(Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Socket)`
  *
  * -----------
  *
@@ -19063,38 +19063,38 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Vec` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `Flt` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CETY>>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CTRG>` || `Input7` ||  |
- * | 8 || 🔹 || `Int` || `Input8` ||  |
- * | 9 || 🔹 || `Vec` || `Input10` ||  |
- * | 10 || 🔹 || `E<CALC>` || `Input17` ||  |
- * | 11 || 🔹 || `L<Str>` || `Input18` ||  |
- * | 12 || 🔹 || `E<CELM>` || `Input19` ||  |
- * | 13 || 🔹 || `Flt` || `Input20` ||  |
- * | 14 || 🔹 || `E<CHIT>` || `Input21` ||  |
- * | 15 || 🔹 || `E<CATK>` || `Input22` ||  |
- * | 16 || 🔹 || `Flt` || `Input23` ||  |
- * | 17 || 🔹 || `Bol` || `Input25` ||  |
- * | 18 || 🔹 || `Int` || `Input26` ||  |
- * | 19 || 🔹 || `E<CKBD>` || `Input28` ||  |
- * | 20 || 🔹 || `Bol` || `Input29` ||  |
- * | 21 || 🔹 || `Vec` || `Input33` ||  |
- * | 22 || 🔹 || `Vec` || `Input34` ||  |
- * | 23 || 🔹 || `Flt` || `Input35` ||  |
- * | 24 || 🔹 || `Vec` || `Input39` ||  |
- * | 25 || 🔹 || `Vec` || `Input40` ||  |
- * | 26 || 🔹 || `Flt` || `Input41` ||  |
- * | 27 || 🔹 || `Flt` || `Input42` ||  |
- * | 28 || 🔹 || `Int` || `Input43` ||  |
- * | 29 || 🔹 || `E<CHTS>` || `Input45` ||  |
- * | 30 || 🔹 || `Flt` || `Input46` ||  |
- * | 31 || 🔹 || `Flt` || `Input47` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || 目标阵营筛选 |
+ * | 1 || 🔹 || `Str` || `Input1` || 挂接点名称 |
+ * | 2 || 🔹 || `Vec` || `Input2` || 挂接点偏移 |
+ * | 3 || 🔹 || `Vec` || `Input3` || 挂接点旋转 |
+ * | 4 || 🔹 || `Flt` || `Input4` || 伤害系数 |
+ * | 5 || 🔹 || `Flt` || `Input5` || 伤害增量 |
+ * | 6 || 🔹 || `L<E<CETY>>` || `Input6` || 攻击盒实体类型筛选列表 |
+ * | 7 || 🔹 || `E<CTRG>` || `Input7` || 触发类型 |
+ * | 8 || 🔹 || `Int` || `Input8` || 命中场景特效 |
+ * | 9 || 🔹 || `Vec` || `Input10` || 攻击盒为长方体时的缩放 |
+ * | 10 || 🔹 || `E<CALC>` || `Input17` || 攻击层筛选 |
+ * | 11 || 🔹 || `L<Str>` || `Input18` || 攻击标签列表 |
+ * | 12 || 🔹 || `E<CELM>` || `Input19` || 元素类型 |
+ * | 13 || 🔹 || `Flt` || `Input20` || 元素攻击强效 |
+ * | 14 || 🔹 || `E<CHIT>` || `Input21` || 打击类型 |
+ * | 15 || 🔹 || `E<CATK>` || `Input22` || 攻击类型 |
+ * | 16 || 🔹 || `Flt` || `Input23` || 打断值 |
+ * | 17 || 🔹 || `Bol` || `Input25` || 是否是绝对伤害 |
+ * | 18 || 🔹 || `Int` || `Input26` || 命中特效 |
+ * | 19 || 🔹 || `E<CKBD>` || `Input28` || 受击击退朝向 |
+ * | 20 || 🔹 || `Bol` || `Input29` || 是否屏蔽伤害跳字 |
+ * | 21 || 🔹 || `Vec` || `Input33` || 命中场景特效偏移 |
+ * | 22 || 🔹 || `Vec` || `Input34` || 命中场景特效旋转 |
+ * | 23 || 🔹 || `Flt` || `Input35` || 命中场景特效缩放 |
+ * | 24 || 🔹 || `Vec` || `Input39` || 命中特效偏移 |
+ * | 25 || 🔹 || `Vec` || `Input40` || 命中特效旋转 |
+ * | 26 || 🔹 || `Flt` || `Input41` || 命中特效缩放 |
+ * | 27 || 🔹 || `Flt` || `Input42` || 本次攻击的仇恨倍率 |
+ * | 28 || 🔹 || `Int` || `Input43` || 本次攻击的仇恨增量 |
+ * | 29 || 🔹 || `E<CHTS>` || `Input45` || 受击等级 |
+ * | 30 || 🔹 || `Flt` || `Input46` || 命中水平冲量 |
+ * | 31 || 🔹 || `Flt` || `Input47` || 命中垂直冲量 |
  *
  * -----------
  *
@@ -19106,7 +19106,7 @@ export const NODES = {
   Execution_CharacterSkillClient_TriggerRectHitboxSocket: "Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Socket",
 
   /**
- * **指定挂接点打攻击盒** `(Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Socket)`
+ * **指定挂接点打扇形攻击盒** `(Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Socket)`
  *
  * -----------
  *
@@ -19120,42 +19120,42 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Vec` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `Flt` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CETY>>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CTRG>` || `Input7` ||  |
- * | 8 || 🔹 || `Int` || `Input8` ||  |
- * | 9 || 🔹 || `Flt` || `Input12` ||  |
- * | 10 || 🔹 || `Flt` || `Input13` ||  |
- * | 11 || 🔹 || `Flt` || `Input14` ||  |
- * | 12 || 🔹 || `Flt` || `Input15` ||  |
- * | 13 || 🔹 || `E<CSCT>` || `Input16` ||  |
- * | 14 || 🔹 || `E<CALC>` || `Input17` ||  |
- * | 15 || 🔹 || `L<Str>` || `Input18` ||  |
- * | 16 || 🔹 || `E<CELM>` || `Input19` ||  |
- * | 17 || 🔹 || `Flt` || `Input20` ||  |
- * | 18 || 🔹 || `E<CHIT>` || `Input21` ||  |
- * | 19 || 🔹 || `E<CATK>` || `Input22` ||  |
- * | 20 || 🔹 || `Flt` || `Input23` ||  |
- * | 21 || 🔹 || `Bol` || `Input25` ||  |
- * | 22 || 🔹 || `Int` || `Input26` ||  |
- * | 23 || 🔹 || `E<CKBD>` || `Input28` ||  |
- * | 24 || 🔹 || `Bol` || `Input29` ||  |
- * | 25 || 🔹 || `Vec` || `Input33` ||  |
- * | 26 || 🔹 || `Vec` || `Input34` ||  |
- * | 27 || 🔹 || `Flt` || `Input35` ||  |
- * | 28 || 🔹 || `Vec` || `Input39` ||  |
- * | 29 || 🔹 || `Vec` || `Input40` ||  |
- * | 30 || 🔹 || `Flt` || `Input41` ||  |
- * | 31 || 🔹 || `Flt` || `Input42` ||  |
- * | 32 || 🔹 || `Int` || `Input43` ||  |
- * | 33 || 🔹 || `E<CHTS>` || `Input45` ||  |
- * | 34 || 🔹 || `Flt` || `Input46` ||  |
- * | 35 || 🔹 || `Flt` || `Input47` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || 目标阵营筛选 |
+ * | 1 || 🔹 || `Str` || `Input1` || 挂接点名称 |
+ * | 2 || 🔹 || `Vec` || `Input2` || 挂接点偏移 |
+ * | 3 || 🔹 || `Vec` || `Input3` || 挂接点旋转 |
+ * | 4 || 🔹 || `Flt` || `Input4` || 伤害系数 |
+ * | 5 || 🔹 || `Flt` || `Input5` || 伤害增量 |
+ * | 6 || 🔹 || `L<E<CETY>>` || `Input6` || 攻击盒实体类型筛选列表 |
+ * | 7 || 🔹 || `E<CTRG>` || `Input7` || 触发类型 |
+ * | 8 || 🔹 || `Int` || `Input8` || 命中场景特效 |
+ * | 9 || 🔹 || `Flt` || `Input12` || 攻击盒为扇形时的高度 |
+ * | 10 || 🔹 || `Flt` || `Input13` || 攻击盒为扇形时的扇角度 |
+ * | 11 || 🔹 || `Flt` || `Input14` || 攻击盒为扇形时的扇半径 |
+ * | 12 || 🔹 || `Flt` || `Input15` || 攻击盒为扇形时的内半径 |
+ * | 13 || 🔹 || `E<CSCT>` || `Input16` || 攻击盒为扇形时的检测方向 |
+ * | 14 || 🔹 || `E<CALC>` || `Input17` || 攻击层筛选 |
+ * | 15 || 🔹 || `L<Str>` || `Input18` || 攻击标签列表 |
+ * | 16 || 🔹 || `E<CELM>` || `Input19` || 元素类型 |
+ * | 17 || 🔹 || `Flt` || `Input20` || 元素攻击强效 |
+ * | 18 || 🔹 || `E<CHIT>` || `Input21` || 打击类型 |
+ * | 19 || 🔹 || `E<CATK>` || `Input22` || 攻击类型 |
+ * | 20 || 🔹 || `Flt` || `Input23` || 打断值 |
+ * | 21 || 🔹 || `Bol` || `Input25` || 是否是绝对伤害 |
+ * | 22 || 🔹 || `Int` || `Input26` || 命中特效 |
+ * | 23 || 🔹 || `E<CKBD>` || `Input28` || 受击击退朝向 |
+ * | 24 || 🔹 || `Bol` || `Input29` || 是否屏蔽伤害跳字 |
+ * | 25 || 🔹 || `Vec` || `Input33` || 命中场景特效偏移 |
+ * | 26 || 🔹 || `Vec` || `Input34` || 命中场景特效旋转 |
+ * | 27 || 🔹 || `Flt` || `Input35` || 命中场景特效缩放 |
+ * | 28 || 🔹 || `Vec` || `Input39` || 命中特效偏移 |
+ * | 29 || 🔹 || `Vec` || `Input40` || 命中特效旋转 |
+ * | 30 || 🔹 || `Flt` || `Input41` || 命中特效缩放 |
+ * | 31 || 🔹 || `Flt` || `Input42` || 本次攻击的仇恨倍率 |
+ * | 32 || 🔹 || `Int` || `Input43` || 本次攻击的仇恨增量 |
+ * | 33 || 🔹 || `E<CHTS>` || `Input45` || 受击等级 |
+ * | 34 || 🔹 || `Flt` || `Input46` || 命中水平冲量 |
+ * | 35 || 🔹 || `Flt` || `Input47` || 命中垂直冲量 |
  *
  * -----------
  *
@@ -19167,7 +19167,7 @@ export const NODES = {
   Execution_CharacterSkillClient_TriggerSectorHitboxSocket: "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Socket",
 
   /**
- * **(Test) Send Client Signal** `(Hidden.Execution_Client.Test_Send_Signal)`
+ * **（测试）发送客户端信号** `(Hidden.Execution_Client.Test_Send_Signal)`
  *
  * -----------
  *
@@ -19180,26 +19180,26 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Str` || `Input0` ||  |
- * | 1 || 🔹 || `Ety` || `Input1` ||  |
- * | 2 || 🔹 || `L<Ety>` || `Input2` ||  |
- * | 3 || 🔹 || `Int` || `Input3` ||  |
- * | 4 || 🔹 || `L<Int>` || `Input4` ||  |
- * | 5 || 🔹 || `Bol` || `Input5` ||  |
- * | 6 || 🔹 || `L<Bol>` || `Input6` ||  |
- * | 7 || 🔹 || `Flt` || `Input7` ||  |
- * | 8 || 🔹 || `L<Flt>` || `Input8` ||  |
- * | 9 || 🔹 || `Str` || `Input9` ||  |
- * | 10 || 🔹 || `L<Str>` || `Input10` ||  |
- * | 11 || 🔹 || `Vec` || `Input11` ||  |
- * | 12 || 🔹 || `L<Vec>` || `Input12` ||  |
- * | 13 || 🔹 || `Gid` || `Input13` ||  |
- * | 14 || 🔹 || `L<Gid>` || `Input14` ||  |
- * | 15 || 🔹 || `Fct` || `Input15` ||  |
- * | 16 || 🔹 || `Cfg` || `Input16` ||  |
- * | 17 || 🔹 || `L<Cfg>` || `Input17` ||  |
- * | 18 || 🔹 || `Pfb` || `Input18` ||  |
- * | 19 || 🔹 || `L<Pfb>` || `Input19` ||  |
+ * | 0 || 🔹 || `Str` || `Input0` || 信号名 |
+ * | 1 || 🔹 || `Ety` || `Input1` || entity |
+ * | 2 || 🔹 || `L<Ety>` || `Input2` || entityList |
+ * | 3 || 🔹 || `Int` || `Input3` || int |
+ * | 4 || 🔹 || `L<Int>` || `Input4` || intList |
+ * | 5 || 🔹 || `Bol` || `Input5` || bool |
+ * | 6 || 🔹 || `L<Bol>` || `Input6` || boolList |
+ * | 7 || 🔹 || `Flt` || `Input7` || float |
+ * | 8 || 🔹 || `L<Flt>` || `Input8` || floatList |
+ * | 9 || 🔹 || `Str` || `Input9` || string |
+ * | 10 || 🔹 || `L<Str>` || `Input10` || stringList |
+ * | 11 || 🔹 || `Vec` || `Input11` || vector3 |
+ * | 12 || 🔹 || `L<Vec>` || `Input12` || vector3List |
+ * | 13 || 🔹 || `Gid` || `Input13` || guid |
+ * | 14 || 🔹 || `L<Gid>` || `Input14` || guidList |
+ * | 15 || 🔹 || `Fct` || `Input15` || army |
+ * | 16 || 🔹 || `Cfg` || `Input16` || configReference |
+ * | 17 || 🔹 || `L<Cfg>` || `Input17` || configReferenceList |
+ * | 18 || 🔹 || `Pfb` || `Input18` || entityReference |
+ * | 19 || 🔹 || `L<Pfb>` || `Input19` || entityReferenceList |
  */
   Hidden_ExecutionClient_TestSendSignal: "Hidden.Execution_Client.Test_Send_Signal",
 
@@ -19312,7 +19312,7 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` || 输出结果（整型） |
+ * | 0 || 🔹 || `Int` || `Input0` || 输出结果（整数） |
  */
   Others_PortClient_GraphEndInt: "Others.Port_Client.Graph_End_Int",
 
@@ -19699,15 +19699,15 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_Camera_SwitchTemplate` for detailed documentation. */
   "切换主镜头模板": "Execution.Camera.Switch_Template",
   /**  See `NODES.Hidden_Execution_ActivateEntityCamera` for detailed documentation. */
-  "Activate Entity Camera": "Hidden.Execution.Activate_Entity_Camera",
+  "激活实体镜头": "Hidden.Execution.Activate_Entity_Camera",
   /**  See `NODES.Hidden_Execution_DisableEntityCamera` for detailed documentation. */
-  "Disable Entity Camera": "Hidden.Execution.Disable_Entity_Camera",
+  "停用实体镜头": "Hidden.Execution.Disable_Entity_Camera",
   /**  See `NODES.Hidden_Execution_ActivateFocusCamera` for detailed documentation. */
-  "Activate Focus Camera": "Hidden.Execution.Activate_Focus_Camera",
+  "激活注目镜头": "Hidden.Execution.Activate_Focus_Camera",
   /**  See `NODES.Hidden_Execution_DisableFocusCamera` for detailed documentation. */
-  "Disable Focus Camera": "Hidden.Execution.Disable_Focus_Camera",
+  "停止注目镜头": "Hidden.Execution.Disable_Focus_Camera",
   /**  See `NODES.Hidden_Execution_PlayScreenShake` for detailed documentation. */
-  "Activate Screen Shake": "Hidden.Execution.Play_Screen_Shake",
+  "激活屏幕震动": "Hidden.Execution.Play_Screen_Shake",
   /**  See `NODES.Execution_MotionDevice_Activate` for detailed documentation. */
   "激活基础运动器": "Execution.Motion_Device.Activate",
   /**  See `NODES.Query_PresetPoint_GetTransform` for detailed documentation. */
@@ -19823,7 +19823,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_FollowMotion_SetDeviceState` for detailed documentation. */
   "激活/关闭跟随运动器": "Execution.Follow_Motion.Set_Device_State",
   /**  See `NODES.Hidden_Execution_SetDisruptorState` for detailed documentation. */
-  "Activate/Disable Character Disruptor Device": "Hidden.Execution.Set_Disruptor_State",
+  "激活/关闭角色扰动装置": "Hidden.Execution.Set_Disruptor_State",
   /**  See `NODES.Execution_CollisionTriggerSource_SetSourceState` for detailed documentation. */
   "激活/关闭碰撞触发源": "Execution.Collision_Trigger_Source.Set_Source_State",
   /**  See `NODES.Execution_EntityRelated_RemoveEntity` for detailed documentation. */
@@ -19883,11 +19883,11 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_Skill_RemoveBySlot` for detailed documentation. */
   "以槽位删除角色技能": "Execution.Skill.Remove_By_Slot",
   /**  See `NODES.Hidden_Trigger_OnNativeValueChange` for detailed documentation. */
-  "When Native Custom Value Changes": "Hidden.Trigger.On_Native_Value_Change",
+  "原生CustomValue变化时": "Hidden.Trigger.On_Native_Value_Change",
   /**  See `NODES.Hidden_Execution_SetNativeValue` for detailed documentation. */
-  "Native Setting Custom Value": "Hidden.Execution.Set_Native_Value",
+  "原生设置CustomValue": "Hidden.Execution.Set_Native_Value",
   /**  See `NODES.Hidden_Query_GetNativeValue` for detailed documentation. */
-  "Native Query Custom Value": "Hidden.Query.Get_Native_Value",
+  "原生查询CustomValue": "Hidden.Query.Get_Native_Value",
   /**  See `NODES.Execution_SpecialEffect_StopByAsset` for detailed documentation. */
   "根据特效资产清除特效": "Execution.Special_Effect.Stop_By_Asset",
   /**  See `NODES.Arithmetic_Math_VectorRotate` for detailed documentation. */
@@ -19983,9 +19983,9 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_FactionRelated_IsHostile` for detailed documentation. */
   "查询阵营是否敌对": "Query.Faction_Related.Is_Hostile",
   /**  See `NODES.Hidden_Execution_AddNameplate` for detailed documentation. */
-  "Add Entity Active Nameplate": "Hidden.Execution.Add_Nameplate",
+  "添加实体生效铭牌": "Hidden.Execution.Add_Nameplate",
   /**  See `NODES.Hidden_Execution_RemoveNameplate` for detailed documentation. */
-  "Delete Entity Active Nameplate": "Hidden.Execution.Remove_Nameplate",
+  "删除实体生效铭牌": "Hidden.Execution.Remove_Nameplate",
   /**  See `NODES.Execution_Nameplate_SetNameplate` for detailed documentation. */
   "设置实体生效铭牌": "Execution.Nameplate.Set_Nameplate",
   /**  See `NODES.Execution_CreationPatrol_SwitchTemplate` for detailed documentation. */
@@ -20087,7 +20087,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_Equipment_GetAffixValue` for detailed documentation. */
   "获取装备词条数值": "Query.Equipment.Get_Affix_Value",
   /**  See `NODES.Hidden_Execution_UpdateLeaderboard` for detailed documentation. */
-  "Update Player Leaderboard Score": "Hidden.Execution.Update_Leaderboard",
+  "更新玩家排行榜分数": "Hidden.Execution.Update_Leaderboard",
   /**  See `NODES.Trigger_TextBubble_OnBubbleComplete` for detailed documentation. */
   "文本气泡完成时": "Trigger.Text_Bubble.On_Bubble_Complete",
   /**  See `NODES.Trigger_Equipment_OnAffixChange` for detailed documentation. */
@@ -20321,7 +20321,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_CustomVariable_GetSnapshot` for detailed documentation. */
   "查询自定义变量快照": "Query.Custom_Variable.Get_Snapshot",
   /**  See `NODES.Hidden_Trigger_OnGMCall` for detailed documentation. */
-  "When Calling GM (This Node is Hidden Externally)": "Hidden.Trigger.On_GM_Call",
+  "调用GM时（此节点不外放）": "Hidden.Trigger.On_GM_Call",
   /**  See `NODES.Others_PortClient_GraphEndBool` for detailed documentation. */
   "节点图结束(布尔型)_Client": "Others.Port_Client.Graph_End_Bool",
   /**  See `NODES.Arithmetic_MathClient_And` for detailed documentation. */
@@ -20395,7 +20395,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_EntityRelatedClient_GetAttackTarget` for detailed documentation. */
   "获取单位攻击目标_Client": "Query.Entity_Related_Client.Get_Attack_Target",
   /**  See `NODES.Hidden_QueryClient_GetCameraTemplate` for detailed documentation. */
-  "Get Current Camera Template_Client": "Hidden.Query_Client.Get_Camera_Template",
+  "获取当前镜头模板_Client": "Hidden.Query_Client.Get_Camera_Template",
   /**  See `NODES.Query_CharacterRelatedClient_IsInCombat` for detailed documentation. */
   "查询自身是否已入战_Client": "Query.Character_Related_Client.Is_In_Combat",
   /**  See `NODES.Execution_CharacterSkillClient_PlayTimedFX` for detailed documentation. */
@@ -20415,7 +20415,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_EntityRelatedClient_GetType` for detailed documentation. */
   "获取实体的类型_Client": "Query.Entity_Related_Client.Get_Type",
   /**  See `NODES.Hidden_QueryClient_GetCameraRotation` for detailed documentation. */
-  "Get Camera Orientation_Client": "Hidden.Query_Client.Get_Camera_Rotation",
+  "获取镜头朝向_Client": "Hidden.Query_Client.Get_Camera_Rotation",
   /**  See `NODES.Query_EntityRelatedClient_GetSocketLoc` for detailed documentation. */
   "获取目标挂接点位置_Client": "Query.Entity_Related_Client.Get_Socket_Loc",
   /**  See `NODES.Query_EntityRelatedClient_GetSocketRot` for detailed documentation. */
@@ -20439,7 +20439,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_CharacterSkillClient_RemoveStatus` for detailed documentation. */
   "移除单位状态_Client": "Execution.Character_Skill_Client.Remove_Status",
   /**  See `NODES.Execution_CharacterSkillClient_TriggerHitboxSocket` for detailed documentation. */
-  "Trigger Hitbox at Specified Attachment Point_Client": "Execution.Character_Skill_Client.Trigger_Hitbox_Socket",
+  "指定挂接点打攻击盒_Client": "Execution.Character_Skill_Client.Trigger_Hitbox_Socket",
   /**  See `NODES.Execution_CharacterSkillClient_RemoveDevice` for detailed documentation. */
   "移除指定角色扰动装置_Client": "Execution.Character_Skill_Client.Remove_Device",
   /**  See `NODES.Execution_CharacterSkillClient_ModifyWeight` for detailed documentation. */
@@ -20529,7 +20529,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_EntityRelatedClient_IsActive` for detailed documentation. */
   "查询实体是否在场_Client": "Query.Entity_Related_Client.Is_Active",
   /**  See `NODES.Hidden_OtherClient_GraphEnd` for detailed documentation. */
-  "Node Graph Ends_Client": "Hidden.Other_Client.Graph_End",
+  "节点图结束_Client": "Hidden.Other_Client.Graph_End",
   /**  See `NODES.Execution_CharacterSkillClient_TurnToFace` for detailed documentation. */
   "玩家转向指定朝向_Client": "Execution.Character_Skill_Client.Turn_To_Face",
   /**  See `NODES.Execution_CharacterSkillClient_ResetTarget` for detailed documentation. */
@@ -20549,13 +20549,13 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_CharacterSkillClient_TriggerSectorHitboxLoc` for detailed documentation. */
   "特定位置打扇形攻击盒_Client": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Loc",
   /**  See `NODES.Execution_CharacterSkillClient_TriggerSphereHitboxSocket` for detailed documentation. */
-  "Trigger Spherical Hitbox at Specified Attachment Point_Client": "Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Socket",
+  "指定挂接点打球形攻击盒_Client": "Execution.Character_Skill_Client.Trigger_Sphere_Hitbox_Socket",
   /**  See `NODES.Execution_CharacterSkillClient_TriggerRectHitboxSocket` for detailed documentation. */
-  "Trigger Rectangular Hitbox at Specified Attachment Point_Client": "Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Socket",
+  "指定挂接点打矩形攻击盒_Client": "Execution.Character_Skill_Client.Trigger_Rect_Hitbox_Socket",
   /**  See `NODES.Execution_CharacterSkillClient_TriggerSectorHitboxSocket` for detailed documentation. */
-  "指定挂接点打攻击盒_Client": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Socket",
+  "指定挂接点打扇形攻击盒_Client": "Execution.Character_Skill_Client.Trigger_Sector_Hitbox_Socket",
   /**  See `NODES.Hidden_ExecutionClient_TestSendSignal` for detailed documentation. */
-  "(Test) Send Client Signal_Client": "Hidden.Execution_Client.Test_Send_Signal",
+  "（测试）发送客户端信号_Client": "Hidden.Execution_Client.Test_Send_Signal",
   /**  See `NODES.Query_ScanningClient_GetScannedEntity` for detailed documentation. */
   "获取扫描组件当前扫描到的实体_Client": "Query.Scanning_Client.Get_Scanned_Entity",
   /**  See `NODES.Query_ScanningClient_GetScannableEntities` for detailed documentation. */

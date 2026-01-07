@@ -665,6 +665,7 @@ classDiagram
 | [WebMiliastraNodesEditor](https://github.com/Columbina-Dev/WebMiliastraNodesEditor) | 网页版节点编辑器 |
 | [genshin-miliastra-file-format](https://github.com/script-1024/genshin-miliastra-file-format) | `gil` 等其它文件格式介绍 |
 | [GIScriptEditor](https://github.com/hackermdch/GIScriptEditor) | 另外一个DSL语言设计, 已实现**不等价**将 DSL 覆写入 GIL 文件, 并提供了一个自己设计的 UgcUtil 接口, 但是对GIL解析有待进一步完善 |
+| [AnimeGameData](https://github.com/DimbreathBot/AnimeGameData) | 游戏内文本导出, 数据文件已参考这个库的数据进行改正. |
 
 *使用视觉方案的模拟自动化工具暂不列举*
 

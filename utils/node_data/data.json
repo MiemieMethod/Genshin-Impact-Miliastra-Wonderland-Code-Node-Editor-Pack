@@ -12161,7 +12161,8 @@
         "zh-Hans": "获取列表最大值"
       },
       "Alias": [
-        "Get_Maximum_Value_from_List"
+        "Get_Maximum_Value_from_List",
+        "Get Maximum Value from List"
       ],
       "Type": "Variant",
       "System": "Server",
@@ -19004,7 +19005,8 @@
         "zh-Hans": "查询当前激活的实体布设组列表"
       },
       "Alias": [
-        "Get_Currently_Active_Entity_Deployment_Groups"
+        "Get_Currently_Active_Entity_Deployment_Groups",
+        "Get Currently Active Entity Deployment Groups"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -19315,7 +19317,8 @@
         "zh-Hans": "圆周率"
       },
       "Alias": [
-        "Pi"
+        "Pi",
+        "Pi (π)"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -26428,7 +26431,8 @@
         "zh-Hans": "修改角色扰动装置"
       },
       "Alias": [
-        "Modifying_Character_Disruptor_Device"
+        "Modifying_Character_Disruptor_Device",
+        "Modifying Character Disruptor Device"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -28118,7 +28122,8 @@
         "zh-Hans": "获取场上指定元件ID的实体"
       },
       "Alias": [
-        "Get_Entities_With_Specified_Prefab_on_the_Field"
+        "Get_Entities_With_Specified_Prefab_on_the_Field",
+        "Get Entities With Specified Prefab on the Field"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -38735,7 +38740,8 @@
         "zh-Hans": "原生设置CustomValue"
       },
       "Alias": [
-        "Native_Setting_Custom_Value"
+        "Native_Setting_Custom_Value",
+        "Native Setting Custom Value"
       ],
       "Type": "Variant",
       "System": "Server",
@@ -43502,7 +43508,8 @@
         "zh-Hans": "添加朝向目标旋转型基础运动器"
       },
       "Alias": [
-        "Add_Target_Oriented_Rotation_Based_Motion_Device"
+        "Add_Target_Oriented_Rotation_Based_Motion_Device",
+        "Add Target-Oriented Rotation-Based Motion Device"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -43620,7 +43627,8 @@
         "zh-Hans": "移除控件组库内界面控件组"
       },
       "Alias": [
-        "Remove_Interface_Control_Group_From_Control_Group_Library"
+        "Remove_Interface_Control_Group_From_Control_Group_Library",
+        "Remove Interface Control Group From Control Group Library"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -44283,7 +44291,8 @@
         "zh-Hans": "实体移除单位标签"
       },
       "Alias": [
-        "Remove_Unit_Tag_from_Entity"
+        "Remove_Unit_Tag_from_Entity",
+        "Remove Unit Tag from Entity"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -44359,7 +44368,8 @@
         "zh-Hans": "实体清空单位标签"
       },
       "Alias": [
-        "Clear_Unit_Tags_from_Entity"
+        "Clear_Unit_Tags_from_Entity",
+        "Clear Unit Tags from Entity"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -45476,7 +45486,8 @@
         "zh-Hans": "设置指定实体的仇恨值"
       },
       "Alias": [
-        "Set_the_Aggro_Value_of_Specified_Entity"
+        "Set_the_Aggro_Value_of_Specified_Entity",
+        "Set the Aggro Value of Specified Entity"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -46151,7 +46162,8 @@
         "zh-Hans": "查询指定实体是否已入战"
       },
       "Alias": [
-        "Query_if_Specified_Entity_Is_in_Combat"
+        "Query_if_Specified_Entity_Is_in_Combat",
+        "Query if Specified Entity Is in Combat"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -49512,7 +49524,8 @@
         "zh-Hans": "获取玩家段位信息"
       },
       "Alias": [
-        "Get_Player_Ranking_Info"
+        "Get_Player_Ranking_Info",
+        "Get Player Ranking Info"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -52946,7 +52959,8 @@
       "Alias": [
         "HP_Loss",
         "HP Loss",
-        "Loss_HP"
+        "Loss_HP",
+        "Loss HP"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -53272,7 +53286,8 @@
         "zh-Hans": "商店出售自定义商品时"
       },
       "Alias": [
-        "When_Custom_Shop_Item_Is_Sold"
+        "When_Custom_Shop_Item_Is_Sold",
+        "When Custom Shop Item Is Sold"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -53397,7 +53412,8 @@
         "zh-Hans": "商店出售背包物品时"
       },
       "Alias": [
-        "When_Selling_Inventory_Items_in_the_Shop"
+        "When_Selling_Inventory_Items_in_the_Shop",
+        "When Selling Inventory Items in the Shop"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -53879,7 +53895,8 @@
         "zh-Hans": "商店收购道具时"
       },
       "Alias": [
-        "When_selling_items_to_the_shop"
+        "When_selling_items_to_the_shop",
+        "When selling items to the shop"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -54626,7 +54643,8 @@
         "zh-Hans": "向物品收购表中新增物品"
       },
       "Alias": [
-        "Add_Items_to_the_Purchase_List"
+        "Add_Items_to_the_Purchase_List",
+        "Add Items to the Purchase List"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -54938,7 +54956,8 @@
         "zh-Hans": "从物品收购表中移除物品"
       },
       "Alias": [
-        "Remove_item_from_purchase_list"
+        "Remove_item_from_purchase_list",
+        "Remove item from purchase list"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -55717,7 +55736,8 @@
         "zh-Hans": "获取背包所有基础道具"
       },
       "Alias": [
-        "Get_all_basic_items_from_Inventory"
+        "Get_all_basic_items_from_Inventory",
+        "Get all basic items from Inventory"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -55770,7 +55790,8 @@
         "zh-Hans": "获取背包所有货币"
       },
       "Alias": [
-        "Get_All_Currency_From_Inventory"
+        "Get_All_Currency_From_Inventory",
+        "Get All Currency From Inventory"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -55823,7 +55844,8 @@
         "zh-Hans": "获取背包所有装备"
       },
       "Alias": [
-        "Get_all_equipment_from_Inventory"
+        "Get_all_equipment_from_Inventory",
+        "Get all equipment from Inventory"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -56031,7 +56053,8 @@
         "zh-Hans": "修改掉落物组件道具数量"
       },
       "Alias": [
-        "Modify_Loot_Item_Component_Quantity"
+        "Modify_Loot_Item_Component_Quantity",
+        "Modify Loot Item Component Quantity"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -56125,7 +56148,8 @@
         "zh-Hans": "修改掉落物组件货币数量"
       },
       "Alias": [
-        "Modify_Loot_Component_Currency_Amount"
+        "Modify_Loot_Component_Currency_Amount",
+        "Modify Loot Component Currency Amount"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -56522,7 +56546,8 @@
         "zh-Hans": "背包内道具被使用时"
       },
       "Alias": [
-        "When_Items_in_the_Inventory_Are_Used"
+        "When_Items_in_the_Inventory_Are_Used",
+        "When Items in the Inventory Are Used"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -56825,7 +56850,8 @@
         "zh-Hans": "获取当前生效的扫描标签配置ID"
       },
       "Alias": [
-        "Get_the_Currently_Active_Scan_Tag_Config_ID"
+        "Get_the_Currently_Active_Scan_Tag_Config_ID",
+        "Get the Currently Active Scan Tag Config ID"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -57883,7 +57909,8 @@
         "zh-Hans": "查询单位状态的槽位序号列表"
       },
       "Alias": [
-        "List_of_Slot_IDs_Querying_Unit_Status"
+        "List_of_Slot_IDs_Querying_Unit_Status",
+        "List of Slot IDs Querying Unit Status"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -57951,7 +57978,8 @@
         "zh-Hans": "根据装备索引查询装备配置ID"
       },
       "Alias": [
-        "Query_Equipment_Config_ID_by_Equipment_ID"
+        "Query_Equipment_Config_ID_by_Equipment_ID",
+        "Query Equipment Config ID by Equipment ID"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -58057,7 +58085,8 @@
         "zh-Hans": "根据玩家GUID获取玩家序号"
       },
       "Alias": [
-        "Get_Player_ID_by_Player_GUID"
+        "Get_Player_ID_by_Player_GUID",
+        "Get Player ID by Player GUID"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -58111,7 +58140,8 @@
       },
       "Alias": [
         "Calculate_formatted_time_from_timestamp",
-        "Calculate Formatted Time From Timestamp"
+        "Calculate Formatted Time From Timestamp",
+        "Calculate formatted time from timestamp"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -58368,7 +58398,8 @@
       },
       "Alias": [
         "Calculate_day_of_the_week_from_timestamp",
-        "Calculate Day of the Week From Timestamp"
+        "Calculate Day of the Week From Timestamp",
+        "Calculate day of the week from timestamp"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -58762,7 +58793,8 @@
         "zh-Hans": "以整数设置玩家排行榜分数"
       },
       "Alias": [
-        "Set_Player_Leaderboard_Score_as_an_Integer"
+        "Set_Player_Leaderboard_Score_as_an_Integer",
+        "Set Player Leaderboard Score as an Integer"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -58856,7 +58888,8 @@
         "zh-Hans": "以浮点数设置玩家排行榜分数"
       },
       "Alias": [
-        "Set_Player_Leaderboard_Score_as_a_Float"
+        "Set_Player_Leaderboard_Score_as_a_Float",
+        "Set Player Leaderboard Score as a Float"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -58950,7 +58983,8 @@
         "zh-Hans": "修改环境配置"
       },
       "Alias": [
-        "Modify_environment_settings"
+        "Modify_environment_settings",
+        "Modify environment settings"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -59163,7 +59197,8 @@
         "zh-Hans": "进入易受打断状态时"
       },
       "Alias": [
-        "When_Entering_an_Interruptible_State"
+        "When_Entering_an_Interruptible_State",
+        "When Entering an Interruptible State"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -59829,7 +59864,8 @@
         "zh-Hans": "查询对应礼盒消耗数量"
       },
       "Alias": [
-        "Query_Corresponding_Gift_Box_Consumption"
+        "Query_Corresponding_Gift_Box_Consumption",
+        "Query Corresponding Gift Box Consumption"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -60862,7 +60898,8 @@
         "zh-Hans": "对字典设置或新增键值对"
       },
       "Alias": [
-        "Set_or_Add_Key_Value_Pairs_to_Dictionary"
+        "Set_or_Add_Key_Value_Pairs_to_Dictionary",
+        "Set or Add Key Value Pairs to Dictionary"
       ],
       "Type": "Variant",
       "System": "Server",
@@ -67143,7 +67180,8 @@
         "zh-Hans": "以键对字典移除键值对"
       },
       "Alias": [
-        "Remove_Key_Value_Pairs_from_Dictionary_by_Key"
+        "Remove_Key_Value_Pairs_from_Dictionary_by_Key",
+        "Remove Key Value Pairs from Dictionary by Key"
       ],
       "Type": "Variant",
       "System": "Server",
@@ -72065,7 +72103,8 @@
         "zh-Hans": "获取字典中键组成的列表"
       },
       "Alias": [
-        "Get_List_of_Keys_from_Dictionary"
+        "Get_List_of_Keys_from_Dictionary",
+        "Get List of Keys from Dictionary"
       ],
       "Type": "Variant",
       "System": "Server",
@@ -73982,7 +74021,8 @@
         "zh-Hans": "获取字典中值组成的列表"
       },
       "Alias": [
-        "Get_List_of_Values_from_Dictionary"
+        "Get_List_of_Values_from_Dictionary",
+        "Get List of Values from Dictionary"
       ],
       "Type": "Variant",
       "System": "Server",
@@ -75017,7 +75057,8 @@
         "zh-Hans": "查询字典长度"
       },
       "Alias": [
-        "Query_Dictionary_s_Length"
+        "Query_Dictionary_s_Length",
+        "Query Dictionary's Length"
       ],
       "Type": "Variant",
       "System": "Server",
@@ -136128,7 +136169,8 @@
         "zh-Hans": "调用GM时（此节点不外放）"
       },
       "Alias": [
-        "When_Calling_GM_This_Node_is_Hidden_Externally"
+        "When_Calling_GM_This_Node_is_Hidden_Externally",
+        "When Calling GM (This Node is Hidden Externally)"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -140832,7 +140874,8 @@
         "zh-Hans": "节点图开始"
       },
       "Alias": [
-        "Node_Graph_Begins"
+        "Node_Graph_Begins",
+        "Node Graph Begins"
       ],
       "Type": "Fixed",
       "System": "Client",
@@ -147170,7 +147213,8 @@
         "zh-Hans": "查询指定实体是否入战"
       },
       "Alias": [
-        "Query_if_Specified_Entity_is_in_Combat"
+        "Query_if_Specified_Entity_is_in_Combat",
+        "Query if Specified Entity is in Combat"
       ],
       "Type": "Fixed",
       "System": "Client",
@@ -152364,7 +152408,8 @@
         "zh-Hans": "指定挂接点打扇形攻击盒"
       },
       "Alias": [
-        "Trigger_Sector_Hitbox_at_Specified_Attachment_Point"
+        "Trigger_Sector_Hitbox_at_Specified_Attachment_Point",
+        "指定挂接点打攻击盒"
       ],
       "Type": "Fixed",
       "System": "Client",

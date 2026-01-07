@@ -78,7 +78,7 @@ export const NODES = {
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
  * | 0 || 🔷 || **`R<T>`** || `key` || Control Expression: Only supports Integers or Strings |
- * | 1 || 🔷 || **`L<R<T>>`** || `cases` || Judge Parameter |
+ * | 1 || 🔷 || **`L<R<T>>`** || `cases` || valid_pin_list |
  *
  * -----------
  *
@@ -122,7 +122,7 @@ export const NODES = {
  * | - || ▶️ || - || `Start` ||  |
  * | - || ▶️ || - || `Break` || Break Loop |
  * | 0 || 🔹 || `Int` || `start_index` || Loop Start Value: Starting integer value for iteration |
- * | 1 || 🔹 || `Int` || `end_index` || Loop End Value: Integer value at which the iteration ends |
+ * | 1 || 🔹 || `Int` || `end_index` || Loop Termination Value: Integer value at which the iteration ends |
  *
  * -----------
  *
@@ -355,7 +355,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Flt` || `radians` || Angle (Radians) |
+ * | 0 || 🔸 || `Flt` || `radians` || Angle (radians) |
  */
   Arithmetic_Math_VectorAngle: "Arithmetic.Math.Vector_Angle",
 
@@ -1106,7 +1106,7 @@ export const NODES = {
  * | - || ⏩ || - || `FlowOut` ||  |
  * | 0 || 🔸 || `Ety` || `source_entity` || Event Source Entity |
  * | 1 || 🔸 || `Gid` || `source_guid` || Event Source GUID |
- * | 2 || 🔸 || `Int` || `preset_index` || Preset Status ID |
+ * | 2 || 🔸 || `Int` || `preset_index` || Preset Status Index |
  * | 3 || 🔸 || `Int` || `old_value` || Pre-Change Value |
  * | 4 || 🔸 || `Int` || `new_value` || Post-Change Value |
  */
@@ -2188,7 +2188,7 @@ export const NODES = {
   Query_ListRelated_GetLength: "Query.List_Related.Get_Length",
 
   /**
- * **Get Maximum Value from List** `(Query.List_Related.Get_Max)`
+ * **Get Maximum Value From List** `(Query.List_Related.Get_Max)`
  *
  * - Applies only to Floating Point Number or Integer lists; returns the maximum value
  *
@@ -2485,7 +2485,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔶 || **`L<R<T>>`** || `list` || list: The assembled list |
+ * | 0 || 🔶 || **`L<R<T>>`** || `list` || List: The assembled list |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Int>`
@@ -2555,7 +2555,7 @@ export const NODES = {
   Execution_EntityDeployment_SetGroupState: "Execution.Entity_Deployment.Set_Group_State",
 
   /**
- * **Get Currently Active Entity Deployment Groups** `(Query.Entity_Layout.Get_Active_Groups)`
+ * **Get Currently Active Entity Deployment Group List** `(Query.Entity_Layout.Get_Active_Groups)`
  *
  * - Searches the list of Entity Layout Groups currently active in the Stage
  *
@@ -2643,7 +2643,7 @@ export const NODES = {
   Execution_CommonNode_ForwardEvent: "Execution.Common_Node.Forward_Event",
 
   /**
- * **Pi (π)** `(Query.Math.Pi)`
+ * **Pi** `(Query.Math.Pi)`
  *
  * - Returns the approximate value of π (≈ 3.142)
  *
@@ -2678,7 +2678,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `vector` || (0,0,0) |
+ * | 0 || 🔸 || `Vec` || `vector` || (0, 0, 0) |
  */
   Query_Math_VectorZero: "Query.Math.Vector_Zero",
 
@@ -2698,7 +2698,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `vector` || (0,1,0) |
+ * | 0 || 🔸 || `Vec` || `vector` || (0, 1, 0) |
  */
   Query_Math_VectorUp: "Query.Math.Vector_Up",
 
@@ -2718,7 +2718,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `vector` || (0,-1,0) |
+ * | 0 || 🔸 || `Vec` || `vector` || (0, -1, 0) |
  */
   Query_Math_VectorDown: "Query.Math.Vector_Down",
 
@@ -2738,7 +2738,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `vector` || (-1,0,0) |
+ * | 0 || 🔸 || `Vec` || `vector` || (-1, 0, 0) |
  */
   Query_Math_VectorLeft: "Query.Math.Vector_Left",
 
@@ -2758,7 +2758,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `vector` || (1,0,0) |
+ * | 0 || 🔸 || `Vec` || `vector` || (1, 0, 0) |
  */
   Query_Math_VectorRight: "Query.Math.Vector_Right",
 
@@ -2778,7 +2778,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `vector` || (0,0,1) |
+ * | 0 || 🔸 || `Vec` || `vector` || (0, 0, 1) |
  */
   Query_Math_VectorForward: "Query.Math.Vector_Forward",
 
@@ -2798,7 +2798,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `vector` || (0,0,-1) |
+ * | 0 || 🔸 || `Vec` || `vector` || (0, 0, -1) |
  */
   Query_Math_VectorBackward: "Query.Math.Vector_Backward",
 
@@ -4091,8 +4091,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
- * | 1 || 🔹 || `Ety` || `Input1` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || Player Entity List |
+ * | 1 || 🔹 || `Ety` || `Input1` || Target Entity |
  *
  * -----------
  *
@@ -4118,7 +4118,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || Player Entity List |
  *
  * -----------
  *
@@ -4144,8 +4144,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
- * | 1 || 🔹 || `Ety` || `Input1` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || Player Entity List |
+ * | 1 || 🔹 || `Ety` || `Input1` || Target Entity |
  *
  * -----------
  *
@@ -4171,7 +4171,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || Player Entity List |
  *
  * -----------
  *
@@ -4197,10 +4197,10 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Ety>` || `Input0` ||  |
- * | 1 || 🔹 || `Flt` || `Input1` ||  |
- * | 2 || 🔹 || `Flt` || `Input2` ||  |
- * | 3 || 🔹 || `Flt` || `Input3` ||  |
+ * | 0 || 🔹 || `L<Ety>` || `Input0` || Player Entity List |
+ * | 1 || 🔹 || `Flt` || `Input1` || Intensity |
+ * | 2 || 🔹 || `Flt` || `Input2` || Duration |
+ * | 3 || 🔹 || `Flt` || `Input3` || Shake Source Distance |
  *
  * -----------
  *
@@ -4284,7 +4284,7 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `unit_tag_index` || Unit Tag ID |
+ * | 0 || 🔹 || `Int` || `unit_tag_index` || Unit Tag Index |
  *
  * -----------
  *
@@ -5075,7 +5075,7 @@ export const NODES = {
   Execution_UnitStatus_RemoveStatus: "Execution.Unit_Status.Remove_Status",
 
   /**
- * **Modifying Character Disruptor Device** `(Execution.Character_Disruptor.Modify_Device)`
+ * **Modify Character Disruptor Device** `(Execution.Character_Disruptor.Modify_Device)`
  *
  * - Edit the Character Disruptor Device active on the Target Entity by ID; if the ID does not exist, the change has no effect
  *
@@ -5187,7 +5187,7 @@ export const NODES = {
  * | - || ⏩ || - || `FlowOut` ||  |
  * | 0 || 🔸 || `Ety` || `source_entity` || Event Source Entity |
  * | 1 || 🔸 || `Gid` || `source_guid` || Event Source GUID |
- * | 2 || 🔸 || `Ety` || `victim` || Hit Target Entity |
+ * | 2 || 🔸 || `Ety` || `victim` || Target Entity |
  * | 3 || 🔸 || `Flt` || `damage` || Damage: Actual damage dealt. If no damage is dealt due to Invincible or other reasons, the amount is 0 |
  * | 4 || 🔸 || `L<Str>` || `attack_tags` || Attack Tag List |
  * | 5 || 🔸 || `E<ELMT>` || `element_type` || Elemental Type |
@@ -5580,7 +5580,7 @@ export const NODES = {
   Query_EntityRelated_GetEntityByType: "Query.Entity_Related.Get_Entity_By_Type",
 
   /**
- * **Get Entities With Specified Prefab on the Field** `(Query.Entity_Related.Get_With_Prefab)`
+ * **Get Entity With Specified Prefab ID on the Field** `(Query.Entity_Related.Get_With_Prefab)`
  *
  * - Returns all Entities currently in the scene that were created by the specified Prefab ID
  *
@@ -6254,9 +6254,9 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Unk` || `Input1` ||  |
- * | 2 || 🔹 || `Bol` || `Input2` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || Target Entity |
+ * | 1 || 🔹 || `Unk` || `Input1` || Component Type |
+ * | 2 || 🔹 || `Bol` || `Input2` || Activate |
  *
  * -----------
  *
@@ -6684,7 +6684,7 @@ export const NODES = {
  * | 0 || 🔸 || `Ety` || `source_entity` || Event Source Entity |
  * | 1 || 🔸 || `Gid` || `source_guid` || Event Source GUID |
  * | 2 || 🔸 || `Cfg` || `career_config_id_old` || Pre-Modification Class Config ID |
- * | 3 || 🔸 || `Cfg` || `career_config_id_new` || Post-Modification Config ID |
+ * | 3 || 🔸 || `Cfg` || `career_config_id_new` || Post-Modification Class Config ID |
  */
   Trigger_Class_OnClassChange: "Trigger.Class.On_Class_Change",
 
@@ -7099,12 +7099,12 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Ety` || `Output0` ||  |
- * | 1 || 🔸 || `Gid` || `Output1` ||  |
- * | 2 || 🔸 || `Str` || `Output2` ||  |
- * | 3 || 🔶 || **`R<T>`** || `Output3` ||  |
- * | 4 || 🔶 || **`R<T>`** || `Output4` ||  |
- * | 5 || 🔸 || `Bol` || `Output5` ||  |
+ * | 0 || 🔸 || `Ety` || `Output0` || owner |
+ * | 1 || 🔸 || `Gid` || `Output1` || ownerGuid |
+ * | 2 || 🔸 || `Str` || `Output2` || name |
+ * | 3 || 🔶 || **`R<T>`** || `Output3` || before_value |
+ * | 4 || 🔶 || **`R<T>`** || `Output4` || after_value |
+ * | 5 || 🔸 || `Bol` || `Output5` || is_bp_var |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Int>`
@@ -7264,7 +7264,7 @@ export const NODES = {
   Hidden_Trigger_OnNativeValueChange: "Hidden.Trigger.On_Native_Value_Change",
 
   /**
- * **Native Setting Custom Value** `(Hidden.Execution.Set_Native_Value)`
+ * **Native Settings Custom Value** `(Hidden.Execution.Set_Native_Value)`
  *
  * -----------
  *
@@ -7278,11 +7278,11 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔷 || **`R<T>`** || `Input2` ||  |
- * | 3 || 🔹 || `Bol` || `Input3` ||  |
- * | 4 || 🔹 || `Bol` || `Input4` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || target |
+ * | 1 || 🔹 || `Str` || `Input1` || name |
+ * | 2 || 🔷 || **`R<T>`** || `Input2` || value |
+ * | 3 || 🔹 || `Bol` || `Input3` || is_bp_var |
+ * | 4 || 🔹 || `Bol` || `Input4` || canTriggerEvent |
  *
  * -----------
  *
@@ -7462,16 +7462,16 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Unk` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Bol` || `Input2` ||  |
+ * | 0 || 🔹 || `Unk` || `Input0` || target |
+ * | 1 || 🔹 || `Str` || `Input1` || name |
+ * | 2 || 🔹 || `Bol` || `Input2` || is_bp_var |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔶 || **`R<T>`** || `Output0` ||  |
+ * | 0 || 🔶 || **`R<T>`** || `Output0` || value |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Int>`
@@ -8021,7 +8021,7 @@ export const NODES = {
   Arithmetic_Math_VectorToRotation: "Arithmetic.Math.Vector_To_Rotation",
 
   /**
- * **Add Target-Oriented Rotation-Based Motion Device** `(Execution.Motion_Device.Add_Target_Rotation)`
+ * **Add Basic Target-Oriented Rotation-Based Motion Device** `(Execution.Motion_Device.Add_Target_Rotation)`
  *
  * - Dynamically add a Basic Motion Device with Target-Oriented Rotation to the Target Entity during Stage runtime
  *
@@ -8052,7 +8052,7 @@ export const NODES = {
   Execution_MotionDevice_AddTargetRotation: "Execution.Motion_Device.Add_Target_Rotation",
 
   /**
- * **Remove Interface Control Group From Control Group Library** `(Execution.UI_Control_Group.Remove_Group)`
+ * **Remove UI Control Group From Control Group Library** `(Execution.UI_Control_Group.Remove_Group)`
  *
  * - Remove the UI Control Groups activated via [Activate UI Control Group in Control Group Library] from the Target Player's Interface Layout
  *
@@ -8225,7 +8225,7 @@ export const NODES = {
   Execution_UnitTag_AddTag: "Execution.Unit_Tag.Add_Tag",
 
   /**
- * **Remove Unit Tag from Entity** `(Execution.Unit_Tag.Remove_Tag)`
+ * **Remove Unit Tag From Entity** `(Execution.Unit_Tag.Remove_Tag)`
  *
  * - Remove Unit Tags from the specified Entity
  *
@@ -8254,7 +8254,7 @@ export const NODES = {
   Execution_UnitTag_RemoveTag: "Execution.Unit_Tag.Remove_Tag",
 
   /**
- * **Clear Unit Tags from Entity** `(Execution.Unit_Tag.Clear_Tags)`
+ * **Clear Unit Tags From Entity** `(Execution.Unit_Tag.Clear_Tags)`
  *
  * - Clear Unit Tags for the specified Entity
  *
@@ -8545,7 +8545,7 @@ export const NODES = {
  * | 3 || 🔹 || `Flt` || `end_time` || End Time |
  * | 4 || 🔹 || `Int` || `volume` || Volume |
  * | 5 || 🔹 || `Bol` || `loop` || Loop Playback |
- * | 6 || 🔹 || `Flt` || `loop_interval` || Loop Interval |
+ * | 6 || 🔹 || `Flt` || `loop_interval` || Loop Playback Interval |
  * | 7 || 🔹 || `Flt` || `playback_rate` || Playback Speed |
  * | 8 || 🔹 || `Bol` || `allow_join_leave` || Enable Fade In/Out |
  *
@@ -8590,7 +8590,7 @@ export const NODES = {
   Execution_SoundEffect_Play2DOneShot: "Execution.Sound_Effect.Play_2D_One_Shot",
 
   /**
- * **Set the Aggro Value of Specified Entity** `(Execution.Custom_Aggro.Set_Aggro)`
+ * **Set the Aggro Value of the Specified Entity** `(Execution.Custom_Aggro.Set_Aggro)`
  *
  * - Available only in Custom Aggro Mode
  * - Set the Aggro Value of the specified Target Entity on the specified Aggro Owner
@@ -8893,7 +8893,7 @@ export const NODES = {
   Query_CustomAggro_GetAggroList: "Query.Custom_Aggro.Get_Aggro_List",
 
   /**
- * **Query if Specified Entity Is in Combat** `(Query.Custom_Aggro.Is_In_Combat)`
+ * **Query If Specified Entity Is in Combat** `(Query.Custom_Aggro.Is_In_Combat)`
  *
  * - Searches whether the specified Entity has entered battle
  *
@@ -9034,8 +9034,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Cfg` || `Input1` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || Target Entity |
+ * | 1 || 🔹 || `Cfg` || `Input1` || Nameplate Configuration ID |
  *
  * -----------
  *
@@ -9061,8 +9061,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Cfg` || `Input1` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || Target Entity |
+ * | 1 || 🔹 || `Cfg` || `Input1` || Nameplate Configuration ID |
  *
  * -----------
  *
@@ -9263,7 +9263,7 @@ export const NODES = {
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
  * | 0 || 🔹 || `Ety` || `target_player` || Target Player: Specify the runtime Player to invoke the Deck Selector |
- * | 1 || 🔹 || `Int` || `picker_index` || Deck Selector ID: Referenced UI Control Group ID |
+ * | 1 || 🔹 || `Int` || `picker_index` || Deck Selector Index: Referenced UI Control Group ID |
  * | 2 || 🔹 || `Flt` || `duration` || Select Duration: If empty, uses the Deck Selector's default configuration; otherwise, this time value is used as the effective duration<br>Unit in seconds |
  * | 3 || 🔹 || `L<Int>` || `result_map_list` || Select Result Corresponding List: One-to-one with display items: the Deck Selector returns the result value corresponding to each display item<br>Recommended configuration: 1 to X |
  * | 4 || 🔹 || `L<Int>` || `display_map_list` || Select Display Corresponding List: Deck Library Configuration Reference |
@@ -9451,7 +9451,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Bol` || `enabled` || Activation Staet: The active state of the searched Mini-map Marker |
+ * | 0 || 🔸 || `Bol` || `enabled` || Activation Status: The active state of the searched Mini-map Marker |
  * | 1 || 🔸 || `L<Ety>` || `visible_players` || List of Players With Visible Markers: Returns the list of Players who can see this Marker |
  * | 2 || 🔸 || `L<Ety>` || `tracking_players` || List of Players Tracking Markers: Returns the list of Players tracking this Marker |
  */
@@ -9594,8 +9594,8 @@ export const NODES = {
  * | 4 || 🔸 || `Cfg` || `state_config_id` || Unit Status Config ID |
  * | 5 || 🔸 || `Int` || `layer_before` || Pre-Attack Layers |
  * | 6 || 🔸 || `Int` || `layer_after` || Post-Attack Layers |
- * | 7 || 🔸 || `Flt` || `shield_amount_before` || Shield Value of this Unit Status Before Attack |
- * | 8 || 🔸 || `Flt` || `shield_amount_after` || Shield Value of this Unit Status After Attack |
+ * | 7 || 🔸 || `Flt` || `shield_amount_before` || Shield Value of This Unit Status Before Attack |
+ * | 8 || 🔸 || `Flt` || `shield_amount_after` || Shield Value of This Unit Status After Attack |
  */
   Trigger_UnitStatus_OnShieldHit: "Trigger.Unit_Status.On_Shield_Hit",
 
@@ -9948,7 +9948,7 @@ export const NODES = {
   Query_StageSettlement_GetFactionResult: "Query.Stage_Settlement.Get_Faction_Result",
 
   /**
- * **Get Player Ranking Info** `(Query.Rank_Tier.Get_Rank_Info)`
+ * **Get Player Rank Info** `(Query.Rank_Tier.Get_Rank_Info)`
  *
  * - Returns the Player's Rank-related information
  *
@@ -10380,7 +10380,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Int` || `equip_index` || Equipment ID: Integer ID generated during Equipment Initialization to identify the equipment instance |
+ * | 0 || 🔹 || `Int` || `equip_index` || Equipment Index: Integer ID generated during Equipment Initialization to identify the equipment instance |
  * | 1 || 🔹 || `Cfg` || `affix_config_id` || Affix Config ID: The Config ID of the preconfigured Affix defined in Equipment Data Management |
  * | 2 || 🔹 || `Bol` || `overwrite` || Overwrite Affix Value |
  * | 3 || 🔹 || `Flt` || `affix_value` || Affix Value: Can overwrite the value on a pre-configured Affix |
@@ -10411,7 +10411,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Int` || `equip_index` || Equipment ID: Integer ID generated during Equipment Initialization to identify the equipment instance |
+ * | 0 || 🔹 || `Int` || `equip_index` || Equipment Index: Integer ID generated during Equipment Initialization to identify the equipment instance |
  * | 1 || 🔹 || `Int` || `affix_index` || Affix ID |
  *
  * -----------
@@ -10552,9 +10552,9 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Int>` || `Input0` ||  |
- * | 1 || 🔹 || `Int` || `Input1` ||  |
- * | 2 || 🔹 || `Int` || `Input2` ||  |
+ * | 0 || 🔹 || `L<Int>` || `Input0` || Player Index List |
+ * | 1 || 🔹 || `Int` || `Input1` || Leaderboard Score |
+ * | 2 || 🔹 || `Int` || `Input2` || Leaderboard ID |
  *
  * -----------
  *
@@ -10957,8 +10957,8 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Ety` || `owner_entity` || Equipment Holder Entity |
- * | 1 || 🔸 || `Gid` || `owner_guid` || Equipment Holder GUID |
+ * | 0 || 🔸 || `Ety` || `owner_entity` || Equipment Owner Entity |
+ * | 1 || 🔸 || `Gid` || `owner_guid` || Equipment Owner GUID |
  * | 2 || 🔸 || `Int` || `equip_index` || Equipment Index |
  */
   Trigger_Equipment_OnEquip: "Trigger.Equipment.On_Equip",
@@ -10987,7 +10987,7 @@ export const NODES = {
   Trigger_Equipment_OnUnequip: "Trigger.Equipment.On_Unequip",
 
   /**
- * **Loss HP** `(Execution.Combat.Loss_HP)`
+ * **Lose HP** `(Execution.Combat.Loss_HP)`
  *
  * - Directly cause the specified target to lose HP. Losing HP is not an attack, so it does not trigger attack-related events
  *
@@ -11004,10 +11004,10 @@ export const NODES = {
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
  * | 0 || 🔹 || `Ety` || `target_entity` || Target Entity: Target that loses HP |
- * | 1 || 🔹 || `Flt` || `hp_loss` || HP Loss: The amount of HP lost in this instance |
+ * | 1 || 🔹 || `Flt` || `hp_loss` || HP Loss Amount: The amount of HP lost in this instance |
  * | 2 || 🔹 || `Bol` || `is_fatal` || Lethal: If set to False, this HP loss will leave the Target with at least 1 HP remaining |
- * | 3 || 🔹 || `Bol` || `can_be_blocked_by_invincible` || Can be blocked by invincibility: If set to True, and the Target is set to Invincible via Unit Status, HP loss has no effect |
- * | 4 || 🔹 || `Bol` || `can_be_blocked_by_lock_hp` || Can be Blocked by Locked HP?: If set to True, and the Target's HP is locked via Unit Status, HP loss has no effect |
+ * | 3 || 🔹 || `Bol` || `can_be_blocked_by_invincible` || Can Be Blocked by Invincible: If set to True, and the Target is set to Invincible via Unit Status, HP loss has no effect |
+ * | 4 || 🔹 || `Bol` || `can_be_blocked_by_lock_hp` || Can Be Blocked by Locked HP: If set to True, and the Target's HP is locked via Unit Status, HP loss has no effect |
  * | 5 || 🔹 || `E<CDMG>` || `damage_floating_text_type` || Damage Pop-Up Type: No Pop-Up<br>Normal Pop-Up<br>CRIT Hit Pop-Up |
  *
  * -----------
@@ -11054,7 +11054,7 @@ export const NODES = {
   Execution_Combat_RecoverHPInstant: "Execution.Combat.Recover_HP_Instant",
 
   /**
- * **When Custom Shop Item Is Sold** `(Trigger.Shop.On_Custom_Item_Sold)`
+ * **When Custom Shop Item Is Sold in the Shop** `(Trigger.Shop.On_Custom_Item_Sold)`
  *
  * - This event is triggered when Custom items are sold in the Shop. The Owner of the Shop Component will receive it
  *
@@ -11080,7 +11080,7 @@ export const NODES = {
   Trigger_Shop_OnCustomItemSold: "Trigger.Shop.On_Custom_Item_Sold",
 
   /**
- * **When Selling Inventory Items in the Shop** `(Trigger.Shop.On_Inv_Item_Sold)`
+ * **When Inventory Item Is Sold in the Shop** `(Trigger.Shop.On_Inv_Item_Sold)`
  *
  * - This event is triggered when Inventory items are sold in the Shop. The Owner of the Shop Component will receive it
  *
@@ -11201,7 +11201,7 @@ export const NODES = {
   Execution_Shop_ModifyCustomSale: "Execution.Shop.Modify_Custom_Sale",
 
   /**
- * **When selling items to the shop** `(Trigger.Shop.On_Sell_Item)`
+ * **When the Shop Buys an Item** `(Trigger.Shop.On_Sell_Item)`
  *
  * - This event is triggered when items are purchased by the Shop. The Owner of the Shop Component will receive it
  *
@@ -11324,7 +11324,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Int` || `item_index_out` || Item Index |
+ * | 0 || 🔸 || `Int` || `item_index_out` || Shop Item Index |
  */
   Execution_Shop_AddCustomSale: "Execution.Shop.Add_Custom_Sale",
 
@@ -11363,7 +11363,7 @@ export const NODES = {
   Execution_Shop_AddInventorySale: "Execution.Shop.Add_Inventory_Sale",
 
   /**
- * **Add Items to the Purchase List** `(Execution.Shop.Add_To_Cart)`
+ * **Add Item to the Purchase List** `(Execution.Shop.Add_To_Cart)`
  *
  * - Add New Items to the Item Purchase List
  *
@@ -11455,7 +11455,7 @@ export const NODES = {
   Execution_Shop_RemoveInventorySale: "Execution.Shop.Remove_Inventory_Sale",
 
   /**
- * **Remove item from purchase list** `(Execution.Shop.Remove_From_Cart)`
+ * **Remove Item From the Purchase List** `(Execution.Shop.Remove_From_Cart)`
  *
  * - Remove items from the purchase list
  *
@@ -11695,7 +11695,7 @@ export const NODES = {
   Execution_Inventory_SetDropItems: "Execution.Inventory.Set_Drop_Items",
 
   /**
- * **Get all basic items from Inventory** `(Query.Item.Get_Basic_Items)`
+ * **Get All Inventory Basic Items** `(Query.Item.Get_Basic_Items)`
  *
  * - Returns all Basic Items in the Inventory, including Item types and their quantities
  *
@@ -11722,7 +11722,7 @@ export const NODES = {
   Query_Item_GetBasicItems: "Query.Item.Get_Basic_Items",
 
   /**
- * **Get All Currency From Inventory** `(Query.Item.Get_Currency_All)`
+ * **Get All Inventory Currency** `(Query.Item.Get_Currency_All)`
  *
  * - Returns all Currencies in the Inventory, including types and corresponding amounts
  *
@@ -11749,7 +11749,7 @@ export const NODES = {
   Query_Item_GetCurrencyAll: "Query.Item.Get_Currency_All",
 
   /**
- * **Get all equipment from Inventory** `(Query.Item.Get_Equipment_All)`
+ * **Get All Inventory Equipment** `(Query.Item.Get_Equipment_All)`
  *
  * - Returns all Equipment in the Inventory; the output parameter is a list of all Equipment IDs
  *
@@ -11834,7 +11834,7 @@ export const NODES = {
   Execution_Inventory_SetLootContent: "Execution.Inventory.Set_Loot_Content",
 
   /**
- * **Modify Loot Item Component Quantity** `(Execution.Inventory.Modify_Loot_Item)`
+ * **Modify Loot Component Item Quantity** `(Execution.Inventory.Modify_Loot_Item)`
  *
  * - Edit the quantity of the specified Item in the Loot Component on the Loot Prefab
  *
@@ -11864,7 +11864,7 @@ export const NODES = {
   Execution_Inventory_ModifyLootItem: "Execution.Inventory.Modify_Loot_Item",
 
   /**
- * **Modify Loot Component Currency Amount** `(Execution.Inventory.Modify_Loot_Currency)`
+ * **Modify Loot Component Currency Quantity** `(Execution.Inventory.Modify_Loot_Currency)`
  *
  * - Edit the amount of the specified Currency in the Loot Component on the Loot Prefab
  *
@@ -12031,7 +12031,7 @@ export const NODES = {
   Query_Item_GetLootEquipment: "Query.Item.Get_Loot_Equipment",
 
   /**
- * **When Items in the Inventory Are Used** `(Trigger.Item.On_Item_Use)`
+ * **When Inventory Item Is Used** `(Trigger.Item.On_Item_Use)`
  *
  * - This event is triggered when an Item in the Inventory is used. The Owner of the Inventory Component will receive it
  *
@@ -12050,7 +12050,7 @@ export const NODES = {
  * | 0 || 🔸 || `Ety` || `owner_entity` || Item Owner Entity |
  * | 1 || 🔸 || `Gid` || `owner_guid` || Item Owner GUID |
  * | 2 || 🔸 || `Cfg` || `item_config_id` || Item Config ID |
- * | 3 || 🔸 || `Int` || `use_count` || Amount to Use |
+ * | 3 || 🔸 || `Int` || `use_count` || Amount Used |
  */
   Trigger_Item_OnItemUse: "Trigger.Item.On_Item_Use",
 
@@ -12140,7 +12140,7 @@ export const NODES = {
   Execution_ScanTag_SetActiveTag: "Execution.Scan_Tag.Set_Active_Tag",
 
   /**
- * **Get the Currently Active Scan Tag Config ID** `(Query.Scan_Tag.Get_Active_Tag)`
+ * **Get Current Active Scan Tag Config ID** `(Query.Scan_Tag.Get_Active_Tag)`
  *
  * - Returns the Configuration ID of the currently active Scan Tags on the Target Entity
  *
@@ -12252,7 +12252,7 @@ export const NODES = {
  * | - || ▶️ || - || `FlowIn` ||  |
  * | 0 || 🔹 || `Ety` || `target_entity` || Target Entity: Active Character Entity |
  * | 1 || 🔹 || `E<SLOT>` || `skill_slot` || Character Skill Slot: The Skill Slot to edited: Normal Attack, Skill 1-E, Skill 2-Q, Skill 3-R, Skill 4-T, or Custom Skill |
- * | 2 || 🔹 || `Flt` || `delta_seconds` || CD Modifier: New Value = Original Value + Edit Value |
+ * | 2 || 🔹 || `Flt` || `delta_seconds` || CD Time Modifier: New Value = Original Value + Edit Value |
  * | 3 || 🔹 || `Bol` || `limit_max` || Limit Maximum CD Time: If set to True, the edited Cooldown cannot be less than the specified minimum value |
  *
  * -----------
@@ -12283,7 +12283,7 @@ export const NODES = {
  * | - || ▶️ || - || `FlowIn` ||  |
  * | 0 || 🔹 || `Ety` || `target_entity` || Target Entity: Active Character Entity |
  * | 1 || 🔹 || `E<SLOT>` || `skill_slot` || Character Skill Slot: The Skill Slot to edited: Normal Attack, Skill 1-E, Skill 2-Q, Skill 3-R, Skill 4-T, or Custom Skill |
- * | 2 || 🔹 || `Flt` || `ratio_delta` || Cooldown Ratio Modifier: Actual Cooldown after Editing = Original Cooldown × Cooldown Ratio Edit Value |
+ * | 2 || 🔹 || `Flt` || `ratio_delta` || CD Ratio Modifier: Actual Cooldown after Editing = Original Cooldown × Cooldown Ratio Edit Value |
  * | 3 || 🔹 || `Bol` || `limit_max` || Limit Maximum CD Time: If set to True, the edited Cooldown cannot be less than the specified minimum value |
  *
  * -----------
@@ -12312,7 +12312,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Int` || `equip_index` || Equipment ID: Integer ID generated during Equipment Initialization to identify the equipment instance |
+ * | 0 || 🔹 || `Int` || `equip_index` || Equipment Index: Integer ID generated during Equipment Initialization to identify the equipment instance |
  * | 1 || 🔹 || `Cfg` || `affix_config_id` || Affix Config ID: The Config ID of the preconfigured Affix defined in Equipment Data Management |
  * | 2 || 🔹 || `Int` || `insert_index` || Insert ID |
  * | 3 || 🔹 || `Bol` || `overwrite` || Overwrite Affix Value |
@@ -12344,7 +12344,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `L<Int>` || `selection_list` || List |
+ * | 0 || 🔹 || `L<Int>` || `selection_list` || Select List |
  *
  * -----------
  *
@@ -12468,7 +12468,7 @@ export const NODES = {
   Query_UnitStatus_GetStatusApplier: "Query.Unit_Status.Get_Status_Applier",
 
   /**
- * **List of Slot IDs Querying Unit Status** `(Query.Unit_Status.Get_Status_Slots)`
+ * **Query Unit Status Slot ID List** `(Query.Unit_Status.Get_Status_Slots)`
  *
  * - Searches the list of all Slot IDs for the Unit Status with the specified Config ID on the Target Entity
  *
@@ -12496,7 +12496,7 @@ export const NODES = {
   Query_UnitStatus_GetStatusSlots: "Query.Unit_Status.Get_Status_Slots",
 
   /**
- * **Query Equipment Config ID by Equipment ID** `(Query.Equipment.Get_Config_ID)`
+ * **Query Equipment Config ID by Equipment Index** `(Query.Equipment.Get_Config_ID)`
  *
  * - Searches the Equipment Config ID by Equipment ID. The Equipment Instance ID can be obtained in the [Equipment Initialization] event
  *
@@ -12550,7 +12550,7 @@ export const NODES = {
   Query_CharacterRelated_GetGUIDByID: "Query.Character_Related.Get_GUID_By_ID",
 
   /**
- * **Get Player ID by Player GUID** `(Query.Character_Related.Get_ID_By_GUID)`
+ * **Get player ID by Player GUID** `(Query.Character_Related.Get_ID_By_GUID)`
  *
  * - Returns the Player ID based on Player GUID, where the ID indicates which Player they are
  *
@@ -12577,7 +12577,7 @@ export const NODES = {
   Query_CharacterRelated_GetIDByGUID: "Query.Character_Related.Get_ID_By_GUID",
 
   /**
- * **Calculate formatted time from timestamp** `(Arithmetic.Math.Timestamp_To_Time)`
+ * **Calculate Formatted Time From Timestamp** `(Arithmetic.Math.Timestamp_To_Time)`
  *
  * - Converts a timestamp to formatted time
  *
@@ -12602,9 +12602,9 @@ export const NODES = {
  * | 0 || 🔸 || `Int` || `year` || Year |
  * | 1 || 🔸 || `Int` || `month` || Month |
  * | 2 || 🔸 || `Int` || `day` || Day |
- * | 3 || 🔸 || `Int` || `hour` || Hour |
- * | 4 || 🔸 || `Int` || `minute` || Minute |
- * | 5 || 🔸 || `Int` || `second` || Second |
+ * | 3 || 🔸 || `Int` || `hour` || h |
+ * | 4 || 🔸 || `Int` || `minute` || m |
+ * | 5 || 🔸 || `Int` || `second` || s |
  */
   Arithmetic_Math_TimestampToTime: "Arithmetic.Math.Timestamp_To_Time",
 
@@ -12627,9 +12627,9 @@ export const NODES = {
  * | 0 || 🔹 || `Int` || `year` || Year |
  * | 1 || 🔹 || `Int` || `month` || Month |
  * | 2 || 🔹 || `Int` || `day` || Day |
- * | 3 || 🔹 || `Int` || `hour` || Hour |
- * | 4 || 🔹 || `Int` || `minute` || Minute |
- * | 5 || 🔹 || `Int` || `second` || Second |
+ * | 3 || 🔹 || `Int` || `hour` || h |
+ * | 4 || 🔹 || `Int` || `minute` || m |
+ * | 5 || 🔹 || `Int` || `second` || s |
  *
  * -----------
  *
@@ -12641,7 +12641,7 @@ export const NODES = {
   Arithmetic_Math_TimeToTimestamp: "Arithmetic.Math.Time_To_Timestamp",
 
   /**
- * **Calculate day of the week from timestamp** `(Arithmetic.Math.Timestamp_To_Weekday)`
+ * **Calculate Day of the Week From Timestamp** `(Arithmetic.Math.Timestamp_To_Weekday)`
  *
  * - Converts a timestamp to the day of the week
  *
@@ -12663,7 +12663,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Int` || `weekday` || Weekday |
+ * | 0 || 🔸 || `Int` || `weekday` || Day |
  */
   Arithmetic_Math_TimestampToWeekday: "Arithmetic.Math.Timestamp_To_Weekday",
 
@@ -12724,7 +12724,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Int` || `component_group_index` || Prefab Group ID: Identifier for this Prefab Group |
+ * | 0 || 🔹 || `Int` || `component_group_index` || Prefab Group Index: Identifier for this Prefab Group |
  * | 1 || 🔹 || `Vec` || `position` || Location: Absolute Location of the Prefab Group center |
  * | 2 || 🔹 || `Vec` || `rotation` || Rotate: Absolute Rotation of the Prefab Group center |
  * | 3 || 🔹 || `Ety` || `owner_entity` || Owner Entity: Determines whether the entity belongs to another entity after creation |
@@ -12770,7 +12770,7 @@ export const NODES = {
   Query_Creation_GetAggroList: "Query.Creation.Get_Aggro_List",
 
   /**
- * **Set Player Leaderboard Score as an Integer** `(Execution.Leaderboard.Set_Score_Int)`
+ * **Set Player Leaderboard Score as Integer** `(Execution.Leaderboard.Set_Score_Int)`
  *
  * - Set Player Leaderboard Score (Integer)
  *
@@ -12800,7 +12800,7 @@ export const NODES = {
   Execution_Leaderboard_SetScoreInt: "Execution.Leaderboard.Set_Score_Int",
 
   /**
- * **Set Player Leaderboard Score as a Float** `(Execution.Leaderboard.Set_Score_Float)`
+ * **Set Player Leaderboard Score as Float** `(Execution.Leaderboard.Set_Score_Float)`
  *
  * - Set Player Leaderboard Score (Float)
  *
@@ -12830,7 +12830,7 @@ export const NODES = {
   Execution_Leaderboard_SetScoreFloat: "Execution.Leaderboard.Set_Score_Float",
 
   /**
- * **Modify environment settings** `(Execution.Character_Related.Modify_Environment)`
+ * **Modify Environment Settings** `(Execution.Character_Related.Modify_Environment)`
  *
  * - Apply the specified Environment Configuration to the designated player. Takes effect immediately upon execution
  *
@@ -12880,12 +12880,12 @@ export const NODES = {
  * | 0 || 🔸 || `Ety` || `source_entity` || Event Source Entity |
  * | 1 || 🔸 || `Gid` || `source_guid` || Event Source GUID |
  * | 2 || 🔸 || `Cfg` || `career_config_id_old` || Pre-Modification Class Config ID |
- * | 3 || 🔸 || `Cfg` || `career_config_id_new` || Post-Modification Config ID |
+ * | 3 || 🔸 || `Cfg` || `career_config_id_new` || Post-Modification Class Config ID |
  */
   Trigger_Class_OnClassRemove: "Trigger.Class.On_Class_Remove",
 
   /**
- * **When Entering an Interruptible State** `(Trigger.Combat.On_Interruptible)`
+ * **When Entering an Interrupt-Vulnerable State** `(Trigger.Combat.On_Interruptible)`
  *
  * - This event is triggered when an Entity is attacked and enters the Vulnerable Status
  *
@@ -13129,7 +13129,7 @@ export const NODES = {
   Query_WonderlandBoxRelated_GetBoxQuantity: "Query.Wonderland_Box_Related.Get_Box_Quantity",
 
   /**
- * **Query Corresponding Gift Box Consumption** `(Query.Wonderland_Box_Related.Get_Box_Consumption)`
+ * **Query Corresponding Gift Box Consumption Quantity** `(Query.Wonderland_Box_Related.Get_Box_Consumption)`
  *
  * - Searches the consumed quantity of the specified Gift Box on the Player Entity
  *
@@ -13476,7 +13476,7 @@ export const NODES = {
   Query_EntityRelated_GetMoveSpeed: "Query.Entity_Related.Get_Move_Speed",
 
   /**
- * **Set or Add Key Value Pairs to Dictionary** `(Execution.Dictionary.Set_Value)`
+ * **Set or Add Key Value Pair to Dictionary** `(Execution.Dictionary.Set_Value)`
  *
  * - Add a Key-Value Pair to the specified Dictionary
  *
@@ -13906,7 +13906,7 @@ export const NODES = {
   Query_Dictionary_GetValue: "Query.Dictionary.Get_Value",
 
   /**
- * **Remove Key Value Pairs from Dictionary by Key** `(Execution.Dictionary.Remove_By_Key)`
+ * **Remove Key-Value Pairs From Dictionary by Key** `(Execution.Dictionary.Remove_By_Key)`
  *
  * - Remove Key-Value Pairs from the specified Dictionary by key
  *
@@ -14333,7 +14333,7 @@ export const NODES = {
   Query_Dictionary_HasValue: "Query.Dictionary.Has_Value",
 
   /**
- * **Get List of Keys from Dictionary** `(Query.Dictionary.Get_Keys)`
+ * **Get List of Keys From Dictionary** `(Query.Dictionary.Get_Keys)`
  *
  * - Returns a list of all Keys in the Dictionary. Because Key-Value Pairs are unordered, the Keys may not be returned in insertion order
  *
@@ -14495,7 +14495,7 @@ export const NODES = {
   Query_Dictionary_GetKeys: "Query.Dictionary.Get_Keys",
 
   /**
- * **Get List of Values from Dictionary** `(Query.Dictionary.Get_Values)`
+ * **Get List of Values From Dictionary** `(Query.Dictionary.Get_Values)`
  *
  * - Returns a list of all Values in the Dictionary. Because Key-Value Pairs are unordered, the Values may not be returned in insertion order
  *
@@ -14594,7 +14594,7 @@ export const NODES = {
   Query_Dictionary_GetValues: "Query.Dictionary.Get_Values",
 
   /**
- * **Query Dictionary's Length** `(Query.Dictionary.Get_Length)`
+ * **Query Dictionary Length** `(Query.Dictionary.Get_Length)`
  *
  * - Searches the number of Key-Value Pairs in the Dictionary
  *
@@ -15452,7 +15452,7 @@ export const NODES = {
   Query_CustomVariable_GetSnapshot: "Query.Custom_Variable.Get_Snapshot",
 
   /**
- * **When Calling GM (This Node is Hidden Externally)** `(Hidden.Trigger.On_GM_Call)`
+ * **When Calling GM (This Node Is Hidden Externally)** `(Hidden.Trigger.On_GM_Call)`
  *
  * -----------
  *
@@ -15466,12 +15466,12 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Ety` || `Output0` ||  |
- * | 1 || 🔸 || `Gid` || `Output1` ||  |
- * | 2 || 🔸 || `Int` || `Output2` ||  |
- * | 3 || 🔸 || `Int` || `Output3` ||  |
- * | 4 || 🔸 || `Str` || `Output4` ||  |
- * | 5 || 🔸 || `Str` || `Output5` ||  |
+ * | 0 || 🔸 || `Ety` || `Output0` || Entity |
+ * | 1 || 🔸 || `Gid` || `Output1` || guid |
+ * | 2 || 🔸 || `Int` || `Output2` || param0 |
+ * | 3 || 🔸 || `Int` || `Output3` || param1 |
+ * | 4 || 🔸 || `Str` || `Output4` || param2 |
+ * | 5 || 🔸 || `Str` || `Output5` || param3 |
  */
   Hidden_Trigger_OnGMCall: "Hidden.Trigger.On_GM_Call",
 
@@ -16627,7 +16627,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Int` || `Output0` ||  |
+ * | 0 || 🔸 || `Int` || `Output0` || Camera Template |
  */
   Hidden_QueryClient_GetCameraTemplate: "Hidden.Query_Client.Get_Camera_Template",
 
@@ -16672,7 +16672,7 @@ export const NODES = {
  * | 1 || 🔹 || `Vec` || `position` || Location |
  * | 2 || 🔹 || `Vec` || `rotation` || Rotate |
  * | 3 || 🔹 || `Flt` || `scale` || Zoom Multiplier |
- * | 4 || 🔹 || `Bol` || `play_default_sfx` || Play Default Sound Effects? |
+ * | 4 || 🔹 || `Bol` || `play_default_sfx` || Play Default Sound Effect |
  *
  * -----------
  *
@@ -16760,7 +16760,7 @@ export const NODES = {
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
  * | 0 || 🔹 || `Ety` || `target_entity` || Target Entity |
- * | 1 || 🔹 || `Bol` || `instant_turn` || Whether to Turn Immediately |
+ * | 1 || 🔹 || `Bol` || `instant_turn` || Turn Immediately |
  *
  * -----------
  *
@@ -16772,7 +16772,7 @@ export const NODES = {
   Execution_CharacterSkillClient_SetTarget: "Execution.Character_Skill_Client.Set_Target",
 
   /**
- * **Node Graph Begins** `(Others.Port_Client.Graph_Start)`
+ * **Node Graph Starts** `(Others.Port_Client.Graph_Start)`
  *
  * - Start event of the Skill Node Graph
  * - Used to customize the Skill logic after this Node; subsequent Nodes execute in the order defined by the Node Graph
@@ -16895,7 +16895,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `Output0` ||  |
+ * | 0 || 🔸 || `Vec` || `Output0` || Camera Orientation |
  */
   Hidden_QueryClient_GetCameraRotation: "Hidden.Query_Client.Get_Camera_Rotation",
 
@@ -16985,7 +16985,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔶 || **`L<R<T>>`** || `list` || 列表: The assembled list |
+ * | 0 || 🔶 || **`L<R<T>>`** || `list` || List: The assembled list |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Ety>`
@@ -17030,7 +17030,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `L<E<CETY>>` || `list` || list |
+ * | 0 || 🔸 || `L<E<CETY>>` || `list` || List |
  */
   Query_ListRelatedClient_GetEntityTypes: "Query.List_Related_Client.Get_Entity_Types",
 
@@ -17049,44 +17049,44 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Vec` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Flt` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `L<E<CETY>>` || `Input5` ||  |
- * | 6 || 🔹 || `E<CTRG>` || `Input6` ||  |
- * | 7 || 🔹 || `Int` || `Input7` ||  |
- * | 8 || 🔹 || `E<CASH>` || `Input8` ||  |
- * | 9 || 🔹 || `Vec` || `Input9` ||  |
- * | 10 || 🔹 || `Flt` || `Input10` ||  |
- * | 11 || 🔹 || `Flt` || `Input11` ||  |
- * | 12 || 🔹 || `Flt` || `Input12` ||  |
- * | 13 || 🔹 || `Flt` || `Input13` ||  |
- * | 14 || 🔹 || `Flt` || `Input14` ||  |
- * | 15 || 🔹 || `E<CSCT>` || `Input15` ||  |
- * | 16 || 🔹 || `E<CALC>` || `Input16` ||  |
- * | 17 || 🔹 || `L<Str>` || `Input17` ||  |
- * | 18 || 🔹 || `E<CELM>` || `Input18` ||  |
- * | 19 || 🔹 || `Flt` || `Input19` ||  |
- * | 20 || 🔹 || `E<CHIT>` || `Input20` ||  |
- * | 21 || 🔹 || `E<CATK>` || `Input21` ||  |
- * | 22 || 🔹 || `Flt` || `Input22` ||  |
- * | 23 || 🔹 || `Bol` || `Input24` ||  |
- * | 24 || 🔹 || `Int` || `Input25` ||  |
- * | 25 || 🔹 || `E<CKBD>` || `Input27` ||  |
- * | 26 || 🔹 || `Bol` || `Input28` ||  |
- * | 27 || 🔹 || `Vec` || `Input32` ||  |
- * | 28 || 🔹 || `Vec` || `Input33` ||  |
- * | 29 || 🔹 || `Flt` || `Input34` ||  |
- * | 30 || 🔹 || `Vec` || `Input38` ||  |
- * | 31 || 🔹 || `Vec` || `Input39` ||  |
- * | 32 || 🔹 || `Flt` || `Input40` ||  |
- * | 33 || 🔹 || `Flt` || `Input41` ||  |
- * | 34 || 🔹 || `Int` || `Input42` ||  |
- * | 35 || 🔹 || `E<CHTS>` || `Input44` ||  |
- * | 36 || 🔹 || `Flt` || `Input45` ||  |
- * | 37 || 🔹 || `Flt` || `Input46` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || Target Faction Filter |
+ * | 1 || 🔹 || `Vec` || `Input1` || Location |
+ * | 2 || 🔹 || `Vec` || `Input2` || Rotate |
+ * | 3 || 🔹 || `Flt` || `Input3` || Damage Coefficient |
+ * | 4 || 🔹 || `Flt` || `Input4` || Damage Increment |
+ * | 5 || 🔹 || `L<E<CETY>>` || `Input5` || Hitbox Entity Type Filter List |
+ * | 6 || 🔹 || `E<CTRG>` || `Input6` || Trigger Type |
+ * | 7 || 🔹 || `Int` || `Input7` || On-Hit Scene Effects |
+ * | 8 || 🔹 || `E<CASH>` || `Input8` || Hitbox Type |
+ * | 9 || 🔹 || `Vec` || `Input9` || Scale of Cuboid Hitbox |
+ * | 10 || 🔹 || `Flt` || `Input10` || Radius of Sphere Hitbox |
+ * | 11 || 🔹 || `Flt` || `Input11` || Height of Sector Hitbox |
+ * | 12 || 🔹 || `Flt` || `Input12` || Sector Angle of Sector Hitbox |
+ * | 13 || 🔹 || `Flt` || `Input13` || Sector Radius of Sector Hitbox |
+ * | 14 || 🔹 || `Flt` || `Input14` || Inner Radius of Sector Hitbox |
+ * | 15 || 🔹 || `E<CSCT>` || `Input15` || Detection Direction of Sector Hitbox |
+ * | 16 || 🔹 || `E<CALC>` || `Input16` || Attack Layer Filter |
+ * | 17 || 🔹 || `L<Str>` || `Input17` || Attack Tag List |
+ * | 18 || 🔹 || `E<CELM>` || `Input18` || Elemental Type |
+ * | 19 || 🔹 || `Flt` || `Input19` || Elemental Attack Potency |
+ * | 20 || 🔹 || `E<CHIT>` || `Input20` || Hit Type |
+ * | 21 || 🔹 || `E<CATK>` || `Input21` || Attack Type |
+ * | 22 || 🔹 || `Flt` || `Input22` || Interrupt Value |
+ * | 23 || 🔹 || `Bol` || `Input24` || Absolute Damage |
+ * | 24 || 🔹 || `Int` || `Input25` || On-Hit Special Effects |
+ * | 25 || 🔹 || `E<CKBD>` || `Input27` || Knockback Orientation |
+ * | 26 || 🔹 || `Bol` || `Input28` || Block Damage Pop-Up |
+ * | 27 || 🔹 || `Vec` || `Input32` || On-Hit Scene Effects Offset |
+ * | 28 || 🔹 || `Vec` || `Input33` || On-Hit Scene Effects Rotation |
+ * | 29 || 🔹 || `Flt` || `Input34` || On-Hit Scene Effects Zoom |
+ * | 30 || 🔹 || `Vec` || `Input38` || On-Hit Special Effects Offset |
+ * | 31 || 🔹 || `Vec` || `Input39` || On-Hit Special Effects Rotation |
+ * | 32 || 🔹 || `Flt` || `Input40` || On-Hit Special Effects Zoom |
+ * | 33 || 🔹 || `Flt` || `Input41` || Aggro Multiplier for This Attack |
+ * | 34 || 🔹 || `Int` || `Input42` || Aggro Increment for This Attack |
+ * | 35 || 🔹 || `E<CHTS>` || `Input44` || Hit Level |
+ * | 36 || 🔹 || `Flt` || `Input45` || On-Hit Horizontal Impulse |
+ * | 37 || 🔹 || `Flt` || `Input46` || On-Hit Vertical Impulse |
  *
  * -----------
  *
@@ -17296,45 +17296,45 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Vec` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `Flt` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CETY>>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CTRG>` || `Input7` ||  |
- * | 8 || 🔹 || `Int` || `Input8` ||  |
- * | 9 || 🔹 || `E<CASH>` || `Input9` ||  |
- * | 10 || 🔹 || `Vec` || `Input10` ||  |
- * | 11 || 🔹 || `Flt` || `Input11` ||  |
- * | 12 || 🔹 || `Flt` || `Input12` ||  |
- * | 13 || 🔹 || `Flt` || `Input13` ||  |
- * | 14 || 🔹 || `Flt` || `Input14` ||  |
- * | 15 || 🔹 || `Flt` || `Input15` ||  |
- * | 16 || 🔹 || `E<CSCT>` || `Input16` ||  |
- * | 17 || 🔹 || `E<CALC>` || `Input17` ||  |
- * | 18 || 🔹 || `L<Str>` || `Input18` ||  |
- * | 19 || 🔹 || `E<CELM>` || `Input19` ||  |
- * | 20 || 🔹 || `Flt` || `Input20` ||  |
- * | 21 || 🔹 || `E<CHIT>` || `Input21` ||  |
- * | 22 || 🔹 || `E<CATK>` || `Input22` ||  |
- * | 23 || 🔹 || `Flt` || `Input23` ||  |
- * | 24 || 🔹 || `Bol` || `Input25` ||  |
- * | 25 || 🔹 || `Int` || `Input26` ||  |
- * | 26 || 🔹 || `E<CKBD>` || `Input28` ||  |
- * | 27 || 🔹 || `Bol` || `Input29` ||  |
- * | 28 || 🔹 || `Vec` || `Input33` ||  |
- * | 29 || 🔹 || `Vec` || `Input34` ||  |
- * | 30 || 🔹 || `Flt` || `Input35` ||  |
- * | 31 || 🔹 || `Vec` || `Input39` ||  |
- * | 32 || 🔹 || `Vec` || `Input40` ||  |
- * | 33 || 🔹 || `Flt` || `Input41` ||  |
- * | 34 || 🔹 || `Flt` || `Input42` ||  |
- * | 35 || 🔹 || `Int` || `Input43` ||  |
- * | 36 || 🔹 || `E<CHTS>` || `Input45` ||  |
- * | 37 || 🔹 || `Flt` || `Input46` ||  |
- * | 38 || 🔹 || `Flt` || `Input47` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || Target Faction Filter |
+ * | 1 || 🔹 || `Str` || `Input1` || Attachment Point Name |
+ * | 2 || 🔹 || `Vec` || `Input2` || Attachment Point Offset |
+ * | 3 || 🔹 || `Vec` || `Input3` || Attachment Point Rotation |
+ * | 4 || 🔹 || `Flt` || `Input4` || Damage Coefficient |
+ * | 5 || 🔹 || `Flt` || `Input5` || Damage Increment |
+ * | 6 || 🔹 || `L<E<CETY>>` || `Input6` || Hitbox Entity Type Filter List |
+ * | 7 || 🔹 || `E<CTRG>` || `Input7` || Trigger Type |
+ * | 8 || 🔹 || `Int` || `Input8` || On-Hit Scene Effects |
+ * | 9 || 🔹 || `E<CASH>` || `Input9` || Hitbox Type |
+ * | 10 || 🔹 || `Vec` || `Input10` || Scale of Cuboid Hitbox |
+ * | 11 || 🔹 || `Flt` || `Input11` || Radius of Sphere Hitbox |
+ * | 12 || 🔹 || `Flt` || `Input12` || Height of Sector Hitbox |
+ * | 13 || 🔹 || `Flt` || `Input13` || Sector Angle of Sector Hitbox |
+ * | 14 || 🔹 || `Flt` || `Input14` || Sector Radius of Sector Hitbox |
+ * | 15 || 🔹 || `Flt` || `Input15` || Inner Radius of Sector Hitbox |
+ * | 16 || 🔹 || `E<CSCT>` || `Input16` || Detection Direction of Sector Hitbox |
+ * | 17 || 🔹 || `E<CALC>` || `Input17` || Attack Layer Filter |
+ * | 18 || 🔹 || `L<Str>` || `Input18` || Attack Tag List |
+ * | 19 || 🔹 || `E<CELM>` || `Input19` || Elemental Type |
+ * | 20 || 🔹 || `Flt` || `Input20` || Elemental Attack Potency |
+ * | 21 || 🔹 || `E<CHIT>` || `Input21` || Hit Type |
+ * | 22 || 🔹 || `E<CATK>` || `Input22` || Attack Type |
+ * | 23 || 🔹 || `Flt` || `Input23` || Interrupt Value |
+ * | 24 || 🔹 || `Bol` || `Input25` || Absolute Damage |
+ * | 25 || 🔹 || `Int` || `Input26` || On-Hit Special Effects |
+ * | 26 || 🔹 || `E<CKBD>` || `Input28` || Knockback Orientation |
+ * | 27 || 🔹 || `Bol` || `Input29` || Block Damage Pop-Up |
+ * | 28 || 🔹 || `Vec` || `Input33` || On-Hit Scene Effects Offset |
+ * | 29 || 🔹 || `Vec` || `Input34` || On-Hit Scene Effects Rotation |
+ * | 30 || 🔹 || `Flt` || `Input35` || On-Hit Scene Effects Zoom |
+ * | 31 || 🔹 || `Vec` || `Input39` || On-Hit Special Effects Offset |
+ * | 32 || 🔹 || `Vec` || `Input40` || On-Hit Special Effects Rotation |
+ * | 33 || 🔹 || `Flt` || `Input41` || On-Hit Special Effects Zoom |
+ * | 34 || 🔹 || `Flt` || `Input42` || Aggro Multiplier for This Attack |
+ * | 35 || 🔹 || `Int` || `Input43` || Aggro Increment for This Attack |
+ * | 36 || 🔹 || `E<CHTS>` || `Input45` || Hit Level |
+ * | 37 || 🔹 || `Flt` || `Input46` || On-Hit Horizontal Impulse |
+ * | 38 || 🔹 || `Flt` || `Input47` || On-Hit Vertical Impulse |
  *
  * -----------
  *
@@ -17572,7 +17572,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Flt` || `angle_degrees` || Angle |
+ * | 0 || 🔸 || `Flt` || `angle_degrees` || Angle (°) |
  */
   Arithmetic_MathClient_VectorAngle: "Arithmetic.Math_Client.Vector_Angle",
 
@@ -18298,7 +18298,7 @@ export const NODES = {
   Query_CustomAggroClient_GetAggroList: "Query.Custom_Aggro_Client.Get_Aggro_List",
 
   /**
- * **Query if Specified Entity is in Combat** `(Query.Custom_Aggro_Client.Is_In_Combat)`
+ * **Query If Specified Entity Is in Combat** `(Query.Custom_Aggro_Client.Is_In_Combat)`
  *
  * - Searches whether the specified Entity has entered battle
  *
@@ -18637,8 +18637,8 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` ||  |
- * | 1 || 🔹 || `E<CFLT>` || `Input1` ||  |
+ * | 0 || 🔹 || `Int` || `Input0` || Output Result (Integer) |
+ * | 1 || 🔹 || `E<CFLT>` || `Input1` || Filter Return Type |
  */
   Hidden_OtherClient_GraphEnd: "Hidden.Other_Client.Graph_End",
 
@@ -18766,21 +18766,21 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Ety` || `Input0` ||  |
- * | 1 || 🔹 || `Vec` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Flt` || `Input3` ||  |
- * | 4 || 🔹 || `E<CCAM>` || `Input4` ||  |
- * | 5 || 🔹 || `L<E<CETY>>` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CATX>>` || `Input6` ||  |
+ * | 0 || 🔹 || `Ety` || `Input0` || Detect Initiator Entity |
+ * | 1 || 🔹 || `Vec` || `Input1` || Launch Location |
+ * | 2 || 🔹 || `Vec` || `Input2` || Launch Direction |
+ * | 3 || 🔹 || `Flt` || `Input3` || Max Ray Length |
+ * | 4 || 🔹 || `E<CCAM>` || `Input4` || Faction Filter |
+ * | 5 || 🔹 || `L<E<CETY>>` || `Input5` || Entity Type Filter |
+ * | 6 || 🔹 || `L<E<CATX>>` || `Input6` || Hit Layer Filter |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `Output0` ||  |
- * | 1 || 🔸 || `Ety` || `Output1` ||  |
+ * | 0 || 🔸 || `Vec` || `Output0` || On-Hit Location |
+ * | 1 || 🔸 || `Ety` || `Output1` || On-Hit Entity |
  */
   Query_RayClient_GetRayResult: "Query.Ray_Client.Get_Ray_Result",
 
@@ -18814,7 +18814,7 @@ export const NODES = {
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `L<E<CATX>>` || `list` || list |
+ * | 0 || 🔸 || `L<E<CATX>>` || `list` || List |
  */
   Query_ListRelatedClient_GetRayFilters: "Query.List_Related_Client.Get_Ray_Filters",
 
@@ -18833,37 +18833,37 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `camp_filter` || 目标阵营筛选 |
- * | 1 || 🔹 || `Vec` || `position` || 位置 |
- * | 2 || 🔹 || `Vec` || `rotation` || 旋转 |
- * | 3 || 🔹 || `Flt` || `damage_ratio` || 伤害系数 |
- * | 4 || 🔹 || `Flt` || `damage_offset` || 伤害增量 |
- * | 5 || 🔹 || `L<E<CETY>>` || `entity_type_filter_list` || 攻击盒实体类型筛选列表 |
- * | 6 || 🔹 || `E<CTRG>` || `trigger_type` || 触发类型 |
- * | 7 || 🔹 || `Int` || `hit_scene_fx` || 命中场景特效 |
- * | 8 || 🔹 || `Vec` || `sphere_radius` || 攻击盒为球体时的半径 |
- * | 9 || 🔹 || `E<CALC>` || `hit_layer_filter` || 攻击层筛选 |
- * | 10 || 🔹 || `L<Str>` || `attack_tags` || 攻击标签列表 |
- * | 11 || 🔹 || `E<CELM>` || `element_type` || 元素类型 |
- * | 12 || 🔹 || `Flt` || `element_attack_enhance` || 元素攻击强效 |
- * | 13 || 🔹 || `E<CHIT>` || `hit_type` || 打击类型 |
- * | 14 || 🔹 || `E<CATK>` || `attack_type` || 攻击类型 |
- * | 15 || 🔹 || `Flt` || `interrupt_value` || 打断值 |
- * | 16 || 🔹 || `Bol` || `absolute_damage` || 是否是绝对伤害 |
- * | 17 || 🔹 || `Int` || `hit_fx` || 命中特效 |
- * | 18 || 🔹 || `E<CKBD>` || `knockback_direction` || 受击击退朝向 |
- * | 19 || 🔹 || `Bol` || `suppress_floating_text` || 是否屏蔽伤害跳字 |
- * | 20 || 🔹 || `Vec` || `hit_scene_fx_offset` || 命中场景特效偏移 |
- * | 21 || 🔹 || `Vec` || `hit_scene_fx_rotation` || 命中场景特效旋转 |
- * | 22 || 🔹 || `Flt` || `hit_scene_fx_scale` || 命中场景特效缩放 |
- * | 23 || 🔹 || `Vec` || `hit_fx_offset` || 命中特效偏移 |
- * | 24 || 🔹 || `Vec` || `hit_fx_rotation` || 命中特效旋转 |
- * | 25 || 🔹 || `Flt` || `hit_fx_scale` || 命中特效缩放 |
- * | 26 || 🔹 || `Flt` || `aggro_multiplier` || 本次攻击的仇恨倍率 |
- * | 27 || 🔹 || `Int` || `aggro_increment` || 本次攻击的仇恨增量 |
- * | 28 || 🔹 || `E<CHTS>` || `hit_level` || 受击等级 |
- * | 29 || 🔹 || `Flt` || `horizontal_impulse` || 命中水平冲量 |
- * | 30 || 🔹 || `Flt` || `vertical_impulse` || 命中垂直冲量 |
+ * | 0 || 🔹 || `E<CTTP>` || `camp_filter` || Target Faction Filter |
+ * | 1 || 🔹 || `Vec` || `position` || Location |
+ * | 2 || 🔹 || `Vec` || `rotation` || Rotate |
+ * | 3 || 🔹 || `Flt` || `damage_ratio` || Damage Coefficient |
+ * | 4 || 🔹 || `Flt` || `damage_offset` || Damage Increment |
+ * | 5 || 🔹 || `L<E<CETY>>` || `entity_type_filter_list` || Hitbox Entity Type Filter List |
+ * | 6 || 🔹 || `E<CTRG>` || `trigger_type` || Trigger Type |
+ * | 7 || 🔹 || `Int` || `hit_scene_fx` || On-Hit Scene Effects |
+ * | 8 || 🔹 || `Vec` || `sphere_radius` || Scale of Cuboid Hitbox |
+ * | 9 || 🔹 || `E<CALC>` || `hit_layer_filter` || Attack Layer Filter |
+ * | 10 || 🔹 || `L<Str>` || `attack_tags` || Attack Tag List |
+ * | 11 || 🔹 || `E<CELM>` || `element_type` || Elemental Type |
+ * | 12 || 🔹 || `Flt` || `element_attack_enhance` || Elemental Attack Potency |
+ * | 13 || 🔹 || `E<CHIT>` || `hit_type` || Hit Type |
+ * | 14 || 🔹 || `E<CATK>` || `attack_type` || Attack Type |
+ * | 15 || 🔹 || `Flt` || `interrupt_value` || Interrupt Value |
+ * | 16 || 🔹 || `Bol` || `absolute_damage` || Absolute Damage |
+ * | 17 || 🔹 || `Int` || `hit_fx` || On-Hit Special Effects |
+ * | 18 || 🔹 || `E<CKBD>` || `knockback_direction` || Knockback Orientation |
+ * | 19 || 🔹 || `Bol` || `suppress_floating_text` || Block Damage Pop-Up |
+ * | 20 || 🔹 || `Vec` || `hit_scene_fx_offset` || On-Hit Scene Effects Offset |
+ * | 21 || 🔹 || `Vec` || `hit_scene_fx_rotation` || On-Hit Scene Effects Rotation |
+ * | 22 || 🔹 || `Flt` || `hit_scene_fx_scale` || On-Hit Scene Effects Zoom |
+ * | 23 || 🔹 || `Vec` || `hit_fx_offset` || On-Hit Special Effects Offset |
+ * | 24 || 🔹 || `Vec` || `hit_fx_rotation` || On-Hit Special Effects Rotation |
+ * | 25 || 🔹 || `Flt` || `hit_fx_scale` || On-Hit Special Effects Zoom |
+ * | 26 || 🔹 || `Flt` || `aggro_multiplier` || Aggro Multiplier for This Attack |
+ * | 27 || 🔹 || `Int` || `aggro_increment` || Aggro Increment for This Attack |
+ * | 28 || 🔹 || `E<CHTS>` || `hit_level` || Hit Level |
+ * | 29 || 🔹 || `Flt` || `horizontal_impulse` || On-Hit Horizontal Impulse |
+ * | 30 || 🔹 || `Flt` || `vertical_impulse` || On-Hit Vertical Impulse |
  *
  * -----------
  *
@@ -18889,37 +18889,37 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `camp_filter` || 目标阵营筛选 |
- * | 1 || 🔹 || `Vec` || `position` || 位置 |
- * | 2 || 🔹 || `Vec` || `rotation` || 旋转 |
- * | 3 || 🔹 || `Flt` || `damage_ratio` || 伤害系数 |
- * | 4 || 🔹 || `Flt` || `damage_offset` || 伤害增量 |
- * | 5 || 🔹 || `L<E<CETY>>` || `entity_type_filter_list` || 攻击盒实体类型筛选列表 |
- * | 6 || 🔹 || `E<CTRG>` || `trigger_type` || 触发类型 |
- * | 7 || 🔹 || `Int` || `hit_scene_fx` || 命中场景特效 |
- * | 8 || 🔹 || `Vec` || `box_scale` || 攻击盒为长方体时的缩放 |
- * | 9 || 🔹 || `E<CALC>` || `hit_layer_filter` || 攻击层筛选 |
- * | 10 || 🔹 || `L<Str>` || `attack_tags` || 攻击标签列表 |
- * | 11 || 🔹 || `E<CELM>` || `element_type` || 元素类型 |
- * | 12 || 🔹 || `Flt` || `element_attack_enhance` || 元素攻击强效 |
- * | 13 || 🔹 || `E<CHIT>` || `hit_type` || 打击类型 |
- * | 14 || 🔹 || `E<CATK>` || `attack_type` || 攻击类型 |
- * | 15 || 🔹 || `Flt` || `interrupt_value` || 打断值 |
- * | 16 || 🔹 || `Bol` || `absolute_damage` || 是否是绝对伤害 |
- * | 17 || 🔹 || `Int` || `hit_fx` || 命中特效 |
- * | 18 || 🔹 || `E<CKBD>` || `knockback_direction` || 受击击退朝向 |
- * | 19 || 🔹 || `Bol` || `suppress_floating_text` || 是否屏蔽伤害跳字 |
- * | 20 || 🔹 || `Vec` || `hit_scene_fx_offset` || 命中场景特效偏移 |
- * | 21 || 🔹 || `Vec` || `hit_scene_fx_rotation` || 命中场景特效旋转 |
- * | 22 || 🔹 || `Flt` || `hit_scene_fx_scale` || 命中场景特效缩放 |
- * | 23 || 🔹 || `Vec` || `hit_fx_offset` || 命中特效偏移 |
- * | 24 || 🔹 || `Vec` || `hit_fx_rotation` || 命中特效旋转 |
- * | 25 || 🔹 || `Flt` || `hit_fx_scale` || 命中特效缩放 |
- * | 26 || 🔹 || `Flt` || `aggro_multiplier` || 本次攻击的仇恨倍率 |
- * | 27 || 🔹 || `Int` || `aggro_increment` || 本次攻击的仇恨增量 |
- * | 28 || 🔹 || `E<CHTS>` || `hit_level` || 受击等级 |
- * | 29 || 🔹 || `Flt` || `horizontal_impulse` || 命中水平冲量 |
- * | 30 || 🔹 || `Flt` || `vertical_impulse` || 命中垂直冲量 |
+ * | 0 || 🔹 || `E<CTTP>` || `camp_filter` || Target Faction Filter |
+ * | 1 || 🔹 || `Vec` || `position` || Location |
+ * | 2 || 🔹 || `Vec` || `rotation` || Rotate |
+ * | 3 || 🔹 || `Flt` || `damage_ratio` || Damage Coefficient |
+ * | 4 || 🔹 || `Flt` || `damage_offset` || Damage Increment |
+ * | 5 || 🔹 || `L<E<CETY>>` || `entity_type_filter_list` || Hitbox Entity Type Filter List |
+ * | 6 || 🔹 || `E<CTRG>` || `trigger_type` || Trigger Type |
+ * | 7 || 🔹 || `Int` || `hit_scene_fx` || On-Hit Scene Effects |
+ * | 8 || 🔹 || `Vec` || `box_scale` || Scale of Cuboid Hitbox |
+ * | 9 || 🔹 || `E<CALC>` || `hit_layer_filter` || Attack Layer Filter |
+ * | 10 || 🔹 || `L<Str>` || `attack_tags` || Attack Tag List |
+ * | 11 || 🔹 || `E<CELM>` || `element_type` || Elemental Type |
+ * | 12 || 🔹 || `Flt` || `element_attack_enhance` || Elemental Attack Potency |
+ * | 13 || 🔹 || `E<CHIT>` || `hit_type` || Hit Type |
+ * | 14 || 🔹 || `E<CATK>` || `attack_type` || Attack Type |
+ * | 15 || 🔹 || `Flt` || `interrupt_value` || Interrupt Value |
+ * | 16 || 🔹 || `Bol` || `absolute_damage` || Absolute Damage |
+ * | 17 || 🔹 || `Int` || `hit_fx` || On-Hit Special Effects |
+ * | 18 || 🔹 || `E<CKBD>` || `knockback_direction` || Knockback Orientation |
+ * | 19 || 🔹 || `Bol` || `suppress_floating_text` || Block Damage Pop-Up |
+ * | 20 || 🔹 || `Vec` || `hit_scene_fx_offset` || On-Hit Scene Effects Offset |
+ * | 21 || 🔹 || `Vec` || `hit_scene_fx_rotation` || On-Hit Scene Effects Rotation |
+ * | 22 || 🔹 || `Flt` || `hit_scene_fx_scale` || On-Hit Scene Effects Zoom |
+ * | 23 || 🔹 || `Vec` || `hit_fx_offset` || On-Hit Special Effects Offset |
+ * | 24 || 🔹 || `Vec` || `hit_fx_rotation` || On-Hit Special Effects Rotation |
+ * | 25 || 🔹 || `Flt` || `hit_fx_scale` || On-Hit Special Effects Zoom |
+ * | 26 || 🔹 || `Flt` || `aggro_multiplier` || Aggro Multiplier for This Attack |
+ * | 27 || 🔹 || `Int` || `aggro_increment` || Aggro Increment for This Attack |
+ * | 28 || 🔹 || `E<CHTS>` || `hit_level` || Hit Level |
+ * | 29 || 🔹 || `Flt` || `horizontal_impulse` || On-Hit Horizontal Impulse |
+ * | 30 || 🔹 || `Flt` || `vertical_impulse` || On-Hit Vertical Impulse |
  *
  * -----------
  *
@@ -18945,41 +18945,41 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `camp_filter` || 目标阵营筛选 |
- * | 1 || 🔹 || `Vec` || `position` || 位置 |
- * | 2 || 🔹 || `Vec` || `rotation` || 旋转 |
- * | 3 || 🔹 || `Flt` || `damage_ratio` || 伤害系数 |
- * | 4 || 🔹 || `Flt` || `damage_offset` || 伤害增量 |
- * | 5 || 🔹 || `L<E<CETY>>` || `entity_type_filter_list` || 攻击盒实体类型筛选列表 |
- * | 6 || 🔹 || `E<CTRG>` || `trigger_type` || 触发类型 |
- * | 7 || 🔹 || `Int` || `hit_scene_fx` || 命中场景特效 |
- * | 8 || 🔹 || `Flt` || `sector_height` || 攻击盒为扇形时的高度 |
- * | 9 || 🔹 || `Flt` || `sector_angle` || 攻击盒为扇形时的扇角度 |
- * | 10 || 🔹 || `Flt` || `sector_radius` || 攻击盒为扇形时的扇半径 |
- * | 11 || 🔹 || `Flt` || `sector_inner_radius` || 攻击盒为扇形时的内半径 |
- * | 12 || 🔹 || `E<CSCT>` || `sector_direction` || 攻击盒为扇形时的检测方向 |
- * | 13 || 🔹 || `E<CALC>` || `hit_layer_filter` || 攻击层筛选 |
- * | 14 || 🔹 || `L<Str>` || `attack_tags` || 攻击标签列表 |
- * | 15 || 🔹 || `E<CELM>` || `element_type` || 元素类型 |
- * | 16 || 🔹 || `Flt` || `element_attack_enhance` || 元素攻击强效 |
- * | 17 || 🔹 || `E<CHIT>` || `hit_type` || 打击类型 |
- * | 18 || 🔹 || `E<CATK>` || `attack_type` || 攻击类型 |
- * | 19 || 🔹 || `Flt` || `interrupt_value` || 打断值 |
- * | 20 || 🔹 || `Bol` || `absolute_damage` || 是否是绝对伤害 |
- * | 21 || 🔹 || `Int` || `hit_fx` || 命中特效 |
- * | 22 || 🔹 || `E<CKBD>` || `knockback_direction` || 受击击退朝向 |
- * | 23 || 🔹 || `Bol` || `suppress_floating_text` || 是否屏蔽伤害跳字 |
- * | 24 || 🔹 || `Vec` || `hit_scene_fx_offset` || 命中场景特效偏移 |
- * | 25 || 🔹 || `Vec` || `hit_scene_fx_rotation` || 命中场景特效旋转 |
- * | 26 || 🔹 || `Flt` || `hit_scene_fx_scale` || 命中场景特效缩放 |
- * | 27 || 🔹 || `Vec` || `hit_fx_offset` || 命中特效偏移 |
- * | 28 || 🔹 || `Vec` || `hit_fx_rotation` || 命中特效旋转 |
- * | 29 || 🔹 || `Flt` || `hit_fx_scale` || 命中特效缩放 |
- * | 30 || 🔹 || `Flt` || `aggro_multiplier` || 本次攻击的仇恨倍率 |
- * | 31 || 🔹 || `Int` || `aggro_increment` || 本次攻击的仇恨增量 |
- * | 32 || 🔹 || `E<CHTS>` || `hit_level` || 受击等级 |
- * | 33 || 🔹 || `Flt` || `horizontal_impulse` || 命中水平冲量 |
- * | 34 || 🔹 || `Flt` || `vertical_impulse` || 命中垂直冲量 |
+ * | 0 || 🔹 || `E<CTTP>` || `camp_filter` || Target Faction Filter |
+ * | 1 || 🔹 || `Vec` || `position` || Location |
+ * | 2 || 🔹 || `Vec` || `rotation` || Rotate |
+ * | 3 || 🔹 || `Flt` || `damage_ratio` || Damage Coefficient |
+ * | 4 || 🔹 || `Flt` || `damage_offset` || Damage Increment |
+ * | 5 || 🔹 || `L<E<CETY>>` || `entity_type_filter_list` || Hitbox Entity Type Filter List |
+ * | 6 || 🔹 || `E<CTRG>` || `trigger_type` || Trigger Type |
+ * | 7 || 🔹 || `Int` || `hit_scene_fx` || On-Hit Scene Effects |
+ * | 8 || 🔹 || `Flt` || `sector_height` || Height of Sector Hitbox |
+ * | 9 || 🔹 || `Flt` || `sector_angle` || Sector Angle of Sector Hitbox |
+ * | 10 || 🔹 || `Flt` || `sector_radius` || Sector Radius of Sector Hitbox |
+ * | 11 || 🔹 || `Flt` || `sector_inner_radius` || Inner Radius of Sector Hitbox |
+ * | 12 || 🔹 || `E<CSCT>` || `sector_direction` || Detection Direction of Sector Hitbox |
+ * | 13 || 🔹 || `E<CALC>` || `hit_layer_filter` || Attack Layer Filter |
+ * | 14 || 🔹 || `L<Str>` || `attack_tags` || Attack Tag List |
+ * | 15 || 🔹 || `E<CELM>` || `element_type` || Elemental Type |
+ * | 16 || 🔹 || `Flt` || `element_attack_enhance` || Elemental Attack Potency |
+ * | 17 || 🔹 || `E<CHIT>` || `hit_type` || Hit Type |
+ * | 18 || 🔹 || `E<CATK>` || `attack_type` || Attack Type |
+ * | 19 || 🔹 || `Flt` || `interrupt_value` || Interrupt Value |
+ * | 20 || 🔹 || `Bol` || `absolute_damage` || Absolute Damage |
+ * | 21 || 🔹 || `Int` || `hit_fx` || On-Hit Special Effects |
+ * | 22 || 🔹 || `E<CKBD>` || `knockback_direction` || Knockback Orientation |
+ * | 23 || 🔹 || `Bol` || `suppress_floating_text` || Block Damage Pop-Up |
+ * | 24 || 🔹 || `Vec` || `hit_scene_fx_offset` || On-Hit Scene Effects Offset |
+ * | 25 || 🔹 || `Vec` || `hit_scene_fx_rotation` || On-Hit Scene Effects Rotation |
+ * | 26 || 🔹 || `Flt` || `hit_scene_fx_scale` || On-Hit Scene Effects Zoom |
+ * | 27 || 🔹 || `Vec` || `hit_fx_offset` || On-Hit Special Effects Offset |
+ * | 28 || 🔹 || `Vec` || `hit_fx_rotation` || On-Hit Special Effects Rotation |
+ * | 29 || 🔹 || `Flt` || `hit_fx_scale` || On-Hit Special Effects Zoom |
+ * | 30 || 🔹 || `Flt` || `aggro_multiplier` || Aggro Multiplier for This Attack |
+ * | 31 || 🔹 || `Int` || `aggro_increment` || Aggro Increment for This Attack |
+ * | 32 || 🔹 || `E<CHTS>` || `hit_level` || Hit Level |
+ * | 33 || 🔹 || `Flt` || `horizontal_impulse` || On-Hit Horizontal Impulse |
+ * | 34 || 🔹 || `Flt` || `vertical_impulse` || On-Hit Vertical Impulse |
  *
  * -----------
  *
@@ -19005,42 +19005,42 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Vec` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `Flt` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CETY>>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CTRG>` || `Input7` ||  |
- * | 8 || 🔹 || `Int` || `Input8` ||  |
- * | 9 || 🔹 || `Flt` || `Input12` ||  |
- * | 10 || 🔹 || `Flt` || `Input13` ||  |
- * | 11 || 🔹 || `Flt` || `Input14` ||  |
- * | 12 || 🔹 || `Flt` || `Input15` ||  |
- * | 13 || 🔹 || `E<CSCT>` || `Input16` ||  |
- * | 14 || 🔹 || `E<CALC>` || `Input17` ||  |
- * | 15 || 🔹 || `L<Str>` || `Input18` ||  |
- * | 16 || 🔹 || `E<CELM>` || `Input19` ||  |
- * | 17 || 🔹 || `Flt` || `Input20` ||  |
- * | 18 || 🔹 || `E<CHIT>` || `Input21` ||  |
- * | 19 || 🔹 || `E<CATK>` || `Input22` ||  |
- * | 20 || 🔹 || `Flt` || `Input23` ||  |
- * | 21 || 🔹 || `Bol` || `Input25` ||  |
- * | 22 || 🔹 || `Int` || `Input26` ||  |
- * | 23 || 🔹 || `E<CKBD>` || `Input28` ||  |
- * | 24 || 🔹 || `Bol` || `Input29` ||  |
- * | 25 || 🔹 || `Vec` || `Input33` ||  |
- * | 26 || 🔹 || `Vec` || `Input34` ||  |
- * | 27 || 🔹 || `Flt` || `Input35` ||  |
- * | 28 || 🔹 || `Vec` || `Input39` ||  |
- * | 29 || 🔹 || `Vec` || `Input40` ||  |
- * | 30 || 🔹 || `Flt` || `Input41` ||  |
- * | 31 || 🔹 || `Flt` || `Input42` ||  |
- * | 32 || 🔹 || `Int` || `Input43` ||  |
- * | 33 || 🔹 || `E<CHTS>` || `Input45` ||  |
- * | 34 || 🔹 || `Flt` || `Input46` ||  |
- * | 35 || 🔹 || `Flt` || `Input47` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || Target Faction Filter |
+ * | 1 || 🔹 || `Str` || `Input1` || Attachment Point Name |
+ * | 2 || 🔹 || `Vec` || `Input2` || Attachment Point Offset |
+ * | 3 || 🔹 || `Vec` || `Input3` || Attachment Point Rotation |
+ * | 4 || 🔹 || `Flt` || `Input4` || Damage Coefficient |
+ * | 5 || 🔹 || `Flt` || `Input5` || Damage Increment |
+ * | 6 || 🔹 || `L<E<CETY>>` || `Input6` || Hitbox Entity Type Filter List |
+ * | 7 || 🔹 || `E<CTRG>` || `Input7` || Trigger Type |
+ * | 8 || 🔹 || `Int` || `Input8` || On-Hit Scene Effects |
+ * | 9 || 🔹 || `Flt` || `Input12` || Height of Sector Hitbox |
+ * | 10 || 🔹 || `Flt` || `Input13` || Sector Angle of Sector Hitbox |
+ * | 11 || 🔹 || `Flt` || `Input14` || Sector Radius of Sector Hitbox |
+ * | 12 || 🔹 || `Flt` || `Input15` || Inner Radius of Sector Hitbox |
+ * | 13 || 🔹 || `E<CSCT>` || `Input16` || Detection Direction of Sector Hitbox |
+ * | 14 || 🔹 || `E<CALC>` || `Input17` || Attack Layer Filter |
+ * | 15 || 🔹 || `L<Str>` || `Input18` || Attack Tag List |
+ * | 16 || 🔹 || `E<CELM>` || `Input19` || Elemental Type |
+ * | 17 || 🔹 || `Flt` || `Input20` || Elemental Attack Potency |
+ * | 18 || 🔹 || `E<CHIT>` || `Input21` || Hit Type |
+ * | 19 || 🔹 || `E<CATK>` || `Input22` || Attack Type |
+ * | 20 || 🔹 || `Flt` || `Input23` || Interrupt Value |
+ * | 21 || 🔹 || `Bol` || `Input25` || Absolute Damage |
+ * | 22 || 🔹 || `Int` || `Input26` || On-Hit Special Effects |
+ * | 23 || 🔹 || `E<CKBD>` || `Input28` || Knockback Orientation |
+ * | 24 || 🔹 || `Bol` || `Input29` || Block Damage Pop-Up |
+ * | 25 || 🔹 || `Vec` || `Input33` || On-Hit Scene Effects Offset |
+ * | 26 || 🔹 || `Vec` || `Input34` || On-Hit Scene Effects Rotation |
+ * | 27 || 🔹 || `Flt` || `Input35` || On-Hit Scene Effects Zoom |
+ * | 28 || 🔹 || `Vec` || `Input39` || On-Hit Special Effects Offset |
+ * | 29 || 🔹 || `Vec` || `Input40` || On-Hit Special Effects Rotation |
+ * | 30 || 🔹 || `Flt` || `Input41` || On-Hit Special Effects Zoom |
+ * | 31 || 🔹 || `Flt` || `Input42` || Aggro Multiplier for This Attack |
+ * | 32 || 🔹 || `Int` || `Input43` || Aggro Increment for This Attack |
+ * | 33 || 🔹 || `E<CHTS>` || `Input45` || Hit Level |
+ * | 34 || 🔹 || `Flt` || `Input46` || On-Hit Horizontal Impulse |
+ * | 35 || 🔹 || `Flt` || `Input47` || On-Hit Vertical Impulse |
  *
  * -----------
  *
@@ -19066,38 +19066,38 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Vec` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `Flt` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CETY>>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CTRG>` || `Input7` ||  |
- * | 8 || 🔹 || `Int` || `Input8` ||  |
- * | 9 || 🔹 || `Vec` || `Input10` ||  |
- * | 10 || 🔹 || `E<CALC>` || `Input17` ||  |
- * | 11 || 🔹 || `L<Str>` || `Input18` ||  |
- * | 12 || 🔹 || `E<CELM>` || `Input19` ||  |
- * | 13 || 🔹 || `Flt` || `Input20` ||  |
- * | 14 || 🔹 || `E<CHIT>` || `Input21` ||  |
- * | 15 || 🔹 || `E<CATK>` || `Input22` ||  |
- * | 16 || 🔹 || `Flt` || `Input23` ||  |
- * | 17 || 🔹 || `Bol` || `Input25` ||  |
- * | 18 || 🔹 || `Int` || `Input26` ||  |
- * | 19 || 🔹 || `E<CKBD>` || `Input28` ||  |
- * | 20 || 🔹 || `Bol` || `Input29` ||  |
- * | 21 || 🔹 || `Vec` || `Input33` ||  |
- * | 22 || 🔹 || `Vec` || `Input34` ||  |
- * | 23 || 🔹 || `Flt` || `Input35` ||  |
- * | 24 || 🔹 || `Vec` || `Input39` ||  |
- * | 25 || 🔹 || `Vec` || `Input40` ||  |
- * | 26 || 🔹 || `Flt` || `Input41` ||  |
- * | 27 || 🔹 || `Flt` || `Input42` ||  |
- * | 28 || 🔹 || `Int` || `Input43` ||  |
- * | 29 || 🔹 || `E<CHTS>` || `Input45` ||  |
- * | 30 || 🔹 || `Flt` || `Input46` ||  |
- * | 31 || 🔹 || `Flt` || `Input47` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || Target Faction Filter |
+ * | 1 || 🔹 || `Str` || `Input1` || Attachment Point Name |
+ * | 2 || 🔹 || `Vec` || `Input2` || Attachment Point Offset |
+ * | 3 || 🔹 || `Vec` || `Input3` || Attachment Point Rotation |
+ * | 4 || 🔹 || `Flt` || `Input4` || Damage Coefficient |
+ * | 5 || 🔹 || `Flt` || `Input5` || Damage Increment |
+ * | 6 || 🔹 || `L<E<CETY>>` || `Input6` || Hitbox Entity Type Filter List |
+ * | 7 || 🔹 || `E<CTRG>` || `Input7` || Trigger Type |
+ * | 8 || 🔹 || `Int` || `Input8` || On-Hit Scene Effects |
+ * | 9 || 🔹 || `Vec` || `Input10` || Scale of Cuboid Hitbox |
+ * | 10 || 🔹 || `E<CALC>` || `Input17` || Attack Layer Filter |
+ * | 11 || 🔹 || `L<Str>` || `Input18` || Attack Tag List |
+ * | 12 || 🔹 || `E<CELM>` || `Input19` || Elemental Type |
+ * | 13 || 🔹 || `Flt` || `Input20` || Elemental Attack Potency |
+ * | 14 || 🔹 || `E<CHIT>` || `Input21` || Hit Type |
+ * | 15 || 🔹 || `E<CATK>` || `Input22` || Attack Type |
+ * | 16 || 🔹 || `Flt` || `Input23` || Interrupt Value |
+ * | 17 || 🔹 || `Bol` || `Input25` || Absolute Damage |
+ * | 18 || 🔹 || `Int` || `Input26` || On-Hit Special Effects |
+ * | 19 || 🔹 || `E<CKBD>` || `Input28` || Knockback Orientation |
+ * | 20 || 🔹 || `Bol` || `Input29` || Block Damage Pop-Up |
+ * | 21 || 🔹 || `Vec` || `Input33` || On-Hit Scene Effects Offset |
+ * | 22 || 🔹 || `Vec` || `Input34` || On-Hit Scene Effects Rotation |
+ * | 23 || 🔹 || `Flt` || `Input35` || On-Hit Scene Effects Zoom |
+ * | 24 || 🔹 || `Vec` || `Input39` || On-Hit Special Effects Offset |
+ * | 25 || 🔹 || `Vec` || `Input40` || On-Hit Special Effects Rotation |
+ * | 26 || 🔹 || `Flt` || `Input41` || On-Hit Special Effects Zoom |
+ * | 27 || 🔹 || `Flt` || `Input42` || Aggro Multiplier for This Attack |
+ * | 28 || 🔹 || `Int` || `Input43` || Aggro Increment for This Attack |
+ * | 29 || 🔹 || `E<CHTS>` || `Input45` || Hit Level |
+ * | 30 || 🔹 || `Flt` || `Input46` || On-Hit Horizontal Impulse |
+ * | 31 || 🔹 || `Flt` || `Input47` || On-Hit Vertical Impulse |
  *
  * -----------
  *
@@ -19123,42 +19123,42 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `E<CTTP>` || `Input0` ||  |
- * | 1 || 🔹 || `Str` || `Input1` ||  |
- * | 2 || 🔹 || `Vec` || `Input2` ||  |
- * | 3 || 🔹 || `Vec` || `Input3` ||  |
- * | 4 || 🔹 || `Flt` || `Input4` ||  |
- * | 5 || 🔹 || `Flt` || `Input5` ||  |
- * | 6 || 🔹 || `L<E<CETY>>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CTRG>` || `Input7` ||  |
- * | 8 || 🔹 || `Int` || `Input8` ||  |
- * | 9 || 🔹 || `Flt` || `Input12` ||  |
- * | 10 || 🔹 || `Flt` || `Input13` ||  |
- * | 11 || 🔹 || `Flt` || `Input14` ||  |
- * | 12 || 🔹 || `Flt` || `Input15` ||  |
- * | 13 || 🔹 || `E<CSCT>` || `Input16` ||  |
- * | 14 || 🔹 || `E<CALC>` || `Input17` ||  |
- * | 15 || 🔹 || `L<Str>` || `Input18` ||  |
- * | 16 || 🔹 || `E<CELM>` || `Input19` ||  |
- * | 17 || 🔹 || `Flt` || `Input20` ||  |
- * | 18 || 🔹 || `E<CHIT>` || `Input21` ||  |
- * | 19 || 🔹 || `E<CATK>` || `Input22` ||  |
- * | 20 || 🔹 || `Flt` || `Input23` ||  |
- * | 21 || 🔹 || `Bol` || `Input25` ||  |
- * | 22 || 🔹 || `Int` || `Input26` ||  |
- * | 23 || 🔹 || `E<CKBD>` || `Input28` ||  |
- * | 24 || 🔹 || `Bol` || `Input29` ||  |
- * | 25 || 🔹 || `Vec` || `Input33` ||  |
- * | 26 || 🔹 || `Vec` || `Input34` ||  |
- * | 27 || 🔹 || `Flt` || `Input35` ||  |
- * | 28 || 🔹 || `Vec` || `Input39` ||  |
- * | 29 || 🔹 || `Vec` || `Input40` ||  |
- * | 30 || 🔹 || `Flt` || `Input41` ||  |
- * | 31 || 🔹 || `Flt` || `Input42` ||  |
- * | 32 || 🔹 || `Int` || `Input43` ||  |
- * | 33 || 🔹 || `E<CHTS>` || `Input45` ||  |
- * | 34 || 🔹 || `Flt` || `Input46` ||  |
- * | 35 || 🔹 || `Flt` || `Input47` ||  |
+ * | 0 || 🔹 || `E<CTTP>` || `Input0` || Target Faction Filter |
+ * | 1 || 🔹 || `Str` || `Input1` || Attachment Point Name |
+ * | 2 || 🔹 || `Vec` || `Input2` || Attachment Point Offset |
+ * | 3 || 🔹 || `Vec` || `Input3` || Attachment Point Rotation |
+ * | 4 || 🔹 || `Flt` || `Input4` || Damage Coefficient |
+ * | 5 || 🔹 || `Flt` || `Input5` || Damage Increment |
+ * | 6 || 🔹 || `L<E<CETY>>` || `Input6` || Hitbox Entity Type Filter List |
+ * | 7 || 🔹 || `E<CTRG>` || `Input7` || Trigger Type |
+ * | 8 || 🔹 || `Int` || `Input8` || On-Hit Scene Effects |
+ * | 9 || 🔹 || `Flt` || `Input12` || Height of Sector Hitbox |
+ * | 10 || 🔹 || `Flt` || `Input13` || Sector Angle of Sector Hitbox |
+ * | 11 || 🔹 || `Flt` || `Input14` || Sector Radius of Sector Hitbox |
+ * | 12 || 🔹 || `Flt` || `Input15` || Inner Radius of Sector Hitbox |
+ * | 13 || 🔹 || `E<CSCT>` || `Input16` || Detection Direction of Sector Hitbox |
+ * | 14 || 🔹 || `E<CALC>` || `Input17` || Attack Layer Filter |
+ * | 15 || 🔹 || `L<Str>` || `Input18` || Attack Tag List |
+ * | 16 || 🔹 || `E<CELM>` || `Input19` || Elemental Type |
+ * | 17 || 🔹 || `Flt` || `Input20` || Elemental Attack Potency |
+ * | 18 || 🔹 || `E<CHIT>` || `Input21` || Hit Type |
+ * | 19 || 🔹 || `E<CATK>` || `Input22` || Attack Type |
+ * | 20 || 🔹 || `Flt` || `Input23` || Interrupt Value |
+ * | 21 || 🔹 || `Bol` || `Input25` || Absolute Damage |
+ * | 22 || 🔹 || `Int` || `Input26` || On-Hit Special Effects |
+ * | 23 || 🔹 || `E<CKBD>` || `Input28` || Knockback Orientation |
+ * | 24 || 🔹 || `Bol` || `Input29` || Block Damage Pop-Up |
+ * | 25 || 🔹 || `Vec` || `Input33` || On-Hit Scene Effects Offset |
+ * | 26 || 🔹 || `Vec` || `Input34` || On-Hit Scene Effects Rotation |
+ * | 27 || 🔹 || `Flt` || `Input35` || On-Hit Scene Effects Zoom |
+ * | 28 || 🔹 || `Vec` || `Input39` || On-Hit Special Effects Offset |
+ * | 29 || 🔹 || `Vec` || `Input40` || On-Hit Special Effects Rotation |
+ * | 30 || 🔹 || `Flt` || `Input41` || On-Hit Special Effects Zoom |
+ * | 31 || 🔹 || `Flt` || `Input42` || Aggro Multiplier for This Attack |
+ * | 32 || 🔹 || `Int` || `Input43` || Aggro Increment for This Attack |
+ * | 33 || 🔹 || `E<CHTS>` || `Input45` || Hit Level |
+ * | 34 || 🔹 || `Flt` || `Input46` || On-Hit Horizontal Impulse |
+ * | 35 || 🔹 || `Flt` || `Input47` || On-Hit Vertical Impulse |
  *
  * -----------
  *
@@ -19183,26 +19183,26 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Str` || `Input0` ||  |
- * | 1 || 🔹 || `Ety` || `Input1` ||  |
- * | 2 || 🔹 || `L<Ety>` || `Input2` ||  |
- * | 3 || 🔹 || `Int` || `Input3` ||  |
- * | 4 || 🔹 || `L<Int>` || `Input4` ||  |
- * | 5 || 🔹 || `Bol` || `Input5` ||  |
- * | 6 || 🔹 || `L<Bol>` || `Input6` ||  |
- * | 7 || 🔹 || `Flt` || `Input7` ||  |
- * | 8 || 🔹 || `L<Flt>` || `Input8` ||  |
- * | 9 || 🔹 || `Str` || `Input9` ||  |
- * | 10 || 🔹 || `L<Str>` || `Input10` ||  |
- * | 11 || 🔹 || `Vec` || `Input11` ||  |
- * | 12 || 🔹 || `L<Vec>` || `Input12` ||  |
- * | 13 || 🔹 || `Gid` || `Input13` ||  |
- * | 14 || 🔹 || `L<Gid>` || `Input14` ||  |
- * | 15 || 🔹 || `Fct` || `Input15` ||  |
- * | 16 || 🔹 || `Cfg` || `Input16` ||  |
- * | 17 || 🔹 || `L<Cfg>` || `Input17` ||  |
- * | 18 || 🔹 || `Pfb` || `Input18` ||  |
- * | 19 || 🔹 || `L<Pfb>` || `Input19` ||  |
+ * | 0 || 🔹 || `Str` || `Input0` || Signal Name |
+ * | 1 || 🔹 || `Ety` || `Input1` || entity |
+ * | 2 || 🔹 || `L<Ety>` || `Input2` || entityList |
+ * | 3 || 🔹 || `Int` || `Input3` || int |
+ * | 4 || 🔹 || `L<Int>` || `Input4` || intList |
+ * | 5 || 🔹 || `Bol` || `Input5` || bool |
+ * | 6 || 🔹 || `L<Bol>` || `Input6` || boolList |
+ * | 7 || 🔹 || `Flt` || `Input7` || float |
+ * | 8 || 🔹 || `L<Flt>` || `Input8` || floatList |
+ * | 9 || 🔹 || `Str` || `Input9` || string |
+ * | 10 || 🔹 || `L<Str>` || `Input10` || stringList |
+ * | 11 || 🔹 || `Vec` || `Input11` || vector3 |
+ * | 12 || 🔹 || `L<Vec>` || `Input12` || vector3List |
+ * | 13 || 🔹 || `Gid` || `Input13` || guid |
+ * | 14 || 🔹 || `L<Gid>` || `Input14` || guidList |
+ * | 15 || 🔹 || `Fct` || `Input15` || army |
+ * | 16 || 🔹 || `Cfg` || `Input16` || configReference |
+ * | 17 || 🔹 || `L<Cfg>` || `Input17` || configReferenceList |
+ * | 18 || 🔹 || `Pfb` || `Input18` || entityReference |
+ * | 19 || 🔹 || `L<Pfb>` || `Input19` || entityReferenceList |
  */
   Hidden_ExecutionClient_TestSendSignal: "Hidden.Execution_Client.Test_Send_Signal",
 
@@ -19315,7 +19315,7 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` || Output Result (integer) |
+ * | 0 || 🔹 || `Int` || `Input0` || Output Result (Integer) |
  */
   Others_PortClient_GraphEndInt: "Others.Port_Client.Graph_End_Int",
 
@@ -19578,7 +19578,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_ListRelated_GetLength` for detailed documentation. */
   Get_List_Length: "Query.List_Related.Get_Length",
   /**  See `NODES.Query_ListRelated_GetMax` for detailed documentation. */
-  Get_Maximum_Value_from_List: "Query.List_Related.Get_Max",
+  Get_Maximum_Value_From_List: "Query.List_Related.Get_Max",
   /**  See `NODES.Query_ListRelated_GetMin` for detailed documentation. */
   Get_Minimum_Value_From_List: "Query.List_Related.Get_Min",
   /**  See `NODES.Execution_ListOperation_Remove` for detailed documentation. */
@@ -19594,7 +19594,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_EntityDeployment_SetGroupState` for detailed documentation. */
   Activate_Disable_Entity_Deployment_Group: "Execution.Entity_Deployment.Set_Group_State",
   /**  See `NODES.Query_EntityLayout_GetActiveGroups` for detailed documentation. */
-  Get_Currently_Active_Entity_Deployment_Groups: "Query.Entity_Layout.Get_Active_Groups",
+  Get_Currently_Active_Entity_Deployment_Group_List: "Query.Entity_Layout.Get_Active_Groups",
   /**  See `NODES.Arithmetic_General_ConvertType` for detailed documentation. */
   Data_Type_Conversion: "Arithmetic.General.Convert_Type",
   /**  See `NODES.Execution_CommonNode_ForwardEvent` for detailed documentation. */
@@ -19776,7 +19776,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_UnitStatus_RemoveStatus` for detailed documentation. */
   Remove_Unit_Status: "Execution.Unit_Status.Remove_Status",
   /**  See `NODES.Execution_CharacterDisruptor_ModifyDevice` for detailed documentation. */
-  Modifying_Character_Disruptor_Device: "Execution.Character_Disruptor.Modify_Device",
+  Modify_Character_Disruptor_Device: "Execution.Character_Disruptor.Modify_Device",
   /**  See `NODES.Execution_Combat_Attack` for detailed documentation. */
   Initiate_Attack: "Execution.Combat.Attack",
   /**  See `NODES.Trigger_Combat_OnBeAttacked` for detailed documentation. */
@@ -19812,7 +19812,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_EntityRelated_GetEntityByType` for detailed documentation. */
   Get_Specified_Type_of_Entity_on_the_Field: "Query.Entity_Related.Get_Entity_By_Type",
   /**  See `NODES.Query_EntityRelated_GetWithPrefab` for detailed documentation. */
-  Get_Entities_With_Specified_Prefab_on_the_Field: "Query.Entity_Related.Get_With_Prefab",
+  Get_Entity_With_Specified_Prefab_ID_on_the_Field: "Query.Entity_Related.Get_With_Prefab",
   /**  See `NODES.Arithmetic_Math_RadToDeg` for detailed documentation. */
   Radians_to_Degrees: "Arithmetic.Math.Rad_To_Deg",
   /**  See `NODES.Arithmetic_Math_DegToRad` for detailed documentation. */
@@ -19888,7 +19888,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Hidden_Trigger_OnNativeValueChange` for detailed documentation. */
   When_Native_Custom_Value_Changes: "Hidden.Trigger.On_Native_Value_Change",
   /**  See `NODES.Hidden_Execution_SetNativeValue` for detailed documentation. */
-  Native_Setting_Custom_Value: "Hidden.Execution.Set_Native_Value",
+  Native_Settings_Custom_Value: "Hidden.Execution.Set_Native_Value",
   /**  See `NODES.Hidden_Query_GetNativeValue` for detailed documentation. */
   Native_Query_Custom_Value: "Hidden.Query.Get_Native_Value",
   /**  See `NODES.Execution_SpecialEffect_StopByAsset` for detailed documentation. */
@@ -19916,9 +19916,9 @@ export const NODE_NAMES = {
   /**  See `NODES.Arithmetic_Math_VectorToRotation` for detailed documentation. */
   Direction_Vector_to_Rotation: "Arithmetic.Math.Vector_To_Rotation",
   /**  See `NODES.Execution_MotionDevice_AddTargetRotation` for detailed documentation. */
-  Add_Target_Oriented_Rotation_Based_Motion_Device: "Execution.Motion_Device.Add_Target_Rotation",
+  Add_Basic_Target_Oriented_Rotation_Based_Motion_Device: "Execution.Motion_Device.Add_Target_Rotation",
   /**  See `NODES.Execution_UIControlGroup_RemoveGroup` for detailed documentation. */
-  Remove_Interface_Control_Group_From_Control_Group_Library: "Execution.UI_Control_Group.Remove_Group",
+  Remove_UI_Control_Group_From_Control_Group_Library: "Execution.UI_Control_Group.Remove_Group",
   /**  See `NODES.Query_EntityRelated_GetObjAttr` for detailed documentation. */
   Get_Object_Attribute: "Query.Entity_Related.Get_Obj_Attr",
   /**  See `NODES.Execution_Combat_RecoverHP` for detailed documentation. */
@@ -19930,9 +19930,9 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_UnitTag_AddTag` for detailed documentation. */
   Add_Unit_Tag_to_Entity: "Execution.Unit_Tag.Add_Tag",
   /**  See `NODES.Execution_UnitTag_RemoveTag` for detailed documentation. */
-  Remove_Unit_Tag_from_Entity: "Execution.Unit_Tag.Remove_Tag",
+  Remove_Unit_Tag_From_Entity: "Execution.Unit_Tag.Remove_Tag",
   /**  See `NODES.Execution_UnitTag_ClearTags` for detailed documentation. */
-  Clear_Unit_Tags_from_Entity: "Execution.Unit_Tag.Clear_Tags",
+  Clear_Unit_Tags_From_Entity: "Execution.Unit_Tag.Clear_Tags",
   /**  See `NODES.Query_UnitTag_GetTags` for detailed documentation. */
   Get_Entity_Unit_Tag_List: "Query.Unit_Tag.Get_Tags",
   /**  See `NODES.Query_UnitTag_GetByTag` for detailed documentation. */
@@ -19954,7 +19954,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_SoundEffect_Play2DOneShot` for detailed documentation. */
   Player_Plays_One_Shot_2D_Sound_Effect: "Execution.Sound_Effect.Play_2D_One_Shot",
   /**  See `NODES.Execution_CustomAggro_SetAggro` for detailed documentation. */
-  Set_the_Aggro_Value_of_Specified_Entity: "Execution.Custom_Aggro.Set_Aggro",
+  Set_the_Aggro_Value_of_the_Specified_Entity: "Execution.Custom_Aggro.Set_Aggro",
   /**  See `NODES.Execution_CustomAggro_RemoveAggro` for detailed documentation. */
   Remove_Target_Entity_From_Aggro_List: "Execution.Custom_Aggro.Remove_Aggro",
   /**  See `NODES.Execution_CustomAggro_ClearAggro` for detailed documentation. */
@@ -19976,7 +19976,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_CustomAggro_GetAggroList` for detailed documentation. */
   Get_the_Aggro_List_of_the_Specified_Entity: "Query.Custom_Aggro.Get_Aggro_List",
   /**  See `NODES.Query_CustomAggro_IsInCombat` for detailed documentation. */
-  Query_if_Specified_Entity_Is_in_Combat: "Query.Custom_Aggro.Is_In_Combat",
+  Query_If_Specified_Entity_Is_in_Combat: "Query.Custom_Aggro.Is_In_Combat",
   /**  See `NODES.Trigger_CustomAggro_OnTargetChange` for detailed documentation. */
   When_Aggro_Target_Changes: "Trigger.Custom_Aggro.On_Target_Change",
   /**  See `NODES.Trigger_CustomAggro_OnEnterCombat` for detailed documentation. */
@@ -20050,7 +20050,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_StageSettlement_GetFactionResult` for detailed documentation. */
   Get_Faction_Settlement_Success_Status: "Query.Stage_Settlement.Get_Faction_Result",
   /**  See `NODES.Query_RankTier_GetRankInfo` for detailed documentation. */
-  Get_Player_Ranking_Info: "Query.Rank_Tier.Get_Rank_Info",
+  Get_Player_Rank_Info: "Query.Rank_Tier.Get_Rank_Info",
   /**  See `NODES.Execution_Rank_ModifyScore` for detailed documentation. */
   Set_Player_Rank_Score_Change: "Execution.Rank.Modify_Score",
   /**  See `NODES.Query_RankTier_GetScoreChange` for detailed documentation. */
@@ -20124,13 +20124,13 @@ export const NODE_NAMES = {
   /**  See `NODES.Trigger_Equipment_OnUnequip` for detailed documentation. */
   When_Equipment_Is_Unequipped: "Trigger.Equipment.On_Unequip",
   /**  See `NODES.Execution_Combat_LossHP` for detailed documentation. */
-  Loss_HP: "Execution.Combat.Loss_HP",
+  Lose_HP: "Execution.Combat.Loss_HP",
   /**  See `NODES.Execution_Combat_RecoverHPInstant` for detailed documentation. */
   Recover_HP_Directly: "Execution.Combat.Recover_HP_Instant",
   /**  See `NODES.Trigger_Shop_OnCustomItemSold` for detailed documentation. */
-  When_Custom_Shop_Item_Is_Sold: "Trigger.Shop.On_Custom_Item_Sold",
+  When_Custom_Shop_Item_Is_Sold_in_the_Shop: "Trigger.Shop.On_Custom_Item_Sold",
   /**  See `NODES.Trigger_Shop_OnInvItemSold` for detailed documentation. */
-  When_Selling_Inventory_Items_in_the_Shop: "Trigger.Shop.On_Inv_Item_Sold",
+  When_Inventory_Item_Is_Sold_in_the_Shop: "Trigger.Shop.On_Inv_Item_Sold",
   /**  See `NODES.Execution_Shop_Open` for detailed documentation. */
   Open_Shop: "Execution.Shop.Open",
   /**  See `NODES.Execution_Shop_Close` for detailed documentation. */
@@ -20138,7 +20138,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_Shop_ModifyCustomSale` for detailed documentation. */
   Modify_Custom_Shop_Item_Sales_Info: "Execution.Shop.Modify_Custom_Sale",
   /**  See `NODES.Trigger_Shop_OnSellItem` for detailed documentation. */
-  When_selling_items_to_the_shop: "Trigger.Shop.On_Sell_Item",
+  When_the_Shop_Buys_an_Item: "Trigger.Shop.On_Sell_Item",
   /**  See `NODES.Execution_Shop_ModifyInventorySale` for detailed documentation. */
   Modify_Inventory_Shop_Item_Sales_Info: "Execution.Shop.Modify_Inventory_Sale",
   /**  See `NODES.Execution_Shop_ModifyCartItem` for detailed documentation. */
@@ -20148,13 +20148,13 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_Shop_AddInventorySale` for detailed documentation. */
   Add_New_Item_to_Inventory_Shop_Sales_List: "Execution.Shop.Add_Inventory_Sale",
   /**  See `NODES.Execution_Shop_AddToCart` for detailed documentation. */
-  Add_Items_to_the_Purchase_List: "Execution.Shop.Add_To_Cart",
+  Add_Item_to_the_Purchase_List: "Execution.Shop.Add_To_Cart",
   /**  See `NODES.Execution_Shop_RemoveCustomSale` for detailed documentation. */
   Remove_Item_From_Custom_Shop_Sales_List: "Execution.Shop.Remove_Custom_Sale",
   /**  See `NODES.Execution_Shop_RemoveInventorySale` for detailed documentation. */
   Remove_Item_From_Inventory_Shop_Sales_List: "Execution.Shop.Remove_Inventory_Sale",
   /**  See `NODES.Execution_Shop_RemoveFromCart` for detailed documentation. */
-  Remove_item_from_purchase_list: "Execution.Shop.Remove_From_Cart",
+  Remove_Item_From_the_Purchase_List: "Execution.Shop.Remove_From_Cart",
   /**  See `NODES.Query_Shop_GetCustomSales` for detailed documentation. */
   Query_Custom_Shop_Item_Sales_List: "Query.Shop.Get_Custom_Sales",
   /**  See `NODES.Query_Shop_GetInvSales` for detailed documentation. */
@@ -20170,19 +20170,19 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_Inventory_SetDropItems` for detailed documentation. */
   Set_Inventory_Item_Drop_Content: "Execution.Inventory.Set_Drop_Items",
   /**  See `NODES.Query_Item_GetBasicItems` for detailed documentation. */
-  Get_all_basic_items_from_Inventory: "Query.Item.Get_Basic_Items",
+  Get_All_Inventory_Basic_Items: "Query.Item.Get_Basic_Items",
   /**  See `NODES.Query_Item_GetCurrencyAll` for detailed documentation. */
-  Get_All_Currency_From_Inventory: "Query.Item.Get_Currency_All",
+  Get_All_Inventory_Currency: "Query.Item.Get_Currency_All",
   /**  See `NODES.Query_Item_GetEquipmentAll` for detailed documentation. */
-  Get_all_equipment_from_Inventory: "Query.Item.Get_Equipment_All",
+  Get_All_Inventory_Equipment: "Query.Item.Get_Equipment_All",
   /**  See `NODES.Execution_Inventory_TriggerDrop` for detailed documentation. */
   Trigger_Loot_Drop: "Execution.Inventory.Trigger_Drop",
   /**  See `NODES.Execution_Inventory_SetLootContent` for detailed documentation. */
   Set_Loot_Drop_Content: "Execution.Inventory.Set_Loot_Content",
   /**  See `NODES.Execution_Inventory_ModifyLootItem` for detailed documentation. */
-  Modify_Loot_Item_Component_Quantity: "Execution.Inventory.Modify_Loot_Item",
+  Modify_Loot_Component_Item_Quantity: "Execution.Inventory.Modify_Loot_Item",
   /**  See `NODES.Execution_Inventory_ModifyLootCurrency` for detailed documentation. */
-  Modify_Loot_Component_Currency_Amount: "Execution.Inventory.Modify_Loot_Currency",
+  Modify_Loot_Component_Currency_Quantity: "Execution.Inventory.Modify_Loot_Currency",
   /**  See `NODES.Query_Item_GetLootItemAmount` for detailed documentation. */
   Get_Loot_Component_Item_Quantity: "Query.Item.Get_Loot_Item_Amount",
   /**  See `NODES.Query_Item_GetLootCurrencyAmount` for detailed documentation. */
@@ -20194,7 +20194,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_Item_GetLootEquipment` for detailed documentation. */
   Get_All_Equipment_from_Loot_Component: "Query.Item.Get_Loot_Equipment",
   /**  See `NODES.Trigger_Item_OnItemUse` for detailed documentation. */
-  When_Items_in_the_Inventory_Are_Used: "Trigger.Item.On_Item_Use",
+  When_Inventory_Item_Is_Used: "Trigger.Item.On_Item_Use",
   /**  See `NODES.Query_Equipment_GetTags` for detailed documentation. */
   Query_Equipment_Tag_List: "Query.Equipment.Get_Tags",
   /**  See `NODES.Execution_ScanTag_SetRules` for detailed documentation. */
@@ -20202,7 +20202,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_ScanTag_SetActiveTag` for detailed documentation. */
   Set_Scan_Component_s_Active_Scan_Tag_ID: "Execution.Scan_Tag.Set_Active_Tag",
   /**  See `NODES.Query_ScanTag_GetActiveTag` for detailed documentation. */
-  Get_the_Currently_Active_Scan_Tag_Config_ID: "Query.Scan_Tag.Get_Active_Tag",
+  Get_Current_Active_Scan_Tag_Config_ID: "Query.Scan_Tag.Get_Active_Tag",
   /**  See `NODES.Query_EntityRelated_GetCharacterAttr` for detailed documentation. */
   Get_Character_Attribute: "Query.Entity_Related.Get_Character_Attr",
   /**  See `NODES.Execution_Skill_SetCD` for detailed documentation. */
@@ -20224,19 +20224,19 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_UnitStatus_GetStatusApplier` for detailed documentation. */
   Query_Unit_Status_Applier_by_Slot_ID: "Query.Unit_Status.Get_Status_Applier",
   /**  See `NODES.Query_UnitStatus_GetStatusSlots` for detailed documentation. */
-  List_of_Slot_IDs_Querying_Unit_Status: "Query.Unit_Status.Get_Status_Slots",
+  Query_Unit_Status_Slot_ID_List: "Query.Unit_Status.Get_Status_Slots",
   /**  See `NODES.Query_Equipment_GetConfigID` for detailed documentation. */
-  Query_Equipment_Config_ID_by_Equipment_ID: "Query.Equipment.Get_Config_ID",
+  Query_Equipment_Config_ID_by_Equipment_Index: "Query.Equipment.Get_Config_ID",
   /**  See `NODES.Query_CharacterRelated_GetGUIDByID` for detailed documentation. */
   Get_Player_GUID_by_Player_ID: "Query.Character_Related.Get_GUID_By_ID",
   /**  See `NODES.Query_CharacterRelated_GetIDByGUID` for detailed documentation. */
-  Get_Player_ID_by_Player_GUID: "Query.Character_Related.Get_ID_By_GUID",
+  Get_player_ID_by_Player_GUID: "Query.Character_Related.Get_ID_By_GUID",
   /**  See `NODES.Arithmetic_Math_TimestampToTime` for detailed documentation. */
-  Calculate_formatted_time_from_timestamp: "Arithmetic.Math.Timestamp_To_Time",
+  Calculate_Formatted_Time_From_Timestamp: "Arithmetic.Math.Timestamp_To_Time",
   /**  See `NODES.Arithmetic_Math_TimeToTimestamp` for detailed documentation. */
   Calculate_Timestamp_From_Formatted_Time: "Arithmetic.Math.Time_To_Timestamp",
   /**  See `NODES.Arithmetic_Math_TimestampToWeekday` for detailed documentation. */
-  Calculate_day_of_the_week_from_timestamp: "Arithmetic.Math.Timestamp_To_Weekday",
+  Calculate_Day_of_the_Week_From_Timestamp: "Arithmetic.Math.Timestamp_To_Weekday",
   /**  See `NODES.Query_Math_GetTimestamp` for detailed documentation. */
   Query_Timestamp_UTC_0: "Query.Math.Get_Timestamp",
   /**  See `NODES.Query_Math_GetTimezone` for detailed documentation. */
@@ -20246,15 +20246,15 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_Creation_GetAggroList` for detailed documentation. */
   Get_Aggro_List_of_Creation_in_Default_Mode: "Query.Creation.Get_Aggro_List",
   /**  See `NODES.Execution_Leaderboard_SetScoreInt` for detailed documentation. */
-  Set_Player_Leaderboard_Score_as_an_Integer: "Execution.Leaderboard.Set_Score_Int",
+  Set_Player_Leaderboard_Score_as_Integer: "Execution.Leaderboard.Set_Score_Int",
   /**  See `NODES.Execution_Leaderboard_SetScoreFloat` for detailed documentation. */
-  Set_Player_Leaderboard_Score_as_a_Float: "Execution.Leaderboard.Set_Score_Float",
+  Set_Player_Leaderboard_Score_as_Float: "Execution.Leaderboard.Set_Score_Float",
   /**  See `NODES.Execution_CharacterRelated_ModifyEnvironment` for detailed documentation. */
-  Modify_environment_settings: "Execution.Character_Related.Modify_Environment",
+  Modify_Environment_Settings: "Execution.Character_Related.Modify_Environment",
   /**  See `NODES.Trigger_Class_OnClassRemove` for detailed documentation. */
   When_Player_Class_Is_Removed: "Trigger.Class.On_Class_Remove",
   /**  See `NODES.Trigger_Combat_OnInterruptible` for detailed documentation. */
-  When_Entering_an_Interruptible_State: "Trigger.Combat.On_Interruptible",
+  When_Entering_an_Interrupt_Vulnerable_State: "Trigger.Combat.On_Interruptible",
   /**  See `NODES.Query_General_GetGameInfo` for detailed documentation. */
   Query_Game_Mode_and_Player_Number: "Query.General.Get_Game_Info",
   /**  See `NODES.Query_CharacterRelated_GetNickname` for detailed documentation. */
@@ -20272,7 +20272,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_WonderlandBoxRelated_GetBoxQuantity` for detailed documentation. */
   Query_Corresponding_Gift_Box_Quantity: "Query.Wonderland_Box_Related.Get_Box_Quantity",
   /**  See `NODES.Query_WonderlandBoxRelated_GetBoxConsumption` for detailed documentation. */
-  Query_Corresponding_Gift_Box_Consumption: "Query.Wonderland_Box_Related.Get_Box_Consumption",
+  Query_Corresponding_Gift_Box_Consumption_Quantity: "Query.Wonderland_Box_Related.Get_Box_Consumption",
   /**  See `NODES.Execution_MotionDevice_ActivateFixedPoint` for detailed documentation. */
   Activate_Fixed_Point_Motion_Device: "Execution.Motion_Device.Activate_Fixed_Point",
   /**  See `NODES.Arithmetic_Math_LeftShift` for detailed documentation. */
@@ -20296,23 +20296,23 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_EntityRelated_GetMoveSpeed` for detailed documentation. */
   Query_Character_s_Current_Movement_SPD: "Query.Entity_Related.Get_Move_Speed",
   /**  See `NODES.Execution_Dictionary_SetValue` for detailed documentation. */
-  Set_or_Add_Key_Value_Pairs_to_Dictionary: "Execution.Dictionary.Set_Value",
+  Set_or_Add_Key_Value_Pair_to_Dictionary: "Execution.Dictionary.Set_Value",
   /**  See `NODES.Arithmetic_Dictionary_CreateDictionary` for detailed documentation. */
   Create_Dictionary: "Arithmetic.Dictionary.Create_Dictionary",
   /**  See `NODES.Query_Dictionary_GetValue` for detailed documentation. */
   Query_Dictionary_Value_by_Key: "Query.Dictionary.Get_Value",
   /**  See `NODES.Execution_Dictionary_RemoveByKey` for detailed documentation. */
-  Remove_Key_Value_Pairs_from_Dictionary_by_Key: "Execution.Dictionary.Remove_By_Key",
+  Remove_Key_Value_Pairs_From_Dictionary_by_Key: "Execution.Dictionary.Remove_By_Key",
   /**  See `NODES.Query_Dictionary_HasKey` for detailed documentation. */
   Query_If_Dictionary_Contains_Specific_Key: "Query.Dictionary.Has_Key",
   /**  See `NODES.Query_Dictionary_HasValue` for detailed documentation. */
   Query_If_Dictionary_Contains_Specific_Value: "Query.Dictionary.Has_Value",
   /**  See `NODES.Query_Dictionary_GetKeys` for detailed documentation. */
-  Get_List_of_Keys_from_Dictionary: "Query.Dictionary.Get_Keys",
+  Get_List_of_Keys_From_Dictionary: "Query.Dictionary.Get_Keys",
   /**  See `NODES.Query_Dictionary_GetValues` for detailed documentation. */
-  Get_List_of_Values_from_Dictionary: "Query.Dictionary.Get_Values",
+  Get_List_of_Values_From_Dictionary: "Query.Dictionary.Get_Values",
   /**  See `NODES.Query_Dictionary_GetLength` for detailed documentation. */
-  Query_Dictionary_s_Length: "Query.Dictionary.Get_Length",
+  Query_Dictionary_Length: "Query.Dictionary.Get_Length",
   /**  See `NODES.Execution_Dictionary_Clear` for detailed documentation. */
   Clear_Dictionary: "Execution.Dictionary.Clear",
   /**  See `NODES.Arithmetic_Dictionary_AssembleDictionary` for detailed documentation. */
@@ -20324,7 +20324,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_CustomVariable_GetSnapshot` for detailed documentation. */
   Query_Custom_Variable_Snapshot: "Query.Custom_Variable.Get_Snapshot",
   /**  See `NODES.Hidden_Trigger_OnGMCall` for detailed documentation. */
-  When_Calling_GM_This_Node_is_Hidden_Externally: "Hidden.Trigger.On_GM_Call",
+  When_Calling_GM_This_Node_Is_Hidden_Externally: "Hidden.Trigger.On_GM_Call",
   /**  See `NODES.Others_PortClient_GraphEndBool` for detailed documentation. */
   Node_Graph_End_Boolean_Client: "Others.Port_Client.Graph_End_Bool",
   /**  See `NODES.Arithmetic_MathClient_And` for detailed documentation. */
@@ -20410,7 +20410,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Execution_CharacterSkillClient_SetTarget` for detailed documentation. */
   Set_Own_Attack_Target_Client: "Execution.Character_Skill_Client.Set_Target",
   /**  See `NODES.Others_PortClient_GraphStart` for detailed documentation. */
-  Node_Graph_Begins_Client: "Others.Port_Client.Graph_Start",
+  Node_Graph_Starts_Client: "Others.Port_Client.Graph_Start",
   /**  See `NODES.Query_EntityRelatedClient_FilterSphere` for detailed documentation. */
   Filter_Entity_List_Within_Spherical_Range_Client: "Query.Entity_Related_Client.Filter_Sphere",
   /**  See `NODES.Query_EntityRelatedClient_FilterSquare` for detailed documentation. */
@@ -20508,7 +20508,7 @@ export const NODE_NAMES = {
   /**  See `NODES.Query_CustomAggroClient_GetAggroList` for detailed documentation. */
   Get_the_Aggro_List_of_the_Specified_Entity_Client: "Query.Custom_Aggro_Client.Get_Aggro_List",
   /**  See `NODES.Query_CustomAggroClient_IsInCombat` for detailed documentation. */
-  Query_if_Specified_Entity_is_in_Combat_Client: "Query.Custom_Aggro_Client.Is_In_Combat",
+  Query_If_Specified_Entity_Is_in_Combat_Client: "Query.Custom_Aggro_Client.Is_In_Combat",
   /**  See `NODES.Query_FactionRelatedClient_IsHostile` for detailed documentation. */
   Query_If_Faction_Is_Hostile_Client: "Query.Faction_Related_Client.Is_Hostile",
   /**  See `NODES.Arithmetic_MathClient_Sin` for detailed documentation. */
