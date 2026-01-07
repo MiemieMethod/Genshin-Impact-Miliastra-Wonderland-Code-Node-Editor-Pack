@@ -121,10 +121,18 @@ const unused = new Set(doc);
   // 类型与参数均能对应上, 填充标签和注释
   
   // assert(node.Description===undefined);
-  node.Description = {
-    en: ref_node.description.trim(),
-    "zh-Hans": ref_node_zh.description.trim(),
-  };
+  // node.Description = {
+  //   en: ref_node.description.trim(),
+  //   "zh-Hans": ref_node_zh.description.trim(),
+  // };
+
+  pins.forEach((p, i) => {
+    const rp = ref_node.parameters[i];
+    const rp_zh = ref_node_zh.parameters[i];
+    assertDeepEq(p.Description, {});
+    if(rp.description.trim() !== "") p.Description["en"] = rp.description.trim();
+    if(rp_zh.description.trim() !== "") p.Description["zh-Hans"] = rp_zh.description.trim();
+  });
 });
 
 console.log("Unused nodes:");
@@ -133,5 +141,5 @@ for (const n of unused) {
 }
 
 // save("nodes.json", nodes);
-save("data.json", data);
+// save("data.json", data);
 

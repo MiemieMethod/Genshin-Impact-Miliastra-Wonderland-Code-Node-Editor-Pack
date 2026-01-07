@@ -559,7 +559,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The string to be printed",
+            "zh-Hans": "所要打印的字符串"
+          }
         }
       ],
       "Implementation": null,
@@ -930,7 +933,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Starting integer value for iteration",
+            "zh-Hans": "遍历开始的整数值"
+          }
         },
         {
           "Identifier": "end_index",
@@ -944,7 +950,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Integer value at which the iteration ends",
+            "zh-Hans": "遍历结束的整数值"
+          }
         },
         {
           "Identifier": "current_index",
@@ -958,7 +967,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Integer value of the current execution logic",
+            "zh-Hans": "当次执行逻辑的整数值"
+          }
         }
       ],
       "Implementation": null,
@@ -1523,7 +1535,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Output True if equal, False if not equal",
+            "zh-Hans": "相等输出“是”，不相等输出“否”"
+          }
         }
       ],
       "Variants": [
@@ -1702,7 +1717,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Allows you to set the default initial value for local variables",
+            "zh-Hans": "可以设置局部变量的初始默认值"
+          }
         },
         {
           "Identifier": "local_variable",
@@ -1716,7 +1734,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Container for data storage",
+            "zh-Hans": "存储数据的载体"
+          }
         },
         {
           "Identifier": "value",
@@ -1730,7 +1751,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When not Overwritten, this value equals the Initial Value; after it is Overwritten, it equals the new value",
+            "zh-Hans": "未被覆写时，该值等于初始值，被覆写后，该值等于被覆写后的值"
+          }
         }
       ],
       "Variants": [
@@ -2072,7 +2096,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Container for data storage",
+            "zh-Hans": "存储数据的载体"
+          }
         },
         {
           "Identifier": "value",
@@ -2086,7 +2113,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Value used to overwrite this local variable",
+            "zh-Hans": "所要覆写该局部变量的值"
+          }
         }
       ],
       "Variants": [
@@ -2348,7 +2378,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The variable is mounted on this entity",
+            "zh-Hans": "该变量挂载在该实体上"
+          }
         },
         {
           "Identifier": "variable_name",
@@ -2362,7 +2395,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Custom variable name. Must be unique",
+            "zh-Hans": "自定义变量的命名，不可重复"
+          }
         },
         {
           "Identifier": "value",
@@ -2376,7 +2412,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Value assigned to this variable",
+            "zh-Hans": "赋予该变量的值"
+          }
         },
         {
           "Identifier": "Input3",
@@ -2402,7 +2441,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Default: True. When set to False, this custom variable editing will not trigger the On Custom Variable Change event",
+            "zh-Hans": "默认为是。选为否时，这次自定义变量修改不会触发自定义变量变化时事件"
+          }
         }
       ],
       "Variants": [
@@ -3984,7 +4026,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Entity associated with this Node Graph",
+            "zh-Hans": "与节点图关联的实体"
+          }
         },
         {
           "Identifier": "source_guid",
@@ -3998,7 +4043,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "GUID of the Entity associated with this Node Graph",
+            "zh-Hans": "与节点图关联的实体的GUID"
+          }
         },
         {
           "Identifier": "variable_name",
@@ -4012,7 +4060,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Name of the Variable that was changed",
+            "zh-Hans": "发生变化的变量的名称"
+          }
         },
         {
           "Identifier": "old_value",
@@ -4026,7 +4077,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Variable's value before the change",
+            "zh-Hans": "变量变化前的值"
+          }
         },
         {
           "Identifier": "new_value",
@@ -4040,7 +4094,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Variable's value after the change",
+            "zh-Hans": "变量变化后的值"
+          }
         }
       ],
       "Variants": [
@@ -7854,7 +7911,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Preset Status set for the entity",
+            "zh-Hans": "所要设置预设状态的实体"
+          }
         },
         {
           "Identifier": "preset_index",
@@ -7868,7 +7928,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The unique identifier for the Preset Status",
+            "zh-Hans": "预设状态的唯一标识"
+          }
         },
         {
           "Identifier": "preset_value",
@@ -7882,7 +7945,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Generally \"0\" for off, \"1\" for on",
+            "zh-Hans": "一般“0”为关闭，“1”为开启"
+          }
         }
       ],
       "Implementation": null,
@@ -8112,7 +8178,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The entity to be destroyed",
+            "zh-Hans": "所要销毁的实体"
+          }
         }
       ],
       "Implementation": null,
@@ -8172,7 +8241,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this entity",
+            "zh-Hans": "该实体的标识"
+          }
         },
         {
           "Identifier": "unit_tag_indexes",
@@ -8186,7 +8258,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Unit Tags carried when this entity is created",
+            "zh-Hans": "可决定该实体创建时携带的单位标签"
+          }
         }
       ],
       "Implementation": null,
@@ -8606,7 +8681,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -8620,7 +8698,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Timer Identifier",
+            "zh-Hans": "该定时器的标识"
+          }
         },
         {
           "Identifier": "loop",
@@ -8634,7 +8715,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, the Timer Sequence executes in a loop",
+            "zh-Hans": "“是”则会循环执行定时器序列"
+          }
         },
         {
           "Identifier": "timer_sequence",
@@ -8648,7 +8732,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Provide a list sorted in ascending order. If the list is invalid (not strictly ascending, contains negatives, etc.), the Timer will not run",
+            "zh-Hans": "需要传入一个从小到大排列的列表。如果传入的列表不合法（不是严格按照从小到大排列、存在负数等），定时器不会运行"
+          }
         },
         {
           "Identifier": "Input4",
@@ -8721,7 +8808,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -8735,7 +8825,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Timer Identifier",
+            "zh-Hans": "该定时器的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -8795,7 +8888,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -8809,7 +8905,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Timer Identifier",
+            "zh-Hans": "该定时器的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -8869,7 +8968,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -8883,7 +8985,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Timer Identifier",
+            "zh-Hans": "该定时器的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -9061,7 +9166,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "mover_name",
@@ -9075,7 +9183,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this motion device",
+            "zh-Hans": "该运动器的标识"
+          }
         },
         {
           "Identifier": "duration",
@@ -9089,7 +9200,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The duration for which this motion device remains active",
+            "zh-Hans": "该运动器生效的时长"
+          }
         },
         {
           "Identifier": "velocity",
@@ -9103,7 +9217,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the magnitude and direction of the velocity",
+            "zh-Hans": "决定了速度大小和方向"
+          }
         }
       ],
       "Implementation": null,
@@ -9163,7 +9280,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "mover_name",
@@ -9177,7 +9297,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this motion device",
+            "zh-Hans": "该运动器的标识"
+          }
         },
         {
           "Identifier": "duration",
@@ -9191,7 +9314,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The duration for which this motion device remains active",
+            "zh-Hans": "该运动器生效的时长"
+          }
         },
         {
           "Identifier": "angular_velocity",
@@ -9205,7 +9331,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Angular Velocity Magnitude",
+            "zh-Hans": "角速度大小"
+          }
         },
         {
           "Identifier": "axis",
@@ -9219,7 +9348,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Relative Orientation",
+            "zh-Hans": "相对朝向"
+          }
         }
       ],
       "Implementation": null,
@@ -9279,7 +9411,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "mover_name",
@@ -9293,7 +9428,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this motion device",
+            "zh-Hans": "该运动器的标识"
+          }
         },
         {
           "Identifier": "stop_all",
@@ -9307,7 +9445,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, stops all Basic Motion Devices on this Entity. If set to False, stops only the Motion Device whose name matches the specified Motion Device",
+            "zh-Hans": "“是”则停止该实体上的所有基础运动器，“否”则只停止与运动器名称对应的运动器"
+          }
         }
       ],
       "Implementation": null,
@@ -9367,7 +9508,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "mover_name",
@@ -9381,7 +9525,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this motion device",
+            "zh-Hans": "该运动器的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -9441,7 +9588,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "mover_name",
@@ -9455,7 +9605,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this motion device",
+            "zh-Hans": "该运动器的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -9504,7 +9657,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Component Owner",
+            "zh-Hans": "组件持有者"
+          }
         },
         {
           "Identifier": "source_guid",
@@ -9592,7 +9748,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "collision_unit_index",
@@ -9606,7 +9765,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Collision Trigger",
+            "zh-Hans": "该碰撞触发器的标识"
+          }
         },
         {
           "Identifier": "should_register",
@@ -9620,7 +9782,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Set to True to activate",
+            "zh-Hans": "“是”为激活"
+          }
         }
       ],
       "Implementation": null,
@@ -9669,7 +9834,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entity A (referenced above)",
+            "zh-Hans": "上述中的实体A"
+          }
         },
         {
           "Identifier": "leaver_guid",
@@ -9697,7 +9865,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entity B (mentioned above)",
+            "zh-Hans": "上述中的实体B"
+          }
         },
         {
           "Identifier": "trigger_guid",
@@ -9774,7 +9945,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entity A (referenced above)",
+            "zh-Hans": "上述中的实体A"
+          }
         },
         {
           "Identifier": "enterer_guid",
@@ -9802,7 +9976,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entity B (mentioned above)",
+            "zh-Hans": "上述中的实体B"
+          }
         },
         {
           "Identifier": "trigger_guid",
@@ -9830,7 +10007,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The trigger with the corresponding ID in Entity B's Collision Trigger Component",
+            "zh-Hans": "实体B碰撞触发器组件中的对应序号的触发器"
+          }
         }
       ],
       "Implementation": null,
@@ -9890,7 +10070,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Effect",
+            "zh-Hans": "该特效的标识"
+          }
         },
         {
           "Identifier": "target_entity",
@@ -9904,7 +10087,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If the Entity does not exist, the Effect will not play",
+            "zh-Hans": "实体不存在会导致特效无法播放"
+          }
         },
         {
           "Identifier": "socket_name",
@@ -9918,7 +10104,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If the Attachment Point Name does not exist, the Special Effect will not play",
+            "zh-Hans": "挂接点名称不存在会导致特效无法播放"
+          }
         },
         {
           "Identifier": "follow_move",
@@ -9932,7 +10121,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, follows the Target Entity's Motion",
+            "zh-Hans": "“是”会跟随目标实体运动"
+          }
         },
         {
           "Identifier": "follow_rotate",
@@ -9946,7 +10138,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, follows the Target Entity's Rotation",
+            "zh-Hans": "“是”会跟随目标实体旋转"
+          }
         },
         {
           "Identifier": "pos_offset",
@@ -9960,7 +10155,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Location Offset relative to the Target Entity's specified Attachment Point",
+            "zh-Hans": "相对于目标实体指定挂接点的位置偏移"
+          }
         },
         {
           "Identifier": "rot_offset",
@@ -9974,7 +10172,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Rotation offset relative to the Target Entity's specified Attachment Point",
+            "zh-Hans": "相对于目标实体指定挂接点的旋转偏移"
+          }
         },
         {
           "Identifier": "scale",
@@ -9988,7 +10189,10 @@
           "KernelIndex": 7,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Zoom Multiplier of this Effect",
+            "zh-Hans": "该特效的缩放倍率"
+          }
         },
         {
           "Identifier": "play_built_in_sfx",
@@ -10002,7 +10206,10 @@
           "KernelIndex": 8,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, plays the built-in Sound Effect as well",
+            "zh-Hans": "“是”则会同时播放自带的音效"
+          }
         }
       ],
       "Implementation": null,
@@ -10244,7 +10451,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Instance ID automatically generated by the Mount Looping Special Effect node",
+            "zh-Hans": "【挂载循环特效】节点中自动生成的实例ID"
+          }
         },
         {
           "Identifier": "target_entity",
@@ -10258,7 +10468,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         }
       ],
       "Implementation": null,
@@ -10383,7 +10596,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "List being input",
+            "zh-Hans": "被接入的列表"
+          }
         },
         {
           "Identifier": "incoming_list",
@@ -10397,7 +10613,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The input list will be added to the end of the Target list",
+            "zh-Hans": "接入的列表会接在目标列表的尾部"
+          }
         }
       ],
       "Variants": [
@@ -10599,7 +10818,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "List to be cleared",
+            "zh-Hans": "所要清除的列表"
+          }
         }
       ],
       "Variants": [
@@ -10973,7 +11195,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Returns an empty list if not found",
+            "zh-Hans": "未找到则返回空列表"
+          }
         }
       ],
       "Variants": [
@@ -11382,7 +11607,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Reference to the list being inserted",
+            "zh-Hans": "被插入的列表引用"
+          }
         },
         {
           "Identifier": "index",
@@ -11396,7 +11624,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "ID of the inserted value (after insertion)",
+            "zh-Hans": "插入值在插入后所在的序号"
+          }
         },
         {
           "Identifier": "value",
@@ -11410,7 +11641,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Value to be inserted",
+            "zh-Hans": "被插入的值"
+          }
         }
       ],
       "Variants": [
@@ -11927,7 +12161,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Reference to the list of values to remove",
+            "zh-Hans": "被移除值的列表引用"
+          }
         },
         {
           "Identifier": "index",
@@ -11941,7 +12178,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "ID to remove",
+            "zh-Hans": "需要移除的序号"
+          }
         }
       ],
       "Variants": [
@@ -12103,7 +12343,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Edited list reference",
+            "zh-Hans": "被修改的列表引用"
+          }
         },
         {
           "Identifier": "index",
@@ -12117,7 +12360,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "ID of edited value",
+            "zh-Hans": "修改的值的序号"
+          }
         },
         {
           "Identifier": "value",
@@ -12131,7 +12377,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Edited Value",
+            "zh-Hans": "修改的值"
+          }
         }
       ],
       "Variants": [
@@ -12333,7 +12582,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Integer List or Floating Point Number List",
+            "zh-Hans": "整数列表或浮点数列表"
+          }
         },
         {
           "Identifier": "mode",
@@ -12347,7 +12599,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Ascending or Descending",
+            "zh-Hans": "顺序（从小到大）或逆序（从大到小）排序"
+          }
         }
       ],
       "Variants": [
@@ -15166,7 +15421,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Component Owner",
+            "zh-Hans": "组件持有者"
+          }
         },
         {
           "Identifier": "source_guid",
@@ -15294,7 +15552,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, the Entity Layout Group's Initial Creation switch is enabled",
+            "zh-Hans": "“是”则该实体布设组初始创建开关状态为开启"
+          }
         }
       ],
       "Implementation": null,
@@ -15598,7 +15859,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Target entity being forwarded",
+            "zh-Hans": "被转发的目标实体"
+          }
         }
       ],
       "Implementation": null,
@@ -17278,7 +17542,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Round: Rounds to the nearest integer according to standard rules\nRound Up: Returns the smallest integer greater than the input value. For example: input 1.2 → 2; input −2.3 → −2\nRound Down: Returns the largest integer smaller than the input value. For example: input 1.2 → 1; input −2.3 → −3\nTruncate: Removes the decimal part of the floating point number (rounds toward zero). For example: input 1.2 → 1; input −2.3 → −2",
+            "zh-Hans": "四舍五入：按照四舍五入规则进行取整\n向上取整：返回大于输入且离输入值最近的一个整数，例如：输入为1.2时，返回2；输入为-2.3时，返回-2\n向下取整：返回小于输入且离输入值最近的一个整数。例如：输入为1.2时，返回1；输入为-2.3时，返回-3\n截尾取整：截去浮点数尾部的小数部分，也相当于向0方向取整。例如：输入为1.2时，返回1；输入为-2.3时，返回-2"
+          }
         },
         {
           "Identifier": "result",
@@ -18070,7 +18337,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "should_activate",
@@ -18084,7 +18354,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Set to True to activate",
+            "zh-Hans": "“是”为激活"
+          }
         }
       ],
       "Implementation": null,
@@ -18144,7 +18417,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "should_activate",
@@ -18158,7 +18434,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Set to True to activate",
+            "zh-Hans": "“是”为激活"
+          }
         }
       ],
       "Implementation": null,
@@ -18218,7 +18497,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "extra_collision_index",
@@ -18232,7 +18514,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Extra Collision",
+            "zh-Hans": "该额外碰撞的标识"
+          }
         },
         {
           "Identifier": "should_activate",
@@ -18246,7 +18531,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Set to True to activate",
+            "zh-Hans": "“是”为激活"
+          }
         }
       ],
       "Implementation": null,
@@ -18306,7 +18594,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "extra_collision_index",
@@ -18320,7 +18611,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Extra Collision",
+            "zh-Hans": "该额外碰撞的标识"
+          }
         },
         {
           "Identifier": "should_activate",
@@ -18334,7 +18628,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Set to True to activate",
+            "zh-Hans": "“是”为激活"
+          }
         }
       ],
       "Implementation": null,
@@ -18459,7 +18756,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "follow_guid",
@@ -18473,7 +18773,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the Follow Target",
+            "zh-Hans": "跟随目标的标识"
+          }
         },
         {
           "Identifier": "socket_name",
@@ -18487,7 +18790,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Name of the Attachment Point to follow",
+            "zh-Hans": "跟随的挂接点名称"
+          }
         },
         {
           "Identifier": "pos_offset",
@@ -18501,7 +18807,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Location Offset based on the Follow Coordinate System",
+            "zh-Hans": "以【跟随坐标系】为基准产生的位置偏移"
+          }
         },
         {
           "Identifier": "rot_offset",
@@ -18515,7 +18824,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Rotation Offset based on the Follow Coordinate System",
+            "zh-Hans": "以【跟随坐标系】为基准产生的旋转偏移"
+          }
         },
         {
           "Identifier": "coord_sys",
@@ -18529,7 +18841,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Relative Coordinate System or World Coordinate System",
+            "zh-Hans": "可选”相对坐标系“、”世界坐标系“"
+          }
         },
         {
           "Identifier": "follow_type",
@@ -18543,7 +18858,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Completely Follow, Follow Location, Follow Rotation",
+            "zh-Hans": "可选”完全跟随“、”跟随位置“、”跟随旋转”"
+          }
         }
       ],
       "Implementation": null,
@@ -18756,7 +19074,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entity whose faction is to be edited",
+            "zh-Hans": "所要修改阵营的实体"
+          }
         },
         {
           "Identifier": "faction",
@@ -18770,7 +19091,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Edited Faction",
+            "zh-Hans": "修改后的阵营"
+          }
         }
       ],
       "Implementation": null,
@@ -18921,7 +19245,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Prefab",
+            "zh-Hans": "该元件的标识"
+          }
         },
         {
           "Identifier": "position",
@@ -18935,7 +19262,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Location",
+            "zh-Hans": "绝对位置"
+          }
         },
         {
           "Identifier": "rotation",
@@ -18949,7 +19279,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Rotation",
+            "zh-Hans": "绝对旋转"
+          }
         },
         {
           "Identifier": "owner_entity",
@@ -18963,7 +19296,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines whether the created entity belongs to another entity",
+            "zh-Hans": "可决定该创建后实体是否归属于某个实体"
+          }
         },
         {
           "Identifier": "Input4",
@@ -18989,7 +19325,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When set to False, the [Level] parameter has no effect",
+            "zh-Hans": "为否时，【等级】参数不生效"
+          }
         },
         {
           "Identifier": "level",
@@ -19003,7 +19342,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Level when the entity is created",
+            "zh-Hans": "决定该实体创建时的等级"
+          }
         },
         {
           "Identifier": "unit_tag_indexes",
@@ -19017,7 +19359,10 @@
           "KernelIndex": 7,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Unit Tags carried when this entity is created",
+            "zh-Hans": "可决定该实体创建时携带的单位标签"
+          }
         },
         {
           "Identifier": "created_entity",
@@ -19031,7 +19376,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entities created in this way do not have a GUID",
+            "zh-Hans": "以该方式创建的实体没有GUID"
+          }
         }
       ],
       "Implementation": null,
@@ -19109,7 +19457,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to False: The environment was hit\nIf set to True: An Entity was hit. Retrieve values from the Hit Entity output parameter",
+            "zh-Hans": "为否时，命中的是场景\n为是时，命中实体，此时可以从【命中实体】出参中取出值"
+          }
         },
         {
           "Identifier": "hit_entity",
@@ -19123,7 +19474,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Hit Entity is only valid when a Hurtbox is hit",
+            "zh-Hans": "仅当命中受击盒时，命中实体才有意义"
+          }
         },
         {
           "Identifier": "hit_position",
@@ -19197,7 +19551,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Projectile Prefab",
+            "zh-Hans": "该投射物元件的标识"
+          }
         },
         {
           "Identifier": "position",
@@ -19211,7 +19568,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Location",
+            "zh-Hans": "绝对位置"
+          }
         },
         {
           "Identifier": "rotation",
@@ -19225,7 +19585,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Rotation",
+            "zh-Hans": "绝对旋转"
+          }
         },
         {
           "Identifier": "owner_entity",
@@ -19239,7 +19602,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines whether the created entity belongs to another entity",
+            "zh-Hans": "可决定该创建后实体是否归属于某个实体"
+          }
         },
         {
           "Identifier": "track_target",
@@ -19253,7 +19619,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Tracking Target set by the Tracking Projectile type in the Projectile Motion Device component",
+            "zh-Hans": "投射运动器组件中追踪投射类型设置的追踪目标"
+          }
         },
         {
           "Identifier": "override_level",
@@ -19267,7 +19636,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When set to False, the [Level] parameter has no effect",
+            "zh-Hans": "为否时，【等级】参数不生效"
+          }
         },
         {
           "Identifier": "level",
@@ -19281,7 +19653,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Level when the entity is created",
+            "zh-Hans": "决定该实体创建时的等级"
+          }
         },
         {
           "Identifier": "unit_tag_indexes",
@@ -19295,7 +19670,10 @@
           "KernelIndex": 7,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Unit Tags carried when this entity is created",
+            "zh-Hans": "可决定该实体创建时携带的单位标签"
+          }
         },
         {
           "Identifier": "created_entity",
@@ -19309,7 +19687,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "This Entity inherits the attributes of the Projectile Prefab",
+            "zh-Hans": "该实体继承该投射物元件的属性"
+          }
         }
       ],
       "Implementation": null,
@@ -19527,7 +19908,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes Player, Character, Stage, Object, Creation.",
+            "zh-Hans": "分为玩家、角色、关卡、物件、造物"
+          }
         }
       ],
       "Implementation": null,
@@ -19587,7 +19971,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player List",
+            "zh-Hans": "生效的玩家列表"
+          }
         },
         {
           "Identifier": "template_name",
@@ -19601,7 +19988,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Camera Template Identifier",
+            "zh-Hans": "镜头模板的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -19976,7 +20366,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "mover_name",
@@ -19990,7 +20383,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this motion device",
+            "zh-Hans": "该运动器的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -20166,7 +20562,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player",
+            "zh-Hans": "生效的玩家"
+          }
         },
         {
           "Identifier": "revive_point_index",
@@ -20180,7 +20579,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Revive Point",
+            "zh-Hans": "该复苏点的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -20240,7 +20642,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player",
+            "zh-Hans": "生效的玩家"
+          }
         },
         {
           "Identifier": "revive_point_index",
@@ -20254,7 +20659,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Revive Point",
+            "zh-Hans": "该复苏点的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -20314,7 +20722,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player",
+            "zh-Hans": "生效的玩家"
+          }
         },
         {
           "Identifier": "allow_revive",
@@ -20328,7 +20739,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, reviving is allowed",
+            "zh-Hans": "“是”则允许复苏"
+          }
         }
       ],
       "Implementation": null,
@@ -20439,7 +20853,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player",
+            "zh-Hans": "生效的玩家"
+          }
         },
         {
           "Identifier": "remaining_count",
@@ -20453,7 +20870,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When set to 0, the player will not be revived",
+            "zh-Hans": "设置为0时，该玩家无法复苏"
+          }
         }
       ],
       "Implementation": null,
@@ -20564,7 +20984,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player",
+            "zh-Hans": "生效的玩家"
+          }
         },
         {
           "Identifier": "duration",
@@ -20578,7 +21001,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Unit in seconds",
+            "zh-Hans": "单位为秒"
+          }
         }
       ],
       "Implementation": null,
@@ -20638,7 +21064,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Character Entity to be revived",
+            "zh-Hans": "会被复苏的角色实体"
+          }
         }
       ],
       "Implementation": null,
@@ -20701,7 +21130,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Node Graph caused: the Character was Downed by the Destroy Entity node in the Node Graph\nNormal Down: the Character was Downed because HP reached 0\nAbnormal Down: the character was downed due to drowning, falling into an abyss, etc.",
+            "zh-Hans": "节点图导致：因节点图的【销毁实体】节点导致的角色倒下\n正常倒下：因生命值变为0导致的角色倒下\n非正常倒下：因溺水、坠入深渊等导致的角色倒下"
+          }
         },
         {
           "Identifier": "attacker_entity",
@@ -20824,7 +21256,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Player Entity that owns the Character",
+            "zh-Hans": "角色归属的玩家实体"
+          }
         }
       ],
       "Implementation": null,
@@ -20882,7 +21317,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Player Entity that owns the Character",
+            "zh-Hans": "角色归属的玩家实体"
+          }
         },
         {
           "Identifier": "Input1",
@@ -20894,7 +21332,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to False, the Revive Count will not be deducted",
+            "zh-Hans": "为否时，不会扣除复苏次数"
+          }
         }
       ],
       "Implementation": null,
@@ -20958,7 +21399,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Node Graph caused: the Character was Downed by the Destroy Entity node in the Node Graph\nNormal Down: the Character was Downed because HP reached 0\nAbnormal Down: the character was downed due to drowning, falling into an abyss, etc.",
+            "zh-Hans": "节点图导致：因节点图的【销毁实体】节点导致的角色倒下\n正常倒下：因生命值变为0导致的角色倒下\n非正常倒下：因溺水、坠入深渊等导致的角色倒下"
+          }
         }
       ],
       "Implementation": null,
@@ -21167,7 +21611,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player",
+            "zh-Hans": "生效的玩家"
+          }
         },
         {
           "Identifier": "target_position",
@@ -21181,7 +21628,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Location",
+            "zh-Hans": "绝对位置"
+          }
         },
         {
           "Identifier": "target_rotation",
@@ -21195,7 +21645,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Rotation",
+            "zh-Hans": "绝对旋转"
+          }
         }
       ],
       "Implementation": null,
@@ -21661,7 +22114,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Applier Entity for this action. Defaults to the Entity associated with this Node Graph",
+            "zh-Hans": "决定了该次行为的施加者实体，默认为该节点图所关联的实体"
+          }
         },
         {
           "Identifier": "target",
@@ -21675,7 +22131,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Entity that actually receives this Unit Status",
+            "zh-Hans": "实际被添加该单位状态的实体"
+          }
         },
         {
           "Identifier": "state_config_id",
@@ -21689,7 +22148,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Unit Status",
+            "zh-Hans": "该单位状态的标识"
+          }
         },
         {
           "Identifier": "stacks",
@@ -21703,7 +22165,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Stack Count for this Unit Status",
+            "zh-Hans": "该单位状态的层数"
+          }
         },
         {
           "Identifier": "params_dict",
@@ -21717,7 +22182,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Can carry a set of parameters to overwrite parameters defined in the Unit Status. Currently, only parameters within shield templates can be overwritten.",
+            "zh-Hans": "可以携带一组参数，用于覆写单位状态中的参数，目前仅支持对护盾中护盾模板的参数覆写"
+          }
         },
         {
           "Identifier": "apply_result",
@@ -21731,7 +22199,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Failed, other exceptions\nFailed: Yielded to another status. A yielding relationship exists between the Target's current Unit Status and the one being applied\nFailed: Maximum coexistence limit reached. The specified Unit Status on the Target Entity has reached its Coexistence Limit\nFailed: Unable to add additional stack. Stack addition failed\nSuccess: New status applied. Successfully applied new Unit Status\nSuccess: Slot stacking. Target already has this Unit Status, stacking applied",
+            "zh-Hans": "失败，其他异常\n失败，让位于其他状态：目标上已有的单位状态与尝试施加的状态之间有让位关系\n失败，超出并存上限：超出目标实体上的指定单位状态的并存上限\n失败，附加叠层未成功：叠层失败\n成功，施加新状态：成功附加新状态\n成功，槽位叠层：目标上已有该单位状态，叠层"
+          }
         },
         {
           "Identifier": "slot_index",
@@ -21745,7 +22216,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If application succeeds, returns the Unit Status Slot ID containing the instance",
+            "zh-Hans": "如果施加成功，则返回一个该单位状态实例所在的单位状态槽位序号"
+          }
         }
       ],
       "Implementation": null,
@@ -21906,7 +22380,10 @@
           "KernelIndex": 8,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Status Replacement: The Unit Status was removed because it was replaced by another status\nDuration Exceeded: The Unit Status exceeded its runtime duration\nDispelled: The Unit Status was removed directly\nStatus Expired: The Unit Status became invalid due to other reasons\nClass Changed: The Unit Status was removed due to a class change",
+            "zh-Hans": "其他单位状态顶替：因被施加了顶替状态导致单位状态被移除\n超出持续时间：超出单位状态持续事件\n被驱散：单位状态被直接移除\n状态失效：因其他原因导致的状态失效\n职业变更：因职业变更导致的状态被移除"
+          }
         },
         {
           "Identifier": "slot_index",
@@ -21920,7 +22397,10 @@
           "KernelIndex": 9,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "ID of the Unit Status slot that changed",
+            "zh-Hans": "发生变化的单位状态槽位的序号"
+          }
         }
       ],
       "Implementation": null,
@@ -22053,7 +22533,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Edited Stack Count",
+            "zh-Hans": "变化后的层数"
+          }
         },
         {
           "Identifier": "layer_original",
@@ -22067,7 +22550,10 @@
           "KernelIndex": 7,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Previous Stack Count",
+            "zh-Hans": "变化前的层数"
+          }
         },
         {
           "Identifier": "slot_index",
@@ -22081,7 +22567,10 @@
           "KernelIndex": 8,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "ID of the Unit Status slot that changed",
+            "zh-Hans": "发生变化的单位状态槽位的序号"
+          }
         }
       ],
       "Implementation": null,
@@ -22141,7 +22630,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Entity from which the Unit Status will be removed",
+            "zh-Hans": "被移除该单位状态的实体"
+          }
         },
         {
           "Identifier": "state_config_id",
@@ -22155,7 +22647,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Unit Status",
+            "zh-Hans": "该单位状态的标识"
+          }
         },
         {
           "Identifier": "remove_mode",
@@ -22169,7 +22664,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "All Coexisting Statuses with the Same Name: Removes all statuses applied with this Config ID that share the same name\nStatus With Fastest Stack Loss: Removes one stack from the status that loses stacks the fastest",
+            "zh-Hans": "所有同名并存状态：移除以该配置ID施加的所有同名状态\n最快丢失叠加层数的状态：移除最快丢失叠加层数的一层状态"
+          }
         },
         {
           "Identifier": "Input3",
@@ -22195,7 +22693,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Remover Entity for this action. Defaults to the Entity associated with this Node Graph",
+            "zh-Hans": "决定了该次行为的移除者实体，默认为该节点图所关联的实体"
+          }
         }
       ],
       "Implementation": null,
@@ -22256,7 +22757,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "device_index",
@@ -22270,7 +22774,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the Character Disruptor Device",
+            "zh-Hans": "角色扰动装置的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -22330,7 +22837,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Depending on the Ability Unit, this can be treated either as the reference target for the Hitbox Location or as the attack target",
+            "zh-Hans": "根据能力单元不同，可以视为攻击盒位置的基准目标或攻击对象"
+          }
         },
         {
           "Identifier": "damage_coeff",
@@ -22344,7 +22854,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The coefficient applied to the damage dealt by this attack",
+            "zh-Hans": "该次攻击造成伤害的系数"
+          }
         },
         {
           "Identifier": "damage_delta",
@@ -22358,7 +22871,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The incremental damage applied by this attack",
+            "zh-Hans": "该次攻击造成伤害的增量"
+          }
         },
         {
           "Identifier": "pos_offset",
@@ -22372,7 +22888,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When using Hitbox Attack, determines the Hitbox offset\nWhen using Direct Attack, determines the hit-detection location for the attack and thus where on-hit special effects are created",
+            "zh-Hans": "使用【攻击盒攻击】时，决定了攻击盒的偏移\n使用【直接攻击】时，决定了该次攻击的判定位置，影响受击特效等的创建位置"
+          }
         },
         {
           "Identifier": "rot_offset",
@@ -22386,7 +22905,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When using Hitbox Attack, determines the Hitbox rotation\nWhen using Direct Attack, determines the hit-detection location for the attack and thus the rotation used for on-hit effects",
+            "zh-Hans": "使用【攻击盒攻击】时，决定了攻击盒的旋转\n使用【直接攻击】时，决定了该次攻击的判定位置，影响受击特效等的旋转"
+          }
         },
         {
           "Identifier": "ability_unit",
@@ -22400,7 +22922,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Referenced Ability Unit. Must be configured on the entity associated with this Node Graph",
+            "zh-Hans": "引用的能力单元，需要配置在此节点图所关联的实体上"
+          }
         },
         {
           "Identifier": "override_ability_unit",
@@ -22414,7 +22939,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When set to True, the four parameters — Damage Coefficient, Damage Increment, Location Offset, and Rotation Offset — overwrite parameters of the same name in the Ability Unit. When set to False, the Ability Unit's original configuration is used",
+            "zh-Hans": "为“是”时，伤害系数、伤害增量、位置偏移、旋转偏移这四个系数会覆写能力单元中的同名配置。为“否”时，则使用能力单元中的配置"
+          }
         },
         {
           "Identifier": "attacker_entity",
@@ -22428,7 +22956,10 @@
           "KernelIndex": 7,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Initiator Entity for this attack. Defaults to the Entity associated with this Node Graph. Affects which attacker is identified in events such as On Hit and When Attacked",
+            "zh-Hans": "决定了该次攻击的发起者实体，默认为该节点图所关联的实体。影响【攻击命中时】、【受到攻击时】等事件中判定的攻击者"
+          }
         }
       ],
       "Implementation": null,
@@ -22519,7 +23050,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Actual damage dealt. If no damage is dealt due to Invincible or other reasons, the amount is 0",
+            "zh-Hans": "实际造成的伤害量。因无敌等原因未造成伤害时，伤害量为0"
+          }
         },
         {
           "Identifier": "attack_tags",
@@ -22561,7 +23095,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Elemental Gauge in the Attack",
+            "zh-Hans": "攻击包含的元素含量"
+          }
         }
       ],
       "Implementation": null,
@@ -22652,7 +23189,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Actual damage dealt. If no damage is dealt due to Invincible or other reasons, the amount is 0",
+            "zh-Hans": "实际造成的伤害量。因无敌等原因未造成伤害时，伤害量为0"
+          }
         },
         {
           "Identifier": "attack_tags",
@@ -22694,7 +23234,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Elemental Gauge in the Attack",
+            "zh-Hans": "攻击包含的元素含量"
+          }
         }
       ],
       "Implementation": null,
@@ -22754,7 +23297,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "tab_id",
@@ -22768,7 +23314,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the Tab",
+            "zh-Hans": "选项卡的标识"
+          }
         },
         {
           "Identifier": "should_activate",
@@ -22782,7 +23331,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, it is active and can be selected",
+            "zh-Hans": "为“是”则激活，可以被选取"
+          }
         }
       ],
       "Implementation": null,
@@ -22941,7 +23493,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The entity to be edited",
+            "zh-Hans": "所要修改的实体"
+          }
         },
         {
           "Identifier": "should_activate",
@@ -22955,7 +23510,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Set to True to make the model visible",
+            "zh-Hans": "“是”为使模型可见"
+          }
         }
       ],
       "Implementation": null,
@@ -23015,7 +23573,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -23029,7 +23590,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the Timer. Only Timer Names configured in Timer Management can be referenced",
+            "zh-Hans": "该计时器的标识，只能引用在计时器管理中已经配置好的计时器名称"
+          }
         }
       ],
       "Implementation": null,
@@ -23154,7 +23718,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -23168,7 +23735,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the Timer. Only Timer Names configured in Timer Management can be referenced",
+            "zh-Hans": "该计时器的标识，只能引用在计时器管理中已经配置好的计时器名称"
+          }
         }
       ],
       "Implementation": null,
@@ -23228,7 +23798,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -23242,7 +23815,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the Timer. Only Timer Names configured in Timer Management can be referenced",
+            "zh-Hans": "该计时器的标识，只能引用在计时器管理中已经配置好的计时器名称"
+          }
         }
       ],
       "Implementation": null,
@@ -23302,7 +23878,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -23316,7 +23895,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the Timer. Only Timer Names configured in Timer Management can be referenced",
+            "zh-Hans": "该计时器的标识，只能引用在计时器管理中已经配置好的计时器名称"
+          }
         }
       ],
       "Implementation": null,
@@ -23376,7 +23958,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "timer_name",
@@ -23390,7 +23975,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the Timer. Only Timer Names configured in Timer Management can be referenced",
+            "zh-Hans": "该计时器的标识，只能引用在计时器管理中已经配置好的计时器名称"
+          }
         },
         {
           "Identifier": "delta",
@@ -23404,7 +23992,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "For a Countdown Timer, a positive value increases the remaining time; a negative value decreases the remaining time\nIf the timer is set to Stopwatch, a positive value increases the accumulated time, while a negative value decreases it",
+            "zh-Hans": "若计时器为倒计时，则正数为增加倒计时剩余时间，负数为减少剩余时间\n若计时器为正计时，则正数为增加正计时累计时间，负数为减少累计时间"
+          }
         }
       ],
       "Implementation": null,
@@ -23558,7 +24149,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If the UI control that triggered this event forms a multi-control UI group with other controls, this output parameter returns the corresponding group value",
+            "zh-Hans": "如果触发该事件的界面控件和其他界面控件组成了多控件界面控件组(即界面控件组组合)，此出参会有对应的值"
+          }
         },
         {
           "Identifier": "group_index",
@@ -23572,7 +24166,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If the triggering UI control is a single-control UI group, this value represents the ID of that UI control group\nIf the triggering UI control is part of a multi-control UI group, this value represents the ID of the control within that group",
+            "zh-Hans": "触发该事件的界面控件为单控件界面控件组，则此处为该界面控件组的索引。\n触发该事件的界面控件为多控件界面控件组，则此处为组合内对应该界面控件的索引"
+          }
         }
       ],
       "Implementation": null,
@@ -23699,7 +24296,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes Stage, Object, Player, Character, Creation",
+            "zh-Hans": "分为关卡、物件、玩家、角色、造物"
+          }
         },
         {
           "Identifier": "entities",
@@ -23926,7 +24526,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Name of the Node Graph Variable. Must be unique within the same Node Graph",
+            "zh-Hans": "节点图变量的命名，同节点图内不可重复"
+          }
         },
         {
           "Identifier": "value",
@@ -23940,7 +24543,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Value assigned to this variable",
+            "zh-Hans": "赋予该变量的值"
+          }
         },
         {
           "Identifier": "should_trigger_event",
@@ -23954,7 +24560,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Default: True. If set to False, this Node Graph Variable editing will not trigger the Variable Change Event",
+            "zh-Hans": "默认为是。选为否时，这次节点图变量修改不会触发节点图变量变化时事件"
+          }
         }
       ],
       "Variants": [
@@ -27118,7 +27727,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Entity associated with this Node Graph",
+            "zh-Hans": "与节点图关联的实体"
+          }
         },
         {
           "Identifier": "source_guid",
@@ -27132,7 +27744,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "GUID of the Entity associated with this Node Graph",
+            "zh-Hans": "与节点图关联的实体的GUID"
+          }
         },
         {
           "Identifier": "variable_name",
@@ -27146,7 +27761,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Name of the Variable that was changed",
+            "zh-Hans": "发生变化的变量的名称"
+          }
         },
         {
           "Identifier": "old_value",
@@ -27160,7 +27778,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Variable's value before the change",
+            "zh-Hans": "变量变化前的值"
+          }
         },
         {
           "Identifier": "new_value",
@@ -27174,7 +27795,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Variable's value after the change",
+            "zh-Hans": "变量变化后的值"
+          }
         }
       ],
       "Variants": [
@@ -29378,7 +30002,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "Input1",
@@ -29404,7 +30031,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Set to True to activate",
+            "zh-Hans": "“是”为激活"
+          }
         }
       ],
       "Implementation": null,
@@ -29540,7 +30170,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "Input1",
@@ -29566,7 +30199,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, activates collision with Entities that carry Collision Trigger Components",
+            "zh-Hans": "为“是”则激活，可以与携带碰撞触发器组件的实体产生碰撞"
+          }
         }
       ],
       "Implementation": null,
@@ -29627,7 +30263,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The entity to be removed",
+            "zh-Hans": "所要移除的实体"
+          }
         }
       ],
       "Implementation": null,
@@ -29676,7 +30315,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Destroyed Entity",
+            "zh-Hans": "被销毁的实体"
+          }
         },
         {
           "Identifier": "source_guid",
@@ -29788,7 +30430,10 @@
           "KernelIndex": 8,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "On destroy, captures a snapshot of the Custom Variable component on this Entity. Use the Search Custom Variable Snapshot node to retrieve its Custom Variable values",
+            "zh-Hans": "销毁时，该实体上的自定义变量组件的快照。可以使用【查询自定义变量快照】节点获取其中的自定义变量值"
+          }
         }
       ],
       "Implementation": null,
@@ -29951,7 +30596,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Runtime Creation Entity",
+            "zh-Hans": "运行时的造物实体"
+          }
         },
         {
           "Identifier": "target",
@@ -29965,7 +30613,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Current intelligently selected Target Entity of the Creation",
+            "zh-Hans": "造物当前的智能选取目标实体"
+          }
         }
       ],
       "Implementation": null,
@@ -30016,7 +30667,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes Player, Character, Stage, Object, Creation.",
+            "zh-Hans": "分为玩家、角色、关卡、物件、造物"
+          }
         },
         {
           "Identifier": "result_list",
@@ -30449,7 +31103,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "layout_index",
@@ -30463,7 +31120,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the UI Layout",
+            "zh-Hans": "界面布局的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -30523,7 +31183,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "group_index",
@@ -30537,7 +31200,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the UI Control Group",
+            "zh-Hans": "界面控件组的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -30597,7 +31263,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "control_index",
@@ -30611,7 +31280,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the UI Control",
+            "zh-Hans": "界面控件的标识"
+          }
         },
         {
           "Identifier": "display_state",
@@ -30625,7 +31297,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Off: Invisible and logic not running\nOn: Visible and logic running normally\nHidden: Invisible and logic running normally",
+            "zh-Hans": "关闭：不可见且逻辑不运行\n开启：可见+逻辑正常运行\n隐藏：不可见+逻辑正常运行"
+          }
         }
       ],
       "Implementation": null,
@@ -30765,7 +31440,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "source_guid",
@@ -30983,7 +31661,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "class_id",
@@ -30997,7 +31678,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Class Identifier",
+            "zh-Hans": "该职业的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -31057,7 +31741,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "exp",
@@ -31071,7 +31758,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Amount of EXP to be increased",
+            "zh-Hans": "所要提升的经验值"
+          }
         }
       ],
       "Implementation": null,
@@ -31131,7 +31821,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "level",
@@ -31145,7 +31838,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Edited Level",
+            "zh-Hans": "修改后的等级"
+          }
         }
       ],
       "Implementation": null,
@@ -31310,7 +32006,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "resource_config_id",
@@ -31324,7 +32023,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Skill Resource Identifier",
+            "zh-Hans": "技能资源的标识"
+          }
         },
         {
           "Identifier": "delta_value",
@@ -31338,7 +32040,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "New Value = Original Value + Change Value",
+            "zh-Hans": "修改后的值为：原值+变更值"
+          }
         }
       ],
       "Implementation": null,
@@ -31398,7 +32103,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "resource_config_id",
@@ -31412,7 +32120,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Skill Resource Identifier",
+            "zh-Hans": "技能资源的标识"
+          }
         },
         {
           "Identifier": "target_value",
@@ -31426,7 +32137,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Edited value will be set to this input value",
+            "zh-Hans": "修改后的值为该输入值"
+          }
         }
       ],
       "Implementation": null,
@@ -31486,7 +32200,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "skill_config_id",
@@ -31500,7 +32217,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Skill Identifier",
+            "zh-Hans": "技能的标识"
+          }
         },
         {
           "Identifier": "skill_slot",
@@ -31514,7 +32234,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Skill Slot to be added: Normal Attack, Skill 1-E, Skill 2-Q, Skill 3-R, Skill 4-T, or Custom Skill",
+            "zh-Hans": "要添加的技能所在的槽位，分为普通攻击、技能1-E、技能2-Q、技能3-R、技能4-T和自定义技能"
+          }
         }
       ],
       "Implementation": null,
@@ -31574,7 +32297,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "skill_config_id",
@@ -31588,7 +32314,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Skill Identifier",
+            "zh-Hans": "技能的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -31648,7 +32377,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "skill_slot",
@@ -31662,7 +32394,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Skill Slot to initialize: Normal Attack, Skill 1-E, Skill 2-Q, Skill 3-R, Skill 4-T, or Custom Skill",
+            "zh-Hans": "要初始化的技能所在的槽位，分为普通攻击、技能1-E、技能2-Q、技能3-R、技能4-T和自定义技能"
+          }
         }
       ],
       "Implementation": null,
@@ -31787,7 +32522,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "skill_slot",
@@ -31801,7 +32539,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Skill Slot to be deleted: Normal Attack, Skill 1-E, Skill 2-Q, Skill 3-R, Skill 4-T, or Custom Skill",
+            "zh-Hans": "要删除的技能所在的槽位，分为普通攻击、技能1-E、技能2-Q、技能3-R、技能4-T和自定义技能"
+          }
         }
       ],
       "Implementation": null,
@@ -37335,7 +38076,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "effect_asset",
@@ -37349,7 +38093,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Effect",
+            "zh-Hans": "该特效的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -37386,7 +38133,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "This 3D input vector represents a specific rotation in Euler angles",
+            "zh-Hans": "该输入的三维向量指代一个特定的旋转欧拉角"
+          }
         },
         {
           "Identifier": "vector",
@@ -37479,7 +38229,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Output True if equal, False if not equal",
+            "zh-Hans": "相等输出“是”，不相等输出“否”"
+          }
         }
       ],
       "Variants": [
@@ -38355,7 +39108,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "List to iterate through",
+            "zh-Hans": "被遍历循环的列表"
+          }
         },
         {
           "Identifier": "item",
@@ -38369,7 +39125,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Each value in the list",
+            "zh-Hans": "列表中的每个值"
+          }
         }
       ],
       "Variants": [
@@ -38701,7 +39460,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Represents the desired Orientation of the Unit",
+            "zh-Hans": "表示单位期望的朝向"
+          }
         },
         {
           "Identifier": "dir",
@@ -38715,7 +39477,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Defines the Unit's Up direction (used to determine the rotation angle). Default is the positive Y-axis of the World Coordinate System",
+            "zh-Hans": "定义单位的上方向（用于确定旋转的旋转角度），默认值为世界坐标系Y轴正方向"
+          }
         },
         {
           "Identifier": "result",
@@ -38789,7 +39554,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "mover_name",
@@ -38803,7 +39571,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this motion device",
+            "zh-Hans": "该运动器的标识"
+          }
         },
         {
           "Identifier": "duration",
@@ -38817,7 +39588,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The duration for which this motion device remains active",
+            "zh-Hans": "该运动器生效的时长"
+          }
         },
         {
           "Identifier": "target_euler",
@@ -38831,7 +39605,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Angle",
+            "zh-Hans": "绝对角度"
+          }
         }
       ],
       "Implementation": null,
@@ -38891,7 +39668,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "group_index",
@@ -38905,7 +39685,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for the UI Control Group",
+            "zh-Hans": "界面控件组的标识"
+          }
         }
       ],
       "Implementation": null,
@@ -39100,7 +39883,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Target of HP restoration",
+            "zh-Hans": "恢复生命的目标"
+          }
         },
         {
           "Identifier": "heal_amount",
@@ -39114,7 +39900,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The amount of HP restored in this healing instance",
+            "zh-Hans": "该次恢复生命的恢复量"
+          }
         },
         {
           "Identifier": "ability_unit",
@@ -39128,7 +39917,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Referenced Ability Unit. Must be configured on the entity associated with this Node Graph",
+            "zh-Hans": "引用的能力单元。需要配置在此节点图所关联的实体上"
+          }
         },
         {
           "Identifier": "override_ability_unit",
@@ -39142,7 +39934,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When set to True, the Recovery Amount overwrites the parameter of the same name in the Ability Unit. When set to False, the Ability Unit's original configuration is used",
+            "zh-Hans": "为“是”时，恢复量会覆盖能力单元中的同名配置。为“否”时，使用能力单元中的配置"
+          }
         },
         {
           "Identifier": "heal_source",
@@ -39156,7 +39951,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Initiator Entity of this healing action. Defaults to the Entity associated with this Node Graph. Affects healer identification in events such as When HP Is Recovered and When Initiating HP Recovery",
+            "zh-Hans": "决定了该次恢复行为的发起者实体，默认为该节点图所关联的实体。影响【被恢复生命值时】、【发起恢复生命值时】等事件中判定的恢复者"
+          }
         }
       ],
       "Implementation": null,
@@ -39247,7 +40045,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Actual healing amount. If the Entity had not lost any HP prior to healing, the amount is 0",
+            "zh-Hans": "实际的恢复量。如果实体恢复前并未损失生命值，则恢复量为0"
+          }
         },
         {
           "Identifier": "heal_tags",
@@ -39352,7 +40153,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Actual healing amount. If the Target Entity had not lost any HP prior to healing, the amount is 0",
+            "zh-Hans": "实际的恢复量。如果目标实体恢复前并未损失生命值，则恢复量为0"
+          }
         },
         {
           "Identifier": "heal_tags",
@@ -40214,7 +41018,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "should_resume",
@@ -40288,7 +41095,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "volume",
@@ -40362,7 +41172,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "bgm_index",
@@ -40534,7 +41347,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "audio_asset_index",
@@ -41873,7 +42689,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Runtime Creation Entity",
+            "zh-Hans": "运行时的造物实体"
+          }
         },
         {
           "Identifier": "template_idx",
@@ -41887,7 +42706,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Patrol Template ID currently active on this Creation",
+            "zh-Hans": "造物当前生效的巡逻模板序号"
+          }
         },
         {
           "Identifier": "path_index",
@@ -41901,7 +42723,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Path ID referenced by the Creation's currently active Patrol Template",
+            "zh-Hans": "造物当前生效的巡逻模板引用的路径索引"
+          }
         },
         {
           "Identifier": "target_point",
@@ -41915,7 +42740,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Waypoint ID the Creation will move to next",
+            "zh-Hans": "造物即将前往的路点序号"
+          }
         }
       ],
       "Implementation": null,
@@ -41964,7 +42792,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Runtime Creation Entity",
+            "zh-Hans": "运行时的造物实体"
+          }
         },
         {
           "Identifier": "construct_guid",
@@ -41978,7 +42809,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The GUID of the Creation. If it was not an initially placed Creation, the output is empty",
+            "zh-Hans": "造物的GUID，若非初始布设的造物，则输出为空"
+          }
         },
         {
           "Identifier": "patrol_template_index",
@@ -41992,7 +42826,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Patrol Template ID currently active on this Creation",
+            "zh-Hans": "造物当前生效的巡逻模板序号"
+          }
         },
         {
           "Identifier": "path_index",
@@ -42006,7 +42843,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Path ID referenced by the Creation's currently active Patrol Template",
+            "zh-Hans": "造物当前生效的巡逻模板引用的路径索引"
+          }
         },
         {
           "Identifier": "current_waypoint_index",
@@ -42020,7 +42860,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Waypoint ID the Creation has currently reached",
+            "zh-Hans": "造物当前抵达的路点序号"
+          }
         },
         {
           "Identifier": "next_waypoint_index",
@@ -42034,7 +42877,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Waypoint ID the Creation will move to next",
+            "zh-Hans": "造物即将前往的路点序号"
+          }
         }
       ],
       "Implementation": null,
@@ -42247,7 +43093,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Specify the runtime Player to invoke the Deck Selector",
+            "zh-Hans": "指定运行时玩家，唤起卡牌选择器"
+          }
         },
         {
           "Identifier": "picker_index",
@@ -42261,7 +43110,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Referenced UI Control Group ID",
+            "zh-Hans": "引用的界面控件组索引"
+          }
         },
         {
           "Identifier": "duration",
@@ -42275,7 +43127,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If empty, uses the Deck Selector's default configuration; otherwise, this time value is used as the effective duration\nUnit in seconds",
+            "zh-Hans": "若为空，则读取卡牌选择器默认配置；若不为空，以此处时间参数为实际生效时长\n单位为秒"
+          }
         },
         {
           "Identifier": "result_map_list",
@@ -42289,7 +43144,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "One-to-one with display items: the Deck Selector returns the result value corresponding to each display item\nRecommended configuration: 1 to X",
+            "zh-Hans": "和显示项一一对应，卡牌选择器返回的实际结果是显示项对应的结果值\n推荐配置1至X"
+          }
         },
         {
           "Identifier": "display_map_list",
@@ -42303,7 +43161,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Deck Library Configuration Reference",
+            "zh-Hans": "卡牌库中的配置引用"
+          }
         },
         {
           "Identifier": "select_min",
@@ -42317,7 +43178,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The minimum number of cards that must be selected for a valid interaction",
+            "zh-Hans": "选择卡牌数量下限，满足数量才可进行合法的选择交互"
+          }
         },
         {
           "Identifier": "select_max",
@@ -42331,7 +43195,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The maximum number of cards that can be selected for a valid interaction",
+            "zh-Hans": "选择卡牌数量上限，满足数量才可进行合法的选择交互"
+          }
         },
         {
           "Identifier": "refresh_mode",
@@ -42345,7 +43212,10 @@
           "KernelIndex": 7,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "No Refresh: The minimum and maximum refresh count parameters are invalid, and the selection interface has no Refresh button\nPartial Refresh: Both input parameters (minimum and maximum refresh count) take effect, and the selection screen includes a refresh button\nFull Refresh: Both input parameters (minimum and maximum refresh count) are ignored. All results are returned by default, and the selection screen includes a refresh button",
+            "zh-Hans": "不可刷新: 刷新数量下限和刷新数量上限，两入参无效，且选择界面无刷新按键\n部分刷新: 刷新数量下限和刷新数量上限，两入参有效，且选择界面有刷新按键\n全量刷新: 刷新数量下限和刷新数量上限，两入参无效，默认返回全量结果，且选择界面有刷新按键"
+          }
         },
         {
           "Identifier": "refresh_min",
@@ -42359,7 +43229,10 @@
           "KernelIndex": 8,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The minimum number of cards that must be selected for a valid refresh interaction.",
+            "zh-Hans": "选择卡牌数量下限，满足数量才可进行合法的刷新交互"
+          }
         },
         {
           "Identifier": "refresh_max",
@@ -42373,7 +43246,10 @@
           "KernelIndex": 9,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The maximum number of cards that can be selected for a valid refresh interaction",
+            "zh-Hans": "选择卡牌数量上限，满足数量才可进行合法的刷新交互"
+          }
         },
         {
           "Identifier": "default_return",
@@ -42387,7 +43263,10 @@
           "KernelIndex": 10,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If the Deck Selector times out, has no interaction, or closes abnormally, force-assign this configured result\nThe length of this Result List must match the valid card selection count",
+            "zh-Hans": "如果卡牌选择器超时/未交互/卡牌选择器异常关闭等情况，支持强制赋予配置的该结果\n该结果的列表长度，需要和合法选择卡牌数量一致"
+          }
         }
       ],
       "Implementation": null,
@@ -42436,7 +43315,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "result_list",
@@ -42450,7 +43332,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When a selection interaction is triggered, valid selection results are returned as this output parameter, and the completion reason isCompleted by Player\nWhen a Full Refresh pop-up selection is triggered, the complete selection result list is returned as this output parameter, and the completion reason isRefresh All\nWhen a Fixed-Quantity Refresh pop-up selection is triggered, valid selection results are returned as this output parameter, and the completion reason is Fixed-Quantity Refresh\nWhen the Deck Selector times out with no interaction, the default selection is returned is returned as this output parameter, and the completion reason is Timeout\nWhen Allow Discard Selection is enabled and the Deck Selector is closed by the player, the default selection is returned as this output parameter, and the completion reason is Closed Manually\nWhen the Deck Selector is closed via the Node Graph, the default selection is returned as this output parameter, and the completion reason isClosed by Node Graph",
+            "zh-Hans": "触发选择选择交互时，合法的选择结果会作为该出参提供，并且完成原因为玩家完成\n唤起弹窗选择全量刷新，触发刷新交互时，全量的选择结果对应列表会作为该出参提供，并且完成原因为全量刷新\n唤起弹窗选择部分刷新，触发刷新交互时，合法的选择结果会作为该出参提供，并且完成原因为定量刷新\n卡牌选择器超时未交互时，默认返回选择会作为该出参提供，并且完成原因为超时关闭\n卡牌选择器的可放弃选择勾选时，触发关闭交互时，默认返回选择会作为该出参提供，并且完成原因为主动关闭\n通过节点图关闭卡牌选择器节点造成的卡牌选择器关闭，默认返回选择会作为该出参提供，并且完成原因为节点图关闭"
+          }
         },
         {
           "Identifier": "complete_reason",
@@ -42464,7 +43349,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Six reason enumerations\nCompleted by Player, Refresh All, Fixed-Quantity Refresh, Timeout, Closed Manually, Closed by Node Graph",
+            "zh-Hans": "六种原因枚举\n玩家完成、全量刷新、定量刷新、超时关闭、主动关闭、节点图关闭"
+          }
         },
         {
           "Identifier": "picker_index",
@@ -42478,7 +43366,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Referenced Deck Selector ID",
+            "zh-Hans": "引用的卡牌选择器索引"
+          }
         }
       ],
       "Implementation": null,
@@ -42612,7 +43503,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entity that owns the Mini-map Marker component to be edited",
+            "zh-Hans": "要修改的小地图标识组件归属的实体"
+          }
         },
         {
           "Identifier": "marker_index_list",
@@ -42626,7 +43520,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "List of Mini-map Marker IDs to be set to the specified status\nUnconfigured Mini-map Markers will be set to the opposite status",
+            "zh-Hans": "需要指定状态的小地图标识序号列表\n未配置的小地图标识会改为相反状态"
+          }
         },
         {
           "Identifier": "enabled",
@@ -42640,7 +43537,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If input is True,\nthe Mini-map Markers corresponding to the specified ID numbers in the input list will be set to Enabled\nFor IDs not in the input list, the corresponding Mini-map Markers will be set to Disabled",
+            "zh-Hans": "若输入为“是”，\n输入序号列表指定的序号，对应小地图标识状态改为生效状态\n不在序号列表中的序号，对应小地图标识状态改为不生效状态"
+          }
         }
       ],
       "Implementation": null,
@@ -42700,7 +43600,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entity that owns the Mini-map Marker component to be edited",
+            "zh-Hans": "要修改的小地图标识组件归属的实体"
+          }
         },
         {
           "Identifier": "marker_index",
@@ -42714,7 +43617,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "ID of the specified Mini-map Marker to be edited",
+            "zh-Hans": "要修改的指定小地图标识的序号"
+          }
         },
         {
           "Identifier": "player_list",
@@ -42728,7 +43634,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The specified Mini-map ID on the Target Entity, visible only to the Player providing input",
+            "zh-Hans": "目标实体的指定小地图序号，只有输入玩家可见"
+          }
         }
       ],
       "Implementation": null,
@@ -42853,7 +43762,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Runtime Entity",
+            "zh-Hans": "运行时的实体"
+          }
         },
         {
           "Identifier": "marker_index",
@@ -42867,7 +43779,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Mini-map Marker ID to search",
+            "zh-Hans": "要查询的指定小地图标识的序号"
+          }
         },
         {
           "Identifier": "enabled",
@@ -42881,7 +43796,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The active state of the searched Mini-map Marker",
+            "zh-Hans": "查询的小地图标识的生效状态"
+          }
         },
         {
           "Identifier": "visible_players",
@@ -42895,7 +43813,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Returns the list of Players who can see this Marker",
+            "zh-Hans": "返回可见该标识的玩家列表"
+          }
         },
         {
           "Identifier": "tracking_players",
@@ -42909,7 +43830,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Returns the list of Players tracking this Marker",
+            "zh-Hans": "返回追踪该标识的玩家列表"
+          }
         }
       ],
       "Implementation": null,
@@ -42946,7 +43870,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Runtime Entity",
+            "zh-Hans": "运行时的实体"
+          }
         },
         {
           "Identifier": "all_markers",
@@ -42960,7 +43887,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Complete list of Mini-map Marker IDs for this Entity",
+            "zh-Hans": "该实体的所有小地图标识枚举列表"
+          }
         },
         {
           "Identifier": "enabled_markers",
@@ -42974,7 +43904,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Complete list of active Mini-map Marker IDs for this Entity",
+            "zh-Hans": "该实体的所有生效小地图标识枚举列表"
+          }
         },
         {
           "Identifier": "disabled_markers",
@@ -42988,7 +43921,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Complete list of inactive Mini-map Marker IDs for this Entity",
+            "zh-Hans": "该实体的所有未生效小地图标识枚举列表"
+          }
         }
       ],
       "Implementation": null,
@@ -43048,7 +43984,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entity that owns the Mini-map Marker component to be edited",
+            "zh-Hans": "要修改的小地图标识组件归属的实体"
+          }
         },
         {
           "Identifier": "marker_index",
@@ -43062,7 +44001,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "ID of the specified Mini-map Marker to be edited",
+            "zh-Hans": "要修改的指定小地图标识的序号"
+          }
         },
         {
           "Identifier": "player_entity",
@@ -43076,7 +44018,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Changes the avatar of the corresponding Player Entity",
+            "zh-Hans": "修改后为对应玩家实体的头像"
+          }
         }
       ],
       "Implementation": null,
@@ -43136,7 +44081,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "picker_index",
@@ -43569,7 +44517,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Sets the Progress Count to the input value",
+            "zh-Hans": "修改后的进度计数为输入的值"
+          }
         }
       ],
       "Implementation": null,
@@ -43657,7 +44608,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "New Value = Previous Value + Change Value",
+            "zh-Hans": "变更后值=变更前值+变更值"
+          }
         }
       ],
       "Implementation": null,
@@ -43717,7 +44671,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Player Entity",
+            "zh-Hans": "生效的玩家实体"
+          }
         },
         {
           "Identifier": "order",
@@ -43731,7 +44688,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The sort order of this data",
+            "zh-Hans": "该数据的排序"
+          }
         },
         {
           "Identifier": "name",
@@ -43745,7 +44705,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The name of this data",
+            "zh-Hans": "该数据的名称"
+          }
         },
         {
           "Identifier": "value",
@@ -43759,7 +44722,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The value of this data. Supports Integer, Floating Point Number, and String",
+            "zh-Hans": "该数据的值，支持整数、浮点数、字符串"
+          }
         }
       ],
       "Variants": [
@@ -43990,7 +44956,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Three types: Undefined, Victory, Defeat",
+            "zh-Hans": "分为未定、胜利、失败三种"
+          }
         }
       ],
       "Implementation": null,
@@ -44041,7 +45010,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes: Undetermined, Victory, Defeat",
+            "zh-Hans": "分为未定、胜利、失败"
+          }
         }
       ],
       "Implementation": null,
@@ -44101,7 +45073,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Faction Entity",
+            "zh-Hans": "生效的阵营实体"
+          }
         },
         {
           "Identifier": "rank_value",
@@ -44226,7 +45201,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Faction Entity",
+            "zh-Hans": "生效的阵营实体"
+          }
         },
         {
           "Identifier": "result_state",
@@ -44240,7 +45218,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Three types: Undefined, Victory, Defeat",
+            "zh-Hans": "分为未定、胜利、失败三种"
+          }
         }
       ],
       "Implementation": null,
@@ -44291,7 +45272,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes: Undetermined, Victory, Defeat",
+            "zh-Hans": "分为未定、胜利、失败"
+          }
         }
       ],
       "Implementation": null,
@@ -44458,7 +45442,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes: Undefined, Victory, Defeat, Escape",
+            "zh-Hans": "分为未定、胜利、失败、逃跑"
+          }
         },
         {
           "Identifier": "delta_score",
@@ -44736,7 +45723,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The ID corresponding to the specified Score Group in Peripheral System management",
+            "zh-Hans": "外围系统管理中指定计分组对应的序号"
+          }
         }
       ],
       "Implementation": null,
@@ -44773,7 +45763,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The value range is [0, 24)",
+            "zh-Hans": "获取到的值范围为[0,24)"
+          }
         },
         {
           "Identifier": "day_count",
@@ -44787,7 +45780,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Number of Loop Days elapsed",
+            "zh-Hans": "当前已经循环了多少天"
+          }
         }
       ],
       "Implementation": null,
@@ -44847,7 +45843,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Must be a floating point value between 0–24; this Node will not take effect if the value is outside this range",
+            "zh-Hans": "需要是0~24浮点数值，超出范围外时节点不生效"
+          }
         }
       ],
       "Implementation": null,
@@ -44907,7 +45906,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Clamped to the range 0–60. Values outside this range are automatically set to 0 or 60",
+            "zh-Hans": "会被限制在0~60之间，超出范围外时会按0或60生效"
+          }
         }
       ],
       "Implementation": null,
@@ -44995,7 +45997,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, turns On",
+            "zh-Hans": "“是”为打开"
+          }
         }
       ],
       "Implementation": null,
@@ -45055,7 +46060,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "follow_entity",
@@ -45069,7 +46077,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Entity that follows the Target",
+            "zh-Hans": "跟随目标的实体"
+          }
         },
         {
           "Identifier": "socket_name",
@@ -45083,7 +46094,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Name of the Attachment Point to follow",
+            "zh-Hans": "跟随的挂接点名称"
+          }
         },
         {
           "Identifier": "pos_offset",
@@ -45097,7 +46111,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Location Offset based on the Follow Coordinate System",
+            "zh-Hans": "以【跟随坐标系】为基准产生的位置偏移"
+          }
         },
         {
           "Identifier": "rot_offset",
@@ -45111,7 +46128,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Rotation Offset based on the Follow Coordinate System",
+            "zh-Hans": "以【跟随坐标系】为基准产生的旋转偏移"
+          }
         },
         {
           "Identifier": "coord_sys",
@@ -45125,7 +46145,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Relative Coordinate System or World Coordinate System",
+            "zh-Hans": "可选”相对坐标系“、”世界坐标系“"
+          }
         },
         {
           "Identifier": "follow_type",
@@ -45139,7 +46162,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Completely Follow, Follow Location, Follow Rotation",
+            "zh-Hans": "可选”完全跟随“、”跟随位置“、”跟随旋转”"
+          }
         }
       ],
       "Implementation": null,
@@ -45668,7 +46694,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Integer ID generated during Equipment Initialization to identify the equipment instance",
+            "zh-Hans": "【装备初始化】时生成的整数型索引来标识该装备实例"
+          }
         },
         {
           "Identifier": "affix_config_id",
@@ -45682,7 +46711,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Config ID of the preconfigured Affix defined in Equipment Data Management",
+            "zh-Hans": "装备数据管理中预先配置好的词条的对应配置ID"
+          }
         },
         {
           "Identifier": "overwrite",
@@ -45710,7 +46742,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Can overwrite the value on a pre-configured Affix",
+            "zh-Hans": "可以覆写预先配置好的词条上的数值"
+          }
         }
       ],
       "Implementation": null,
@@ -45770,7 +46805,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Integer ID generated during Equipment Initialization to identify the equipment instance",
+            "zh-Hans": "【装备初始化】时生成的整数型索引来标识该装备实例"
+          }
         },
         {
           "Identifier": "affix_index",
@@ -45844,7 +46882,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Integer ID generated during Equipment Initialization to identify the equipment instance",
+            "zh-Hans": "【装备初始化】时生成的整数型索引来标识该装备实例"
+          }
         },
         {
           "Identifier": "affix_index",
@@ -46177,7 +47218,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Runtime Entity with the Text Bubble component mounted",
+            "zh-Hans": "挂载文本气泡组件的运行时实体"
+          }
         },
         {
           "Identifier": "character_entity",
@@ -46191,7 +47235,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Target Character of the current Bubble dialogue",
+            "zh-Hans": "当前气泡对话的目标角色"
+          }
         },
         {
           "Identifier": "bubble_config_id",
@@ -46205,7 +47252,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Currently active Text Bubble Config ID",
+            "zh-Hans": "当前生效的文本气泡配置ID"
+          }
         },
         {
           "Identifier": "complete_count",
@@ -46219,7 +47269,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Number of times the currently active Text Bubble has been fully played for this dialogue Character",
+            "zh-Hans": "当前生效的文本气泡，对该对话角色，完整播放了几次"
+          }
         }
       ],
       "Implementation": null,
@@ -46310,7 +47363,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The corresponding ID of this Entry within the Equipment Affixes",
+            "zh-Hans": "该词条在装备词条上的对应序号"
+          }
         },
         {
           "Identifier": "value_old",
@@ -46892,7 +47948,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "New Value = Original Value + Change Value",
+            "zh-Hans": "变更后的值=变更前的值+变更值"
+          }
         }
       ],
       "Implementation": null,
@@ -46996,7 +48055,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Types: Shared Reward (one share for all), Individualized Reward (one share per person)",
+            "zh-Hans": "分为全员一份、每人一份"
+          }
         }
       ],
       "Implementation": null,
@@ -47084,7 +48146,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "New Value = Original Value + Change Value",
+            "zh-Hans": "变更后的值=变更前的值+变更值"
+          }
         }
       ],
       "Implementation": null,
@@ -47558,7 +48623,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Target that loses HP",
+            "zh-Hans": "损失生命的目标"
+          }
         },
         {
           "Identifier": "hp_loss",
@@ -47572,7 +48640,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The amount of HP lost in this instance",
+            "zh-Hans": "该次损失生命值的损失量"
+          }
         },
         {
           "Identifier": "is_fatal",
@@ -47586,7 +48657,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to False, this HP loss will leave the Target with at least 1 HP remaining",
+            "zh-Hans": "为“否”时，该次损失生命最多使目标生命扣为1点"
+          }
         },
         {
           "Identifier": "can_be_blocked_by_invincible",
@@ -47600,7 +48674,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, and the Target is set to Invincible via Unit Status, HP loss has no effect",
+            "zh-Hans": "为“是”时，如果目标已经通过单位状态设置为了无敌，则损失生命不生效"
+          }
         },
         {
           "Identifier": "can_be_blocked_by_lock_hp",
@@ -47614,7 +48691,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, and the Target's HP is locked via Unit Status, HP loss has no effect",
+            "zh-Hans": "为“是”时，如果目标已经通过单位状态设置为了锁定生命值，则损失生命不生效"
+          }
         },
         {
           "Identifier": "damage_floating_text_type",
@@ -47628,7 +48708,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "No Pop-Up\nNormal Pop-Up\nCRIT Hit Pop-Up",
+            "zh-Hans": "无跳字\n普通跳字\n暴击跳字"
+          }
         }
       ],
       "Implementation": null,
@@ -47688,7 +48771,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Entity that initiates healing",
+            "zh-Hans": "发起恢复的实体"
+          }
         },
         {
           "Identifier": "heal_target",
@@ -47702,7 +48788,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Target Entity to be healed",
+            "zh-Hans": "恢复的目标实体"
+          }
         },
         {
           "Identifier": "heal_amount",
@@ -47716,7 +48805,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The amount of HP restored in this healing instance",
+            "zh-Hans": "该次恢复生命的恢复量"
+          }
         },
         {
           "Identifier": "ignore_adjust",
@@ -47730,7 +48822,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, this healing amount is not affected by the Target's Unit Status effects that adjust healing",
+            "zh-Hans": "为“是”时，该次恢复量不受目标的恢复量调整类的单位状态的影响"
+          }
         },
         {
           "Identifier": "hatred_rate",
@@ -47744,7 +48839,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Aggro generated by this healing, expressed as a multiplier. Only applicable when using Custom Aggro Mode",
+            "zh-Hans": "此次恢复产生的仇恨倍率。仅使用自定义仇恨模式时有意义"
+          }
         },
         {
           "Identifier": "hatred_delta",
@@ -47758,7 +48856,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Aggro generated by this healing, expressed as an incremental value. Only applicable when using Custom Aggro Mode",
+            "zh-Hans": "此次恢复产生的仇恨增量。仅使用自定义仇恨模式时有意义"
+          }
         },
         {
           "Identifier": "heal_tags",
@@ -47772,7 +48873,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The list of tags associated with this healing action. These can be accessed in the When HP Is Recovered and When Initiating HP Recovery events to identify a specific healing action",
+            "zh-Hans": "此次恢复行为的标签列表。在【发起恢复生命值】时以及【被恢复生命值时】事件中可以取出，用于判定一次特定的恢复行为"
+          }
         }
       ],
       "Implementation": null,
@@ -48084,7 +49188,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "shop_index",
@@ -48232,7 +49339,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "item_index",
@@ -48288,7 +49398,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "1 Equipment, 2 Consumables, 3 Materials, 4 Valuables",
+            "zh-Hans": "1装备、2消耗品、3材料、4贵重物品"
+          }
         },
         {
           "Identifier": "is_limited",
@@ -48523,7 +49636,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "config_id",
@@ -48667,7 +49783,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "item_config_id",
@@ -48783,7 +49902,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "item_config_id",
@@ -48825,7 +49947,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "1 Equipment, 2 Consumables, 3 Materials, 4 Valuables",
+            "zh-Hans": "1装备、2消耗品、3材料、4贵重物品"
+          }
         },
         {
           "Identifier": "is_limited",
@@ -48969,7 +50094,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "item_config_id",
@@ -49011,7 +50139,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "1 Equipment, 2 Consumables, 3 Materials, 4 Valuables",
+            "zh-Hans": "1装备、2消耗品、3材料、4贵重物品"
+          }
         },
         {
           "Identifier": "priority",
@@ -49113,7 +50244,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "item_config_id",
@@ -49229,7 +50363,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "item_index",
@@ -49317,7 +50454,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "config_id",
@@ -49405,7 +50545,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Shop ID corresponding to the Shop component on the Shop Owner Entity",
+            "zh-Hans": "商店归属者实体的商店组件对应的商店序号"
+          }
         },
         {
           "Identifier": "item_config_id",
@@ -50067,7 +51210,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Types: Shared Reward (one share for all), Individualized Reward (one share per person)",
+            "zh-Hans": "分为全员一份、每人一份"
+          }
         }
       ],
       "Implementation": null,
@@ -50294,7 +51440,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Types: Shared Reward (one share for all), Individualized Reward (one share per person)",
+            "zh-Hans": "分为全员一份、每人一份"
+          }
         }
       ],
       "Implementation": null,
@@ -50456,7 +51605,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "New Value = Original Value + Change Value",
+            "zh-Hans": "变更后的值=变更前的值+变更值"
+          }
         }
       ],
       "Implementation": null,
@@ -50544,7 +51696,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "New Value = Original Value + Change Value",
+            "zh-Hans": "变更后的值=变更前的值+变更值"
+          }
         }
       ],
       "Implementation": null,
@@ -51047,7 +52202,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Prioritize View or Prioritize Distance",
+            "zh-Hans": "分为视野优先、距离优先"
+          }
         }
       ],
       "Implementation": null,
@@ -51409,7 +52567,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "skill_slot",
@@ -51423,7 +52584,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Skill Slot to edited: Normal Attack, Skill 1-E, Skill 2-Q, Skill 3-R, Skill 4-T, or Custom Skill",
+            "zh-Hans": "要修改的技能所在的槽位，分为普通攻击、技能1-E、技能2-Q、技能3-R、技能4-T和自定义技能"
+          }
         },
         {
           "Identifier": "remain_seconds",
@@ -51437,7 +52601,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Edited Cooldown will be set to this input value",
+            "zh-Hans": "修改后的冷却时间为该输入值"
+          }
         },
         {
           "Identifier": "limit_max",
@@ -51451,7 +52618,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, the edited Cooldown cannot be less than the specified minimum value",
+            "zh-Hans": "为“是”可以限制修改后的冷却时间不小于所限制的值"
+          }
         }
       ],
       "Implementation": null,
@@ -51511,7 +52681,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "skill_slot",
@@ -51525,7 +52698,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Skill Slot to edited: Normal Attack, Skill 1-E, Skill 2-Q, Skill 3-R, Skill 4-T, or Custom Skill",
+            "zh-Hans": "要修改的技能所在的槽位，分为普通攻击、技能1-E、技能2-Q、技能3-R、技能4-T和自定义技能"
+          }
         },
         {
           "Identifier": "delta_seconds",
@@ -51539,7 +52715,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "New Value = Original Value + Edit Value",
+            "zh-Hans": "修改后的值为：原值+修改值"
+          }
         },
         {
           "Identifier": "limit_max",
@@ -51553,7 +52732,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, the edited Cooldown cannot be less than the specified minimum value",
+            "zh-Hans": "为“是”可以限制修改后的冷却时间不小于所限制的值"
+          }
         }
       ],
       "Implementation": null,
@@ -51613,7 +52795,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Character Entity",
+            "zh-Hans": "生效的角色实体"
+          }
         },
         {
           "Identifier": "skill_slot",
@@ -51627,7 +52812,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Skill Slot to edited: Normal Attack, Skill 1-E, Skill 2-Q, Skill 3-R, Skill 4-T, or Custom Skill",
+            "zh-Hans": "要修改的技能所在的槽位，分为普通攻击、技能1-E、技能2-Q、技能3-R、技能4-T和自定义技能"
+          }
         },
         {
           "Identifier": "ratio_delta",
@@ -51641,7 +52829,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Actual Cooldown after Editing = Original Cooldown × Cooldown Ratio Edit Value",
+            "zh-Hans": "修改后的实际冷却时间为：原冷却时间*冷却比例修改值"
+          }
         },
         {
           "Identifier": "limit_max",
@@ -51655,7 +52846,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, the edited Cooldown cannot be less than the specified minimum value",
+            "zh-Hans": "为“是”可以限制修改后的冷却时间不小于所限制的值"
+          }
         }
       ],
       "Implementation": null,
@@ -51715,7 +52909,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Integer ID generated during Equipment Initialization to identify the equipment instance",
+            "zh-Hans": "【装备初始化】时生成的整数型索引来标识该装备实例"
+          }
         },
         {
           "Identifier": "affix_config_id",
@@ -51729,7 +52926,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Config ID of the preconfigured Affix defined in Equipment Data Management",
+            "zh-Hans": "装备数据管理中预先配置好的词条的对应配置ID"
+          }
         },
         {
           "Identifier": "insert_index",
@@ -51771,7 +52971,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Can overwrite the value on a pre-configured Affix",
+            "zh-Hans": "可以覆写预先配置好的词条上的数值"
+          }
         }
       ],
       "Implementation": null,
@@ -52738,7 +53941,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Prefab Group",
+            "zh-Hans": "该元件组的标识"
+          }
         },
         {
           "Identifier": "position",
@@ -52752,7 +53958,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Location of the Prefab Group center",
+            "zh-Hans": "元件组中心的绝对位置"
+          }
         },
         {
           "Identifier": "rotation",
@@ -52766,7 +53975,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Rotation of the Prefab Group center",
+            "zh-Hans": "元件组中心的绝对旋转"
+          }
         },
         {
           "Identifier": "owner_entity",
@@ -52780,7 +53992,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines whether the entity belongs to another entity after creation",
+            "zh-Hans": "可决定创建后实体是否归属于某个实体"
+          }
         },
         {
           "Identifier": "Input4",
@@ -52806,7 +54021,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Level when the entity is created",
+            "zh-Hans": "决定实体创建时的等级"
+          }
         },
         {
           "Identifier": "unit_tag_indexes",
@@ -52820,7 +54038,10 @@
           "KernelIndex": 6,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Determines the Unit Tags carried when the entity is created",
+            "zh-Hans": "可决定实体创建时携带的单位标签"
+          }
         },
         {
           "Identifier": "override_level",
@@ -52834,7 +54055,10 @@
           "KernelIndex": 7,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "When set to False, the [Level] parameter has no effect",
+            "zh-Hans": "为否时，【等级】参数不生效"
+          }
         },
         {
           "Identifier": "created_entities",
@@ -52848,7 +54072,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Entities created in this way do not have a GUID",
+            "zh-Hans": "以该方式创建的实体没有GUID"
+          }
         }
       ],
       "Implementation": null,
@@ -52886,7 +54113,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Runtime Creation Entity",
+            "zh-Hans": "运行时的造物实体"
+          }
         },
         {
           "Identifier": "aggro",
@@ -52900,7 +54130,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Unordered list of Entities this Creation currently has Aggro against",
+            "zh-Hans": "造物当前对哪些实体有仇恨，该列表是无序的"
+          }
         }
       ],
       "Implementation": null,
@@ -52988,7 +54221,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The ID corresponding to the specified Leaderboard in Peripheral System management",
+            "zh-Hans": "外围系统管理中指定排行榜对应的序号"
+          }
         }
       ],
       "Implementation": null,
@@ -53076,7 +54312,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The ID corresponding to the specified Leaderboard in Peripheral System management",
+            "zh-Hans": "外围系统管理中指定排行榜对应的序号"
+          }
         }
       ],
       "Implementation": null,
@@ -53136,7 +54375,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this Environment Configuration",
+            "zh-Hans": "环境配置的标识"
+          }
         },
         {
           "Identifier": "target_players",
@@ -53150,7 +54392,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Applies only to Players in the specified list",
+            "zh-Hans": "只对指定玩家列表中的玩家生效"
+          }
         },
         {
           "Identifier": "enable_weather_preset",
@@ -53164,7 +54409,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Set to True to enable",
+            "zh-Hans": "“是”为启用"
+          }
         },
         {
           "Identifier": "weather_preset_index",
@@ -53178,7 +54426,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "The Weather Configuration matching this ID will take effect. If the ID does not exist, nothing happens",
+            "zh-Hans": "会生效该序号对应的天气配置，不存在该序号则不生效"
+          }
         }
       ],
       "Implementation": null,
@@ -53397,7 +54648,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes Playtest, Room Play, and Matchmaking Play",
+            "zh-Hans": "分为试玩、房间游玩、匹配游玩"
+          }
         }
       ],
       "Implementation": null,
@@ -53499,7 +54753,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes keyboard/mouse, gamepad, touchscreen",
+            "zh-Hans": "分为键盘鼠标、手柄、触屏"
+          }
         }
       ],
       "Implementation": null,
@@ -53674,7 +54931,10 @@
           "KernelIndex": 2,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "If set to True, the channel is available to the specified Player",
+            "zh-Hans": "“是”则该频道指定玩家可用"
+          }
         }
       ],
       "Implementation": null,
@@ -54026,7 +55286,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Active Entity",
+            "zh-Hans": "生效的实体"
+          }
         },
         {
           "Identifier": "mover_name",
@@ -54040,7 +55303,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Identifier for this motion device",
+            "zh-Hans": "该运动器的标识"
+          }
         },
         {
           "Identifier": "move_mode",
@@ -54082,7 +55348,10 @@
           "KernelIndex": 4,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Location",
+            "zh-Hans": "绝对位置"
+          }
         },
         {
           "Identifier": "target_rotation",
@@ -54096,7 +55365,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Absolute Rotation",
+            "zh-Hans": "绝对旋转"
+          }
         },
         {
           "Identifier": "lock_rotation",
@@ -54124,7 +55396,10 @@
           "KernelIndex": 7,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Fixed Speed or Fixed Time",
+            "zh-Hans": "分为固定速度、固定时间"
+          }
         },
         {
           "Identifier": "move_time",
@@ -130249,7 +131524,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Output True if equal, False if not equal",
+            "zh-Hans": "相等输出“是”，不相等输出“否”"
+          }
         }
       ],
       "Variants": [
@@ -134246,7 +135524,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes: Target then Input, Input Direction, Target Direction, Target then Camera, Camera Direction, Input then Target",
+            "zh-Hans": "分为先目标后输入、输入朝向、目标朝向、先目标后镜头、镜头朝向、先输入后目标"
+          }
         }
       ],
       "Implementation": null,
@@ -134436,7 +135717,10 @@
           "KernelIndex": 3,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Default, Random, or Nearest-to-Farthest order",
+            "zh-Hans": "分为默认排序、随机排序、从近到远排序"
+          }
         },
         {
           "Identifier": "result",
@@ -134558,7 +135842,10 @@
           "KernelIndex": 5,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Default, Random, or Nearest-to-Farthest order",
+            "zh-Hans": "分为默认排序、随机排序、从近到远排序"
+          }
         },
         {
           "Identifier": "result",
@@ -137413,7 +138700,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes: Force Field Device, Ejector, and Traction Device",
+            "zh-Hans": "分为力场器、弹射器、牵引器"
+          }
         }
       ],
       "Implementation": null,
@@ -138357,7 +139647,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Represents the desired Orientation of the Unit",
+            "zh-Hans": "表示单位期望的朝向"
+          }
         },
         {
           "Identifier": "up",
@@ -138371,7 +139664,10 @@
           "KernelIndex": 1,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Defines the Unit's Up direction (used to determine the rotation angle). Default is the positive Y-axis of the World Coordinate System",
+            "zh-Hans": "定义单位的上方向（用于确定旋转的旋转角度），默认值为世界坐标系Y轴正方向"
+          }
         },
         {
           "Identifier": "rotation",
@@ -145666,7 +146962,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Options: Invisible, Current Scan Target, Candidate Target, Not Eligible",
+            "zh-Hans": "分为不可见、当前扫描目标、候选目标、不满足条件"
+          }
         }
       ],
       "Implementation": null,
@@ -145800,7 +147099,10 @@
           "KernelIndex": 0,
           "Visibility": "Display",
           "Connectability": true,
-          "Description": {}
+          "Description": {
+            "en": "Includes keyboard/mouse, gamepad, touchscreen",
+            "zh-Hans": "分为键盘鼠标、手柄、触屏"
+          }
         }
       ],
       "Implementation": null,
