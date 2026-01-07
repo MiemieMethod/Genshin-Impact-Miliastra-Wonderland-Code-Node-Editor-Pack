@@ -9414,7 +9414,7 @@
   {
     "name": "Multiple Branches",
     "category": "ServerFlowControl",
-    "subcategory": "General",
+    "subcategory": "I. General",
     "description": "Accepts one input parameter as the control expression (supports Integer or String). Branches into multiple paths based on its value\nWhen the value on an Output Pin equals the control expression, execution continues along that Output Pin. If no pin matches, the [Default] pin is taken\n",
     "parameters": [
       {
@@ -9428,7 +9428,7 @@
   {
     "name": "Double Branch",
     "category": "ServerFlowControl",
-    "subcategory": "General",
+    "subcategory": "I. General",
     "description": "Branches into True or False based on the evaluated condition\nWhen the Boolean is True, the [True] execution flow runs; when it is False, the [False] execution flow runs\n",
     "parameters": [
       {
@@ -9442,7 +9442,7 @@
   {
     "name": "Enumerations Equal",
     "category": "ServerOperation",
-    "subcategory": "General",
+    "subcategory": "I. General",
     "description": "After confirming the Enumeration type, determines whether the two input values are equal\n",
     "parameters": [
       {
@@ -9468,7 +9468,7 @@
   {
     "name": "Assembly List",
     "category": "ServerOperation",
-    "subcategory": "General",
+    "subcategory": "I. General",
     "description": "Assembles multiple Input Parameters of the same type (up to 100) into a single List\n",
     "parameters": [
       {
@@ -9488,7 +9488,7 @@
   {
     "name": "Equal",
     "category": "ServerOperation",
-    "subcategory": "General",
+    "subcategory": "I. General",
     "description": "Determines whether two inputs are equal\nSome Parameter Types have special comparison rules:\nFloating Point Numbers: Floating Point Numbers are compared using approximate equality. When the difference between two Floating Point Numbers is less than an extremely small value, the two numbers are considered equal. For example: 2.0000001 and 2.0 are considered equal\n3D Vector: The x, y, and z components of a 3D Vector are compared using Floating Point approximate equality\n",
     "parameters": [
       {
@@ -9514,7 +9514,7 @@
   {
     "name": "Data Type Conversion",
     "category": "ServerOperation",
-    "subcategory": "General",
+    "subcategory": "I. General",
     "description": "Converts input parameter types to another type for output. For specific rules, see [Basic Concepts](https://act.mihoyo.com/ys/ugc/tutorial//detail/mhk23ora1wom) - [Conversion Rules Between Basic Data Types]\n",
     "parameters": [
       {
