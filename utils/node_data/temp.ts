@@ -24,10 +24,10 @@ const save = (path: string, data: {} | string) =>
 // console.log(data.Nodes.filter(n => n.DataPins.find(p => p.Identifier.startsWith('Input')) !== undefined).length);
 
 
-const list1 = data.Nodes.find(x => x.Identifier === "Arithmetic.List_Client.Assemble_List")!;
+const list = data.Nodes.find(x => x.Identifier === "Query.List_Related_Client.Get_Ray_Filters")!;
 
 const p0 = {
-  "Identifier": "Input0",
+  "Identifier": "len",
   "Direction": "In",
   "Type": "Int",
   "Label": null,
@@ -39,60 +39,46 @@ const p0 = {
   "Description": {}
 };
 const pi = {
-  "Identifier": "Input1",
+  "Identifier": "enum",
   "Direction": "In",
-  "Type": "R<T>",
+  "Type": "E<CATX>",
   "Label": {
-    "zh-Hans": "0",
-    "en": "0"
+    "zh-Hans": "",
+    "en": ""
   },
   "Placeholder": null,
   "ShellIndex": 1,
   "KernelIndex": 1,
-  "Visibility": "Display",
+  "Visibility": "Conditional",
   "Connectability": true,
-  "Description": {
-    "zh-Hans": "将至多10个参数拼装为一个列表",
-    "en": "Assembles up to 10 parameters into a list"
-  }
+  "Description": {}
 };
 const p_last = {
+
   "Identifier": "list",
   "Direction": "Out",
-  "Type": "L<R<T>>",
+  "Type": "L<E<CATX>>",
   "Label": {
-    "zh-Hans": "列表"
+    "zh-Hans": "列表",
+    "en": "list"
   },
   "Placeholder": null,
   "ShellIndex": 0,
   "KernelIndex": 0,
   "Visibility": "Display",
   "Connectability": true,
-  "Description": {
-    "zh-Hans": "拼装成的列表",
-    "en": "The assembled list"
-  }
+  "Description": {}
 };
 
-list1.DataPins = [p0, ...Array.from({ length: 10 }, (_, i) => {
+list.DataPins = [p0, Array.from({ length: 10 }, (_, i) => {
   const p = structuredClone(pi);
-  p.Identifier = "Input" + String(i + 1);
-  p.Label = { "zh-Hans": String(i), "en": String(i) }
+  p.Identifier += String(i);
+  p.Label.en += i;
+  p.Label["zh-Hans"] += i;
   p.ShellIndex = i + 1;
   p.KernelIndex = i + 1;
   p.Visibility = "Conditional";
   return p;
-}), p_last];
-
-list1.Variants!.forEach(v => {
-  const i0 = v.InjectedContents[0];
-  v.InjectedContents = [...Array.from({ length: 10 }, (_, i) => {
-    const ic = structuredClone(i0);
-    ic.Identifier = "Input" + String(i + 1);
-    return ic;
-  }), ...v.InjectedContents.slice(-1)];
-})
-
-data.Nodes.forEach(n => n.Variants?.forEach(v => v.InjectedContents = v.InjectedContents.flat()))
+}), p_last].flat(2);
 
 save("data.json", data);
