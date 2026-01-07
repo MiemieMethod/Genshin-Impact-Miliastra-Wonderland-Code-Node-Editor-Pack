@@ -6,7 +6,7 @@ import { nodeDefinitions as REF } from "../../ref/Columbina-Dev/WebMiliastraNode
 import { parse, stringify } from "yaml";
 import * as NT from "./node_type.ts";
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
-import { type Document } from "./types.ts";
+import { type Document , type NodeDef} from "./types.ts";
 const read = (path: string) => readFileSync(import.meta.dirname + "/" + path).toString();
 const save = (path: string, data: {} | string) =>
   writeFileSync(
@@ -29,12 +29,13 @@ import docZH from "./UGC-Guide-Markdown/nodes.zh.json" with {type: "json"};
 const used = new Set();
 const unused = new Set(doc);
 
-data.Nodes.forEach(node => {
+
+(data as any as Document).Nodes.forEach((node) => {
   if (node.Domain === "Hidden") return;
   let ref_node = doc.find(n => n.name === node.InGameName.en && n.category.startsWith(node.System));
 
   if (!ref_node) {
-    ref_node = doc.find(n => node.Alias.includes(n.name) && n.category.startsWith(node.System));
+    ref_node = doc.find(n => node.Alias!.includes(n.name) && n.category.startsWith(node.System));
     if (ref_node) {
       // console.log("Alias node:", node.InGameName.en, node.Identifier, "->", ref_node.name);
       // Manually checked, all good
@@ -108,7 +109,7 @@ data.Nodes.forEach(node => {
       let skip = false;
       if (NT.is_reflect(p.Type) && NT.is_reflect(rp)) {
         skip = true;
-      } else if (NT.stringify(NT.parse(p.Type), { unknown_enum: true, unknown_dict: true, empty_struct: true }) === rp) {
+      } else if (NT.stringify(NT.parse(p.Type ?? "Unk"), { unknown_enum: true, unknown_dict: true, empty_struct: true }) === rp) {
         skip = true;
       }
       if (!skip) {
@@ -118,6 +119,12 @@ data.Nodes.forEach(node => {
     }
   }
   // 类型与参数均能对应上, 填充标签和注释
+  
+  // assert(node.Description===undefined);
+  node.Description = {
+    en: ref_node.description.trim(),
+    "zh-Hans": ref_node_zh.description.trim(),
+  };
 });
 
 console.log("Unused nodes:");
@@ -126,5 +133,5 @@ for (const n of unused) {
 }
 
 // save("nodes.json", nodes);
-// save("data.json", data);
+save("data.json", data);
 
