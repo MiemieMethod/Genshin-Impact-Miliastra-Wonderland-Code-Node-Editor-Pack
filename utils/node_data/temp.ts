@@ -137,10 +137,17 @@ const unused = new Set(doc);
     if(!zh_eq){
       console.log(`[Label Mismatch] in node ${ref_node_zh.name}(${node.Identifier}) with parameter ${p.Identifier}(${NT.stringify(p.Type)}): "${p.Label?.["zh-Hans"]}" (DATA) vs "${rp_zh.name}" (MD)`);
       // manually checked, all good
-      // overwrite
-      p.Label ??= {};
-      p.Label["zh-Hans"] = rp_zh.name;
     }
+
+    let en_eq = (p.Label?.en?.length ?? 0) === 0 || p.Label?.en === rp.name;
+    if(!en_eq){
+      console.log(`[Label Mismatch] in node ${ref_node.name}(${node.Identifier}) with parameter ${p.Identifier}(${NT.stringify(p.Type)}): "${p.Label?.en}" (DATA) vs "${rp.name}" (MD)`);
+      // manually checked, all good
+    }
+    // overwrite
+    p.Label ??= {};
+    p.Label["zh-Hans"] = rp_zh.name;
+    p.Label.en = rp.name;
   });
 });
 
