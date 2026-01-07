@@ -77,7 +77,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔷 || **`R<T>`** || `key` || 控制表达式 |
+ * | 0 || 🔷 || **`R<T>`** || `key` || Control Expression: Only supports Integers or Strings |
  * | 1 || 🔷 || **`L<R<T>>`** || `cases` || Judge Parameter |
  *
  * -----------
@@ -1825,15 +1825,15 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Cfg` || `effect_asset` || 特效资产 |
- * | 1 || 🔹 || `Ety` || `target_entity` || 目标实体 |
- * | 2 || 🔹 || `Str` || `socket_name` || 挂接点名称 |
- * | 3 || 🔹 || `Bol` || `follow_move` || 是否跟随目标运动 |
- * | 4 || 🔹 || `Bol` || `follow_rotate` || 是否跟随目标旋转 |
- * | 5 || 🔹 || `Vec` || `pos_offset` || 位置偏移 |
- * | 6 || 🔹 || `Vec` || `rot_offset` || 旋转偏移 |
- * | 7 || 🔹 || `Flt` || `scale` || 缩放倍率 |
- * | 8 || 🔹 || `Bol` || `play_built_in_sfx` || 是否播放自带的音效 |
+ * | 0 || 🔹 || `Cfg` || `effect_asset` || Special Effects Asset: Identifier for this Effect |
+ * | 1 || 🔹 || `Ety` || `target_entity` || Target Entity: If the Entity does not exist, the Effect will not play |
+ * | 2 || 🔹 || `Str` || `socket_name` || Attachment Point Name: If the Attachment Point Name does not exist, the Special Effect will not play |
+ * | 3 || 🔹 || `Bol` || `follow_move` || Move With the Target: If set to True, follows the Target Entity's Motion |
+ * | 4 || 🔹 || `Bol` || `follow_rotate` || Rotate With the Target: If set to True, follows the Target Entity's Rotation |
+ * | 5 || 🔹 || `Vec` || `pos_offset` || Location Offset: Location Offset relative to the Target Entity's specified Attachment Point |
+ * | 6 || 🔹 || `Vec` || `rot_offset` || Rotation Offset: Rotation offset relative to the Target Entity's specified Attachment Point |
+ * | 7 || 🔹 || `Flt` || `scale` || Zoom Multiplier: The Zoom Multiplier of this Effect |
+ * | 8 || 🔹 || `Bol` || `play_built_in_sfx` || Play Built-In Sound Effect |
  *
  * -----------
  *
@@ -1841,7 +1841,7 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Int` || `effect_instance_id_out` || 特效实例ID |
+ * | 0 || 🔸 || `Int` || `effect_instance_id_out` || Special Effect Instance ID: The Instance ID automatically generated when mounting this Effect |
  */
   Execution_SpecialEffect_PlayLoop: "Execution.Special_Effect.Play_Loop",
 
@@ -2379,64 +2379,113 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` ||  |
- * | 1 || 🔷 || **`R<T>`** || `Input1` ||  |
- * | 2 || 🔷 || **`R<T>`** || `Input2` ||  |
- * | 3 || 🔷 || **`R<T>`** || `Input3` ||  |
- * | 4 || 🔷 || **`R<T>`** || `Input4` ||  |
- * | 5 || 🔷 || **`R<T>`** || `Input5` ||  |
- * | 6 || 🔷 || **`R<T>`** || `Input6` ||  |
- * | 7 || 🔷 || **`R<T>`** || `Input7` ||  |
- * | 8 || 🔷 || **`R<T>`** || `Input8` ||  |
- * | 9 || 🔷 || **`R<T>`** || `Input9` ||  |
- * | 10 || 🔷 || **`R<T>`** || `Input10` ||  |
- * | 11 || 🔷 || **`R<T>`** || `Input11` ||  |
- * | 12 || 🔷 || **`R<T>`** || `Input12` ||  |
- * | 13 || 🔷 || **`R<T>`** || `Input13` ||  |
- * | 14 || 🔷 || **`R<T>`** || `Input14` ||  |
- * | 15 || 🔷 || **`R<T>`** || `Input15` ||  |
- * | 16 || 🔷 || **`R<T>`** || `Input16` ||  |
- * | 17 || 🔷 || **`R<T>`** || `Input17` ||  |
- * | 18 || 🔷 || **`R<T>`** || `Input18` ||  |
- * | 19 || 🔷 || **`R<T>`** || `Input19` ||  |
- * | 20 || 🔷 || **`R<T>`** || `Input20` ||  |
- * | 21 || 🔷 || **`R<T>`** || `Input21` ||  |
- * | 22 || 🔷 || **`R<T>`** || `Input22` ||  |
- * | 23 || 🔷 || **`R<T>`** || `Input23` ||  |
- * | 24 || 🔷 || **`R<T>`** || `Input24` ||  |
- * | 25 || 🔷 || **`R<T>`** || `Input25` ||  |
- * | 26 || 🔷 || **`R<T>`** || `Input26` ||  |
- * | 27 || 🔷 || **`R<T>`** || `Input27` ||  |
- * | 28 || 🔷 || **`R<T>`** || `Input28` ||  |
- * | 29 || 🔷 || **`R<T>`** || `Input29` ||  |
- * | 30 || 🔷 || **`R<T>`** || `Input30` ||  |
- * | 31 || 🔷 || **`R<T>`** || `Input31` ||  |
- * | 32 || 🔷 || **`R<T>`** || `Input32` ||  |
- * | 33 || 🔷 || **`R<T>`** || `Input33` ||  |
- * | 34 || 🔷 || **`R<T>`** || `Input34` ||  |
- * | 35 || 🔷 || **`R<T>`** || `Input35` ||  |
- * | 36 || 🔷 || **`R<T>`** || `Input36` ||  |
- * | 37 || 🔷 || **`R<T>`** || `Input37` ||  |
- * | 38 || 🔷 || **`R<T>`** || `Input38` ||  |
- * | 39 || 🔷 || **`R<T>`** || `Input39` ||  |
- * | 40 || 🔷 || **`R<T>`** || `Input40` ||  |
- * | 41 || 🔷 || **`R<T>`** || `Input41` ||  |
- * | 42 || 🔷 || **`R<T>`** || `Input42` ||  |
- * | 43 || 🔷 || **`R<T>`** || `Input43` ||  |
- * | 44 || 🔷 || **`R<T>`** || `Input44` ||  |
- * | 45 || 🔷 || **`R<T>`** || `Input45` ||  |
- * | 46 || 🔷 || **`R<T>`** || `Input46` ||  |
- * | 47 || 🔷 || **`R<T>`** || `Input47` ||  |
- * | 48 || 🔷 || **`R<T>`** || `Input48` ||  |
- * | 49 || 🔷 || **`R<T>`** || `Input49` ||  |
- * | 50 || 🔷 || **`R<T>`** || `Input50` ||  |
+ * | 0 || 🔷 || **`R<T>`** || `Input1` || 0: Assembles up to 100 parameters into a list |
+ * | 1 || 🔷 || **`R<T>`** || `Input2` || 1: Assembles up to 100 parameters into a list |
+ * | 2 || 🔷 || **`R<T>`** || `Input3` || 2: Assembles up to 100 parameters into a list |
+ * | 3 || 🔷 || **`R<T>`** || `Input4` || 3: Assembles up to 100 parameters into a list |
+ * | 4 || 🔷 || **`R<T>`** || `Input5` || 4: Assembles up to 100 parameters into a list |
+ * | 5 || 🔷 || **`R<T>`** || `Input6` || 5: Assembles up to 100 parameters into a list |
+ * | 6 || 🔷 || **`R<T>`** || `Input7` || 6: Assembles up to 100 parameters into a list |
+ * | 7 || 🔷 || **`R<T>`** || `Input8` || 7: Assembles up to 100 parameters into a list |
+ * | 8 || 🔷 || **`R<T>`** || `Input9` || 8: Assembles up to 100 parameters into a list |
+ * | 9 || 🔷 || **`R<T>`** || `Input10` || 9: Assembles up to 100 parameters into a list |
+ * | 10 || 🔷 || **`R<T>`** || `Input11` || 10: Assembles up to 100 parameters into a list |
+ * | 11 || 🔷 || **`R<T>`** || `Input12` || 11: Assembles up to 100 parameters into a list |
+ * | 12 || 🔷 || **`R<T>`** || `Input13` || 12: Assembles up to 100 parameters into a list |
+ * | 13 || 🔷 || **`R<T>`** || `Input14` || 13: Assembles up to 100 parameters into a list |
+ * | 14 || 🔷 || **`R<T>`** || `Input15` || 14: Assembles up to 100 parameters into a list |
+ * | 15 || 🔷 || **`R<T>`** || `Input16` || 15: Assembles up to 100 parameters into a list |
+ * | 16 || 🔷 || **`R<T>`** || `Input17` || 16: Assembles up to 100 parameters into a list |
+ * | 17 || 🔷 || **`R<T>`** || `Input18` || 17: Assembles up to 100 parameters into a list |
+ * | 18 || 🔷 || **`R<T>`** || `Input19` || 18: Assembles up to 100 parameters into a list |
+ * | 19 || 🔷 || **`R<T>`** || `Input20` || 19: Assembles up to 100 parameters into a list |
+ * | 20 || 🔷 || **`R<T>`** || `Input21` || 20: Assembles up to 100 parameters into a list |
+ * | 21 || 🔷 || **`R<T>`** || `Input22` || 21: Assembles up to 100 parameters into a list |
+ * | 22 || 🔷 || **`R<T>`** || `Input23` || 22: Assembles up to 100 parameters into a list |
+ * | 23 || 🔷 || **`R<T>`** || `Input24` || 23: Assembles up to 100 parameters into a list |
+ * | 24 || 🔷 || **`R<T>`** || `Input25` || 24: Assembles up to 100 parameters into a list |
+ * | 25 || 🔷 || **`R<T>`** || `Input26` || 25: Assembles up to 100 parameters into a list |
+ * | 26 || 🔷 || **`R<T>`** || `Input27` || 26: Assembles up to 100 parameters into a list |
+ * | 27 || 🔷 || **`R<T>`** || `Input28` || 27: Assembles up to 100 parameters into a list |
+ * | 28 || 🔷 || **`R<T>`** || `Input29` || 28: Assembles up to 100 parameters into a list |
+ * | 29 || 🔷 || **`R<T>`** || `Input30` || 29: Assembles up to 100 parameters into a list |
+ * | 30 || 🔷 || **`R<T>`** || `Input31` || 30: Assembles up to 100 parameters into a list |
+ * | 31 || 🔷 || **`R<T>`** || `Input32` || 31: Assembles up to 100 parameters into a list |
+ * | 32 || 🔷 || **`R<T>`** || `Input33` || 32: Assembles up to 100 parameters into a list |
+ * | 33 || 🔷 || **`R<T>`** || `Input34` || 33: Assembles up to 100 parameters into a list |
+ * | 34 || 🔷 || **`R<T>`** || `Input35` || 34: Assembles up to 100 parameters into a list |
+ * | 35 || 🔷 || **`R<T>`** || `Input36` || 35: Assembles up to 100 parameters into a list |
+ * | 36 || 🔷 || **`R<T>`** || `Input37` || 36: Assembles up to 100 parameters into a list |
+ * | 37 || 🔷 || **`R<T>`** || `Input38` || 37: Assembles up to 100 parameters into a list |
+ * | 38 || 🔷 || **`R<T>`** || `Input39` || 38: Assembles up to 100 parameters into a list |
+ * | 39 || 🔷 || **`R<T>`** || `Input40` || 39: Assembles up to 100 parameters into a list |
+ * | 40 || 🔷 || **`R<T>`** || `Input41` || 40: Assembles up to 100 parameters into a list |
+ * | 41 || 🔷 || **`R<T>`** || `Input42` || 41: Assembles up to 100 parameters into a list |
+ * | 42 || 🔷 || **`R<T>`** || `Input43` || 42: Assembles up to 100 parameters into a list |
+ * | 43 || 🔷 || **`R<T>`** || `Input44` || 43: Assembles up to 100 parameters into a list |
+ * | 44 || 🔷 || **`R<T>`** || `Input45` || 44: Assembles up to 100 parameters into a list |
+ * | 45 || 🔷 || **`R<T>`** || `Input46` || 45: Assembles up to 100 parameters into a list |
+ * | 46 || 🔷 || **`R<T>`** || `Input47` || 46: Assembles up to 100 parameters into a list |
+ * | 47 || 🔷 || **`R<T>`** || `Input48` || 47: Assembles up to 100 parameters into a list |
+ * | 48 || 🔷 || **`R<T>`** || `Input49` || 48: Assembles up to 100 parameters into a list |
+ * | 49 || 🔷 || **`R<T>`** || `Input50` || 49: Assembles up to 100 parameters into a list |
+ * | 50 || 🔷 || **`R<T>`** || `Input51` || 50: Assembles up to 100 parameters into a list |
+ * | 51 || 🔷 || **`R<T>`** || `Input52` || 51: Assembles up to 100 parameters into a list |
+ * | 52 || 🔷 || **`R<T>`** || `Input53` || 52: Assembles up to 100 parameters into a list |
+ * | 53 || 🔷 || **`R<T>`** || `Input54` || 53: Assembles up to 100 parameters into a list |
+ * | 54 || 🔷 || **`R<T>`** || `Input55` || 54: Assembles up to 100 parameters into a list |
+ * | 55 || 🔷 || **`R<T>`** || `Input56` || 55: Assembles up to 100 parameters into a list |
+ * | 56 || 🔷 || **`R<T>`** || `Input57` || 56: Assembles up to 100 parameters into a list |
+ * | 57 || 🔷 || **`R<T>`** || `Input58` || 57: Assembles up to 100 parameters into a list |
+ * | 58 || 🔷 || **`R<T>`** || `Input59` || 58: Assembles up to 100 parameters into a list |
+ * | 59 || 🔷 || **`R<T>`** || `Input60` || 59: Assembles up to 100 parameters into a list |
+ * | 60 || 🔷 || **`R<T>`** || `Input61` || 60: Assembles up to 100 parameters into a list |
+ * | 61 || 🔷 || **`R<T>`** || `Input62` || 61: Assembles up to 100 parameters into a list |
+ * | 62 || 🔷 || **`R<T>`** || `Input63` || 62: Assembles up to 100 parameters into a list |
+ * | 63 || 🔷 || **`R<T>`** || `Input64` || 63: Assembles up to 100 parameters into a list |
+ * | 64 || 🔷 || **`R<T>`** || `Input65` || 64: Assembles up to 100 parameters into a list |
+ * | 65 || 🔷 || **`R<T>`** || `Input66` || 65: Assembles up to 100 parameters into a list |
+ * | 66 || 🔷 || **`R<T>`** || `Input67` || 66: Assembles up to 100 parameters into a list |
+ * | 67 || 🔷 || **`R<T>`** || `Input68` || 67: Assembles up to 100 parameters into a list |
+ * | 68 || 🔷 || **`R<T>`** || `Input69` || 68: Assembles up to 100 parameters into a list |
+ * | 69 || 🔷 || **`R<T>`** || `Input70` || 69: Assembles up to 100 parameters into a list |
+ * | 70 || 🔷 || **`R<T>`** || `Input71` || 70: Assembles up to 100 parameters into a list |
+ * | 71 || 🔷 || **`R<T>`** || `Input72` || 71: Assembles up to 100 parameters into a list |
+ * | 72 || 🔷 || **`R<T>`** || `Input73` || 72: Assembles up to 100 parameters into a list |
+ * | 73 || 🔷 || **`R<T>`** || `Input74` || 73: Assembles up to 100 parameters into a list |
+ * | 74 || 🔷 || **`R<T>`** || `Input75` || 74: Assembles up to 100 parameters into a list |
+ * | 75 || 🔷 || **`R<T>`** || `Input76` || 75: Assembles up to 100 parameters into a list |
+ * | 76 || 🔷 || **`R<T>`** || `Input77` || 76: Assembles up to 100 parameters into a list |
+ * | 77 || 🔷 || **`R<T>`** || `Input78` || 77: Assembles up to 100 parameters into a list |
+ * | 78 || 🔷 || **`R<T>`** || `Input79` || 78: Assembles up to 100 parameters into a list |
+ * | 79 || 🔷 || **`R<T>`** || `Input80` || 79: Assembles up to 100 parameters into a list |
+ * | 80 || 🔷 || **`R<T>`** || `Input81` || 80: Assembles up to 100 parameters into a list |
+ * | 81 || 🔷 || **`R<T>`** || `Input82` || 81: Assembles up to 100 parameters into a list |
+ * | 82 || 🔷 || **`R<T>`** || `Input83` || 82: Assembles up to 100 parameters into a list |
+ * | 83 || 🔷 || **`R<T>`** || `Input84` || 83: Assembles up to 100 parameters into a list |
+ * | 84 || 🔷 || **`R<T>`** || `Input85` || 84: Assembles up to 100 parameters into a list |
+ * | 85 || 🔷 || **`R<T>`** || `Input86` || 85: Assembles up to 100 parameters into a list |
+ * | 86 || 🔷 || **`R<T>`** || `Input87` || 86: Assembles up to 100 parameters into a list |
+ * | 87 || 🔷 || **`R<T>`** || `Input88` || 87: Assembles up to 100 parameters into a list |
+ * | 88 || 🔷 || **`R<T>`** || `Input89` || 88: Assembles up to 100 parameters into a list |
+ * | 89 || 🔷 || **`R<T>`** || `Input90` || 89: Assembles up to 100 parameters into a list |
+ * | 90 || 🔷 || **`R<T>`** || `Input91` || 90: Assembles up to 100 parameters into a list |
+ * | 91 || 🔷 || **`R<T>`** || `Input92` || 91: Assembles up to 100 parameters into a list |
+ * | 92 || 🔷 || **`R<T>`** || `Input93` || 92: Assembles up to 100 parameters into a list |
+ * | 93 || 🔷 || **`R<T>`** || `Input94` || 93: Assembles up to 100 parameters into a list |
+ * | 94 || 🔷 || **`R<T>`** || `Input95` || 94: Assembles up to 100 parameters into a list |
+ * | 95 || 🔷 || **`R<T>`** || `Input96` || 95: Assembles up to 100 parameters into a list |
+ * | 96 || 🔷 || **`R<T>`** || `Input97` || 96: Assembles up to 100 parameters into a list |
+ * | 97 || 🔷 || **`R<T>`** || `Input98` || 97: Assembles up to 100 parameters into a list |
+ * | 98 || 🔷 || **`R<T>`** || `Input99` || 98: Assembles up to 100 parameters into a list |
+ * | 99 || 🔷 || **`R<T>`** || `Input100` || 99: Assembles up to 100 parameters into a list |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔶 || **`L<R<T>>`** || `list` || 列表 |
+ * | 0 || 🔶 || **`L<R<T>>`** || `list` || list: The assembled list |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Int>`
@@ -5191,11 +5240,10 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Ety` || `source_entity` || Event Source Entity |
- * | 1 || 🔸 || `Gid` || `source_guid` || Event Source GUID |
- * | 2 || 🔸 || `Int` || `tab_id` || Tab ID |
- * | 3 || 🔸 || `Ety` || `selector_entity` || Selector Entity |
- * | 4 || 🔸 || `Gid` || `hidden_guid` ||  |
+ * | 0 || 🔸 || `Ety` || `source_entity` || Event Source Entity: Entity with the tab component mounted |
+ * | 1 || 🔸 || `Gid` || `source_guid` || Event Source GUID: GUID of the Entity with the tab component mounted; outputs 0 if none exists |
+ * | 2 || 🔸 || `Int` || `tab_id` || Tab ID: The tab ID |
+ * | 3 || 🔸 || `Ety` || `selector_entity` || Selector Entity: Character Entity that triggers the tab |
  */
   Trigger_Tab_OnTabSelect: "Trigger.Tab.On_Tab_Select",
 
@@ -10256,7 +10304,7 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Ety` || `target_entity` || 目标实体 |
+ * | 0 || 🔹 || `Ety` || `target_entity` || Target Entity |
  *
  * -----------
  *
@@ -10270,7 +10318,6 @@ export const NODES = {
  * | 4 || 🔸 || `Flt` || `energy_recharge` || Energy Recharge |
  * | 5 || 🔸 || `Flt` || `cd_reduction` || CD Reduction |
  * | 6 || 🔸 || `Flt` || `shield_amount` || Shield Strength |
- * | 7 || 🔸 || `Flt` || `hidden_flt` ||  |
  */
   Query_EntityRelated_GetAdvAttr: "Query.Entity_Related.Get_Adv_Attr",
 
@@ -14885,114 +14932,113 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` ||  |
- * | 1 || 🔷 || **`R<K>`** || `Input1` ||  |
- * | 2 || 🔷 || **`R<V>`** || `Input2` ||  |
- * | 3 || 🔷 || **`R<K>`** || `Input3` ||  |
- * | 4 || 🔷 || **`R<V>`** || `Input4` ||  |
- * | 5 || 🔷 || **`R<K>`** || `Input5` ||  |
- * | 6 || 🔷 || **`R<V>`** || `Input6` ||  |
- * | 7 || 🔷 || **`R<K>`** || `Input7` ||  |
- * | 8 || 🔷 || **`R<V>`** || `Input8` ||  |
- * | 9 || 🔷 || **`R<K>`** || `Input9` ||  |
- * | 10 || 🔷 || **`R<V>`** || `Input10` ||  |
- * | 11 || 🔷 || **`R<K>`** || `Input11` ||  |
- * | 12 || 🔷 || **`R<V>`** || `Input12` ||  |
- * | 13 || 🔷 || **`R<K>`** || `Input13` ||  |
- * | 14 || 🔷 || **`R<V>`** || `Input14` ||  |
- * | 15 || 🔷 || **`R<K>`** || `Input15` ||  |
- * | 16 || 🔷 || **`R<V>`** || `Input16` ||  |
- * | 17 || 🔷 || **`R<K>`** || `Input17` ||  |
- * | 18 || 🔷 || **`R<V>`** || `Input18` ||  |
- * | 19 || 🔷 || **`R<K>`** || `Input19` ||  |
- * | 20 || 🔷 || **`R<V>`** || `Input20` ||  |
- * | 21 || 🔷 || **`R<K>`** || `Input21` ||  |
- * | 22 || 🔷 || **`R<V>`** || `Input22` ||  |
- * | 23 || 🔷 || **`R<K>`** || `Input23` ||  |
- * | 24 || 🔷 || **`R<V>`** || `Input24` ||  |
- * | 25 || 🔷 || **`R<K>`** || `Input25` ||  |
- * | 26 || 🔷 || **`R<V>`** || `Input26` ||  |
- * | 27 || 🔷 || **`R<K>`** || `Input27` ||  |
- * | 28 || 🔷 || **`R<V>`** || `Input28` ||  |
- * | 29 || 🔷 || **`R<K>`** || `Input29` ||  |
- * | 30 || 🔷 || **`R<V>`** || `Input30` ||  |
- * | 31 || 🔷 || **`R<K>`** || `Input31` ||  |
- * | 32 || 🔷 || **`R<V>`** || `Input32` ||  |
- * | 33 || 🔷 || **`R<K>`** || `Input33` ||  |
- * | 34 || 🔷 || **`R<V>`** || `Input34` ||  |
- * | 35 || 🔷 || **`R<K>`** || `Input35` ||  |
- * | 36 || 🔷 || **`R<V>`** || `Input36` ||  |
- * | 37 || 🔷 || **`R<K>`** || `Input37` ||  |
- * | 38 || 🔷 || **`R<V>`** || `Input38` ||  |
- * | 39 || 🔷 || **`R<K>`** || `Input39` ||  |
- * | 40 || 🔷 || **`R<V>`** || `Input40` ||  |
- * | 41 || 🔷 || **`R<K>`** || `Input41` ||  |
- * | 42 || 🔷 || **`R<V>`** || `Input42` ||  |
- * | 43 || 🔷 || **`R<K>`** || `Input43` ||  |
- * | 44 || 🔷 || **`R<V>`** || `Input44` ||  |
- * | 45 || 🔷 || **`R<K>`** || `Input45` ||  |
- * | 46 || 🔷 || **`R<V>`** || `Input46` ||  |
- * | 47 || 🔷 || **`R<K>`** || `Input47` ||  |
- * | 48 || 🔷 || **`R<V>`** || `Input48` ||  |
- * | 49 || 🔷 || **`R<K>`** || `Input49` ||  |
- * | 50 || 🔷 || **`R<V>`** || `Input50` ||  |
- * | 51 || 🔷 || **`R<K>`** || `Input51` ||  |
- * | 52 || 🔷 || **`R<V>`** || `Input52` ||  |
- * | 53 || 🔷 || **`R<K>`** || `Input53` ||  |
- * | 54 || 🔷 || **`R<V>`** || `Input54` ||  |
- * | 55 || 🔷 || **`R<K>`** || `Input55` ||  |
- * | 56 || 🔷 || **`R<V>`** || `Input56` ||  |
- * | 57 || 🔷 || **`R<K>`** || `Input57` ||  |
- * | 58 || 🔷 || **`R<V>`** || `Input58` ||  |
- * | 59 || 🔷 || **`R<K>`** || `Input59` ||  |
- * | 60 || 🔷 || **`R<V>`** || `Input60` ||  |
- * | 61 || 🔷 || **`R<K>`** || `Input61` ||  |
- * | 62 || 🔷 || **`R<V>`** || `Input62` ||  |
- * | 63 || 🔷 || **`R<K>`** || `Input63` ||  |
- * | 64 || 🔷 || **`R<V>`** || `Input64` ||  |
- * | 65 || 🔷 || **`R<K>`** || `Input65` ||  |
- * | 66 || 🔷 || **`R<V>`** || `Input66` ||  |
- * | 67 || 🔷 || **`R<K>`** || `Input67` ||  |
- * | 68 || 🔷 || **`R<V>`** || `Input68` ||  |
- * | 69 || 🔷 || **`R<K>`** || `Input69` ||  |
- * | 70 || 🔷 || **`R<V>`** || `Input70` ||  |
- * | 71 || 🔷 || **`R<K>`** || `Input71` ||  |
- * | 72 || 🔷 || **`R<V>`** || `Input72` ||  |
- * | 73 || 🔷 || **`R<K>`** || `Input73` ||  |
- * | 74 || 🔷 || **`R<V>`** || `Input74` ||  |
- * | 75 || 🔷 || **`R<K>`** || `Input75` ||  |
- * | 76 || 🔷 || **`R<V>`** || `Input76` ||  |
- * | 77 || 🔷 || **`R<K>`** || `Input77` ||  |
- * | 78 || 🔷 || **`R<V>`** || `Input78` ||  |
- * | 79 || 🔷 || **`R<K>`** || `Input79` ||  |
- * | 80 || 🔷 || **`R<V>`** || `Input80` ||  |
- * | 81 || 🔷 || **`R<K>`** || `Input81` ||  |
- * | 82 || 🔷 || **`R<V>`** || `Input82` ||  |
- * | 83 || 🔷 || **`R<K>`** || `Input83` ||  |
- * | 84 || 🔷 || **`R<V>`** || `Input84` ||  |
- * | 85 || 🔷 || **`R<K>`** || `Input85` ||  |
- * | 86 || 🔷 || **`R<V>`** || `Input86` ||  |
- * | 87 || 🔷 || **`R<K>`** || `Input87` ||  |
- * | 88 || 🔷 || **`R<V>`** || `Input88` ||  |
- * | 89 || 🔷 || **`R<K>`** || `Input89` ||  |
- * | 90 || 🔷 || **`R<V>`** || `Input90` ||  |
- * | 91 || 🔷 || **`R<K>`** || `Input91` ||  |
- * | 92 || 🔷 || **`R<V>`** || `Input92` ||  |
- * | 93 || 🔷 || **`R<K>`** || `Input93` ||  |
- * | 94 || 🔷 || **`R<V>`** || `Input94` ||  |
- * | 95 || 🔷 || **`R<K>`** || `Input95` ||  |
- * | 96 || 🔷 || **`R<V>`** || `Input96` ||  |
- * | 97 || 🔷 || **`R<K>`** || `Input97` ||  |
- * | 98 || 🔷 || **`R<V>`** || `Input98` ||  |
- * | 99 || 🔷 || **`R<K>`** || `Input99` ||  |
- * | 100 || 🔷 || **`R<V>`** || `Input100` ||  |
+ * | 0 || 🔷 || **`R<K>`** || `key0` || Key 0 |
+ * | 1 || 🔷 || **`R<V>`** || `val0` || Value 0 |
+ * | 2 || 🔷 || **`R<K>`** || `key1` || Key 1 |
+ * | 3 || 🔷 || **`R<V>`** || `val1` || Value 1 |
+ * | 4 || 🔷 || **`R<K>`** || `key2` || Key 2 |
+ * | 5 || 🔷 || **`R<V>`** || `val2` || Value 2 |
+ * | 6 || 🔷 || **`R<K>`** || `key3` || Key 3 |
+ * | 7 || 🔷 || **`R<V>`** || `val3` || Value 3 |
+ * | 8 || 🔷 || **`R<K>`** || `key4` || Key 4 |
+ * | 9 || 🔷 || **`R<V>`** || `val4` || Value 4 |
+ * | 10 || 🔷 || **`R<K>`** || `key5` || Key 5 |
+ * | 11 || 🔷 || **`R<V>`** || `val5` || Value 5 |
+ * | 12 || 🔷 || **`R<K>`** || `key6` || Key 6 |
+ * | 13 || 🔷 || **`R<V>`** || `val6` || Value 6 |
+ * | 14 || 🔷 || **`R<K>`** || `key7` || Key 7 |
+ * | 15 || 🔷 || **`R<V>`** || `val7` || Value 7 |
+ * | 16 || 🔷 || **`R<K>`** || `key8` || Key 8 |
+ * | 17 || 🔷 || **`R<V>`** || `val8` || Value 8 |
+ * | 18 || 🔷 || **`R<K>`** || `key9` || Key 9 |
+ * | 19 || 🔷 || **`R<V>`** || `val9` || Value 9 |
+ * | 20 || 🔷 || **`R<K>`** || `key10` || Key 10 |
+ * | 21 || 🔷 || **`R<V>`** || `val10` || Value 10 |
+ * | 22 || 🔷 || **`R<K>`** || `key11` || Key 11 |
+ * | 23 || 🔷 || **`R<V>`** || `val11` || Value 11 |
+ * | 24 || 🔷 || **`R<K>`** || `key12` || Key 12 |
+ * | 25 || 🔷 || **`R<V>`** || `val12` || Value 12 |
+ * | 26 || 🔷 || **`R<K>`** || `key13` || Key 13 |
+ * | 27 || 🔷 || **`R<V>`** || `val13` || Value 13 |
+ * | 28 || 🔷 || **`R<K>`** || `key14` || Key 14 |
+ * | 29 || 🔷 || **`R<V>`** || `val14` || Value 14 |
+ * | 30 || 🔷 || **`R<K>`** || `key15` || Key 15 |
+ * | 31 || 🔷 || **`R<V>`** || `val15` || Value 15 |
+ * | 32 || 🔷 || **`R<K>`** || `key16` || Key 16 |
+ * | 33 || 🔷 || **`R<V>`** || `val16` || Value 16 |
+ * | 34 || 🔷 || **`R<K>`** || `key17` || Key 17 |
+ * | 35 || 🔷 || **`R<V>`** || `val17` || Value 17 |
+ * | 36 || 🔷 || **`R<K>`** || `key18` || Key 18 |
+ * | 37 || 🔷 || **`R<V>`** || `val18` || Value 18 |
+ * | 38 || 🔷 || **`R<K>`** || `key19` || Key 19 |
+ * | 39 || 🔷 || **`R<V>`** || `val19` || Value 19 |
+ * | 40 || 🔷 || **`R<K>`** || `key20` || Key 20 |
+ * | 41 || 🔷 || **`R<V>`** || `val20` || Value 20 |
+ * | 42 || 🔷 || **`R<K>`** || `key21` || Key 21 |
+ * | 43 || 🔷 || **`R<V>`** || `val21` || Value 21 |
+ * | 44 || 🔷 || **`R<K>`** || `key22` || Key 22 |
+ * | 45 || 🔷 || **`R<V>`** || `val22` || Value 22 |
+ * | 46 || 🔷 || **`R<K>`** || `key23` || Key 23 |
+ * | 47 || 🔷 || **`R<V>`** || `val23` || Value 23 |
+ * | 48 || 🔷 || **`R<K>`** || `key24` || Key 24 |
+ * | 49 || 🔷 || **`R<V>`** || `val24` || Value 24 |
+ * | 50 || 🔷 || **`R<K>`** || `key25` || Key 25 |
+ * | 51 || 🔷 || **`R<V>`** || `val25` || Value 25 |
+ * | 52 || 🔷 || **`R<K>`** || `key26` || Key 26 |
+ * | 53 || 🔷 || **`R<V>`** || `val26` || Value 26 |
+ * | 54 || 🔷 || **`R<K>`** || `key27` || Key 27 |
+ * | 55 || 🔷 || **`R<V>`** || `val27` || Value 27 |
+ * | 56 || 🔷 || **`R<K>`** || `key28` || Key 28 |
+ * | 57 || 🔷 || **`R<V>`** || `val28` || Value 28 |
+ * | 58 || 🔷 || **`R<K>`** || `key29` || Key 29 |
+ * | 59 || 🔷 || **`R<V>`** || `val29` || Value 29 |
+ * | 60 || 🔷 || **`R<K>`** || `key30` || Key 30 |
+ * | 61 || 🔷 || **`R<V>`** || `val30` || Value 30 |
+ * | 62 || 🔷 || **`R<K>`** || `key31` || Key 31 |
+ * | 63 || 🔷 || **`R<V>`** || `val31` || Value 31 |
+ * | 64 || 🔷 || **`R<K>`** || `key32` || Key 32 |
+ * | 65 || 🔷 || **`R<V>`** || `val32` || Value 32 |
+ * | 66 || 🔷 || **`R<K>`** || `key33` || Key 33 |
+ * | 67 || 🔷 || **`R<V>`** || `val33` || Value 33 |
+ * | 68 || 🔷 || **`R<K>`** || `key34` || Key 34 |
+ * | 69 || 🔷 || **`R<V>`** || `val34` || Value 34 |
+ * | 70 || 🔷 || **`R<K>`** || `key35` || Key 35 |
+ * | 71 || 🔷 || **`R<V>`** || `val35` || Value 35 |
+ * | 72 || 🔷 || **`R<K>`** || `key36` || Key 36 |
+ * | 73 || 🔷 || **`R<V>`** || `val36` || Value 36 |
+ * | 74 || 🔷 || **`R<K>`** || `key37` || Key 37 |
+ * | 75 || 🔷 || **`R<V>`** || `val37` || Value 37 |
+ * | 76 || 🔷 || **`R<K>`** || `key38` || Key 38 |
+ * | 77 || 🔷 || **`R<V>`** || `val38` || Value 38 |
+ * | 78 || 🔷 || **`R<K>`** || `key39` || Key 39 |
+ * | 79 || 🔷 || **`R<V>`** || `val39` || Value 39 |
+ * | 80 || 🔷 || **`R<K>`** || `key40` || Key 40 |
+ * | 81 || 🔷 || **`R<V>`** || `val40` || Value 40 |
+ * | 82 || 🔷 || **`R<K>`** || `key41` || Key 41 |
+ * | 83 || 🔷 || **`R<V>`** || `val41` || Value 41 |
+ * | 84 || 🔷 || **`R<K>`** || `key42` || Key 42 |
+ * | 85 || 🔷 || **`R<V>`** || `val42` || Value 42 |
+ * | 86 || 🔷 || **`R<K>`** || `key43` || Key 43 |
+ * | 87 || 🔷 || **`R<V>`** || `val43` || Value 43 |
+ * | 88 || 🔷 || **`R<K>`** || `key44` || Key 44 |
+ * | 89 || 🔷 || **`R<V>`** || `val44` || Value 44 |
+ * | 90 || 🔷 || **`R<K>`** || `key45` || Key 45 |
+ * | 91 || 🔷 || **`R<V>`** || `val45` || Value 45 |
+ * | 92 || 🔷 || **`R<K>`** || `key46` || Key 46 |
+ * | 93 || 🔷 || **`R<V>`** || `val46` || Value 46 |
+ * | 94 || 🔷 || **`R<K>`** || `key47` || Key 47 |
+ * | 95 || 🔷 || **`R<V>`** || `val47` || Value 47 |
+ * | 96 || 🔷 || **`R<K>`** || `key48` || Key 48 |
+ * | 97 || 🔷 || **`R<V>`** || `val48` || Value 48 |
+ * | 98 || 🔷 || **`R<K>`** || `key49` || Key 49 |
+ * | 99 || 🔷 || **`R<V>`** || `val49` || Value 49 |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔶 || **`D<R<K>,R<V>>`** || `dict` || 字典 |
+ * | 0 || 🔶 || **`D<R<K>,R<V>>`** || `dict` || Dictionary: The assembled dictionary |
  *
  * #### 🧬 Variant Constraints
  * * `C<K:Ety,V:Ety>`
@@ -16923,24 +16969,23 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` ||  |
- * | 1 || 🔷 || **`R<T>`** || `Input1` ||  |
- * | 2 || 🔷 || **`R<T>`** || `Input2` ||  |
- * | 3 || 🔷 || **`R<T>`** || `Input3` ||  |
- * | 4 || 🔷 || **`R<T>`** || `Input4` ||  |
- * | 5 || 🔷 || **`R<T>`** || `Input5` ||  |
- * | 6 || 🔷 || **`R<T>`** || `Input6` ||  |
- * | 7 || 🔷 || **`R<T>`** || `Input7` ||  |
- * | 8 || 🔷 || **`R<T>`** || `Input8` ||  |
- * | 9 || 🔷 || **`R<T>`** || `Input9` ||  |
- * | 10 || 🔷 || **`R<T>`** || `Input10` ||  |
+ * | 0 || 🔷 || **`R<T>`** || `Input1` || 0: Assembles up to 10 parameters into a list |
+ * | 1 || 🔷 || **`R<T>`** || `Input2` || 1: Assembles up to 10 parameters into a list |
+ * | 2 || 🔷 || **`R<T>`** || `Input3` || 2: Assembles up to 10 parameters into a list |
+ * | 3 || 🔷 || **`R<T>`** || `Input4` || 3: Assembles up to 10 parameters into a list |
+ * | 4 || 🔷 || **`R<T>`** || `Input5` || 4: Assembles up to 10 parameters into a list |
+ * | 5 || 🔷 || **`R<T>`** || `Input6` || 5: Assembles up to 10 parameters into a list |
+ * | 6 || 🔷 || **`R<T>`** || `Input7` || 6: Assembles up to 10 parameters into a list |
+ * | 7 || 🔷 || **`R<T>`** || `Input8` || 7: Assembles up to 10 parameters into a list |
+ * | 8 || 🔷 || **`R<T>`** || `Input9` || 8: Assembles up to 10 parameters into a list |
+ * | 9 || 🔷 || **`R<T>`** || `Input10` || 9: Assembles up to 10 parameters into a list |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔶 || **`L<R<T>>`** || `list` || 列表 |
+ * | 0 || 🔶 || **`L<R<T>>`** || `list` || 列表: The assembled list |
  *
  * #### 🧬 Variant Constraints
  * * `C<T:Ety>`
@@ -16969,24 +17014,23 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` ||  |
- * | 1 || 🔹 || `E<CETY>` || `Input1` ||  |
- * | 2 || 🔹 || `E<CETY>` || `Input2` ||  |
- * | 3 || 🔹 || `E<CETY>` || `Input3` ||  |
- * | 4 || 🔹 || `E<CETY>` || `Input4` ||  |
- * | 5 || 🔹 || `E<CETY>` || `Input5` ||  |
- * | 6 || 🔹 || `E<CETY>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CETY>` || `Input7` ||  |
- * | 8 || 🔹 || `E<CETY>` || `Input8` ||  |
- * | 9 || 🔹 || `E<CETY>` || `Input9` ||  |
- * | 10 || 🔹 || `E<CETY>` || `Input10` ||  |
+ * | 0 || 🔹 || `E<CETY>` || `enum0` || 0 |
+ * | 1 || 🔹 || `E<CETY>` || `enum1` || 1 |
+ * | 2 || 🔹 || `E<CETY>` || `enum2` || 2 |
+ * | 3 || 🔹 || `E<CETY>` || `enum3` || 3 |
+ * | 4 || 🔹 || `E<CETY>` || `enum4` || 4 |
+ * | 5 || 🔹 || `E<CETY>` || `enum5` || 5 |
+ * | 6 || 🔹 || `E<CETY>` || `enum6` || 6 |
+ * | 7 || 🔹 || `E<CETY>` || `enum7` || 7 |
+ * | 8 || 🔹 || `E<CETY>` || `enum8` || 8 |
+ * | 9 || 🔹 || `E<CETY>` || `enum9` || 9 |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `L<E<CETY>>` || `list` || 列表 |
+ * | 0 || 🔸 || `L<E<CETY>>` || `list` || list |
  */
   Query_ListRelatedClient_GetEntityTypes: "Query.List_Related_Client.Get_Entity_Types",
 
@@ -17714,15 +17758,14 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Vec` || `Input0` ||  |
- * | 1 || 🔹 || `Vec` || `Input1` ||  |
+ * | 0 || 🔹 || `Vec` || `Input0` || Orientation |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `Vec` || `Output0` ||  |
+ * | 0 || 🔸 || `Vec` || `Output0` || Rotate |
  */
   Arithmetic_MathClient_OrientationToRotation: "Arithmetic.Math_Client.Orientation_To_Rotation",
 
@@ -18755,24 +18798,23 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Int` || `Input0` ||  |
- * | 1 || 🔹 || `E<CATX>` || `Input1` ||  |
- * | 2 || 🔹 || `E<CATX>` || `Input2` ||  |
- * | 3 || 🔹 || `E<CATX>` || `Input3` ||  |
- * | 4 || 🔹 || `E<CATX>` || `Input4` ||  |
- * | 5 || 🔹 || `E<CATX>` || `Input5` ||  |
- * | 6 || 🔹 || `E<CATX>` || `Input6` ||  |
- * | 7 || 🔹 || `E<CATX>` || `Input7` ||  |
- * | 8 || 🔹 || `E<CATX>` || `Input8` ||  |
- * | 9 || 🔹 || `E<CATX>` || `Input9` ||  |
- * | 10 || 🔹 || `E<CATX>` || `Input10` ||  |
+ * | 0 || 🔹 || `E<CATX>` || `enum0` || 0 |
+ * | 1 || 🔹 || `E<CATX>` || `enum1` || 1 |
+ * | 2 || 🔹 || `E<CATX>` || `enum2` || 2 |
+ * | 3 || 🔹 || `E<CATX>` || `enum3` || 3 |
+ * | 4 || 🔹 || `E<CATX>` || `enum4` || 4 |
+ * | 5 || 🔹 || `E<CATX>` || `enum5` || 5 |
+ * | 6 || 🔹 || `E<CATX>` || `enum6` || 6 |
+ * | 7 || 🔹 || `E<CATX>` || `enum7` || 7 |
+ * | 8 || 🔹 || `E<CATX>` || `enum8` || 8 |
+ * | 9 || 🔹 || `E<CATX>` || `enum9` || 9 |
  *
  * -----------
  *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔸 || `L<E<CATX>>` || `list` || 列表 |
+ * | 0 || 🔸 || `L<E<CATX>>` || `list` || list |
  */
   Query_ListRelatedClient_GetRayFilters: "Query.List_Related_Client.Get_Ray_Filters",
 
@@ -19273,8 +19315,7 @@ export const NODES = {
  * #### 📥 Inputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Bol` || `Input0` ||  |
- * | 1 || 🔹 || `E<CFLT>` || `Input1` ||  |
+ * | 0 || 🔹 || `Int` || `Input0` || Output Result (integer) |
  */
   Others_PortClient_GraphEndInt: "Others.Port_Client.Graph_End_Int",
 
@@ -19338,7 +19379,6 @@ export const NODES = {
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ▶️ || - || `FlowIn` ||  |
- * | 0 || 🔹 || `Str` || `Input0` ||  |
  *
  * -----------
  *
@@ -19360,20 +19400,13 @@ export const NODES = {
  *
  * -----------
  *
- * #### 📥 Inputs
- * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
- * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
- * | 0 || 🔹 || `Str` || `signal_name` || 信号名 |
- *
- * -----------
- *
  * #### 📤 Outputs
  * | Idx | │ | Dir | │ | Type | │ | Identifier | │ | Info |
  * | :-: |:-:| :-: |:-:| :--: |:-:| :-------- |:-:| :-- |
  * | - || ⏩ || - || `FlowOut` ||  |
- * | 0 || 🔸 || `Ety` || `source_entity` || 事件源实体 |
- * | 1 || 🔸 || `Gid` || `source_guid` || 事件源GUID |
- * | 2 || 🔸 || `Ety` || `signal_from` || 信号来源实体 |
+ * | 0 || 🔸 || `Ety` || `source_entity` || Event Source Entity |
+ * | 1 || 🔸 || `Gid` || `source_guid` || Event Source GUID |
+ * | 2 || 🔸 || `Ety` || `signal_from` || Signal Source Entity |
  */
   Trigger_Signal_OnSignal: "Trigger.Signal.On_Signal",
 

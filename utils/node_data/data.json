@@ -14666,7 +14666,8 @@
           "Direction": "Out",
           "Type": "L<R<T>>",
           "Label": {
-            "zh-Hans": "列表"
+            "zh-Hans": "列表",
+            "en": "list"
           },
           "Placeholder": null,
           "ShellIndex": 0,

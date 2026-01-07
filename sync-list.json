@@ -1,6 +1,6 @@
 {
-  "commitMessage": "更新文档, 更新数据, 修复了测试用例",
-  "notSync": true,
+  "commitMessage": "将文档数据与信息录入data.json中, 添加了测试用例",
+  "notSync": false,
   "include": [
     "*",
     "docs/**",

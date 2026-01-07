@@ -118,7 +118,7 @@ function generateDoc(node: NodeDef, lang: keyof Translations): string {
 
   if (node.Description) {
     const d = getLoc(node.Description, lang)?.trim().split('\n');
-    if (d && d.length > 0){
+    if (d && d.length > 0) {
       lines.push(` *`);
       d.forEach(line => {
         lines.push(` * - ${line.trim()}`);
@@ -194,7 +194,7 @@ function main(lang?: keyof Translations) {
 
     // 生成名称映射
     let nodeName = getLoc(node.InGameName, lang);
-    if(node.System==="Client"){
+    if (node.System === "Client") {
       nodeName += "_Client";
     }
     if (lang === "en") {
@@ -202,7 +202,7 @@ function main(lang?: keyof Translations) {
         .replace(/[^0-9A-Za-z]+/g, '_')
         .replace(/^(?=\d)/, '_')
         .replace(/_$/g, "");
-    }else{
+    } else {
       nodeName = JSON.stringify(nodeName);
     }
     const comment = `See \`NODES.${key}\` for detailed documentation.`;
