@@ -6,7 +6,7 @@ import { nodeDefinitions as REF } from "../../ref/Columbina-Dev/WebMiliastraNode
 import { parse, stringify } from "yaml";
 import * as NT from "./node_type.ts";
 import { decode_gia_file, encode_gia_file } from "../protobuf/decode.ts";
-import { type Document , type NodeDef} from "./types.ts";
+import { type Document, type NodeDef } from "./types.ts";
 const read = (path: string) => readFileSync(import.meta.dirname + "/" + path).toString();
 const save = (path: string, data: {} | string) =>
   writeFileSync(
@@ -28,6 +28,7 @@ import docZH from "./UGC-Guide-Markdown/nodes.zh.json" with {type: "json"};
 
 const used = new Set();
 const unused = new Set(doc);
+
 
 
 (data as any as Document).Nodes.forEach((node) => {
@@ -55,10 +56,13 @@ const unused = new Set(doc);
 
   const ref_node_zh = docZH[doc.indexOf(ref_node)]; // has been verified equal
 
-  // node.InGameName["zh-Hans"] ??= ref_node_zh.name;
-  // if(ref_node_zh.name !== node.InGameName["zh-Hans"]) {
-  //   console.log(`[Name Mismatch] in node ${node.InGameName.en}(${ref_node.name}): "${node.InGameName["zh-Hans"]}" (DATA) vs "${ref_node_zh.name}" (MD)`);
-  // }
+  node.InGameName["zh-Hans"] ??= ref_node_zh.name;
+  if (ref_node_zh.name !== node.InGameName["zh-Hans"]) {
+    console.log(`[Name Mismatch] in node ${node.InGameName.en}(${ref_node.name}): "${node.InGameName["zh-Hans"]}" (DATA) vs "${ref_node_zh.name}" (MD)`);
+    // overwrite
+    node.Alias!.push(node.InGameName["zh-Hans"]);
+    node.InGameName["zh-Hans"] = ref_node_zh.name;
+  }
 
 
   const t: { [key: string]: string } = {
@@ -119,7 +123,7 @@ const unused = new Set(doc);
     }
   }
   // 类型与参数均能对应上, 填充标签和注释
-  
+
   // assert(node.Description===undefined);
   // node.Description = {
   //   en: ref_node.description.trim(),
@@ -134,13 +138,13 @@ const unused = new Set(doc);
     // if(rp_zh.description.trim() !== "") p.Description["zh-Hans"] = rp_zh.description.trim();
 
     let zh_eq = (p.Label?.["zh-Hans"]?.length ?? 0) === 0 || p.Label?.["zh-Hans"] === rp_zh.name;
-    if(!zh_eq){
+    if (!zh_eq) {
       console.log(`[Label Mismatch] in node ${ref_node_zh.name}(${node.Identifier}) with parameter ${p.Identifier}(${NT.stringify(p.Type)}): "${p.Label?.["zh-Hans"]}" (DATA) vs "${rp_zh.name}" (MD)`);
       // manually checked, all good
     }
 
     let en_eq = (p.Label?.en?.length ?? 0) === 0 || p.Label?.en === rp.name;
-    if(!en_eq){
+    if (!en_eq) {
       console.log(`[Label Mismatch] in node ${ref_node.name}(${node.Identifier}) with parameter ${p.Identifier}(${NT.stringify(p.Type)}): "${p.Label?.en}" (DATA) vs "${rp.name}" (MD)`);
       // manually checked, all good
     }
@@ -156,6 +160,4 @@ for (const n of unused) {
   console.log("-", n.name, `(${n.category})`);
 }
 
-// save("nodes.json", nodes);
 save("data.json", data);
-

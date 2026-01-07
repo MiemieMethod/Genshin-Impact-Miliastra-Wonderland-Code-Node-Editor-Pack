@@ -9806,10 +9806,11 @@
       "ID": 90,
       "InGameName": {
         "en": "Activate/Disable Collision Trigger",
-        "zh-Hans": "注册/关闭碰撞触发器"
+        "zh-Hans": "激活/关闭碰撞触发器"
       },
       "Alias": [
-        "Activate_Disable_Collision_Trigger"
+        "Activate_Disable_Collision_Trigger",
+        "注册/关闭碰撞触发器"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -22084,10 +22085,11 @@
       "ID": 290,
       "InGameName": {
         "en": "Query Game Time Elapsed",
-        "zh-Hans": "获取游戏已进行时间"
+        "zh-Hans": "查询游戏已进行时间"
       },
       "Alias": [
-        "Query_Game_Time_Elapsed"
+        "Query_Game_Time_Elapsed",
+        "获取游戏已进行时间"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -30599,10 +30601,11 @@
       "ID": 367,
       "InGameName": {
         "en": "Activate/Disable Collision Trigger Source",
-        "zh-Hans": "激活/关闭碰撞触发发源"
+        "zh-Hans": "激活/关闭碰撞触发源"
       },
       "Alias": [
-        "Activate_Disable_Collision_Trigger_Source"
+        "Activate_Disable_Collision_Trigger_Source",
+        "激活/关闭碰撞触发发源"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -40028,10 +40031,11 @@
       "ID": 519,
       "InGameName": {
         "en": "Direction Vector to Rotation",
-        "zh-Hans": "方向向量旋转"
+        "zh-Hans": "方向向量转旋转"
       },
       "Alias": [
-        "Direction_Vector_to_Rotation"
+        "Direction_Vector_to_Rotation",
+        "方向向量旋转"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -43029,10 +43033,11 @@
       "ID": 614,
       "InGameName": {
         "en": "Query If Faction Is Hostile",
-        "zh-Hans": "获取阵营是否敌对"
+        "zh-Hans": "查询阵营是否敌对"
       },
       "Alias": [
-        "Query_If_Faction_Is_Hostile"
+        "Query_If_Faction_Is_Hostile",
+        "获取阵营是否敌对"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -52086,10 +52091,11 @@
       "ID": 719,
       "InGameName": {
         "en": "Query Shop Item Purchase Info",
-        "zh-Hans": "查询商店商品收购信息"
+        "zh-Hans": "查询商店物品收购信息"
       },
       "Alias": [
-        "Query_Shop_Item_Purchase_Info"
+        "Query_Shop_Item_Purchase_Info",
+        "查询商店商品收购信息"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -52850,10 +52856,11 @@
       "ID": 729,
       "InGameName": {
         "en": "Get Loot Component Currency Quantity",
-        "zh-Hans": "获取凋落物组件货币数量"
+        "zh-Hans": "获取掉落物组件货币数量"
       },
       "Alias": [
-        "Get_Loot_Component_Currency_Quantity"
+        "Get_Loot_Component_Currency_Quantity",
+        "获取凋落物组件货币数量"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -52918,12 +52925,13 @@
       "ID": 730,
       "InGameName": {
         "en": "Get All Items from Loot Component",
-        "zh-Hans": "获取战利品所有道具"
+        "zh-Hans": "获取掉落物组件所有道具"
       },
       "Alias": [
         "Get_All_Trophy_Items",
         "Get All Trophy Items",
-        "Get_All_Items_from_Loot_Component"
+        "Get_All_Items_from_Loot_Component",
+        "获取战利品所有道具"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -52973,12 +52981,13 @@
       "ID": 731,
       "InGameName": {
         "en": "Get All Currency from Loot Component",
-        "zh-Hans": "获取战利品所有货币"
+        "zh-Hans": "获取掉落物组件所有货币"
       },
       "Alias": [
         "Get_All_Trophy_Currency",
         "Get All Trophy Currency",
-        "Get_All_Currency_from_Loot_Component"
+        "Get_All_Currency_from_Loot_Component",
+        "获取战利品所有货币"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -53028,10 +53037,11 @@
       "ID": 732,
       "InGameName": {
         "en": "Get All Equipment from Loot Component",
-        "zh-Hans": "获取掉落物件所有装备"
+        "zh-Hans": "获取掉落物组件所有装备"
       },
       "Alias": [
-        "Get_All_Equipment_from_Loot_Component"
+        "Get_All_Equipment_from_Loot_Component",
+        "获取掉落物件所有装备"
       ],
       "Type": "Fixed",
       "System": "Server",
@@ -132476,10 +132486,11 @@
       "KernelID": 0,
       "InGameName": {
         "en": "Node Graph End (Boolean)",
-        "zh-Hans": "节点图结束（布尔型）"
+        "zh-Hans": "节点图结束(布尔型)"
       },
       "Alias": [
-        "Node_Graph_End_Boolean"
+        "Node_Graph_End_Boolean",
+        "节点图结束（布尔型）"
       ],
       "Type": "Fixed",
       "System": "Client",

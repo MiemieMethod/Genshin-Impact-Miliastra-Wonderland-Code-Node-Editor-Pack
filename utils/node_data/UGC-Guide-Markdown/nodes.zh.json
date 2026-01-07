@@ -10834,7 +10834,7 @@
     ]
   },
   {
-    "name": "按位取补运算",
+    "name": "按位取补",
     "category": "ServerOperation.zh",
     "subcategory": "二、数学",
     "description": "将输入值作为二进制进行按位取补运算后返回结果\n",
@@ -12556,7 +12556,7 @@
     ]
   },
   {
-    "name": "获取造物的经典模式仇恨列表",
+    "name": "获取默认模式的造物仇恨列表",
     "category": "ServerQuery.zh",
     "subcategory": "十三、造物",
     "description": "获取造物的经典仇恨模式的仇恨列表，即仅仇恨配置为【默认类型】时，该节点才会有正确的输出列表\n",
