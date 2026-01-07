@@ -1026,7 +1026,7 @@ Searches the Skill in the specified slot of a Character; outputs that Skill's Co
 ## XVI. Unit Status
 
 
-### 2. List of Slot IDs Querying Unit Status
+### 1. List of Slot IDs Querying Unit Status
 
 **Node Functions**
 

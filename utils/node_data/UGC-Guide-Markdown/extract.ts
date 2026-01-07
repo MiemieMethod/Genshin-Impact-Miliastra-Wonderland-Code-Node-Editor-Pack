@@ -18,8 +18,8 @@ interface NodeEntry {
 }
 
 const EN = {
-  id:"en",
-  suffix:"",
+  id: "en",
+  suffix: "",
   markdown: /(?<!\.zh)\.md$/,
   "**Node Functions**": "**Node Functions**",
   "**Node Parameters**": "**Node Parameters**",
@@ -31,8 +31,8 @@ const EN = {
   "/^[0-9A-Z]/": /^[0-9A-Z]/
 };
 const ZH = {
-  id:"zh",
-  suffix:".zh",
+  id: "zh",
+  suffix: ".zh",
   markdown: /\.zh\.md$/,
   "**Node Functions**": "**节点功能**",
   "**Node Parameters**": "**节点参数**",
@@ -80,6 +80,8 @@ function parseMarkdownFile(filePath: string): NodeEntry[] {
   let l_len = 0;
   let param = 0;
 
+  let index = 1;
+
   // format checker
   lines.forEach((l, ii) => {
     if (l.startsWith("## ")) {
@@ -90,11 +92,12 @@ function parseMarkdownFile(filePath: string): NodeEntry[] {
           debugger;
         }
         s = "header";
+        index = 1;
       } else {
         console.log(filePath, lines.slice(ii - 1, ii + 1));
         debugger;
       }
-    }else if(l.startsWith("### ")){
+    } else if (l.startsWith("### ")) {
       let a = l.slice(3).replace(/\*\*/g, "").trim();
       if (/^\d+\./.test(a)) {
         // ## 1.
@@ -102,6 +105,11 @@ function parseMarkdownFile(filePath: string): NodeEntry[] {
           debugger;
         }
         s = "desc";
+        if (parseInt(a) !== index) {
+          console.log(a, parseInt(a), index);
+          debugger;
+        }
+        index++;
       } else {
         console.log(filePath, lines.slice(ii - 1, ii + 1));
         debugger;
@@ -255,7 +263,7 @@ function main() {
   console.log(`Done! Saved to ${outputFile}`);
 }
 
-t=ZH;
+t = ZH;
 main();
-t=EN;
+t = EN;
 main();

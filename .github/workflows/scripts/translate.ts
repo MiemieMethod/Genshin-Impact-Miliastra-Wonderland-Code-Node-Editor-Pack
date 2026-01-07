@@ -20,7 +20,7 @@ if (!apiKey) {
 // Initialize the new GenAI client
 const ai = new GoogleGenAI({
   apiKey: apiKey,
-  apiVersion: 'v1'
+  apiVersion: 'v1beta'
 });
 
 const DEV_PATH = path.join(process.cwd(), "dev");
@@ -127,6 +127,7 @@ async function translateContent(content: string, targetLang: DST_LAN): Promise<s
 
       lastError = error;
       // Loop continues to next model
+      await delay(5000);
     }
   }
 
