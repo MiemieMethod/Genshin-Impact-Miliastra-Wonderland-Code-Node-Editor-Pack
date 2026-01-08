@@ -77,7 +77,7 @@ Branch["Initialize"].Loop(0, PADDING * 2 + WIDTH - 1)[i_init](
     .Insert(Self.existBlocks, wall_0),
   false = 0()
 ).SetVal(Self.level, -1)
-  .SetVal(Self.randomBag, [0, 1, 2, 3, 4, 5, 6])
+  .SetVal(Self.randomBag, m.list(0, 1, 2, 3, 4, 5, 6))
   .FisherYatesShuffle()
   .SetVal(Self.nextBlock, Self.randomBag[0])
   .SetVal(Self.currentBlock, -1)
@@ -199,17 +199,16 @@ Branch["GameDataUpdate"]
 
 /** @done: support structs */
 const tetris_fit_in = (fb: FallingBlock, x: int, y: int) => {
-  const { a, b, c, d, e } = fb;
   const collide = m.and(
     m.and(
-      not_colliding(a << y, x - 2),
-      not_colliding(b << y, x - 1),
+      not_colliding(fb.a << y, x - 2),
+      not_colliding(fb.b << y, x - 1),
     ),
     m.and(
-      not_colliding(c << y, x),
+      not_colliding(fb.c << y, x),
       m.and(
-        not_colliding(d << y, x + 1),
-        not_colliding(e << y, x + 2),
+        not_colliding(fb.d << y, x + 1),
+        not_colliding(fb.e << y, x + 2),
       )
     )
   );
@@ -229,20 +228,20 @@ const estimate_descend = (x: int, index: int) => {
 function TestMaxDescend(dy: int) {
   const _y = 0;
   In().$((dy) => {
-    const { a, b, c, d, e }: FallingBlock = Self.f_b;
+    const fb: FallingBlock = Self.f_b;
     const t = m.max(
       m.max(
-        estimate_descend(a, Self.f_x - 2),
-        estimate_descend(b, Self.f_x - 1),
+        estimate_descend(fb.a, Self.f_x - 2),
+        estimate_descend(fb.b, Self.f_x - 1),
       ),
       m.max(
         m.max(
-          estimate_descend(c, Self.f_x),
-          estimate_descend(d, Self.f_x + 1),
+          estimate_descend(fb.c, Self.f_x),
+          estimate_descend(fb.d, Self.f_x + 1),
         ),
         m.max(
-          estimate_descend(e, Self.f_x + 2),
-          dy as int,
+          estimate_descend(fb.e, Self.f_x + 2),
+          dy,
         )
       )
     );

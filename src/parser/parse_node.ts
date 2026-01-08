@@ -5,11 +5,11 @@ import type { BranchId, ParserState } from "../types/types.ts";
 import { BUILD_IN_SYS_NODE_Set, IR_Id_Counter } from "../types/consts.ts";
 import { extractBalancedTokens } from "./balanced_extract.ts";
 import { name_style, parse_branch_id, parse_int } from "./parse_utils.ts";
-import { expect, peekIs, next, src_pos } from "./utils.ts";
+import { expect, peekIs, next, src_pos, expectEOF } from "./utils.ts";
 import { ALL_SYS_NODE_Set, SYS_TRIGGER_NODE_SET } from "../types/consts.gen.ts";
 import { parseNodeChainList } from "./parse_block.ts";
 import { assert, assertEqs } from "../../utils/utils.ts";
-import { parse_expr_program } from "./parse_expr.ts";
+import { parse_expr_program, parse_expr } from "./parse_expr.ts";
 import { sliceParserState } from "./tokenizer.ts";
 import { parseInArguments, parseOutArguments } from "./parse_args.ts";
 
@@ -54,8 +54,14 @@ export function parseEval(s: ParserState): IR_EvalNode {
   ret.captures = parseInArguments(s);
   assert(ret.captures.every(a => a.name === null && a.expr.type === "Identifier"), "Lambda arguments cannot have complex expressions or aliases");
   expect(s, "arrow", "=>");
-  const lambdaTokens = extractBalancedTokens(s, "(", ")", 1).slice(0, -1);
-  ret.lambda = parse_expr_program(sliceParserState(s, lambdaTokens));
+  if (peekIs(s, "brackets", "{")) {
+    expect(s, "brackets", "{");
+    ret.lambda = parse_expr_program(s);
+    expect(s, "brackets", "}");
+  } else {
+    ret.lambda = parse_expr(s);
+  }
+  expect(s, "brackets", ")");
   if (peekIs(s, "brackets", "[")) {
     ret.outputs = parseOutArguments(s);
   }

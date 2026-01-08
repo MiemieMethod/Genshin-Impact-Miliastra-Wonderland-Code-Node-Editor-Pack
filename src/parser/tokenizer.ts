@@ -28,7 +28,7 @@ export function sliceParserState(state: ParserState, tokens: Token[]): ParserSta
   const source = state.source.slice(start_pos, end_pos);
   const tokens_offset = tokens.map(t => ({
     type: t.type,
-    value: t.type,
+    value: t.value,
     pos: t.pos - start_pos,
   }));
   return ParserState(source, tokens_offset);

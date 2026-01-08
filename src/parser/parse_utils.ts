@@ -111,12 +111,12 @@ export function name_style(name: string): "UpperCamelCase" | "Upper_Camel_Case" 
 
 export function parse_branch_id(s: ParserState): BranchId {
   const tok = peek(s); // string | int | boolean (boolean not allowed), though grammar only expects int/string
-  assertEqs(tok?.type, "string", "int");
+  assertEqs(tok?.type, "string", "int", "boolean");
   switch (tok.type) {
     case "string":
       return next(s).value.slice(1, -1);
-    // case "boolean":
-    //   return next(s).value === "true";
+    case "boolean":
+      return next(s).value === "true";
     case "int":
       const i = parse_int(s);
       assert(i !== null);

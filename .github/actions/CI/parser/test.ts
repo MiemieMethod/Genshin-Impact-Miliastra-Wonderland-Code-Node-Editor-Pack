@@ -28,6 +28,7 @@ function compile(dsl: string) {
 
 function main() {
   const dsl = readFileSync(import.meta.dirname + "/test.dsl.ts").toString().replaceAll("\r", "");
+  // const dsl = readFileSync("./dist/GeneratedDSL.dsl.ts").toString().replaceAll("\r", "");
   const ir = compile(dsl);
 
   if (!ir) return;

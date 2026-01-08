@@ -1,5 +1,5 @@
 import { NodeType } from "../../utils/node_data/node_type.ts";
-import { ASTNode } from "./AST_expr.ts";
+import { ArithmeticProgram } from "./AST_expr.ts";
 import { LocalVarDecl } from "./IR_decl.ts";
 import { IR_ExecutionBlock } from "./IR_node.ts";
 import { BranchId, IRBase } from "./types.ts";
@@ -37,7 +37,7 @@ export interface LambdaDecl extends IRBase {
     type: NodeType;
   }[];
   // body: Token[]; // AST: Program
-  body: ASTNode;
+  body: ArithmeticProgram;
   returns_type: NodeType;
 }
 

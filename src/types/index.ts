@@ -3,7 +3,6 @@ export type * from "./IR.ts";
 
 export {
   IR_Id_Counter,
-  UNK_TYPE,
   TOKENS,
   TOKEN_GROUPS,
   TOKENIZER_PATTERNS,

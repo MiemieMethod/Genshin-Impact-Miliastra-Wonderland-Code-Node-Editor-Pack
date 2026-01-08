@@ -1,9 +1,8 @@
 import type { NodeType } from "../../utils/index.ts";
 import type { ASTExpr } from "../types/AST_expr.ts";
-import { AST_BP } from "../types/consts.ts";
 import type { IR_FunctionArg } from "../types/IR_node.ts";
 import type { ParserState } from "../types/types.ts";
-import { parseExpression } from "./parse_expr.ts";
+import { parse_expr } from "./parse_expr.ts";
 import { parse_type } from "./parse_utils.ts";
 import { expect, match, next, peek, peekIs } from "./utils.ts";
 
@@ -12,14 +11,11 @@ export function parsePureArguments(state: ParserState): ASTExpr[] {
   const args: ASTExpr[] = [];
   if (!match(state, 'brackets', ')')) {
     do {
-      args.push(parseExpression(state, AST_BP.NONE));
+      if (peekIs(state, "brackets", ")")) break;
+      args.push(parse_expr(state));
     } while (match(state, 'symbol', ','));
 
-    if (peek(state)?.value !== ')') {
-      expect(state, 'brackets', ')');
-    } else {
-      next(state);
-    }
+    expect(state, 'brackets', ')');
   }
   return args;
 }
@@ -42,7 +38,7 @@ export function parseInArguments(state: ParserState): (IR_FunctionArg & { kind: 
         res.name = expect(state, "identifier").value;
         expect(state, "assign", "=");
       }
-      res.expr = parseExpression(state, AST_BP.NONE);
+      res.expr = parse_expr(state);
       if (peekIs(state, "identifier", "as")) {
         // as Type
         next(state);

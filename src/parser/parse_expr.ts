@@ -1,27 +1,32 @@
-import type { ASTNode, ArithmeticProgram, VariableDeclaration, ReturnStatement, ObjectExpression, ArrayExpression, ASTExpr, Literal, Identifier, CallExpression } from "../types/AST_expr.ts";
-import { AST_BINARY_OP_MAP, AST_BP, AST_UNARY_OP_MAP } from "../types/consts.ts";
+import type { ArithmeticProgram, VariableDeclaration, ReturnStatement, ObjectExpression, ArrayExpression, ASTExpr, Literal, Identifier, CallExpression } from "../types/AST_expr.ts";
+import { AST_BINARY_OP_MAP, AST_PRECEDENCE, AST_UNARY_OP_MAP } from "../types/consts.ts";
 import type { ParserState, Token } from "../types/types.ts";
 import { parsePureArguments as parsePureArguments } from "./parse_args.ts";
-import { expect, expectIdentifier, match, next, peek } from "./utils.ts";
+import { parse_type } from "./parse_utils.ts";
+import { expect, expectIdentifier, match, next, peek, peekIs } from "./utils.ts";
 
 
 
 /** 获取操作符的左结合优先级 */
 function getBindingPower(token: Token): number {
-  if (token.type === 'assign') return AST_BP.ASSIGN;
-  if (token.value === '||' || token.value === '&&') return AST_BP.LOGICAL;
-  if (['===', '!==', '<', '<=', '>', '>='].includes(token.value)) return AST_BP.COMPARE;
-  if (['<<', '>>'].includes(token.value)) return AST_BP.SHIFT;
-  if (['+', '-'].includes(token.value)) return AST_BP.SUM;
-  if (['*', '/', '%', '&', '|', '^'].includes(token.value)) return AST_BP.PRODUCT;
-  if (token.value === '(' || token.value === '[' || token.value === '.') return AST_BP.CALL;
-  return AST_BP.NONE;
+  if (token.type === 'assign') return AST_PRECEDENCE.ASSIGN;
+  if (token.value === '||' || token.value === '&&') return AST_PRECEDENCE.LOGICAL;
+  if (['===', '!==', '<', '<=', '>', '>='].includes(token.value)) return AST_PRECEDENCE.COMPARE;
+  if (['<<', '>>'].includes(token.value)) return AST_PRECEDENCE.SHIFT;
+  if (['+', '-'].includes(token.value)) return AST_PRECEDENCE.SUM;
+  if (['*', '/', '%', '&', '|', '^'].includes(token.value)) return AST_PRECEDENCE.PRODUCT;
+  if (token.value === '(' || token.value === '[' || token.value === '.') return AST_PRECEDENCE.CALL;
+  return AST_PRECEDENCE.NONE;
 }
 
 export function parse_expr_program(state: ParserState): ArithmeticProgram {
-  const body: ASTNode[] = [];
+  const body: (VariableDeclaration | ReturnStatement)[] = [];
 
   while (peek(state)) {
+    // end if encounter a "}"
+    if (peekIs(state, "brackets", "}")) {
+      break;
+    }
     body.push(parseStatement(state));
   }
 
@@ -48,9 +53,15 @@ function parseStatement(state: ParserState): VariableDeclaration | ReturnStateme
 function parseVariableDeclaration(state: ParserState): VariableDeclaration {
   expect(state, 'identifier', 'const');
   const id = expectIdentifier(state);
+  let var_type = undefined;
+  if (peekIs(state, "symbol", ":")) {
+    // : type
+    next(state);
+    var_type = parse_type(state);
+  }
   expect(state, 'assign', '=');
 
-  const init = parseExpression(state, AST_BP.NONE);
+  const init = parse_expr(state, AST_PRECEDENCE.NONE);
 
   // const 语句强制要求分号
   expect(state, 'symbol', ';');
@@ -58,6 +69,7 @@ function parseVariableDeclaration(state: ParserState): VariableDeclaration {
   return {
     type: 'VariableDeclaration',
     identifier: id.value,
+    var_type,
     init
   };
 }
@@ -65,7 +77,7 @@ function parseVariableDeclaration(state: ParserState): VariableDeclaration {
 function parseReturnStatement(state: ParserState): ReturnStatement {
   expect(state, 'identifier', 'return');
 
-  let argument: ASTNode;
+  let argument: ASTExpr | ArrayExpression | ObjectExpression;
   const nextToken = peek(state);
 
   // 处理返回对象 { a: 1 }
@@ -78,7 +90,7 @@ function parseReturnStatement(state: ParserState): ReturnStatement {
   }
   // 处理普通表达式
   else {
-    argument = parseExpression(state, AST_BP.NONE);
+    argument = parse_expr(state, AST_PRECEDENCE.NONE);
   }
 
   // Return 的分号是可选的 (Optional Semicolon)
@@ -96,12 +108,20 @@ function parseReturnStatement(state: ParserState): ReturnStatement {
 // 辅助: 解析 { key: val, ... }
 function parseObjectLiteral(state: ParserState): ObjectExpression {
   expect(state, 'brackets', '{');
-  const properties: { key: string; value: ASTNode }[] = [];
+  const properties: { key: string; value: ASTExpr; }[] = [];
 
   while (!match(state, 'brackets', '}')) {
     const keyToken = expectIdentifier(state); // Key 必须是 Identifier
-    expect(state, 'symbol', ':');
-    const value = parseExpression(state, AST_BP.NONE);
+    let value: ASTExpr;
+    if (peekIs(state, 'symbol', ':')) {
+      expect(state, 'symbol', ':');
+      value = parse_expr(state, AST_PRECEDENCE.NONE);
+    } else {
+      value = {
+        type: 'Identifier',
+        name: keyToken.value
+      };
+    }
 
     properties.push({ key: keyToken.value, value });
 
@@ -118,10 +138,10 @@ function parseObjectLiteral(state: ParserState): ObjectExpression {
 // 辅助: 解析 [ val, val ]
 function parseArrayLiteral(state: ParserState): ArrayExpression {
   expect(state, 'brackets', '[');
-  const elements: ASTNode[] = [];
+  const elements: ASTExpr[] = [];
 
   while (!match(state, 'brackets', ']')) {
-    elements.push(parseExpression(state, AST_BP.NONE));
+    elements.push(parse_expr(state, AST_PRECEDENCE.NONE));
 
     if (!match(state, 'symbol', ',')) {
       if (peek(state)?.value !== ']') {
@@ -134,7 +154,7 @@ function parseArrayLiteral(state: ParserState): ArrayExpression {
 
 // --- Pratt Parser Core (Expressions) ---
 
-export function parseExpression(state: ParserState, minBp: number = AST_BP.NONE): ASTExpr {
+export function parse_expr(state: ParserState, minBp: number = AST_PRECEDENCE.NONE): ASTExpr {
   // 1. NUD (Null Denotation): 处理前缀
   let left = parsePrefix(state);
 
@@ -164,7 +184,7 @@ function parsePrefix(state: ParserState): ASTExpr {
   const token = next(state);
 
   // 字面量
-  if (token.type === 'int') {
+  if (token.type === 'int' || token.type === 'float') {
     // 假设 Tokenizer 已经处理了 0x, 0o 等格式，这里简单转换
     return { type: 'Literal', value: Number(token.value.replaceAll("_", "")), raw: token.value };
   }
@@ -189,14 +209,14 @@ function parsePrefix(state: ParserState): ASTExpr {
 
   // 分组 ( expr )
   if (token.value === '(') {
-    const expr = parseExpression(state, AST_BP.NONE);
+    const expr = parse_expr(state, AST_PRECEDENCE.NONE);
     expect(state, 'brackets', ')');
     return expr;
   }
 
   // 前缀操作符 (!, -, ~)
   if (AST_UNARY_OP_MAP[token.value]) {
-    const arg = parseExpression(state, AST_BP.PREFIX);
+    const arg = parse_expr(state, AST_PRECEDENCE.PREFIX);
     return {
       type: 'CallExpression',
       callee: AST_UNARY_OP_MAP[token.value],
@@ -229,7 +249,7 @@ function parseInfix(state: ParserState, left: ASTExpr, op: Token, bp: number): A
 
   // 2. 列表访问: arr[i] -> m.list_item(arr, i)
   if (op.value === '[') {
-    const indexExpr = parseExpression(state, AST_BP.NONE);
+    const indexExpr = parse_expr(state, AST_PRECEDENCE.NONE);
     expect(state, 'brackets', ']');
     return {
       type: 'CallExpression',
@@ -258,7 +278,7 @@ function parseInfix(state: ParserState, left: ASTExpr, op: Token, bp: number): A
   const funcName = AST_BINARY_OP_MAP[op.value];
   if (funcName) {
     // 右结合 (如幂运算) 通常用 bp - 1，但这里都是左结合，用 bp
-    const right = parseExpression(state, bp);
+    const right = parse_expr(state, bp);
     return {
       type: 'CallExpression',
       callee: funcName,

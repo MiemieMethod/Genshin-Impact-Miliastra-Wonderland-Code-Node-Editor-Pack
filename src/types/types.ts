@@ -47,7 +47,7 @@ export type IR_NodeVarValue =
   | IR_NodeVarValue[]
   | { key: IR_NodeVarValue; value: IR_NodeVarValue };
 
-export type BranchId = string | number; // literal strings are required in source for non-numeric ids
+export type BranchId = string | number | boolean; // literal strings are required in source for non-numeric ids
 
 export interface IRBase {
   _id: number;

@@ -31,6 +31,7 @@ import type {
 import type { NodeVarValue } from "../types/types.ts";
 import { tokenEqual } from "./tokenizer.ts";
 import { TOKENS } from "../types/consts.ts";
+import { decompile_expr, decompile_program } from "./decompiler_expr.ts";
 
 const TAB_WIDTH = 2;
 const LINE_WIDTH = 60;
@@ -135,7 +136,7 @@ function functionArgToString(arg: IR_FunctionArg, isInput: boolean): string {
   if (arg.name) {
     parts.push(`${arg.name} =`);
   }
-  parts.push(tokensToString(arg.expr));
+  parts.push(decompile_expr(arg.expr));
   if (arg.type) {
     parts.push(`as ${nodeTypeToString(arg.type)}`);
   }
@@ -190,12 +191,12 @@ function decompile_eval(ir: IR_EvalNode, tab: number = 0): string {
   // The lambda body is in ir.lambda
   res += ir.captures.map(arg => functionArgToString(arg, false)).join(", ");
   res += ") => ";
-  if (tokenEqual(ir.lambda[0], TOKENS.openCurly)) {
-    res += "{\n" + indent(tab + 1);
-    res += decompile_lambda_expression(ir.lambda.slice(1, -1), tab + 1);
+  if (ir.lambda.type === "ArithmeticProgram") {
+    res += "{\n";
+    res += indent(tab + 1) + decompile_program(ir.lambda).join("\n" + indent(tab + 1));
     res += "\n" + indent(tab) + "}";
   } else {
-    res += tokensToString(ir.lambda);
+    res += "(" + decompile_expr(ir.lambda) + ")";
   }
   res += ")";
 
@@ -370,46 +371,41 @@ function decompile_global(ir: GlobalDecl, tab: number = 0): string {
 
 function decompile_lambda(ir: LambdaDecl, tab: number = 0): string {
   // const lambdaName = (arg_name: type): type => { body; return ret; }
-  const i = indent(tab);
   const args = ir.args.map(a => `${a.name}: ${nodeTypeToString(a.type)} `).join(", ");
 
-  let res = `${i}const ${ir.name} = (${args})${ir.returns_type !== undefined ? `: ${nodeTypeToString(ir.returns_type)}` : ""} => {\n`;
-  if (ir.body.length > 0) {
-    res += indent(tab + 1);
-    res += decompile_lambda_expression(ir.body, tab + 1);
-    res += "\n";
-  }
-  res += `${indent(tab)}${i}}; `;
+  let res = `${indent(tab)}const ${ir.name} = (${args})${ir.returns_type !== undefined ? `: ${nodeTypeToString(ir.returns_type)}` : ""} => {\n`;
+  res += indent(tab + 1) + decompile_program(ir.body).join("\n" + indent(tab + 1));
+  res += `\n${indent(tab)}};`;
   return res;
 }
 
-function decompile_lambda_expression(tokens: Token[], tab: number = 0): string {
-  let res = "";
-  let len = 0;
-  for (const t of tokens) {
-    res += t.value;
-    len += t.value.length;
-    if (tokenEqual(t, TOKENS.openCurly)) {
-      // tab++;
-      // res += "\n" + indent(tab);
-    } else if (tokenEqual(t, TOKENS.closeCurly)) {
-      // tab--;
-      // res += "\n" + indent(tab);
-    } else if (tokenEqual(t, TOKENS.comma)) {
-      if (len > LINE_WIDTH) {
-        res += "\n" + indent(tab);
-        len = tab * TAB_WIDTH;
-      }
-      // res += "\n" + indent(tab);
-    } else if (tokenEqual(t, TOKENS.semicolon)) {
-      res += "\n" + indent(tab);
-      len = tab * TAB_WIDTH;
-    } else {
-      res += " ";
-    }
-  }
-  return res;
-}
+// function decompile_lambda_expression(tokens: Token[], tab: number = 0): string {
+//   let res = "";
+//   let len = 0;
+//   for (const t of tokens) {
+//     res += t.value;
+//     len += t.value.length;
+//     if (tokenEqual(t, TOKENS.openCurly)) {
+//       // tab++;
+//       // res += "\n" + indent(tab);
+//     } else if (tokenEqual(t, TOKENS.closeCurly)) {
+//       // tab--;
+//       // res += "\n" + indent(tab);
+//     } else if (tokenEqual(t, TOKENS.comma)) {
+//       if (len > LINE_WIDTH) {
+//         res += "\n" + indent(tab);
+//         len = tab * TAB_WIDTH;
+//       }
+//       // res += "\n" + indent(tab);
+//     } else if (tokenEqual(t, TOKENS.semicolon)) {
+//       res += "\n" + indent(tab);
+//       len = tab * TAB_WIDTH;
+//     } else {
+//       res += " ";
+//     }
+//   }
+//   return res;
+// }
 
 function decompile_component(ir: ComponentDecl, tab: number = 0): string {
   // function ComponentName(arg_name: type) { ... }

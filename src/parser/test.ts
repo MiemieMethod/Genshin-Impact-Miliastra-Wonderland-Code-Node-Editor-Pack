@@ -4,7 +4,7 @@ import { safe_parse } from "./index.ts";
 import { parseInArguments, parseOutArguments } from "./parse_args.ts";
 import { parseExecutionBlock } from "./parse_block.ts";
 import { parseComponent } from "./parse_component.ts";
-import { parse_expr_program, parseExpression } from "./parse_expr.ts";
+import { parse_expr_program, parse_expr } from "./parse_expr.ts";
 import { parseEval } from "./parse_node.ts";
 // import { parse_args } from "./parse_utils.ts";
 import { parse } from "./parser.ts";
@@ -26,12 +26,12 @@ class Test {
     console.log(createParserState("1 > = 2"));
   }
   static expr() {
-    console.dir(parseExpression(createParserState("(1 < 2) === (2 >= 5)")), { depth: Infinity, compact: true });
-    console.dir(parseExpression(createParserState("(1 << 2) !== (0xAB_12 >> 0o10)")), { depth: Infinity, compact: true });
-    console.dir(parseExpression(createParserState("1 / (-2 + + 3) % 5 <= 10")), { depth: Infinity, compact: true });
-    console.dir(parseExpression(createParserState("m.int(true || false && !false) === (1 ^ ~-3) & 1")), { depth: Infinity, compact: true });
+    console.dir(parse_expr(createParserState("(1 < 2) === (2 >= 5)")), { depth: Infinity, compact: true });
+    console.dir(parse_expr(createParserState("(1 << 2) !== (0xAB_12 >> 0o10)")), { depth: Infinity, compact: true });
+    console.dir(parse_expr(createParserState("1 / (-2 + + 3) % 5 <= 10")), { depth: Infinity, compact: true });
+    console.dir(parse_expr(createParserState("m.int(true || false && !false) === (1 ^ ~-3) & 1")), { depth: Infinity, compact: true });
     console.dir(parse_expr_program(createParserState("const x = m.sin(y);\nconst z = m.log(x, 2);\nreturn [x,z];\nreturn {a: 10, b: 5};\nreturn (1+2)")), { depth: Infinity, compact: true });
-    console.dir(parseExpression(createParserState("x[11] + x.z")), { depth: Infinity, compact: true });
+    console.dir(parse_expr(createParserState("x[11] + x.z")), { depth: Infinity, compact: true });
   }
   static arg() {
     const doc = `

@@ -62,7 +62,7 @@ export const TOKENIZER_PATTERNS = [
   { type: "decorator", regex: /^[@]/ },
   { type: "dot", regex: /^[\.]/ },
   { type: "symbol", regex: /^[,;:]/ },
-  { type: "math", regex: /^\|\||&&/ },
+  { type: "math", regex: /^\|\||^\&\&/ },
   { type: "math", regex: /^[+\-*\/^&|~!%]/ },
   { type: "Unknown", regex: /^./ },
 ] as const satisfies { type: PatternTypes; regex: RegExp }[];
@@ -77,7 +77,7 @@ export const BUILD_IN_SYS_NODE_Set = Object.freeze(new Set(BUILD_IN_SYS_NODE));
 
 
 // 优先级表 (Precedence)
-export const AST_BP = {
+export const AST_PRECEDENCE = {
   NONE: 0,
   ASSIGN: 1,
   LOGICAL: 2,   // ||, &&
@@ -89,6 +89,20 @@ export const AST_BP = {
   CALL: 8,      // func(), m.func()
   MEMBER: 9,    // struct.x, arr[i]
 };
+
+// // 优先级定义 (数值需与 Parser 的 BP 保持相对顺序一致)
+// export const PRECEDENCE: Record<string, number> = {
+//   SEQUENCE: 0,
+//   ASSIGN: 1,
+//   LOGICAL: 2,    // ||, &&
+//   COMPARE: 3,    // ===, <
+//   SHIFT: 4,      // <<
+//   SUM: 5,        // +, -
+//   PRODUCT: 6,    // *, /
+//   PREFIX: 7,     // !
+//   CALL: 8,       // . () []
+//   MEMBER: 9,
+// };
 
 // 二元操作符映射 -> m.xxx
 export const AST_BINARY_OP_MAP: Record<string, string> = {
@@ -112,9 +126,38 @@ export const AST_BINARY_OP_MAP: Record<string, string> = {
   '^': 'm.bit_xor',
 };
 
+// 系统函数 -> 运算符符号映射
+export const AST_BINARY_OP_SYMBOLS: Record<string, string> = {
+  'm.add': '+',
+  'm.sub': '-',
+  'm.mul': '*',
+  'm.div': '/',
+  'm.mod': '%',
+  'm.and': '&&',
+  'm.or': '||',
+  'm.eq': '===',
+  'm.neq': '!==',
+  'm.gt': '>',
+  'm.ge': '>=',
+  'm.lt': '<',
+  'm.le': '<=',
+  'm.lshift': '<<',
+  'm.rshift': '>>',
+  'm.bit_and': '&',
+  'm.bit_or': '|',
+  'm.bit_xor': '^',
+};
+
 // 前缀一元操作符映射 -> m.xxx
 export const AST_UNARY_OP_MAP: Record<string, string> = {
   '-': 'm.neg',
   '!': 'm.not',
   '~': 'm.bit_not',
+};
+
+// 系统函数 -> 运算符符号映射
+export const AST_UNARY_OP_SYMBOLS: Record<string, string> = {
+  'm.neg': '-',
+  'm.not': '!',
+  'm.bit_not': '~'
 };

@@ -127,11 +127,8 @@ export function parseLambda(state: ParserState): LambdaDecl {
 
   // Parse body: { ... }
   expect(state, "brackets", "{");
-
-  // Extract all tokens until the closing brace
-  const bodyTokens = extractBalancedTokens(state, "{", "}", 1).slice(0, -1); // Remove closing brace
-  // parse to ast
-  ret.body = parse_expr_program(sliceParserState(state, bodyTokens));
+  ret.body = parse_expr_program(state);
+  expect(state, "brackets", "}");
 
   if (peekIs(state, "symbol", ";")) {
     next(state);

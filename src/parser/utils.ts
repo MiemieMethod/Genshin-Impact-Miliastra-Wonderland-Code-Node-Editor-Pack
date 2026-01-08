@@ -44,6 +44,12 @@ export function match(
   return t;
 }
 
+export function expectEOF(state: ParserState) {
+  if (peek(state)) {
+    throw new Error("Unexpected token");
+  }
+}
+
 /** Require next token to match, otherwise throw */
 export function expect(
   state: ParserState,
