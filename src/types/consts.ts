@@ -1,4 +1,3 @@
-import type { gia_node } from "../../utils/index.ts";
 import { Counter } from "../../utils/index.ts";
 import type { PatternTypes, Token } from "./types.ts";
 
@@ -63,6 +62,7 @@ export const TOKENIZER_PATTERNS = [
   { type: "decorator", regex: /^[@]/ },
   { type: "dot", regex: /^[\.]/ },
   { type: "symbol", regex: /^[,;:]/ },
+  { type: "math", regex: /^\|\||&&/ },
   { type: "math", regex: /^[+\-*\/^&|~!%]/ },
   { type: "Unknown", regex: /^./ },
 ] as const satisfies { type: PatternTypes; regex: RegExp }[];
@@ -73,3 +73,48 @@ export const BUILD_IN_SYS_NODE = [
 ] as const;
 export type BUILD_IN_SYS_NODE = typeof BUILD_IN_SYS_NODE[number];
 export const BUILD_IN_SYS_NODE_Set = Object.freeze(new Set(BUILD_IN_SYS_NODE));
+
+
+
+// 优先级表 (Precedence)
+export const AST_BP = {
+  NONE: 0,
+  ASSIGN: 1,
+  LOGICAL: 2,   // ||, &&
+  COMPARE: 3,   // ===, <, >
+  SHIFT: 4,     // <<, >>
+  SUM: 5,       // +, -
+  PRODUCT: 6,   // *, /, %
+  PREFIX: 7,    // -x, !x, ~x
+  CALL: 8,      // func(), m.func()
+  MEMBER: 9,    // struct.x, arr[i]
+};
+
+// 二元操作符映射 -> m.xxx
+export const AST_BINARY_OP_MAP: Record<string, string> = {
+  '+': 'm.add',
+  '-': 'm.sub',
+  '*': 'm.mul',
+  '/': 'm.div',
+  '%': 'm.mod',
+  '&&': 'm.and',
+  '||': 'm.or',
+  '===': 'm.eq',
+  '!==': 'm.neq',
+  '>=': 'm.ge',
+  '>': 'm.gt',
+  '<=': 'm.le',
+  '<': 'm.lt',
+  '<<': 'm.lshift',
+  '>>': 'm.rshift',
+  '&': 'm.bit_and',
+  '|': 'm.bit_or',
+  '^': 'm.bit_xor',
+};
+
+// 前缀一元操作符映射 -> m.xxx
+export const AST_UNARY_OP_MAP: Record<string, string> = {
+  '-': 'm.neg',
+  '!': 'm.not',
+  '~': 'm.bit_not',
+};

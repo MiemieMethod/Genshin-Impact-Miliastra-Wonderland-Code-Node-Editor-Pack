@@ -1,9 +1,12 @@
+import { assert, assertEq } from "../../utils/utils.ts";
 import { decompile, ir_to_string } from "./decompiler.ts";
 import { safe_parse } from "./index.ts";
+import { parseInArguments, parseOutArguments } from "./parse_args.ts";
 import { parseExecutionBlock } from "./parse_block.ts";
 import { parseComponent } from "./parse_component.ts";
+import { parse_expr_program, parseExpression } from "./parse_expr.ts";
 import { parseEval } from "./parse_node.ts";
-import { parse_args } from "./parse_utils.ts";
+// import { parse_args } from "./parse_utils.ts";
 import { parse } from "./parser.ts";
 import { createParserState } from "./tokenizer.ts";
 import { src_pos } from "./utils.ts";
@@ -22,21 +25,51 @@ class Test {
     console.log(createParserState("1 >= 2"));
     console.log(createParserState("1 > = 2"));
   }
+  static expr() {
+    console.dir(parseExpression(createParserState("(1 < 2) === (2 >= 5)")), { depth: Infinity, compact: true });
+    console.dir(parseExpression(createParserState("(1 << 2) !== (0xAB_12 >> 0o10)")), { depth: Infinity, compact: true });
+    console.dir(parseExpression(createParserState("1 / (-2 + + 3) % 5 <= 10")), { depth: Infinity, compact: true });
+    console.dir(parseExpression(createParserState("m.int(true || false && !false) === (1 ^ ~-3) & 1")), { depth: Infinity, compact: true });
+    console.dir(parse_expr_program(createParserState("const x = m.sin(y);\nconst z = m.log(x, 2);\nreturn [x,z];\nreturn {a: 10, b: 5};\nreturn (1+2)")), { depth: Infinity, compact: true });
+    console.dir(parseExpression(createParserState("x[11] + x.z")), { depth: Infinity, compact: true });
+  }
   static arg() {
-    const doc = "(a as dict<int, a>, b=c,)[x=y as int, z=b+c as string]()[](x)(y.z, a+b)(as int)[l=1](l as list<str>)[x as dict<D<int, L<str>>,int>](x+1 >= 5)";
-    const s = createParserState(doc);
-    console.log(s);
-    console.dir(parse_args(s, "in"), { depth: null });
-    console.dir(parse_args(s, "out"), { depth: null });
-    console.dir(parse_args(s, "in"), { depth: null });
-    console.dir(parse_args(s, "out"), { depth: null });
-    console.dir(parse_args(s, "in"), { depth: null });
-    console.dir(parse_args(s, "in"), { depth: null });
-    console.dir(parse_args(s, "in"), { depth: null });
-    console.dir(parse_args(s, "out"), { depth: null });
-    console.dir(parse_args(s, "in"), { depth: null });
-    console.dir(parse_args(s, "out"), { depth: null });
-    console.dir(parse_args(s, "in"), { depth: null });
+    const doc = `
+      
+      
+        // error
+       // error
+      ()
+      []
+      (x)
+      (y.z, a+b)
+      (as int) // error
+       // error
+      (l as list<str>)
+      (x+1 >= 5)
+    `;
+    const test = (expr: string, dir: "in" | "out" = "in", should_pass = true) => {
+      console.log("===============", "Test", expr, should_pass ? "" : "for Fail", "===============");
+      const p = dir === "in" ? parseInArguments : parseOutArguments;
+      if (should_pass) console.dir(p(createParserState(expr)), { depth: null });
+      else {
+        let fail = false;
+        try { console.dir(p(createParserState(expr)), { depth: null }) } catch { fail = true };
+        assert(fail);
+      }
+    }
+    test(`(a as dict<int, Bol>, b=c)`);
+    test(`()`);
+    test(`(y.z, a+b)`);
+    test(`(l as list<str>)`);
+    test(`(x+1 >= 5)`);
+    test(`(x+1 === 5)`);
+    test(`(~x === y)`);
+    test(`(as int)`, "in", false);
+    test(`[x as dict<D<int, L<str>>,int>]`, "out");
+    test(`[x=y as int]`, "out");
+    test(`[l=1]`, "out", false);
+    test(`[z=b+c as string]`, "out", false);
   }
   static evalNode() {
     const doc = `$((a, b)=>  (c + d) * e  )
@@ -187,8 +220,9 @@ class Test {
 if (import.meta.main) {
   console.log("Running parser tests...");
   // Add test cases here in the future
-  Test.tokenizer();
-  // Test.arg();
+  // Test.tokenizer();
+  // Test.expr();
+  Test.arg();
   // Test.evalNode();
   // Test.executionBlock();
   // Test.comp();

@@ -22,6 +22,18 @@ export function createParserState(source: string): ParserState {
   return ParserState(src, tokens);
 };
 
+export function sliceParserState(state: ParserState, tokens: Token[]): ParserState {
+  const start_pos = tokens[0].pos;
+  const end_pos = tokens[tokens.length - 1].pos + tokens[tokens.length - 1].value.length;
+  const source = state.source.slice(start_pos, end_pos);
+  const tokens_offset = tokens.map(t => ({
+    type: t.type,
+    value: t.type,
+    pos: t.pos - start_pos,
+  }));
+  return ParserState(source, tokens_offset);
+}
+
 
 
 /** Simple tokenizer using scan rules */

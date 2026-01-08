@@ -3,7 +3,7 @@ import type { ParserState } from "../types/types.ts";
 
 import { IR_Id_Counter } from "../types/consts.ts";
 import { try_capture_type } from "./balanced_extract.ts";
-import { parse_int, parse_type, parse_var_decl } from "./parse_utils.ts";
+import { parse_int, parse_type_core, parse_var_decl } from "./parse_utils.ts";
 import { expect, next, peek, peekIs, src_pos } from "./utils.ts";
 import { assert, assertEq, assertEqs } from "../../utils/utils.ts";
 
@@ -299,7 +299,7 @@ function parseSignal(state: ParserState): SignalDecl {
     const typed = try_capture_type(state.tokens, state.index);
     assert(typed.success, "Failed to parse type");
     state.index += typed.tokens.length;
-    const paramType = parse_type(typed.tokens);
+    const paramType = parse_type_core(typed.tokens);
 
     ret.params.push({ name: paramName, type: paramType });
 

@@ -5,7 +5,7 @@ import type { ParserState } from "../types/types.ts";
 import { IR_Id_Counter } from "../types/consts.ts";
 import { extractBalancedTokens, try_capture_type } from "./balanced_extract.ts";
 import { parseExecutionBlock } from "./parse_block.ts";
-import { parse_branch_id, parse_type, parse_var_decl } from "./parse_utils.ts";
+import { parse_branch_id, parse_type_core, parse_var_decl } from "./parse_utils.ts";
 import { expect, next, peek, peekIs, src_pos } from "./utils.ts";
 import { parseVarDecl } from "./parse_const.ts";
 import { assert } from "../../utils/utils.ts";
@@ -46,7 +46,7 @@ export function parseComponent(state: ParserState): ComponentDecl {
     const typed = try_capture_type(state.tokens, state.index);
     assert(typed.success);
     state.index += typed.tokens.length;
-    const argType = parse_type(typed.tokens);
+    const argType = parse_type_core(typed.tokens);
 
     ret.args.push({ name: argName, type: argType });
 
@@ -141,7 +141,7 @@ function parseReturn(state: ParserState, component: ComponentDecl): void {
       const typed = try_capture_type(state.tokens, state.index);
       assert(typed.success);
       state.index += typed.tokens.length;
-      const outType = parse_type(typed.tokens);
+      const outType = parse_type_core(typed.tokens);
 
       component.returns.push({ name: outName, type: outType });
 

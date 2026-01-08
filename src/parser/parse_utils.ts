@@ -10,7 +10,25 @@ import { parse as parse_node_type, type_equal } from "../../utils/node_data/node
 import { tokenEqual } from "./tokenizer.ts";
 import { assert, assertEq, assertEqs } from "../../utils/utils.ts";
 
-export function parse_type(tokens: Token[]): NodeType {
+export function parse_type(state: ParserState): NodeType {
+  const ret: Token[] = [];
+  let t: Token | null;
+  let depth = 0;
+  while ((t = peek(state))) {
+    if (t.type === "identifier") {
+    } else if (t.type === "brackets" && (t.value === ">" || t.value === "<")) {
+      if (t.value === ">") depth--;
+      else depth++;
+    } else if (t.type === "symbol" && ((t.value === "," && depth !== 0) || t.value === ":")) {
+    } else {
+      break;
+    }
+    ret.push(next(state));
+  }
+  return parse_type_core(ret);
+}
+
+export function parse_type_core(tokens: Token[]): NodeType {
   const t = tokens.map(t => {
     switch (t.value.toLowerCase()) {
       case "list":
@@ -93,12 +111,12 @@ export function name_style(name: string): "UpperCamelCase" | "Upper_Camel_Case" 
 
 export function parse_branch_id(s: ParserState): BranchId {
   const tok = peek(s); // string | int | boolean (boolean not allowed), though grammar only expects int/string
-  assertEqs(tok?.type, "string", "int", "boolean");
+  assertEqs(tok?.type, "string", "int");
   switch (tok.type) {
     case "string":
       return next(s).value.slice(1, -1);
-    case "boolean":
-      return next(s).value === "true";
+    // case "boolean":
+    //   return next(s).value === "true";
     case "int":
       const i = parse_int(s);
       assert(i !== null);
@@ -151,57 +169,57 @@ export function parse_float(s: ParserState): number | null {
   return neg * parseFloat(expect(s, "float").value.replaceAll("_", ""));
 }
 
-/** Extract args between a pair of "()" or "[]", consuming the parentheses */
-export function parse_args(s: ParserState, type: "in" | "out"): IR_FunctionArg[] {
-  const BRACKETS = {
-    "in": "()",
-    "out": "[]",
-  };
-  const ret = [];
+// /** Extract args between a pair of "()" or "[]", consuming the parentheses */
+// export function parse_args(s: ParserState, type: "in" | "out"): IR_FunctionArg[] {
+//   const BRACKETS = {
+//     "in": "()",
+//     "out": "[]",
+//   };
+//   const ret: IR_FunctionArg[] = [];
 
-  const tokens = extractBalancedTokens(s, BRACKETS[type][0], BRACKETS[type][1]);
-  assertEq(tokens[0].value, BRACKETS[type][0]);
-  assertEq(tokens[tokens.length - 1].value, BRACKETS[type][1]);
-  const args = splitBalancedTokens(tokens.slice(1, -1), TOKEN_GROUPS.opening, TOKEN_GROUPS.closing, [TOKENS.comma]);
-  for (const arg of args) {
-    const len = arg.length;
-    if (len === 0) {
-      continue;
-    } else if (len === 1) {
-      ret.push({
-        expr: arg,
-        name: null,
-        type: null,
-      });
-      continue;
-    }
-    // (name =)? expr
-    const alias = arg[0].type === "identifier" && arg[1].type === "assign";
-    // expr (as type)?
-    const { success, tokens: typename } = try_capture_type(arg, arg.length - 1, true);
-    const typed = success && arg[len - typename.length - 1]?.value === "as";
-    ret.push({
-      expr: arg.slice(alias ? 2 : 0, arg.length - (typed ? typename.length + 1 : 0)),
-      name: alias ? arg[0].value : null,
-      type: typed ? parse_type(typename.reverse()) : null,
-    });
-  }
-  ret.forEach((arg) => {
-    let name = arg.name;
-    if (name === null && type === "out") {
-      assert(arg.expr.length === 1, "Out args should not be expression without a name!");
-      assert(arg.expr[0].type === "identifier", "Out args should be identifier than expression!");
-      name = arg.expr[0].value;
-    }
-    if (name) {
-      const style = name_style(name);
-      if (style !== "snake_case") {
-        console.warn(`Non snake_case name ${name} is used in ${type} args!`);
-      }
-    }
-  })
-  return ret;
-}
+//   const tokens = extractBalancedTokens(s, BRACKETS[type][0], BRACKETS[type][1]);
+//   assertEq(tokens[0].value, BRACKETS[type][0]);
+//   assertEq(tokens[tokens.length - 1].value, BRACKETS[type][1]);
+//   const args = splitBalancedTokens(tokens.slice(1, -1), TOKEN_GROUPS.opening, TOKEN_GROUPS.closing, [TOKENS.comma]);
+//   for (const arg of args) {
+//     const len = arg.length;
+//     if (len === 0) {
+//       continue;
+//     } else if (len === 1) {
+//       ret.push({
+//         expr: {type:"Identifier",},
+//         name: null,
+//         type: null,
+//       });
+//       continue;
+//     }
+//     // (name =)? expr
+//     const alias = arg[0].type === "identifier" && arg[1].type === "assign";
+//     // expr (as type)?
+//     const { success, tokens: typename } = try_capture_type(arg, arg.length - 1, true);
+//     const typed = success && arg[len - typename.length - 1]?.value === "as";
+//     ret.push({
+//       expr: arg.slice(alias ? 2 : 0, arg.length - (typed ? typename.length + 1 : 0)),
+//       name: alias ? arg[0].value : null,
+//       type: typed ? parse_type(typename.reverse()) : null,
+//     });
+//   }
+//   ret.forEach((arg) => {
+//     let name = arg.name;
+//     if (name === null && type === "out") {
+//       assert(arg.expr.length === 1, "Out args should not be expression without a name!");
+//       assert(arg.expr[0].type === "identifier", "Out args should be identifier than expression!");
+//       name = arg.expr[0].value;
+//     }
+//     if (name) {
+//       const style = name_style(name);
+//       if (style !== "snake_case") {
+//         console.warn(`Non snake_case name ${name} is used in ${type} args!`);
+//       }
+//     }
+//   })
+//   return ret;
+// }
 
 
 // val := string | int | float | boolean | "[" val ( "," val )* "]" | "{" ( val ":" val ","? )* "}"
@@ -261,7 +279,7 @@ export function parse_var_decl(state: ParserState) {
     const typed = try_capture_type(state.tokens, state.index);
     assert(typed.success, "Failed to parse type");
     state.index += typed.tokens.length;
-    type = parse_type(typed.tokens);
+    type = parse_type_core(typed.tokens);
   }
 
   let val: IR_NodeVarValue | undefined;
@@ -271,9 +289,9 @@ export function parse_var_decl(state: ParserState) {
     if (typed.success) {
       state.index += typed.tokens.length;
       if (type === undefined) {
-        type = parse_type(typed.tokens);
+        type = parse_type_core(typed.tokens);
       } else {
-        assert(type_equal(type, parse_type(typed.tokens)), "Type mismatch");
+        assert(type_equal(type, parse_type_core(typed.tokens)), "Type mismatch");
       }
       expect(state, "brackets", "(");
       val = parse_value(state);

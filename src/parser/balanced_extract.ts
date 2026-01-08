@@ -12,11 +12,6 @@ export function extractBalancedTokens(
 ): Token[] {
   const token: Token[] = [];
 
-  // // consume opening
-  // if (depth === 0) {
-  //   token.push(expect(state, "symbol", open));
-  //   depth++;
-  // }
 
   while (state.index < state.tokens.length) {
     const t = peek(state);

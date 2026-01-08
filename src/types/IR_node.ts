@@ -1,4 +1,5 @@
 import type { NodeType } from "../../utils/node_data/node_type.ts";
+import type { ASTExpr, ASTNode, Identifier } from "./AST_expr.ts";
 import { BUILD_IN_SYS_NODE } from "./consts.ts";
 import type { Token } from "./types.ts";
 import type { BranchId, IRBase } from "./types.ts";
@@ -8,8 +9,15 @@ import type { BranchId, IRBase } from "./types.ts";
  * - `expr (= out_name)? (as TypeName)?` the out_name defined in function outputs
  */
 export type IR_FunctionArg = {
-  expr: Token[]; // identifier or expression tokens
+  // expr: Token[]; // identifier or expression tokens // changed to AST: expr
+  expr: ASTExpr;
   name: string | null; // `arg_name =` the alias name used to refer to this arg
+  kind: "in";
+  type: NodeType | null;
+} | {
+  expr: Identifier;
+  name: string | null;
+  kind: "out";
   type: NodeType | null;
 };
 
@@ -90,7 +98,7 @@ export interface IR_CallNode extends IRBase {
 export interface IR_EvalNode extends IRBase {
   kind: "eval";
   captures: IR_FunctionArg[]; // list of inputs' captured function-output names this eval depends on (e.g. ["val_a", "val_b"])
-  lambda: Token[]; // lambda code body as string (for runtime eval)
+  lambda: ASTNode; // lambda code body as string (for runtime eval)
   outputs: IR_FunctionArg[]; // mapping of outputs
 }
 

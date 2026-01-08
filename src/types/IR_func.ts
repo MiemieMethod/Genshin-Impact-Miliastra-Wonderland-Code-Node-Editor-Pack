@@ -1,7 +1,7 @@
 import { NodeType } from "../../utils/node_data/node_type.ts";
+import { ASTNode } from "./AST_expr.ts";
 import { LocalVarDecl } from "./IR_decl.ts";
 import { IR_ExecutionBlock } from "./IR_node.ts";
-import { Token } from "./types.ts";
 import { BranchId, IRBase } from "./types.ts";
 
 /** 声明共享复合节点
@@ -36,7 +36,8 @@ export interface LambdaDecl extends IRBase {
     name: string;
     type: NodeType;
   }[];
-  body: Token[];
+  // body: Token[]; // AST: Program
+  body: ASTNode;
   returns_type: NodeType;
 }
 

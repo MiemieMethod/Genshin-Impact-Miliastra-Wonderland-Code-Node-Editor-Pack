@@ -4,11 +4,14 @@ import type { BranchId, ParserState } from "../types/types.ts";
 
 import { BUILD_IN_SYS_NODE_Set, IR_Id_Counter } from "../types/consts.ts";
 import { extractBalancedTokens } from "./balanced_extract.ts";
-import { name_style, parse_args, parse_branch_id, parse_int } from "./parse_utils.ts";
+import { name_style, parse_branch_id, parse_int } from "./parse_utils.ts";
 import { expect, peekIs, next, src_pos } from "./utils.ts";
 import { ALL_SYS_NODE_Set, SYS_TRIGGER_NODE_SET } from "../types/consts.gen.ts";
 import { parseNodeChainList } from "./parse_block.ts";
 import { assert, assertEqs } from "../../utils/utils.ts";
+import { parse_expr_program } from "./parse_expr.ts";
+import { sliceParserState } from "./tokenizer.ts";
+import { parseInArguments, parseOutArguments } from "./parse_args.ts";
 
 
 
@@ -42,18 +45,19 @@ export function parseEval(s: ParserState): IR_EvalNode {
     _srcRange: { start: src_pos(s), end: -1 },
     kind: "eval",
     captures: [],
-    lambda: [],
+    lambda: undefined as any,
     outputs: []
   };
   expect(s, "identifier", "$");
   expect(s, "brackets", "(");
   assert(peekIs(s, "brackets", "("), "Expected lambda expression inside '$()'");
-  ret.captures = parse_args(s, "in");
-  assert(ret.captures.every(a => a.name === null && a.expr.length === 1), "Lambda arguments cannot have complex expressions or aliases");
+  ret.captures = parseInArguments(s);
+  assert(ret.captures.every(a => a.name === null && a.expr.type === "Identifier"), "Lambda arguments cannot have complex expressions or aliases");
   expect(s, "arrow", "=>");
-  ret.lambda = extractBalancedTokens(s, "(", ")", 1).slice(0, -1);
+  const lambdaTokens = extractBalancedTokens(s, "(", ")", 1).slice(0, -1);
+  ret.lambda = parse_expr_program(sliceParserState(s, lambdaTokens));
   if (peekIs(s, "brackets", "[")) {
-    ret.outputs = parse_args(s, "out");
+    ret.outputs = parseOutArguments(s);
   }
   ret._srcRange.end = src_pos(s);
   return ret;
@@ -130,11 +134,11 @@ export function parseCallNode(s: ParserState): IR_CallNode {
   }
 
   // 解析 inputs: (args)
-  ret.inputs = parse_args(s, "in");
+  ret.inputs = parseInArguments(s);
 
   // 解析 outputs: [outs]
   if (peekIs(s, "brackets", "[")) {
-    ret.outputs = parse_args(s, "out");
+    ret.outputs = parseOutArguments(s);
   }
 
   // 解析分支表: ("id" = NodeChain, ...)

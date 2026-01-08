@@ -160,6 +160,21 @@ export class Graph {
     return newNode;
   }
 
+  /** This is a special designed function for IR, please use add_node instead. */
+  static add_node_with_index(graph: Graph, identifier: string, index: number): Node | null {
+    if (graph.nodes.has(index)) {
+      return null;
+    }
+    const def = NodeLib.getByIdentifier(identifier);
+    if (!def) {
+      return null;
+    }
+    const node = new Node(graph.system, def, index);
+    graph.nodes.set(index, node);
+    graph.counter_idx.lower_bound = index;
+    return node;
+  }
+
   /**
    * 添加注释到节点图
    * 

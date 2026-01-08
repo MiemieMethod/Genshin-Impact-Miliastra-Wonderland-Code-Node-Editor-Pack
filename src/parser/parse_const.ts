@@ -4,9 +4,11 @@ import type { ParserState } from "../types/types.ts";
 
 import { IR_Id_Counter } from "../types/consts.ts";
 import { extractBalancedTokens, try_capture_type } from "./balanced_extract.ts";
-import { name_style, parse_branch_id, parse_type, parse_var_decl } from "./parse_utils.ts";
+import { name_style, parse_branch_id, parse_type_core, parse_var_decl } from "./parse_utils.ts";
 import { expect, next, peek, peekIs, src_pos } from "./utils.ts";
 import { assert } from "../../utils/utils.ts";
+import { parse_expr_program } from "./parse_expr.ts";
+import { sliceParserState } from "./tokenizer.ts";
 
 /** Parse const declarations - can be LocalVar, Define, SharedFunc, or Lambda
  * - LocalVarDecl: `const _var_name: type = defaultValue;`
@@ -74,7 +76,7 @@ export function parseSharedFunc(state: ParserState): SharedFuncDecl {
 
 /** 声明纯函数
  * ```ts
- *  const lambdaName = (arg_name: type) => {
+ *  const lambdaName = (arg_name: type): type => {
  *    body;
  *    return ret;
  *  }
@@ -87,7 +89,7 @@ export function parseLambda(state: ParserState): LambdaDecl {
     kind: "lambda",
     name: undefined as any,
     args: [],
-    body: [],
+    body: undefined as any,
     returns_type: undefined as any,
   };
   expect(state, "identifier", "const");
@@ -102,7 +104,7 @@ export function parseLambda(state: ParserState): LambdaDecl {
     const typed = try_capture_type(state.tokens, state.index);
     assert(typed.success);
     state.index += typed.tokens.length;
-    const argType = parse_type(typed.tokens);
+    const argType = parse_type_core(typed.tokens);
 
     ret.args.push({ name: argName, type: argType });
 
@@ -117,7 +119,7 @@ export function parseLambda(state: ParserState): LambdaDecl {
     const typed = try_capture_type(state.tokens, state.index);
     assert(typed.success);
     state.index += typed.tokens.length;
-    const argType = parse_type(typed.tokens);
+    const argType = parse_type_core(typed.tokens);
     ret.returns_type = argType;
   }
 
@@ -127,8 +129,9 @@ export function parseLambda(state: ParserState): LambdaDecl {
   expect(state, "brackets", "{");
 
   // Extract all tokens until the closing brace
-  const bodyTokens = extractBalancedTokens(state, "{", "}", 1);
-  ret.body = bodyTokens.slice(0, -1); // Remove closing brace
+  const bodyTokens = extractBalancedTokens(state, "{", "}", 1).slice(0, -1); // Remove closing brace
+  // parse to ast
+  ret.body = parse_expr_program(sliceParserState(state, bodyTokens));
 
   if (peekIs(state, "symbol", ";")) {
     next(state);

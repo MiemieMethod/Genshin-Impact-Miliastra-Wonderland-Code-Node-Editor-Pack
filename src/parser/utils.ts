@@ -63,7 +63,7 @@ export function expect(
 
 export function expectIdentifier(
   state: ParserState,
-  name: string,
+  name?: string,
 ): Token {
   return expect(state, "identifier", name);
 }
