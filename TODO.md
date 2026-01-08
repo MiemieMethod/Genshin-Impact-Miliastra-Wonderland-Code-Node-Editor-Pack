@@ -3,7 +3,7 @@
 ## 已完成的功能
 *按完成时间由近到远排序*
 
-
+- **2026-01-08**: 完成从 lambda exp ast 到 math/query nodes 的转化的代码模型
 - **2026-01-08**: 添加了 lambda 表达式的 AST 与对应 parser.
 - **2026-01-07**: 从 AnimeGameData/ExcelBinOutput 中获取了对应节点的名称等信息.
 - **2026-01-07**: 结合文档导出更新了节点的描述, 标签, 引脚等信息
@@ -125,7 +125,7 @@
 ## 进行中
 *按任务优先级和完成度排序, 打勾的说明已经开始, 仍未完成*
 
-- [x] 完成从 lambda exp ast 到 math/query nodes 的转化
+- [x] 测试并修复从 lambda exp ast 到 math/query nodes 的转化
 - [x] 完成helper处理从 ir call 的 函数名到 identifier 的转化
 - [x] 从 IR 构造 Graph 图结构
 - [ ] 

@@ -277,10 +277,7 @@ export class NodeFlowBuilder {
           // 这里的 expr 结果对应 EvalNode 的 outputs[0]
           if (node.outputs.length > 0) {
             const outVar = node.outputs[0];
-            if (outVar.kind === "in") { // Eval outputs 定义为 kind="in" (外部视角)? Check definition.
-              // IR Definition says: outputs: (IR_FunctionArg & { kind: "in" })[] 
-              // Wait, Eval outputs should be OUT variables defining new names.
-              // Assuming definition meant defining variables.
+            if (outVar.kind === "out") {
 
               // 我们需要把 Return 的结果 (Source) 绑定到 outVar.name 上
               const varName = outVar.name || "eval_res";

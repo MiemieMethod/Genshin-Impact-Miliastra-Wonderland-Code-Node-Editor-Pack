@@ -10,18 +10,11 @@
 import { UNK_TYPE, type NodeType } from "../../utils/node_data/node_type.ts";
 import { ASTExpr, CallExpression } from "../types/AST_expr.ts";
 import { Graph } from "./graph_wrapper.ts";
-import { CompilerContext, SourceInfo } from "./ir_gia_step1.ts";
+import { ASTResult, CompilerContext, SourceInfo } from "./ir_gia_step1.ts";
 
 // 假设外部提供的类型比较函数
 declare function type_equal(a: NodeType, b: NodeType): boolean;
 
-/** * AST 解析结果 
- * - Source: 来源于某个节点的输出 (变量或函数调用结果)
- * - Value: 静态值 (字面量或 Define 常量)
- */
-type ASTResult =
-  | { kind: "source"; info: SourceInfo }
-  | { kind: "value"; val: any; type: NodeType };
 
 /** 中间运算节点的默认输出端口名 */
 const DEFAULT_OP_OUTPUT_PORT = "result";
@@ -103,13 +96,15 @@ export class ASTExpander {
       // 2.2 检查是否是变量 (Variable / Previous Output)
       const varInfo = this.ctx.resolveVar(name);
       if (varInfo) {
-        return { kind: "source", info: varInfo };
+        return varInfo;
+        // return { kind: "source", info: varInfo };
       }
 
       console.warn(`[ASTExpander] Undefined identifier: '${name}'. Using UNK type.`);
       return {
         kind: "source",
-        info: { nodeId: "UNKNOWN_NODE", port: "unknown", type: UNK_TYPE }
+        info: { nodeId: "UNKNOWN_NODE", port: "unknown", type: UNK_TYPE },
+        type: UNK_TYPE,
       };
     }
 
@@ -166,7 +161,8 @@ export class ASTExpander {
         nodeId: nodeId,
         port: DEFAULT_OP_OUTPUT_PORT, // 假设运算节点统一输出名为 "result"
         type: returnType
-      }
+      },
+      type: returnType,
     };
   }
 

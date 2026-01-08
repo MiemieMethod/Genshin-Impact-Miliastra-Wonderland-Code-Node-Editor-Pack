@@ -99,7 +99,7 @@ export interface IR_EvalNode extends IRBase {
   kind: "eval";
   captures: (IR_FunctionArg & { kind: "in" })[]; // list of inputs' captured function-output names this eval depends on (e.g. ["val_a", "val_b"])
   lambda: ASTExpr | ArithmeticProgram;
-  outputs: (IR_FunctionArg & { kind: "in" })[]; // mapping of outputs
+  outputs: (IR_FunctionArg & { kind: "out" })[]; // mapping of outputs
 }
 
 /**

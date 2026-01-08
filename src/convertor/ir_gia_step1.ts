@@ -38,13 +38,36 @@ export interface SharedNodeInfo {
   // 共享节点可能有固定的入口/出口定义，这里暂存 ID
 }
 
+// 定义待处理的流连接请求
+interface PendingFlowRequest {
+  srcNodeId: string;
+  srcPort: string;
+  targetAnchorId: BranchId; // 目标 Anchor ID
+  order: number;
+}
+
+
+/** * AST 解析结果 
+ * - Source: 来源于某个节点的输出 (变量或函数调用结果)
+ * - Value: 静态值 (字面量或 Define 常量)
+ */
+export type ASTResult =
+  | { kind: "source"; info: SourceInfo; type: NodeType }
+  | { kind: "value"; val: any; type: NodeType };
+
 // --- 2. 编译器上下文 (Compiler Context) ---
 
 export class CompilerContext {
   private graph: Graph;
 
-  // 1. 符号表: 变量名 -> 数据源 (包括 IR_Call 的 outputs, 局部变量等)
-  private varMap = new Map<string, SourceInfo>();
+  // // 1. 符号表: 变量名 -> 数据源 (包括 IR_Call 的 outputs, 局部变量等)
+  // private varMap = new Map<string, SourceInfo>();
+
+  // [新增] 待处理的跳转连接
+  private pendingFlows: PendingFlowRequest[] = [];
+
+  // [修改] varMap 现在可以存储 SourceInfo (节点端口) 或 纯值
+  private varMap = new Map<string, SourceInfo | { type: NodeType, value: any }>();
 
   // 2. 宏定义表: 宏名 -> 字面值 (处理 DefineDecl)
   private defineMap = new Map<string, any>();
@@ -87,9 +110,25 @@ export class CompilerContext {
     this.varMap.set(name, { nodeId, port, type });
   }
 
-  /** 查找变量源 */
-  public resolveVar(name: string): SourceInfo | undefined {
-    return this.varMap.get(name);
+  /** 注册变量：来源于节点端口 */
+  public registerVarSource(name: string, nodeId: string, port: string, type: NodeType) {
+    this.varMap.set(name, { nodeId, port, type });
+  }
+
+  /** [新增] 注册变量：来源于纯值 (Const) */
+  public registerVarValue(name: string, value: any, type: NodeType) {
+    this.varMap.set(name, { value, type });
+  }
+
+  /** [修改] 解析变量 */
+  public resolveVar(name: string): ASTResult { // ASTResult 定义见 Step 2
+    const entry = this.varMap.get(name)!;
+
+    if ('value' in entry) {
+      return { kind: "value", val: entry.value, type: entry.type };
+    } else {
+      return { kind: "source", info: entry, type: entry.type };
+    }
   }
 
   /** 查找 Define 常量 */
@@ -109,12 +148,34 @@ export class CompilerContext {
 
   // === 控制流/跳转管理 (Flow & Jumps) ===
 
-  /** 注册 Anchor 的实际位置 */
-  public registerAnchor(id: BranchId, nodeId: string) {
-    this.anchorMap.set(id, nodeId);
+
+  /** [新增] 记录一个待处理的跳转请求 */
+  public addPendingJump(srcNodeId: string, srcPort: string, targetAnchorId: BranchId) {
+    this.pendingFlows.push({ srcNodeId, srcPort, targetAnchorId, order: 0 });
   }
 
-  public resolveAnchor(id: BranchId): string | undefined {
+  /** [新增] 当一个节点被注册到 Anchor 时，尝试解决指向它的 Pending Jumps */
+  public resolvePendingJumpsForAnchor(anchorId: BranchId, targetNodeId: string) {
+    // 1. 找出所有指向该 Anchor 的请求
+    const matches = this.pendingFlows.filter(req => req.targetAnchorId == anchorId); // 使用 == 兼容 string/number
+
+    // 2. 执行连接
+    matches.forEach(req => {
+      // 直接建立从 Jump来源 到 目标节点 的连接
+      this.graph.flow(req.srcNodeId, targetNodeId, req.srcPort, "in", req.order);
+    });
+
+    // 3. 移除已处理的请求
+    this.pendingFlows = this.pendingFlows.filter(req => req.targetAnchorId != anchorId);
+  }
+
+  /** [修改] 注册 Anchor 的同时，立即解决 Pending Jumps */
+  public registerAnchor(id: BranchId, nodeId: string) {
+    this.anchorMap.set(id, nodeId);
+    this.resolvePendingJumpsForAnchor(id, nodeId); // <--- 关键触发点
+  }
+
+  public resolveAnchor(id: BranchId): BranchId | undefined {
     return this.anchorMap.get(id);
   }
 
