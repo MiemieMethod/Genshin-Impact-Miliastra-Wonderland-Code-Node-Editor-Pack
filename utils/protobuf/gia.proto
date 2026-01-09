@@ -685,20 +685,6 @@ message StructureDefinition {
 
       message String { repeated string str = 1; }
 
-      message Enum { repeated int64 enum = 1; }
-
-      message IdList {
-        repeated int64 elem = 1 [packed = true];
-      }
-
-      message IntList {
-        repeated int32 elem = 1 [packed = true];
-      }
-
-      message FloatList {
-        repeated float elem = 1 [packed = true];
-      }
-
       message Vector {
         message Vec {
           float x = 1;
@@ -727,29 +713,29 @@ message StructureDefinition {
       GenericDef   generic_def = 2;
 
       oneof val {
-        Id        val_entity       = 11; // 实体
-        Id        val_id           = 12; // GUID
-        Int       val_int          = 13; // 整数
-        Enum      val_enum         = 14; // 枚举索引
-        Float     val_float        = 15; // 浮点
-        String    val_string       = 16; // 字符串
-        IdList    val_idList       = 17;
-        IntList   val_intList      = 18;
-        IdList    val_enumList     = 19;
-        FloatList val_floatList    = 20;
-        String    val_stringList   = 21;
-        Vector    val_vector       = 22; // 向量
-        IdList    val_entityList   = 23;
-        Vector    val_vectorList   = 25;
-        Id        val_faction      = 27; // GUID
-        Prefab    val_config       = 30; // 配置
-        Prefab    val_prefab       = 31; // 元件
-        Prefab    val_configList   = 32;
-        Prefab    val_prefabList   = 33;
-        IdList    val_factionList  = 34;
-        Entry     val_entry        = 35; // 结构体或键值对
-        Entry     val_structList   = 36; // 结构体列表
-        Dict      val_dict         = 37; // 字典
+        Id     val_entity       = 11; // 实体
+        Id     val_id           = 12; // GUID
+        Int    val_int          = 13; // 整数
+        Enum   val_enum         = 14; // 枚举索引
+        Float  val_float        = 15; // 浮点
+        String val_string       = 16; // 字符串
+        Id     val_idList       = 17;
+        Int    val_intList      = 18;
+        Id     val_enumList     = 19;
+        Float  val_floatList    = 20;
+        String val_stringList   = 21;
+        Vector val_vector       = 22; // 向量
+        Id     val_entityList   = 23;
+        Vector val_vectorList   = 25;
+        Id     val_faction      = 27; // GUID
+        Prefab val_config       = 30; // 配置
+        Prefab val_prefab       = 31; // 元件
+        Prefab val_configList   = 32;
+        Prefab val_prefabList   = 33;
+        Id     val_factionList  = 34;
+        Entry  val_entry        = 35; // 结构体或键值对
+        Entry  val_structList   = 36; // 结构体列表
+        Dict   val_dict         = 37; // 字典
       }
 
       string       varName     = 501;
