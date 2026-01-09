@@ -683,7 +683,7 @@ message StructureDefinition {
 
       message Float { repeated float float = 1; }
 
-      message String { repeated bytes str = 1; }
+      message String { repeated string str = 1; }
 
       message Enum { repeated int64 enum = 1; }
 
